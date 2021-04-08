@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<!--
+==============================================================================
+           "GitHub HTML5 Pandoc Template" v2.2 — by Tristano Ajmone
+==============================================================================
+Copyright © Tristano Ajmone, 2017-2020, MIT License (MIT). Project's home:
+- https://github.com/tajmone/pandoc-goodies
+The CSS in this template reuses source code taken from the following projects:
+- GitHub Markdown CSS: Copyright © Sindre Sorhus, MIT License (MIT):
+  https://github.com/sindresorhus/github-markdown-css
+- Primer CSS: Copyright © 2016-2017 GitHub Inc., MIT License (MIT):
+  http://primercss.io/
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The MIT License
+Copyright (c) Tristano Ajmone, 2017-2020 (github.com/tajmone/pandoc-goodies)
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+Copyright (c) 2017 GitHub Inc.
+"GitHub Pandoc HTML5 Template" is Copyright (c) Tristano Ajmone, 2017-2020,
+released under the MIT License (MIT); it contains readaptations of substantial
+portions of the following third party softwares:
+(1) "GitHub Markdown CSS", Copyright (c) Sindre Sorhus, MIT License (MIT).
+(2) "Primer CSS", Copyright (c) 2016 GitHub Inc., MIT License (MIT).
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+==============================================================================-->
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>MIT-6.S081-2020实验（xv6-riscv64）六：cow</title>
+  <style type="text/css">
+@charset "UTF-8";.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#24292e;font-family:-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:16px;line-height:1.5;word-wrap:break-word;box-sizing:border-box;min-width:200px;max-width:980px;margin:0 auto;padding:45px}.markdown-body a{color:#0366d6;background-color:transparent;text-decoration:none;-webkit-text-decoration-skip:objects}.markdown-body a:active,.markdown-body a:hover{outline-width:0}.markdown-body a:hover{text-decoration:underline}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body strong{font-weight:600}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1{font-size:2em;margin:.67em 0;padding-bottom:.3em;border-bottom:1px solid #eaecef}.markdown-body h2{padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid #eaecef}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#6a737d}.markdown-body img{border-style:none}.markdown-body svg:not(:root){overflow:hidden}.markdown-body hr{box-sizing:content-box;height:.25em;margin:24px 0;padding:0;overflow:hidden;background-color:#e1e4e8;border:0}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body input{margin:0;overflow:visible;font:inherit;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=checkbox]{box-sizing:border-box;padding:0}.markdown-body *{box-sizing:border-box}.markdown-body blockquote{margin:0}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dd{margin-left:0}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:600}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace}.markdown-body pre{font:12px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;word-wrap:normal}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote{padding:0 1em;color:#6a737d;border-left:.25em solid #dfe2e5}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body table{display:block;width:100%;overflow:auto;border-spacing:0;border-collapse:collapse}.markdown-body table th{font-weight:600}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #dfe2e5}.markdown-body table tr{background-color:#fff;border-top:1px solid #c6cbd1}.markdown-body table tr:nth-child(2n){background-color:#f6f8fa}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body code{padding:.2em 0;margin:0;font-size:85%;background-color:rgba(27,31,35,.05);border-radius:3px}.markdown-body code::after,.markdown-body code::before{letter-spacing:-.2em;content:" "}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f6f8fa;border-radius:3px}.markdown-body pre code{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code::after,.markdown-body pre code::before{content:normal}.markdown-body .full-commit .btn-outline:not(:disabled):hover{color:#005cc5;border-color:#005cc5}.markdown-body kbd{box-shadow:inset 0 -1px 0 #959da5;display:inline-block;padding:3px 5px;font:11px/10px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;color:#444d56;vertical-align:middle;background-color:#fcfcfc;border:1px solid #c6cbd1;border-bottom-color:#959da5;border-radius:3px;box-shadow:inset 0 -1px 0 #959da5}.markdown-body :checked+.radio-label{position:relative;z-index:1;border-color:#0366d6}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item+.task-list-item{margin-top:3px}.markdown-body .task-list-item input{margin:0 .2em .25em -1.6em;vertical-align:middle}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.Alert,.Error,.Note,.Success,.Warning{padding:11px;margin-bottom:24px;border-style:solid;border-width:1px;border-radius:4px}.Alert p,.Error p,.Note p,.Success p,.Warning p{margin-top:0}.Alert p:last-child,.Error p:last-child,.Note p:last-child,.Success p:last-child,.Warning p:last-child{margin-bottom:0}.Alert{color:#246;background-color:#e2eef9;border-color:#bac6d3}.Warning{color:#4c4a42;background-color:#fff9ea;border-color:#dfd8c2}.Error{color:#911;background-color:#fcdede;border-color:#d2b2b2}.Success{color:#22662c;background-color:#e2f9e5;border-color:#bad3be}.Note{color:#2f363d;background-color:#f6f8fa;border-color:#d5d8da}.Alert h1,.Alert h2,.Alert h3,.Alert h4,.Alert h5,.Alert h6{color:#246;margin-bottom:0}.Warning h1,.Warning h2,.Warning h3,.Warning h4,.Warning h5,.Warning h6{color:#4c4a42;margin-bottom:0}.Error h1,.Error h2,.Error h3,.Error h4,.Error h5,.Error h6{color:#911;margin-bottom:0}.Success h1,.Success h2,.Success h3,.Success h4,.Success h5,.Success h6{color:#22662c;margin-bottom:0}.Note h1,.Note h2,.Note h3,.Note h4,.Note h5,.Note h6{color:#2f363d;margin-bottom:0}.Alert h1:first-child,.Alert h2:first-child,.Alert h3:first-child,.Alert h4:first-child,.Alert h5:first-child,.Alert h6:first-child,.Error h1:first-child,.Error h2:first-child,.Error h3:first-child,.Error h4:first-child,.Error h5:first-child,.Error h6:first-child,.Note h1:first-child,.Note h2:first-child,.Note h3:first-child,.Note h4:first-child,.Note h5:first-child,.Note h6:first-child,.Success h1:first-child,.Success h2:first-child,.Success h3:first-child,.Success h4:first-child,.Success h5:first-child,.Success h6:first-child,.Warning h1:first-child,.Warning h2:first-child,.Warning h3:first-child,.Warning h4:first-child,.Warning h5:first-child,.Warning h6:first-child{margin-top:0}h1.title,p.subtitle{text-align:center}h1.title.followed-by-subtitle{margin-bottom:0}p.subtitle{font-size:1.5em;font-weight:600;line-height:1.25;margin-top:0;margin-bottom:16px;padding-bottom:.3em}div.line-block{white-space:pre-line}
+  </style>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+<link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/popper.min.js" ></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/4.1.0/js/bootstrap.min.js" ></script>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">ZimingYuan的博客</a>
+        <div class="navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/index.html">首页</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/html/随笔.html">随笔</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/html/CSP模板.html">CSP模板</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<article class="markdown-body">
+<header>
+<h1 class="title">MIT-6.S081-2020实验（xv6-riscv64）六：cow</h1>
+</header>
+<p><a href="https://pdos.csail.mit.edu/6.S081/2020/labs/cow.html">实验文档</a></p>
+<h3 id="概述">概述</h3>
+<p>这次实验实现copy on write功能，和上次实验一样也是缺页中断的应用，但不同的是，这次实验涉及的物理内存和虚拟地址的操作要比上个实验多不少，因此难度也更大一些。</p>
+<h3 id="内容">内容</h3>
+<p>首先是uvmcopy的部分，原来的操作是从老页表中获得虚拟地址对应的物理地址，创建一个新物理页，然后将老物理地址的内容复制到新物理页，再把新物理页通过新页表映射到虚拟地址，现在就要改成直接将老物理地址通过新页表映射到虚拟地址，同时需要将老页表和新页表对应底层pte抹去PTE_W为并添加PTE_C位，这里的PTE_C是我自己定义的一个标志位。根据Riscv的标准，pte的低10位作为标志位，其中的0-7位是包括PTE_V、PTE_W之类已经被用掉的标志位，8-9位是可供用户自定义使用的标志位，这里我选取第8位，即<code>PTE_C = 1L &lt;&lt; 8</code>。0表示该pte没有用在copy on write中，1表示有，这样在处理缺页中断的时候就比较方便了，只要该pte的PTE_C位为0，说明这次缺页中断的原因不是copy on write，而是真的缺页，就可以直接返回错误：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span><span class="op">(</span>i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> sz<span class="op">;</span> i <span class="op">+=</span> PGSIZE<span class="op">){</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">((</span>pte <span class="op">=</span> walk<span class="op">(</span>old<span class="op">,</span> i<span class="op">,</span> <span class="dv">0</span><span class="op">))</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>      panic<span class="op">(</span><span class="st">&quot;uvmcopy: pte should exist&quot;</span><span class="op">);</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">((*</span>pte <span class="op">&amp;</span> PTE_V<span class="op">)</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>      panic<span class="op">(</span><span class="st">&quot;uvmcopy: page not present&quot;</span><span class="op">);</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    pa <span class="op">=</span> PTE2PA<span class="op">(*</span>pte<span class="op">);</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>pte <span class="op">&amp;=</span> <span class="op">~</span>PTE_W<span class="op">;</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>pte <span class="op">|=</span> PTE_C<span class="op">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    flags <span class="op">=</span> PTE_FLAGS<span class="op">(*</span>pte<span class="op">);</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="co">// if((mem = kalloc()) == 0)</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="co">//   goto err;</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">// memmove(mem, (char*)pa, PGSIZE);</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>mappages<span class="op">(</span>new<span class="op">,</span> i<span class="op">,</span> PGSIZE<span class="op">,</span> pa<span class="op">,</span> flags<span class="op">)</span> <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span> <span class="cf">goto</span> err<span class="op">;</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    add_count<span class="op">(</span>pa<span class="op">);</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a> err<span class="op">:</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>  uvmunmap<span class="op">(</span>new<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> i <span class="op">/</span> PGSIZE<span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>  panic<span class="op">(</span><span class="st">&quot;uvmcopy: map page failed&quot;</span><span class="op">);</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span></code></pre></div>
+<p>这里我映射失败就直接让程序panic了，因为如果真的要处理的话还得把之前所有新老页表里的底层pte的标志位改回去，事实上我也想不出mappages失败且内部没有panic的情况。</p>
+<p>然后是缺页中断处理，和上次实验一样，单独抽象成一个函数，主要过程就是获取缺页的物理地址，如果物理地址不存在或者PTE_C不为1就返回错误，然后创建新页，把老页的内容复制过来，并修改新页对应pte的标志位，注意下一步需要尝试释放老页，防止内存泄漏。这里的“尝试释放”指的是让老页的引用计数-1，如果引用计数为0了就真的释放。“尝试释放”的过程直接就写在kfree函数里面，因为加入copy on write机制后，所有对物理内存的操作都需要受引用计数的制约：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> handle_page<span class="op">(</span>uint64 va<span class="op">,</span> pagetable_t pgtbl<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    pte_t <span class="op">*</span>pte<span class="op">;</span> <span class="dt">char</span> <span class="op">*</span>mem<span class="op">;</span> uint flags<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">((</span>pte <span class="op">=</span> walk<span class="op">(</span>pgtbl<span class="op">,</span> va<span class="op">,</span> <span class="dv">0</span><span class="op">))</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">((*</span>pte <span class="op">&amp;</span> PTE_C<span class="op">)</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">((</span>mem <span class="op">=</span> kalloc<span class="op">())</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    flags <span class="op">=</span> PTE_FLAGS<span class="op">((*</span>pte <span class="op">&amp;</span> <span class="op">(~</span>PTE_C<span class="op">))</span> <span class="op">|</span> PTE_W<span class="op">);</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    uint64 pa <span class="op">=</span> PTE2PA<span class="op">(*</span>pte<span class="op">);</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    memmove<span class="op">(</span>mem<span class="op">,</span> <span class="op">(</span><span class="dt">char</span><span class="op">*)</span>pa<span class="op">,</span> PGSIZE<span class="op">);</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">*</span>pte <span class="op">=</span> PA2PTE<span class="op">((</span>uint64<span class="op">)</span>mem<span class="op">)</span> <span class="op">|</span> flags<span class="op">;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    kfree<span class="op">((</span><span class="dt">void</span> <span class="op">*)</span>pa<span class="op">);</span> <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>然后就是copyout函数的修改，为什么不需要修改copyin和copyinstr函数呢，因为fork涉及的都是用户区的内存，所以缺页也只会在写用户内存的情况下发生，copyout是内核内存写到用户内存，所以需要处理，另外两个函数是用户内存写到内核内存，是读用户内存，所以不需要处理。另一个和上次实验不同的地方是，上次实验之所以copyout函数需要修改，是因为在对虚拟地址调用walkaddr函数的时候，因为实际的物理地址不存在，所以返回错误，因此只要在walkaddr返回不存在的物理地址时进行缺页处理即可；而这次实验walkaddr是可以得到合法的物理地址的，只是这个物理地址不能被写，所以错误会在memmove到这个物理地址的时候才发生，而且这个缺页中断是在内核态发生的，走的也是kerneltrap函数，因此我们定义在usertrap函数里的处理代码捕获不到它。因此我们要做的，就是在调用walkaddr函数后对pte进行检查，如果PTE_C位为1，则进行缺页处理。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>  <span class="cf">while</span><span class="op">(</span>len <span class="op">&gt;</span> <span class="dv">0</span><span class="op">){</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    va0 <span class="op">=</span> PGROUNDDOWN<span class="op">(</span>dstva<span class="op">);</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    pa0 <span class="op">=</span> walkaddr<span class="op">(</span>pagetable<span class="op">,</span> va0<span class="op">);</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>pa0 <span class="op">==</span> <span class="dv">0</span><span class="op">)</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(*(</span>walk<span class="op">(</span>pagetable<span class="op">,</span> va0<span class="op">,</span> <span class="dv">0</span><span class="op">))</span> <span class="op">&amp;</span> PTE_C<span class="op">)</span> handle_page<span class="op">(</span>va0<span class="op">,</span> pagetable<span class="op">);</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    pa0 <span class="op">=</span> walkaddr<span class="op">(</span>pagetable<span class="op">,</span> va0<span class="op">);</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">......</span></span></code></pre></div>
+<p>这里我的代码写的比较矬，为了检查标志位还重新walk一遍，最后要获得新物理地址又walkaddr一遍，实际上可以定义另一个版本的walkaddr直接返回pte，handle_page也可以改写让其返回新物理地址，后面有时间再改。trap.c的代码和上次实验几乎一样，就不贴了。</p>
+<p>然后是物理内存的处理，为了节省空间，我没有直接用物理地址模4096，而是先将物理地址减掉内核的地址空间，再模4096，因为fork不涉及物理内存，即数组索引为<code>(pa - KERNBASE) &gt;&gt; PGSHIFT</code>，当然代价就是每次进行处理引用计数的时候需要先判断pa必须大于等于KERNBASE，不然内核申请或释放物理内存的时候一减变成负数，就访问非法内存了。数组大小就可以根据memlayout.h里的值进行计算，发现物理内存的最大值PHYSTOP减KERNBASE等于128*1024*1024`，因此总页数为128*1024/4=32768，这就是数组的大小。另外很重要的一点是引用数组的声明：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">struct</span> spinlock lock<span class="op">;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    uint a<span class="op">[</span><span class="dv">32768</span><span class="op">];</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> count<span class="op">;</span></span></code></pre></div>
+<p>需要用到锁，这个实验文档没讲，略坑，我也是看了别人的代码才知道，不用锁的话会内存泄漏，应该是多进程竞争扰乱了引用计数的加减，目前还没看到xv6文档里关于锁的部分，所以也不知道哪些地方可能产生资源竞争。了解这一点后面就很容易了，kfree函数：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span><span class="op">(((</span>uint64<span class="op">)</span>pa <span class="op">%</span> PGSIZE<span class="op">)</span> <span class="op">!=</span> <span class="dv">0</span> <span class="op">||</span> <span class="op">(</span><span class="dt">char</span><span class="op">*)</span>pa <span class="op">&lt;</span> end <span class="op">||</span> <span class="op">(</span>uint64<span class="op">)</span>pa <span class="op">&gt;=</span> PHYSTOP<span class="op">)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    panic<span class="op">(</span><span class="st">&quot;kfree&quot;</span><span class="op">);</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">((</span>uint64<span class="op">)</span>pa <span class="op">&gt;=</span> KERNBASE<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>      acquire<span class="op">(&amp;</span>count<span class="op">.</span>lock<span class="op">);</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> <span class="op">(</span>count<span class="op">.</span>a<span class="op">[((</span>uint64<span class="op">)</span>pa <span class="op">-</span> KERNBASE<span class="op">)</span> <span class="op">&gt;&gt;</span> PGSHIFT<span class="op">]</span> <span class="op">&gt;</span> <span class="dv">1</span><span class="op">)</span> <span class="op">{</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>          count<span class="op">.</span>a<span class="op">[((</span>uint64<span class="op">)</span>pa <span class="op">-</span> KERNBASE<span class="op">)</span> <span class="op">&gt;&gt;</span> PGSHIFT<span class="op">]--;</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>          release<span class="op">(&amp;</span>count<span class="op">.</span>lock<span class="op">);</span> <span class="cf">return</span><span class="op">;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>          count<span class="op">.</span>a<span class="op">[((</span>uint64<span class="op">)</span>pa <span class="op">-</span> KERNBASE<span class="op">)</span> <span class="op">&gt;&gt;</span> PGSHIFT<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>          release<span class="op">(&amp;</span>count<span class="op">.</span>lock<span class="op">);</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div>
+<p>alloc函数里直接在返回物理地址前使用add_count函数让计数加1（初始时和释放后引用计数都为0，所以加1后就是1），这里代码不贴了，add_count函数：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> add_count<span class="op">(</span>uint64 pa<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>pa <span class="op">&gt;=</span> KERNBASE<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>      acquire<span class="op">(&amp;</span>count<span class="op">.</span>lock<span class="op">);</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>      count<span class="op">.</span>a<span class="op">[(</span>pa <span class="op">-</span> KERNBASE<span class="op">)</span> <span class="op">&gt;&gt;</span> PGSHIFT<span class="op">]++;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>      release<span class="op">(&amp;</span>count<span class="op">.</span>lock<span class="op">);</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+</article>
+<span class="bg-light text-muted border boder-primary d-block p-2 text-center">
+    转载请注明出处<br>
+    © 2021 ZimingYuan的博客
+</span>
+<div style="background-color: #ebd5a1; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; pointer-events: none; opacity: 0.2;">
+</div>
+</body>
+</html>

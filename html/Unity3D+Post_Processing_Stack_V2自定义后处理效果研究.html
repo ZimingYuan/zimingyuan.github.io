@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<!--
+==============================================================================
+           "GitHub HTML5 Pandoc Template" v2.2 — by Tristano Ajmone
+==============================================================================
+Copyright © Tristano Ajmone, 2017-2020, MIT License (MIT). Project's home:
+- https://github.com/tajmone/pandoc-goodies
+The CSS in this template reuses source code taken from the following projects:
+- GitHub Markdown CSS: Copyright © Sindre Sorhus, MIT License (MIT):
+  https://github.com/sindresorhus/github-markdown-css
+- Primer CSS: Copyright © 2016-2017 GitHub Inc., MIT License (MIT):
+  http://primercss.io/
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The MIT License
+Copyright (c) Tristano Ajmone, 2017-2020 (github.com/tajmone/pandoc-goodies)
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+Copyright (c) 2017 GitHub Inc.
+"GitHub Pandoc HTML5 Template" is Copyright (c) Tristano Ajmone, 2017-2020,
+released under the MIT License (MIT); it contains readaptations of substantial
+portions of the following third party softwares:
+(1) "GitHub Markdown CSS", Copyright (c) Sindre Sorhus, MIT License (MIT).
+(2) "Primer CSS", Copyright (c) 2016 GitHub Inc., MIT License (MIT).
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+==============================================================================-->
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Unity3D+Post Processing Stack V2自定义后处理效果研究</title>
+  <style type="text/css">
+@charset "UTF-8";.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#24292e;font-family:-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:16px;line-height:1.5;word-wrap:break-word;box-sizing:border-box;min-width:200px;max-width:980px;margin:0 auto;padding:45px}.markdown-body a{color:#0366d6;background-color:transparent;text-decoration:none;-webkit-text-decoration-skip:objects}.markdown-body a:active,.markdown-body a:hover{outline-width:0}.markdown-body a:hover{text-decoration:underline}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body strong{font-weight:600}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1{font-size:2em;margin:.67em 0;padding-bottom:.3em;border-bottom:1px solid #eaecef}.markdown-body h2{padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid #eaecef}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#6a737d}.markdown-body img{border-style:none}.markdown-body svg:not(:root){overflow:hidden}.markdown-body hr{box-sizing:content-box;height:.25em;margin:24px 0;padding:0;overflow:hidden;background-color:#e1e4e8;border:0}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body input{margin:0;overflow:visible;font:inherit;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=checkbox]{box-sizing:border-box;padding:0}.markdown-body *{box-sizing:border-box}.markdown-body blockquote{margin:0}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dd{margin-left:0}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:600}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace}.markdown-body pre{font:12px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;word-wrap:normal}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote{padding:0 1em;color:#6a737d;border-left:.25em solid #dfe2e5}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body table{display:block;width:100%;overflow:auto;border-spacing:0;border-collapse:collapse}.markdown-body table th{font-weight:600}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #dfe2e5}.markdown-body table tr{background-color:#fff;border-top:1px solid #c6cbd1}.markdown-body table tr:nth-child(2n){background-color:#f6f8fa}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body code{padding:.2em 0;margin:0;font-size:85%;background-color:rgba(27,31,35,.05);border-radius:3px}.markdown-body code::after,.markdown-body code::before{letter-spacing:-.2em;content:" "}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f6f8fa;border-radius:3px}.markdown-body pre code{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code::after,.markdown-body pre code::before{content:normal}.markdown-body .full-commit .btn-outline:not(:disabled):hover{color:#005cc5;border-color:#005cc5}.markdown-body kbd{box-shadow:inset 0 -1px 0 #959da5;display:inline-block;padding:3px 5px;font:11px/10px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;color:#444d56;vertical-align:middle;background-color:#fcfcfc;border:1px solid #c6cbd1;border-bottom-color:#959da5;border-radius:3px;box-shadow:inset 0 -1px 0 #959da5}.markdown-body :checked+.radio-label{position:relative;z-index:1;border-color:#0366d6}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item+.task-list-item{margin-top:3px}.markdown-body .task-list-item input{margin:0 .2em .25em -1.6em;vertical-align:middle}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.Alert,.Error,.Note,.Success,.Warning{padding:11px;margin-bottom:24px;border-style:solid;border-width:1px;border-radius:4px}.Alert p,.Error p,.Note p,.Success p,.Warning p{margin-top:0}.Alert p:last-child,.Error p:last-child,.Note p:last-child,.Success p:last-child,.Warning p:last-child{margin-bottom:0}.Alert{color:#246;background-color:#e2eef9;border-color:#bac6d3}.Warning{color:#4c4a42;background-color:#fff9ea;border-color:#dfd8c2}.Error{color:#911;background-color:#fcdede;border-color:#d2b2b2}.Success{color:#22662c;background-color:#e2f9e5;border-color:#bad3be}.Note{color:#2f363d;background-color:#f6f8fa;border-color:#d5d8da}.Alert h1,.Alert h2,.Alert h3,.Alert h4,.Alert h5,.Alert h6{color:#246;margin-bottom:0}.Warning h1,.Warning h2,.Warning h3,.Warning h4,.Warning h5,.Warning h6{color:#4c4a42;margin-bottom:0}.Error h1,.Error h2,.Error h3,.Error h4,.Error h5,.Error h6{color:#911;margin-bottom:0}.Success h1,.Success h2,.Success h3,.Success h4,.Success h5,.Success h6{color:#22662c;margin-bottom:0}.Note h1,.Note h2,.Note h3,.Note h4,.Note h5,.Note h6{color:#2f363d;margin-bottom:0}.Alert h1:first-child,.Alert h2:first-child,.Alert h3:first-child,.Alert h4:first-child,.Alert h5:first-child,.Alert h6:first-child,.Error h1:first-child,.Error h2:first-child,.Error h3:first-child,.Error h4:first-child,.Error h5:first-child,.Error h6:first-child,.Note h1:first-child,.Note h2:first-child,.Note h3:first-child,.Note h4:first-child,.Note h5:first-child,.Note h6:first-child,.Success h1:first-child,.Success h2:first-child,.Success h3:first-child,.Success h4:first-child,.Success h5:first-child,.Success h6:first-child,.Warning h1:first-child,.Warning h2:first-child,.Warning h3:first-child,.Warning h4:first-child,.Warning h5:first-child,.Warning h6:first-child{margin-top:0}h1.title,p.subtitle{text-align:center}h1.title.followed-by-subtitle{margin-bottom:0}p.subtitle{font-size:1.5em;font-weight:600;line-height:1.25;margin-top:0;margin-bottom:16px;padding-bottom:.3em}div.line-block{white-space:pre-line}
+  </style>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+<link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/popper.min.js" ></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/4.1.0/js/bootstrap.min.js" ></script>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">ZimingYuan的博客</a>
+        <div class="navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/index.html">首页</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/html/随笔.html">随笔</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/html/CSP模板.html">CSP模板</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<article class="markdown-body">
+<header>
+<h1 class="title">Unity3D+Post Processing Stack V2自定义后处理效果研究</h1>
+</header>
+<h3 id="背景">背景</h3>
+<p>众所周知，Unity3D支持自定义后处理效果，实现过程有三步： 1. 添加着色器，在着色器里书写后处理代码； 2. 添加材质，把材质和着色器绑定； 3. 给相机添加脚本，重写其OnRenderImage方法，将材质传入Graphics.Blit方法中。</p>
+<p>但是在做最近的一个项目时，我使用了Unity3D的官方后处理插件Post Processing Stack V2（以下简称PPV2）来简化辉光、环境光遮蔽这类后处理效果的使用。但之后我又需要自定义一些后处理效果，此时就出现了问题。我发现我的OnRenderImage方法没有正常地接收到渲染帧经过插件处理后的纹理，而是接收到一个纯黑纹理，最后输出的也是纯黑，使得我的后处理效果无法正常工作，网上也找不到实际原因，可能和渲染管线的不同有关。为了解决这个问题，必须基于PPV2自定义一个效果，然后在其他代码中操作这个效果里的参数，由PPV2来执行我们的后处理效果。这个国内国外的教程都非常少，我主要参考了PPV2的官方文档，在<a href="https://docs.unity3d.com/Packages/com.unity.postprocessing@2.2/manual/">这里</a>给出。 ### 代码 #### 着色器</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Shader <span class="st">&quot;Hidden/Custom/Blend&quot;</span> <span class="op">{</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    HLSLINCLUDE</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="pp">#include </span><span class="im">&quot;Packages/com.unity.postprocessing/PostProcessing/Shaders/StdLib.hlsl&quot;</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        TEXTURE2D_SAMPLER2D<span class="op">(</span>_MainTex<span class="op">,</span> sampler_MainTex<span class="op">);</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        TEXTURE2D_SAMPLER2D<span class="op">(</span>_DesTex<span class="op">,</span> sampler_DesTex<span class="op">);</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="dt">float</span> _Alpha<span class="op">;</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>        float4 Frag<span class="op">(</span>VaryingsDefault i<span class="op">)</span> <span class="op">:</span> SV_Target <span class="op">{</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>            float4 col1 <span class="op">=</span> SAMPLE_TEXTURE2D<span class="op">(</span>_MainTex<span class="op">,</span> sampler_MainTex<span class="op">,</span> i<span class="op">.</span>texcoord<span class="op">);</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>            float4 col2 <span class="op">=</span> SAMPLE_TEXTURE2D<span class="op">(</span>_DesTex<span class="op">,</span> sampler_DesTex<span class="op">,</span> i<span class="op">.</span>texcoord<span class="op">);</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>            float4 col <span class="op">=</span> lerp<span class="op">(</span>col2<span class="op">,</span> col1<span class="op">,</span> _Alpha<span class="op">);</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>            <span class="cf">return</span> col<span class="op">;</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    ENDHLSL</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>    SubShader <span class="op">{</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>        Cull Off ZWrite Off ZTest Always</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>        Pass <span class="op">{</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>            HLSLPROGRAM</span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>                <span class="pp">#pragma vertex VertDefault</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>                <span class="pp">#pragma fragment Frag</span></span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>            ENDHLSL</span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>基本和文档中的一致，只是修改了片元着色器函数里的代码，实现将两张纹理进行混合的过程，另外由于这个文档比较新，实例的Shader语法好像和以前的CG语言不太一样，不知道是不是换成了HLSL。 #### 效果自定义</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c#"><code class="sourceCode cs"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> System<span class="op">;</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> UnityEngine<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">using</span> UnityEngine<span class="op">.</span><span class="fu">Rendering</span><span class="op">.</span><span class="fu">PostProcessing</span><span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="op">[</span>Serializable<span class="op">]</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="op">[</span><span class="fu">PostProcess</span><span class="op">(</span><span class="kw">typeof</span><span class="op">(</span>BlendRenderer<span class="op">),</span> PostProcessEvent<span class="op">.</span><span class="fu">AfterStack</span><span class="op">,</span> <span class="st">&quot;Custom/Blend&quot;</span><span class="op">)]</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">sealed</span> <span class="kw">class</span> Blend <span class="op">:</span> PostProcessEffectSettings <span class="op">{</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> TextureParameter DesTex <span class="op">=</span> <span class="kw">new</span> <span class="fu">TextureParameter</span><span class="op">();</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> FloatParameter Alpha <span class="op">=</span> <span class="kw">new</span> <span class="fu">FloatParameter</span><span class="op">();</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="kw">public</span> <span class="kw">sealed</span> <span class="kw">class</span> BlendRenderer <span class="op">:</span> PostProcessEffectRenderer<span class="op">&lt;</span>Blend<span class="op">&gt;</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">override</span> <span class="dt">void</span> <span class="fu">Render</span><span class="op">(</span>PostProcessRenderContext context<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>        <span class="dt">var</span> sheet <span class="op">=</span> context<span class="op">.</span><span class="fu">propertySheets</span><span class="op">.</span><span class="fu">Get</span><span class="op">(</span>Shader<span class="op">.</span><span class="fu">Find</span><span class="op">(</span><span class="st">&quot;Hidden/Custom/Blend&quot;</span><span class="op">));</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>        sheet<span class="op">.</span><span class="fu">properties</span><span class="op">.</span><span class="fu">SetTexture</span><span class="op">(</span><span class="st">&quot;_DesTex&quot;</span><span class="op">,</span> settings<span class="op">.</span><span class="fu">DesTex</span><span class="op">);</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>        sheet<span class="op">.</span><span class="fu">properties</span><span class="op">.</span><span class="fu">SetFloat</span><span class="op">(</span><span class="st">&quot;_Alpha&quot;</span><span class="op">,</span> settings<span class="op">.</span><span class="fu">Alpha</span><span class="op">);</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>        context<span class="op">.</span><span class="fu">command</span><span class="op">.</span><span class="fu">BlitFullscreenTriangle</span><span class="op">(</span>context<span class="op">.</span><span class="fu">source</span><span class="op">,</span> context<span class="op">.</span><span class="fu">destination</span><span class="op">,</span> sheet<span class="op">,</span> <span class="dv">0</span><span class="op">);</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>这里定义了两个类，一个是设置类，提供了后处理效果所需的各种属性，其中支持的属性类型可以在项目下Packages/Post Processing/PostProcessing/Runtime/ParameterOverride.cs里找到，对应的基础类型有int、float、color、vector2、vector3、vector4、spline和texture。第二个类用来重写后处理方法，一般在这里指定要用的shader和给shader里的变量赋值。 #### 修改效果参数</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c#"><code class="sourceCode cs"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>    <span class="dt">void</span> <span class="fu">Start</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>        m_Blend <span class="op">=</span> ScriptableObject<span class="op">.</span><span class="fu">CreateInstance</span><span class="op">&lt;</span>Blend<span class="op">&gt;();</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>        m_Blend<span class="op">.</span><span class="fu">enabled</span><span class="op">.</span><span class="fu">Override</span><span class="op">(</span><span class="kw">true</span><span class="op">);</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>        m_Blend<span class="op">.</span><span class="fu">Alpha</span><span class="op">.</span><span class="fu">Override</span><span class="op">(</span>1f<span class="op">);</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>        m_Blend<span class="op">.</span><span class="fu">DesTex</span><span class="op">.</span><span class="fu">Override</span><span class="op">(</span>Texture2D<span class="op">.</span><span class="fu">blackTexture</span><span class="op">);</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>        m_Volume <span class="op">=</span> PostProcessManager<span class="op">.</span><span class="fu">instance</span><span class="op">.</span><span class="fu">QuickVolume</span><span class="op">(</span><span class="dv">8</span><span class="op">,</span> 100f<span class="op">,</span> m_Blend<span class="op">);</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>        <span class="co">// 8是后处理所在的层</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
+<p>这一段是初始化，先创建后处理效果，然后将其加入到后处理体积中。初始化后处理效果参数用Override方法，注意QuickVolume方法的第一个参数非常重要，它对应在PostProcessing Layer组件里填写的层的编号。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c#"><code class="sourceCode cs"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>m_Blend<span class="op">.</span><span class="fu">DesTex</span><span class="op">.</span><span class="fu">value</span> <span class="op">=</span> tex<span class="op">;</span> <span class="co">// tex -&gt; Texture2D</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>m_Blend<span class="op">.</span><span class="fu">Alpha</span><span class="op">.</span><span class="fu">value</span> <span class="op">=</span> Alpha<span class="op">;</span> <span class="co">// Alpha -&gt; float</span></span></code></pre></div>
+<p>平常赋值直接修改属性名的value属性。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c#"><code class="sourceCode cs"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">OnDestroy</span><span class="op">()</span> <span class="op">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        RuntimeUtilities<span class="op">.</span><span class="fu">DestroyVolume</span><span class="op">(</span>m_Volume<span class="op">,</span> <span class="kw">true</span><span class="op">,</span> <span class="kw">true</span><span class="op">);</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
+<p>注意在对象被销毁时要将创建的临时后处理体积销毁。如果没有这一段，更换场景时后处理会继续工作，不是我们想要的效果。 ### 总结 Unity3D+Post Processing Stack V2自定义后处理效果其实也是只有三步，就是编写后处理着色器、编写后处理效果类、编写操作后处理参数类。主要还是国内外的教程没有与时俱进导致资料查找困难，希望更多的新教程能不断涌现，方便开发者的学习。 ### 更新 #### 使用已有的后处理体积 在上面的代码中，后处理体积是临时创建的，所以自定义后处理效果也是由代码生成的。如果是修改已有的后处理效果的参数，可以使用下面的代码：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c#"><code class="sourceCode cs"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>m_Volume <span class="op">=</span> GetComponent<span class="op">&lt;</span>PostProcessVolume<span class="op">&gt;();</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>volume<span class="op">.</span><span class="fu">profile</span><span class="op">.</span><span class="fu">TryGetSettings</span><span class="op">&lt;</span>Blend<span class="op">&gt;(</span><span class="kw">out</span> m_Blend<span class="op">);</span></span></code></pre></div>
+<p>先获取脚本所在物体的后处理体积组件，然后直接获取已有的后处理效果的设置类，之后就可以修改属性了。</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c#"><code class="sourceCode cs"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>m_Blend<span class="op">.</span><span class="fu">DesTex</span><span class="op">.</span><span class="fu">value</span> <span class="op">=</span> tex<span class="op">;</span> <span class="co">// tex -&gt; Texture2D</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>m_Blend<span class="op">.</span><span class="fu">Alpha</span><span class="op">.</span><span class="fu">value</span> <span class="op">=</span> Alpha<span class="op">;</span> <span class="co">// Alpha -&gt; float</span></span></code></pre></div>
+<h4 id="构建时的注意事项">构建时的注意事项</h4>
+<p>由于我们在代码中引用了Hidden/Custom/Blend这个着色器文件，但是场景中并没有什么物体引用这个shader，所以构建时可能不会打包这个shader文件，导致实际运行时出现错误。我的解决方法是在场景中随意创建一个有渲染器的物体，然后创建一个引用这个shader的材质，再将材质传给这个物体，这样打包时就不会忽略了。当然可能有其他的方案有待我学习。</p>
+</article>
+<span class="bg-light text-muted border boder-primary d-block p-2 text-center">
+    转载请注明出处<br>
+    © 2021 ZimingYuan的博客
+</span>
+<div style="background-color: #ebd5a1; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; pointer-events: none; opacity: 0.2;">
+</div>
+</body>
+</html>

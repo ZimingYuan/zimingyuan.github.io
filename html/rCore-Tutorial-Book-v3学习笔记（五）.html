@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<!--
+==============================================================================
+           "GitHub HTML5 Pandoc Template" v2.2 — by Tristano Ajmone
+==============================================================================
+Copyright © Tristano Ajmone, 2017-2020, MIT License (MIT). Project's home:
+- https://github.com/tajmone/pandoc-goodies
+The CSS in this template reuses source code taken from the following projects:
+- GitHub Markdown CSS: Copyright © Sindre Sorhus, MIT License (MIT):
+  https://github.com/sindresorhus/github-markdown-css
+- Primer CSS: Copyright © 2016-2017 GitHub Inc., MIT License (MIT):
+  http://primercss.io/
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The MIT License
+Copyright (c) Tristano Ajmone, 2017-2020 (github.com/tajmone/pandoc-goodies)
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+Copyright (c) 2017 GitHub Inc.
+"GitHub Pandoc HTML5 Template" is Copyright (c) Tristano Ajmone, 2017-2020,
+released under the MIT License (MIT); it contains readaptations of substantial
+portions of the following third party softwares:
+(1) "GitHub Markdown CSS", Copyright (c) Sindre Sorhus, MIT License (MIT).
+(2) "Primer CSS", Copyright (c) 2016 GitHub Inc., MIT License (MIT).
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+==============================================================================-->
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>rCore-Tutorial-Book-v3学习笔记（五）</title>
+  <style type="text/css">
+@charset "UTF-8";.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#24292e;font-family:-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:16px;line-height:1.5;word-wrap:break-word;box-sizing:border-box;min-width:200px;max-width:980px;margin:0 auto;padding:45px}.markdown-body a{color:#0366d6;background-color:transparent;text-decoration:none;-webkit-text-decoration-skip:objects}.markdown-body a:active,.markdown-body a:hover{outline-width:0}.markdown-body a:hover{text-decoration:underline}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body strong{font-weight:600}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1{font-size:2em;margin:.67em 0;padding-bottom:.3em;border-bottom:1px solid #eaecef}.markdown-body h2{padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid #eaecef}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#6a737d}.markdown-body img{border-style:none}.markdown-body svg:not(:root){overflow:hidden}.markdown-body hr{box-sizing:content-box;height:.25em;margin:24px 0;padding:0;overflow:hidden;background-color:#e1e4e8;border:0}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body input{margin:0;overflow:visible;font:inherit;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=checkbox]{box-sizing:border-box;padding:0}.markdown-body *{box-sizing:border-box}.markdown-body blockquote{margin:0}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dd{margin-left:0}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:600}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace}.markdown-body pre{font:12px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;word-wrap:normal}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote{padding:0 1em;color:#6a737d;border-left:.25em solid #dfe2e5}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body table{display:block;width:100%;overflow:auto;border-spacing:0;border-collapse:collapse}.markdown-body table th{font-weight:600}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #dfe2e5}.markdown-body table tr{background-color:#fff;border-top:1px solid #c6cbd1}.markdown-body table tr:nth-child(2n){background-color:#f6f8fa}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body code{padding:.2em 0;margin:0;font-size:85%;background-color:rgba(27,31,35,.05);border-radius:3px}.markdown-body code::after,.markdown-body code::before{letter-spacing:-.2em;content:" "}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f6f8fa;border-radius:3px}.markdown-body pre code{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code::after,.markdown-body pre code::before{content:normal}.markdown-body .full-commit .btn-outline:not(:disabled):hover{color:#005cc5;border-color:#005cc5}.markdown-body kbd{box-shadow:inset 0 -1px 0 #959da5;display:inline-block;padding:3px 5px;font:11px/10px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;color:#444d56;vertical-align:middle;background-color:#fcfcfc;border:1px solid #c6cbd1;border-bottom-color:#959da5;border-radius:3px;box-shadow:inset 0 -1px 0 #959da5}.markdown-body :checked+.radio-label{position:relative;z-index:1;border-color:#0366d6}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item+.task-list-item{margin-top:3px}.markdown-body .task-list-item input{margin:0 .2em .25em -1.6em;vertical-align:middle}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.Alert,.Error,.Note,.Success,.Warning{padding:11px;margin-bottom:24px;border-style:solid;border-width:1px;border-radius:4px}.Alert p,.Error p,.Note p,.Success p,.Warning p{margin-top:0}.Alert p:last-child,.Error p:last-child,.Note p:last-child,.Success p:last-child,.Warning p:last-child{margin-bottom:0}.Alert{color:#246;background-color:#e2eef9;border-color:#bac6d3}.Warning{color:#4c4a42;background-color:#fff9ea;border-color:#dfd8c2}.Error{color:#911;background-color:#fcdede;border-color:#d2b2b2}.Success{color:#22662c;background-color:#e2f9e5;border-color:#bad3be}.Note{color:#2f363d;background-color:#f6f8fa;border-color:#d5d8da}.Alert h1,.Alert h2,.Alert h3,.Alert h4,.Alert h5,.Alert h6{color:#246;margin-bottom:0}.Warning h1,.Warning h2,.Warning h3,.Warning h4,.Warning h5,.Warning h6{color:#4c4a42;margin-bottom:0}.Error h1,.Error h2,.Error h3,.Error h4,.Error h5,.Error h6{color:#911;margin-bottom:0}.Success h1,.Success h2,.Success h3,.Success h4,.Success h5,.Success h6{color:#22662c;margin-bottom:0}.Note h1,.Note h2,.Note h3,.Note h4,.Note h5,.Note h6{color:#2f363d;margin-bottom:0}.Alert h1:first-child,.Alert h2:first-child,.Alert h3:first-child,.Alert h4:first-child,.Alert h5:first-child,.Alert h6:first-child,.Error h1:first-child,.Error h2:first-child,.Error h3:first-child,.Error h4:first-child,.Error h5:first-child,.Error h6:first-child,.Note h1:first-child,.Note h2:first-child,.Note h3:first-child,.Note h4:first-child,.Note h5:first-child,.Note h6:first-child,.Success h1:first-child,.Success h2:first-child,.Success h3:first-child,.Success h4:first-child,.Success h5:first-child,.Success h6:first-child,.Warning h1:first-child,.Warning h2:first-child,.Warning h3:first-child,.Warning h4:first-child,.Warning h5:first-child,.Warning h6:first-child{margin-top:0}h1.title,p.subtitle{text-align:center}h1.title.followed-by-subtitle{margin-bottom:0}p.subtitle{font-size:1.5em;font-weight:600;line-height:1.25;margin-top:0;margin-bottom:16px;padding-bottom:.3em}div.line-block{white-space:pre-line}
+  </style>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+<link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/popper.min.js" ></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/4.1.0/js/bootstrap.min.js" ></script>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">ZimingYuan的博客</a>
+        <div class="navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/index.html">首页</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/html/随笔.html">随笔</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/html/CSP模板.html">CSP模板</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<article class="markdown-body">
+<header>
+<h1 class="title">rCore-Tutorial-Book-v3学习笔记（五）</h1>
+</header>
+<h3 id="概述">概述</h3>
+<p>第五个部分是实现进程相关的函数，相比前面几次任务难度高了不少。同时为了适应前面的内存函数，进程函数的实现基本也得靠自己了。由于用户程序增加了不少，所以我还增改了一下Makefile，并写了一个Python脚本用来生成link_app.S。</p>
+<h3 id="内容">内容</h3>
+<p>首先是Makefile，之前一直是把Makefile当shell脚本用的，这一次才真正发挥出Makefile的独特功能：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">CC </span><span class="ch">=</span><span class="st"> riscv64-unknown-elf-gcc -ffreestanding -nostdlib -g -mcmodel=medany -Icommon</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="dt">OC </span><span class="ch">=</span><span class="st"> riscv64-unknown-elf-objcopy --strip-all -O binary</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">user_obj </span><span class="ch">=</span><span class="st"> </span><span class="ch">$(</span><span class="kw">foreach</span><span class="st"> i</span><span class="kw">,</span><span class="st"> </span><span class="ch">$(</span><span class="kw">filter-out</span><span class="st"> user/lib.c</span><span class="kw">,</span><span class="st"> </span><span class="ch">$(</span><span class="kw">wildcard</span><span class="st"> user/*.c</span><span class="ch">))</span><span class="kw">,</span><span class="st"> build/</span><span class="ch">$(</span><span class="kw">basename</span><span class="st"> </span><span class="ch">$(</span><span class="kw">notdir</span><span class="st"> </span><span class="ch">$i)))</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="dv">run:</span><span class="dt"> compile</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    qemu-system-riscv64 -machine virt -nographic -bios common/rustsbi-qemu.bin <span class="ch">\</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>        -device loader,file=build/os.bin,addr=0x80200000</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="dv">$(user_obj):</span><span class="dt"> </span><span class="ch">$(</span><span class="kw">wildcard</span><span class="st"> user/*.c</span><span class="ch">)</span><span class="dt"> common/common.c</span></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="cf">ifneq</span> (build, <span class="ch">$(</span><span class="kw">wildcard</span><span class="st"> build</span><span class="ch">)</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    mkdir build</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="cf">endif</span></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="ch">$(</span><span class="dt">CC</span><span class="ch">)</span> user/<span class="ch">$(</span><span class="dt">@F</span><span class="ch">)</span>.c user/lib.c common/common.c -T user/linker.ld -o <span class="ch">$@</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="dv">compile:</span><span class="dt"> </span><span class="ch">$(</span><span class="dt">user_obj</span><span class="ch">)</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    python kernel/build.py</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>    <span class="ch">$(</span><span class="dt">CC</span><span class="ch">)</span> kernel/*.c kernel/*.S build/link_app.S common/common.c -T kernel/linker.ld -o build/os</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    riscv64-unknown-elf-objcopy --strip-all -O binary build/os build/os.bin</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="dv">debug:</span><span class="dt"> compile</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>    qemu-system-riscv64 -machine virt -nographic -bios common/rustsbi-qemu.bin <span class="ch">\</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>        -device loader,file=build/os.bin,addr=0x80200000 -s -S</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="dv">clean:</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>    rm build/*</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ot">.PHONY:</span><span class="dt"> compile run debug clean</span></span></code></pre></div>
+<p>首先说一下我们这个项目的需求，首先检查build文件夹是否存在，不存在就创建一个，接着需要编译用户程序，编译方法是对于除了lib.c的所有C语言程序，都和lib.c以及公共源文件common.c一起编译并链接。接着运行脚本生成link_app.S，然后编译内核。最后如果直接运行make或make run则以普通模式运行qemu，如果运行make debug则以调试模式运行qemu。所以我的代码做的也是这件事，user_obj变量里先用wildcard函数枚举user文件夹下所有C程序，然后用filter-out过滤掉lib.c，再用notdir和basename函数把文件名构造成“build/程序名”的形式。</p>
+<p>接着编译这些程序，make的规则天生自带foreach的功能，它会枚举目标文件名，将其填入含有自动变量的命令中，所以通过把user_obj变量传进规则目标，就可以实现对每个目标文件进行编译。同时对于某个规则，make会比较目标文件的修改时间和依赖文件的修改时间，如果目标文件不存在、目标文件为伪目标或者依赖文件比目标新，就会运行这个规则，所以编译用户程序的过程需要把所有用户程序源代码和common.c作为依赖文件，使得只要用户代码和公共代码一改就会重新编译。而内核代码的编译我声明了一个伪目标，因为涉及内核编译的代码太多了，通过声明伪目标可以强制该规则执行。</p>
+<p>总结一下，makefile就三个特性，一个是枚举，通过将多个文件定义成目标来实现；一个是依赖处理，就是把所有参与目标文件生成的源代码都纳入进来，或者把目标文件声明成伪目标，很多项目都在这里出了问题，导致有时改了一些代码运行结果却没有改变，需要先make clean再重新生成才能看到正确结果，就是因为没有把这个代码设置成依赖导致没编译上；最后一个是各种文件函数，最常用的是wlidcard函数，可以枚举符合通配符的所有文件或文件夹，配合各种路径处理函数非常方便。</p>
+<p>生成link_app.S的脚本就不贴了，比较简单。</p>
+<p>然后就是这个部分的设计了。这里我为了实现的方便，改变了一下用户页表的布局，把用户栈映射到了紧邻TRAPCONTEXT的正下方，目前看来好像和rCore和xv6都不一样。我这样设计的理由有两点，一是用户栈正下方有一块没有映射的guard page，如果像rCore一样和用户静态内存放在一起，会导致用户地址空间0到base_size之间出现一个空洞，解映射的时候很不方便。如果和TRAPCONTEXT放在一起，解映射就是一句话的事，而且这两个空间的生命周期基本一致，创建进程时就一起映射上，后面exec也可以复用，直到销毁内存时才解映射;二是这样映射所有用户程序的用户栈底都是TRAP_CONTEXT了，不需要额外的属性去保存这个地址，用户静态内存到栈顶的位置也是一个天然的guard page，可以减少不少麻烦。当然只考虑解映射的话，rCore的内存管理程序把每个页表所有映射的内存段都记录了，解映射就是一个foreach，空洞不是问题；xv6的方法非常精巧，它申请了guard page的物理内存，但是用户页表里却把这段内存标记成用户态不能访问，这样起到了guard page的功能，但是内核在解映射的时候却可以当成没有空洞的完整区域进行处理，可谓是各显神通了。</p>
+<p>为了更好地完成这些函数，需要梳理一下它们的功能。和进程创建的函数一共有三个，第一个是最开始initproc的创建，第二个是fork，第三个是exec。initproc的创建是从零到有的创建，所以需要生成一个进程控制块，然后映射trampoline，陷入上下文，用户栈、内核栈，接着映射用户静态内存，陷入上下文和进程上下文的内容都需要初始化。fork的也要从零到有创建一个进程，所以需要生成一个进程控制块，然后映射trampline，trapcontext，用户栈、内核栈，但是用户静态内存、用户栈和陷入上下文的内容都要复制父进程的，进程上下文和内核栈的处理后面再说。exec可以复用原进程的几乎所有内容，只有用户静态内存需要重映射，陷入上下文的内容需要初始化，这里因为和进程切换没有关系，所以不用管进程上下文。</p>
+<p>至此，我们很容易就可以提炼出能够复用的内容了，创建initproc的函数和fork函数都需要生成进程控制块、映射trampoline，陷入上下文，用户栈、内核栈，这可以作为一个函数：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>TaskControlBlock <span class="op">*</span>alloc_proc<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    PhysPageNum user_pagetable <span class="op">=</span> frame_alloc<span class="op">();</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    TaskControlBlock <span class="op">*</span>tcb <span class="op">=</span> bd_malloc<span class="op">(</span><span class="kw">sizeof</span><span class="op">(</span>TaskControlBlock<span class="op">));</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    usize pid <span class="op">=</span> pid_alloc<span class="op">();</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// map some page</span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    map_trampoline<span class="op">(</span>user_pagetable<span class="op">);</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    VirtAddr top <span class="op">=</span> TRAMPOLINE <span class="op">-</span> pid <span class="op">*</span> <span class="op">(</span>KERNEL_STACK_SIZE <span class="op">+</span> PAGE_SIZE<span class="op">);</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    VirtAddr bottom <span class="op">=</span> top <span class="op">-</span> KERNEL_STACK_SIZE<span class="op">;</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">extern</span> PhysPageNum kernel_pagetable<span class="op">;</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    map_area<span class="op">(</span>kernel_pagetable<span class="op">,</span> bottom<span class="op">,</span> top<span class="op">,</span> R <span class="op">|</span> W<span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    map_area<span class="op">(</span>user_pagetable<span class="op">,</span> TRAP_CONTEXT<span class="op">,</span> TRAMPOLINE<span class="op">,</span> R <span class="op">|</span> W<span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    map_area<span class="op">(</span>user_pagetable<span class="op">,</span> TRAP_CONTEXT <span class="op">-</span> USER_STACK_SIZE<span class="op">,</span> TRAP_CONTEXT<span class="op">,</span> R <span class="op">|</span> W <span class="op">|</span> U<span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">// fill task context</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    tcb<span class="op">-&gt;</span>pid <span class="op">=</span> pid<span class="op">;</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    tcb<span class="op">-&gt;</span>pagetable <span class="op">=</span> user_pagetable<span class="op">;</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    tcb<span class="op">-&gt;</span>task_status <span class="op">=</span> Ready<span class="op">;</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    tcb<span class="op">-&gt;</span>base_size <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    tcb<span class="op">-&gt;</span>exit_code <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    tcb<span class="op">-&gt;</span>task_cx_ptr <span class="op">=</span> top <span class="op">-</span> <span class="kw">sizeof</span><span class="op">(</span>TaskContext<span class="op">);</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    PageTableEntry <span class="op">*</span>pte_p <span class="op">=</span> find_pte<span class="op">(</span>user_pagetable<span class="op">,</span> FLOOR<span class="op">(</span>TRAP_CONTEXT<span class="op">),</span> <span class="dv">0</span><span class="op">);</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    tcb<span class="op">-&gt;</span>trap_cx_ppn <span class="op">=</span> PTE2PPN<span class="op">(*</span>pte_p<span class="op">);</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>    tcb<span class="op">-&gt;</span>parent <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    LIST_INIT<span class="op">(&amp;</span>tcb<span class="op">-&gt;</span>children<span class="op">);</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>创建initproc的函数和exec函数都需要从elf文件中获得用户静态内存的内容以及初始化陷入上下文，这也可以作为一个函数：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> user_init<span class="op">(</span>TaskControlBlock <span class="op">*</span>tcb<span class="op">,</span> <span class="dt">char</span> <span class="op">*</span>name<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    usize entry_point<span class="op">;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    from_elf<span class="op">(</span>get_app_data_by_name<span class="op">(</span>name<span class="op">),</span> tcb<span class="op">-&gt;</span>pagetable<span class="op">,</span> <span class="op">&amp;</span>tcb<span class="op">-&gt;</span>base_size<span class="op">,</span> <span class="op">&amp;</span>entry_point<span class="op">);</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// fill trap context</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    TrapContext <span class="op">*</span>trap_cx <span class="op">=</span> <span class="op">(</span>TrapContext <span class="op">*)</span>PPN2PA<span class="op">(</span>tcb<span class="op">-&gt;</span>trap_cx_ppn<span class="op">);</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    memset<span class="op">(</span>trap_cx<span class="op">-&gt;</span>x<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span>usize<span class="op">)</span> <span class="op">*</span> <span class="dv">32</span><span class="op">);</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    trap_cx<span class="op">-&gt;</span>x<span class="op">[</span><span class="dv">2</span><span class="op">]</span> <span class="op">=</span> TRAP_CONTEXT<span class="op">;</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    usize sstatus<span class="op">;</span> asm <span class="dt">volatile</span><span class="op">(</span><span class="st">&quot;csrr %0, sstatus&quot;</span><span class="op">:</span><span class="st">&quot;=r&quot;</span><span class="op">(</span>sstatus<span class="op">));</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    sstatus <span class="op">&amp;=</span> <span class="op">~(</span><span class="dv">1</span><span class="bu">L</span> <span class="op">&lt;&lt;</span> <span class="dv">8</span><span class="op">);</span> trap_cx<span class="op">-&gt;</span>sstatus <span class="op">=</span> sstatus<span class="op">;</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    trap_cx<span class="op">-&gt;</span>sepc <span class="op">=</span> entry_point<span class="op">;</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">extern</span> PhysPageNum kernel_pagetable<span class="op">;</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    trap_cx<span class="op">-&gt;</span>kernel_satp <span class="op">=</span> PGTB2SATP<span class="op">(</span>kernel_pagetable<span class="op">);</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    trap_cx<span class="op">-&gt;</span>kernel_sp <span class="op">=</span> TRAMPOLINE <span class="op">-</span> tcb<span class="op">-&gt;</span>pid <span class="op">*</span> <span class="op">(</span>KERNEL_STACK_SIZE <span class="op">+</span> PAGE_SIZE<span class="op">);</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    trap_cx<span class="op">-&gt;</span>trap_handler <span class="op">=</span> <span class="op">(</span>usize<span class="op">)</span>trap_handler<span class="op">;</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>然后就是这几个函数各自的内容。创建initproc的函数除了调用上面两个函数，还要初始化进程上下文并把它放在内核栈顶。这里顺带讲一下进程切换的机制，__switch函数会将老进程的相关信息压入栈中，更新一下进程的task_cx_ptr，然后从新进程的task_cx_ptr中取出信息，这意味着两点，一是在切换进程的时候，必须保证新进程的task_cx_ptr指向的内容是有效的进程上下文；二是切换后新进程的task_cx_ptr指向的内容就可以被覆盖了，反正下次切换的时候又会重新保存。所以这里需要初始化进程上下文，就是为了从调度进程切换到initproc的时候有一个有效的进程上下文。那么调度进程的进程上下文在哪呢，答案是entry.S里的bootstack，第一次调度的时候保存进程上下文要压栈，这时压的就是bootstack，idle_task_cx_ptr保存的也是bootstack里的物理地址：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> task_init_and_run<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    TAILQ_INIT<span class="op">(&amp;</span>t_head<span class="op">);</span> pid_init<span class="op">();</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    initproc <span class="op">=</span> alloc_proc<span class="op">();</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    user_init<span class="op">(</span>initproc<span class="op">,</span> <span class="st">&quot;initproc&quot;</span><span class="op">);</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="co">// fill task context</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    TaskContext <span class="op">*</span>task_cx_ptr <span class="op">=</span> <span class="op">(</span>TaskContext <span class="op">*)</span>initproc<span class="op">-&gt;</span>task_cx_ptr<span class="op">;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    task_cx_ptr<span class="op">-&gt;</span>ra <span class="op">=</span> <span class="op">(</span>usize<span class="op">)</span>trap_return<span class="op">;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    memset<span class="op">(</span>task_cx_ptr<span class="op">-&gt;</span>s<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span>usize<span class="op">)</span> <span class="op">*</span> <span class="dv">12</span><span class="op">);</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    add_task<span class="op">(</span>initproc<span class="op">);</span> run<span class="op">(&amp;</span>PROCESSOR<span class="op">);</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>fork函数处理调用alloc_proc，需要复制静态内存、用户栈和陷入上下文，后两者是连续的，就可以用一句话复制了。注意内核栈不用复制，因为fork出来的子进程是通过__switch切换过去的，而__switch运行完会到达trap_return，然后借助复制的陷入上下文的内容返回用户态，因此父进程内核栈里的内容对子进程就没有意义了。而且fork子进程还需要初始化一个新的进程上下文放在自己的内核栈里，不能复制父进程的，因为根据刚才所说关于进程切换的第二点，父进程自己的进程上下文已经是无效的了。虽然子进程大体可以复制父进程的陷入上下文，但还是有些许不同，比如内核栈顶，以及a0寄存器（父进程fork的返回值是pid，子进程是0）。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>usize fork<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    TaskControlBlock <span class="op">*</span>p <span class="op">=</span> PROCESSOR<span class="op">.</span>current<span class="op">;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    TaskControlBlock <span class="op">*</span>tcb <span class="op">=</span> alloc_proc<span class="op">();</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">// copy user data and code</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    copy_virt_area<span class="op">(</span>tcb<span class="op">-&gt;</span>pagetable<span class="op">,</span> p<span class="op">-&gt;</span>pagetable<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="dv">0</span><span class="op">,</span> p<span class="op">-&gt;</span>base_size<span class="op">);</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="co">// copy user stack and trap context</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    copy_virt_area<span class="op">(</span>tcb<span class="op">-&gt;</span>pagetable<span class="op">,</span> p<span class="op">-&gt;</span>pagetable<span class="op">,</span> TRAP_CONTEXT <span class="op">-</span> USER_STACK_SIZE<span class="op">,</span> TRAP_CONTEXT <span class="op">-</span> USER_STACK_SIZE<span class="op">,</span> TRAMPOLINE<span class="op">);</span>    <span class="co">// fill task block</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    tcb<span class="op">-&gt;</span>base_size <span class="op">=</span> p<span class="op">-&gt;</span>base_size<span class="op">;</span> tcb<span class="op">-&gt;</span>parent <span class="op">=</span> p<span class="op">;</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="co">// add children to parent</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    tlist <span class="op">*</span>x <span class="op">=</span> bd_malloc<span class="op">(</span><span class="kw">sizeof</span><span class="op">(</span>tlist<span class="op">));</span> x<span class="op">-&gt;</span>tcb <span class="op">=</span> tcb<span class="op">;</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    LIST_INSERT_HEAD<span class="op">(&amp;</span>p<span class="op">-&gt;</span>children<span class="op">,</span> x<span class="op">,</span> entries<span class="op">);</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="co">// fill task context</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    TaskContext <span class="op">*</span>task_cx_ptr <span class="op">=</span> <span class="op">(</span>TaskContext <span class="op">*)</span>tcb<span class="op">-&gt;</span>task_cx_ptr<span class="op">;</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    task_cx_ptr<span class="op">-&gt;</span>ra <span class="op">=</span> <span class="op">(</span>usize<span class="op">)</span>trap_return<span class="op">;</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    memset<span class="op">(</span>task_cx_ptr<span class="op">-&gt;</span>s<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> <span class="kw">sizeof</span><span class="op">(</span>usize<span class="op">)</span> <span class="op">*</span> <span class="dv">12</span><span class="op">);</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="co">// fill trap context</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    TrapContext <span class="op">*</span>trap_cx <span class="op">=</span> <span class="op">(</span>TrapContext <span class="op">*)</span>PPN2PA<span class="op">(</span>tcb<span class="op">-&gt;</span>trap_cx_ppn<span class="op">);</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    trap_cx<span class="op">-&gt;</span>kernel_sp <span class="op">=</span> TRAMPOLINE <span class="op">-</span> tcb<span class="op">-&gt;</span>pid <span class="op">*</span> <span class="op">(</span>KERNEL_STACK_SIZE <span class="op">+</span> PAGE_SIZE<span class="op">);</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    trap_cx<span class="op">-&gt;</span>x<span class="op">[</span><span class="dv">10</span><span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>    add_task<span class="op">(</span>tcb<span class="op">);</span> <span class="cf">return</span> tcb<span class="op">-&gt;</span>pid<span class="op">;</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>这里用到了copy_virt_area函数，用来将一个页表中连续的一段虚拟地址的内容复制到另一个页表连续的一段虚拟地址中，复制目标的虚拟地址如果没映射，则自动新建一页物理内存映射后再复制：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> copy_virt_area<span class="op">(</span>PhysPageNum dstp<span class="op">,</span> PhysPageNum srcp<span class="op">,</span> VirtAddr dst_st<span class="op">,</span> VirtAddr src_st<span class="op">,</span> VirtAddr src_en<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    VirtPageNum src_st_vpn <span class="op">=</span> FLOOR<span class="op">(</span>src_st<span class="op">),</span> src_en_vpn <span class="op">=</span> CEIL<span class="op">(</span>src_en<span class="op">);</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    VirtPageNum dst_st_vpn <span class="op">=</span> FLOOR<span class="op">(</span>dst_st<span class="op">);</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span>VirtPageNum i <span class="op">=</span> src_st_vpn<span class="op">;</span> i <span class="op">&lt;</span> src_en_vpn<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        PageTableEntry <span class="op">*</span>src_pte_p <span class="op">=</span> find_pte<span class="op">(</span>srcp<span class="op">,</span> i<span class="op">,</span> <span class="dv">0</span><span class="op">);</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        PhysAddr src_pa <span class="op">=</span> PPN2PA<span class="op">(</span>PTE2PPN<span class="op">(*</span>src_pte_p<span class="op">));</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        PageTableEntry <span class="op">*</span>dst_pte_p <span class="op">=</span> find_pte<span class="op">(</span>dstp<span class="op">,</span> i <span class="op">-</span> src_st_vpn <span class="op">+</span> dst_st_vpn<span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(!(*</span>dst_pte_p <span class="op">&amp;</span> V<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>            PhysPageNum ppn <span class="op">=</span> frame_alloc<span class="op">();</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>            <span class="op">*</span>dst_pte_p <span class="op">=</span> PPN2PTE<span class="op">(</span>ppn<span class="op">,</span> PTE2FLAG<span class="op">(*</span>src_pte_p<span class="op">));</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>        PhysAddr dst_pa <span class="op">=</span> PPN2PA<span class="op">(</span>PTE2PPN<span class="op">(*</span>dst_pte_p<span class="op">));</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        memcpy<span class="op">((</span><span class="dt">char</span> <span class="op">*)</span>dst_pa<span class="op">,</span> <span class="op">(</span><span class="dt">char</span> <span class="op">*)</span>src_pa<span class="op">,</span> PAGE_SIZE<span class="op">);</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>exec函数就简单了，因为用户静态内存需要重映射，所以需要先unmap一下用户静态内存，然后调用user_init就行了，同时由于我希望在这里就把程序不存在的错误检查出来，所以先调用一下get_app_data_by_name：</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>isize exec<span class="op">(</span><span class="dt">char</span> <span class="op">*</span>name<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(!</span> get_app_data_by_name<span class="op">(</span>name<span class="op">))</span> <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>    TaskControlBlock <span class="op">*</span>p <span class="op">=</span> PROCESSOR<span class="op">.</span>current<span class="op">;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    unmap_area<span class="op">(</span>p<span class="op">-&gt;</span>pagetable<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> p<span class="op">-&gt;</span>base_size<span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>    user_init<span class="op">(</span>p<span class="op">,</span> name<span class="op">);</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>三大函数完成了，接着就是一些剩余的函数。suspend_current_and_run_next函数比较简单，不表。exit_current_and_run_next函数需要处理一下当前进程的子进程，将它们悉数挂到initproc的子进程下，然后释放用户页表及其映射的除trampoline外所有空间，但是当前进程仍然处在运行当中，所以进程控制块和内核栈不能释放，需要等父进程调用waitpid的时候再释放：</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> exit_current_and_run_next<span class="op">(</span><span class="dt">int</span> exit_code<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    TaskControlBlock <span class="op">*</span>tcb <span class="op">=</span> PROCESSOR<span class="op">.</span>current<span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    tcb<span class="op">-&gt;</span>task_status <span class="op">=</span> Zombie<span class="op">;</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    tcb<span class="op">-&gt;</span>exit_code <span class="op">=</span> exit_code<span class="op">;</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="op">(!</span> LIST_EMPTY<span class="op">(&amp;</span>tcb<span class="op">-&gt;</span>children<span class="op">))</span> <span class="op">{</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>        tlist <span class="op">*</span>child <span class="op">=</span> LIST_FIRST<span class="op">(&amp;</span>tcb<span class="op">-&gt;</span>children<span class="op">);</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>        child<span class="op">-&gt;</span>tcb<span class="op">-&gt;</span>parent <span class="op">=</span> initproc<span class="op">;</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>        LIST_REMOVE<span class="op">(</span>child<span class="op">,</span> entries<span class="op">);</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>        LIST_INSERT_HEAD<span class="op">(&amp;</span>initproc<span class="op">-&gt;</span>children<span class="op">,</span> child<span class="op">,</span> entries<span class="op">);</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>    free_uvm<span class="op">(</span>tcb<span class="op">);</span> usize _unused <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> schedule<span class="op">(&amp;</span>_unused<span class="op">);</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>free_uvm函数就三句话：释放用户静态空间、释放用户栈和陷入上下文、释放页表，很简单。waitpid就是检查参数的pid有没有和当前进程的某个子进程的pid一样，如果有而且这个子进程已经是zombie进程了，就把子进程的内核栈和进程控制块释放掉，注意pid要单独释放，因为我给pid的管理也像物理页帧一样弄了个回收池：</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>isize waitpid<span class="op">(</span>isize pid<span class="op">,</span> <span class="dt">int</span> <span class="op">*</span>exit_code<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    TaskControlBlock <span class="op">*</span>p <span class="op">=</span> PROCESSOR<span class="op">.</span>current<span class="op">;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    tlist <span class="op">*</span>child<span class="op">;</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    LIST_FOREACH<span class="op">(</span>child<span class="op">,</span> <span class="op">&amp;</span>p<span class="op">-&gt;</span>children<span class="op">,</span> entries<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>pid <span class="op">==</span> <span class="op">-</span><span class="dv">1</span> <span class="op">||</span> <span class="op">(</span>usize<span class="op">)</span>pid <span class="op">==</span> child<span class="op">-&gt;</span>tcb<span class="op">-&gt;</span>pid<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">(</span>child<span class="op">-&gt;</span>tcb<span class="op">-&gt;</span>task_status <span class="op">==</span> Zombie<span class="op">)</span> <span class="op">{</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>                <span class="op">*</span>exit_code <span class="op">=</span> child<span class="op">-&gt;</span>tcb<span class="op">-&gt;</span>exit_code<span class="op">;</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>                pid <span class="op">=</span> child<span class="op">-&gt;</span>tcb<span class="op">-&gt;</span>pid<span class="op">;</span> <span class="co">// pid may be -1 before</span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>                VirtAddr top <span class="op">=</span> TRAMPOLINE <span class="op">-</span> pid <span class="op">*</span> <span class="op">(</span>KERNEL_STACK_SIZE <span class="op">+</span> PAGE_SIZE<span class="op">);</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>                VirtAddr bottom <span class="op">=</span> top <span class="op">-</span> KERNEL_STACK_SIZE<span class="op">;</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>                <span class="kw">extern</span> PhysPageNum kernel_pagetable<span class="op">;</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>                unmap_area<span class="op">(</span>kernel_pagetable<span class="op">,</span> bottom<span class="op">,</span> top<span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>                pid_dealloc<span class="op">(</span>pid<span class="op">);</span> bd_free<span class="op">(</span>child<span class="op">-&gt;</span>tcb<span class="op">);</span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>                LIST_REMOVE<span class="op">(</span>child<span class="op">,</span> entries<span class="op">);</span> bd_free<span class="op">(</span>child<span class="op">);</span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>                <span class="cf">return</span> pid<span class="op">;</span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>            <span class="op">}</span> <span class="cf">else</span> <span class="cf">return</span> <span class="op">-</span><span class="dv">2</span><span class="op">;</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
+<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
+<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
+<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<p>最后是一些实现上的点：</p>
+<p>一是进程管理需要用到队列，我从系统的头文件目录找到了一个queue.h，里面实现了队列、环形队列、单双端链表等数据结构。这个文件的好处一个是完全没有调用标准库，网上的数据结构代码就是老要调用标准库，还得自己手改，太麻烦了；一个是所有内容就是一个头文件，想用直接include就行了，不用编译链接，比较方便。具体用法可以直接在终端man queue。我也把物理页帧管理、pid管理、进程控制块里的子进程管理用到的链表换成了这个头文件里的实现。</p>
+<p>二是rCore里shell程序读取命令是通过用户态调用getchar来实现的，因为目前的实现里时钟中断只会在用户态里被触发，所以可能会出现这样的情况：shell调用getchar以后，内核一直阻塞在等待字符的过程，这时输入一个字符之后，会返回用户态，而距离上一次在用户态调用getchar的时刻已经过了很久，会发生时钟中断，控制权让给其他程序，这时其他程序输出了点什么，在用户看来输入的字符回显完全淹没在其他程序的输出中，体验不好。所以我干脆添加了一个gets系统调用，让shell在接收用户输入的时候就一直陷在内核态里，不会被打断，直到用户按下回车键才返回，这样即使返回以后其他程序输出什么，至少用户已经输入了一个完整的命令，不会看起来那么难受。</p>
+<p>三是目前内核本身运行其实是串行的，还是因为目前的实现里时钟中断只会在用户态里被触发。这就给了我偷懒的机会，内核中所有地方都没有实现锁机制。rust语言层面支持，借助库可以直接上，所以rCore是有的，而C语言则只能自己实现（当然也可以借鉴xv6）。我打算后面如果把时钟中断扩展到内核态或者让qemu启用多核运行模式时再对这一块进行处理。</p>
+</article>
+<span class="bg-light text-muted border boder-primary d-block p-2 text-center">
+    转载请注明出处<br>
+    © 2021 ZimingYuan的博客
+</span>
+<div style="background-color: #ebd5a1; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; pointer-events: none; opacity: 0.2;">
+</div>
+</body>
+</html>

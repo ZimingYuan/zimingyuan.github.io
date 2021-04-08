@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<!--
+==============================================================================
+           "GitHub HTML5 Pandoc Template" v2.2 — by Tristano Ajmone
+==============================================================================
+Copyright © Tristano Ajmone, 2017-2020, MIT License (MIT). Project's home:
+- https://github.com/tajmone/pandoc-goodies
+The CSS in this template reuses source code taken from the following projects:
+- GitHub Markdown CSS: Copyright © Sindre Sorhus, MIT License (MIT):
+  https://github.com/sindresorhus/github-markdown-css
+- Primer CSS: Copyright © 2016-2017 GitHub Inc., MIT License (MIT):
+  http://primercss.io/
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The MIT License
+Copyright (c) Tristano Ajmone, 2017-2020 (github.com/tajmone/pandoc-goodies)
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+Copyright (c) 2017 GitHub Inc.
+"GitHub Pandoc HTML5 Template" is Copyright (c) Tristano Ajmone, 2017-2020,
+released under the MIT License (MIT); it contains readaptations of substantial
+portions of the following third party softwares:
+(1) "GitHub Markdown CSS", Copyright (c) Sindre Sorhus, MIT License (MIT).
+(2) "Primer CSS", Copyright (c) 2016 GitHub Inc., MIT License (MIT).
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+==============================================================================-->
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>用Python演奏音乐</title>
+  <style type="text/css">
+@charset "UTF-8";.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#24292e;font-family:-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:16px;line-height:1.5;word-wrap:break-word;box-sizing:border-box;min-width:200px;max-width:980px;margin:0 auto;padding:45px}.markdown-body a{color:#0366d6;background-color:transparent;text-decoration:none;-webkit-text-decoration-skip:objects}.markdown-body a:active,.markdown-body a:hover{outline-width:0}.markdown-body a:hover{text-decoration:underline}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body strong{font-weight:600}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1{font-size:2em;margin:.67em 0;padding-bottom:.3em;border-bottom:1px solid #eaecef}.markdown-body h2{padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid #eaecef}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#6a737d}.markdown-body img{border-style:none}.markdown-body svg:not(:root){overflow:hidden}.markdown-body hr{box-sizing:content-box;height:.25em;margin:24px 0;padding:0;overflow:hidden;background-color:#e1e4e8;border:0}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body input{margin:0;overflow:visible;font:inherit;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=checkbox]{box-sizing:border-box;padding:0}.markdown-body *{box-sizing:border-box}.markdown-body blockquote{margin:0}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dd{margin-left:0}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:600}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace}.markdown-body pre{font:12px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;word-wrap:normal}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote{padding:0 1em;color:#6a737d;border-left:.25em solid #dfe2e5}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body table{display:block;width:100%;overflow:auto;border-spacing:0;border-collapse:collapse}.markdown-body table th{font-weight:600}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #dfe2e5}.markdown-body table tr{background-color:#fff;border-top:1px solid #c6cbd1}.markdown-body table tr:nth-child(2n){background-color:#f6f8fa}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body code{padding:.2em 0;margin:0;font-size:85%;background-color:rgba(27,31,35,.05);border-radius:3px}.markdown-body code::after,.markdown-body code::before{letter-spacing:-.2em;content:" "}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f6f8fa;border-radius:3px}.markdown-body pre code{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code::after,.markdown-body pre code::before{content:normal}.markdown-body .full-commit .btn-outline:not(:disabled):hover{color:#005cc5;border-color:#005cc5}.markdown-body kbd{box-shadow:inset 0 -1px 0 #959da5;display:inline-block;padding:3px 5px;font:11px/10px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;color:#444d56;vertical-align:middle;background-color:#fcfcfc;border:1px solid #c6cbd1;border-bottom-color:#959da5;border-radius:3px;box-shadow:inset 0 -1px 0 #959da5}.markdown-body :checked+.radio-label{position:relative;z-index:1;border-color:#0366d6}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item+.task-list-item{margin-top:3px}.markdown-body .task-list-item input{margin:0 .2em .25em -1.6em;vertical-align:middle}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.Alert,.Error,.Note,.Success,.Warning{padding:11px;margin-bottom:24px;border-style:solid;border-width:1px;border-radius:4px}.Alert p,.Error p,.Note p,.Success p,.Warning p{margin-top:0}.Alert p:last-child,.Error p:last-child,.Note p:last-child,.Success p:last-child,.Warning p:last-child{margin-bottom:0}.Alert{color:#246;background-color:#e2eef9;border-color:#bac6d3}.Warning{color:#4c4a42;background-color:#fff9ea;border-color:#dfd8c2}.Error{color:#911;background-color:#fcdede;border-color:#d2b2b2}.Success{color:#22662c;background-color:#e2f9e5;border-color:#bad3be}.Note{color:#2f363d;background-color:#f6f8fa;border-color:#d5d8da}.Alert h1,.Alert h2,.Alert h3,.Alert h4,.Alert h5,.Alert h6{color:#246;margin-bottom:0}.Warning h1,.Warning h2,.Warning h3,.Warning h4,.Warning h5,.Warning h6{color:#4c4a42;margin-bottom:0}.Error h1,.Error h2,.Error h3,.Error h4,.Error h5,.Error h6{color:#911;margin-bottom:0}.Success h1,.Success h2,.Success h3,.Success h4,.Success h5,.Success h6{color:#22662c;margin-bottom:0}.Note h1,.Note h2,.Note h3,.Note h4,.Note h5,.Note h6{color:#2f363d;margin-bottom:0}.Alert h1:first-child,.Alert h2:first-child,.Alert h3:first-child,.Alert h4:first-child,.Alert h5:first-child,.Alert h6:first-child,.Error h1:first-child,.Error h2:first-child,.Error h3:first-child,.Error h4:first-child,.Error h5:first-child,.Error h6:first-child,.Note h1:first-child,.Note h2:first-child,.Note h3:first-child,.Note h4:first-child,.Note h5:first-child,.Note h6:first-child,.Success h1:first-child,.Success h2:first-child,.Success h3:first-child,.Success h4:first-child,.Success h5:first-child,.Success h6:first-child,.Warning h1:first-child,.Warning h2:first-child,.Warning h3:first-child,.Warning h4:first-child,.Warning h5:first-child,.Warning h6:first-child{margin-top:0}h1.title,p.subtitle{text-align:center}h1.title.followed-by-subtitle{margin-bottom:0}p.subtitle{font-size:1.5em;font-weight:600;line-height:1.25;margin-top:0;margin-bottom:16px;padding-bottom:.3em}div.line-block{white-space:pre-line}
+  </style>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+<link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/popper.min.js" ></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/4.1.0/js/bootstrap.min.js" ></script>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">ZimingYuan的博客</a>
+        <div class="navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/index.html">首页</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/html/随笔.html">随笔</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/html/CSP模板.html">CSP模板</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<article class="markdown-body">
+<header>
+<h1 class="title">用Python演奏音乐</h1>
+</header>
+<p>[TOC]</p>
+<h3 id="背景">背景</h3>
+<p>笔者什么乐器也不会，乐理知识也只有中小学音乐课学的一点点。不过借助Python，调用编曲家常用的MIDI程序库，也能弹奏出一些简单的音乐，以下是笔者的一些心得。</p>
+<h3 id="准备">准备</h3>
+<h4 id="安装mingus">安装mingus</h4>
+<p>首先是安装Python库，我选择的是<a href="http://bspaans.github.io/python-mingus/index.html">mingus</a>，它的优点是教程写的很详细，而且和实际的乐理，像调性、节拍这些结合的较好，而不是像同类库通过发送“按下按键”、“释放按键”这些指令来播放声音，另一方面它可以在运行的时候播放制作出的音乐，不用先导出MIDI文件再渲染音频。这个库安装很简单，直接</p>
+<pre class="shell"><code>pip install mingus</code></pre>
+<p>即可。</p>
+<h4 id="下载并配置fluidsynth">下载并配置fluidsynth</h4>
+<p>mingus这个库只是提供了调用的接口，接下来需要安装实际处理MIDI格式的程序fluidsynth。首先在<a href="https://github.com/FluidSynth/fluidsynth/releases">github</a>下载对应的版本，下载后解压，在文件夹中找到libfluidsynth-2.dll，把这个文件夹添加到环境变量path。然后……比较坑的一点来了，我们下载的这个库是libfluidsynth-2，但是mingus只认libfluidsynth和libfluidsynth-1，所以需要把mingus的代码改一下，找到mingus所在文件夹（通常是Python安装文件夹/Lib/site-packages/mingus），打开/midi/pyfluidsynth.py，将里面第35行起</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>lib <span class="op">=</span> (</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    find_library(<span class="st">&quot;fluidsynth&quot;</span>)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">or</span> find_library(<span class="st">&quot;libfluidsynth&quot;</span>)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">or</span> find_library(<span class="st">&quot;libfluidsynth-1&quot;</span>)</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>改成</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>lib <span class="op">=</span> (</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    find_library(<span class="st">&quot;fluidsynth&quot;</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">or</span> find_library(<span class="st">&quot;libfluidsynth&quot;</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">or</span> find_library(<span class="st">&quot;libfluidsynth-1&quot;</span>)</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">or</span> find_library(<span class="st">&quot;libfluidsynth-2&quot;</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
+<p>之后运行python，尝试</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mingus.midi <span class="im">import</span> fluidsynth</span></code></pre></div>
+<p>没有报错则此步完成。</p>
+<h4 id="下载soundfont文件">下载soundfont文件</h4>
+<p>soundfont文件一般用来存储乐器的声音。网上很多资源因为年代久远都凉了，找了很久才找到<a href="http://www.schristiancollins.com/soundfonts/GeneralUser_GS_1.44-SoftSynth.zip">一个</a>。下载以后解压，<strong>然后把文件夹的名字和文件夹里所有文件的名字里的空格和除扩展名之外的点全部去掉</strong>，之后找到后缀名为sf2的文件，这个就是我们要找的，假设它的路径为“D:-x64.sf2”，则我们在程序中调用就用</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fluidsynth.init(<span class="vs">r&#39;D:\Apps\fluidsynth-x64\GeneralUserSoftSynth\GeneralUserSoftSynth.sf2&#39;</span>)</span></code></pre></div>
+<p>即可。注意那个r，有它字符串里的反斜杠就不用转义了。这句话没有报错则此步完成。</p>
+<h3 id="分析">分析</h3>
+<h4 id="乐谱格式">乐谱格式</h4>
+<p>以郭静的《每一天都不同》为例，简谱是这样的（来自<a href="http://www.jianpu.cn/pu/13/135186.htm">简谱网</a>）：</p>
+<figure>
+<img src="http://www.jianpu.cn/img/c/b4/cdb49ad3a6564c5e85162a6f8ee2e3d0.jpg" alt="《每一天都不同》简谱" /><figcaption aria-hidden="true">《每一天都不同》简谱</figcaption>
+</figure>
+<p>我们可以看到乐谱基本上可以用五部分描述：</p>
+<ul>
+<li>一是1234567那些数字，注意我用键盘数字上方的特殊符号表示这个音升了半音；</li>
+<li>二是这些数字所在的八度，即这些数字头顶和脚下有没有点，通常没有点的是第四个八度，头顶有点的是第五个八度，脚下有点的是第三个八度；</li>
+<li>三是某个音的时值，即它占几拍，注意为了声音的连贯，延音线相连的两个音符如果音高相等，我就把它们的时值加起来了，同时为了计算方便，我定义⅛拍为0，¼拍为1，½拍为2，一拍为4，以此类推，如果大于9则用a、b、c这些代替；</li>
+<li>四是各乐句的先后顺序，我们可以把每条乐句的音符描述出来，然后用一个序列记录依次出现的乐句的序号；</li>
+<li>五是乐句的首调，即左上角的1=D，因为有些歌中间会突然升降调，所以我们必须建一个序列存储依次出现的乐句的调性，出于简单考虑，直接记录首调和C调差多少个半音就行了，比如D调和C调相差2（中间隔个C#），就记录2即可。</li>
+</ul>
+<p>因此我们的程序只要有这五个数据就可以弹奏出整首乐曲了。比方说这首歌前奏的前四个小节，第一部分就可以表示为12317716，第二部分就可以表示为44443454，第三部分就可以表示为3111244g。</p>
+<p>我将整个乐谱用json文件改写如下：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;音符&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;12317716&quot;</span><span class="ot">,</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;031200123316012155152523000123152067137017606711233200&quot;</span><span class="ot">,</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;031200123316012155152523000123152023277105671234352110554&quot;</span><span class="ot">,</span></span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;3054325103453160565224330665355332552201236&quot;</span><span class="ot">,</span></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;5433431212345617156^143211177&quot;</span><span class="ot">,</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;505112523210231234327125077125231067167176101122343455554&quot;</span><span class="ot">,</span></span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;54334312554&quot;</span><span class="ot">,</span></span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;50511252321&quot;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;音高&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;44443454&quot;</span><span class="ot">,</span></span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;444444444443444433434344444444444433443443343344444444&quot;</span><span class="ot">,</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;444444444443444433434344444444444444433443334444434444444&quot;</span><span class="ot">,</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;4434444444444444444444444444444444444444444&quot;</span><span class="ot">,</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;44444444444444545444544444433&quot;</span><span class="ot">,</span></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;444444444444444444443444433443444433433433444444444444444&quot;</span><span class="ot">,</span></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;44444444444&quot;</span><span class="ot">,</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;44444444444&quot;</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;节拍&quot;</span><span class="fu">:</span> <span class="ot">[</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;3111244g&quot;</span><span class="ot">,</span></span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;421542112114211112262118442112226211224211421121122844&quot;</span><span class="ot">,</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;421542111214211112262118442112226211112422311211312184211&quot;</span><span class="ot">,</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;4111142a211222621111211a1111211222112221122&quot;</span><span class="ot">,</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;8314222i22222211a222a22224444&quot;</span><span class="ot">,</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;4211833211a211211222112211112221121121121142112111111c211&quot;</span><span class="ot">,</span></span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;8314222e211&quot;</span><span class="ot">,</span></span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>        <span class="st">&quot;4211833211e&quot;</span></span>
+<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;组成&quot;</span><span class="fu">:</span> <span class="ot">[</span><span class="dv">0</span><span class="ot">,</span> <span class="dv">0</span><span class="ot">,</span> <span class="dv">1</span><span class="ot">,</span> <span class="dv">2</span><span class="ot">,</span> <span class="dv">3</span><span class="ot">,</span> <span class="dv">4</span><span class="ot">,</span> <span class="dv">2</span><span class="ot">,</span> <span class="dv">3</span><span class="ot">,</span> <span class="dv">5</span><span class="ot">,</span> <span class="dv">3</span><span class="ot">,</span> <span class="dv">6</span><span class="ot">,</span> <span class="dv">3</span><span class="ot">,</span> <span class="dv">7</span><span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;调性&quot;</span><span class="fu">:</span> <span class="st">&quot;2222222222222&quot;</span></span>
+<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
+<h4 id="乐谱解析">乐谱解析</h4>
+<p>这样我们就可以在程序中解析它了。解析的代码如下：</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tran(x):</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">&gt;=</span> <span class="st">&#39;a&#39;</span>:</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">ord</span>(x) <span class="op">-</span> <span class="dv">87</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> x <span class="op">==</span> <span class="st">&#39;0&#39;</span>:</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fl">0.5</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">float</span>(x)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;每一天都不同.json&#39;</span>, <span class="st">&#39;rb&#39;</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> json.loads(f.read(), encoding<span class="op">=</span><span class="st">&#39;utf8&#39;</span>)</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>f.close()</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> data[<span class="st">&#39;音符&#39;</span>]</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> data[<span class="st">&#39;音高&#39;</span>]</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> data[<span class="st">&#39;节拍&#39;</span>]</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> data[<span class="st">&#39;组成&#39;</span>]</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> data[<span class="st">&#39;调性&#39;</span>]</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> Track()</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> Bar(<span class="st">&#39;C&#39;</span>, (<span class="dv">4</span>, <span class="dv">4</span>))</span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>b.place_rest(<span class="dv">1</span>)</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>t.add_bar(b)</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">&#39;CDEFGAB&#39;</span></span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">&#39;!@#$%^&amp;&#39;</span></span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(l)):</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    rn <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(tran, r[l[i]]))</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> Bar(<span class="st">&#39;C&#39;</span>, (<span class="dv">4</span> <span class="op">*</span> <span class="bu">sum</span>(rn) <span class="op">/</span> <span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(n[l[i]])):</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> n[l[i]][j] <span class="op">==</span> <span class="st">&#39;0&#39;</span>:</span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>            b.place_rest(<span class="dv">8</span> <span class="op">/</span> rn[j])</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>            x <span class="op">=</span> symbol.find(n[l[i]][j])</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> x <span class="op">==</span> <span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>                x <span class="op">=</span> <span class="bu">int</span>(n[l[i]][j]) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>                y <span class="op">=</span> name[x]</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>                y <span class="op">=</span> name[x] <span class="op">+</span> <span class="st">&#39;#&#39;</span></span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(y)</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>            note <span class="op">=</span> Note(y, <span class="bu">int</span>(h[l[i]][j]))</span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>            note.transpose(k[i])</span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>            b.place_notes(note, <span class="dv">8</span> <span class="op">/</span> rn[j])</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    t.add_bar(b)</span></code></pre></div>
+<ul>
+<li><p>track在这个库中表示音轨，bar表示的应该是小节，但是我偷懒了，把bar直接存储乐句了。在track的开头，我添加了一个2拍的休止符，因为这个库不知道是bug还是什么，如果track开头没有休止符，则乐曲的第一个音会被吞掉。</p></li>
+<li><p>bar的构造函数有两个参数，前者随便填无影响，可能只是元信息，后者比较重要，它描述了这个小节的时长，如果小节里放的音符总时长超过了这个小节的时长最后一个音符会被扔掉，所以一定要计算好。这个时长用分数表示，但它的计算方式很奇怪，(4, 4)表示2拍，以此类推(8, 4)表示4拍，和正常情况完全不一样。之后对于每个乐句，我首先把时长转化成数，然后计算乐句的时长，因为我的乐谱8为2拍，所以要除8再乘4。</p></li>
+<li><p>接着就该填什么音就填什么音。但要注意两点，一是库里1234567分别用CDEFGAB代替；二是库中对时值的描述和我们的描述是倒数关系，它是8为¼拍，4为½拍，2为1拍，以此类推，所以在传入place_notes和place_rest我们的时值要用8除。</p></li>
+<li><p>note.transpose用来转调，它能够把音符提升一定的半音数。</p></li>
+</ul>
+<h4 id="弹奏音乐">弹奏音乐</h4>
+<p>然后我们就可以听听弹奏出来的音乐了，播放的代码如下：</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>fluidsynth.init(<span class="vs">r&#39;D:\Apps\fluidsynth-x64\GeneralUserSoftSynth\GeneralUserSoftSynth.sf2&#39;</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>fluidsynth.set_instrument(<span class="dv">1</span>, <span class="dv">11</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>fluidsynth.play_Track(t, channel<span class="op">=</span><span class="dv">1</span>, bpm<span class="op">=</span><span class="dv">150</span>)</span></code></pre></div>
+<p>set_instrument方法可以用来改变某个频道使用的乐器，比如上面的代码把第一个频道的乐器改成编号为11的乐器，如果不执行这段代码则默认使用第一个乐器即钢琴。各编号对应的乐器可以在<a href="https://soundprogramming.net/file-formats/general-midi-instrument-list/">这里</a>查看。play_Track方法第一个参数是要播放的track，第二个是在哪个频道播放，第三个是播放的速度，默认是120，个人感觉调到150速度比较合适。</p>
+<h4 id="添加伴奏">添加伴奏</h4>
+<p>音乐是听到了，但是有点单调，我们希望加入鼓点、合奏之类的。不过我怀疑这个库的编写者没有对这个库进行完善的测试，所以原来用于播放多个track的方法play_Tracks有bug。笔者使用了多线程的方式来同时播放，但是库中还有一个无法调节播放使用的channel的bug，我已向项目提了<a href="https://github.com/bspaans/python-mingus/pull/55">pull request</a>，截至本文撰写的时候，项目维护者还没有回应，所以在这里给出修改方法：打开库所在文件夹/containers/note.py，将第47行起</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>    channel <span class="op">=</span> <span class="dv">1</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    velocity <span class="op">=</span> <span class="dv">64</span></span></code></pre></div>
+<p>这两行删掉。</p>
+<p>然后，我们给歌曲添上鼓点。为了方便，我就设置半拍敲一下，每两拍为一个周期，按照强，弱，次强，弱来，当乐器被设置成鼓的时候，声音越高，鼓点越弱，声音越低，鼓点越强，所以我们可以写出这样的代码：</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>t2 <span class="op">=</span> Track()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> Bar(<span class="st">&#39;C&#39;</span>, (<span class="dv">4</span>, <span class="dv">4</span>))</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>b.place_rest(<span class="dv">1</span>)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>t2.add_bar(b)</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">sum</span>(<span class="bu">map</span>(<span class="bu">sum</span>, <span class="bu">map</span>(<span class="kw">lambda</span> x: <span class="bu">map</span>(tran, r[x]), l)))) <span class="op">//</span> <span class="dv">8</span>):</span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> Bar(<span class="st">&#39;C&#39;</span>, (<span class="dv">4</span>, <span class="dv">4</span>))</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>    b.place_notes(<span class="st">&#39;C-3&#39;</span>, <span class="dv">4</span>)</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>    b.place_notes(<span class="st">&#39;C-7&#39;</span>, <span class="dv">4</span>)</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>    b.place_notes(<span class="st">&#39;C-5&#39;</span>, <span class="dv">4</span>)</span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    b.place_notes(<span class="st">&#39;C-7&#39;</span>, <span class="dv">4</span>)</span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    t2.add_bar(b)</span></code></pre></div>
+<p>i的范围是通过对每个乐句的时值求和得到的。接下来是播放，为了让声音更好听，我除了歌曲track、鼓点track再加上一个用另一种乐器演奏的歌曲track，播放的代码如下：</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>fluidsynth.init(<span class="vs">r&#39;D:\Apps\fluidsynth-x64\GeneralUserSoftSynth\GeneralUserSoftSynth.sf2&#39;</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>fluidsynth.set_instrument(<span class="dv">0</span>, <span class="dv">11</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>fluidsynth.set_instrument(<span class="dv">1</span>, <span class="dv">115</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>fluidsynth.set_instrument(<span class="dv">2</span>, <span class="dv">100</span>)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>fluidsynth.main_volume(<span class="dv">1</span>, <span class="dv">50</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>fluidsynth.main_volume(<span class="dv">2</span>, <span class="dv">40</span>)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>thread1 <span class="op">=</span> threading.Thread(target<span class="op">=</span><span class="kw">lambda</span> : fluidsynth.play_Track(t2, channel<span class="op">=</span><span class="dv">1</span>, bpm<span class="op">=</span><span class="dv">150</span>))</span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>thread2 <span class="op">=</span> threading.Thread(target<span class="op">=</span><span class="kw">lambda</span> : fluidsynth.play_Track(t, channel<span class="op">=</span><span class="dv">2</span>, bpm<span class="op">=</span><span class="dv">150</span>))</span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>thread1.start()</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>thread2.start()</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>fluidsynth.play_Track(t, channel<span class="op">=</span><span class="dv">0</span>, bpm<span class="op">=</span><span class="dv">150</span>)</span></code></pre></div>
+<h4 id="保存音乐">保存音乐</h4>
+<p>得到音乐以后，我们希望将它保存下来，保存代码如下：</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> MidiFile()</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>mt <span class="op">=</span> MidiTrack(<span class="dv">150</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>mt2 <span class="op">=</span> MidiTrack(<span class="dv">150</span>)</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>mt3 <span class="op">=</span> MidiTrack(<span class="dv">150</span>)</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>m.tracks <span class="op">=</span> [mt, mt2, mt3]</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>mt.set_instrument(<span class="dv">1</span>, <span class="dv">11</span>)</span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>mt.play_Track(t)</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _, _, i <span class="kw">in</span> t2.get_notes():</span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>        i[<span class="dv">0</span>].set_channel(<span class="dv">2</span>)</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>mt2.set_instrument(<span class="dv">2</span>, <span class="dv">115</span>)</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>mt2.play_Track(t2)</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _, _, i <span class="kw">in</span> t.get_notes():</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>        i[<span class="dv">0</span>].set_channel(<span class="dv">3</span>)</span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>mt3.set_instrument(<span class="dv">3</span>, <span class="dv">100</span>)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>mt3.track_data <span class="op">+=</span> mt3.controller_event(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">30</span>)</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>mt3.play_Track(t)</span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>m.write_file(<span class="st">&#39;D:/test.midi&#39;</span>, <span class="va">False</span>)</span></code></pre></div>
+<p>首先建立MidiFile对象表示一个Midi文件，然后创建3个速度为150的Midi音轨，之后分别是设置乐器和播放频道，坑的是这个库里MidiTrack.play_Track方法无法传入播放频道，所以需要手动设置track里所有的note的频道，<code>mt3.controller_event(3, 7, 30)</code>这个方法是为了设置第三个midi音轨的音量，3表示频道，7表示修改音量这个事件的编号，30是音量，注意是controller_event不是midi_event，我被这个坑了好久，直到看了<a href="https://www.cs.cmu.edu/~music/cmsip/readings/MIDI%20tutorial%20for%20programmers.html">CMU的MIDI教程</a>，才幡然醒悟，这个库的基础设施还是太差了，如果不是它的对象结构和实时播放，真的一无是处。</p>
+<p>得到midi文件，我们就可以将其渲染成wav文件了，直接用上之前下载的fluidsynth程序，执行</p>
+<pre class="shell"><code>fluidsynth -F output.wav D:/Apps/fluidsynth-x64/GeneralUserSoftSynth/GeneralUserSoftSynth.sf2 D:/test.midi</code></pre>
+<p>得到的output.wav就是我们要的音频文件。我用ffmpeg转码后得到的mp3音频如下：</p>
+<audio src="https://zimingyuan.github.io/audio/用Python演奏音乐.mp3" controls="controls"/>
+<h3 id="完整程序">完整程序</h3>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> threading</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mingus.containers <span class="im">import</span> <span class="op">*</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mingus.midi <span class="im">import</span> fluidsynth</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> mingus.core.chords <span class="im">as</span> chords</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mingus.midi.midi_track <span class="im">import</span> MidiTrack</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> mingus.midi.midi_file_out <span class="im">import</span> MidiFile</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> tran(x):</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> x <span class="op">&gt;=</span> <span class="st">&#39;a&#39;</span>:</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">ord</span>(x) <span class="op">-</span> <span class="dv">87</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">elif</span> x <span class="op">==</span> <span class="st">&#39;0&#39;</span>:</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="fl">0.5</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="bu">float</span>(x)</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>f <span class="op">=</span> <span class="bu">open</span>(<span class="st">&#39;每一天都不同.json&#39;</span>, <span class="st">&#39;rb&#39;</span>)</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> json.loads(f.read(), encoding<span class="op">=</span><span class="st">&#39;utf8&#39;</span>)</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>f.close()</span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> data[<span class="st">&#39;音符&#39;</span>]</span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>h <span class="op">=</span> data[<span class="st">&#39;音高&#39;</span>]</span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>r <span class="op">=</span> data[<span class="st">&#39;节拍&#39;</span>]</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>l <span class="op">=</span> data[<span class="st">&#39;组成&#39;</span>]</span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>k <span class="op">=</span> data[<span class="st">&#39;调性&#39;</span>]</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>t <span class="op">=</span> Track()</span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> Bar(<span class="st">&#39;C&#39;</span>, (<span class="dv">4</span>, <span class="dv">4</span>))</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>b.place_rest(<span class="dv">1</span>)</span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>t.add_bar(b)</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>name <span class="op">=</span> <span class="st">&#39;CDEFGAB&#39;</span></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>symbol <span class="op">=</span> <span class="st">&#39;!@#$%^&amp;&#39;</span></span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(l)):</span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>    rn <span class="op">=</span> <span class="bu">list</span>(<span class="bu">map</span>(tran, r[l[i]]))</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> Bar(<span class="st">&#39;C&#39;</span>, (<span class="dv">4</span> <span class="op">*</span> <span class="bu">sum</span>(rn) <span class="op">/</span> <span class="dv">8</span>, <span class="dv">4</span>))</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(n[l[i]])):</span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> n[l[i]][j] <span class="op">==</span> <span class="st">&#39;0&#39;</span>:</span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>            b.place_rest(<span class="dv">8</span> <span class="op">/</span> rn[j])</span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a>        <span class="cf">else</span>:</span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>            x <span class="op">=</span> symbol.find(n[l[i]][j])</span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> x <span class="op">==</span> <span class="op">-</span><span class="dv">1</span>:</span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>                x <span class="op">=</span> <span class="bu">int</span>(n[l[i]][j]) <span class="op">-</span> <span class="dv">1</span></span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>                y <span class="op">=</span> name[x]</span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>            <span class="cf">else</span>:</span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>                y <span class="op">=</span> name[x] <span class="op">+</span> <span class="st">&#39;#&#39;</span></span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>                <span class="bu">print</span>(y)</span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>            note <span class="op">=</span> Note(y, <span class="bu">int</span>(h[l[i]][j]))</span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>            note.transpose(k[i])</span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>            b.place_notes(note, <span class="dv">8</span> <span class="op">/</span> rn[j])</span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>    t.add_bar(b)</span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>t2 <span class="op">=</span> Track()</span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> Bar(<span class="st">&#39;C&#39;</span>, (<span class="dv">4</span>, <span class="dv">4</span>))</span>
+<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a>b.place_rest(<span class="dv">1</span>)</span>
+<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a>t2.add_bar(b)</span>
+<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">int</span>(<span class="bu">sum</span>(<span class="bu">map</span>(<span class="bu">sum</span>, <span class="bu">map</span>(<span class="kw">lambda</span> x: <span class="bu">map</span>(tran, r[x]), l)))) <span class="op">//</span> <span class="dv">8</span>):</span>
+<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a>    b <span class="op">=</span> Bar(<span class="st">&#39;C&#39;</span>, (<span class="dv">4</span>, <span class="dv">4</span>))</span>
+<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a>    b.place_notes(<span class="st">&#39;C-3&#39;</span>, <span class="dv">4</span>)</span>
+<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a>    b.place_notes(<span class="st">&#39;C-7&#39;</span>, <span class="dv">4</span>)</span>
+<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a>    b.place_notes(<span class="st">&#39;C-5&#39;</span>, <span class="dv">4</span>)</span>
+<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a>    b.place_notes(<span class="st">&#39;C-7&#39;</span>, <span class="dv">4</span>)</span>
+<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a>    t2.add_bar(b)</span>
+<span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a>fluidsynth.init(<span class="vs">r&#39;D:\Apps\fluidsynth-x64\GeneralUserSoftSynth\GeneralUserSoftSynth.sf2&#39;</span>)</span>
+<span id="cb14-63"><a href="#cb14-63" aria-hidden="true" tabindex="-1"></a>fluidsynth.set_instrument(<span class="dv">1</span>, <span class="dv">11</span>)</span>
+<span id="cb14-64"><a href="#cb14-64" aria-hidden="true" tabindex="-1"></a>fluidsynth.set_instrument(<span class="dv">2</span>, <span class="dv">115</span>)</span>
+<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a>fluidsynth.set_instrument(<span class="dv">3</span>, <span class="dv">100</span>)</span>
+<span id="cb14-66"><a href="#cb14-66" aria-hidden="true" tabindex="-1"></a>fluidsynth.main_volume(<span class="dv">2</span>, <span class="dv">50</span>)</span>
+<span id="cb14-67"><a href="#cb14-67" aria-hidden="true" tabindex="-1"></a>fluidsynth.main_volume(<span class="dv">3</span>, <span class="dv">40</span>)</span>
+<span id="cb14-68"><a href="#cb14-68" aria-hidden="true" tabindex="-1"></a>thread1 <span class="op">=</span> threading.Thread(target<span class="op">=</span><span class="kw">lambda</span> : fluidsynth.play_Track(t2, channel<span class="op">=</span><span class="dv">2</span>, bpm<span class="op">=</span><span class="dv">150</span>))</span>
+<span id="cb14-69"><a href="#cb14-69" aria-hidden="true" tabindex="-1"></a>thread2 <span class="op">=</span> threading.Thread(target<span class="op">=</span><span class="kw">lambda</span> : fluidsynth.play_Track(t, channel<span class="op">=</span><span class="dv">3</span>, bpm<span class="op">=</span><span class="dv">150</span>))</span>
+<span id="cb14-70"><a href="#cb14-70" aria-hidden="true" tabindex="-1"></a>thread1.start()</span>
+<span id="cb14-71"><a href="#cb14-71" aria-hidden="true" tabindex="-1"></a>thread2.start()</span>
+<span id="cb14-72"><a href="#cb14-72" aria-hidden="true" tabindex="-1"></a>fluidsynth.play_Track(t, channel<span class="op">=</span><span class="dv">1</span>, bpm<span class="op">=</span><span class="dv">150</span>)</span>
+<span id="cb14-73"><a href="#cb14-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-74"><a href="#cb14-74" aria-hidden="true" tabindex="-1"></a>m <span class="op">=</span> MidiFile()</span>
+<span id="cb14-75"><a href="#cb14-75" aria-hidden="true" tabindex="-1"></a>mt <span class="op">=</span> MidiTrack(<span class="dv">150</span>)</span>
+<span id="cb14-76"><a href="#cb14-76" aria-hidden="true" tabindex="-1"></a>mt2 <span class="op">=</span> MidiTrack(<span class="dv">150</span>)</span>
+<span id="cb14-77"><a href="#cb14-77" aria-hidden="true" tabindex="-1"></a>mt3 <span class="op">=</span> MidiTrack(<span class="dv">150</span>)</span>
+<span id="cb14-78"><a href="#cb14-78" aria-hidden="true" tabindex="-1"></a>m.tracks <span class="op">=</span> [mt, mt2, mt3]</span>
+<span id="cb14-79"><a href="#cb14-79" aria-hidden="true" tabindex="-1"></a>mt.set_instrument(<span class="dv">1</span>, <span class="dv">11</span>)</span>
+<span id="cb14-80"><a href="#cb14-80" aria-hidden="true" tabindex="-1"></a>mt.play_Track(t)</span>
+<span id="cb14-81"><a href="#cb14-81" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _, _, i <span class="kw">in</span> t2.get_notes():</span>
+<span id="cb14-82"><a href="#cb14-82" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb14-83"><a href="#cb14-83" aria-hidden="true" tabindex="-1"></a>        i[<span class="dv">0</span>].set_channel(<span class="dv">2</span>)</span>
+<span id="cb14-84"><a href="#cb14-84" aria-hidden="true" tabindex="-1"></a>mt2.set_instrument(<span class="dv">2</span>, <span class="dv">115</span>)</span>
+<span id="cb14-85"><a href="#cb14-85" aria-hidden="true" tabindex="-1"></a>mt2.play_Track(t2)</span>
+<span id="cb14-86"><a href="#cb14-86" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> _, _, i <span class="kw">in</span> t.get_notes():</span>
+<span id="cb14-87"><a href="#cb14-87" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> i <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb14-88"><a href="#cb14-88" aria-hidden="true" tabindex="-1"></a>        i[<span class="dv">0</span>].set_channel(<span class="dv">3</span>)</span>
+<span id="cb14-89"><a href="#cb14-89" aria-hidden="true" tabindex="-1"></a>mt3.set_instrument(<span class="dv">3</span>, <span class="dv">100</span>)</span>
+<span id="cb14-90"><a href="#cb14-90" aria-hidden="true" tabindex="-1"></a>mt3.track_data <span class="op">+=</span> mt3.controller_event(<span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">30</span>)</span>
+<span id="cb14-91"><a href="#cb14-91" aria-hidden="true" tabindex="-1"></a>mt3.play_Track(t)</span>
+<span id="cb14-92"><a href="#cb14-92" aria-hidden="true" tabindex="-1"></a>m.write_file(<span class="st">&#39;D:/test.midi&#39;</span>, <span class="va">False</span>)</span></code></pre></div>
+</article>
+<span class="bg-light text-muted border boder-primary d-block p-2 text-center">
+    转载请注明出处<br>
+    © 2021 ZimingYuan的博客
+</span>
+<div style="background-color: #ebd5a1; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; pointer-events: none; opacity: 0.2;">
+</div>
+</body>
+</html>
