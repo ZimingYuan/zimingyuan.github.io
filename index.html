@@ -79,11 +79,33 @@
 
 <div class="card shadow mb-4">
 <h5 class="card-header">
+<a href="/html/rCore-Tutorial-Book-v3学习笔记（一）.html">rCore-Tutorial-Book-v3学习笔记（一）</a>
+</h5>
+<div class="card-body">
+<h5 class="card-title">摘要：</h5>
+<p class="card-text">摘要：概述 最近看到清华的一个操作系统教程rCore-Tutorial-Book，和其他实验不同的是，这个教程介绍的是完全从零开始实现一个Riscv操作系统。教程所用的编程语言是Rust，但是我的Rust水平只到勉强能看懂代码的地步，所以打算用C语言照着实现一遍。虽然说是照着实现，但不同的语言还是会带来不</p>
+<h6 class="card-subtitle text-muted text-right">2021年2月24日</h6>
+</div>
+</div>
+
+<div class="card shadow mb-4">
+<h5 class="card-header">
 <a href="/html/MIT-6.S081-2020实验（xv6-riscv64）十一：net.html">MIT-6.S081-2020实验（xv6-riscv64）十一：net</a>
 </h5>
 <div class="card-body">
 <h5 class="card-title">摘要：</h5>
 <p class="card-text">摘要：实验文档 概述 这次实验主要实现网卡驱动的一部分，文档内容非常长，实际实验不算难，跟着hint就行，但还是需要对整体框架有一定的了解。 内容 发送函数： int e1000_transmit(struct mbuf *m) { acquire(&amp;amp;e1000_lock); uint32 index =</p>
+<h6 class="card-subtitle text-muted text-right">2021年1月13日</h6>
+</div>
+</div>
+
+<div class="card shadow mb-4">
+<h5 class="card-header">
+<a href="/html/MIT-6.S081-2020实验（xv6-riscv64）十：fs.html">MIT-6.S081-2020实验（xv6-riscv64）十：fs</a>
+</h5>
+<div class="card-body">
+<h5 class="card-title">摘要：</h5>
+<p class="card-text">摘要：实验文档 概述 这次实验要求实现Linux中的mmap函数的一个子集，相当于在第五次实验Lazy Allocation中加上了文件的操作。难度比较难定义，因为这个“子集”还是比较模糊的，如果仅仅只针对测试程序，做出一些简化性的假设，难度就不会太大，但如果不做这些假设，难度就会非常高。 内容 为了简化</p>
 <h6 class="card-subtitle text-muted text-right">2021年1月13日</h6>
 </div>
 </div>
@@ -118,28 +140,6 @@
 <h5 class="card-title">摘要：</h5>
 <p class="card-text">摘要：实验文档 概述 这次实验主要涉及多线程编程，和之前的实验不太一样，比较偏向于应用层面，除了任务一外都是在宿主机上编写多线程程序，应该是xv6不支持系统级的多线程。 内容 Uthread: switching between threads 这个任务要求对一个程序填空，这个程序在用户层面实现了多线程的</p>
 <h6 class="card-subtitle text-muted text-right">2021年1月6日</h6>
-</div>
-</div>
-
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/MIT-6.S081-2020实验（xv6-riscv64）六：cow.html">MIT-6.S081-2020实验（xv6-riscv64）六：cow</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">摘要：实验文档 概述 这次实验实现copy on write功能，和上次实验一样也是缺页中断的应用，但不同的是，这次实验涉及的物理内存和虚拟地址的操作要比上个实验多不少，因此难度也更大一些。 内容 首先是uvmcopy的部分，原来的操作是从老页表中获得虚拟地址对应的物理地址，创建一个新物理页，然后将老物理</p>
-<h6 class="card-subtitle text-muted text-right">2021年1月6日</h6>
-</div>
-</div>
-
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/MIT-6.S081-2020实验（xv6-riscv64）五：lazy.html">MIT-6.S081-2020实验（xv6-riscv64）五：lazy</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">摘要：实验文档 概述 这次实验主要实现Lazy allocation的功能，即进程在动态分配内存的时候先不分配，等到要用到发生缺页中断的时候再实际分配，核心是实现缺页中断的处理。xv6的文档介绍了三种缺页中断的应用，第一为Copy on write，即fork的时候先不复制内存，等到要用到发生缺页中断的时</p>
-<h6 class="card-subtitle text-muted text-right">2021年1月2日</h6>
 </div>
 </div>
 
