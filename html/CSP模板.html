@@ -419,8 +419,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb16"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>atoi<span class="op">(</span>charp<span class="op">);</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a>atof<span class="op">(</span>charp<span class="op">);</span> <span class="co">// to double</span></span>
 <span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>atoll<span class="op">(</span>charp<span class="op">);</span></span>
-<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>strtol<span class="op">(</span>beginp<span class="op">,</span> endpp<span class="op">);</span> <span class="co">// 会让endpp指向最后一个数字下一位置</span></span>
-<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>strtoll<span class="op">(</span>beginp<span class="op">,</span> endpp<span class="op">);</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>strtol<span class="op">(</span>beginp<span class="op">,</span> endpp<span class="op">,</span> base<span class="op">);</span> <span class="co">// 会让endpp指向最后一个数字下一位置</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>strtoll<span class="op">(</span>beginp<span class="op">,</span> endpp<span class="op">,</span> base<span class="op">);</span></span>
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>strtod<span class="op">(</span>beginp<span class="op">,</span> endpp<span class="op">);</span></span>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>strtold<span class="op">(</span>beginp<span class="op">,</span> endpp<span class="op">);</span></span></code></pre></div>
 <h3 id="cstring">Cstring</h3>
@@ -491,9 +491,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>next_permutation<span class="op">(</span>begin<span class="op">,</span> end<span class="op">);</span></span>
 <span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>prev_permutation<span class="op">(</span>begin<span class="op">,</span> end<span class="op">);</span></span></code></pre></div>
 <h3 id="string">String</h3>
-<div class="sourceCode" id="cb20"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>stoi<span class="op">(</span>string<span class="op">);</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>stoll<span class="op">(</span>string<span class="op">);</span></span>
-<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>stod<span class="op">(</span>string<span class="op">);</span></span></code></pre></div>
+<div class="sourceCode" id="cb20"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="op">.</span>c_str<span class="op">();</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="op">.</span>substr<span class="op">(</span>pos<span class="op">,</span> len<span class="op">);</span> <span class="co">// 返回的是拷贝</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="op">.</span>compare<span class="op">(</span>string<span class="op">);</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="op">.</span>copy<span class="op">(</span><span class="dt">char</span><span class="op">*</span> c<span class="op">,</span> len<span class="op">,</span> pos<span class="op">=</span><span class="dv">0</span><span class="op">);</span> <span class="co">// 拷贝字符串到字符数组</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>stoi<span class="op">(</span>string<span class="op">);</span></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>stoll<span class="op">(</span>string<span class="op">);</span></span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>stod<span class="op">(</span>string<span class="op">);</span></span></code></pre></div>
 <h3 id="numeric">Numeric</h3>
 <div class="sourceCode" id="cb21"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>accumulate<span class="op">(</span>begin<span class="op">,</span> end<span class="op">,</span> val<span class="op">,</span> func<span class="op">);</span> <span class="co">// 求和，初值为val</span></span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>adjacent_difference<span class="op">(</span>begin<span class="op">,</span> end<span class="op">,</span> begin2<span class="op">);</span> <span class="co">// 差分</span></span>
@@ -591,7 +595,42 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a><span class="pp">#define F</span><span class="op">(</span>i<span class="op">)</span><span class="pp"> </span>find<span class="op">(</span>i<span class="op">)</span></span>
 <span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a><span class="pp">#define MP</span><span class="op">(</span>i<span class="op">,</span><span class="pp"> </span>j<span class="op">)</span><span class="pp"> </span>make_pair<span class="op">(</span>i<span class="op">,</span><span class="pp"> </span>j<span class="op">)</span></span>
 <span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a><span class="pp">#define P1 </span>first</span>
-<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a><span class="pp">#define P2 </span>second</span></code></pre></div>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a><span class="pp">#define P2 </span>second</span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a><span class="kw">inline</span> <span class="dt">int</span> read<span class="op">()</span> <span class="op">{</span></span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>    <span class="dt">char</span> ch <span class="op">=</span> getchar<span class="op">();</span> <span class="dt">int</span> f <span class="op">=</span> <span class="dv">1</span><span class="op">,</span> x <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
+<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="op">(</span>ch <span class="op">&lt;</span> <span class="ch">&#39;0&#39;</span> <span class="op">||</span> ch <span class="op">&gt;</span> <span class="ch">&#39;9&#39;</span><span class="op">)</span> <span class="op">{</span> <span class="cf">if</span> <span class="op">(</span>ch <span class="op">==</span> <span class="ch">&#39;-&#39;</span><span class="op">)</span> f <span class="op">=</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span> ch <span class="op">=</span> getchar<span class="op">();</span> <span class="op">}</span></span>
+<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a>    <span class="cf">while</span> <span class="op">(</span>ch <span class="op">&gt;=</span> <span class="ch">&#39;0&#39;</span> <span class="op">&amp;&amp;</span> ch <span class="op">&lt;=</span> <span class="ch">&#39;9&#39;</span><span class="op">)</span> x <span class="op">=</span> x <span class="op">*</span> <span class="dv">10</span> <span class="op">+</span> ch <span class="op">-</span> <span class="ch">&#39;0&#39;</span><span class="op">,</span> ch <span class="op">=</span> getchar<span class="op">();</span></span>
+<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> f <span class="op">*</span> x<span class="op">;</span></span>
+<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<h3 id="gvim简易配置">gvim简易配置</h3>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> nocp</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> go=</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> nu</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> cul</span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> nowrap</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> hls</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="ex">syn</span> on</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="ex">colo</span> desert</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> fencs=utf-8,gbk</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> nobk</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> noudf</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> noswapfile</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> ai</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> ts=4</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> sts=4</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> et</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> gfn=Consolas:h14</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="ex">filetype</span> plugin indent on</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a><span class="ex">func</span> Comp<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exec</span> <span class="st">&#39;w&#39;</span></span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exec</span> <span class="st">&#39;silent ! start cmd /C &quot;C:/PROGRA~2/Dev-Cpp/MinGW64/bin/g++ %&lt;.cpp -Wall -std=c++11 -g -o %&lt;.exe &amp; pause&quot;&#39;</span></span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a><span class="ex">endfunc</span></span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a><span class="ex">func</span> Run<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exec</span> <span class="st">&#39;silent ! start cmd /C &quot;%&lt;.exe &amp; pause&quot;&#39;</span></span>
+<span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a><span class="ex">endfunc</span></span>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a><span class="ex">map</span> <span class="op">&lt;</span>C-F5<span class="op">&gt;</span> :call Comp<span class="er">(</span><span class="kw">)</span><span class="op">&lt;</span>CR<span class="op">&gt;</span></span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a><span class="ex">map</span> <span class="op">&lt;</span>C-F6<span class="op">&gt;</span> :call Run<span class="er">(</span><span class="kw">)</span><span class="op">&lt;</span>CR<span class="op">&gt;</span></span></code></pre></div>
 </article>
 <span class="bg-light text-muted border boder-primary d-block p-2 text-center">
     转载请注明出处<br>
