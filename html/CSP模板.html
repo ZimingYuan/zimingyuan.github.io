@@ -582,7 +582,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a><span class="pp">#define P </span>pair</span>
 <span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a><span class="pp">#define ST </span>string</span>
 <span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a><span class="pp">#define PQ </span>priority_queue</span>
-<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="pp">#define V2</span><span class="op">(</span>T<span class="op">)</span><span class="pp"> </span>V<span class="op">&lt;</span>V<span class="op">&lt;</span><span class="dt">int</span><span class="op">&gt;&gt;</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a><span class="pp">#define V2</span><span class="op">(</span>T<span class="op">)</span><span class="pp"> </span>V<span class="op">&lt;</span>V<span class="op">&lt;</span>T<span class="op">&gt;&gt;</span></span>
 <span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a><span class="pp">#define PII </span>P<span class="op">&lt;</span><span class="dt">int</span><span class="op">,</span><span class="pp"> </span><span class="dt">int</span><span class="op">&gt;</span></span>
 <span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a><span class="pp">#define MII </span>M<span class="op">&lt;</span><span class="dt">int</span><span class="op">,</span><span class="pp"> </span><span class="dt">int</span><span class="op">&gt;</span></span>
 <span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a><span class="pp">#define MSI </span>M<span class="op">&lt;</span>ST<span class="op">,</span><span class="pp"> </span><span class="dt">int</span><span class="op">&gt;</span></span>
@@ -610,27 +610,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> cul</span>
 <span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> nowrap</span>
 <span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> hls</span>
-<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="ex">syn</span> on</span>
-<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="ex">colo</span> desert</span>
-<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> fencs=utf-8,gbk</span>
-<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> nobk</span>
-<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> noudf</span>
-<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> noswapfile</span>
-<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> ai</span>
-<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> ts=4</span>
-<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> sts=4</span>
-<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> et</span>
-<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> gfn=Consolas:h14</span>
-<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="ex">filetype</span> plugin indent on</span>
-<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a><span class="ex">func</span> Comp<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exec</span> <span class="st">&#39;w&#39;</span></span>
-<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exec</span> <span class="st">&#39;silent ! start cmd /C &quot;C:/PROGRA~2/Dev-Cpp/MinGW64/bin/g++ %&lt;.cpp -Wall -std=c++11 -g -o %&lt;.exe &amp; pause&quot;&#39;</span></span>
-<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a><span class="ex">endfunc</span></span>
-<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a><span class="ex">func</span> Run<span class="er">(</span><span class="kw">)</span></span>
-<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exec</span> <span class="st">&#39;silent ! start cmd /C &quot;%&lt;.exe &amp; pause&quot;&#39;</span></span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> wmnu</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a><span class="ex">syn</span> on</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a><span class="ex">colo</span> desert</span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> fencs=utf-8,gbk</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> nobk</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> noudf</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> noswapfile</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> ai</span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> ts=4</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> sts=4</span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> sw=4</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> et</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> gfn=Consolas:h14</span>
+<span id="cb30-20"><a href="#cb30-20" aria-hidden="true" tabindex="-1"></a><span class="bu">set</span> bs=indent,eol,start</span>
+<span id="cb30-21"><a href="#cb30-21" aria-hidden="true" tabindex="-1"></a><span class="ex">filetype</span> plugin indent on</span>
+<span id="cb30-22"><a href="#cb30-22" aria-hidden="true" tabindex="-1"></a><span class="ex">func</span> Comp<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb30-23"><a href="#cb30-23" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exec</span> <span class="st">&#39;w&#39;</span></span>
+<span id="cb30-24"><a href="#cb30-24" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exec</span> <span class="st">&#39;silent ! start cmd /C &quot;C:/PROGRA~2/Dev-Cpp/MinGW64/bin/g++ %&lt;.cpp -Wall -std=c++11 -g -o %&lt;.exe &amp; pause&quot;&#39;</span></span>
 <span id="cb30-25"><a href="#cb30-25" aria-hidden="true" tabindex="-1"></a><span class="ex">endfunc</span></span>
-<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a><span class="ex">map</span> <span class="op">&lt;</span>C-F5<span class="op">&gt;</span> :call Comp<span class="er">(</span><span class="kw">)</span><span class="op">&lt;</span>CR<span class="op">&gt;</span></span>
-<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a><span class="ex">map</span> <span class="op">&lt;</span>C-F6<span class="op">&gt;</span> :call Run<span class="er">(</span><span class="kw">)</span><span class="op">&lt;</span>CR<span class="op">&gt;</span></span></code></pre></div>
+<span id="cb30-26"><a href="#cb30-26" aria-hidden="true" tabindex="-1"></a><span class="ex">func</span> Run<span class="er">(</span><span class="kw">)</span></span>
+<span id="cb30-27"><a href="#cb30-27" aria-hidden="true" tabindex="-1"></a>    <span class="bu">exec</span> <span class="st">&#39;silent ! start cmd /C &quot;%&lt;.exe &amp; pause&quot;&#39;</span></span>
+<span id="cb30-28"><a href="#cb30-28" aria-hidden="true" tabindex="-1"></a><span class="ex">endfunc</span></span>
+<span id="cb30-29"><a href="#cb30-29" aria-hidden="true" tabindex="-1"></a><span class="ex">map</span> <span class="op">&lt;</span>C-F5<span class="op">&gt;</span> :call Comp<span class="er">(</span><span class="kw">)</span><span class="op">&lt;</span>CR<span class="op">&gt;</span></span>
+<span id="cb30-30"><a href="#cb30-30" aria-hidden="true" tabindex="-1"></a><span class="ex">map</span> <span class="op">&lt;</span>C-F6<span class="op">&gt;</span> :call Run<span class="er">(</span><span class="kw">)</span><span class="op">&lt;</span>CR<span class="op">&gt;</span></span></code></pre></div>
 </article>
 <span class="bg-light text-muted border boder-primary d-block p-2 text-center">
     转载请注明出处<br>

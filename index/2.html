@@ -35,11 +35,33 @@
 <div class="col-9" id="Bloglist">
 <div class="card shadow mb-4">
 <h5 class="card-header">
+<a href="/html/MIT-6.S081-2020实验（xv6-riscv64）九：fs.html">MIT-6.S081-2020实验（xv6-riscv64）九：fs</a>
+</h5>
+<div class="card-body">
+<h5 class="card-title">摘要：</h5>
+<p class="card-text">实验文档 概述 这次实验涉及文件系统，重点是对inode节点的操作。 内容 Large files 这个任务主要目的是支持更大的文件。和内存映射类似，文件系统中也有一个类似“页表”的结构，每个文件（inode）都有自己的一个“页表”，维护自己文件占用的文件块。和内存不同的是，这个“页表”的级别是自定</p>
+<h6 class="card-subtitle text-muted text-right">2021年1月11日</h6>
+</div>
+</div>
+
+<div class="card shadow mb-4">
+<h5 class="card-header">
+<a href="/html/MIT-6.S081-2020实验（xv6-riscv64）八：lock.html">MIT-6.S081-2020实验（xv6-riscv64）八：lock</a>
+</h5>
+<div class="card-body">
+<h5 class="card-title">摘要：</h5>
+<p class="card-text">实验文档 概述 这次实验主要涉及锁在内核的应用，没有用到什么特别的理论知识，但是编程的时候陷阱重重，要么资源竞争，要么死锁，和实验三差不多，非常考验耐心和细心。 内容 Memory allocator 这个任务要求给物理内存分配程序重新设计锁，使得等待锁时的阻塞尽量少。可以按CPU的数量将空闲内存分</p>
+<h6 class="card-subtitle text-muted text-right">2021年1月8日</h6>
+</div>
+</div>
+
+<div class="card shadow mb-4">
+<h5 class="card-header">
 <a href="/html/MIT-6.S081-2020实验（xv6-riscv64）七：thread.html">MIT-6.S081-2020实验（xv6-riscv64）七：thread</a>
 </h5>
 <div class="card-body">
 <h5 class="card-title">摘要：</h5>
-<p class="card-text">摘要：实验文档 概述 这次实验主要涉及多线程编程，和之前的实验不太一样，比较偏向于应用层面，除了任务一外都是在宿主机上编写多线程程序，应该是xv6不支持系统级的多线程。 内容 Uthread: switching between threads 这个任务要求对一个程序填空，这个程序在用户层面实现了多线程的</p>
+<p class="card-text">实验文档 概述 这次实验主要涉及多线程编程，和之前的实验不太一样，比较偏向于应用层面，除了任务一外都是在宿主机上编写多线程程序，应该是xv6不支持系统级的多线程。 内容 Uthread: switching between threads 这个任务要求对一个程序填空，这个程序在用户层面实现了多线程的</p>
 <h6 class="card-subtitle text-muted text-right">2021年1月6日</h6>
 </div>
 </div>
@@ -50,7 +72,7 @@
 </h5>
 <div class="card-body">
 <h5 class="card-title">摘要：</h5>
-<p class="card-text">摘要：实验文档 概述 这次实验实现copy on write功能，和上次实验一样也是缺页中断的应用，但不同的是，这次实验涉及的物理内存和虚拟地址的操作要比上个实验多不少，因此难度也更大一些。 内容 首先是uvmcopy的部分，原来的操作是从老页表中获得虚拟地址对应的物理地址，创建一个新物理页，然后将老物理</p>
+<p class="card-text">实验文档 概述 这次实验实现copy on write功能，和上次实验一样也是缺页中断的应用，但不同的是，这次实验涉及的物理内存和虚拟地址的操作要比上个实验多不少，因此难度也更大一些。 内容 首先是uvmcopy的部分，原来的操作是从老页表中获得虚拟地址对应的物理地址，创建一个新物理页，然后将老物理</p>
 <h6 class="card-subtitle text-muted text-right">2021年1月6日</h6>
 </div>
 </div>
@@ -61,7 +83,7 @@
 </h5>
 <div class="card-body">
 <h5 class="card-title">摘要：</h5>
-<p class="card-text">摘要：实验文档 概述 这次实验主要实现Lazy allocation的功能，即进程在动态分配内存的时候先不分配，等到要用到发生缺页中断的时候再实际分配，核心是实现缺页中断的处理。xv6的文档介绍了三种缺页中断的应用，第一为Copy on write，即fork的时候先不复制内存，等到要用到发生缺页中断的时</p>
+<p class="card-text">实验文档 概述 这次实验主要实现Lazy allocation的功能，即进程在动态分配内存的时候先不分配，等到要用到发生缺页中断的时候再实际分配，核心是实现缺页中断的处理。xv6的文档介绍了三种缺页中断的应用，第一为Copy on write，即fork的时候先不复制内存，等到要用到发生缺页中断的时</p>
 <h6 class="card-subtitle text-muted text-right">2021年1月2日</h6>
 </div>
 </div>
@@ -72,7 +94,7 @@
 </h5>
 <div class="card-body">
 <h5 class="card-title">摘要：</h5>
-<p class="card-text">摘要：实验文档 概述 这次实验内容比较分散，总体来说难度不是太高。 内容 Backtrace 要求在内核中对程序的调用栈进行遍历，输出每一级调用的返回地址。首先我们分析Riscv的栈帧结构，查看call.asm中main函数的汇编代码： void main(void) { 1c: 1141 addi sp</p>
+<p class="card-text">实验文档 概述 这次实验内容比较分散，总体来说难度不是太高。 内容 Backtrace 要求在内核中对程序的调用栈进行遍历，输出每一级调用的返回地址。首先我们分析Riscv的栈帧结构，查看call.asm中main函数的汇编代码： void main(void) { 1c: 1141 addi sp</p>
 <h6 class="card-subtitle text-muted text-right">2021年1月1日</h6>
 </div>
 </div>
@@ -83,7 +105,7 @@
 </h5>
 <div class="card-body">
 <h5 class="card-title">摘要：</h5>
-<p class="card-text">摘要：实验文档 概述 这次实验主要涉及虚拟内存的管理，重点是和页表相关的操作。个人觉得难点主要还是在调试方面，因为一旦写到什么非法内存或者哪里内存泄漏了，基本只能抓瞎。我也是参考了github上别人的代码才最终完成了实验。 内容 Print a page table 这个任务比较简单，只要仿照freewa</p>
+<p class="card-text">实验文档 概述 这次实验主要涉及虚拟内存的管理，重点是和页表相关的操作。个人觉得难点主要还是在调试方面，因为一旦写到什么非法内存或者哪里内存泄漏了，基本只能抓瞎。我也是参考了github上别人的代码才最终完成了实验。 内容 Print a page table 这个任务比较简单，只要仿照freewa</p>
 <h6 class="card-subtitle text-muted text-right">2020年12月31日</h6>
 </div>
 </div>
@@ -94,7 +116,7 @@
 </h5>
 <div class="card-body">
 <h5 class="card-title">摘要：</h5>
-<p class="card-text">摘要：实验文档 概述 实验二主要涉及对系统函数调用过程的理解以及尝试自己手动添加系统调用。首先需要大致了解一下xv6系统调用的过程，这里以fork为例： 根据这个过程，就很容易完成本次实验了。 内容 trace 该实验需要打印其他系统调用的信息。根据上面的分析和文档说明，首先需要给user.h、usys.</p>
+<p class="card-text">实验文档 概述 实验二主要涉及对系统函数调用过程的理解以及尝试自己手动添加系统调用。首先需要大致了解一下xv6系统调用的过程，这里以fork为例： 根据这个过程，就很容易完成本次实验了。 内容 trace 该实验需要打印其他系统调用的信息。根据上面的分析和文档说明，首先需要给user.h、usys.</p>
 <h6 class="card-subtitle text-muted text-right">2020年12月31日</h6>
 </div>
 </div>
@@ -118,28 +140,6 @@
 <h5 class="card-title">摘要：</h5>
 <p class="card-text">背景 由于网络原因，在下载视频之前我们往往会希望能够先生成一些视频的缩略图，大致浏览视频内容，再确定是否应花时间下载。如何能够快速得到视频多个帧的缩略图的同时尽量少的下载视频的内容，是一个值得研究的问题。 思路 众所周知，不考虑音频、字幕的话，视频是由多个图像帧拼接而成的，因此我们的目标也就是尽量只</p>
 <h6 class="card-subtitle text-muted text-right">2020年9月13日</h6>
-</div>
-</div>
-
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/用plantuml画图示例.html">用plantuml画图示例</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">依赖图： 代码： @startuml skinparam defaultFontName 微软雅黑 skinparam defaultFontSize 15 skinparam monochrome true skinparam shadowing false frame 二进制转十进制 { (二转</p>
-<h6 class="card-subtitle text-muted text-right">2020年9月6日</h6>
-</div>
-</div>
-
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/QQ缩略图和大图不同实现.html">QQ缩略图和大图不同实现</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">背景 最近在QQ群里看见别人发一张图，缩略图看着是一个样子，但打开大图以后却发现是另一张图，仔细观察这两张图发现缩略图是白色背景，大图是黑色背景，结合缩略图所在的对话框是白色的，打开大图的UI是黑色的，很容易猜到应该是依靠透明度实现的功能，因此研究了一下怎么用代码通过将两张图片混合来构造出满足要求的</p>
-<h6 class="card-subtitle text-muted text-right">2020年8月17日</h6>
 </div>
 </div>
 
