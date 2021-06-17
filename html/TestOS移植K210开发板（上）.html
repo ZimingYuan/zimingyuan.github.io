@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<!--
+==============================================================================
+           "GitHub HTML5 Pandoc Template" v2.2 — by Tristano Ajmone
+==============================================================================
+Copyright © Tristano Ajmone, 2017-2020, MIT License (MIT). Project's home:
+- https://github.com/tajmone/pandoc-goodies
+The CSS in this template reuses source code taken from the following projects:
+- GitHub Markdown CSS: Copyright © Sindre Sorhus, MIT License (MIT):
+  https://github.com/sindresorhus/github-markdown-css
+- Primer CSS: Copyright © 2016-2017 GitHub Inc., MIT License (MIT):
+  http://primercss.io/
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The MIT License
+Copyright (c) Tristano Ajmone, 2017-2020 (github.com/tajmone/pandoc-goodies)
+Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
+Copyright (c) 2017 GitHub Inc.
+"GitHub Pandoc HTML5 Template" is Copyright (c) Tristano Ajmone, 2017-2020,
+released under the MIT License (MIT); it contains readaptations of substantial
+portions of the following third party softwares:
+(1) "GitHub Markdown CSS", Copyright (c) Sindre Sorhus, MIT License (MIT).
+(2) "Primer CSS", Copyright (c) 2016 GitHub Inc., MIT License (MIT).
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+==============================================================================-->
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>TestOS移植K210开发板（上）</title>
+  <style type="text/css">
+@charset "UTF-8";.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#24292e;font-family:-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:16px;line-height:1.5;word-wrap:break-word;box-sizing:border-box;min-width:200px;max-width:980px;margin:0 auto;padding:45px}.markdown-body a{color:#0366d6;background-color:transparent;text-decoration:none;-webkit-text-decoration-skip:objects}.markdown-body a:active,.markdown-body a:hover{outline-width:0}.markdown-body a:hover{text-decoration:underline}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body strong{font-weight:600}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1{font-size:2em;margin:.67em 0;padding-bottom:.3em;border-bottom:1px solid #eaecef}.markdown-body h2{padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid #eaecef}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#6a737d}.markdown-body img{border-style:none}.markdown-body svg:not(:root){overflow:hidden}.markdown-body hr{box-sizing:content-box;height:.25em;margin:24px 0;padding:0;overflow:hidden;background-color:#e1e4e8;border:0}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body input{margin:0;overflow:visible;font:inherit;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=checkbox]{box-sizing:border-box;padding:0}.markdown-body *{box-sizing:border-box}.markdown-body blockquote{margin:0}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dd{margin-left:0}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:600}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace}.markdown-body pre{font:12px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;word-wrap:normal}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote{padding:0 1em;color:#6a737d;border-left:.25em solid #dfe2e5}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body table{display:block;width:100%;overflow:auto;border-spacing:0;border-collapse:collapse}.markdown-body table th{font-weight:600}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #dfe2e5}.markdown-body table tr{background-color:#fff;border-top:1px solid #c6cbd1}.markdown-body table tr:nth-child(2n){background-color:#f6f8fa}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body code{padding:.2em 0;margin:0;font-size:85%;background-color:rgba(27,31,35,.05);border-radius:3px}.markdown-body code::after,.markdown-body code::before{letter-spacing:-.2em;content:" "}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f6f8fa;border-radius:3px}.markdown-body pre code{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code::after,.markdown-body pre code::before{content:normal}.markdown-body .full-commit .btn-outline:not(:disabled):hover{color:#005cc5;border-color:#005cc5}.markdown-body kbd{box-shadow:inset 0 -1px 0 #959da5;display:inline-block;padding:3px 5px;font:11px/10px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;color:#444d56;vertical-align:middle;background-color:#fcfcfc;border:1px solid #c6cbd1;border-bottom-color:#959da5;border-radius:3px;box-shadow:inset 0 -1px 0 #959da5}.markdown-body :checked+.radio-label{position:relative;z-index:1;border-color:#0366d6}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item+.task-list-item{margin-top:3px}.markdown-body .task-list-item input{margin:0 .2em .25em -1.6em;vertical-align:middle}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.Alert,.Error,.Note,.Success,.Warning{padding:11px;margin-bottom:24px;border-style:solid;border-width:1px;border-radius:4px}.Alert p,.Error p,.Note p,.Success p,.Warning p{margin-top:0}.Alert p:last-child,.Error p:last-child,.Note p:last-child,.Success p:last-child,.Warning p:last-child{margin-bottom:0}.Alert{color:#246;background-color:#e2eef9;border-color:#bac6d3}.Warning{color:#4c4a42;background-color:#fff9ea;border-color:#dfd8c2}.Error{color:#911;background-color:#fcdede;border-color:#d2b2b2}.Success{color:#22662c;background-color:#e2f9e5;border-color:#bad3be}.Note{color:#2f363d;background-color:#f6f8fa;border-color:#d5d8da}.Alert h1,.Alert h2,.Alert h3,.Alert h4,.Alert h5,.Alert h6{color:#246;margin-bottom:0}.Warning h1,.Warning h2,.Warning h3,.Warning h4,.Warning h5,.Warning h6{color:#4c4a42;margin-bottom:0}.Error h1,.Error h2,.Error h3,.Error h4,.Error h5,.Error h6{color:#911;margin-bottom:0}.Success h1,.Success h2,.Success h3,.Success h4,.Success h5,.Success h6{color:#22662c;margin-bottom:0}.Note h1,.Note h2,.Note h3,.Note h4,.Note h5,.Note h6{color:#2f363d;margin-bottom:0}.Alert h1:first-child,.Alert h2:first-child,.Alert h3:first-child,.Alert h4:first-child,.Alert h5:first-child,.Alert h6:first-child,.Error h1:first-child,.Error h2:first-child,.Error h3:first-child,.Error h4:first-child,.Error h5:first-child,.Error h6:first-child,.Note h1:first-child,.Note h2:first-child,.Note h3:first-child,.Note h4:first-child,.Note h5:first-child,.Note h6:first-child,.Success h1:first-child,.Success h2:first-child,.Success h3:first-child,.Success h4:first-child,.Success h5:first-child,.Success h6:first-child,.Warning h1:first-child,.Warning h2:first-child,.Warning h3:first-child,.Warning h4:first-child,.Warning h5:first-child,.Warning h6:first-child{margin-top:0}h1.title,p.subtitle{text-align:center}h1.title.followed-by-subtitle{margin-bottom:0}p.subtitle{font-size:1.5em;font-weight:600;line-height:1.25;margin-top:0;margin-bottom:16px;padding-bottom:.3em}div.line-block{white-space:pre-line}
+  </style>
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+<link rel="stylesheet" href="https://cdn.bootcss.com/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/popper.min.js" ></script>
+<script src="https://cdn.bootcss.com/twitter-bootstrap/4.1.0/js/bootstrap.min.js" ></script>
+<link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
+    <div class="container">
+        <a class="navbar-brand" href="#">ZimingYuan的博客</a>
+        <div class="navbar-collapse">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="/index.html">首页</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/html/随笔.html">随笔</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="/html/CSP模板.html">CSP模板</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<article class="markdown-body">
+<header>
+<h1 class="title">TestOS移植K210开发板（上）</h1>
+</header>
+<h3 id="概述">概述</h3>
+<p>这一系列分上下两章，上章讲TestOS的前六个部分在移植K210开发板遇到的问题，下章讲TestOS的文件部分移植的问题。这里选用<a href="https://canaan-creative.com/product/kendryteai">K210开发板</a>的原因是<a href="https://rcore-os.github.io/rCore-Tutorial-Book-v3/index.html">rCore教程</a>提供了K210的使用教程，同时<a href="https://github.com/luojia65/rustsbi">RustSBI</a>也提供了相应的适配，使得我能够在几乎不改变内核代码的情况下进行移植，所以还是感谢rCore教程的作者、RustSBI的作者洛佳大佬以及借我开发板的ccc大佬。</p>
+<h3 id="内容">内容</h3>
+<h4 id="第一部分">第一部分</h4>
+<p>第一部分没什么需要修改的，主要是学习开发板的使用。首先将开发板使用Type-C的数据线连上电脑。由于我编译和烧录使用的是虚拟机，所以需要映射USB端口，VirtualBox启动系统后窗口右下角有个USB的图标，右键点击，选择那个中文拼音的端口打上勾，就映射成功了。然后下载<a href="https://github.com/sipeed/kflash.py">烧录工具</a>，把项目里的kflash.py下载下来。为了获得K210的输出信息，需要安装串口通信的Python库：</p>
+<pre class="shell"><code>pip3 install pyserial</code></pre>
+<p>修改makefile：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode makefile"><code class="sourceCode makefile"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">rustsbi-k210_size </span><span class="ch">:=</span><span class="st"> 131072</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="dt">k210_serialport </span><span class="ch">:=</span><span class="st"> /dev/ttyUSB0</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="dv">k210:</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    riscv64-unknown-elf-gcc os.c printf.c entry.S -T linker_k210.ld -ffreestanding -nostdlib -g -o os_k210 -mcmodel=medany</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    riscv64-unknown-elf-objcopy os_k210 --strip-all -O binary os_k210.bin</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="ch">@</span><span class="fu">cp rustsbi-k210.bin rustsbi-k210.copy</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="ch">@</span><span class="fu">dd if=os_k210.bin of=rustsbi-k210.copy bs=</span><span class="ch">$(</span><span class="dt">rustsbi-k210_size</span><span class="ch">)</span><span class="fu"> seek=1</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="ch">@</span><span class="fu">mv rustsbi-k210.copy os_k210.bin</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>    <span class="ch">@</span><span class="fu">sudo chmod 777 </span><span class="ch">$(</span><span class="dt">k210_serialport</span><span class="ch">)</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>    python3 kflash.py -p <span class="ch">$(</span><span class="dt">k210_serialport</span><span class="ch">)</span> -b 1500000 os_k210.bin</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>    python3 -m serial.tools.miniterm --eol LF --dtr 0 --rts 0 --filter direct <span class="ch">$(</span><span class="dt">k210_serialport</span><span class="ch">)</span> 115200</span></code></pre></div>
+<p>除了编译之外，需要建立一个二进制映像文件，包含rustsbi-k210.bin和编译出的os_k210.bin。具体操作是先将rustsbi-k210.bin复制一份，然后使用dd命令将其和编译出的os_k210.bin组合成二进制映像文件，注意os_k210.bin必须放在新文件里偏移量为rustsbi-k210_size的位置，rustsbi-k210_size的值是将rustsbi-k210.bin的文件大小按4096字节向上对齐的结果。K210版的链接脚本也有区别，需要修改一下内核的起始地址，因为rustsbi-k210强制指定了从0x80020000这里启动内核。</p>
+<p>接着通过kflash.py把映像烧录到端口设备文件，在我的系统上这个设备文件是/dev/ttyUSB0。在烧录的时候终端会出现一个<code>[INFO] Trying to Enter the ISP Mode...</code>的提示，这个时候需要按住K210开发板上的Boot按钮，才能识别到开发板。识别过后就会开始烧录，烧录完就可以运行了。我在识别和烧录的过程中都有可能发生连接失败的错误，不知道是数据线、接口的问题还是开发板都会这样。</p>
+<p>运行的过程中可以按K210开发板上的Reset按钮重启内核，终端上的输出有时候会混乱或缺失，我猜测应该是串口通信的刷新率问题，毕竟这里不像qemu那样是直接输出，K210的输出传到终端还是需要一定时间的，运行太快而丢失输出信息也不是不可能。内核运行结束后如果正常调用RustSBI的关机功能会输出：</p>
+<pre><code>[rustsbi] reset triggered! todo: shutdown all harts on k210; program halt. Type: 0, reason: 0</code></pre>
+<p>关机以后也可以按Reset按钮重启内核，关机以后串口通信程序仍在运行，需要手动退出。退出的快捷键是<code>Ctrl+]</code>（一开始没看到程序启动时的提示，以为只能用kill命令强制退出😅）。</p>
+<h4 id="第二部分">第二部分</h4>
+<p>第二部分开始有用户程序了，不过用户程序的链接脚本不需要修改，反正这个从哪执行都是自己指定的。值得注意的是用于导入用户程序的汇编代码link_app.S，之前是参考的rCore教程，前三行为：</p>
+<pre class="assembly"><code>.align 3
+.section .data
+.global _num_app</code></pre>
+<p>但是上了板之后会报内存读取不对齐的错误：需改成：</p>
+<pre class="assembly"><code>.section .data
+.global _num_app
+.align 3</code></pre>
+<p>按照rCore教程的解释，K210比qemu多的一个限制是读取多少字节类型的数据就要求这个数据的地址按多少字节对齐。比如读取int就要求这个int按4字节对齐。这段汇编代码下面就声明了一个.quad（64位，8字节）类型的_num_app变量，所以C程序在读取这个变量的时候要求其地址按8字节对齐。但令我疑惑的是，rCore里不管是qemu和K210用的都是上面的版本，两者都可以正常运行；但是我如果使用上面的版本，K210上就会报错。使用objdump查看符号表发现gcc编译前一个版本_num_app的地址是不按8字节对齐的，而rustc编译前一个版本则有对齐，感觉这是两个编译器的行为差别：在汇编代码中把变量放在段声明的正下方，rustc就直接把变量放在段的最前面了，而gcc在变量前面仍有可能插入其他的变量，所以必须在需要声明的变量前指定对齐才保险。</p>
+<h4 id="第三部分">第三部分</h4>
+<p>第三部分需要修改timer.c里的时间频率常数：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#ifdef K210</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="pp">#define CLOCK_FREQ (403000000 / 62)</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="pp">#else</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="pp">#define CLOCK_FREQ 12500000</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="pp">#endif</span></span></code></pre></div>
+<h4 id="第四部分">第四部分</h4>
+<p>第四部分也没有什么特别的，就是原程序里task.c最后没有初始化current_task这个变量，这会导致内核在K210板上无法运行。这就是虚拟机和硬件的区别了，虚拟机可能会将未初始化的内存置为0，而硬件不会，未初始化的内存的值是随机的。如果要保险的话，还是应该像教程那样在程序的一开始就手动将bss段全部置为0，保证所有未初始化的全局变量值都为0。</p>
+<h4 id="第五部分">第五部分</h4>
+<p>第五部分是坑了我最久的，因为这个bug实在是太难发现了，虽然实际原因可能对许多熟悉嵌入式开发的人来说是基本常识，但我这样的新手却完全不了解，这里总结一下调试的经过：</p>
+<p>第一阶段：运行以后报panic，但是有时候是内核态的panic，有时候是机器态的panic，每次panic的原因和错误代码地址还不一样，时而是读缺页，时而是写缺页，时而是未知的系统调用，时而是非法代码。而错误代码地址对应的代码有时候甚至还和错误原因对不上，比如明明是store指令却报个读异常。经过观察，我发现发现异常的程序总是在主程序调用两次exec后出现，而且在内核添加打印函数还会改变错误类型。根据以往的经验，打印函数能够改变错误的基本只有两种情况：初始化和数据竞争。但是把bss段全部置为0和关闭时钟中断后仍未解决问题，关键是在qemu下从未报错，K210上没法用gdb（开发板单步调试需要专门的硬件，我没有），看错误的代码反而让我更摸不着头脑。</p>
+<p>第二阶段：决定使用笨方法，就是对正常运行的第四部分一步步往第五部分修改，直至复现该错误。这一阶段也是改变了调试的思路，从错误结果反推原因转变为从代码反推原因，因此不再关注于错误的类型，而是只关注“是否出错”这一结果。在加入exec之后，错误又出现了，说明这个bug和fork什么都没有关系，仅和exec有关。我又尝试在执行第一个用户程序前先执行两次user_init函数（exec调用的处理用户任务块的函数），发现不会报错，说明必须进入用户态，然后我又令程序在第一次exec进入内核态后调用两次user_init函数，又出错了，只调用一次就不出错。说明错误发生的条件一个是需要进入一次用户态，一个是需要调用两次user_init，那么bug就只能在第二次user_init之中。</p>
+<p>第三阶段：第二次user_init包括解映射第一次user_init映射的用户物理内存，再重映射新的用户物理内存。按照xv6实验的经验，出错往往在删除再更新的时候，于是我设置解映射的时候不释放物理内存，程序不报错了。那么为什么不能释放内存呢？我发现不释放内存时新申请的物理页号是连续的，于是猜想用户内存对应的物理页号必须连续。因此我修改了一下物理页帧的分配代码，改成在释放页帧的时候，如果被释放的页号和当前使用过的最高页号相邻，则不将该页号放入分配池，而是直接令最高页号自减一。分配页帧时也不经过分配池，而是直接分配最高页号，这样就可以保证多次分配的页帧是连续的。经此一改，程序能够正常运行了，bug貌似得到了解决，但是用户物理页号必须相邻，这个要求怎么想都很奇怪……</p>
+<p>第四阶段：我又尝试分配页号的时候每分配一个就跳过一个页号（即只分配偶数页号或奇数页号），程序却没有报错，前面得出的结论不攻自破了，真正的凶手另有其人。我决定再细化错误条件，用来测试的用户程序内存占三个页，我就看看哪个页释放会报错，最后锁定了一个物理页号，当用户程序的第一个虚拟页映射到该页号时就会出错，而其他虚拟页映射到这里则不会。仔细观察这个物理页号的分配历史，发现它第一次被分配时刚好被映射到了第一个执行的用户程序的第一个虚拟页。设第一个执行的用户程序为A，经过两次user_init重置后的用户程序为B，经过实验又发现，当A和B的其他虚拟页映射到该物理页号不会出错，而A和B的第一个虚拟页映射到其他相同的物理页号亦会出错。这样，问题就被锁定在了两个用户程序的第一个虚拟页了，发现都是代码段所在的页。结合虚拟机上不出错，硬件上才会出错的现象，bug终于露出了它的真面目：<strong>缓存未刷新</strong>！</p>
+<p>在exec函数末尾加上一行代码：</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>asm <span class="dt">volatile</span> <span class="op">(</span><span class="st">&quot;fence.i&quot;</span><span class="op">);</span></span></code></pre></div>
+<p>问题解决，fence.i指令用于刷新指令缓存。现在来解释为什么bug会引发上面的这些情况：</p>
+<ul>
+<li>虚拟机由于所有的易失性存储器件都是由内存模拟的，所以通常没有实现缓存机制。qemu我没看过源码，但我看过spike(riscv-isa-sim)的源码，确实没有缓存机制，想必qemu也是如此，自然没有缓存刷新问题，而硬件不一样，因此虚拟机上能正常运行，K210上就会报错。</li>
+<li>指令缓存和数据缓存是独立的，而重映射过程中对数据的读写只改变了数据缓存。同时指令缓存是通过指令的物理地址进行寻址的，所以如果前一个程序代码段的物理页帧被映射给了另一个程序代码段，且这两个程序的代码段实际内容不一致，指令缓存里的数据就会和实际内存内容不一致。</li>
+<li>我物理页号分配池用的是栈，假设第一个程序接受的物理页号是1、2、3，重映射回收后进栈顺序是1、2、3，出栈顺序就变成3、2、1了，所以第一次user_init映射的顺序是3、2、1，之后重映射回收后进栈顺序是3、2、1，第二次user_init的顺序又变成1、2、3了，满足了出错条件，这就是上面需要经过两次user_init才会出错的原因。</li>
+<li>因为是缓存，必须先写数据才会发生脏数据问题，所以必须进入一次用户态。</li>
+<li>指令缓存没有刷新，那么CPU读取到的指令就完全是不可预测的，当然什么异常都有可能发生，也因此会出现错误和代码对不上的问题，毕竟我看的代码和缓存里的代码不一样。值得注意的是，我在第一阶段有尝试把代码段的内容以十六进制形式输出，没发现问题，这说明输出过程走的也是数据缓存，指令缓存只有CPU执行的时候才知道里面的值是多少，这也是这次调试过程中最大的难点。</li>
+</ul>
+<h4 id="第六部分">第六部分</h4>
+<p>没有什么新的问题。</p>
+<h3 id="总结">总结</h3>
+<p>这几个部分的移植给我的启发还是挺大的。首先是开发板的使用，这个应该和其他开发板是共通的，然后是硬件要注意的两个问题：初始化和缓存刷新（数据缓存基本不用怎么处理，tlb在切换页表时刷新过了，主要就这个指令缓存）。虽然是很简单的几个东西，但是长达数天的调试过程还是有很多值得复盘思考的地方。下章涉及存储卡设备的读写，才是真正有难度的地方。</p>
+</article>
+<span class="bg-light text-muted border boder-primary d-block p-2 text-center">
+    转载请注明出处<br>
+    © 2021 ZimingYuan的博客
+</span>
+<div style="background-color: #ebd5a1; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; pointer-events: none; opacity: 0.2;">
+</div>
+</body>
+</html>
