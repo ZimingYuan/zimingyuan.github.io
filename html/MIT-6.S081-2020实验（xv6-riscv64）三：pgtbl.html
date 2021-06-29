@@ -206,6 +206,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>However, this scheme does limit the maximum size of a user process to be less than the kernel’s lowest virtual address. After the kernel has booted, that address is <code>0xC000000</code> in xv6, the address of the PLIC registers;</p>
 </blockquote>
 <p>memlayout.h中CLINT对应的常数是0x2000000，比0xC000000小，按照文档的指示是可以被用户区覆盖的，所以没有映射（映射了可能后面再映射用户内存会报remap错误）。</p>
+<p><em>Update2021.6.29：这个CLINT用来存储发生时钟中断时的一些额外信息，由于存取这些信息的过程都发生在机器态，不受页表控制，所以这个区域无需映射（甚至我认为原版的内核页表也不需要映射这个区域）。</em></p>
 <p>scheduler函数中切换进程后需要切换satp寄存器为这个进程的内核页表（因为现在在内核态）并刷新TLB，这一步还是比较简单的：</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>        p<span class="op">-&gt;</span>state <span class="op">=</span> RUNNING<span class="op">;</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        c<span class="op">-&gt;</span>proc <span class="op">=</span> p<span class="op">;</span></span>
