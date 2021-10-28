@@ -119,21 +119,16 @@ set keymodel=startsel,stopsel
 set backspace=indent,eol,start
 nmap j gj
 nmap k gk
-func Run()
-    exec &#39;w&#39;
-    if &amp;filetype == &#39;cpp&#39; || &amp;filetype == &#39;c&#39;
-        exec &#39;! clang % -Wall -o %&lt;.exe&#39;
-        exec &#39;silent ! start cmd /C &quot;%&lt;.exe &amp; pause&quot;&#39;
-    endif
-    if &amp;filetype == &#39;python&#39;
-        exec &#39;silent ! start cmd /C &quot;python % &amp; pause&quot;&#39;
-    endif
-    if &amp;filetype == &#39;haskell&#39;
-        exec &#39;silent ! start cmd /C &quot;ghci % &amp; pause&quot;&#39;
-    endif
-endfunc
-map &lt;C-F5&gt; :call Run() &lt;CR&gt;
-imap &lt;C-R&gt;+ &lt;C-R&gt;&lt;C-P&gt;+</code></pre>
+imap &lt;C-R&gt;+ &lt;C-R&gt;&lt;C-P&gt;+
+set pastetoggle=&lt;F9&gt;
+nmap &lt;C-p&gt; :tabp&lt;CR&gt;
+nmap &lt;C-n&gt; :tabn&lt;CR&gt;
+&quot; netrw相关
+let g:netrw_banner = 0
+let g:netrw_liststyle = 3
+let g:netrw_winsize = 25
+autocmd VimEnter * :Le
+autocmd TabNew * call feedkeys(&quot;:Le\&lt;CR&gt;&quot;)    </code></pre>
 <h3 id="一些总结">一些总结</h3>
 <ul>
 <li><p><code>={motion}</code> <code>[number]==</code> 缩进</p></li>

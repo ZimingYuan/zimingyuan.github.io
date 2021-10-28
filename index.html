@@ -35,11 +35,22 @@
 <div class="col-9" id="Bloglist">
 <div class="card shadow mb-4">
 <h5 class="card-header">
-<a href="/html/TestOS移植K210开发板（上）.html">TestOS移植K210开发板（上）</a>
+<a href="/html/PYNQ开发板上使用USB声卡+OSS兼容层播放音频.html">PYNQ开发板上使用USB声卡+OSS兼容层播放音频</a>
 </h5>
 <div class="card-body">
 <h5 class="card-title">摘要：</h5>
-<p class="card-text">概述 这一系列分上下两章，上章讲TestOS的前六个部分在移植K210开发板遇到的问题，下章讲TestOS的文件部分移植的问题。这里选用K210开发板的原因是rCore教程提供了K210的使用教程，同时RustSBI也提供了相应的适配，使得我能够在几乎不改变内核代码的情况下进行移植，所以还是感谢rC</p>
+<p class="card-text">PYNQ开发板上使用USB声卡+OSS兼容层播放音频需要经过联网装库，编译驱动模块，运行三个步骤。 联网装库 首先需要将PYNQ开发板连上网，才能安装所需的库。方法是在电脑上设置共享网络，但要注意大部分操作系统在共享网络的时候无法自己指定本机IP，所以需要修改PYNQ开发板的IP来适应电脑自动设置的</p>
+<h6 class="card-subtitle text-muted text-right">2021年10月22日</h6>
+</div>
+</div>
+
+<div class="card shadow mb-4">
+<h5 class="card-header">
+<a href="/html/TestOS移植K210开发板.html">TestOS移植K210开发板</a>
+</h5>
+<div class="card-body">
+<h5 class="card-title">摘要：</h5>
+<p class="card-text">概述 本文介绍前六个部分在移植K210开发板遇到的问题，第七章比较麻烦，就放弃了。这里选用K210开发板的原因是rCore教程提供了K210的使用教程，同时RustSBI也提供了相应的适配，使得我能够在几乎不改变内核代码的情况下进行移植，所以还是感谢rCore教程的作者、RustSBI的作者洛佳大佬</p>
 <h6 class="card-subtitle text-muted text-right">2021年6月17日</h6>
 </div>
 </div>
@@ -129,17 +140,6 @@
 <h5 class="card-title">摘要：</h5>
 <p class="card-text">概述 最近看到清华的一个操作系统教程rCore-Tutorial-Book，和其他实验不同的是，这个教程介绍的是完全从零开始实现一个Riscv操作系统。教程所用的编程语言是Rust，但是我的Rust水平只到勉强能看懂代码的地步，所以打算用C语言照着实现一遍。虽然说是照着实现，但不同的语言还是会带来不</p>
 <h6 class="card-subtitle text-muted text-right">2021年2月24日</h6>
-</div>
-</div>
-
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/MIT-6.S081-2020实验（xv6-riscv64）十一：net.html">MIT-6.S081-2020实验（xv6-riscv64）十一：net</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">实验文档 概述 这次实验主要实现网卡驱动的一部分，文档内容非常长，实际实验不算难，跟着hint就行，但还是需要对整体框架有一定的了解。 内容 发送函数： int e1000_transmit(struct mbuf *m) { acquire(&amp;amp;e1000_lock); uint32 index =</p>
-<h6 class="card-subtitle text-muted text-right">2021年1月13日</h6>
 </div>
 </div>
 
