@@ -35,6 +35,39 @@
 <div class="col-9" id="Bloglist">
 <div class="card shadow mb-4">
 <h5 class="card-header">
+<a href="/html/rCore-Tutorial-Book-v3学习笔记（三）.html">rCore-Tutorial-Book-v3学习笔记（三）</a>
+</h5>
+<div class="card-body">
+<h5 class="card-title">摘要：</h5>
+<p class="card-text">概述 第三个部分是实现一个分时多任务的系统，也就是能够在多个任务运行期间进行切换，让一个程序在等待IO时其他程序能执行而不是傻等。虽然和并行有点类似，但目前使用到的都只有一个CPU，任何时候都只有一个程序在执行。分时多任务有两种：一种是程序自己主动让出控制权，有点类似于编程语言中协程的概念；一种是由</p>
+<h6 class="card-subtitle text-muted text-right">2021年2月26日</h6>
+</div>
+</div>
+
+<div class="card shadow mb-4">
+<h5 class="card-header">
+<a href="/html/rCore-Tutorial-Book-v3学习笔记（二）.html">rCore-Tutorial-Book-v3学习笔记（二）</a>
+</h5>
+<div class="card-body">
+<h5 class="card-title">摘要：</h5>
+<p class="card-text">概述 第二部分是实现一个批处理系统。批处理系统顾名思义就是能输入好几个程序，然后对这些程序依次执行的操作系统。重点不是在批处理，而是在输入用户程序，这就要求用户程序和我们的系统有一种隔离，所以需要在这一部分的系统实现用户态和内核态的切换。 内容 这一部分的代码文件比上一部分多了好几个，大致说明一下功</p>
+<h6 class="card-subtitle text-muted text-right">2021年2月24日</h6>
+</div>
+</div>
+
+<div class="card shadow mb-4">
+<h5 class="card-header">
+<a href="/html/rCore-Tutorial-Book-v3学习笔记（一）.html">rCore-Tutorial-Book-v3学习笔记（一）</a>
+</h5>
+<div class="card-body">
+<h5 class="card-title">摘要：</h5>
+<p class="card-text">概述 最近看到清华的一个操作系统教程rCore-Tutorial-Book，和其他实验不同的是，这个教程介绍的是完全从零开始实现一个Riscv操作系统。教程所用的编程语言是Rust，但是我的Rust水平只到勉强能看懂代码的地步，所以打算用C语言照着实现一遍。虽然说是照着实现，但不同的语言还是会带来不</p>
+<h6 class="card-subtitle text-muted text-right">2021年2月24日</h6>
+</div>
+</div>
+
+<div class="card shadow mb-4">
+<h5 class="card-header">
 <a href="/html/MIT-6.S081-2020实验（xv6-riscv64）十一：net.html">MIT-6.S081-2020实验（xv6-riscv64）十一：net</a>
 </h5>
 <div class="card-body">
@@ -107,39 +140,6 @@
 <h5 class="card-title">摘要：</h5>
 <p class="card-text">实验文档 概述 这次实验主要实现Lazy allocation的功能，即进程在动态分配内存的时候先不分配，等到要用到发生缺页中断的时候再实际分配，核心是实现缺页中断的处理。xv6的文档介绍了三种缺页中断的应用，第一为Copy on write，即fork的时候先不复制内存，等到要用到发生缺页中断的时</p>
 <h6 class="card-subtitle text-muted text-right">2021年1月2日</h6>
-</div>
-</div>
-
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/MIT-6.S081-2020实验（xv6-riscv64）四：traps.html">MIT-6.S081-2020实验（xv6-riscv64）四：traps</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">实验文档 概述 这次实验内容比较分散，总体来说难度不是太高。 内容 Backtrace 要求在内核中对程序的调用栈进行遍历，输出每一级调用的返回地址。首先我们分析Riscv的栈帧结构，查看call.asm中main函数的汇编代码： void main(void) { 1c: 1141 addi sp</p>
-<h6 class="card-subtitle text-muted text-right">2021年1月1日</h6>
-</div>
-</div>
-
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/MIT-6.S081-2020实验（xv6-riscv64）三：pgtbl.html">MIT-6.S081-2020实验（xv6-riscv64）三：pgtbl</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">实验文档 概述 这次实验主要涉及虚拟内存的管理，重点是和页表相关的操作。个人觉得难点主要还是在调试方面，因为一旦写到什么非法内存或者哪里内存泄漏了，基本只能抓瞎。我也是参考了github上别人的代码才最终完成了实验。 内容 Print a page table 这个任务比较简单，只要仿照freewa</p>
-<h6 class="card-subtitle text-muted text-right">2020年12月31日</h6>
-</div>
-</div>
-
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/MIT-6.S081-2020实验（xv6-riscv64）二：syscall.html">MIT-6.S081-2020实验（xv6-riscv64）二：syscall</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">实验文档 概述 实验二主要涉及对系统函数调用过程的理解以及尝试自己手动添加系统调用。首先需要大致了解一下xv6系统调用的过程，这里以fork为例： 根据这个过程，就很容易完成本次实验了。 内容 trace 该实验需要打印其他系统调用的信息。根据上面的分析和文档说明，首先需要给user.h、usys.</p>
-<h6 class="card-subtitle text-muted text-right">2020年12月31日</h6>
 </div>
 </div>
 

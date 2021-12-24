@@ -35,6 +35,39 @@
 <div class="col-9" id="Bloglist">
 <div class="card shadow mb-4">
 <h5 class="card-header">
+<a href="/html/SpinalWorkshop实验笔记（三）.html">SpinalWorkshop实验笔记（三）</a>
+</h5>
+<div class="card-body">
+<h5 class="card-title">摘要：</h5>
+<p class="card-text">概述 本文涉及Stream、WavePlayer、UDP、Mandelbrot四个实验。实验地址 最后的这四个实验中的三个都和Stream类息息相关。Stream类最关键的是要掌握它的两个特性：需要握手和实时变化。 需要握手指的是Stream的传输数据需要其valid信号和ready信号均为真，而这</p>
+<h6 class="card-subtitle text-muted text-right">2021年12月22日</h6>
+</div>
+</div>
+
+<div class="card shadow mb-4">
+<h5 class="card-header">
+<a href="/html/SpinalWorkshop实验笔记（二）.html">SpinalWorkshop实验笔记（二）</a>
+</h5>
+<div class="card-body">
+<h5 class="card-title">摘要：</h5>
+<p class="card-text">概述 本文涉及Function、Apb3Decoder、Timer、BlackBoxAndClock四个实验。实验地址 内容 Function 本实验的电路分两个阶段： 识别字符串：用从Flow中获得的字符匹配参数字符串 获得数据：匹配成功后，从字符串后面获得一定量的字节构成一个整数输出 难点在于识</p>
+<h6 class="card-subtitle text-muted text-right">2021年12月17日</h6>
+</div>
+</div>
+
+<div class="card shadow mb-4">
+<h5 class="card-header">
+<a href="/html/SpinalWorkshop实验笔记（一）.html">SpinalWorkshop实验笔记（一）</a>
+</h5>
+<div class="card-body">
+<h5 class="card-title">摘要：</h5>
+<p class="card-text">概述 最近在学习SpinalHDL，在github上看到了SpinalHDL实验，于是试着做了做。虽然这些实验的答案在仓库里给出来了，但我是FPGA初学者，虽然会一点verilog却对各种总线一窍不通，也不了解scala，所以即使要理解这些实验也花费了一番功夫。在这里记录一下我做这些实验的感想。本文</p>
+<h6 class="card-subtitle text-muted text-right">2021年12月15日</h6>
+</div>
+</div>
+
+<div class="card shadow mb-4">
+<h5 class="card-header">
 <a href="/html/PYNQ开发板上使用USB声卡+OSS兼容层播放音频.html">PYNQ开发板上使用USB声卡+OSS兼容层播放音频</a>
 </h5>
 <div class="card-body">
@@ -107,39 +140,6 @@
 <h5 class="card-title">摘要：</h5>
 <p class="card-text">概述 第四个部分是实现系统的内存管理，核心当然就是虚拟地址和物理地址空间的管理了。xv6实验三让我有了心理阴影，所以在实验前我先整理了一下源代码，把项目的结构弄清晰，后面有错的时候方便查找。然后这一章节主要分成四个部分，第一部分是给内核代码添加动态内存分配支持，使得内核可以用上链表、可变数组等数据结</p>
 <h6 class="card-subtitle text-muted text-right">2021年3月20日</h6>
-</div>
-</div>
-
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/rCore-Tutorial-Book-v3学习笔记（三）.html">rCore-Tutorial-Book-v3学习笔记（三）</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">概述 第三个部分是实现一个分时多任务的系统，也就是能够在多个任务运行期间进行切换，让一个程序在等待IO时其他程序能执行而不是傻等。虽然和并行有点类似，但目前使用到的都只有一个CPU，任何时候都只有一个程序在执行。分时多任务有两种：一种是程序自己主动让出控制权，有点类似于编程语言中协程的概念；一种是由</p>
-<h6 class="card-subtitle text-muted text-right">2021年2月26日</h6>
-</div>
-</div>
-
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/rCore-Tutorial-Book-v3学习笔记（二）.html">rCore-Tutorial-Book-v3学习笔记（二）</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">概述 第二部分是实现一个批处理系统。批处理系统顾名思义就是能输入好几个程序，然后对这些程序依次执行的操作系统。重点不是在批处理，而是在输入用户程序，这就要求用户程序和我们的系统有一种隔离，所以需要在这一部分的系统实现用户态和内核态的切换。 内容 这一部分的代码文件比上一部分多了好几个，大致说明一下功</p>
-<h6 class="card-subtitle text-muted text-right">2021年2月24日</h6>
-</div>
-</div>
-
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/rCore-Tutorial-Book-v3学习笔记（一）.html">rCore-Tutorial-Book-v3学习笔记（一）</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">概述 最近看到清华的一个操作系统教程rCore-Tutorial-Book，和其他实验不同的是，这个教程介绍的是完全从零开始实现一个Riscv操作系统。教程所用的编程语言是Rust，但是我的Rust水平只到勉强能看懂代码的地步，所以打算用C语言照着实现一遍。虽然说是照着实现，但不同的语言还是会带来不</p>
-<h6 class="card-subtitle text-muted text-right">2021年2月24日</h6>
 </div>
 </div>
 
