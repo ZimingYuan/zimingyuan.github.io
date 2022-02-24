@@ -1,148 +1,129 @@
 <!DOCTYPE html>
-<!--
-==============================================================================
-           "GitHub HTML5 Pandoc Template" v2.2 — by Tristano Ajmone
-==============================================================================
-Copyright © Tristano Ajmone, 2017-2020, MIT License (MIT). Project's home:
-- https://github.com/tajmone/pandoc-goodies
-The CSS in this template reuses source code taken from the following projects:
-- GitHub Markdown CSS: Copyright © Sindre Sorhus, MIT License (MIT):
-  https://github.com/sindresorhus/github-markdown-css
-- Primer CSS: Copyright © 2016-2017 GitHub Inc., MIT License (MIT):
-  http://primercss.io/
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The MIT License
-Copyright (c) Tristano Ajmone, 2017-2020 (github.com/tajmone/pandoc-goodies)
-Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
-Copyright (c) 2017 GitHub Inc.
-"GitHub Pandoc HTML5 Template" is Copyright (c) Tristano Ajmone, 2017-2020,
-released under the MIT License (MIT); it contains readaptations of substantial
-portions of the following third party softwares:
-(1) "GitHub Markdown CSS", Copyright (c) Sindre Sorhus, MIT License (MIT).
-(2) "Primer CSS", Copyright (c) 2016 GitHub Inc., MIT License (MIT).
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-==============================================================================-->
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" data-theme="tufte">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/extra/classless.css" />
+<style>
+html[data-theme='tufte']{
+    --rem: 15px;
+    --navpos: absolute;
+    --width: 70rem;
+    --font-p: 1.4rem/2 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-h: 1.4rem/1.5 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --ornament: "";
+    --border: 1px solid var(--cmed);
+    /* foreground   | background color */
+    --cfg:   #111;    --cbg:    #fbf7ec;
+    --cdark: #111;    --clight: #fbf7ec;
+    --cmed: #b4d5fe;
+    --clink: #111;
+    --cemph: #111;
+}
+</style>
+  <script>
+      let search = () => {
+          let word = document.querySelector('input').value;
+          if (word.length == 0) {
+              alert('搜索内容不能为空！');
+          } else {
+              location.href = '/search.html?' + word;
+          }
+      };
+  </script>
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <title>SpinalWorkshop实验笔记（三）</title>
-  <style type="text/css">
-@charset "UTF-8";.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#24292e;font-family:-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:16px;line-height:1.5;word-wrap:break-word;box-sizing:border-box;min-width:200px;max-width:980px;margin:0 auto;padding:45px}.markdown-body a{color:#0366d6;background-color:transparent;text-decoration:none;-webkit-text-decoration-skip:objects}.markdown-body a:active,.markdown-body a:hover{outline-width:0}.markdown-body a:hover{text-decoration:underline}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body strong{font-weight:600}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1{font-size:2em;margin:.67em 0;padding-bottom:.3em;border-bottom:1px solid #eaecef}.markdown-body h2{padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid #eaecef}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#6a737d}.markdown-body img{border-style:none}.markdown-body svg:not(:root){overflow:hidden}.markdown-body hr{box-sizing:content-box;height:.25em;margin:24px 0;padding:0;overflow:hidden;background-color:#e1e4e8;border:0}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body input{margin:0;overflow:visible;font:inherit;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=checkbox]{box-sizing:border-box;padding:0}.markdown-body *{box-sizing:border-box}.markdown-body blockquote{margin:0}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dd{margin-left:0}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:600}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace}.markdown-body pre{font:12px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;word-wrap:normal}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote{padding:0 1em;color:#6a737d;border-left:.25em solid #dfe2e5}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body table{display:block;width:100%;overflow:auto;border-spacing:0;border-collapse:collapse}.markdown-body table th{font-weight:600}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #dfe2e5}.markdown-body table tr{background-color:#fff;border-top:1px solid #c6cbd1}.markdown-body table tr:nth-child(2n){background-color:#f6f8fa}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body code{padding:.2em 0;margin:0;font-size:85%;background-color:rgba(27,31,35,.05);border-radius:3px}.markdown-body code::after,.markdown-body code::before{letter-spacing:-.2em;content:" "}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f6f8fa;border-radius:3px}.markdown-body pre code{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code::after,.markdown-body pre code::before{content:normal}.markdown-body .full-commit .btn-outline:not(:disabled):hover{color:#005cc5;border-color:#005cc5}.markdown-body kbd{box-shadow:inset 0 -1px 0 #959da5;display:inline-block;padding:3px 5px;font:11px/10px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;color:#444d56;vertical-align:middle;background-color:#fcfcfc;border:1px solid #c6cbd1;border-bottom-color:#959da5;border-radius:3px;box-shadow:inset 0 -1px 0 #959da5}.markdown-body :checked+.radio-label{position:relative;z-index:1;border-color:#0366d6}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item+.task-list-item{margin-top:3px}.markdown-body .task-list-item input{margin:0 .2em .25em -1.6em;vertical-align:middle}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.Alert,.Error,.Note,.Success,.Warning{padding:11px;margin-bottom:24px;border-style:solid;border-width:1px;border-radius:4px}.Alert p,.Error p,.Note p,.Success p,.Warning p{margin-top:0}.Alert p:last-child,.Error p:last-child,.Note p:last-child,.Success p:last-child,.Warning p:last-child{margin-bottom:0}.Alert{color:#246;background-color:#e2eef9;border-color:#bac6d3}.Warning{color:#4c4a42;background-color:#fff9ea;border-color:#dfd8c2}.Error{color:#911;background-color:#fcdede;border-color:#d2b2b2}.Success{color:#22662c;background-color:#e2f9e5;border-color:#bad3be}.Note{color:#2f363d;background-color:#f6f8fa;border-color:#d5d8da}.Alert h1,.Alert h2,.Alert h3,.Alert h4,.Alert h5,.Alert h6{color:#246;margin-bottom:0}.Warning h1,.Warning h2,.Warning h3,.Warning h4,.Warning h5,.Warning h6{color:#4c4a42;margin-bottom:0}.Error h1,.Error h2,.Error h3,.Error h4,.Error h5,.Error h6{color:#911;margin-bottom:0}.Success h1,.Success h2,.Success h3,.Success h4,.Success h5,.Success h6{color:#22662c;margin-bottom:0}.Note h1,.Note h2,.Note h3,.Note h4,.Note h5,.Note h6{color:#2f363d;margin-bottom:0}.Alert h1:first-child,.Alert h2:first-child,.Alert h3:first-child,.Alert h4:first-child,.Alert h5:first-child,.Alert h6:first-child,.Error h1:first-child,.Error h2:first-child,.Error h3:first-child,.Error h4:first-child,.Error h5:first-child,.Error h6:first-child,.Note h1:first-child,.Note h2:first-child,.Note h3:first-child,.Note h4:first-child,.Note h5:first-child,.Note h6:first-child,.Success h1:first-child,.Success h2:first-child,.Success h3:first-child,.Success h4:first-child,.Success h5:first-child,.Success h6:first-child,.Warning h1:first-child,.Warning h2:first-child,.Warning h3:first-child,.Warning h4:first-child,.Warning h5:first-child,.Warning h6:first-child{margin-top:0}h1.title,p.subtitle{text-align:center}h1.title.followed-by-subtitle{margin-bottom:0}p.subtitle{font-size:1.5em;font-weight:600;line-height:1.25;margin-top:0;margin-bottom:16px;padding-bottom:.3em}div.line-block{white-space:pre-line}
-  </style>
-  <style type="text/css">code{white-space: pre;}</style>
-  <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-  </style>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
-<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
-<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.staticfile.org/popper.js/1.12.9/popper.min.js" ></script>
-<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js" ></script>
-<link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">ZimingYuan的博客</a>
-        <div class="navbar-collapse">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/index.html">首页</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/html/随笔.html">随笔</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/html/CSP模板.html">CSP模板</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<article class="markdown-body">
-<header>
+    <nav>
+        <ul>
+            <li><big>ZimingYuan的博客</big></li>
+            <li><a href="/index.html">首页</a></li>
+            <li><a href="/html/随笔.html">随笔</a></li>
+            <li><a href="/html/CSP模板.html">CSP模板</a></li>
+            <li class="float-right sticky"><button onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="text" placeholder="搜索"></li>
+        </ul>
+    </nav>
+<header id="title-block-header">
 <h1 class="title">SpinalWorkshop实验笔记（三）</h1>
+<hr>
 </header>
 <h3 id="概述">概述</h3>
 <p>本文涉及Stream、WavePlayer、UDP、Mandelbrot四个实验。<a href="https://github.com/SpinalHDL/SpinalWorkshop">实验地址</a></p>
@@ -155,46 +136,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 id="内容">内容</h3>
 <h4 id="stream">Stream</h4>
 <p>这个实验比较简单，主要是介绍用流载荷读取内存和两个流的同步可以通过API完成。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  mem<span class="op">.</span><span class="fu">write</span><span class="op">(</span>io<span class="op">.</span>memWrite<span class="op">.</span>payload<span class="op">.</span>address<span class="op">,</span> io<span class="op">.</span>memWrite<span class="op">.</span>payload<span class="op">.</span>data<span class="op">,</span> io<span class="op">.</span>memWrite<span class="op">.</span>valid<span class="op">)</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> outA <span class="op">=</span> mem<span class="op">.</span><span class="fu">streamReadSync</span><span class="op">(</span>io<span class="op">.</span>cmdA<span class="op">)</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> joinAB <span class="op">=</span> StreamJoin<span class="op">.</span><span class="fu">arg</span><span class="op">(</span>outA<span class="op">,</span> io<span class="op">.</span>cmdB<span class="op">)</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  io<span class="op">.</span>rsp <span class="op">&lt;&lt;</span> joinAB<span class="op">.</span><span class="fu">translateWith</span><span class="op">(</span>outA<span class="op">.</span>payload <span class="op">^</span> io<span class="op">.</span>cmdB<span class="op">.</span>payload<span class="op">)</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb1-1"><a href="#cb1-1"></a>  mem.<span class="fu">write</span>(io.<span class="fu">memWrite</span>.<span class="fu">payload</span>.<span class="fu">address</span>, io.<span class="fu">memWrite</span>.<span class="fu">payload</span>.<span class="fu">data</span>, io.<span class="fu">memWrite</span>.<span class="fu">valid</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  <span class="kw">val</span> outA = mem.<span class="fu">streamReadSync</span>(io.<span class="fu">cmdA</span>)</span>
+<span id="cb1-3"><a href="#cb1-3"></a>  <span class="kw">val</span> joinAB = StreamJoin.<span class="fu">arg</span>(outA, io.<span class="fu">cmdB</span>)</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  io.<span class="fu">rsp</span> &lt;&lt; joinAB.<span class="fu">translateWith</span>(outA.<span class="fu">payload</span> ^ io.<span class="fu">cmdB</span>.<span class="fu">payload</span>)</span></code></pre></div>
 <p>这个&lt;&lt;是一个语法糖，意思是将右边stream的valid和payload连到左边，左边的ready连到右边。</p>
 <p>如果不用API，需要考虑时序，即mem需要一个时钟周期读取，因此A端口的valid信号为真后，需要过一个时钟周期输出端口才能变为valid。</p>
 <h4 id="waveplayer">WavePlayer</h4>
 <p>这个实验单看教程完全懵逼，实际上是要实现一个正弦波发生器。在phase阶段生成横坐标，这个横坐标变换率是rate；在sample阶段生成正弦波，为了效率正弦值先存在rom里面了，所以这一阶段主要做的是用横坐标查表，注意相近的横坐标取相同的正弦值；filter阶段对正弦波进行滤波，用的是一阶低通滤波，网上可以查到公式，主要是解一个微分方程，用数值方法转换成一个迭代的过程。</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> phase <span class="op">=</span> <span class="kw">new</span> Area<span class="op">{</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> run <span class="op">=</span> Bool  <span class="co">//Driven later by a WavePlayerMapper (see WavePlayerMapper implementation)</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> rate <span class="op">=</span> <span class="fu">UInt</span><span class="op">(</span>phaseWidth bits<span class="op">)</span> <span class="co">//Driven later by a WavePlayerMapper</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="co">//</span><span class="al">TODO</span><span class="co"> phase</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> value <span class="op">=</span> <span class="fu">Reg</span><span class="op">(</span>rate<span class="op">)</span> <span class="fu">init</span><span class="op">(</span><span class="dv">0</span><span class="op">)</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">when</span> <span class="op">(</span>run<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>      value <span class="op">:=</span> value <span class="op">+</span> rate</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> sampler <span class="op">=</span> <span class="kw">new</span> Area<span class="op">{</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">//</span><span class="al">TODO</span><span class="co"> Rom definition with a sinus + it sampling</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> sampleCount <span class="op">=</span> <span class="dv">1</span> <span class="op">&lt;&lt;</span> sampleCountLog2</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> romSamples <span class="op">=</span> <span class="cf">for</span> <span class="op">(</span>i <span class="op">&lt;-</span> <span class="dv">0</span> until sampleCount<span class="op">)</span> <span class="cf">yield</span> <span class="op">{</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>      <span class="kw">val</span> sin <span class="op">=</span> Math<span class="op">.</span><span class="fu">sin</span><span class="op">(</span><span class="dv">2</span> <span class="op">*</span> Math<span class="op">.</span>PI <span class="op">*</span> i <span class="op">/</span> sampleCount<span class="op">)</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>      <span class="fu">BigInt</span><span class="op">(((</span>sin <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">/</span> <span class="dv">2</span> <span class="op">*</span> <span class="op">((</span><span class="dv">1</span> <span class="op">&lt;&lt;</span> sampleWidth<span class="op">)</span> <span class="op">-</span> <span class="dv">1</span><span class="op">)).</span>toLong<span class="op">)</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> rom <span class="op">=</span> <span class="fu">Mem</span><span class="op">(</span><span class="fu">UInt</span><span class="op">(</span>sampleWidth bits<span class="op">),</span> sampleCount<span class="op">)</span> <span class="fu">initBigInt</span><span class="op">(</span>romSamples<span class="op">)</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> sample <span class="op">=</span> rom<span class="op">.</span><span class="fu">readAsync</span><span class="op">(</span>phase<span class="op">.</span>value <span class="op">&gt;&gt;</span> <span class="op">(</span>phaseWidth <span class="op">-</span> sampleCountLog2<span class="op">))</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> filter <span class="op">=</span> <span class="kw">new</span> Area<span class="op">{</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> bypass <span class="op">=</span> Bool <span class="co">//Driven later by a WavePlayerMapper</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> coef <span class="op">=</span> <span class="fu">UInt</span><span class="op">(</span>filterCoefWidth bits<span class="op">)</span> <span class="co">//Driven later by a WavePlayerMapper</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> value <span class="op">=</span> Sample <span class="co">//Output value of the filter Area</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    <span class="co">//</span><span class="al">TODO</span><span class="co"> first order filter + bypass logic</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> f <span class="op">=</span> <span class="fu">Reg</span><span class="op">(</span>Sample<span class="op">)</span> <span class="fu">init</span><span class="op">(</span><span class="dv">0</span><span class="op">)</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>    f <span class="op">:=</span> f <span class="op">-</span> <span class="op">((</span>f <span class="op">*</span> coef<span class="op">)</span> <span class="op">&gt;&gt;</span> filterCoefWidth<span class="op">)</span> <span class="op">+</span> <span class="op">((</span>sampler<span class="op">.</span>sample <span class="op">*</span> coef<span class="op">)</span> <span class="op">&gt;&gt;</span> filterCoefWidth<span class="op">)</span></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>    value <span class="op">:=</span> bypass <span class="op">?</span> sampler<span class="op">.</span>sample <span class="op">|</span> f</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb2-1"><a href="#cb2-1"></a>  <span class="kw">val</span> phase = <span class="kw">new</span> Area{</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="kw">val</span> run = Bool  <span class="co">//Driven later by a WavePlayerMapper (see WavePlayerMapper implementation)</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>    <span class="kw">val</span> rate = <span class="fu">UInt</span>(phaseWidth bits) <span class="co">//Driven later by a WavePlayerMapper</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>    <span class="co">//TODO phase</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>    <span class="kw">val</span> value = <span class="fu">Reg</span>(rate) <span class="fu">init</span>(<span class="dv">0</span>)</span>
+<span id="cb2-6"><a href="#cb2-6"></a>    <span class="fu">when</span> (run) {</span>
+<span id="cb2-7"><a href="#cb2-7"></a>      value := value + rate</span>
+<span id="cb2-8"><a href="#cb2-8"></a>    }</span>
+<span id="cb2-9"><a href="#cb2-9"></a></span>
+<span id="cb2-10"><a href="#cb2-10"></a>  }</span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a>  <span class="kw">val</span> sampler = <span class="kw">new</span> Area{</span>
+<span id="cb2-13"><a href="#cb2-13"></a>    <span class="co">//TODO Rom definition with a sinus + it sampling</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a>    <span class="kw">val</span> sampleCount = <span class="dv">1</span> &lt;&lt; sampleCountLog2</span>
+<span id="cb2-15"><a href="#cb2-15"></a>    <span class="kw">val</span> romSamples = <span class="kw">for</span> (i &lt;- <span class="dv">0</span> until sampleCount) <span class="kw">yield</span> {</span>
+<span id="cb2-16"><a href="#cb2-16"></a>      <span class="kw">val</span> sin = Math.<span class="fu">sin</span>(<span class="dv">2</span> * Math.<span class="fu">PI</span> * i / sampleCount)</span>
+<span id="cb2-17"><a href="#cb2-17"></a>      <span class="fu">BigInt</span>(((sin + <span class="dv">1</span>) / <span class="dv">2</span> * ((<span class="dv">1</span> &lt;&lt; sampleWidth) - <span class="dv">1</span>)).<span class="fu">toLong</span>)</span>
+<span id="cb2-18"><a href="#cb2-18"></a>    }</span>
+<span id="cb2-19"><a href="#cb2-19"></a>    <span class="kw">val</span> rom = <span class="fu">Mem</span>(<span class="fu">UInt</span>(sampleWidth bits), sampleCount) <span class="fu">initBigInt</span>(romSamples)</span>
+<span id="cb2-20"><a href="#cb2-20"></a>    <span class="kw">val</span> sample = rom.<span class="fu">readAsync</span>(phase.<span class="fu">value</span> &gt;&gt; (phaseWidth - sampleCountLog2))</span>
+<span id="cb2-21"><a href="#cb2-21"></a>  }</span>
+<span id="cb2-22"><a href="#cb2-22"></a></span>
+<span id="cb2-23"><a href="#cb2-23"></a>  <span class="kw">val</span> filter = <span class="kw">new</span> Area{</span>
+<span id="cb2-24"><a href="#cb2-24"></a>    <span class="kw">val</span> bypass = Bool <span class="co">//Driven later by a WavePlayerMapper</span></span>
+<span id="cb2-25"><a href="#cb2-25"></a>    <span class="kw">val</span> coef = <span class="fu">UInt</span>(filterCoefWidth bits) <span class="co">//Driven later by a WavePlayerMapper</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a>    <span class="kw">val</span> value = Sample <span class="co">//Output value of the filter Area</span></span>
+<span id="cb2-27"><a href="#cb2-27"></a>    <span class="co">//TODO first order filter + bypass logic</span></span>
+<span id="cb2-28"><a href="#cb2-28"></a>    <span class="kw">val</span> f = <span class="fu">Reg</span>(Sample) <span class="fu">init</span>(<span class="dv">0</span>)</span>
+<span id="cb2-29"><a href="#cb2-29"></a>    f := f - ((f * coef) &gt;&gt; filterCoefWidth) + ((sampler.<span class="fu">sample</span> * coef) &gt;&gt; filterCoefWidth)</span>
+<span id="cb2-30"><a href="#cb2-30"></a>    value := bypass ? sampler.<span class="fu">sample</span> | f</span>
+<span id="cb2-31"><a href="#cb2-31"></a>  }</span>
+<span id="cb2-32"><a href="#cb2-32"></a>}</span></code></pre></div>
 <p>注意三点：</p>
 <ol type="1">
 <li>sampler里生成正弦值时需要对正弦值映射到0到1再乘采样最大值，众所周知正弦值是-1到1，所以是先加1再除以2。</li>
@@ -202,306 +183,302 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>教程最后一句话说公式里给出的coef是定点数（不是整数），但为什么程序端口里给出的是整数呢？原因是端口里的coef是原来的coef左移filterCoefWidth得到的，就像我们计算1.23+4.56这样的数可以计算123+456再除100一样。所以我们计算f的时候因为f乘左移后的coef足够大，所以可以在计算过程中直接把filterCoefWidth右移回来。</li>
 </ol>
 <p>本程序中没有输入输出端口，都是由总线通过地址控制寄存器实现的，前面已经有实验介绍过了busSlaveFactory的使用方法，这里不再赘述：</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">//Area capable to map a WavePlayer on a BusSlaveFactory</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="fu">WavePlayerMapper</span><span class="op">(</span>bus <span class="op">:</span> BusSlaveFactory<span class="op">,</span> wavePlayer <span class="op">:</span> WavePlayer<span class="op">)</span> <span class="kw">extends</span> Area<span class="op">{</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  bus<span class="op">.</span><span class="fu">driveAndRead</span><span class="op">(</span>wavePlayer<span class="op">.</span>phase<span class="op">.</span>run<span class="op">,</span> address <span class="op">=</span> <span class="bn">0x00</span><span class="op">)</span> <span class="fu">init</span><span class="op">(</span>False<span class="op">)</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">//</span><span class="al">TODO</span><span class="co"> phase.rate, phase.value, filter.bypass, filter.coef mapping</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  bus<span class="op">.</span><span class="fu">drive</span><span class="op">(</span>wavePlayer<span class="op">.</span>phase<span class="op">.</span>rate<span class="op">,</span> address <span class="op">=</span> <span class="bn">0x04</span><span class="op">)</span> <span class="fu">init</span><span class="op">(</span><span class="dv">0</span><span class="op">)</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  bus<span class="op">.</span><span class="fu">read</span><span class="op">(</span>wavePlayer<span class="op">.</span>phase<span class="op">.</span>value<span class="op">,</span> address <span class="op">=</span> <span class="bn">0x08</span><span class="op">)</span> <span class="fu">init</span><span class="op">(</span><span class="dv">0</span><span class="op">)</span>                                                             bus<span class="op">.</span><span class="fu">driveAndRead</span><span class="op">(</span>wavePlayer<span class="op">.</span>filter<span class="op">.</span>bypass<span class="op">,</span> address <span class="op">=</span> <span class="bn">0x10</span><span class="op">)</span> <span class="fu">init</span><span class="op">(</span>True<span class="op">)</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  bus<span class="op">.</span><span class="fu">drive</span><span class="op">(</span>wavePlayer<span class="op">.</span>filter<span class="op">.</span>coef<span class="op">,</span> address <span class="op">=</span> <span class="bn">0x14</span><span class="op">)</span> <span class="fu">init</span><span class="op">(</span><span class="dv">0</span><span class="op">)</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">//Area capable to map a WavePlayer on a BusSlaveFactory</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">class</span> <span class="fu">WavePlayerMapper</span>(bus : BusSlaveFactory, wavePlayer : WavePlayer) <span class="kw">extends</span> Area{</span>
+<span id="cb3-3"><a href="#cb3-3"></a>  bus.<span class="fu">driveAndRead</span>(wavePlayer.<span class="fu">phase</span>.<span class="fu">run</span>, address = <span class="bn">0x00</span>) <span class="fu">init</span>(False)</span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="co">//TODO phase.rate, phase.value, filter.bypass, filter.coef mapping</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>  bus.<span class="fu">drive</span>(wavePlayer.<span class="fu">phase</span>.<span class="fu">rate</span>, address = <span class="bn">0x04</span>) <span class="fu">init</span>(<span class="dv">0</span>)</span>
+<span id="cb3-6"><a href="#cb3-6"></a>  bus.<span class="fu">read</span>(wavePlayer.<span class="fu">phase</span>.<span class="fu">value</span>, address = <span class="bn">0x08</span>) <span class="fu">init</span>(<span class="dv">0</span>)                                                             bus.<span class="fu">driveAndRead</span>(wavePlayer.<span class="fu">filter</span>.<span class="fu">bypass</span>, address = <span class="bn">0x10</span>) <span class="fu">init</span>(True)</span>
+<span id="cb3-7"><a href="#cb3-7"></a>  bus.<span class="fu">drive</span>(wavePlayer.<span class="fu">filter</span>.<span class="fu">coef</span>, address = <span class="bn">0x14</span>) <span class="fu">init</span>(<span class="dv">0</span>)</span>
+<span id="cb3-8"><a href="#cb3-8"></a>}</span></code></pre></div>
 <h4 id="udp">UDP</h4>
 <p>这个实验有两个注意点，一个是stream的使用，另一个是两个端口的同步问题。关键是后者，传过来包的头信息和传过来包的内容是两个stream分别控制的，而且包的内容经常不止一个字节，所以要接收多次；而stream又有一个特性，就是只要valid和ready同为真，对发送者来说就是载荷已经被接收了，可能就会发送下一条信息。所以如果两个stream都是“有包就收”，就会导致包的内容和包的头信息不同步的问题。正确方法是先接收包内容，直到接收完，再接收包的头信息：</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> idle <span class="op">:</span> State <span class="op">=</span> <span class="kw">new</span> State <span class="kw">with</span> EntryPoint<span class="op">{</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>      whenIsActive<span class="op">{</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>        <span class="co">// </span><span class="al">TODO</span><span class="co"> Check io.rx.cmd dst port</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">when</span> <span class="op">(</span>io<span class="op">.</span>rx<span class="op">.</span>data<span class="op">.</span>valid<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>          io<span class="op">.</span>rx<span class="op">.</span>data<span class="op">.</span>ready<span class="op">.</span>set</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>          <span class="fu">when</span> <span class="op">(</span>rxFirst<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>            rxFirstData <span class="op">:=</span> io<span class="op">.</span>rx<span class="op">.</span>data<span class="op">.</span>payload<span class="op">.</span>fragment</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>            rxFirst<span class="op">.</span>clear</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>          <span class="op">}</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>          <span class="fu">when</span> <span class="op">(</span>io<span class="op">.</span>rx<span class="op">.</span>data<span class="op">.</span>payload<span class="op">.</span>last<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>            ip <span class="op">:=</span> io<span class="op">.</span>rx<span class="op">.</span>cmd<span class="op">.</span>payload<span class="op">.</span>ip</span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>            srcPort <span class="op">:=</span> io<span class="op">.</span>rx<span class="op">.</span>cmd<span class="op">.</span>payload<span class="op">.</span>srcPort</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>            <span class="fu">goto</span><span class="op">(</span>helloHeader<span class="op">)</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>            io<span class="op">.</span>rx<span class="op">.</span>cmd<span class="op">.</span>ready<span class="op">.</span>set</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>          <span class="op">}</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb4-1"><a href="#cb4-1"></a>    <span class="kw">val</span> idle : State = <span class="kw">new</span> State <span class="kw">with</span> EntryPoint{</span>
+<span id="cb4-2"><a href="#cb4-2"></a>      whenIsActive{</span>
+<span id="cb4-3"><a href="#cb4-3"></a>        <span class="co">// TODO Check io.rx.cmd dst port</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>        <span class="fu">when</span> (io.<span class="fu">rx</span>.<span class="fu">data</span>.<span class="fu">valid</span>) {</span>
+<span id="cb4-5"><a href="#cb4-5"></a>          io.<span class="fu">rx</span>.<span class="fu">data</span>.<span class="fu">ready</span>.<span class="fu">set</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>          <span class="fu">when</span> (rxFirst) {</span>
+<span id="cb4-7"><a href="#cb4-7"></a>            rxFirstData := io.<span class="fu">rx</span>.<span class="fu">data</span>.<span class="fu">payload</span>.<span class="fu">fragment</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>            rxFirst.<span class="fu">clear</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>          }</span>
+<span id="cb4-10"><a href="#cb4-10"></a>          <span class="fu">when</span> (io.<span class="fu">rx</span>.<span class="fu">data</span>.<span class="fu">payload</span>.<span class="fu">last</span>) {</span>
+<span id="cb4-11"><a href="#cb4-11"></a>            ip := io.<span class="fu">rx</span>.<span class="fu">cmd</span>.<span class="fu">payload</span>.<span class="fu">ip</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a>            srcPort := io.<span class="fu">rx</span>.<span class="fu">cmd</span>.<span class="fu">payload</span>.<span class="fu">srcPort</span></span>
+<span id="cb4-13"><a href="#cb4-13"></a>            <span class="fu">goto</span>(helloHeader)</span>
+<span id="cb4-14"><a href="#cb4-14"></a>            io.<span class="fu">rx</span>.<span class="fu">cmd</span>.<span class="fu">ready</span>.<span class="fu">set</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a>          }</span>
+<span id="cb4-16"><a href="#cb4-16"></a>        }</span>
+<span id="cb4-17"><a href="#cb4-17"></a>      }</span>
+<span id="cb4-18"><a href="#cb4-18"></a>    }</span></code></pre></div>
 <p>这里我用rxFirst表明当前是不是包的第一个字节，用rxFirstData记录这个字节，直到io.rx.data.payload.last为真，说明包接收完了，这才记录包头信息并跳转状态。后面就很清晰了：</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>    <span class="co">//Check the hello protocol Header</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> helloHeader <span class="op">=</span> <span class="kw">new</span> State<span class="op">{</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>      <span class="kw">val</span> isHello <span class="op">=</span> <span class="fu">Reg</span><span class="op">(</span><span class="fu">UInt</span><span class="op">(</span><span class="dv">2</span> bits<span class="op">))</span> <span class="fu">init</span><span class="op">(</span><span class="dv">0</span><span class="op">)</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>      whenIsActive <span class="op">{</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        <span class="co">// </span><span class="al">TODO</span><span class="co"> check that the first byte of the packet payload is equals to Hello.discoveringCmd</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>        <span class="fu">when</span> <span class="op">(</span>rxFirstData <span class="op">===</span> Hello<span class="op">.</span>discoveringCmd<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>          <span class="fu">goto</span> <span class="op">(</span>discoveringRspTx<span class="op">)</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> otherwise <span class="op">{</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>          <span class="fu">goto</span> <span class="op">(</span>idle<span class="op">)</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        rxFirst<span class="op">.</span>set</span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="co">//Send an discoveringRsp packet</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> discoveringRspTx <span class="op">=</span> <span class="kw">new</span> <span class="fu">StateParallelFsm</span><span class="op">(</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>      discoveringRspTxCmdFsm<span class="op">,</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>      discoveringRspTxDataFsm</span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">){</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>      whenCompleted<span class="op">{</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>        <span class="co">//</span><span class="al">TODO</span><span class="co"> return to IDLE</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        <span class="fu">goto</span><span class="op">(</span>idle<span class="op">)</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb6"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">//Inner FSM of the discoveringRspTx state</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">lazy</span> <span class="kw">val</span> discoveringRspTxCmdFsm <span class="op">=</span> <span class="kw">new</span> StateMachine<span class="op">{</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> sendCmd <span class="op">=</span> <span class="kw">new</span> State <span class="kw">with</span> EntryPoint<span class="op">{</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>      whenIsActive<span class="op">{</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>        <span class="co">//</span><span class="al">TODO</span><span class="co"> send one io.tx.cmd transaction</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        io<span class="op">.</span>tx<span class="op">.</span>cmd<span class="op">.</span>payload<span class="op">.</span>ip <span class="op">:=</span> ip</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        io<span class="op">.</span>tx<span class="op">.</span>cmd<span class="op">.</span>payload<span class="op">.</span>srcPort <span class="op">:=</span> helloPort</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>        io<span class="op">.</span>tx<span class="op">.</span>cmd<span class="op">.</span>payload<span class="op">.</span>dstPort <span class="op">:=</span> srcPort</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>        io<span class="op">.</span>tx<span class="op">.</span>cmd<span class="op">.</span>payload<span class="op">.</span>length <span class="op">:=</span> helloMessage<span class="op">.</span>length <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>        io<span class="op">.</span>tx<span class="op">.</span>cmd<span class="op">.</span>valid<span class="op">.</span>set</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">when</span> <span class="op">(</span>io<span class="op">.</span>tx<span class="op">.</span>cmd<span class="op">.</span>ready<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>          exit</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  <span class="co">//Inner FSM of the discoveringRspTx state</span></span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="kw">lazy</span> <span class="kw">val</span> discoveringRspTxDataFsm <span class="op">=</span> <span class="kw">new</span> StateMachine<span class="op">{</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> sendHeader <span class="op">=</span> <span class="kw">new</span> State <span class="kw">with</span> EntryPoint<span class="op">{</span></span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>      whenIsActive<span class="op">{</span></span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>        <span class="co">//</span><span class="al">TODO</span><span class="co"> send the io.tx.cmd header (Hello.discoveringRsp)</span></span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>        io<span class="op">.</span>tx<span class="op">.</span>data<span class="op">.</span>payload <span class="op">:=</span> Hello<span class="op">.</span>discoveringRsp</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>        io<span class="op">.</span>tx<span class="op">.</span>data<span class="op">.</span>valid<span class="op">.</span>set</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>        <span class="fu">when</span> <span class="op">(</span>io<span class="op">.</span>tx<span class="op">.</span>data<span class="op">.</span>ready<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>          <span class="fu">goto</span><span class="op">(</span>sendMessage<span class="op">)</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> sendMessage <span class="op">=</span> <span class="kw">new</span> State<span class="op">{</span></span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a>      <span class="kw">val</span> counter <span class="op">=</span> <span class="fu">Reg</span><span class="op">(</span><span class="fu">UInt</span><span class="op">(</span><span class="fu">log2Up</span><span class="op">(</span>helloMessage<span class="op">.</span>length<span class="op">)</span> bits<span class="op">))</span></span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>      onEntry<span class="op">{</span></span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>        counter <span class="op">:=</span> <span class="dv">0</span></span>
-<span id="cb6-35"><a href="#cb6-35" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb6-36"><a href="#cb6-36" aria-hidden="true" tabindex="-1"></a>      whenIsActive<span class="op">{</span></span>
-<span id="cb6-37"><a href="#cb6-37" aria-hidden="true" tabindex="-1"></a>        <span class="co">//</span><span class="al">TODO</span><span class="co"> send the message on io.tx.cmd header</span></span>
-<span id="cb6-38"><a href="#cb6-38" aria-hidden="true" tabindex="-1"></a>        io<span class="op">.</span>tx<span class="op">.</span>data<span class="op">.</span>valid<span class="op">.</span>set</span>
-<span id="cb6-39"><a href="#cb6-39" aria-hidden="true" tabindex="-1"></a>        io<span class="op">.</span>tx<span class="op">.</span>data<span class="op">.</span>payload <span class="op">:=</span> <span class="fu">hello</span><span class="op">(</span>counter<span class="op">)</span></span>
-<span id="cb6-40"><a href="#cb6-40" aria-hidden="true" tabindex="-1"></a>        <span class="fu">when</span> <span class="op">(</span>counter <span class="op">===</span> counter<span class="op">.</span>maxValue<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-41"><a href="#cb6-41" aria-hidden="true" tabindex="-1"></a>          io<span class="op">.</span>tx<span class="op">.</span>data<span class="op">.</span>payload<span class="op">.</span>last<span class="op">.</span>set</span>
-<span id="cb6-42"><a href="#cb6-42" aria-hidden="true" tabindex="-1"></a>          <span class="fu">when</span> <span class="op">(</span>io<span class="op">.</span>tx<span class="op">.</span>data<span class="op">.</span>ready<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-43"><a href="#cb6-43" aria-hidden="true" tabindex="-1"></a>            exit</span>
-<span id="cb6-44"><a href="#cb6-44" aria-hidden="true" tabindex="-1"></a>          <span class="op">}</span></span>
-<span id="cb6-45"><a href="#cb6-45" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> otherwise <span class="op">{</span></span>
-<span id="cb6-46"><a href="#cb6-46" aria-hidden="true" tabindex="-1"></a>          <span class="fu">when</span> <span class="op">(</span>io<span class="op">.</span>tx<span class="op">.</span>data<span class="op">.</span>ready<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb6-47"><a href="#cb6-47" aria-hidden="true" tabindex="-1"></a>            counter <span class="op">:=</span> counter <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb6-48"><a href="#cb6-48" aria-hidden="true" tabindex="-1"></a>          <span class="op">}</span></span>
-<span id="cb6-49"><a href="#cb6-49" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb6-50"><a href="#cb6-50" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb6-51"><a href="#cb6-51" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span>                                                                                                         <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb5-1"><a href="#cb5-1"></a>    <span class="co">//Check the hello protocol Header</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>    <span class="kw">val</span> helloHeader = <span class="kw">new</span> State{</span>
+<span id="cb5-3"><a href="#cb5-3"></a>      <span class="kw">val</span> isHello = <span class="fu">Reg</span>(<span class="fu">UInt</span>(<span class="dv">2</span> bits)) <span class="fu">init</span>(<span class="dv">0</span>)</span>
+<span id="cb5-4"><a href="#cb5-4"></a>      whenIsActive {</span>
+<span id="cb5-5"><a href="#cb5-5"></a>        <span class="co">// TODO check that the first byte of the packet payload is equals to Hello.discoveringCmd</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>        <span class="fu">when</span> (rxFirstData === Hello.<span class="fu">discoveringCmd</span>) {</span>
+<span id="cb5-7"><a href="#cb5-7"></a>          <span class="fu">goto</span> (discoveringRspTx)</span>
+<span id="cb5-8"><a href="#cb5-8"></a>        } otherwise {</span>
+<span id="cb5-9"><a href="#cb5-9"></a>          <span class="fu">goto</span> (idle)</span>
+<span id="cb5-10"><a href="#cb5-10"></a>        }</span>
+<span id="cb5-11"><a href="#cb5-11"></a>        rxFirst.<span class="fu">set</span></span>
+<span id="cb5-12"><a href="#cb5-12"></a>      }</span>
+<span id="cb5-13"><a href="#cb5-13"></a>    }</span>
+<span id="cb5-14"><a href="#cb5-14"></a></span>
+<span id="cb5-15"><a href="#cb5-15"></a>    <span class="co">//Send an discoveringRsp packet</span></span>
+<span id="cb5-16"><a href="#cb5-16"></a>    <span class="kw">val</span> discoveringRspTx = <span class="kw">new</span> <span class="fu">StateParallelFsm</span>(</span>
+<span id="cb5-17"><a href="#cb5-17"></a>      discoveringRspTxCmdFsm,</span>
+<span id="cb5-18"><a href="#cb5-18"></a>      discoveringRspTxDataFsm</span>
+<span id="cb5-19"><a href="#cb5-19"></a>    ){</span>
+<span id="cb5-20"><a href="#cb5-20"></a>      whenCompleted{</span>
+<span id="cb5-21"><a href="#cb5-21"></a>        <span class="co">//TODO return to IDLE</span></span>
+<span id="cb5-22"><a href="#cb5-22"></a>        <span class="fu">goto</span>(idle)</span>
+<span id="cb5-23"><a href="#cb5-23"></a>      }</span>
+<span id="cb5-24"><a href="#cb5-24"></a>    }</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb6-1"><a href="#cb6-1"></a>  <span class="co">//Inner FSM of the discoveringRspTx state</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>  <span class="kw">lazy</span> <span class="kw">val</span> discoveringRspTxCmdFsm = <span class="kw">new</span> StateMachine{</span>
+<span id="cb6-3"><a href="#cb6-3"></a>    <span class="kw">val</span> sendCmd = <span class="kw">new</span> State <span class="kw">with</span> EntryPoint{</span>
+<span id="cb6-4"><a href="#cb6-4"></a>      whenIsActive{</span>
+<span id="cb6-5"><a href="#cb6-5"></a>        <span class="co">//TODO send one io.tx.cmd transaction</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a>        io.<span class="fu">tx</span>.<span class="fu">cmd</span>.<span class="fu">payload</span>.<span class="fu">ip</span> := ip</span>
+<span id="cb6-7"><a href="#cb6-7"></a>        io.<span class="fu">tx</span>.<span class="fu">cmd</span>.<span class="fu">payload</span>.<span class="fu">srcPort</span> := helloPort</span>
+<span id="cb6-8"><a href="#cb6-8"></a>        io.<span class="fu">tx</span>.<span class="fu">cmd</span>.<span class="fu">payload</span>.<span class="fu">dstPort</span> := srcPort</span>
+<span id="cb6-9"><a href="#cb6-9"></a>        io.<span class="fu">tx</span>.<span class="fu">cmd</span>.<span class="fu">payload</span>.<span class="fu">length</span> := helloMessage.<span class="fu">length</span> + <span class="dv">1</span></span>
+<span id="cb6-10"><a href="#cb6-10"></a>        io.<span class="fu">tx</span>.<span class="fu">cmd</span>.<span class="fu">valid</span>.<span class="fu">set</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a>        <span class="fu">when</span> (io.<span class="fu">tx</span>.<span class="fu">cmd</span>.<span class="fu">ready</span>) {</span>
+<span id="cb6-12"><a href="#cb6-12"></a>          exit</span>
+<span id="cb6-13"><a href="#cb6-13"></a>        }</span>
+<span id="cb6-14"><a href="#cb6-14"></a>      }</span>
+<span id="cb6-15"><a href="#cb6-15"></a>    }</span>
+<span id="cb6-16"><a href="#cb6-16"></a>  }</span>
+<span id="cb6-17"><a href="#cb6-17"></a></span>
+<span id="cb6-18"><a href="#cb6-18"></a>  <span class="co">//Inner FSM of the discoveringRspTx state</span></span>
+<span id="cb6-19"><a href="#cb6-19"></a>  <span class="kw">lazy</span> <span class="kw">val</span> discoveringRspTxDataFsm = <span class="kw">new</span> StateMachine{</span>
+<span id="cb6-20"><a href="#cb6-20"></a>    <span class="kw">val</span> sendHeader = <span class="kw">new</span> State <span class="kw">with</span> EntryPoint{</span>
+<span id="cb6-21"><a href="#cb6-21"></a>      whenIsActive{</span>
+<span id="cb6-22"><a href="#cb6-22"></a>        <span class="co">//TODO send the io.tx.cmd header (Hello.discoveringRsp)</span></span>
+<span id="cb6-23"><a href="#cb6-23"></a>        io.<span class="fu">tx</span>.<span class="fu">data</span>.<span class="fu">payload</span> := Hello.<span class="fu">discoveringRsp</span></span>
+<span id="cb6-24"><a href="#cb6-24"></a>        io.<span class="fu">tx</span>.<span class="fu">data</span>.<span class="fu">valid</span>.<span class="fu">set</span></span>
+<span id="cb6-25"><a href="#cb6-25"></a>        <span class="fu">when</span> (io.<span class="fu">tx</span>.<span class="fu">data</span>.<span class="fu">ready</span>) {</span>
+<span id="cb6-26"><a href="#cb6-26"></a>          <span class="fu">goto</span>(sendMessage)</span>
+<span id="cb6-27"><a href="#cb6-27"></a>        }</span>
+<span id="cb6-28"><a href="#cb6-28"></a>      }</span>
+<span id="cb6-29"><a href="#cb6-29"></a>    }</span>
+<span id="cb6-30"><a href="#cb6-30"></a></span>
+<span id="cb6-31"><a href="#cb6-31"></a>    <span class="kw">val</span> sendMessage = <span class="kw">new</span> State{</span>
+<span id="cb6-32"><a href="#cb6-32"></a>      <span class="kw">val</span> counter = <span class="fu">Reg</span>(<span class="fu">UInt</span>(<span class="fu">log2Up</span>(helloMessage.<span class="fu">length</span>) bits))</span>
+<span id="cb6-33"><a href="#cb6-33"></a>      onEntry{</span>
+<span id="cb6-34"><a href="#cb6-34"></a>        counter := <span class="dv">0</span></span>
+<span id="cb6-35"><a href="#cb6-35"></a>      }</span>
+<span id="cb6-36"><a href="#cb6-36"></a>      whenIsActive{</span>
+<span id="cb6-37"><a href="#cb6-37"></a>        <span class="co">//TODO send the message on io.tx.cmd header</span></span>
+<span id="cb6-38"><a href="#cb6-38"></a>        io.<span class="fu">tx</span>.<span class="fu">data</span>.<span class="fu">valid</span>.<span class="fu">set</span></span>
+<span id="cb6-39"><a href="#cb6-39"></a>        io.<span class="fu">tx</span>.<span class="fu">data</span>.<span class="fu">payload</span> := <span class="fu">hello</span>(counter)</span>
+<span id="cb6-40"><a href="#cb6-40"></a>        <span class="fu">when</span> (counter === counter.<span class="fu">maxValue</span>) {</span>
+<span id="cb6-41"><a href="#cb6-41"></a>          io.<span class="fu">tx</span>.<span class="fu">data</span>.<span class="fu">payload</span>.<span class="fu">last</span>.<span class="fu">set</span></span>
+<span id="cb6-42"><a href="#cb6-42"></a>          <span class="fu">when</span> (io.<span class="fu">tx</span>.<span class="fu">data</span>.<span class="fu">ready</span>) {</span>
+<span id="cb6-43"><a href="#cb6-43"></a>            exit</span>
+<span id="cb6-44"><a href="#cb6-44"></a>          }</span>
+<span id="cb6-45"><a href="#cb6-45"></a>        } otherwise {</span>
+<span id="cb6-46"><a href="#cb6-46"></a>          <span class="fu">when</span> (io.<span class="fu">tx</span>.<span class="fu">data</span>.<span class="fu">ready</span>) {</span>
+<span id="cb6-47"><a href="#cb6-47"></a>            counter := counter + <span class="dv">1</span></span>
+<span id="cb6-48"><a href="#cb6-48"></a>          }</span>
+<span id="cb6-49"><a href="#cb6-49"></a>        }</span>
+<span id="cb6-50"><a href="#cb6-50"></a>      }</span>
+<span id="cb6-51"><a href="#cb6-51"></a>    }                                                                                                         }</span></code></pre></div>
 <p>后面两个是子自动机，所以要正确使用exit退出。另一个值得注意的是必须等到ready为真时发送端才能更新状态，包括计数器的自增和状态机的转换。</p>
 <h4 id="mandelbrot">Mandelbrot</h4>
 <p>本实验分三个子实验，先说第一个子实验：</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> x0 <span class="op">=</span> <span class="fu">Reg</span><span class="op">(</span>g<span class="op">.</span>fixType<span class="op">)</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> y0 <span class="op">=</span> <span class="fu">Reg</span><span class="op">(</span>g<span class="op">.</span>fixType<span class="op">)</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> iter <span class="op">=</span> <span class="fu">Reg</span><span class="op">(</span>g<span class="op">.</span>iterationType<span class="op">)</span> <span class="fu">init</span><span class="op">(</span><span class="dv">0</span><span class="op">)</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  io<span class="op">.</span>cmd<span class="op">.</span>ready<span class="op">.</span>clear</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  io<span class="op">.</span>rsp<span class="op">.</span>valid<span class="op">.</span>clear</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  io<span class="op">.</span>rsp<span class="op">.</span>payload<span class="op">.</span>iteration<span class="op">.</span>clearAll</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> fsm <span class="op">=</span> <span class="kw">new</span> StateMachine <span class="op">{</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> idle<span class="op">:</span> State <span class="op">=</span> <span class="kw">new</span> State <span class="kw">with</span> EntryPoint <span class="op">{</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>      whenIsActive <span class="op">{</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">when</span> <span class="op">(</span>io<span class="op">.</span>cmd<span class="op">.</span>valid<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>          io<span class="op">.</span>cmd<span class="op">.</span>ready<span class="op">.</span>set</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>          x0 <span class="op">:=</span> io<span class="op">.</span>cmd<span class="op">.</span>payload<span class="op">.</span>x</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>          y0 <span class="op">:=</span> io<span class="op">.</span>cmd<span class="op">.</span>payload<span class="op">.</span>y</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>          <span class="fu">goto</span><span class="op">(</span>calc<span class="op">)</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> calc <span class="op">=</span> <span class="kw">new</span> State <span class="op">{</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>      <span class="kw">val</span> x <span class="op">=</span> <span class="fu">Reg</span><span class="op">(</span>g<span class="op">.</span>fixType<span class="op">)</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>      <span class="kw">val</span> y <span class="op">=</span> <span class="fu">Reg</span><span class="op">(</span>g<span class="op">.</span>fixType<span class="op">)</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>      onEntry <span class="op">{</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        x <span class="op">:=</span> <span class="dv">0</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>        y <span class="op">:=</span> <span class="dv">0</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>        iter<span class="op">.</span>clearAll</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>      whenIsActive <span class="op">{</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>        <span class="fu">when</span> <span class="op">(</span>x <span class="op">*</span> x <span class="op">+</span> y <span class="op">*</span> y <span class="op">&lt;</span> <span class="dv">4</span> <span class="op">&amp;&amp;</span> iter <span class="op">&lt;</span> g<span class="op">.</span>iterationLimit<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>          x <span class="op">:=</span> <span class="op">(</span>x <span class="op">*</span> x <span class="op">-</span> y <span class="op">*</span> y <span class="op">+</span> x0<span class="op">).</span>truncated</span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>          y <span class="op">:=</span> <span class="op">(((</span>x <span class="op">*</span> y<span class="op">)</span> <span class="op">&lt;&lt;</span> <span class="dv">1</span><span class="op">)</span> <span class="op">+</span> y0<span class="op">).</span>truncated</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>          iter <span class="op">:=</span> iter <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span> otherwise <span class="op">{</span></span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>          <span class="fu">goto</span><span class="op">(</span>waitRsp<span class="op">)</span></span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> waitRsp <span class="op">=</span> <span class="kw">new</span> State <span class="op">{</span></span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a>      whenIsActive <span class="op">{</span></span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a>        io<span class="op">.</span>rsp<span class="op">.</span>valid<span class="op">.</span>set</span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>        io<span class="op">.</span>rsp<span class="op">.</span>payload<span class="op">.</span>iteration <span class="op">:=</span> iter</span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>        <span class="fu">when</span> <span class="op">(</span>io<span class="op">.</span>rsp<span class="op">.</span>ready<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>          <span class="fu">goto</span><span class="op">(</span>idle<span class="op">)</span></span>
-<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb7-1"><a href="#cb7-1"></a>  <span class="kw">val</span> x0 = <span class="fu">Reg</span>(g.<span class="fu">fixType</span>)</span>
+<span id="cb7-2"><a href="#cb7-2"></a>  <span class="kw">val</span> y0 = <span class="fu">Reg</span>(g.<span class="fu">fixType</span>)</span>
+<span id="cb7-3"><a href="#cb7-3"></a>  <span class="kw">val</span> iter = <span class="fu">Reg</span>(g.<span class="fu">iterationType</span>) <span class="fu">init</span>(<span class="dv">0</span>)</span>
+<span id="cb7-4"><a href="#cb7-4"></a>  io.<span class="fu">cmd</span>.<span class="fu">ready</span>.<span class="fu">clear</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>  io.<span class="fu">rsp</span>.<span class="fu">valid</span>.<span class="fu">clear</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a>  io.<span class="fu">rsp</span>.<span class="fu">payload</span>.<span class="fu">iteration</span>.<span class="fu">clearAll</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a></span>
+<span id="cb7-8"><a href="#cb7-8"></a>  <span class="kw">val</span> fsm = <span class="kw">new</span> StateMachine {</span>
+<span id="cb7-9"><a href="#cb7-9"></a>    <span class="kw">val</span> idle: State = <span class="kw">new</span> State <span class="kw">with</span> EntryPoint {</span>
+<span id="cb7-10"><a href="#cb7-10"></a>      whenIsActive {</span>
+<span id="cb7-11"><a href="#cb7-11"></a>        <span class="fu">when</span> (io.<span class="fu">cmd</span>.<span class="fu">valid</span>) {</span>
+<span id="cb7-12"><a href="#cb7-12"></a>          io.<span class="fu">cmd</span>.<span class="fu">ready</span>.<span class="fu">set</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a>          x0 := io.<span class="fu">cmd</span>.<span class="fu">payload</span>.<span class="fu">x</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a>          y0 := io.<span class="fu">cmd</span>.<span class="fu">payload</span>.<span class="fu">y</span></span>
+<span id="cb7-15"><a href="#cb7-15"></a>          <span class="fu">goto</span>(calc)</span>
+<span id="cb7-16"><a href="#cb7-16"></a>        }</span>
+<span id="cb7-17"><a href="#cb7-17"></a>      }</span>
+<span id="cb7-18"><a href="#cb7-18"></a>    }</span>
+<span id="cb7-19"><a href="#cb7-19"></a>    <span class="kw">val</span> calc = <span class="kw">new</span> State {</span>
+<span id="cb7-20"><a href="#cb7-20"></a>      <span class="kw">val</span> x = <span class="fu">Reg</span>(g.<span class="fu">fixType</span>)</span>
+<span id="cb7-21"><a href="#cb7-21"></a>      <span class="kw">val</span> y = <span class="fu">Reg</span>(g.<span class="fu">fixType</span>)</span>
+<span id="cb7-22"><a href="#cb7-22"></a>      onEntry {</span>
+<span id="cb7-23"><a href="#cb7-23"></a>        x := <span class="dv">0</span></span>
+<span id="cb7-24"><a href="#cb7-24"></a>        y := <span class="dv">0</span></span>
+<span id="cb7-25"><a href="#cb7-25"></a>        iter.<span class="fu">clearAll</span></span>
+<span id="cb7-26"><a href="#cb7-26"></a>      }</span>
+<span id="cb7-27"><a href="#cb7-27"></a>      whenIsActive {</span>
+<span id="cb7-28"><a href="#cb7-28"></a>        <span class="fu">when</span> (x * x + y * y &lt; <span class="dv">4</span> &amp;&amp; iter &lt; g.<span class="fu">iterationLimit</span>) {</span>
+<span id="cb7-29"><a href="#cb7-29"></a>          x := (x * x - y * y + x0).<span class="fu">truncated</span></span>
+<span id="cb7-30"><a href="#cb7-30"></a>          y := (((x * y) &lt;&lt; <span class="dv">1</span>) + y0).<span class="fu">truncated</span></span>
+<span id="cb7-31"><a href="#cb7-31"></a>          iter := iter + <span class="dv">1</span></span>
+<span id="cb7-32"><a href="#cb7-32"></a>        } otherwise {</span>
+<span id="cb7-33"><a href="#cb7-33"></a>          <span class="fu">goto</span>(waitRsp)</span>
+<span id="cb7-34"><a href="#cb7-34"></a>        }</span>
+<span id="cb7-35"><a href="#cb7-35"></a>      }</span>
+<span id="cb7-36"><a href="#cb7-36"></a>    }</span>
+<span id="cb7-37"><a href="#cb7-37"></a>    <span class="kw">val</span> waitRsp = <span class="kw">new</span> State {</span>
+<span id="cb7-38"><a href="#cb7-38"></a>      whenIsActive {</span>
+<span id="cb7-39"><a href="#cb7-39"></a>        io.<span class="fu">rsp</span>.<span class="fu">valid</span>.<span class="fu">set</span></span>
+<span id="cb7-40"><a href="#cb7-40"></a>        io.<span class="fu">rsp</span>.<span class="fu">payload</span>.<span class="fu">iteration</span> := iter</span>
+<span id="cb7-41"><a href="#cb7-41"></a>        <span class="fu">when</span> (io.<span class="fu">rsp</span>.<span class="fu">ready</span>) {</span>
+<span id="cb7-42"><a href="#cb7-42"></a>          <span class="fu">goto</span>(idle)</span>
+<span id="cb7-43"><a href="#cb7-43"></a>        }</span>
+<span id="cb7-44"><a href="#cb7-44"></a>      }</span>
+<span id="cb7-45"><a href="#cb7-45"></a>    }</span>
+<span id="cb7-46"><a href="#cb7-46"></a>  }</span></code></pre></div>
 <p>经过前面的实验，stream已经很熟悉了，所以代码很简单，注意的注意是定点数的使用，两个注意点，一个是定点数不能隐式截取，比如2位乘2位结果是4位，要存回2位的数据类型，整数就自动截取了，而定点数不行，必须用truncated，对整数部分和小数部分分别截取到对应的范围；二是定点数直接和scala数据类型计算比较麻烦，像<code>y := (((x * y) &lt;&lt; 1) + y0).truncated</code>，如果要乘2，则必须先创建一个对应位数的值为2的定点数，不过这里很容易绕过，要么左移一位，要么用加法都可以代替。定点数和整数一样左移几位相当于乘对应的2次幂。</p>
 <p>第二个实验要求并行，除了上面算单个坐标的电路，需要额外加个分配器和集合器：</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="kw">class</span> Dispatcher<span class="op">[</span>T <span class="op">&lt;:</span> Data<span class="op">](</span>dataType <span class="op">:</span> T<span class="op">,</span>outputsCount <span class="op">:</span> <span class="bu">Int</span><span class="op">)</span> <span class="kw">extends</span> Component<span class="op">{</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> io <span class="op">=</span> <span class="kw">new</span> Bundle <span class="op">{</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> input <span class="op">=</span> slave <span class="bu">Stream</span><span class="op">(</span>dataType<span class="op">)</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> outputs <span class="op">=</span> <span class="fu">Vec</span><span class="op">(</span>master <span class="bu">Stream</span><span class="op">(</span>dataType<span class="op">),</span>outputsCount<span class="op">)</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">// </span><span class="al">TODO</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> cnt <span class="op">=</span> <span class="fu">Counter</span><span class="op">(</span>outputsCount<span class="op">)</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span>i <span class="op">&lt;-</span> io<span class="op">.</span>outputs<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>    i<span class="op">.</span>valid<span class="op">.</span>clear</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>    i<span class="op">.</span>payload <span class="op">:=</span> io<span class="op">.</span>input<span class="op">.</span>payload</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  io<span class="op">.</span><span class="fu">outputs</span><span class="op">(</span>cnt<span class="op">).</span>valid <span class="op">:=</span> io<span class="op">.</span>input<span class="op">.</span>valid</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>  io<span class="op">.</span>input<span class="op">.</span>ready <span class="op">:=</span> io<span class="op">.</span><span class="fu">outputs</span><span class="op">(</span>cnt<span class="op">).</span>ready</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">when</span> <span class="op">(</span>io<span class="op">.</span><span class="fu">outputs</span><span class="op">(</span>cnt<span class="op">).</span>fire<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a>    cnt<span class="op">.</span>increment</span>
-<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co">// </span><span class="al">TODO</span><span class="co"> Define the Arbiter component (similar to the Dispatcher)</span></span>
-<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="kw">class</span> Arbiter<span class="op">[</span>T <span class="op">&lt;:</span> Data<span class="op">](</span>dataType <span class="op">:</span> T<span class="op">,</span>inputsCount <span class="op">:</span> <span class="bu">Int</span><span class="op">)</span> <span class="kw">extends</span> Component<span class="op">{</span></span>
-<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> io <span class="op">=</span> <span class="kw">new</span> Bundle <span class="op">{</span></span>
-<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> inputs <span class="op">=</span> <span class="fu">Vec</span><span class="op">(</span>slave <span class="bu">Stream</span><span class="op">(</span>dataType<span class="op">),</span>inputsCount<span class="op">)</span></span>
-<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> output <span class="op">=</span> master <span class="bu">Stream</span><span class="op">(</span>dataType<span class="op">)</span></span>
-<span id="cb8-24"><a href="#cb8-24" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb8-25"><a href="#cb8-25" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> cnt <span class="op">=</span> <span class="fu">Counter</span><span class="op">(</span>inputsCount<span class="op">)</span></span>
-<span id="cb8-26"><a href="#cb8-26" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span>i <span class="op">&lt;-</span> io<span class="op">.</span>inputs<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb8-27"><a href="#cb8-27" aria-hidden="true" tabindex="-1"></a>    i<span class="op">.</span>ready<span class="op">.</span>clear</span>
-<span id="cb8-28"><a href="#cb8-28" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb8-29"><a href="#cb8-29" aria-hidden="true" tabindex="-1"></a>  io<span class="op">.</span>output<span class="op">.</span>valid <span class="op">:=</span> io<span class="op">.</span><span class="fu">inputs</span><span class="op">(</span>cnt<span class="op">).</span>valid</span>
-<span id="cb8-30"><a href="#cb8-30" aria-hidden="true" tabindex="-1"></a>  io<span class="op">.</span>output<span class="op">.</span>payload <span class="op">:=</span> io<span class="op">.</span><span class="fu">inputs</span><span class="op">(</span>cnt<span class="op">).</span>payload</span>
-<span id="cb8-31"><a href="#cb8-31" aria-hidden="true" tabindex="-1"></a>  io<span class="op">.</span><span class="fu">inputs</span><span class="op">(</span>cnt<span class="op">).</span>ready <span class="op">:=</span> io<span class="op">.</span>output<span class="op">.</span>ready</span>
-<span id="cb8-32"><a href="#cb8-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">when</span> <span class="op">(</span>io<span class="op">.</span>output<span class="op">.</span>fire<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb8-33"><a href="#cb8-33" aria-hidden="true" tabindex="-1"></a>    cnt<span class="op">.</span>increment</span>
-<span id="cb8-34"><a href="#cb8-34" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb8-35"><a href="#cb8-35" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">case</span> <span class="kw">class</span> Dispatcher[T &lt;: Data](dataType : T,outputsCount : Int) <span class="kw">extends</span> Component{</span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="kw">val</span> io = <span class="kw">new</span> Bundle {</span>
+<span id="cb8-3"><a href="#cb8-3"></a>    <span class="kw">val</span> input = slave Stream(dataType)</span>
+<span id="cb8-4"><a href="#cb8-4"></a>    <span class="kw">val</span> outputs = <span class="fu">Vec</span>(master Stream(dataType),outputsCount)</span>
+<span id="cb8-5"><a href="#cb8-5"></a>  }</span>
+<span id="cb8-6"><a href="#cb8-6"></a>  <span class="co">// TODO</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a>  <span class="kw">val</span> cnt = <span class="fu">Counter</span>(outputsCount)</span>
+<span id="cb8-8"><a href="#cb8-8"></a>  <span class="kw">for</span> (i &lt;- io.<span class="fu">outputs</span>) {</span>
+<span id="cb8-9"><a href="#cb8-9"></a>    i.<span class="fu">valid</span>.<span class="fu">clear</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a>    i.<span class="fu">payload</span> := io.<span class="fu">input</span>.<span class="fu">payload</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a>  }</span>
+<span id="cb8-12"><a href="#cb8-12"></a>  io.<span class="fu">outputs</span>(cnt).<span class="fu">valid</span> := io.<span class="fu">input</span>.<span class="fu">valid</span></span>
+<span id="cb8-13"><a href="#cb8-13"></a>  io.<span class="fu">input</span>.<span class="fu">ready</span> := io.<span class="fu">outputs</span>(cnt).<span class="fu">ready</span></span>
+<span id="cb8-14"><a href="#cb8-14"></a>  <span class="fu">when</span> (io.<span class="fu">outputs</span>(cnt).<span class="fu">fire</span>) {</span>
+<span id="cb8-15"><a href="#cb8-15"></a>    cnt.<span class="fu">increment</span></span>
+<span id="cb8-16"><a href="#cb8-16"></a>  }</span>
+<span id="cb8-17"><a href="#cb8-17"></a>}</span>
+<span id="cb8-18"><a href="#cb8-18"></a></span>
+<span id="cb8-19"><a href="#cb8-19"></a><span class="co">// TODO Define the Arbiter component (similar to the Dispatcher)</span></span>
+<span id="cb8-20"><a href="#cb8-20"></a><span class="kw">case</span> <span class="kw">class</span> Arbiter[T &lt;: Data](dataType : T,inputsCount : Int) <span class="kw">extends</span> Component{</span>
+<span id="cb8-21"><a href="#cb8-21"></a>  <span class="kw">val</span> io = <span class="kw">new</span> Bundle {</span>
+<span id="cb8-22"><a href="#cb8-22"></a>    <span class="kw">val</span> inputs = <span class="fu">Vec</span>(slave Stream(dataType),inputsCount)</span>
+<span id="cb8-23"><a href="#cb8-23"></a>    <span class="kw">val</span> output = master Stream(dataType)</span>
+<span id="cb8-24"><a href="#cb8-24"></a>  }</span>
+<span id="cb8-25"><a href="#cb8-25"></a>  <span class="kw">val</span> cnt = <span class="fu">Counter</span>(inputsCount)</span>
+<span id="cb8-26"><a href="#cb8-26"></a>  <span class="kw">for</span> (i &lt;- io.<span class="fu">inputs</span>) {</span>
+<span id="cb8-27"><a href="#cb8-27"></a>    i.<span class="fu">ready</span>.<span class="fu">clear</span></span>
+<span id="cb8-28"><a href="#cb8-28"></a>  }</span>
+<span id="cb8-29"><a href="#cb8-29"></a>  io.<span class="fu">output</span>.<span class="fu">valid</span> := io.<span class="fu">inputs</span>(cnt).<span class="fu">valid</span></span>
+<span id="cb8-30"><a href="#cb8-30"></a>  io.<span class="fu">output</span>.<span class="fu">payload</span> := io.<span class="fu">inputs</span>(cnt).<span class="fu">payload</span></span>
+<span id="cb8-31"><a href="#cb8-31"></a>  io.<span class="fu">inputs</span>(cnt).<span class="fu">ready</span> := io.<span class="fu">output</span>.<span class="fu">ready</span></span>
+<span id="cb8-32"><a href="#cb8-32"></a>  <span class="fu">when</span> (io.<span class="fu">output</span>.<span class="fu">fire</span>) {</span>
+<span id="cb8-33"><a href="#cb8-33"></a>    cnt.<span class="fu">increment</span></span>
+<span id="cb8-34"><a href="#cb8-34"></a>  }</span>
+<span id="cb8-35"><a href="#cb8-35"></a>}</span></code></pre></div>
 <p>注意不要让线路空置，另外这里要用一个计数器控制整体坐标的输入和输出顺序。最后总电路的连接：</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">//</span><span class="al">TODO</span><span class="co"> instantiate all components</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> dispatcher <span class="op">=</span> <span class="fu">Dispatcher</span><span class="op">(</span><span class="fu">PixelTask</span><span class="op">(</span>g<span class="op">),</span> coreCount<span class="op">)</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> solver <span class="op">=</span> <span class="bu">List</span><span class="op">.</span><span class="fu">fill</span><span class="op">(</span>coreCount<span class="op">)(</span><span class="fu">PixelSolver</span><span class="op">(</span>g<span class="op">))</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> arbiter <span class="op">=</span> <span class="fu">Arbiter</span><span class="op">(</span><span class="fu">PixelResult</span><span class="op">(</span>g<span class="op">),</span> coreCount<span class="op">)</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">//</span><span class="al">TODO</span><span class="co"> interconnect all that stuff</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  io<span class="op">.</span>cmd <span class="op">&gt;&gt;</span> dispatcher<span class="op">.</span>io<span class="op">.</span>input</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span>i <span class="op">&lt;-</span> <span class="dv">0</span> until coreCount<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>    dispatcher<span class="op">.</span>io<span class="op">.</span><span class="fu">outputs</span><span class="op">(</span>i<span class="op">)</span> <span class="op">&gt;&gt;</span> <span class="fu">solver</span><span class="op">(</span>i<span class="op">).</span>io<span class="op">.</span>cmd</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">solver</span><span class="op">(</span>i<span class="op">).</span>io<span class="op">.</span>rsp <span class="op">&gt;&gt;</span> arbiter<span class="op">.</span>io<span class="op">.</span><span class="fu">inputs</span><span class="op">(</span>i<span class="op">)</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  arbiter<span class="op">.</span>io<span class="op">.</span>output <span class="op">&gt;&gt;</span> io<span class="op">.</span>rsp</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb9-1"><a href="#cb9-1"></a>  <span class="co">//TODO instantiate all components</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a>  <span class="kw">val</span> dispatcher = <span class="fu">Dispatcher</span>(<span class="fu">PixelTask</span>(g), coreCount)</span>
+<span id="cb9-3"><a href="#cb9-3"></a>  <span class="kw">val</span> solver = List.<span class="fu">fill</span>(coreCount)(<span class="fu">PixelSolver</span>(g))</span>
+<span id="cb9-4"><a href="#cb9-4"></a>  <span class="kw">val</span> arbiter = <span class="fu">Arbiter</span>(<span class="fu">PixelResult</span>(g), coreCount)</span>
+<span id="cb9-5"><a href="#cb9-5"></a></span>
+<span id="cb9-6"><a href="#cb9-6"></a>  <span class="co">//TODO interconnect all that stuff</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>  io.<span class="fu">cmd</span> &gt;&gt; dispatcher.<span class="fu">io</span>.<span class="fu">input</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a>  <span class="kw">for</span> (i &lt;- <span class="dv">0</span> until coreCount) {</span>
+<span id="cb9-9"><a href="#cb9-9"></a>    dispatcher.<span class="fu">io</span>.<span class="fu">outputs</span>(i) &gt;&gt; <span class="fu">solver</span>(i).<span class="fu">io</span>.<span class="fu">cmd</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a>    <span class="fu">solver</span>(i).<span class="fu">io</span>.<span class="fu">rsp</span> &gt;&gt; arbiter.<span class="fu">io</span>.<span class="fu">inputs</span>(i)</span>
+<span id="cb9-11"><a href="#cb9-11"></a>  }</span>
+<span id="cb9-12"><a href="#cb9-12"></a>  arbiter.<span class="fu">io</span>.<span class="fu">output</span> &gt;&gt; io.<span class="fu">rsp</span></span></code></pre></div>
 <p>第三个子实验要求对第一个子实验实现流水。这里用flow充当流水的阶段存储，为什么要用flow不能用reg呢，原因是flow可以很方便地控制各阶段的时钟周期。教程里面假设乘法阶段的周期数是加法阶段的两倍，那么如果用reg的话，乘法阶段的输出寄存器就需要用一组reg和一组regnext。而flow按照前面说的“实时变化”，valid和payload都是wire类型的，但是可以用stage函数将它转成类似reg的形式，即下个时钟上升沿才变化，如果用stage.stage，则是下下各时钟上升沿才变化，相当于是reg和regnext连起来了。也就是说，flow控制延迟多少个周期，就调用多少次stage就行了，编译到verilog就是一连串寄存器相连，但是在spinalhdl写起来就比定义一连串寄存器方便得多：</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> inserterContext <span class="op">=</span> <span class="fu">Flow</span><span class="op">(</span><span class="fu">InserterContext</span><span class="op">())</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> mulStageContext <span class="op">=</span> <span class="fu">Flow</span><span class="op">(</span><span class="fu">MulStageContext</span><span class="op">())</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> addStageContext <span class="op">=</span> <span class="fu">Flow</span><span class="op">(</span><span class="fu">AddStageContext</span><span class="op">())</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> routerContext <span class="op">=</span> <span class="fu">Flow</span><span class="op">(</span><span class="fu">RouterContext</span><span class="op">())</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  io<span class="op">.</span>cmd<span class="op">.</span>ready<span class="op">.</span>clear</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  io<span class="op">.</span>rsp<span class="op">.</span>valid<span class="op">.</span>clear</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>  io<span class="op">.</span>rsp<span class="op">.</span>payload<span class="op">.</span>iteration<span class="op">.</span>clearAll</span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> inserter <span class="op">=</span> <span class="kw">new</span> Area<span class="op">{</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> freeId <span class="op">=</span> <span class="fu">Counter</span><span class="op">(</span><span class="dv">1</span> <span class="op">&lt;&lt;</span> idWidth<span class="op">,</span>inc <span class="op">=</span> io<span class="op">.</span>cmd<span class="op">.</span>fire<span class="op">)</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> input <span class="op">=</span> routerContext</span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> output <span class="op">=</span> inserterContext</span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    output<span class="op">.</span>valid <span class="op">:=</span> input<span class="op">.</span>valid <span class="op">||</span> io<span class="op">.</span>cmd<span class="op">.</span>valid</span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">when</span> <span class="op">((!</span>input<span class="op">.</span>valid<span class="op">)</span> <span class="op">&amp;&amp;</span> io<span class="op">.</span>cmd<span class="op">.</span>valid<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>      io<span class="op">.</span>cmd<span class="op">.</span>ready<span class="op">.</span>set</span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>      output<span class="op">.</span>id <span class="op">:=</span> freeId</span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>      output<span class="op">.</span>x0 <span class="op">:=</span> io<span class="op">.</span>cmd<span class="op">.</span>payload<span class="op">.</span>x</span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>      output<span class="op">.</span>y0 <span class="op">:=</span> io<span class="op">.</span>cmd<span class="op">.</span>payload<span class="op">.</span>y</span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>      output<span class="op">.</span>iteration<span class="op">.</span>clearAll</span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>      output<span class="op">.</span>done<span class="op">.</span>clear</span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>      output<span class="op">.</span>x <span class="op">:=</span> <span class="dv">0</span></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>      output<span class="op">.</span>y <span class="op">:=</span> <span class="dv">0</span></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span> otherwise <span class="op">{</span></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>      output<span class="op">.</span>payload<span class="op">.</span><span class="fu">assignSomeByName</span><span class="op">(</span>input<span class="op">.</span>payload<span class="op">)</span></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb10-1"><a href="#cb10-1"></a>  <span class="kw">val</span> inserterContext = <span class="fu">Flow</span>(<span class="fu">InserterContext</span>())</span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="kw">val</span> mulStageContext = <span class="fu">Flow</span>(<span class="fu">MulStageContext</span>())</span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="kw">val</span> addStageContext = <span class="fu">Flow</span>(<span class="fu">AddStageContext</span>())</span>
+<span id="cb10-4"><a href="#cb10-4"></a>  <span class="kw">val</span> routerContext = <span class="fu">Flow</span>(<span class="fu">RouterContext</span>())</span>
+<span id="cb10-5"><a href="#cb10-5"></a>  io.<span class="fu">cmd</span>.<span class="fu">ready</span>.<span class="fu">clear</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>  io.<span class="fu">rsp</span>.<span class="fu">valid</span>.<span class="fu">clear</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a>  io.<span class="fu">rsp</span>.<span class="fu">payload</span>.<span class="fu">iteration</span>.<span class="fu">clearAll</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a></span>
+<span id="cb10-9"><a href="#cb10-9"></a>  <span class="kw">val</span> inserter = <span class="kw">new</span> Area{</span>
+<span id="cb10-10"><a href="#cb10-10"></a>    <span class="kw">val</span> freeId = <span class="fu">Counter</span>(<span class="dv">1</span> &lt;&lt; idWidth,inc = io.<span class="fu">cmd</span>.<span class="fu">fire</span>)</span>
+<span id="cb10-11"><a href="#cb10-11"></a>    <span class="kw">val</span> input = routerContext</span>
+<span id="cb10-12"><a href="#cb10-12"></a>    <span class="kw">val</span> output = inserterContext</span>
+<span id="cb10-13"><a href="#cb10-13"></a>    output.<span class="fu">valid</span> := input.<span class="fu">valid</span> || io.<span class="fu">cmd</span>.<span class="fu">valid</span></span>
+<span id="cb10-14"><a href="#cb10-14"></a>    <span class="fu">when</span> ((!input.<span class="fu">valid</span>) &amp;&amp; io.<span class="fu">cmd</span>.<span class="fu">valid</span>) {</span>
+<span id="cb10-15"><a href="#cb10-15"></a>      io.<span class="fu">cmd</span>.<span class="fu">ready</span>.<span class="fu">set</span></span>
+<span id="cb10-16"><a href="#cb10-16"></a>      output.<span class="fu">id</span> := freeId</span>
+<span id="cb10-17"><a href="#cb10-17"></a>      output.<span class="fu">x0</span> := io.<span class="fu">cmd</span>.<span class="fu">payload</span>.<span class="fu">x</span></span>
+<span id="cb10-18"><a href="#cb10-18"></a>      output.<span class="fu">y0</span> := io.<span class="fu">cmd</span>.<span class="fu">payload</span>.<span class="fu">y</span></span>
+<span id="cb10-19"><a href="#cb10-19"></a>      output.<span class="fu">iteration</span>.<span class="fu">clearAll</span></span>
+<span id="cb10-20"><a href="#cb10-20"></a>      output.<span class="fu">done</span>.<span class="fu">clear</span></span>
+<span id="cb10-21"><a href="#cb10-21"></a>      output.<span class="fu">x</span> := <span class="dv">0</span></span>
+<span id="cb10-22"><a href="#cb10-22"></a>      output.<span class="fu">y</span> := <span class="dv">0</span></span>
+<span id="cb10-23"><a href="#cb10-23"></a>    } otherwise {</span>
+<span id="cb10-24"><a href="#cb10-24"></a>      output.<span class="fu">payload</span>.<span class="fu">assignSomeByName</span>(input.<span class="fu">payload</span>)</span>
+<span id="cb10-25"><a href="#cb10-25"></a>    }</span>
+<span id="cb10-26"><a href="#cb10-26"></a>  }</span></code></pre></div>
 <p>这里直接根据input.valid判断有没有循环流过来的计算任务，valid为假说明没有流过来的计算任务，也就是该流水线没充满，需要添加一个新的。剩下的代码一起给出：</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> mulStage <span class="op">=</span> <span class="kw">new</span> Area<span class="op">{</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> input <span class="op">=</span> inserterContext<span class="op">.</span>stage</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> output <span class="op">=</span> mulStageContext</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    output<span class="op">.</span>valid <span class="op">:=</span> input<span class="op">.</span>valid</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    output<span class="op">.</span>payload<span class="op">.</span><span class="fu">assignSomeByName</span><span class="op">(</span>input<span class="op">.</span>payload<span class="op">)</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>    output<span class="op">.</span>xx <span class="op">:=</span> <span class="op">(</span>input<span class="op">.</span>x <span class="op">*</span> input<span class="op">.</span>x<span class="op">).</span>truncated</span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    output<span class="op">.</span>yy <span class="op">:=</span> <span class="op">(</span>input<span class="op">.</span>y <span class="op">*</span> input<span class="op">.</span>y<span class="op">).</span>truncated</span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    output<span class="op">.</span>xy <span class="op">:=</span> <span class="op">(</span>input<span class="op">.</span>x <span class="op">*</span> input<span class="op">.</span>y<span class="op">).</span>truncated</span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> addStage <span class="op">=</span> <span class="kw">new</span> Area<span class="op">{</span></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> input <span class="op">=</span> mulStageContext<span class="op">.</span>stage<span class="op">.</span>stage</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> output <span class="op">=</span> addStageContext</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    output<span class="op">.</span>valid <span class="op">:=</span> input<span class="op">.</span>valid</span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    output<span class="op">.</span>payload<span class="op">.</span><span class="fu">assignSomeByName</span><span class="op">(</span>input<span class="op">.</span>payload<span class="op">)</span></span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    output<span class="op">.</span>x <span class="op">:=</span> input<span class="op">.</span>xx <span class="op">-</span> input<span class="op">.</span>yy <span class="op">+</span> input<span class="op">.</span>x0</span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    output<span class="op">.</span>y <span class="op">:=</span> input<span class="op">.</span>xy <span class="op">+</span> input<span class="op">.</span>xy <span class="op">+</span> input<span class="op">.</span>y0</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>    output<span class="op">.</span>done<span class="op">.</span>allowOverride</span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>    output<span class="op">.</span>iteration<span class="op">.</span>allowOverride</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>    output<span class="op">.</span>done <span class="op">:=</span> input<span class="op">.</span>done <span class="op">||</span> input<span class="op">.</span>xx <span class="op">+</span> input<span class="op">.</span>yy <span class="op">&gt;=</span> <span class="dv">4</span> <span class="op">||</span> input<span class="op">.</span>iteration <span class="op">===</span> iterationLimit</span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>    output<span class="op">.</span>iteration <span class="op">:=</span> input<span class="op">.</span>iteration <span class="op">+</span> <span class="op">(!</span>output<span class="op">.</span>done<span class="op">).</span>asUInt</span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> router <span class="op">=</span> <span class="kw">new</span> Area<span class="op">{</span></span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> wantedId <span class="op">=</span> <span class="fu">Counter</span><span class="op">(</span><span class="dv">1</span> <span class="op">&lt;&lt;</span> idWidth<span class="op">,</span>inc <span class="op">=</span> io<span class="op">.</span>rsp<span class="op">.</span>fire<span class="op">)</span></span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> input <span class="op">=</span> addStageContext<span class="op">.</span>stage</span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> output <span class="op">=</span> routerContext</span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>    output<span class="op">.</span>payload<span class="op">.</span><span class="fu">assignSomeByName</span><span class="op">(</span>input<span class="op">.</span>payload<span class="op">)</span></span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">when</span> <span class="op">(</span>inserter<span class="op">.</span>input<span class="op">.</span>done <span class="op">&amp;&amp;</span> wantedId <span class="op">===</span> input<span class="op">.</span>id<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a>      io<span class="op">.</span>rsp<span class="op">.</span>valid <span class="op">:=</span> input<span class="op">.</span>valid</span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>      io<span class="op">.</span>rsp<span class="op">.</span>payload<span class="op">.</span>iteration <span class="op">:=</span> input<span class="op">.</span>iteration</span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>    output<span class="op">.</span>valid <span class="op">:=</span> input<span class="op">.</span>valid <span class="op">&amp;&amp;</span> <span class="op">(!</span>input<span class="op">.</span>done <span class="op">||</span> wantedId <span class="op">=/=</span> input<span class="op">.</span>id <span class="op">||</span> <span class="op">!</span>io<span class="op">.</span>rsp<span class="op">.</span>fire<span class="op">)</span></span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb11-1"><a href="#cb11-1"></a>  <span class="kw">val</span> mulStage = <span class="kw">new</span> Area{</span>
+<span id="cb11-2"><a href="#cb11-2"></a>    <span class="kw">val</span> input = inserterContext.<span class="fu">stage</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>    <span class="kw">val</span> output = mulStageContext</span>
+<span id="cb11-4"><a href="#cb11-4"></a>    output.<span class="fu">valid</span> := input.<span class="fu">valid</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>    output.<span class="fu">payload</span>.<span class="fu">assignSomeByName</span>(input.<span class="fu">payload</span>)</span>
+<span id="cb11-6"><a href="#cb11-6"></a>    output.<span class="fu">xx</span> := (input.<span class="fu">x</span> * input.<span class="fu">x</span>).<span class="fu">truncated</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a>    output.<span class="fu">yy</span> := (input.<span class="fu">y</span> * input.<span class="fu">y</span>).<span class="fu">truncated</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a>    output.<span class="fu">xy</span> := (input.<span class="fu">x</span> * input.<span class="fu">y</span>).<span class="fu">truncated</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a>  }</span>
+<span id="cb11-10"><a href="#cb11-10"></a></span>
+<span id="cb11-11"><a href="#cb11-11"></a>  <span class="kw">val</span> addStage = <span class="kw">new</span> Area{</span>
+<span id="cb11-12"><a href="#cb11-12"></a>    <span class="kw">val</span> input = mulStageContext.<span class="fu">stage</span>.<span class="fu">stage</span></span>
+<span id="cb11-13"><a href="#cb11-13"></a>    <span class="kw">val</span> output = addStageContext</span>
+<span id="cb11-14"><a href="#cb11-14"></a>    output.<span class="fu">valid</span> := input.<span class="fu">valid</span></span>
+<span id="cb11-15"><a href="#cb11-15"></a>    output.<span class="fu">payload</span>.<span class="fu">assignSomeByName</span>(input.<span class="fu">payload</span>)</span>
+<span id="cb11-16"><a href="#cb11-16"></a>    output.<span class="fu">x</span> := input.<span class="fu">xx</span> - input.<span class="fu">yy</span> + input.<span class="fu">x0</span></span>
+<span id="cb11-17"><a href="#cb11-17"></a>    output.<span class="fu">y</span> := input.<span class="fu">xy</span> + input.<span class="fu">xy</span> + input.<span class="fu">y0</span></span>
+<span id="cb11-18"><a href="#cb11-18"></a>    output.<span class="fu">done</span>.<span class="fu">allowOverride</span></span>
+<span id="cb11-19"><a href="#cb11-19"></a>    output.<span class="fu">iteration</span>.<span class="fu">allowOverride</span></span>
+<span id="cb11-20"><a href="#cb11-20"></a>    output.<span class="fu">done</span> := input.<span class="fu">done</span> || input.<span class="fu">xx</span> + input.<span class="fu">yy</span> &gt;= <span class="dv">4</span> || input.<span class="fu">iteration</span> === iterationLimit</span>
+<span id="cb11-21"><a href="#cb11-21"></a>    output.<span class="fu">iteration</span> := input.<span class="fu">iteration</span> + (!output.<span class="fu">done</span>).<span class="fu">asUInt</span></span>
+<span id="cb11-22"><a href="#cb11-22"></a>  }</span>
+<span id="cb11-23"><a href="#cb11-23"></a></span>
+<span id="cb11-24"><a href="#cb11-24"></a>  <span class="kw">val</span> router = <span class="kw">new</span> Area{</span>
+<span id="cb11-25"><a href="#cb11-25"></a>    <span class="kw">val</span> wantedId = <span class="fu">Counter</span>(<span class="dv">1</span> &lt;&lt; idWidth,inc = io.<span class="fu">rsp</span>.<span class="fu">fire</span>)</span>
+<span id="cb11-26"><a href="#cb11-26"></a>    <span class="kw">val</span> input = addStageContext.<span class="fu">stage</span></span>
+<span id="cb11-27"><a href="#cb11-27"></a>    <span class="kw">val</span> output = routerContext</span>
+<span id="cb11-28"><a href="#cb11-28"></a>    output.<span class="fu">payload</span>.<span class="fu">assignSomeByName</span>(input.<span class="fu">payload</span>)</span>
+<span id="cb11-29"><a href="#cb11-29"></a>    <span class="fu">when</span> (inserter.<span class="fu">input</span>.<span class="fu">done</span> &amp;&amp; wantedId === input.<span class="fu">id</span>) {</span>
+<span id="cb11-30"><a href="#cb11-30"></a>      io.<span class="fu">rsp</span>.<span class="fu">valid</span> := input.<span class="fu">valid</span></span>
+<span id="cb11-31"><a href="#cb11-31"></a>      io.<span class="fu">rsp</span>.<span class="fu">payload</span>.<span class="fu">iteration</span> := input.<span class="fu">iteration</span></span>
+<span id="cb11-32"><a href="#cb11-32"></a>    }</span>
+<span id="cb11-33"><a href="#cb11-33"></a>    output.<span class="fu">valid</span> := input.<span class="fu">valid</span> &amp;&amp; (!input.<span class="fu">done</span> || wantedId =/= input.<span class="fu">id</span> || !io.<span class="fu">rsp</span>.<span class="fu">fire</span>)</span>
+<span id="cb11-34"><a href="#cb11-34"></a>  }</span></code></pre></div>
 <p>这里有几个注意点：</p>
 <ul>
 <li><p>判断“done”信号的阶段，这里放在addStage，因为可以用上上一阶段的输出，但是我试了即使放在router，并在这个阶段计算乘法，总时间反而减少了，可能原因是乘法实际并不花多少时间吧。</p></li>
 <li><p>可能有的人会有疑问，routerContext的valid信号是随addStageContext的valid信号控制的，但是第一阶段又通过valid信号判断是加入新任务还是继续计算前面的任务，这样如果addStageContext没有就绪是不是会导致错误地加入新任务吗？答案是不会，因为这里的flow不是输入接口，而是作为阶段之间传输的寄存器，基本可以保障在流水线充满的时候时钟上升时valid始终为真。所以最后一行判断input.valid仅仅是确定流水线是否充满，如果input.valid为假说明流水线没充满，这时当然要加入新任务。</p></li>
 <li><p>assignSomeByName是Bundle类下的一个函数，作用是自动将参数端口集合里的所有端口连到调用类端口集合的所有<strong>同名</strong>端口上。如果找不到同名端口就不连，非常智能。如果调用这个函数之后有些个别函数不想这样连，可以用allowOverride函数取消这个端口的自动连接然后自己连。注意这个函数只能连Bundle子类声明的所有端口，像实验模板里声明的：</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">trait</span> Context<span class="op">{</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> id        <span class="op">=</span> <span class="fu">UInt</span><span class="op">(</span>idWidth bits<span class="op">)</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> x0<span class="op">,</span>y0     <span class="op">=</span> fixType</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> iteration <span class="op">=</span> <span class="fu">UInt</span><span class="op">(</span>iterationWidth bits<span class="op">)</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> done      <span class="op">=</span> Bool</span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> <span class="kw">class</span> <span class="fu">InserterContext</span><span class="op">()</span> <span class="kw">extends</span> Bundle <span class="kw">with</span> Context<span class="op">{</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> x<span class="op">,</span>y <span class="op">=</span> fixType</span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb12-1"><a href="#cb12-1"></a>  <span class="kw">trait</span> Context{</span>
+<span id="cb12-2"><a href="#cb12-2"></a>    <span class="kw">val</span> id        = <span class="fu">UInt</span>(idWidth bits)</span>
+<span id="cb12-3"><a href="#cb12-3"></a>    <span class="kw">val</span> x0,y0     = fixType</span>
+<span id="cb12-4"><a href="#cb12-4"></a>    <span class="kw">val</span> iteration = <span class="fu">UInt</span>(iterationWidth bits)</span>
+<span id="cb12-5"><a href="#cb12-5"></a>    <span class="kw">val</span> done      = Bool</span>
+<span id="cb12-6"><a href="#cb12-6"></a>  }</span>
+<span id="cb12-7"><a href="#cb12-7"></a>  <span class="kw">case</span> <span class="kw">class</span> <span class="fu">InserterContext</span>() <span class="kw">extends</span> Bundle <span class="kw">with</span> Context{</span>
+<span id="cb12-8"><a href="#cb12-8"></a>    <span class="kw">val</span> x,y = fixType</span>
+<span id="cb12-9"><a href="#cb12-9"></a>  }</span></code></pre></div>
 <p>这样InserterContext声明的端口用assignSomeByName连接就只会连x和y两个端口，Context特性里哪些属性就不会连上，所以答案里改成了这样的声明：</p>
-<div class="sourceCode" id="cb13"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">class</span> Context <span class="kw">extends</span> Bundle<span class="op">{</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> id        <span class="op">=</span> <span class="fu">UInt</span><span class="op">(</span>idWidth bits<span class="op">)</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> x0<span class="op">,</span>y0     <span class="op">=</span> fixType</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> iteration <span class="op">=</span> <span class="fu">UInt</span><span class="op">(</span>iterationWidth bits<span class="op">)</span></span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> done      <span class="op">=</span> Bool</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">case</span> <span class="kw">class</span> <span class="fu">InserterContext</span><span class="op">()</span> <span class="kw">extends</span> Context<span class="op">{</span></span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> x<span class="op">,</span>y <span class="op">=</span> fixType</span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb13-1"><a href="#cb13-1"></a>  <span class="kw">class</span> Context <span class="kw">extends</span> Bundle{</span>
+<span id="cb13-2"><a href="#cb13-2"></a>    <span class="kw">val</span> id        = <span class="fu">UInt</span>(idWidth bits)</span>
+<span id="cb13-3"><a href="#cb13-3"></a>    <span class="kw">val</span> x0,y0     = fixType</span>
+<span id="cb13-4"><a href="#cb13-4"></a>    <span class="kw">val</span> iteration = <span class="fu">UInt</span>(iterationWidth bits)</span>
+<span id="cb13-5"><a href="#cb13-5"></a>    <span class="kw">val</span> done      = Bool</span>
+<span id="cb13-6"><a href="#cb13-6"></a>  }</span>
+<span id="cb13-7"><a href="#cb13-7"></a></span>
+<span id="cb13-8"><a href="#cb13-8"></a>  <span class="kw">case</span> <span class="kw">class</span> <span class="fu">InserterContext</span>() <span class="kw">extends</span> Context{</span>
+<span id="cb13-9"><a href="#cb13-9"></a>    <span class="kw">val</span> x,y = fixType</span>
+<span id="cb13-10"><a href="#cb13-10"></a>  }</span></code></pre></div>
 <p>我一开始没注意这个变化，结果一直提示我那几个端口空置，找又找不到，坑死了。</p></li>
 </ul>
 <h3 id="总结">总结</h3>
 <p>至此，SpinalHDL的12个实验就做完了，个人感觉教程太简洁了，讲得不清不楚，很不适合初学者学习，还是需要完善一下，不过还是感谢设计实验的好心人。至少评测很方便，我也慢慢了解了总线、硬件协议相关的知识，学会通过看波形调试程序了。后面准备研究一下这个项目的项目结构和仿真测试的程序。</p>
-</article>
-<span class="bg-light text-muted border boder-primary d-block p-2 text-center">
-    转载请注明出处<br>
-    © 2022 ZimingYuan的博客
-</span>
-<div style="background-color: #ebd5a1; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; pointer-events: none; opacity: 0.2;">
-</div>
+<footer>
+    <hr><center>转载请注明出处<br>© 2022 ZimingYuan的博客</center>
+</footer>
 </body>
 </html>

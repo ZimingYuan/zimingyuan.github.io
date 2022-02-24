@@ -1,158 +1,139 @@
 <!DOCTYPE html>
-<!--
-==============================================================================
-           "GitHub HTML5 Pandoc Template" v2.2 — by Tristano Ajmone
-==============================================================================
-Copyright © Tristano Ajmone, 2017-2020, MIT License (MIT). Project's home:
-- https://github.com/tajmone/pandoc-goodies
-The CSS in this template reuses source code taken from the following projects:
-- GitHub Markdown CSS: Copyright © Sindre Sorhus, MIT License (MIT):
-  https://github.com/sindresorhus/github-markdown-css
-- Primer CSS: Copyright © 2016-2017 GitHub Inc., MIT License (MIT):
-  http://primercss.io/
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The MIT License
-Copyright (c) Tristano Ajmone, 2017-2020 (github.com/tajmone/pandoc-goodies)
-Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
-Copyright (c) 2017 GitHub Inc.
-"GitHub Pandoc HTML5 Template" is Copyright (c) Tristano Ajmone, 2017-2020,
-released under the MIT License (MIT); it contains readaptations of substantial
-portions of the following third party softwares:
-(1) "GitHub Markdown CSS", Copyright (c) Sindre Sorhus, MIT License (MIT).
-(2) "Primer CSS", Copyright (c) 2016 GitHub Inc., MIT License (MIT).
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-==============================================================================-->
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" data-theme="tufte">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/extra/classless.css" />
+<style>
+html[data-theme='tufte']{
+    --rem: 15px;
+    --navpos: absolute;
+    --width: 70rem;
+    --font-p: 1.4rem/2 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-h: 1.4rem/1.5 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --ornament: "";
+    --border: 1px solid var(--cmed);
+    /* foreground   | background color */
+    --cfg:   #111;    --cbg:    #fbf7ec;
+    --cdark: #111;    --clight: #fbf7ec;
+    --cmed: #b4d5fe;
+    --clink: #111;
+    --cemph: #111;
+}
+</style>
+  <script>
+      let search = () => {
+          let word = document.querySelector('input').value;
+          if (word.length == 0) {
+              alert('搜索内容不能为空！');
+          } else {
+              location.href = '/search.html?' + word;
+          }
+      };
+  </script>
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <title>SpinalWorkshop实验笔记（一）</title>
-  <style type="text/css">
-@charset "UTF-8";.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#24292e;font-family:-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:16px;line-height:1.5;word-wrap:break-word;box-sizing:border-box;min-width:200px;max-width:980px;margin:0 auto;padding:45px}.markdown-body a{color:#0366d6;background-color:transparent;text-decoration:none;-webkit-text-decoration-skip:objects}.markdown-body a:active,.markdown-body a:hover{outline-width:0}.markdown-body a:hover{text-decoration:underline}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body strong{font-weight:600}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1{font-size:2em;margin:.67em 0;padding-bottom:.3em;border-bottom:1px solid #eaecef}.markdown-body h2{padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid #eaecef}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#6a737d}.markdown-body img{border-style:none}.markdown-body svg:not(:root){overflow:hidden}.markdown-body hr{box-sizing:content-box;height:.25em;margin:24px 0;padding:0;overflow:hidden;background-color:#e1e4e8;border:0}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body input{margin:0;overflow:visible;font:inherit;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=checkbox]{box-sizing:border-box;padding:0}.markdown-body *{box-sizing:border-box}.markdown-body blockquote{margin:0}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dd{margin-left:0}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:600}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace}.markdown-body pre{font:12px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;word-wrap:normal}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote{padding:0 1em;color:#6a737d;border-left:.25em solid #dfe2e5}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body table{display:block;width:100%;overflow:auto;border-spacing:0;border-collapse:collapse}.markdown-body table th{font-weight:600}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #dfe2e5}.markdown-body table tr{background-color:#fff;border-top:1px solid #c6cbd1}.markdown-body table tr:nth-child(2n){background-color:#f6f8fa}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body code{padding:.2em 0;margin:0;font-size:85%;background-color:rgba(27,31,35,.05);border-radius:3px}.markdown-body code::after,.markdown-body code::before{letter-spacing:-.2em;content:" "}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f6f8fa;border-radius:3px}.markdown-body pre code{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code::after,.markdown-body pre code::before{content:normal}.markdown-body .full-commit .btn-outline:not(:disabled):hover{color:#005cc5;border-color:#005cc5}.markdown-body kbd{box-shadow:inset 0 -1px 0 #959da5;display:inline-block;padding:3px 5px;font:11px/10px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;color:#444d56;vertical-align:middle;background-color:#fcfcfc;border:1px solid #c6cbd1;border-bottom-color:#959da5;border-radius:3px;box-shadow:inset 0 -1px 0 #959da5}.markdown-body :checked+.radio-label{position:relative;z-index:1;border-color:#0366d6}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item+.task-list-item{margin-top:3px}.markdown-body .task-list-item input{margin:0 .2em .25em -1.6em;vertical-align:middle}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.Alert,.Error,.Note,.Success,.Warning{padding:11px;margin-bottom:24px;border-style:solid;border-width:1px;border-radius:4px}.Alert p,.Error p,.Note p,.Success p,.Warning p{margin-top:0}.Alert p:last-child,.Error p:last-child,.Note p:last-child,.Success p:last-child,.Warning p:last-child{margin-bottom:0}.Alert{color:#246;background-color:#e2eef9;border-color:#bac6d3}.Warning{color:#4c4a42;background-color:#fff9ea;border-color:#dfd8c2}.Error{color:#911;background-color:#fcdede;border-color:#d2b2b2}.Success{color:#22662c;background-color:#e2f9e5;border-color:#bad3be}.Note{color:#2f363d;background-color:#f6f8fa;border-color:#d5d8da}.Alert h1,.Alert h2,.Alert h3,.Alert h4,.Alert h5,.Alert h6{color:#246;margin-bottom:0}.Warning h1,.Warning h2,.Warning h3,.Warning h4,.Warning h5,.Warning h6{color:#4c4a42;margin-bottom:0}.Error h1,.Error h2,.Error h3,.Error h4,.Error h5,.Error h6{color:#911;margin-bottom:0}.Success h1,.Success h2,.Success h3,.Success h4,.Success h5,.Success h6{color:#22662c;margin-bottom:0}.Note h1,.Note h2,.Note h3,.Note h4,.Note h5,.Note h6{color:#2f363d;margin-bottom:0}.Alert h1:first-child,.Alert h2:first-child,.Alert h3:first-child,.Alert h4:first-child,.Alert h5:first-child,.Alert h6:first-child,.Error h1:first-child,.Error h2:first-child,.Error h3:first-child,.Error h4:first-child,.Error h5:first-child,.Error h6:first-child,.Note h1:first-child,.Note h2:first-child,.Note h3:first-child,.Note h4:first-child,.Note h5:first-child,.Note h6:first-child,.Success h1:first-child,.Success h2:first-child,.Success h3:first-child,.Success h4:first-child,.Success h5:first-child,.Success h6:first-child,.Warning h1:first-child,.Warning h2:first-child,.Warning h3:first-child,.Warning h4:first-child,.Warning h5:first-child,.Warning h6:first-child{margin-top:0}h1.title,p.subtitle{text-align:center}h1.title.followed-by-subtitle{margin-bottom:0}p.subtitle{font-size:1.5em;font-weight:600;line-height:1.25;margin-top:0;margin-bottom:16px;padding-bottom:.3em}div.line-block{white-space:pre-line}
-  </style>
-  <style type="text/css">code{white-space: pre;}</style>
-  <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-  </style>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
-<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
-<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.staticfile.org/popper.js/1.12.9/popper.min.js" ></script>
-<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js" ></script>
-<link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">ZimingYuan的博客</a>
-        <div class="navbar-collapse">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/index.html">首页</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/html/随笔.html">随笔</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/html/CSP模板.html">CSP模板</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<article class="markdown-body">
-<header>
+    <nav>
+        <ul>
+            <li><big>ZimingYuan的博客</big></li>
+            <li><a href="/index.html">首页</a></li>
+            <li><a href="/html/随笔.html">随笔</a></li>
+            <li><a href="/html/CSP模板.html">CSP模板</a></li>
+            <li class="float-right sticky"><button onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="text" placeholder="搜索"></li>
+        </ul>
+    </nav>
+<header id="title-block-header">
 <h1 class="title">SpinalWorkshop实验笔记（一）</h1>
+<hr>
 </header>
 <h3 id="概述">概述</h3>
 <p>最近在学习SpinalHDL，在github上看到了<a href="https://github.com/SpinalHDL/SpinalWorkshop">SpinalHDL实验</a>，于是试着做了做。虽然这些实验的答案在仓库里给出来了，但我是FPGA初学者，虽然会一点verilog却对各种总线一窍不通，也不了解scala，所以即使要理解这些实验也花费了一番功夫。在这里记录一下我做这些实验的感想。本文涉及Counter、PWM、UART、Prime四个实验。</p>
 <h3 id="内容">内容</h3>
 <h4 id="counter">Counter</h4>
 <p>Counter实验很简单，只要实现一个计数器，并且不要求时钟信号。所以直接按教程里的图片连线即可：</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> r <span class="op">=</span> <span class="fu">Reg</span><span class="op">(</span><span class="fu">UInt</span><span class="op">(</span>width bits<span class="op">))</span> <span class="fu">init</span><span class="op">(</span><span class="dv">0</span><span class="op">)</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  r <span class="op">:=</span> io<span class="op">.</span>clear <span class="op">?</span> <span class="fu">U</span><span class="op">(</span><span class="dv">0</span><span class="op">)</span> <span class="op">|</span> r <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  io<span class="op">.</span>value <span class="op">:=</span> r</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  io<span class="op">.</span>full <span class="op">:=</span> r <span class="op">===</span> <span class="op">(</span><span class="dv">1</span> <span class="op">&lt;&lt;</span> width<span class="op">)</span> <span class="op">-</span> <span class="dv">1</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb1-1"><a href="#cb1-1"></a>  <span class="kw">val</span> r = <span class="fu">Reg</span>(<span class="fu">UInt</span>(width bits)) <span class="fu">init</span>(<span class="dv">0</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a>  r := io.<span class="fu">clear</span> ? <span class="fu">U</span>(<span class="dv">0</span>) | r + <span class="dv">1</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a>  io.<span class="fu">value</span> := r</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  io.<span class="fu">full</span> := r === (<span class="dv">1</span> &lt;&lt; width) - <span class="dv">1</span></span></code></pre></div>
 <p>注意的点：</p>
 <ul>
 <li>比较SpinalHDL的类型需要使用三等于号</li>
@@ -161,64 +142,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4 id="pwm">PWM</h4>
 <p>难度陡然上升（当然可能是我太菜）。这个实验的关键是理解SpinalHDL的master/slave模型。我们可以把实现了IMasterSlave的端口集合理解为一个两种用途的端口集合。当它在模块里被声明成master时，集合里某些端口是输入端口，另一些是输出，而被声明成slave时，那些master时的输入端口此时变为输出端口，master的输出端口变为输入端口。也就是所有端口的输入输出方向发生了反转。</p>
 <p>由于教程的Component interfaces指定了模块的apb端口集合是slave类型的，所以我们需要APB这个端口集合中哪些端口在被声明成slave时是输入端口，哪些是输出端口。这回我们需要理解这个模块是干啥的，查看波形可以发现这个模块似乎是一个方波发生器，就是比较timer寄存器和dutycycle寄存器的值，前者小于后者输出高电平，否则输出低电平。同时有另外一个需求，就是外面的模块要能读写enable和dutycycle两个寄存器（其实我一开始没看出来，这教程写得不清不楚的）。很容易想出当APB作为slave时，是外界向本模块提供要写入的值，同时读出值。因此，写相关的端口当然是输入，读相关的端口当然是输出。加上一些控制信号PSEL、PENABLE和PADDR也明显是输入进这些模块的，因此就可以写出APB的声明：</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">//APB interface definition</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="cf">case</span> <span class="kw">class</span> <span class="fu">Apb</span><span class="op">(</span>config<span class="op">:</span> ApbConfig<span class="op">)</span> <span class="kw">extends</span> Bundle <span class="kw">with</span> IMasterSlave <span class="op">{</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="co">//</span><span class="al">TODO</span><span class="co"> define APB signals</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> PSEL <span class="op">=</span> <span class="fu">Bits</span><span class="op">(</span>config<span class="op">.</span>selWidth bits<span class="op">)</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> PENABLE <span class="op">=</span> <span class="fu">Bool</span><span class="op">()</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> PWRITE <span class="op">=</span> <span class="fu">Bool</span><span class="op">()</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> PADDR <span class="op">=</span> <span class="fu">UInt</span><span class="op">(</span>config<span class="op">.</span>addressWidth bits<span class="op">)</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> PWDATA <span class="op">=</span> <span class="fu">Bits</span><span class="op">(</span>config<span class="op">.</span>dataWidth bits<span class="op">)</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> PRDATA <span class="op">=</span> <span class="fu">Bits</span><span class="op">(</span>config<span class="op">.</span>dataWidth bits<span class="op">)</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> PREADY <span class="op">=</span> <span class="fu">Bool</span><span class="op">()</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">override</span> <span class="kw">def</span> <span class="fu">asMaster</span><span class="op">():</span> <span class="bu">Unit</span> <span class="op">=</span> <span class="op">{</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    <span class="co">//</span><span class="al">TODO</span><span class="co"> define direction of each signal in a master mode</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="fu">out</span><span class="op">(</span>PSEL<span class="op">,</span> PENABLE<span class="op">,</span> PWRITE<span class="op">,</span> PADDR<span class="op">,</span> PWDATA<span class="op">)</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>    <span class="fu">in</span><span class="op">(</span>PRDATA<span class="op">,</span> PREADY<span class="op">)</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb2-1"><a href="#cb2-1"></a><span class="co">//APB interface definition</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">case</span> <span class="kw">class</span> <span class="fu">Apb</span>(config: ApbConfig) <span class="kw">extends</span> Bundle <span class="kw">with</span> IMasterSlave {</span>
+<span id="cb2-3"><a href="#cb2-3"></a>  <span class="co">//TODO define APB signals</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="kw">val</span> PSEL = <span class="fu">Bits</span>(config.<span class="fu">selWidth</span> bits)</span>
+<span id="cb2-5"><a href="#cb2-5"></a>  <span class="kw">val</span> PENABLE = <span class="fu">Bool</span>()</span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="kw">val</span> PWRITE = <span class="fu">Bool</span>()</span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="kw">val</span> PADDR = <span class="fu">UInt</span>(config.<span class="fu">addressWidth</span> bits)</span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="kw">val</span> PWDATA = <span class="fu">Bits</span>(config.<span class="fu">dataWidth</span> bits)</span>
+<span id="cb2-9"><a href="#cb2-9"></a>  <span class="kw">val</span> PRDATA = <span class="fu">Bits</span>(config.<span class="fu">dataWidth</span> bits)</span>
+<span id="cb2-10"><a href="#cb2-10"></a>  <span class="kw">val</span> PREADY = <span class="fu">Bool</span>()</span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a>  <span class="kw">override</span> <span class="kw">def</span> <span class="fu">asMaster</span>(): Unit = {</span>
+<span id="cb2-13"><a href="#cb2-13"></a>    <span class="co">//TODO define direction of each signal in a master mode</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a>    <span class="fu">out</span>(PSEL, PENABLE, PWRITE, PADDR, PWDATA)</span>
+<span id="cb2-15"><a href="#cb2-15"></a>    <span class="fu">in</span>(PRDATA, PREADY)</span>
+<span id="cb2-16"><a href="#cb2-16"></a></span>
+<span id="cb2-17"><a href="#cb2-17"></a>  }</span>
+<span id="cb2-18"><a href="#cb2-18"></a>}</span></code></pre></div>
 <p>声明里定义端口的输入和输出是通过重写asMaster方法，而且针对的是master声明的，因此需要将我们刚才的讨论倒过来，就是上面的代码。</p>
 <p>io端口的声明和logic块很简单，和Counter实验差不多：</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> io <span class="op">=</span> <span class="kw">new</span> Bundle<span class="op">{</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> apb <span class="op">=</span> <span class="fu">slave</span><span class="op">(</span><span class="fu">Apb</span><span class="op">(</span>apbConfig<span class="op">))</span> <span class="co">//</span><span class="al">TODO</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> pwm <span class="op">=</span> out <span class="fu">Bool</span><span class="op">()</span> <span class="co">//</span><span class="al">TODO</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> logic <span class="op">=</span> <span class="kw">new</span> Area <span class="op">{</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="co">//</span><span class="al">TODO</span><span class="co"> define the PWM logic</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> enable <span class="op">=</span> <span class="fu">Reg</span><span class="op">(</span>False<span class="op">)</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> timer <span class="op">=</span> <span class="fu">Reg</span><span class="op">(</span><span class="fu">UInt</span><span class="op">(</span>timerWidth bits<span class="op">))</span> <span class="fu">init</span><span class="op">(</span><span class="dv">0</span><span class="op">)</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">when</span> <span class="op">(</span>enable<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>      timer <span class="op">:=</span> timer <span class="op">+</span> <span class="dv">1</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> dutycycle <span class="op">=</span> <span class="fu">Reg</span><span class="op">(</span><span class="fu">UInt</span><span class="op">(</span>timerWidth bits<span class="op">))</span> <span class="fu">init</span><span class="op">(</span><span class="dv">0</span><span class="op">)</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> output <span class="op">=</span> <span class="fu">Reg</span><span class="op">(</span>False<span class="op">)</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    output <span class="op">:=</span> timer <span class="op">&lt;</span> dutycycle</span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    io<span class="op">.</span>pwm <span class="op">:=</span> output</span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb3-1"><a href="#cb3-1"></a>  <span class="kw">val</span> io = <span class="kw">new</span> Bundle{</span>
+<span id="cb3-2"><a href="#cb3-2"></a>    <span class="kw">val</span> apb = <span class="fu">slave</span>(<span class="fu">Apb</span>(apbConfig)) <span class="co">//TODO</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a>    <span class="kw">val</span> pwm = out <span class="fu">Bool</span>() <span class="co">//TODO</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>  }</span>
+<span id="cb3-5"><a href="#cb3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="kw">val</span> logic = <span class="kw">new</span> Area {</span>
+<span id="cb3-7"><a href="#cb3-7"></a>    <span class="co">//TODO define the PWM logic</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>    <span class="kw">val</span> enable = <span class="fu">Reg</span>(False)</span>
+<span id="cb3-9"><a href="#cb3-9"></a>    <span class="kw">val</span> timer = <span class="fu">Reg</span>(<span class="fu">UInt</span>(timerWidth bits)) <span class="fu">init</span>(<span class="dv">0</span>)</span>
+<span id="cb3-10"><a href="#cb3-10"></a>    <span class="fu">when</span> (enable) {</span>
+<span id="cb3-11"><a href="#cb3-11"></a>      timer := timer + <span class="dv">1</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a>    }</span>
+<span id="cb3-13"><a href="#cb3-13"></a>    <span class="kw">val</span> dutycycle = <span class="fu">Reg</span>(<span class="fu">UInt</span>(timerWidth bits)) <span class="fu">init</span>(<span class="dv">0</span>)</span>
+<span id="cb3-14"><a href="#cb3-14"></a>    <span class="kw">val</span> output = <span class="fu">Reg</span>(False)</span>
+<span id="cb3-15"><a href="#cb3-15"></a>    output := timer &lt; dutycycle</span>
+<span id="cb3-16"><a href="#cb3-16"></a>    io.<span class="fu">pwm</span> := output</span>
+<span id="cb3-17"><a href="#cb3-17"></a>  }</span></code></pre></div>
 <p>control块就比较复杂，其负责控制那两个寄存器的读写，所以首先需要根据地址来决定读写那个寄存器，同时写寄存器需要收到控制信号的制约，包括片选信号（PSEL）、使能信号（PENABLE）和写信号（PWRITE）。读寄存器直接读，写寄存器需要控制信号均为真才可以写：</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> control <span class="op">=</span> <span class="kw">new</span> Area<span class="op">{</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">//</span><span class="al">TODO</span><span class="co"> define the APB slave logic that will make PWM&#39;s registers writable/readable</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> doWrite <span class="op">=</span> io<span class="op">.</span>apb<span class="op">.</span><span class="fu">PSEL</span><span class="op">(</span><span class="dv">0</span><span class="op">)</span> <span class="op">&amp;&amp;</span> io<span class="op">.</span>apb<span class="op">.</span>PENABLE <span class="op">&amp;&amp;</span> io<span class="op">.</span>apb<span class="op">.</span>PWRITE</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    io<span class="op">.</span>apb<span class="op">.</span>PRDATA <span class="op">:=</span> <span class="dv">0</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    io<span class="op">.</span>apb<span class="op">.</span>PREADY <span class="op">:=</span> True</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="fu">switch</span><span class="op">(</span>io<span class="op">.</span>apb<span class="op">.</span>PADDR<span class="op">){</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>      <span class="fu">is</span><span class="op">(</span><span class="dv">0</span><span class="op">){</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>        io<span class="op">.</span>apb<span class="op">.</span><span class="fu">PRDATA</span><span class="op">(</span><span class="dv">0</span><span class="op">)</span> <span class="op">:=</span> logic<span class="op">.</span>enable</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>        <span class="fu">when</span><span class="op">(</span>doWrite<span class="op">){</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>          logic<span class="op">.</span>enable <span class="op">:=</span> io<span class="op">.</span>apb<span class="op">.</span><span class="fu">PWDATA</span><span class="op">(</span><span class="dv">0</span><span class="op">)</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>      <span class="fu">is</span><span class="op">(</span><span class="dv">4</span><span class="op">){</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>        io<span class="op">.</span>apb<span class="op">.</span>PRDATA <span class="op">:=</span> logic<span class="op">.</span>dutycycle<span class="op">.</span>asBits<span class="op">.</span>resized</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">when</span><span class="op">(</span>doWrite<span class="op">){</span></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>          logic<span class="op">.</span>dutycycle <span class="op">:=</span> io<span class="op">.</span>apb<span class="op">.</span>PWDATA<span class="op">.</span>asUInt<span class="op">.</span>resized</span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb4-1"><a href="#cb4-1"></a>  <span class="kw">val</span> control = <span class="kw">new</span> Area{</span>
+<span id="cb4-2"><a href="#cb4-2"></a>    <span class="co">//TODO define the APB slave logic that will make PWM&#39;s registers writable/readable</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a>    <span class="kw">val</span> doWrite = io.<span class="fu">apb</span>.<span class="fu">PSEL</span>(<span class="dv">0</span>) &amp;&amp; io.<span class="fu">apb</span>.<span class="fu">PENABLE</span> &amp;&amp; io.<span class="fu">apb</span>.<span class="fu">PWRITE</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a>    io.<span class="fu">apb</span>.<span class="fu">PRDATA</span> := <span class="dv">0</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a>    io.<span class="fu">apb</span>.<span class="fu">PREADY</span> := True</span>
+<span id="cb4-6"><a href="#cb4-6"></a>    <span class="fu">switch</span>(io.<span class="fu">apb</span>.<span class="fu">PADDR</span>){</span>
+<span id="cb4-7"><a href="#cb4-7"></a>      <span class="fu">is</span>(<span class="dv">0</span>){</span>
+<span id="cb4-8"><a href="#cb4-8"></a>        io.<span class="fu">apb</span>.<span class="fu">PRDATA</span>(<span class="dv">0</span>) := logic.<span class="fu">enable</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>        <span class="fu">when</span>(doWrite){</span>
+<span id="cb4-10"><a href="#cb4-10"></a>          logic.<span class="fu">enable</span> := io.<span class="fu">apb</span>.<span class="fu">PWDATA</span>(<span class="dv">0</span>)</span>
+<span id="cb4-11"><a href="#cb4-11"></a>        }</span>
+<span id="cb4-12"><a href="#cb4-12"></a>      }</span>
+<span id="cb4-13"><a href="#cb4-13"></a>      <span class="fu">is</span>(<span class="dv">4</span>){</span>
+<span id="cb4-14"><a href="#cb4-14"></a>        io.<span class="fu">apb</span>.<span class="fu">PRDATA</span> := logic.<span class="fu">dutycycle</span>.<span class="fu">asBits</span>.<span class="fu">resized</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a>        <span class="fu">when</span>(doWrite){</span>
+<span id="cb4-16"><a href="#cb4-16"></a>          logic.<span class="fu">dutycycle</span> := io.<span class="fu">apb</span>.<span class="fu">PWDATA</span>.<span class="fu">asUInt</span>.<span class="fu">resized</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a>        }</span>
+<span id="cb4-18"><a href="#cb4-18"></a>      }</span>
+<span id="cb4-19"><a href="#cb4-19"></a>    }</span>
+<span id="cb4-20"><a href="#cb4-20"></a>  }</span></code></pre></div>
 <h4 id="uart">UART</h4>
 <p>这个实验只看文档也挺懵的，实际上它描述的采样状态机应该是这样：</p>
 <ul>
@@ -233,66 +214,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>STOP：等待<code>preSamplingSize + samplingSize + postSamplingSize</code>个采样tick，回到IDLE状态</p></li>
 </ul>
 <p>DATA这一步还是比较清晰的，可能实际的电路没有那么稳定，所以才要通过采样一段时间然后用MajorityVote取出现次数超过一半的电平。但是START和STOP为什么要等待这个数量的采样tick我就不明白了，尤其是START的式子<code>preSamplingSize + (samplingSize - 1) / 2 - 1</code>更是奇怪，不知道怎么回事：</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Statemachine that use all precedent area</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> stateMachine <span class="op">=</span> <span class="kw">new</span> StateMachine <span class="op">{</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>    <span class="co">//</span><span class="al">TODO</span><span class="co"> state machine</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> value <span class="op">=</span> <span class="fu">Reg</span><span class="op">(</span>io<span class="op">.</span>read<span class="op">.</span>payload<span class="op">)</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    io<span class="op">.</span>read<span class="op">.</span>valid <span class="op">:=</span> False</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    always <span class="op">{</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      io<span class="op">.</span>read<span class="op">.</span>payload <span class="op">:=</span> value</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> IDLE<span class="op">:</span> State <span class="op">=</span> <span class="kw">new</span> State <span class="kw">with</span> EntryPoint <span class="op">{</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>      whenIsActive <span class="op">{</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>        <span class="fu">when</span> <span class="op">(</span>sampler<span class="op">.</span>tick <span class="op">&amp;&amp;</span> <span class="op">!</span>sampler<span class="op">.</span>value<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>          bitTimer<span class="op">.</span>recenter <span class="op">:=</span> True</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>          <span class="fu">goto</span><span class="op">(</span>START<span class="op">)</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> START <span class="op">=</span> <span class="kw">new</span> State <span class="op">{</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>      whenIsActive <span class="op">{</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        <span class="fu">when</span> <span class="op">(</span>bitTimer<span class="op">.</span>tick<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>          bitCounter<span class="op">.</span>clear <span class="op">:=</span> True</span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>          <span class="fu">goto</span><span class="op">(</span>DATA<span class="op">)</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> DATA <span class="op">=</span> <span class="kw">new</span> State <span class="op">{</span></span>
-<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>      whenIsActive <span class="op">{</span></span>
-<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>        <span class="fu">when</span> <span class="op">(</span>bitTimer<span class="op">.</span>tick<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>          <span class="fu">value</span><span class="op">(</span>bitCounter<span class="op">.</span>value<span class="op">)</span> <span class="op">:=</span> sampler<span class="op">.</span>value</span>
-<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a>          <span class="fu">when</span> <span class="op">(</span>bitCounter<span class="op">.</span>value <span class="op">===</span> <span class="dv">7</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-30"><a href="#cb5-30" aria-hidden="true" tabindex="-1"></a>            <span class="fu">goto</span><span class="op">(</span>STOP<span class="op">)</span></span>
-<span id="cb5-31"><a href="#cb5-31" aria-hidden="true" tabindex="-1"></a>          <span class="op">}</span></span>
-<span id="cb5-32"><a href="#cb5-32" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb5-33"><a href="#cb5-33" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb5-34"><a href="#cb5-34" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb5-35"><a href="#cb5-35" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> STOP <span class="op">=</span> <span class="kw">new</span> State <span class="op">{</span></span>
-<span id="cb5-36"><a href="#cb5-36" aria-hidden="true" tabindex="-1"></a>      whenIsActive <span class="op">{</span></span>
-<span id="cb5-37"><a href="#cb5-37" aria-hidden="true" tabindex="-1"></a>        <span class="fu">when</span> <span class="op">(</span>bitTimer<span class="op">.</span>tick<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-38"><a href="#cb5-38" aria-hidden="true" tabindex="-1"></a>          io<span class="op">.</span>read<span class="op">.</span>valid <span class="op">:=</span> True</span>
-<span id="cb5-39"><a href="#cb5-39" aria-hidden="true" tabindex="-1"></a>          <span class="fu">goto</span><span class="op">(</span>IDLE<span class="op">)</span></span>
-<span id="cb5-40"><a href="#cb5-40" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb5-41"><a href="#cb5-41" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb5-42"><a href="#cb5-42" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb5-43"><a href="#cb5-43" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb5-1"><a href="#cb5-1"></a>  <span class="co">// Statemachine that use all precedent area</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>  <span class="kw">val</span> stateMachine = <span class="kw">new</span> StateMachine {</span>
+<span id="cb5-3"><a href="#cb5-3"></a>    <span class="co">//TODO state machine</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a>    <span class="kw">val</span> value = <span class="fu">Reg</span>(io.<span class="fu">read</span>.<span class="fu">payload</span>)</span>
+<span id="cb5-5"><a href="#cb5-5"></a>    io.<span class="fu">read</span>.<span class="fu">valid</span> := False</span>
+<span id="cb5-6"><a href="#cb5-6"></a>    always {</span>
+<span id="cb5-7"><a href="#cb5-7"></a>      io.<span class="fu">read</span>.<span class="fu">payload</span> := value</span>
+<span id="cb5-8"><a href="#cb5-8"></a>    }</span>
+<span id="cb5-9"><a href="#cb5-9"></a>    <span class="kw">val</span> IDLE: State = <span class="kw">new</span> State <span class="kw">with</span> EntryPoint {</span>
+<span id="cb5-10"><a href="#cb5-10"></a>      whenIsActive {</span>
+<span id="cb5-11"><a href="#cb5-11"></a>        <span class="fu">when</span> (sampler.<span class="fu">tick</span> &amp;&amp; !sampler.<span class="fu">value</span>) {</span>
+<span id="cb5-12"><a href="#cb5-12"></a>          bitTimer.<span class="fu">recenter</span> := True</span>
+<span id="cb5-13"><a href="#cb5-13"></a>          <span class="fu">goto</span>(START)</span>
+<span id="cb5-14"><a href="#cb5-14"></a>        }</span>
+<span id="cb5-15"><a href="#cb5-15"></a>      }</span>
+<span id="cb5-16"><a href="#cb5-16"></a>    }</span>
+<span id="cb5-17"><a href="#cb5-17"></a>    <span class="kw">val</span> START = <span class="kw">new</span> State {</span>
+<span id="cb5-18"><a href="#cb5-18"></a>      whenIsActive {</span>
+<span id="cb5-19"><a href="#cb5-19"></a>        <span class="fu">when</span> (bitTimer.<span class="fu">tick</span>) {</span>
+<span id="cb5-20"><a href="#cb5-20"></a>          bitCounter.<span class="fu">clear</span> := True</span>
+<span id="cb5-21"><a href="#cb5-21"></a>          <span class="fu">goto</span>(DATA)</span>
+<span id="cb5-22"><a href="#cb5-22"></a>        }</span>
+<span id="cb5-23"><a href="#cb5-23"></a>      }</span>
+<span id="cb5-24"><a href="#cb5-24"></a>    }</span>
+<span id="cb5-25"><a href="#cb5-25"></a>    <span class="kw">val</span> DATA = <span class="kw">new</span> State {</span>
+<span id="cb5-26"><a href="#cb5-26"></a>      whenIsActive {</span>
+<span id="cb5-27"><a href="#cb5-27"></a>        <span class="fu">when</span> (bitTimer.<span class="fu">tick</span>) {</span>
+<span id="cb5-28"><a href="#cb5-28"></a>          <span class="fu">value</span>(bitCounter.<span class="fu">value</span>) := sampler.<span class="fu">value</span></span>
+<span id="cb5-29"><a href="#cb5-29"></a>          <span class="fu">when</span> (bitCounter.<span class="fu">value</span> === <span class="dv">7</span>) {</span>
+<span id="cb5-30"><a href="#cb5-30"></a>            <span class="fu">goto</span>(STOP)</span>
+<span id="cb5-31"><a href="#cb5-31"></a>          }</span>
+<span id="cb5-32"><a href="#cb5-32"></a>        }</span>
+<span id="cb5-33"><a href="#cb5-33"></a>      }</span>
+<span id="cb5-34"><a href="#cb5-34"></a>    }</span>
+<span id="cb5-35"><a href="#cb5-35"></a>    <span class="kw">val</span> STOP = <span class="kw">new</span> State {</span>
+<span id="cb5-36"><a href="#cb5-36"></a>      whenIsActive {</span>
+<span id="cb5-37"><a href="#cb5-37"></a>        <span class="fu">when</span> (bitTimer.<span class="fu">tick</span>) {</span>
+<span id="cb5-38"><a href="#cb5-38"></a>          io.<span class="fu">read</span>.<span class="fu">valid</span> := True</span>
+<span id="cb5-39"><a href="#cb5-39"></a>          <span class="fu">goto</span>(IDLE)</span>
+<span id="cb5-40"><a href="#cb5-40"></a>        }</span>
+<span id="cb5-41"><a href="#cb5-41"></a>      }</span>
+<span id="cb5-42"><a href="#cb5-42"></a>    }</span>
+<span id="cb5-43"><a href="#cb5-43"></a>  }</span></code></pre></div>
 <p>“等待一定的时间”和“采样一定的时间”这些操作都由bitTimer计算，当recenter信号被触发时，等待的采样tick是<code>preSamplingSize + (samplingSize - 1) / 2 - 1</code>，在START结束后bitTimer里的计数器减到0自然溢出到<code>(1 &lt;&lt; width) - 1</code>，由于程序前面规定了<code>preSamplingSize + samplingSize + postSamplingSize</code>必须是2的幂，所以两条式子相等，之后在recenter下一次被触发前计都是按那条式子计算等待时间和采样时间。</p>
 <p>另外是Flow的用法，当数据有效时把valid端口置为真，数据传到payload端口。注意寄存器传到payload端口这句必须放在状态机之外或者状态机内的always块里，否则会报“latch”错误。因为payload端口应该是短时间的信号而不是寄存器，所以不能在“某个状态”内赋值。同时，对于bitCounter和bitTimer内的信号进行的操作也是短时间的，在当前状态内是高电平，出了这个状态就又变回低电平了。</p>
 <p>最后注意状态机，我用的是文档里介绍的style A写法，这种写法需要注意如果是当前声明的状态被后面声明的状态使用（如当前声明的IDLE在后面声明STOP中用到了），那么当前声明的状态就不能用自动类型推断，不然会报“递归定义”的错误。如上面的IDLE就在声明里显式指出了其类型State。</p>
 <h4 id="prime">Prime</h4>
 <p>代码很简单，但是新手很容易误解。比如我，一开始看见源程序里给出了基于scala基础类型判断质数的函数apply，就在想能不能将传给我的SpinalHDL类型的数转换成基础类型然后调用apply判断，但找不到转换函数。看了答案才意识到这样肯定是不行的，因为apply不能被编译成电路，怎么能用来判断呢。正确方法是利用apply函数构造一个质数表，然后将传给我的数依次和质数表里的数比较，如果其中一个为真就返回真。这种情况下质数表可以转换成一组常量信号，然后用比较器和参数进行比较最后用一个大或门就能计算结果，可以编译成电路的形式，实际上就类似于教程里给出的Verilog代码：</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>  <span class="kw">def</span> <span class="fu">apply</span><span class="op">(</span>n <span class="op">:</span> UInt<span class="op">)</span> <span class="op">:</span> Bool <span class="op">=</span> <span class="op">{</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="co">//</span><span class="al">TODO</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">(</span><span class="dv">0</span> until <span class="dv">1</span> <span class="op">&lt;&lt;</span> <span class="fu">widthOf</span><span class="op">(</span>n<span class="op">)).</span><span class="fu">filter</span><span class="op">(</span><span class="fu">apply</span><span class="op">(</span>_<span class="op">)).</span><span class="fu">map</span><span class="op">(</span>n <span class="op">===</span> _<span class="op">).</span>orR</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb6-1"><a href="#cb6-1"></a>  <span class="kw">def</span> <span class="fu">apply</span>(n : UInt) : Bool = {</span>
+<span id="cb6-2"><a href="#cb6-2"></a>    <span class="co">//TODO</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a>    <span class="kw">return</span> (<span class="dv">0</span> until <span class="dv">1</span> &lt;&lt; <span class="fu">widthOf</span>(n)).<span class="fu">filter</span>(<span class="fu">apply</span>(_)).<span class="fu">map</span>(n === _).<span class="fu">orR</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a>  }</span></code></pre></div>
 <p>这里缩成一行，意思是构造整数区间[0, 1 &lt;&lt; n的位宽)（注意是左闭右开区间），将整数区间里的所有数用apply检查一下（这里的apply是针对scala基础类型的），选出是质数的，这样就构造出了一个质数表。然后将质数表里的每个数和n比较一下，相等的为真，不等的为假，这样就构造出了一个布尔表，注意这个布尔，指的是SpinalHDL的Bool而不是scala的Boolean了，因为是UInt参与比较，用的也是三等于号。最后将布尔表或一下，如果表里有一个真值，即n和一个质数相等，则返回真。</p>
 <p>另外scala的匿名函数写起来真爽，连lambda关键字还是箭头标识符之类的都不用了，够简洁。</p>
-</article>
-<span class="bg-light text-muted border boder-primary d-block p-2 text-center">
-    转载请注明出处<br>
-    © 2022 ZimingYuan的博客
-</span>
-<div style="background-color: #ebd5a1; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; pointer-events: none; opacity: 0.2;">
-</div>
+<footer>
+    <hr><center>转载请注明出处<br>© 2022 ZimingYuan的博客</center>
+</footer>
 </body>
 </html>

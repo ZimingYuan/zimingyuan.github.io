@@ -1,148 +1,129 @@
 <!DOCTYPE html>
-<!--
-==============================================================================
-           "GitHub HTML5 Pandoc Template" v2.2 — by Tristano Ajmone
-==============================================================================
-Copyright © Tristano Ajmone, 2017-2020, MIT License (MIT). Project's home:
-- https://github.com/tajmone/pandoc-goodies
-The CSS in this template reuses source code taken from the following projects:
-- GitHub Markdown CSS: Copyright © Sindre Sorhus, MIT License (MIT):
-  https://github.com/sindresorhus/github-markdown-css
-- Primer CSS: Copyright © 2016-2017 GitHub Inc., MIT License (MIT):
-  http://primercss.io/
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The MIT License
-Copyright (c) Tristano Ajmone, 2017-2020 (github.com/tajmone/pandoc-goodies)
-Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
-Copyright (c) 2017 GitHub Inc.
-"GitHub Pandoc HTML5 Template" is Copyright (c) Tristano Ajmone, 2017-2020,
-released under the MIT License (MIT); it contains readaptations of substantial
-portions of the following third party softwares:
-(1) "GitHub Markdown CSS", Copyright (c) Sindre Sorhus, MIT License (MIT).
-(2) "Primer CSS", Copyright (c) 2016 GitHub Inc., MIT License (MIT).
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-==============================================================================-->
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" data-theme="tufte">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/extra/classless.css" />
+<style>
+html[data-theme='tufte']{
+    --rem: 15px;
+    --navpos: absolute;
+    --width: 70rem;
+    --font-p: 1.4rem/2 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-h: 1.4rem/1.5 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --ornament: "";
+    --border: 1px solid var(--cmed);
+    /* foreground   | background color */
+    --cfg:   #111;    --cbg:    #fbf7ec;
+    --cdark: #111;    --clight: #fbf7ec;
+    --cmed: #b4d5fe;
+    --clink: #111;
+    --cemph: #111;
+}
+</style>
+  <script>
+      let search = () => {
+          let word = document.querySelector('input').value;
+          if (word.length == 0) {
+              alert('搜索内容不能为空！');
+          } else {
+              location.href = '/search.html?' + word;
+          }
+      };
+  </script>
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <title>MIT-6.S081-2020实验（xv6-riscv64）八：lock</title>
-  <style type="text/css">
-@charset "UTF-8";.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#24292e;font-family:-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:16px;line-height:1.5;word-wrap:break-word;box-sizing:border-box;min-width:200px;max-width:980px;margin:0 auto;padding:45px}.markdown-body a{color:#0366d6;background-color:transparent;text-decoration:none;-webkit-text-decoration-skip:objects}.markdown-body a:active,.markdown-body a:hover{outline-width:0}.markdown-body a:hover{text-decoration:underline}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body strong{font-weight:600}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1{font-size:2em;margin:.67em 0;padding-bottom:.3em;border-bottom:1px solid #eaecef}.markdown-body h2{padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid #eaecef}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#6a737d}.markdown-body img{border-style:none}.markdown-body svg:not(:root){overflow:hidden}.markdown-body hr{box-sizing:content-box;height:.25em;margin:24px 0;padding:0;overflow:hidden;background-color:#e1e4e8;border:0}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body input{margin:0;overflow:visible;font:inherit;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=checkbox]{box-sizing:border-box;padding:0}.markdown-body *{box-sizing:border-box}.markdown-body blockquote{margin:0}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dd{margin-left:0}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:600}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace}.markdown-body pre{font:12px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;word-wrap:normal}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote{padding:0 1em;color:#6a737d;border-left:.25em solid #dfe2e5}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body table{display:block;width:100%;overflow:auto;border-spacing:0;border-collapse:collapse}.markdown-body table th{font-weight:600}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #dfe2e5}.markdown-body table tr{background-color:#fff;border-top:1px solid #c6cbd1}.markdown-body table tr:nth-child(2n){background-color:#f6f8fa}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body code{padding:.2em 0;margin:0;font-size:85%;background-color:rgba(27,31,35,.05);border-radius:3px}.markdown-body code::after,.markdown-body code::before{letter-spacing:-.2em;content:" "}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f6f8fa;border-radius:3px}.markdown-body pre code{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code::after,.markdown-body pre code::before{content:normal}.markdown-body .full-commit .btn-outline:not(:disabled):hover{color:#005cc5;border-color:#005cc5}.markdown-body kbd{box-shadow:inset 0 -1px 0 #959da5;display:inline-block;padding:3px 5px;font:11px/10px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;color:#444d56;vertical-align:middle;background-color:#fcfcfc;border:1px solid #c6cbd1;border-bottom-color:#959da5;border-radius:3px;box-shadow:inset 0 -1px 0 #959da5}.markdown-body :checked+.radio-label{position:relative;z-index:1;border-color:#0366d6}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item+.task-list-item{margin-top:3px}.markdown-body .task-list-item input{margin:0 .2em .25em -1.6em;vertical-align:middle}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.Alert,.Error,.Note,.Success,.Warning{padding:11px;margin-bottom:24px;border-style:solid;border-width:1px;border-radius:4px}.Alert p,.Error p,.Note p,.Success p,.Warning p{margin-top:0}.Alert p:last-child,.Error p:last-child,.Note p:last-child,.Success p:last-child,.Warning p:last-child{margin-bottom:0}.Alert{color:#246;background-color:#e2eef9;border-color:#bac6d3}.Warning{color:#4c4a42;background-color:#fff9ea;border-color:#dfd8c2}.Error{color:#911;background-color:#fcdede;border-color:#d2b2b2}.Success{color:#22662c;background-color:#e2f9e5;border-color:#bad3be}.Note{color:#2f363d;background-color:#f6f8fa;border-color:#d5d8da}.Alert h1,.Alert h2,.Alert h3,.Alert h4,.Alert h5,.Alert h6{color:#246;margin-bottom:0}.Warning h1,.Warning h2,.Warning h3,.Warning h4,.Warning h5,.Warning h6{color:#4c4a42;margin-bottom:0}.Error h1,.Error h2,.Error h3,.Error h4,.Error h5,.Error h6{color:#911;margin-bottom:0}.Success h1,.Success h2,.Success h3,.Success h4,.Success h5,.Success h6{color:#22662c;margin-bottom:0}.Note h1,.Note h2,.Note h3,.Note h4,.Note h5,.Note h6{color:#2f363d;margin-bottom:0}.Alert h1:first-child,.Alert h2:first-child,.Alert h3:first-child,.Alert h4:first-child,.Alert h5:first-child,.Alert h6:first-child,.Error h1:first-child,.Error h2:first-child,.Error h3:first-child,.Error h4:first-child,.Error h5:first-child,.Error h6:first-child,.Note h1:first-child,.Note h2:first-child,.Note h3:first-child,.Note h4:first-child,.Note h5:first-child,.Note h6:first-child,.Success h1:first-child,.Success h2:first-child,.Success h3:first-child,.Success h4:first-child,.Success h5:first-child,.Success h6:first-child,.Warning h1:first-child,.Warning h2:first-child,.Warning h3:first-child,.Warning h4:first-child,.Warning h5:first-child,.Warning h6:first-child{margin-top:0}h1.title,p.subtitle{text-align:center}h1.title.followed-by-subtitle{margin-bottom:0}p.subtitle{font-size:1.5em;font-weight:600;line-height:1.25;margin-top:0;margin-bottom:16px;padding-bottom:.3em}div.line-block{white-space:pre-line}
-  </style>
-  <style type="text/css">code{white-space: pre;}</style>
-  <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-  </style>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
-<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
-<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.staticfile.org/popper.js/1.12.9/popper.min.js" ></script>
-<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js" ></script>
-<link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">ZimingYuan的博客</a>
-        <div class="navbar-collapse">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/index.html">首页</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/html/随笔.html">随笔</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/html/CSP模板.html">CSP模板</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<article class="markdown-body">
-<header>
+    <nav>
+        <ul>
+            <li><big>ZimingYuan的博客</big></li>
+            <li><a href="/index.html">首页</a></li>
+            <li><a href="/html/随笔.html">随笔</a></li>
+            <li><a href="/html/CSP模板.html">CSP模板</a></li>
+            <li class="float-right sticky"><button onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="text" placeholder="搜索"></li>
+        </ul>
+    </nav>
+<header id="title-block-header">
 <h1 class="title">MIT-6.S081-2020实验（xv6-riscv64）八：lock</h1>
+<hr>
 </header>
 <p><a href="https://pdos.csail.mit.edu/6.S081/2020/labs/lock.html">实验文档</a></p>
 <h3 id="概述">概述</h3>
@@ -150,119 +131,119 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 id="内容">内容</h3>
 <h4 id="memory-allocator">Memory allocator</h4>
 <p>这个任务要求给物理内存分配程序重新设计锁，使得等待锁时的阻塞尽量少。可以按CPU的数量将空闲内存分组，分配内存的时候优先从当前所用CPU所管理的空闲内存中分配，如果没有则从其他CPU的空闲内存中获取，这样就可以把原来的锁拆开，每个CPU各自处理自己的空闲内存时只要锁上自己的锁就行了：</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>kinit<span class="op">()</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> NCPU<span class="op">;</span> i<span class="op">++)</span> initlock<span class="op">(&amp;</span>kmem<span class="op">[</span>i<span class="op">].</span>lock<span class="op">,</span> <span class="st">&quot;kmem&quot;</span><span class="op">);</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  freerange<span class="op">(</span>end<span class="op">,</span> <span class="op">(</span><span class="dt">void</span><span class="op">*)</span>PHYSTOP<span class="op">);</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>kfree<span class="op">(</span><span class="dt">void</span> <span class="op">*</span>pa<span class="op">)</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> run <span class="op">*</span>r<span class="op">;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span><span class="op">(((</span>uint64<span class="op">)</span>pa <span class="op">%</span> PGSIZE<span class="op">)</span> <span class="op">!=</span> <span class="dv">0</span> <span class="op">||</span> <span class="op">(</span><span class="dt">char</span><span class="op">*)</span>pa <span class="op">&lt;</span> end <span class="op">||</span> <span class="op">(</span>uint64<span class="op">)</span>pa <span class="op">&gt;=</span> PHYSTOP<span class="op">)</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    panic<span class="op">(</span><span class="st">&quot;kfree&quot;</span><span class="op">);</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Fill with junk to catch dangling refs.</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  memset<span class="op">(</span>pa<span class="op">,</span> <span class="dv">1</span><span class="op">,</span> PGSIZE<span class="op">);</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>  r <span class="op">=</span> <span class="op">(</span><span class="kw">struct</span> run<span class="op">*)</span>pa<span class="op">;</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> cpu_id<span class="op">;</span> push_off<span class="op">();</span> cpu_id <span class="op">=</span> cpuid<span class="op">();</span> pop_off<span class="op">();</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  acquire<span class="op">(&amp;</span>kmem<span class="op">[</span>cpu_id<span class="op">].</span>lock<span class="op">);</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>  r<span class="op">-&gt;</span>next <span class="op">=</span> kmem<span class="op">[</span>cpu_id<span class="op">].</span>freelist<span class="op">;</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  kmem<span class="op">[</span>cpu_id<span class="op">].</span>freelist <span class="op">=</span> r<span class="op">;</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  release<span class="op">(&amp;</span>kmem<span class="op">[</span>cpu_id<span class="op">].</span>lock<span class="op">);</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1"></a><span class="dt">void</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a>kinit()</span>
+<span id="cb1-3"><a href="#cb1-3"></a>{</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; NCPU; i++) initlock(&amp;kmem[i].lock, <span class="st">&quot;kmem&quot;</span>);</span>
+<span id="cb1-5"><a href="#cb1-5"></a>  freerange(end, (<span class="dt">void</span>*)PHYSTOP);</span>
+<span id="cb1-6"><a href="#cb1-6"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1"></a><span class="dt">void</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>kfree(<span class="dt">void</span> *pa)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>{</span>
+<span id="cb2-4"><a href="#cb2-4"></a>  <span class="kw">struct</span> run *r;</span>
+<span id="cb2-5"><a href="#cb2-5"></a></span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="cf">if</span>(((uint64)pa % PGSIZE) != <span class="dv">0</span> || (<span class="dt">char</span>*)pa &lt; end || (uint64)pa &gt;= PHYSTOP)</span>
+<span id="cb2-7"><a href="#cb2-7"></a>    panic(<span class="st">&quot;kfree&quot;</span>);</span>
+<span id="cb2-8"><a href="#cb2-8"></a></span>
+<span id="cb2-9"><a href="#cb2-9"></a>  <span class="co">// Fill with junk to catch dangling refs.</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>  memset(pa, <span class="dv">1</span>, PGSIZE);</span>
+<span id="cb2-11"><a href="#cb2-11"></a></span>
+<span id="cb2-12"><a href="#cb2-12"></a>  r = (<span class="kw">struct</span> run*)pa;</span>
+<span id="cb2-13"><a href="#cb2-13"></a></span>
+<span id="cb2-14"><a href="#cb2-14"></a>  <span class="dt">int</span> cpu_id; push_off(); cpu_id = cpuid(); pop_off();</span>
+<span id="cb2-15"><a href="#cb2-15"></a>  acquire(&amp;kmem[cpu_id].lock);</span>
+<span id="cb2-16"><a href="#cb2-16"></a>  r-&gt;next = kmem[cpu_id].freelist;</span>
+<span id="cb2-17"><a href="#cb2-17"></a>  kmem[cpu_id].freelist = r;</span>
+<span id="cb2-18"><a href="#cb2-18"></a>  release(&amp;kmem[cpu_id].lock);</span>
+<span id="cb2-19"><a href="#cb2-19"></a>}</span></code></pre></div>
 <p>由于kinit这个函数不是并行的，所以一开始会将所有空闲内存都交给一个CPU管理。</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> <span class="op">*</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>kalloc<span class="op">(</span><span class="dt">void</span><span class="op">)</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> run <span class="op">*</span>r<span class="op">;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> cpu_id<span class="op">;</span> push_off<span class="op">();</span> cpu_id <span class="op">=</span> cpuid<span class="op">();</span> pop_off<span class="op">();</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  acquire<span class="op">(&amp;</span>kmem<span class="op">[</span>cpu_id<span class="op">].</span>lock<span class="op">);</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  r <span class="op">=</span> kmem<span class="op">[</span>cpu_id<span class="op">].</span>freelist<span class="op">;</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span><span class="op">(</span>r<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>      kmem<span class="op">[</span>cpu_id<span class="op">].</span>freelist <span class="op">=</span> r<span class="op">-&gt;</span>next<span class="op">;</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>      release<span class="op">(&amp;</span>kmem<span class="op">[</span>cpu_id<span class="op">].</span>lock<span class="op">);</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span> <span class="cf">else</span> <span class="op">{</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>      release<span class="op">(&amp;</span>kmem<span class="op">[</span>cpu_id<span class="op">].</span>lock<span class="op">);</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> NCPU<span class="op">;</span> i<span class="op">++)</span> <span class="cf">if</span> <span class="op">(</span>i <span class="op">!=</span> cpu_id<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>          acquire<span class="op">(&amp;</span>kmem<span class="op">[</span>i<span class="op">].</span>lock<span class="op">);</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>          r <span class="op">=</span> kmem<span class="op">[</span>i<span class="op">].</span>freelist<span class="op">;</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>          <span class="cf">if</span> <span class="op">(</span>r<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>              kmem<span class="op">[</span>i<span class="op">].</span>freelist <span class="op">=</span> r<span class="op">-&gt;</span>next<span class="op">;</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>              release<span class="op">(&amp;</span>kmem<span class="op">[</span>i<span class="op">].</span>lock<span class="op">);</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>              <span class="cf">break</span><span class="op">;</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>          <span class="op">}</span> <span class="cf">else</span> release<span class="op">(&amp;</span>kmem<span class="op">[</span>i<span class="op">].</span>lock<span class="op">);</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="op">......</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1"></a><span class="dt">void</span> *</span>
+<span id="cb3-2"><a href="#cb3-2"></a>kalloc(<span class="dt">void</span>)</span>
+<span id="cb3-3"><a href="#cb3-3"></a>{</span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="kw">struct</span> run *r;</span>
+<span id="cb3-5"><a href="#cb3-5"></a></span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="dt">int</span> cpu_id; push_off(); cpu_id = cpuid(); pop_off();</span>
+<span id="cb3-7"><a href="#cb3-7"></a>  acquire(&amp;kmem[cpu_id].lock);</span>
+<span id="cb3-8"><a href="#cb3-8"></a>  r = kmem[cpu_id].freelist;</span>
+<span id="cb3-9"><a href="#cb3-9"></a>  <span class="cf">if</span>(r) {</span>
+<span id="cb3-10"><a href="#cb3-10"></a>      kmem[cpu_id].freelist = r-&gt;next;</span>
+<span id="cb3-11"><a href="#cb3-11"></a>      release(&amp;kmem[cpu_id].lock);</span>
+<span id="cb3-12"><a href="#cb3-12"></a>  } <span class="cf">else</span> {</span>
+<span id="cb3-13"><a href="#cb3-13"></a>      release(&amp;kmem[cpu_id].lock);</span>
+<span id="cb3-14"><a href="#cb3-14"></a>      <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; NCPU; i++) <span class="cf">if</span> (i != cpu_id) {</span>
+<span id="cb3-15"><a href="#cb3-15"></a>          acquire(&amp;kmem[i].lock);</span>
+<span id="cb3-16"><a href="#cb3-16"></a>          r = kmem[i].freelist;</span>
+<span id="cb3-17"><a href="#cb3-17"></a>          <span class="cf">if</span> (r) {</span>
+<span id="cb3-18"><a href="#cb3-18"></a>              kmem[i].freelist = r-&gt;next;</span>
+<span id="cb3-19"><a href="#cb3-19"></a>              release(&amp;kmem[i].lock);</span>
+<span id="cb3-20"><a href="#cb3-20"></a>              <span class="cf">break</span>;</span>
+<span id="cb3-21"><a href="#cb3-21"></a>          } <span class="cf">else</span> release(&amp;kmem[i].lock);</span>
+<span id="cb3-22"><a href="#cb3-22"></a>      }</span>
+<span id="cb3-23"><a href="#cb3-23"></a>  }</span>
+<span id="cb3-24"><a href="#cb3-24"></a>  ......</span></code></pre></div>
 <h4 id="buffer-cache">Buffer cache</h4>
 <p>这个任务要求给硬盘缓存分配程序重新设计锁，使得等待锁时的阻塞尽量少。但是，因为硬盘缓存包含遍历查找操作，即查找当前硬盘块是否已被缓存，显然这时就不能把缓存也按CPU进行分配，加上这个任务的操作也比较复杂，因此比上个任务多了很多问题。</p>
 <p>实验文档给出的分配方式是对硬盘块号进行取模哈希，数据结构如下：</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">struct</span> <span class="op">{</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> spinlock lock<span class="op">;</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> spinlock block<span class="op">[</span>BNUM<span class="op">];</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> buf buf<span class="op">[</span>NBUF<span class="op">];</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Linked list of all buffers, through prev/next.</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Sorted by how recently the buffer was used.</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="co">// head.next is most recent, head.prev is least.</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> buf head<span class="op">[</span>BNUM<span class="op">];</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> bcache<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">struct</span> {</span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="kw">struct</span> spinlock lock;</span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="kw">struct</span> spinlock block[BNUM];</span>
+<span id="cb4-4"><a href="#cb4-4"></a>  <span class="kw">struct</span> buf buf[NBUF];</span>
+<span id="cb4-5"><a href="#cb4-5"></a></span>
+<span id="cb4-6"><a href="#cb4-6"></a>  <span class="co">// Linked list of all buffers, through prev/next.</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>  <span class="co">// Sorted by how recently the buffer was used.</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a>  <span class="co">// head.next is most recent, head.prev is least.</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>  <span class="kw">struct</span> buf head[BNUM];</span>
+<span id="cb4-10"><a href="#cb4-10"></a>} bcache;</span></code></pre></div>
 <p>这里保留了原来的锁是因为在不要求修改的bpin、bunpin函数中使用了，但要小心的是，既然用到了新定义的锁，那么在整个实验中所有相关的代码都必须用新定义的锁，不能用原来的锁。</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>binit<span class="op">(</span><span class="dt">void</span><span class="op">)</span>                                                                     <span class="op">{</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">struct</span> buf <span class="op">*</span>b<span class="op">;</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  initlock<span class="op">(&amp;</span>bcache<span class="op">.</span>lock<span class="op">,</span> <span class="st">&quot;bcache&quot;</span><span class="op">);</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Create linked list of buffers</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> BNUM<span class="op">;</span> i<span class="op">++)</span> <span class="op">{</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>      initlock<span class="op">(</span>bcache<span class="op">.</span>block <span class="op">+</span> i<span class="op">,</span> <span class="st">&quot;bcache&quot;</span><span class="op">);</span></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>      bcache<span class="op">.</span>head<span class="op">[</span>i<span class="op">].</span>prev <span class="op">=</span> <span class="op">&amp;</span>bcache<span class="op">.</span>head<span class="op">[</span>i<span class="op">];</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>      bcache<span class="op">.</span>head<span class="op">[</span>i<span class="op">].</span>next <span class="op">=</span> <span class="op">&amp;</span>bcache<span class="op">.</span>head<span class="op">[</span>i<span class="op">];</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span><span class="op">(</span>b <span class="op">=</span> bcache<span class="op">.</span>buf<span class="op">;</span> b <span class="op">&lt;</span> bcache<span class="op">.</span>buf<span class="op">+</span>NBUF<span class="op">;</span> b<span class="op">++){</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    b<span class="op">-&gt;</span>next <span class="op">=</span> bcache<span class="op">.</span>head<span class="op">[</span><span class="dv">0</span><span class="op">].</span>next<span class="op">;</span></span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    b<span class="op">-&gt;</span>prev <span class="op">=</span> <span class="op">&amp;</span>bcache<span class="op">.</span>head<span class="op">[</span><span class="dv">0</span><span class="op">];</span></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    initsleeplock<span class="op">(&amp;</span>b<span class="op">-&gt;</span>lock<span class="op">,</span> <span class="st">&quot;buffer&quot;</span><span class="op">);</span></span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    bcache<span class="op">.</span>head<span class="op">[</span><span class="dv">0</span><span class="op">].</span>next<span class="op">-&gt;</span>prev <span class="op">=</span> b<span class="op">;</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>    bcache<span class="op">.</span>head<span class="op">[</span><span class="dv">0</span><span class="op">].</span>next <span class="op">=</span> b<span class="op">;</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1"></a><span class="dt">void</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>binit(<span class="dt">void</span>)                                                                     {</span>
+<span id="cb5-3"><a href="#cb5-3"></a>  <span class="kw">struct</span> buf *b;</span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a>  initlock(&amp;bcache.lock, <span class="st">&quot;bcache&quot;</span>);</span>
+<span id="cb5-6"><a href="#cb5-6"></a></span>
+<span id="cb5-7"><a href="#cb5-7"></a>  <span class="co">// Create linked list of buffers</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a>  <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; BNUM; i++) {</span>
+<span id="cb5-9"><a href="#cb5-9"></a>      initlock(bcache.block + i, <span class="st">&quot;bcache&quot;</span>);</span>
+<span id="cb5-10"><a href="#cb5-10"></a>      bcache.head[i].prev = &amp;bcache.head[i];</span>
+<span id="cb5-11"><a href="#cb5-11"></a>      bcache.head[i].next = &amp;bcache.head[i];</span>
+<span id="cb5-12"><a href="#cb5-12"></a>  }</span>
+<span id="cb5-13"><a href="#cb5-13"></a>  <span class="cf">for</span>(b = bcache.buf; b &lt; bcache.buf+NBUF; b++){</span>
+<span id="cb5-14"><a href="#cb5-14"></a>    b-&gt;next = bcache.head[<span class="dv">0</span>].next;</span>
+<span id="cb5-15"><a href="#cb5-15"></a>    b-&gt;prev = &amp;bcache.head[<span class="dv">0</span>];</span>
+<span id="cb5-16"><a href="#cb5-16"></a>    initsleeplock(&amp;b-&gt;lock, <span class="st">&quot;buffer&quot;</span>);</span>
+<span id="cb5-17"><a href="#cb5-17"></a>    bcache.head[<span class="dv">0</span>].next-&gt;prev = b;</span>
+<span id="cb5-18"><a href="#cb5-18"></a>    bcache.head[<span class="dv">0</span>].next = b;</span>
+<span id="cb5-19"><a href="#cb5-19"></a>  }</span>
+<span id="cb5-20"><a href="#cb5-20"></a>}</span></code></pre></div>
 <p>因为一开始所有的缓存对应硬盘块号都是0，所以把它们都放到0号桶里。</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>brelse<span class="op">(</span><span class="kw">struct</span> buf <span class="op">*</span>b<span class="op">)</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="op">{</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span><span class="op">(!</span>holdingsleep<span class="op">(&amp;</span>b<span class="op">-&gt;</span>lock<span class="op">))</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    panic<span class="op">(</span><span class="st">&quot;brelse&quot;</span><span class="op">);</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  releasesleep<span class="op">(&amp;</span>b<span class="op">-&gt;</span>lock<span class="op">);</span></span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> entry <span class="op">=</span> b<span class="op">-&gt;</span>blockno <span class="op">%</span> BNUM<span class="op">;</span></span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  acquire<span class="op">(</span>bcache<span class="op">.</span>block <span class="op">+</span> entry<span class="op">);</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  b<span class="op">-&gt;</span>refcnt<span class="op">--;</span></span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>b<span class="op">-&gt;</span>refcnt <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> b<span class="op">-&gt;</span>ticks <span class="op">=</span> ticks<span class="op">;</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>  release<span class="op">(</span>bcache<span class="op">.</span>block <span class="op">+</span> entry<span class="op">);</span></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1"></a><span class="dt">void</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>brelse(<span class="kw">struct</span> buf *b)</span>
+<span id="cb6-3"><a href="#cb6-3"></a>{</span>
+<span id="cb6-4"><a href="#cb6-4"></a>  <span class="cf">if</span>(!holdingsleep(&amp;b-&gt;lock))</span>
+<span id="cb6-5"><a href="#cb6-5"></a>    panic(<span class="st">&quot;brelse&quot;</span>);</span>
+<span id="cb6-6"><a href="#cb6-6"></a></span>
+<span id="cb6-7"><a href="#cb6-7"></a>  releasesleep(&amp;b-&gt;lock);</span>
+<span id="cb6-8"><a href="#cb6-8"></a></span>
+<span id="cb6-9"><a href="#cb6-9"></a>  <span class="dt">int</span> entry = b-&gt;blockno % BNUM;</span>
+<span id="cb6-10"><a href="#cb6-10"></a>  acquire(bcache.block + entry);</span>
+<span id="cb6-11"><a href="#cb6-11"></a>  b-&gt;refcnt--;</span>
+<span id="cb6-12"><a href="#cb6-12"></a>  <span class="cf">if</span> (b-&gt;refcnt == <span class="dv">0</span>) b-&gt;ticks = ticks;</span>
+<span id="cb6-13"><a href="#cb6-13"></a>  release(bcache.block + entry);</span>
+<span id="cb6-14"><a href="#cb6-14"></a>}</span></code></pre></div>
 <p>释放缓存时只要获取块对应的桶对应的锁即可，由于原来的代码在释放缓存时会将缓存插在head的下一个节点，按照原来程序的思路head的下一个节点是目前最近使用的缓存，所以把查找最久未使用缓存的方式改成了查找最前时间戳后，这里也应该更新时间戳。</p>
 <p>最麻烦的是bget，这里拆成两部分，第一部分是待查找磁盘块已被缓存的情况：</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>  <span class="dt">int</span> entry <span class="op">=</span> blockno <span class="op">%</span> BNUM<span class="op">;</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  acquire<span class="op">(</span>bcache<span class="op">.</span>block <span class="op">+</span> entry<span class="op">);</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="co">// Is the block already cached?</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span><span class="op">(</span>b <span class="op">=</span> bcache<span class="op">.</span>head<span class="op">[</span>entry<span class="op">].</span>next<span class="op">;</span> b <span class="op">!=</span> <span class="op">&amp;</span>bcache<span class="op">.</span>head<span class="op">[</span>entry<span class="op">];</span> b <span class="op">=</span> b<span class="op">-&gt;</span>next<span class="op">){</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>b<span class="op">-&gt;</span>dev <span class="op">==</span> dev <span class="op">&amp;&amp;</span> b<span class="op">-&gt;</span>blockno <span class="op">==</span> blockno<span class="op">){</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>      b<span class="op">-&gt;</span>refcnt<span class="op">++;</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>      release<span class="op">(</span>bcache<span class="op">.</span>block <span class="op">+</span> entry<span class="op">);</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>      acquiresleep<span class="op">(&amp;</span>b<span class="op">-&gt;</span>lock<span class="op">);</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> b<span class="op">;</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1"></a>  <span class="dt">int</span> entry = blockno % BNUM;</span>
+<span id="cb7-2"><a href="#cb7-2"></a>  acquire(bcache.block + entry);</span>
+<span id="cb7-3"><a href="#cb7-3"></a></span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="co">// Is the block already cached?</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a>  <span class="cf">for</span>(b = bcache.head[entry].next; b != &amp;bcache.head[entry]; b = b-&gt;next){</span>
+<span id="cb7-6"><a href="#cb7-6"></a>    <span class="cf">if</span>(b-&gt;dev == dev &amp;&amp; b-&gt;blockno == blockno){</span>
+<span id="cb7-7"><a href="#cb7-7"></a>      b-&gt;refcnt++;</span>
+<span id="cb7-8"><a href="#cb7-8"></a>      release(bcache.block + entry);</span>
+<span id="cb7-9"><a href="#cb7-9"></a>      acquiresleep(&amp;b-&gt;lock);</span>
+<span id="cb7-10"><a href="#cb7-10"></a>      <span class="cf">return</span> b;</span>
+<span id="cb7-11"><a href="#cb7-11"></a>    }</span>
+<span id="cb7-12"><a href="#cb7-12"></a>  }</span></code></pre></div>
 <p>也是只要获取待查找块对应的桶对应的锁即可，但要注意一个问题，这个锁必须一直持有到整个函数运行结束，不能在中间释放了再重新获取，也就是说：</p>
 <pre><code>获得锁
 查找缓存但没找到
@@ -279,42 +260,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 释放锁</code></pre>
 <p>而且前者是错的，后者是错的。理由是如果中间释放了锁，当前进程可能会让出控制权执行别的进程，那么就会出现一个问题，比如A进程查找1号缓存，查不到，释放了锁，程序转到B进程，它也查找1号缓存，查不到，释放了锁而刚好B立刻又获得了锁，继续往下更新了一个可用的缓存，释放锁，这是A获得锁，继续往下更新了一个可用的缓存，释放锁。现在缓存中就有两个编号完全相同且引用数都为1的缓存了，这个是不允许的行为，可能会出现各种问题，而且这些问题的发生全靠运气，有时不出错，有时这个panic，有时那个panic，非常难调。</p>
 <p>第二部分是待查找磁盘块未被缓存的情况：</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="op">(</span>entry <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">%</span> BNUM<span class="op">;</span> i <span class="op">!=</span> entry<span class="op">;</span> i <span class="op">=</span> <span class="op">(</span>i <span class="op">+</span> <span class="dv">1</span><span class="op">)</span> <span class="op">%</span> BNUM<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>      uint minticks <span class="op">=</span> <span class="bn">0x3fffffff</span><span class="op">;</span> <span class="kw">struct</span> buf <span class="op">*</span>minbuf <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>      acquire<span class="op">(</span>bcache<span class="op">.</span>block <span class="op">+</span> i<span class="op">);</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>      <span class="cf">for</span><span class="op">(</span>b <span class="op">=</span> bcache<span class="op">.</span>head<span class="op">[</span>i<span class="op">].</span>prev<span class="op">;</span> b <span class="op">!=</span> <span class="op">&amp;</span>bcache<span class="op">.</span>head<span class="op">[</span>i<span class="op">];</span> b <span class="op">=</span> b<span class="op">-&gt;</span>prev<span class="op">)</span></span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>          <span class="cf">if</span> <span class="op">(</span>b<span class="op">-&gt;</span>refcnt <span class="op">==</span> <span class="dv">0</span> <span class="op">&amp;&amp;</span> b<span class="op">-&gt;</span>ticks <span class="op">&lt;</span> minticks<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>              minticks <span class="op">=</span> b<span class="op">-&gt;</span>ticks<span class="op">;</span> minbuf <span class="op">=</span> b<span class="op">;</span></span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>          <span class="op">}</span></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> <span class="op">(</span>minbuf <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>          minbuf<span class="op">-&gt;</span>dev <span class="op">=</span> dev<span class="op">;</span></span>
-<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>          minbuf<span class="op">-&gt;</span>blockno <span class="op">=</span> blockno<span class="op">;</span></span>
-<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>          minbuf<span class="op">-&gt;</span>valid <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>          minbuf<span class="op">-&gt;</span>refcnt <span class="op">=</span> <span class="dv">1</span><span class="op">;</span></span>
-<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>          minbuf<span class="op">-&gt;</span>next<span class="op">-&gt;</span>prev <span class="op">=</span> minbuf<span class="op">-&gt;</span>prev<span class="op">;</span></span>
-<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>          minbuf<span class="op">-&gt;</span>prev<span class="op">-&gt;</span>next <span class="op">=</span> minbuf<span class="op">-&gt;</span>next<span class="op">;</span></span>
-<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>          minbuf<span class="op">-&gt;</span>next <span class="op">=</span> bcache<span class="op">.</span>head<span class="op">[</span>entry<span class="op">].</span>next<span class="op">;</span></span>
-<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>          minbuf<span class="op">-&gt;</span>prev <span class="op">=</span> <span class="op">&amp;</span>bcache<span class="op">.</span>head<span class="op">[</span>entry<span class="op">];</span></span>
-<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>          bcache<span class="op">.</span>head<span class="op">[</span>entry<span class="op">].</span>next<span class="op">-&gt;</span>prev <span class="op">=</span> minbuf<span class="op">;</span></span>
-<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>          bcache<span class="op">.</span>head<span class="op">[</span>entry<span class="op">].</span>next <span class="op">=</span> minbuf<span class="op">;</span></span>
-<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>          release<span class="op">(</span>bcache<span class="op">.</span>block <span class="op">+</span> i<span class="op">);</span></span>
-<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>          release<span class="op">(</span>bcache<span class="op">.</span>block <span class="op">+</span> entry<span class="op">);</span></span>
-<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>          acquiresleep<span class="op">(&amp;</span>minbuf<span class="op">-&gt;</span>lock<span class="op">);</span></span>
-<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>          <span class="cf">return</span> minbuf<span class="op">;</span></span>
-<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>      <span class="op">}</span></span>
-<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>       release<span class="op">(</span>bcache<span class="op">.</span>block <span class="op">+</span> i<span class="op">);</span></span>
-<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>  panic<span class="op">(</span><span class="st">&quot;bget: no buffers&quot;</span><span class="op">);</span></span>
-<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1"></a>  <span class="cf">for</span> (<span class="dt">int</span> i = (entry + <span class="dv">1</span>) % BNUM; i != entry; i = (i + <span class="dv">1</span>) % BNUM) {</span>
+<span id="cb10-2"><a href="#cb10-2"></a>      uint minticks = <span class="bn">0x3fffffff</span>; <span class="kw">struct</span> buf *minbuf = <span class="dv">0</span>;</span>
+<span id="cb10-3"><a href="#cb10-3"></a>      acquire(bcache.block + i);</span>
+<span id="cb10-4"><a href="#cb10-4"></a>      <span class="cf">for</span>(b = bcache.head[i].prev; b != &amp;bcache.head[i]; b = b-&gt;prev)</span>
+<span id="cb10-5"><a href="#cb10-5"></a>          <span class="cf">if</span> (b-&gt;refcnt == <span class="dv">0</span> &amp;&amp; b-&gt;ticks &lt; minticks) {</span>
+<span id="cb10-6"><a href="#cb10-6"></a>              minticks = b-&gt;ticks; minbuf = b;</span>
+<span id="cb10-7"><a href="#cb10-7"></a>          }</span>
+<span id="cb10-8"><a href="#cb10-8"></a>      <span class="cf">if</span> (minbuf != <span class="dv">0</span>) {</span>
+<span id="cb10-9"><a href="#cb10-9"></a>          minbuf-&gt;dev = dev;</span>
+<span id="cb10-10"><a href="#cb10-10"></a>          minbuf-&gt;blockno = blockno;</span>
+<span id="cb10-11"><a href="#cb10-11"></a>          minbuf-&gt;valid = <span class="dv">0</span>;</span>
+<span id="cb10-12"><a href="#cb10-12"></a>          minbuf-&gt;refcnt = <span class="dv">1</span>;</span>
+<span id="cb10-13"><a href="#cb10-13"></a>          minbuf-&gt;next-&gt;prev = minbuf-&gt;prev;</span>
+<span id="cb10-14"><a href="#cb10-14"></a>          minbuf-&gt;prev-&gt;next = minbuf-&gt;next;</span>
+<span id="cb10-15"><a href="#cb10-15"></a>          minbuf-&gt;next = bcache.head[entry].next;</span>
+<span id="cb10-16"><a href="#cb10-16"></a>          minbuf-&gt;prev = &amp;bcache.head[entry];</span>
+<span id="cb10-17"><a href="#cb10-17"></a>          bcache.head[entry].next-&gt;prev = minbuf;</span>
+<span id="cb10-18"><a href="#cb10-18"></a>          bcache.head[entry].next = minbuf;</span>
+<span id="cb10-19"><a href="#cb10-19"></a>          release(bcache.block + i);</span>
+<span id="cb10-20"><a href="#cb10-20"></a>          release(bcache.block + entry);</span>
+<span id="cb10-21"><a href="#cb10-21"></a>          acquiresleep(&amp;minbuf-&gt;lock);</span>
+<span id="cb10-22"><a href="#cb10-22"></a>          <span class="cf">return</span> minbuf;</span>
+<span id="cb10-23"><a href="#cb10-23"></a>      }</span>
+<span id="cb10-24"><a href="#cb10-24"></a>       release(bcache.block + i);</span>
+<span id="cb10-25"><a href="#cb10-25"></a>  }</span>
+<span id="cb10-26"><a href="#cb10-26"></a>  panic(<span class="st">&quot;bget: no buffers&quot;</span>);</span>
+<span id="cb10-27"><a href="#cb10-27"></a>}</span></code></pre></div>
 <p>一开始我寻找可更新缓存的办法是直接遍历整个数组，为了防止竞争，需要在遍历前把所有的桶锁起来，然而这样会发生死锁，即假设处理0号桶的进程运行到这里，把0号桶锁了，准备获取1号桶的锁，与此同时处理1号桶的进程运行到这里，把1号桶锁了，准备获取0号桶的锁，这样就死锁了。仔细分析原因，发现只要锁桶的顺序是乱序的，都可能发生死锁，这里的解决方法是使用“资源有序分配法”，就如上面的循环，从当前桶的下一个桶往上遍历到当前桶的前一个桶（循环遍历），保证了顺序，就不会死锁了。另外一个需要小心的是链表的操作，双向链表确实很容易写错，需要谨慎。</p>
 <hr />
 <p>总结一下，这个实验和上一个实验相比，感觉更考验并行思维，主要体现在锁的应用，上个实验的后两个任务和这个实验比真的是小巫见大巫了，可能设计实验的老师主要还是想让学生熟悉一下pthread才弄那两个任务，毕竟pthread太常用了。目前觉得系统编程最难的就是四个问题：缺页错误（这里指的是编程逻辑的错误导致的错误）、内存泄漏、资源竞争、死锁，都是极为难以检查难以调试的。</p>
-</article>
-<span class="bg-light text-muted border boder-primary d-block p-2 text-center">
-    转载请注明出处<br>
-    © 2022 ZimingYuan的博客
-</span>
-<div style="background-color: #ebd5a1; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; pointer-events: none; opacity: 0.2;">
-</div>
+<footer>
+    <hr><center>转载请注明出处<br>© 2022 ZimingYuan的博客</center>
+</footer>
 </body>
 </html>

@@ -1,313 +1,290 @@
 <!DOCTYPE html>
-<!--
-==============================================================================
-           "GitHub HTML5 Pandoc Template" v2.2 — by Tristano Ajmone
-==============================================================================
-Copyright © Tristano Ajmone, 2017-2020, MIT License (MIT). Project's home:
-- https://github.com/tajmone/pandoc-goodies
-The CSS in this template reuses source code taken from the following projects:
-- GitHub Markdown CSS: Copyright © Sindre Sorhus, MIT License (MIT):
-  https://github.com/sindresorhus/github-markdown-css
-- Primer CSS: Copyright © 2016-2017 GitHub Inc., MIT License (MIT):
-  http://primercss.io/
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The MIT License
-Copyright (c) Tristano Ajmone, 2017-2020 (github.com/tajmone/pandoc-goodies)
-Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
-Copyright (c) 2017 GitHub Inc.
-"GitHub Pandoc HTML5 Template" is Copyright (c) Tristano Ajmone, 2017-2020,
-released under the MIT License (MIT); it contains readaptations of substantial
-portions of the following third party softwares:
-(1) "GitHub Markdown CSS", Copyright (c) Sindre Sorhus, MIT License (MIT).
-(2) "Primer CSS", Copyright (c) 2016 GitHub Inc., MIT License (MIT).
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-==============================================================================-->
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" data-theme="tufte">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/extra/classless.css" />
+<style>
+html[data-theme='tufte']{
+    --rem: 15px;
+    --navpos: absolute;
+    --width: 70rem;
+    --font-p: 1.4rem/2 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-h: 1.4rem/1.5 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --ornament: "";
+    --border: 1px solid var(--cmed);
+    /* foreground   | background color */
+    --cfg:   #111;    --cbg:    #fbf7ec;
+    --cdark: #111;    --clight: #fbf7ec;
+    --cmed: #b4d5fe;
+    --clink: #111;
+    --cemph: #111;
+}
+</style>
+  <script>
+      let search = () => {
+          let word = document.querySelector('input').value;
+          if (word.length == 0) {
+              alert('搜索内容不能为空！');
+          } else {
+              location.href = '/search.html?' + word;
+          }
+      };
+  </script>
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <title>WindowsTerminal折腾记</title>
-  <style type="text/css">
-@charset "UTF-8";.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#24292e;font-family:-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:16px;line-height:1.5;word-wrap:break-word;box-sizing:border-box;min-width:200px;max-width:980px;margin:0 auto;padding:45px}.markdown-body a{color:#0366d6;background-color:transparent;text-decoration:none;-webkit-text-decoration-skip:objects}.markdown-body a:active,.markdown-body a:hover{outline-width:0}.markdown-body a:hover{text-decoration:underline}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body strong{font-weight:600}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1{font-size:2em;margin:.67em 0;padding-bottom:.3em;border-bottom:1px solid #eaecef}.markdown-body h2{padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid #eaecef}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#6a737d}.markdown-body img{border-style:none}.markdown-body svg:not(:root){overflow:hidden}.markdown-body hr{box-sizing:content-box;height:.25em;margin:24px 0;padding:0;overflow:hidden;background-color:#e1e4e8;border:0}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body input{margin:0;overflow:visible;font:inherit;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=checkbox]{box-sizing:border-box;padding:0}.markdown-body *{box-sizing:border-box}.markdown-body blockquote{margin:0}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dd{margin-left:0}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:600}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace}.markdown-body pre{font:12px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;word-wrap:normal}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote{padding:0 1em;color:#6a737d;border-left:.25em solid #dfe2e5}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body table{display:block;width:100%;overflow:auto;border-spacing:0;border-collapse:collapse}.markdown-body table th{font-weight:600}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #dfe2e5}.markdown-body table tr{background-color:#fff;border-top:1px solid #c6cbd1}.markdown-body table tr:nth-child(2n){background-color:#f6f8fa}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body code{padding:.2em 0;margin:0;font-size:85%;background-color:rgba(27,31,35,.05);border-radius:3px}.markdown-body code::after,.markdown-body code::before{letter-spacing:-.2em;content:" "}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f6f8fa;border-radius:3px}.markdown-body pre code{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code::after,.markdown-body pre code::before{content:normal}.markdown-body .full-commit .btn-outline:not(:disabled):hover{color:#005cc5;border-color:#005cc5}.markdown-body kbd{box-shadow:inset 0 -1px 0 #959da5;display:inline-block;padding:3px 5px;font:11px/10px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;color:#444d56;vertical-align:middle;background-color:#fcfcfc;border:1px solid #c6cbd1;border-bottom-color:#959da5;border-radius:3px;box-shadow:inset 0 -1px 0 #959da5}.markdown-body :checked+.radio-label{position:relative;z-index:1;border-color:#0366d6}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item+.task-list-item{margin-top:3px}.markdown-body .task-list-item input{margin:0 .2em .25em -1.6em;vertical-align:middle}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.Alert,.Error,.Note,.Success,.Warning{padding:11px;margin-bottom:24px;border-style:solid;border-width:1px;border-radius:4px}.Alert p,.Error p,.Note p,.Success p,.Warning p{margin-top:0}.Alert p:last-child,.Error p:last-child,.Note p:last-child,.Success p:last-child,.Warning p:last-child{margin-bottom:0}.Alert{color:#246;background-color:#e2eef9;border-color:#bac6d3}.Warning{color:#4c4a42;background-color:#fff9ea;border-color:#dfd8c2}.Error{color:#911;background-color:#fcdede;border-color:#d2b2b2}.Success{color:#22662c;background-color:#e2f9e5;border-color:#bad3be}.Note{color:#2f363d;background-color:#f6f8fa;border-color:#d5d8da}.Alert h1,.Alert h2,.Alert h3,.Alert h4,.Alert h5,.Alert h6{color:#246;margin-bottom:0}.Warning h1,.Warning h2,.Warning h3,.Warning h4,.Warning h5,.Warning h6{color:#4c4a42;margin-bottom:0}.Error h1,.Error h2,.Error h3,.Error h4,.Error h5,.Error h6{color:#911;margin-bottom:0}.Success h1,.Success h2,.Success h3,.Success h4,.Success h5,.Success h6{color:#22662c;margin-bottom:0}.Note h1,.Note h2,.Note h3,.Note h4,.Note h5,.Note h6{color:#2f363d;margin-bottom:0}.Alert h1:first-child,.Alert h2:first-child,.Alert h3:first-child,.Alert h4:first-child,.Alert h5:first-child,.Alert h6:first-child,.Error h1:first-child,.Error h2:first-child,.Error h3:first-child,.Error h4:first-child,.Error h5:first-child,.Error h6:first-child,.Note h1:first-child,.Note h2:first-child,.Note h3:first-child,.Note h4:first-child,.Note h5:first-child,.Note h6:first-child,.Success h1:first-child,.Success h2:first-child,.Success h3:first-child,.Success h4:first-child,.Success h5:first-child,.Success h6:first-child,.Warning h1:first-child,.Warning h2:first-child,.Warning h3:first-child,.Warning h4:first-child,.Warning h5:first-child,.Warning h6:first-child{margin-top:0}h1.title,p.subtitle{text-align:center}h1.title.followed-by-subtitle{margin-bottom:0}p.subtitle{font-size:1.5em;font-weight:600;line-height:1.25;margin-top:0;margin-bottom:16px;padding-bottom:.3em}div.line-block{white-space:pre-line}
-  </style>
-  <style type="text/css">code{white-space: pre;}</style>
-  <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-  </style>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
-<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
-<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.staticfile.org/popper.js/1.12.9/popper.min.js" ></script>
-<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js" ></script>
-<link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">ZimingYuan的博客</a>
-        <div class="navbar-collapse">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/index.html">首页</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/html/随笔.html">随笔</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/html/CSP模板.html">CSP模板</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<article class="markdown-body">
-<header>
+    <nav>
+        <ul>
+            <li><big>ZimingYuan的博客</big></li>
+            <li><a href="/index.html">首页</a></li>
+            <li><a href="/html/随笔.html">随笔</a></li>
+            <li><a href="/html/CSP模板.html">CSP模板</a></li>
+            <li class="float-right sticky"><button onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="text" placeholder="搜索"></li>
+        </ul>
+    </nav>
+<header id="title-block-header">
 <h1 class="title">WindowsTerminal折腾记</h1>
+<hr>
 </header>
 <h3 id="背景">背景</h3>
 <p>Windows Terminal最近出了1.0版本，界面非常美观，但要配置好还是要下一番功夫，而且网上的教程都是互相抄，所以特将我的配置过程记录如下。 ### 字体 首先是字体，默认字体英文不错，但中文挺不好看的，而Windows Terminal不支持单字节字符和双字节字符配置不同的字体，所以我找到了一个<a href="https://www.fontke.com/tool/mergefonts/">合成字体的网站</a>，将英文的Consolas字体和和中文的楷体合并成了一个字体，然后双击安装。在配置文件的defaults标签下修改fontFace为字体的名字，fontSize为字体的大小，这是使用了合成字体的界面： <img src="https://img2020.cnblogs.com/blog/853921/202006/853921-20200609120035110-2144129901.png" /> ### 背景图片 接着是背景图片，在配置文件的defaults标签下添加如下属性：</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="er">&quot;backgroundImage&quot;:</span> <span class="er">&quot;D:\\images\\image.jpg&quot;,</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="er">&quot;backgroundImageOpacity&quot;:</span> <span class="er">0.2,</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="er">&quot;backgroundImageStretchMode&quot;:</span> <span class="er">&quot;uniformToFill&quot;,</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb1-1"><a href="#cb1-1"></a><span class="er">&quot;backgroundImage&quot;:</span> <span class="er">&quot;D:\\images\\image.jpg&quot;,</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="er">&quot;backgroundImageOpacity&quot;:</span> <span class="er">0.2,</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="er">&quot;backgroundImageStretchMode&quot;:</span> <span class="er">&quot;uniformToFill&quot;,</span></span></code></pre></div>
 <p>第一个属性是路径，第二个是透明度，第三个是拉伸方式，拉伸方式有四种取值，可以参考<a href="https://docs.microsoft.com/en-us/windows/terminal/customize-settings/profile-settings">微软官方文档</a>，建议使用uniformToFill，它能在保持图片分辨率的同时将图片拉伸充满窗口。 ### 主题 Windows Terminal自带可以更换的主题可以在<a href="https://github.com/microsoft/terminal/blob/master/src/cascadia/TerminalApp/defaults.json">官方github</a>上面看到，因为我的背景图是暖色调的，所以我选择了Solarized Light这一主题，不过使用该主题会造成一些地方的颜色看不太清楚，比如此主题下运行vim的查找字符串高亮显示背景和文字的颜色就过于接近，看不清楚；我所使用的文件管理器vifm的当前行高亮也看不太清楚，PowerShell的一些字符也被背景掩盖，所以需要自己修改一下。这是我自己定制的Solarized Light主题：</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;My Solarized Light&quot;</span><span class="fu">,</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;black&quot;</span><span class="fu">:</span> <span class="st">&quot;#073642&quot;</span><span class="fu">,</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;red&quot;</span><span class="fu">:</span> <span class="st">&quot;#dc322f&quot;</span><span class="fu">,</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;green&quot;</span><span class="fu">:</span> <span class="st">&quot;#859900&quot;</span><span class="fu">,</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;yellow&quot;</span><span class="fu">:</span> <span class="st">&quot;#b58900&quot;</span><span class="fu">,</span></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;blue&quot;</span><span class="fu">:</span> <span class="st">&quot;#268bd2&quot;</span><span class="fu">,</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;purple&quot;</span><span class="fu">:</span> <span class="st">&quot;#d33682&quot;</span><span class="fu">,</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;cyan&quot;</span><span class="fu">:</span> <span class="st">&quot;#2aa198&quot;</span><span class="fu">,</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;white&quot;</span><span class="fu">:</span> <span class="st">&quot;#eee8d5&quot;</span><span class="fu">,</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;brightBlack&quot;</span><span class="fu">:</span> <span class="st">&quot;#002b36&quot;</span><span class="fu">,</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;brightRed&quot;</span><span class="fu">:</span> <span class="st">&quot;#cb4b16&quot;</span><span class="fu">,</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;brightGreen&quot;</span><span class="fu">:</span> <span class="st">&quot;#586e75&quot;</span><span class="fu">,</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;brightYellow&quot;</span><span class="fu">:</span> <span class="st">&quot;#657b83&quot;</span><span class="fu">,</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;brightBlue&quot;</span><span class="fu">:</span> <span class="st">&quot;#9ce3f8&quot;</span><span class="fu">,</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;brightPurple&quot;</span><span class="fu">:</span> <span class="st">&quot;#6c71c4&quot;</span><span class="fu">,</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;brightCyan&quot;</span><span class="fu">:</span> <span class="st">&quot;#859595&quot;</span><span class="fu">,</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;brightWhite&quot;</span><span class="fu">:</span> <span class="st">&quot;#fae7b3&quot;</span><span class="fu">,</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;background&quot;</span><span class="fu">:</span> <span class="st">&quot;#fdf6e3&quot;</span><span class="fu">,</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;foreground&quot;</span><span class="fu">:</span> <span class="st">&quot;#657b83&quot;</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb2-1"><a href="#cb2-1"></a>        <span class="fu">{</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>            <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;My Solarized Light&quot;</span><span class="fu">,</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a>            <span class="dt">&quot;black&quot;</span><span class="fu">:</span> <span class="st">&quot;#073642&quot;</span><span class="fu">,</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>            <span class="dt">&quot;red&quot;</span><span class="fu">:</span> <span class="st">&quot;#dc322f&quot;</span><span class="fu">,</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>            <span class="dt">&quot;green&quot;</span><span class="fu">:</span> <span class="st">&quot;#859900&quot;</span><span class="fu">,</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>            <span class="dt">&quot;yellow&quot;</span><span class="fu">:</span> <span class="st">&quot;#b58900&quot;</span><span class="fu">,</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>            <span class="dt">&quot;blue&quot;</span><span class="fu">:</span> <span class="st">&quot;#268bd2&quot;</span><span class="fu">,</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>            <span class="dt">&quot;purple&quot;</span><span class="fu">:</span> <span class="st">&quot;#d33682&quot;</span><span class="fu">,</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>            <span class="dt">&quot;cyan&quot;</span><span class="fu">:</span> <span class="st">&quot;#2aa198&quot;</span><span class="fu">,</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a>            <span class="dt">&quot;white&quot;</span><span class="fu">:</span> <span class="st">&quot;#eee8d5&quot;</span><span class="fu">,</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>            <span class="dt">&quot;brightBlack&quot;</span><span class="fu">:</span> <span class="st">&quot;#002b36&quot;</span><span class="fu">,</span></span>
+<span id="cb2-12"><a href="#cb2-12"></a>            <span class="dt">&quot;brightRed&quot;</span><span class="fu">:</span> <span class="st">&quot;#cb4b16&quot;</span><span class="fu">,</span></span>
+<span id="cb2-13"><a href="#cb2-13"></a>            <span class="dt">&quot;brightGreen&quot;</span><span class="fu">:</span> <span class="st">&quot;#586e75&quot;</span><span class="fu">,</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a>            <span class="dt">&quot;brightYellow&quot;</span><span class="fu">:</span> <span class="st">&quot;#657b83&quot;</span><span class="fu">,</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a>            <span class="dt">&quot;brightBlue&quot;</span><span class="fu">:</span> <span class="st">&quot;#9ce3f8&quot;</span><span class="fu">,</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a>            <span class="dt">&quot;brightPurple&quot;</span><span class="fu">:</span> <span class="st">&quot;#6c71c4&quot;</span><span class="fu">,</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a>            <span class="dt">&quot;brightCyan&quot;</span><span class="fu">:</span> <span class="st">&quot;#859595&quot;</span><span class="fu">,</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a>            <span class="dt">&quot;brightWhite&quot;</span><span class="fu">:</span> <span class="st">&quot;#fae7b3&quot;</span><span class="fu">,</span></span>
+<span id="cb2-19"><a href="#cb2-19"></a>            <span class="dt">&quot;background&quot;</span><span class="fu">:</span> <span class="st">&quot;#fdf6e3&quot;</span><span class="fu">,</span></span>
+<span id="cb2-20"><a href="#cb2-20"></a>            <span class="dt">&quot;foreground&quot;</span><span class="fu">:</span> <span class="st">&quot;#657b83&quot;</span></span>
+<span id="cb2-21"><a href="#cb2-21"></a>        <span class="fu">}</span></span></code></pre></div>
 <p>修改了brightBlue和brightCyan属性，同时将cursorColor属性改成了#657b83使得光标文字保持同个颜色，这个属性既可以出现在主题中也可以出现在前面的全局配置中，我放在前面了。如果还有显示不清楚的地方，可以用QQ的截图功能对想要修改的颜色区域进行取色，切换成十六进制后在主题中查找它对应的属性名然后修改。 以上可以解决各种程序的显示不清楚问题，但Powershell的问题本质上是Powershell语法高亮的问题，和Windows Terminal的主题无关，所以需要在PowerShell的配置文件里面修改。进入PowerShell，运行gvim $profile（gvim可以改成notepad等编辑器），然后输入下面的命令：</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Set-PSReadLineOption</span> <span class="op">-</span>Colors @<span class="op">{</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>    Number <span class="op">=</span> &#39;DarkBlue&#39;</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    Member <span class="op">=</span> &#39;DarkBlue&#39;</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="op">}</span> <span class="op">-</span>EditMode &#39;Vi&#39;</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">Set-PSReadLineOption</span> -Colors @{</span>
+<span id="cb3-2"><a href="#cb3-2"></a>    Number = &#39;DarkBlue&#39;</span>
+<span id="cb3-3"><a href="#cb3-3"></a>    Member = &#39;DarkBlue&#39;</span>
+<span id="cb3-4"><a href="#cb3-4"></a>} -EditMode &#39;Vi&#39;</span></code></pre></div>
 <p>其中将Number和Member这两个token的颜色改成蓝色，因为原来的颜色就是黄色，和Solarized Light的背景颜色混起来看不清楚，如果还有显示不清楚的token，可以参考<a href="https://docs.microsoft.com/en-us/powershell/module/psreadline/set-psreadlineoption?view=powershell-5.1">MSDN</a>进行修改，editmode参数的修改属于我的个人喜好，Emacs党可以把Vi换成Emacs，都不是的就去掉这个参数即可。 ### 完整配置</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">This</span> <span class="er">file</span> <span class="er">was</span> <span class="er">initially</span> <span class="er">generated</span> <span class="er">by</span> <span class="er">Windows</span> <span class="er">Terminal</span> <span class="er">1.0.1401.0</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">It</span> <span class="er">should</span> <span class="er">still</span> <span class="er">be</span> <span class="er">usable</span> <span class="er">in</span> <span class="er">newer</span> <span class="er">versions,</span> <span class="er">but</span> <span class="er">newer</span> <span class="er">versions</span> <span class="er">might</span> <span class="er">have</span> <span class="er">additional</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">settings,</span> <span class="er">help</span> <span class="er">text,</span> <span class="er">or</span> <span class="er">changes</span> <span class="er">that</span> <span class="er">you</span> <span class="er">will</span> <span class="er">not</span> <span class="er">see</span> <span class="er">unless</span> <span class="er">you</span> <span class="er">clear</span> <span class="er">this</span> <span class="er">file</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">and</span> <span class="er">let</span> <span class="er">us</span> <span class="er">generate</span> <span class="er">a</span> <span class="er">new</span> <span class="er">one</span> <span class="er">for</span> <span class="er">you.</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">To</span> <span class="er">view</span> <span class="er">the</span> <span class="er">default</span> <span class="er">settings,</span> <span class="er">hold</span> <span class="er">&quot;alt&quot;</span> <span class="er">while</span> <span class="er">clicking</span> <span class="er">on</span> <span class="er">the</span> <span class="er">&quot;Settings&quot;</span> <span class="er">button.</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="er">//</span> <span class="er">For</span> <span class="er">documentation</span> <span class="er">on</span> <span class="er">these</span> <span class="er">settings,</span> <span class="er">see:</span> <span class="er">https://aka.ms/terminal-documentation</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">{</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;$schema&quot;</span><span class="fu">:</span> <span class="st">&quot;https://aka.ms/terminal-profiles-schema&quot;</span><span class="fu">,</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;defaultProfile&quot;</span><span class="fu">:</span> <span class="st">&quot;{0a920985-e2e7-4fe2-8610-f29c814c920a}&quot;</span><span class="fu">,</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">You</span> <span class="er">can</span> <span class="er">add</span> <span class="er">more</span> <span class="er">global</span> <span class="er">application</span> <span class="er">settings</span> <span class="er">here.</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">To</span> <span class="er">learn</span> <span class="er">more</span> <span class="er">about</span> <span class="er">global</span> <span class="er">settings</span><span class="fu">,</span> <span class="er">visit</span> <span class="er">https</span><span class="fu">:</span><span class="er">//aka.ms/terminal-global-settings</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">If</span> <span class="er">enabled</span><span class="fu">,</span> <span class="er">selections</span> <span class="er">are</span> <span class="er">automatically</span> <span class="er">copied</span> <span class="er">to</span> <span class="er">your</span> <span class="er">clipboard.</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;copyOnSelect&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">If</span> <span class="er">enabled</span><span class="fu">,</span> <span class="er">formatted</span> <span class="er">data</span> <span class="er">is</span> <span class="er">also</span> <span class="er">copied</span> <span class="er">to</span> <span class="er">your</span> <span class="er">clipboard</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;copyFormatting&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;initialRows&quot;</span><span class="fu">:</span> <span class="dv">25</span><span class="fu">,</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="dt">&quot;initialCols&quot;</span><span class="fu">:</span> <span class="dv">80</span><span class="fu">,</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">A</span> <span class="er">profile</span> <span class="er">specifies</span> <span class="er">a</span> <span class="er">command</span> <span class="er">to</span> <span class="er">execute</span> <span class="er">paired</span> <span class="er">with</span> <span class="er">information</span> <span class="er">about</span> <span class="er">how</span> <span class="er">it</span> <span class="er">should</span> <span class="er">look</span> <span class="er">and</span> <span class="er">feel.</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Each</span> <span class="er">one</span> <span class="er">of</span> <span class="er">them</span> <span class="er">will</span> <span class="er">appear</span> <span class="er">in</span> <span class="er">the</span> <span class="er">&#39;New</span> <span class="er">Tab&#39;</span> <span class="er">dropdown</span><span class="fu">,</span></span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span>   <span class="er">and</span> <span class="er">can</span> <span class="er">be</span> <span class="er">invoked</span> <span class="er">from</span> <span class="er">the</span> <span class="er">commandline</span> <span class="er">with</span> <span class="er">`wt.exe</span> <span class="er">-p</span> <span class="er">xxx`</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">To</span> <span class="er">learn</span> <span class="er">more</span> <span class="er">about</span> <span class="er">profiles</span><span class="fu">,</span> <span class="er">visit</span> <span class="er">https</span><span class="fu">:</span><span class="er">//aka.ms/terminal-profile-settings</span></span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;profiles&quot;</span><span class="er">:</span></span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">{</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;defaults&quot;</span><span class="fu">:</span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>            <span class="er">//</span> <span class="er">Put</span> <span class="er">settings</span> <span class="er">here</span> <span class="er">that</span> <span class="er">you</span> <span class="er">want</span> <span class="er">to</span> <span class="er">apply</span> <span class="er">to</span> <span class="er">all</span> <span class="er">profiles.</span></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;fontFace&quot;</span><span class="fu">:</span> <span class="st">&quot;KaiConsolas&quot;</span><span class="fu">,</span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;fontSize&quot;</span><span class="fu">:</span> <span class="dv">16</span><span class="fu">,</span></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;cursorShape&quot;</span><span class="fu">:</span> <span class="st">&quot;filledBox&quot;</span><span class="fu">,</span></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;cursorColor&quot;</span><span class="fu">:</span> <span class="st">&quot;#657b83&quot;</span><span class="fu">,</span></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;backgroundImage&quot;</span><span class="fu">:</span> <span class="st">&quot;D:</span><span class="ch">\\</span><span class="st">images</span><span class="ch">\\</span><span class="st">image.jpg&quot;</span><span class="fu">,</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;backgroundImageOpacity&quot;</span><span class="fu">:</span> <span class="fl">0.2</span><span class="fu">,</span></span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;colorScheme&quot;</span><span class="fu">:</span> <span class="st">&quot;My Solarized Light&quot;</span></span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>        <span class="fu">},</span></span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>        <span class="dt">&quot;list&quot;</span><span class="fu">:</span></span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>        <span class="ot">[</span></span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>            <span class="fu">{</span></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>                <span class="er">//</span> <span class="er">Make</span> <span class="er">changes</span> <span class="er">here</span> <span class="er">to</span> <span class="er">the</span> <span class="er">powershell.exe</span> <span class="er">profile.</span></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;guid&quot;</span><span class="fu">:</span> <span class="st">&quot;{61c54bbd-c2c6-5271-96e7-009a87ff44bf}&quot;</span><span class="fu">,</span></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Windows PowerShell&quot;</span><span class="fu">,</span></span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;commandline&quot;</span><span class="fu">:</span> <span class="st">&quot;powershell.exe&quot;</span><span class="fu">,</span></span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;hidden&quot;</span><span class="fu">:</span> <span class="kw">false</span></span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>            <span class="fu">{</span></span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;guid&quot;</span><span class="fu">:</span> <span class="st">&quot;{0a920985-e2e7-4fe2-8610-f29c814c920a}&quot;</span><span class="fu">,</span></span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;hidden&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Vifm&quot;</span><span class="fu">,</span></span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;commandline&quot;</span><span class="fu">:</span> <span class="st">&quot;D:</span><span class="ch">\\</span><span class="st">Apps</span><span class="ch">\\</span><span class="st">vifm-w64-se-0.10.1-binary</span><span class="ch">\\</span><span class="st">vifm.exe&quot;</span><span class="fu">,</span></span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;startingDirectory&quot;</span> <span class="fu">:</span> <span class="st">&quot;D:</span><span class="ch">\\</span><span class="st">&quot;</span></span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>            <span class="fu">{</span></span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>                <span class="er">//</span> <span class="er">Make</span> <span class="er">changes</span> <span class="er">here</span> <span class="er">to</span> <span class="er">the</span> <span class="er">cmd.exe</span> <span class="er">profile.</span></span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;guid&quot;</span><span class="fu">:</span> <span class="st">&quot;{0caa0dad-35be-5f56-a8ff-afceeeaa6101}&quot;</span><span class="fu">,</span></span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;命令提示符&quot;</span><span class="fu">,</span></span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;commandline&quot;</span><span class="fu">:</span> <span class="st">&quot;cmd.exe&quot;</span><span class="fu">,</span></span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;hidden&quot;</span><span class="fu">:</span> <span class="kw">false</span></span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>            <span class="fu">{</span></span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;guid&quot;</span><span class="fu">:</span> <span class="st">&quot;{2c4de342-38b7-51cf-b940-2309a097f518}&quot;</span><span class="fu">,</span></span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;hidden&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Ubuntu&quot;</span><span class="fu">,</span></span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;source&quot;</span><span class="fu">:</span> <span class="st">&quot;Windows.Terminal.Wsl&quot;</span></span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>            <span class="fu">{</span></span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;guid&quot;</span><span class="fu">:</span> <span class="st">&quot;{b453ae62-4e3d-5e58-b989-0a998ec441b8}&quot;</span><span class="fu">,</span></span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;hidden&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Azure Cloud Shell&quot;</span><span class="fu">,</span></span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>                <span class="dt">&quot;source&quot;</span><span class="fu">:</span> <span class="st">&quot;Windows.Terminal.Azure&quot;</span></span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>            <span class="fu">}</span></span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>        <span class="ot">]</span></span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>    <span class="fu">},</span></span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Add</span> <span class="er">custom</span> <span class="er">color</span> <span class="er">schemes</span> <span class="er">to</span> <span class="er">this</span> <span class="er">array.</span></span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">To</span> <span class="er">learn</span> <span class="er">more</span> <span class="er">about</span> <span class="er">color</span> <span class="er">schemes</span><span class="fu">,</span> <span class="er">visit</span> <span class="er">https</span><span class="fu">:</span><span class="er">//aka.ms/terminal-color-schemes</span></span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;schemes&quot;</span><span class="er">:</span> <span class="ot">[</span></span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span></span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;My Solarized Light&quot;</span><span class="fu">,</span></span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;black&quot;</span><span class="fu">:</span> <span class="st">&quot;#073642&quot;</span><span class="fu">,</span></span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;red&quot;</span><span class="fu">:</span> <span class="st">&quot;#dc322f&quot;</span><span class="fu">,</span></span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;green&quot;</span><span class="fu">:</span> <span class="st">&quot;#859900&quot;</span><span class="fu">,</span></span>
-<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;yellow&quot;</span><span class="fu">:</span> <span class="st">&quot;#b58900&quot;</span><span class="fu">,</span></span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;blue&quot;</span><span class="fu">:</span> <span class="st">&quot;#268bd2&quot;</span><span class="fu">,</span></span>
-<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;purple&quot;</span><span class="fu">:</span> <span class="st">&quot;#d33682&quot;</span><span class="fu">,</span></span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;cyan&quot;</span><span class="fu">:</span> <span class="st">&quot;#2aa198&quot;</span><span class="fu">,</span></span>
-<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;white&quot;</span><span class="fu">:</span> <span class="st">&quot;#eee8d5&quot;</span><span class="fu">,</span></span>
-<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;brightBlack&quot;</span><span class="fu">:</span> <span class="st">&quot;#002b36&quot;</span><span class="fu">,</span></span>
-<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;brightRed&quot;</span><span class="fu">:</span> <span class="st">&quot;#cb4b16&quot;</span><span class="fu">,</span></span>
-<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;brightGreen&quot;</span><span class="fu">:</span> <span class="st">&quot;#586e75&quot;</span><span class="fu">,</span></span>
-<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;brightYellow&quot;</span><span class="fu">:</span> <span class="st">&quot;#657b83&quot;</span><span class="fu">,</span></span>
-<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;brightBlue&quot;</span><span class="fu">:</span> <span class="st">&quot;#9ce3f8&quot;</span><span class="fu">,</span></span>
-<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;brightPurple&quot;</span><span class="fu">:</span> <span class="st">&quot;#6c71c4&quot;</span><span class="fu">,</span></span>
-<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;brightCyan&quot;</span><span class="fu">:</span> <span class="st">&quot;#859595&quot;</span><span class="fu">,</span></span>
-<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;brightWhite&quot;</span><span class="fu">:</span> <span class="st">&quot;#fae7b3&quot;</span><span class="fu">,</span></span>
-<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;background&quot;</span><span class="fu">:</span> <span class="st">&quot;#fdf6e3&quot;</span><span class="fu">,</span></span>
-<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>            <span class="dt">&quot;foreground&quot;</span><span class="fu">:</span> <span class="st">&quot;#657b83&quot;</span></span>
-<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>        <span class="fu">}</span></span>
-<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span><span class="fu">,</span></span>
-<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">Add</span> <span class="er">custom</span> <span class="er">keybindings</span> <span class="er">to</span> <span class="er">this</span> <span class="er">array.</span></span>
-<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">To</span> <span class="er">unbind</span> <span class="er">a</span> <span class="er">key</span> <span class="er">combination</span> <span class="er">from</span> <span class="er">your</span> <span class="er">defaults.json</span><span class="fu">,</span> <span class="er">set</span> <span class="er">the</span> <span class="er">command</span> <span class="er">to</span> <span class="dt">&quot;unbound&quot;</span><span class="er">.</span></span>
-<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a>    <span class="er">//</span> <span class="er">To</span> <span class="er">learn</span> <span class="er">more</span> <span class="er">about</span> <span class="er">keybindings</span><span class="fu">,</span> <span class="er">visit</span> <span class="er">https</span><span class="fu">:</span><span class="er">//aka.ms/terminal-keybindings</span></span>
-<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;keybindings&quot;</span><span class="er">:</span></span>
-<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a>    <span class="ot">[</span></span>
-<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a>        <span class="er">//</span> <span class="er">Copy</span> <span class="er">and</span> <span class="er">paste</span> <span class="er">are</span> <span class="er">bound</span> <span class="er">to</span> <span class="er">Ctrl+Shift+C</span> <span class="er">and</span> <span class="er">Ctrl+Shift+V</span> <span class="er">in</span> <span class="er">your</span> <span class="er">defaults.json.</span></span>
-<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a>        <span class="er">//</span> <span class="er">These</span> <span class="er">two</span> <span class="er">lines</span> <span class="er">additionally</span> <span class="er">bind</span> <span class="er">them</span> <span class="er">to</span> <span class="er">Ctrl+C</span> <span class="er">and</span> <span class="er">Ctrl+V.</span></span>
-<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a>        <span class="er">//</span> <span class="er">To</span> <span class="er">learn</span> <span class="er">more</span> <span class="er">about</span> <span class="er">selection</span><span class="ot">,</span> <span class="er">visit</span> <span class="er">https://aka.ms/terminal-selection</span></span>
-<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a>        <span class="er">//</span> <span class="fu">{</span> <span class="dt">&quot;command&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;action&quot;</span><span class="fu">:</span> <span class="st">&quot;copy&quot;</span><span class="fu">,</span> <span class="dt">&quot;singleLine&quot;</span><span class="fu">:</span> <span class="kw">false</span> <span class="fu">},</span> <span class="dt">&quot;keys&quot;</span><span class="fu">:</span> <span class="st">&quot;ctrl+c&quot;</span> <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a>        <span class="er">//</span> <span class="fu">{</span> <span class="dt">&quot;command&quot;</span><span class="fu">:</span> <span class="st">&quot;paste&quot;</span><span class="fu">,</span> <span class="dt">&quot;keys&quot;</span><span class="fu">:</span> <span class="st">&quot;ctrl+v&quot;</span> <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a>        <span class="er">//</span> <span class="er">Press</span> <span class="er">Ctrl+Shift+F</span> <span class="er">to</span> <span class="er">open</span> <span class="er">the</span> <span class="er">search</span> <span class="er">box</span></span>
-<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span> <span class="dt">&quot;command&quot;</span><span class="fu">:</span> <span class="st">&quot;find&quot;</span><span class="fu">,</span> <span class="dt">&quot;keys&quot;</span><span class="fu">:</span> <span class="st">&quot;ctrl+shift+f&quot;</span> <span class="fu">}</span><span class="ot">,</span></span>
-<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a>        <span class="er">//</span> <span class="er">Press</span> <span class="er">Alt+Shift+D</span> <span class="er">to</span> <span class="er">open</span> <span class="er">a</span> <span class="er">new</span> <span class="er">pane.</span></span>
-<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a>        <span class="er">//</span> <span class="er">-</span> <span class="st">&quot;split&quot;</span><span class="er">:</span> <span class="st">&quot;auto&quot;</span> <span class="er">makes</span> <span class="er">this</span> <span class="er">pane</span> <span class="er">open</span> <span class="er">in</span> <span class="er">the</span> <span class="er">direction</span> <span class="er">that</span> <span class="er">provides</span> <span class="er">the</span> <span class="er">most</span> <span class="er">surface</span> <span class="er">area.</span></span>
-<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a>        <span class="er">//</span> <span class="er">-</span> <span class="st">&quot;splitMode&quot;</span><span class="er">:</span> <span class="st">&quot;duplicate&quot;</span> <span class="er">makes</span> <span class="er">the</span> <span class="er">new</span> <span class="er">pane</span> <span class="er">use</span> <span class="er">the</span> <span class="er">focused</span> <span class="er">pane&#39;s</span> <span class="er">profile.</span></span>
-<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a>        <span class="er">//</span> <span class="er">To</span> <span class="er">learn</span> <span class="er">more</span> <span class="er">about</span> <span class="er">panes</span><span class="ot">,</span> <span class="er">visit</span> <span class="er">https://aka.ms/terminal-panes</span></span>
-<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a>        <span class="fu">{</span> <span class="dt">&quot;command&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;action&quot;</span><span class="fu">:</span> <span class="st">&quot;splitPane&quot;</span><span class="fu">,</span> <span class="dt">&quot;split&quot;</span><span class="fu">:</span> <span class="st">&quot;auto&quot;</span><span class="fu">,</span> <span class="dt">&quot;splitMode&quot;</span><span class="fu">:</span> <span class="st">&quot;duplicate&quot;</span> <span class="fu">},</span> <span class="dt">&quot;keys&quot;</span><span class="fu">:</span> <span class="st">&quot;alt+shift+d&quot;</span> <span class="fu">}</span></span>
-<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a>    <span class="ot">]</span></span>
-<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a><span class="fu">}</span></span></code></pre></div>
-</article>
-<span class="bg-light text-muted border boder-primary d-block p-2 text-center">
-    转载请注明出处<br>
-    © 2022 ZimingYuan的博客
-</span>
-<div style="background-color: #ebd5a1; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; pointer-events: none; opacity: 0.2;">
-</div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode json"><code class="sourceCode json"><span id="cb4-1"><a href="#cb4-1"></a><span class="er">//</span> <span class="er">This</span> <span class="er">file</span> <span class="er">was</span> <span class="er">initially</span> <span class="er">generated</span> <span class="er">by</span> <span class="er">Windows</span> <span class="er">Terminal</span> <span class="er">1.0.1401.0</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="er">//</span> <span class="er">It</span> <span class="er">should</span> <span class="er">still</span> <span class="er">be</span> <span class="er">usable</span> <span class="er">in</span> <span class="er">newer</span> <span class="er">versions,</span> <span class="er">but</span> <span class="er">newer</span> <span class="er">versions</span> <span class="er">might</span> <span class="er">have</span> <span class="er">additional</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="er">//</span> <span class="er">settings,</span> <span class="er">help</span> <span class="er">text,</span> <span class="er">or</span> <span class="er">changes</span> <span class="er">that</span> <span class="er">you</span> <span class="er">will</span> <span class="er">not</span> <span class="er">see</span> <span class="er">unless</span> <span class="er">you</span> <span class="er">clear</span> <span class="er">this</span> <span class="er">file</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="er">//</span> <span class="er">and</span> <span class="er">let</span> <span class="er">us</span> <span class="er">generate</span> <span class="er">a</span> <span class="er">new</span> <span class="er">one</span> <span class="er">for</span> <span class="er">you.</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="er">//</span> <span class="er">To</span> <span class="er">view</span> <span class="er">the</span> <span class="er">default</span> <span class="er">settings,</span> <span class="er">hold</span> <span class="er">&quot;alt&quot;</span> <span class="er">while</span> <span class="er">clicking</span> <span class="er">on</span> <span class="er">the</span> <span class="er">&quot;Settings&quot;</span> <span class="er">button.</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="er">//</span> <span class="er">For</span> <span class="er">documentation</span> <span class="er">on</span> <span class="er">these</span> <span class="er">settings,</span> <span class="er">see:</span> <span class="er">https://aka.ms/terminal-documentation</span></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="fu">{</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a>    <span class="dt">&quot;$schema&quot;</span><span class="fu">:</span> <span class="st">&quot;https://aka.ms/terminal-profiles-schema&quot;</span><span class="fu">,</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a></span>
+<span id="cb4-11"><a href="#cb4-11"></a>    <span class="dt">&quot;defaultProfile&quot;</span><span class="fu">:</span> <span class="st">&quot;{0a920985-e2e7-4fe2-8610-f29c814c920a}&quot;</span><span class="fu">,</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a></span>
+<span id="cb4-13"><a href="#cb4-13"></a>    <span class="er">//</span> <span class="er">You</span> <span class="er">can</span> <span class="er">add</span> <span class="er">more</span> <span class="er">global</span> <span class="er">application</span> <span class="er">settings</span> <span class="er">here.</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a>    <span class="er">//</span> <span class="er">To</span> <span class="er">learn</span> <span class="er">more</span> <span class="er">about</span> <span class="er">global</span> <span class="er">settings</span><span class="fu">,</span> <span class="er">visit</span> <span class="er">https</span><span class="fu">:</span><span class="er">//aka.ms/terminal-global-settings</span></span>
+<span id="cb4-15"><a href="#cb4-15"></a></span>
+<span id="cb4-16"><a href="#cb4-16"></a>    <span class="er">//</span> <span class="er">If</span> <span class="er">enabled</span><span class="fu">,</span> <span class="er">selections</span> <span class="er">are</span> <span class="er">automatically</span> <span class="er">copied</span> <span class="er">to</span> <span class="er">your</span> <span class="er">clipboard.</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a>    <span class="dt">&quot;copyOnSelect&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb4-18"><a href="#cb4-18"></a></span>
+<span id="cb4-19"><a href="#cb4-19"></a>    <span class="er">//</span> <span class="er">If</span> <span class="er">enabled</span><span class="fu">,</span> <span class="er">formatted</span> <span class="er">data</span> <span class="er">is</span> <span class="er">also</span> <span class="er">copied</span> <span class="er">to</span> <span class="er">your</span> <span class="er">clipboard</span></span>
+<span id="cb4-20"><a href="#cb4-20"></a>    <span class="dt">&quot;copyFormatting&quot;</span><span class="fu">:</span> <span class="kw">true</span><span class="fu">,</span></span>
+<span id="cb4-21"><a href="#cb4-21"></a>    <span class="dt">&quot;initialRows&quot;</span><span class="fu">:</span> <span class="dv">25</span><span class="fu">,</span></span>
+<span id="cb4-22"><a href="#cb4-22"></a>    <span class="dt">&quot;initialCols&quot;</span><span class="fu">:</span> <span class="dv">80</span><span class="fu">,</span></span>
+<span id="cb4-23"><a href="#cb4-23"></a></span>
+<span id="cb4-24"><a href="#cb4-24"></a>    <span class="er">//</span> <span class="er">A</span> <span class="er">profile</span> <span class="er">specifies</span> <span class="er">a</span> <span class="er">command</span> <span class="er">to</span> <span class="er">execute</span> <span class="er">paired</span> <span class="er">with</span> <span class="er">information</span> <span class="er">about</span> <span class="er">how</span> <span class="er">it</span> <span class="er">should</span> <span class="er">look</span> <span class="er">and</span> <span class="er">feel.</span></span>
+<span id="cb4-25"><a href="#cb4-25"></a>    <span class="er">//</span> <span class="er">Each</span> <span class="er">one</span> <span class="er">of</span> <span class="er">them</span> <span class="er">will</span> <span class="er">appear</span> <span class="er">in</span> <span class="er">the</span> <span class="er">&#39;New</span> <span class="er">Tab&#39;</span> <span class="er">dropdown</span><span class="fu">,</span></span>
+<span id="cb4-26"><a href="#cb4-26"></a>    <span class="er">//</span>   <span class="er">and</span> <span class="er">can</span> <span class="er">be</span> <span class="er">invoked</span> <span class="er">from</span> <span class="er">the</span> <span class="er">commandline</span> <span class="er">with</span> <span class="er">`wt.exe</span> <span class="er">-p</span> <span class="er">xxx`</span></span>
+<span id="cb4-27"><a href="#cb4-27"></a>    <span class="er">//</span> <span class="er">To</span> <span class="er">learn</span> <span class="er">more</span> <span class="er">about</span> <span class="er">profiles</span><span class="fu">,</span> <span class="er">visit</span> <span class="er">https</span><span class="fu">:</span><span class="er">//aka.ms/terminal-profile-settings</span></span>
+<span id="cb4-28"><a href="#cb4-28"></a>    <span class="st">&quot;profiles&quot;</span><span class="er">:</span></span>
+<span id="cb4-29"><a href="#cb4-29"></a>    <span class="fu">{</span></span>
+<span id="cb4-30"><a href="#cb4-30"></a>        <span class="dt">&quot;defaults&quot;</span><span class="fu">:</span></span>
+<span id="cb4-31"><a href="#cb4-31"></a>        <span class="fu">{</span></span>
+<span id="cb4-32"><a href="#cb4-32"></a>            <span class="er">//</span> <span class="er">Put</span> <span class="er">settings</span> <span class="er">here</span> <span class="er">that</span> <span class="er">you</span> <span class="er">want</span> <span class="er">to</span> <span class="er">apply</span> <span class="er">to</span> <span class="er">all</span> <span class="er">profiles.</span></span>
+<span id="cb4-33"><a href="#cb4-33"></a>            <span class="dt">&quot;fontFace&quot;</span><span class="fu">:</span> <span class="st">&quot;KaiConsolas&quot;</span><span class="fu">,</span></span>
+<span id="cb4-34"><a href="#cb4-34"></a>            <span class="dt">&quot;fontSize&quot;</span><span class="fu">:</span> <span class="dv">16</span><span class="fu">,</span></span>
+<span id="cb4-35"><a href="#cb4-35"></a>            <span class="dt">&quot;cursorShape&quot;</span><span class="fu">:</span> <span class="st">&quot;filledBox&quot;</span><span class="fu">,</span></span>
+<span id="cb4-36"><a href="#cb4-36"></a>            <span class="dt">&quot;cursorColor&quot;</span><span class="fu">:</span> <span class="st">&quot;#657b83&quot;</span><span class="fu">,</span></span>
+<span id="cb4-37"><a href="#cb4-37"></a>            <span class="dt">&quot;backgroundImage&quot;</span><span class="fu">:</span> <span class="st">&quot;D:</span><span class="ch">\\</span><span class="st">images</span><span class="ch">\\</span><span class="st">image.jpg&quot;</span><span class="fu">,</span></span>
+<span id="cb4-38"><a href="#cb4-38"></a>            <span class="dt">&quot;backgroundImageOpacity&quot;</span><span class="fu">:</span> <span class="fl">0.2</span><span class="fu">,</span></span>
+<span id="cb4-39"><a href="#cb4-39"></a>            <span class="dt">&quot;colorScheme&quot;</span><span class="fu">:</span> <span class="st">&quot;My Solarized Light&quot;</span></span>
+<span id="cb4-40"><a href="#cb4-40"></a>        <span class="fu">},</span></span>
+<span id="cb4-41"><a href="#cb4-41"></a>        <span class="dt">&quot;list&quot;</span><span class="fu">:</span></span>
+<span id="cb4-42"><a href="#cb4-42"></a>        <span class="ot">[</span></span>
+<span id="cb4-43"><a href="#cb4-43"></a>            <span class="fu">{</span></span>
+<span id="cb4-44"><a href="#cb4-44"></a>                <span class="er">//</span> <span class="er">Make</span> <span class="er">changes</span> <span class="er">here</span> <span class="er">to</span> <span class="er">the</span> <span class="er">powershell.exe</span> <span class="er">profile.</span></span>
+<span id="cb4-45"><a href="#cb4-45"></a>                <span class="dt">&quot;guid&quot;</span><span class="fu">:</span> <span class="st">&quot;{61c54bbd-c2c6-5271-96e7-009a87ff44bf}&quot;</span><span class="fu">,</span></span>
+<span id="cb4-46"><a href="#cb4-46"></a>                <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Windows PowerShell&quot;</span><span class="fu">,</span></span>
+<span id="cb4-47"><a href="#cb4-47"></a>                <span class="dt">&quot;commandline&quot;</span><span class="fu">:</span> <span class="st">&quot;powershell.exe&quot;</span><span class="fu">,</span></span>
+<span id="cb4-48"><a href="#cb4-48"></a>                <span class="dt">&quot;hidden&quot;</span><span class="fu">:</span> <span class="kw">false</span></span>
+<span id="cb4-49"><a href="#cb4-49"></a>            <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb4-50"><a href="#cb4-50"></a>            <span class="fu">{</span></span>
+<span id="cb4-51"><a href="#cb4-51"></a>                <span class="dt">&quot;guid&quot;</span><span class="fu">:</span> <span class="st">&quot;{0a920985-e2e7-4fe2-8610-f29c814c920a}&quot;</span><span class="fu">,</span></span>
+<span id="cb4-52"><a href="#cb4-52"></a>                <span class="dt">&quot;hidden&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb4-53"><a href="#cb4-53"></a>                <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Vifm&quot;</span><span class="fu">,</span></span>
+<span id="cb4-54"><a href="#cb4-54"></a>                <span class="dt">&quot;commandline&quot;</span><span class="fu">:</span> <span class="st">&quot;D:</span><span class="ch">\\</span><span class="st">Apps</span><span class="ch">\\</span><span class="st">vifm-w64-se-0.10.1-binary</span><span class="ch">\\</span><span class="st">vifm.exe&quot;</span><span class="fu">,</span></span>
+<span id="cb4-55"><a href="#cb4-55"></a>                <span class="dt">&quot;startingDirectory&quot;</span> <span class="fu">:</span> <span class="st">&quot;D:</span><span class="ch">\\</span><span class="st">&quot;</span></span>
+<span id="cb4-56"><a href="#cb4-56"></a>            <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb4-57"><a href="#cb4-57"></a>            <span class="fu">{</span></span>
+<span id="cb4-58"><a href="#cb4-58"></a>                <span class="er">//</span> <span class="er">Make</span> <span class="er">changes</span> <span class="er">here</span> <span class="er">to</span> <span class="er">the</span> <span class="er">cmd.exe</span> <span class="er">profile.</span></span>
+<span id="cb4-59"><a href="#cb4-59"></a>                <span class="dt">&quot;guid&quot;</span><span class="fu">:</span> <span class="st">&quot;{0caa0dad-35be-5f56-a8ff-afceeeaa6101}&quot;</span><span class="fu">,</span></span>
+<span id="cb4-60"><a href="#cb4-60"></a>                <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;命令提示符&quot;</span><span class="fu">,</span></span>
+<span id="cb4-61"><a href="#cb4-61"></a>                <span class="dt">&quot;commandline&quot;</span><span class="fu">:</span> <span class="st">&quot;cmd.exe&quot;</span><span class="fu">,</span></span>
+<span id="cb4-62"><a href="#cb4-62"></a>                <span class="dt">&quot;hidden&quot;</span><span class="fu">:</span> <span class="kw">false</span></span>
+<span id="cb4-63"><a href="#cb4-63"></a>            <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb4-64"><a href="#cb4-64"></a>            <span class="fu">{</span></span>
+<span id="cb4-65"><a href="#cb4-65"></a>                <span class="dt">&quot;guid&quot;</span><span class="fu">:</span> <span class="st">&quot;{2c4de342-38b7-51cf-b940-2309a097f518}&quot;</span><span class="fu">,</span></span>
+<span id="cb4-66"><a href="#cb4-66"></a>                <span class="dt">&quot;hidden&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb4-67"><a href="#cb4-67"></a>                <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Ubuntu&quot;</span><span class="fu">,</span></span>
+<span id="cb4-68"><a href="#cb4-68"></a>                <span class="dt">&quot;source&quot;</span><span class="fu">:</span> <span class="st">&quot;Windows.Terminal.Wsl&quot;</span></span>
+<span id="cb4-69"><a href="#cb4-69"></a>            <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb4-70"><a href="#cb4-70"></a>            <span class="fu">{</span></span>
+<span id="cb4-71"><a href="#cb4-71"></a>                <span class="dt">&quot;guid&quot;</span><span class="fu">:</span> <span class="st">&quot;{b453ae62-4e3d-5e58-b989-0a998ec441b8}&quot;</span><span class="fu">,</span></span>
+<span id="cb4-72"><a href="#cb4-72"></a>                <span class="dt">&quot;hidden&quot;</span><span class="fu">:</span> <span class="kw">false</span><span class="fu">,</span></span>
+<span id="cb4-73"><a href="#cb4-73"></a>                <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;Azure Cloud Shell&quot;</span><span class="fu">,</span></span>
+<span id="cb4-74"><a href="#cb4-74"></a>                <span class="dt">&quot;source&quot;</span><span class="fu">:</span> <span class="st">&quot;Windows.Terminal.Azure&quot;</span></span>
+<span id="cb4-75"><a href="#cb4-75"></a>            <span class="fu">}</span></span>
+<span id="cb4-76"><a href="#cb4-76"></a>        <span class="ot">]</span></span>
+<span id="cb4-77"><a href="#cb4-77"></a>    <span class="fu">},</span></span>
+<span id="cb4-78"><a href="#cb4-78"></a></span>
+<span id="cb4-79"><a href="#cb4-79"></a>    <span class="er">//</span> <span class="er">Add</span> <span class="er">custom</span> <span class="er">color</span> <span class="er">schemes</span> <span class="er">to</span> <span class="er">this</span> <span class="er">array.</span></span>
+<span id="cb4-80"><a href="#cb4-80"></a>    <span class="er">//</span> <span class="er">To</span> <span class="er">learn</span> <span class="er">more</span> <span class="er">about</span> <span class="er">color</span> <span class="er">schemes</span><span class="fu">,</span> <span class="er">visit</span> <span class="er">https</span><span class="fu">:</span><span class="er">//aka.ms/terminal-color-schemes</span></span>
+<span id="cb4-81"><a href="#cb4-81"></a>    <span class="st">&quot;schemes&quot;</span><span class="er">:</span> <span class="ot">[</span></span>
+<span id="cb4-82"><a href="#cb4-82"></a>        <span class="fu">{</span></span>
+<span id="cb4-83"><a href="#cb4-83"></a>            <span class="dt">&quot;name&quot;</span><span class="fu">:</span> <span class="st">&quot;My Solarized Light&quot;</span><span class="fu">,</span></span>
+<span id="cb4-84"><a href="#cb4-84"></a>            <span class="dt">&quot;black&quot;</span><span class="fu">:</span> <span class="st">&quot;#073642&quot;</span><span class="fu">,</span></span>
+<span id="cb4-85"><a href="#cb4-85"></a>            <span class="dt">&quot;red&quot;</span><span class="fu">:</span> <span class="st">&quot;#dc322f&quot;</span><span class="fu">,</span></span>
+<span id="cb4-86"><a href="#cb4-86"></a>            <span class="dt">&quot;green&quot;</span><span class="fu">:</span> <span class="st">&quot;#859900&quot;</span><span class="fu">,</span></span>
+<span id="cb4-87"><a href="#cb4-87"></a>            <span class="dt">&quot;yellow&quot;</span><span class="fu">:</span> <span class="st">&quot;#b58900&quot;</span><span class="fu">,</span></span>
+<span id="cb4-88"><a href="#cb4-88"></a>            <span class="dt">&quot;blue&quot;</span><span class="fu">:</span> <span class="st">&quot;#268bd2&quot;</span><span class="fu">,</span></span>
+<span id="cb4-89"><a href="#cb4-89"></a>            <span class="dt">&quot;purple&quot;</span><span class="fu">:</span> <span class="st">&quot;#d33682&quot;</span><span class="fu">,</span></span>
+<span id="cb4-90"><a href="#cb4-90"></a>            <span class="dt">&quot;cyan&quot;</span><span class="fu">:</span> <span class="st">&quot;#2aa198&quot;</span><span class="fu">,</span></span>
+<span id="cb4-91"><a href="#cb4-91"></a>            <span class="dt">&quot;white&quot;</span><span class="fu">:</span> <span class="st">&quot;#eee8d5&quot;</span><span class="fu">,</span></span>
+<span id="cb4-92"><a href="#cb4-92"></a>            <span class="dt">&quot;brightBlack&quot;</span><span class="fu">:</span> <span class="st">&quot;#002b36&quot;</span><span class="fu">,</span></span>
+<span id="cb4-93"><a href="#cb4-93"></a>            <span class="dt">&quot;brightRed&quot;</span><span class="fu">:</span> <span class="st">&quot;#cb4b16&quot;</span><span class="fu">,</span></span>
+<span id="cb4-94"><a href="#cb4-94"></a>            <span class="dt">&quot;brightGreen&quot;</span><span class="fu">:</span> <span class="st">&quot;#586e75&quot;</span><span class="fu">,</span></span>
+<span id="cb4-95"><a href="#cb4-95"></a>            <span class="dt">&quot;brightYellow&quot;</span><span class="fu">:</span> <span class="st">&quot;#657b83&quot;</span><span class="fu">,</span></span>
+<span id="cb4-96"><a href="#cb4-96"></a>            <span class="dt">&quot;brightBlue&quot;</span><span class="fu">:</span> <span class="st">&quot;#9ce3f8&quot;</span><span class="fu">,</span></span>
+<span id="cb4-97"><a href="#cb4-97"></a>            <span class="dt">&quot;brightPurple&quot;</span><span class="fu">:</span> <span class="st">&quot;#6c71c4&quot;</span><span class="fu">,</span></span>
+<span id="cb4-98"><a href="#cb4-98"></a>            <span class="dt">&quot;brightCyan&quot;</span><span class="fu">:</span> <span class="st">&quot;#859595&quot;</span><span class="fu">,</span></span>
+<span id="cb4-99"><a href="#cb4-99"></a>            <span class="dt">&quot;brightWhite&quot;</span><span class="fu">:</span> <span class="st">&quot;#fae7b3&quot;</span><span class="fu">,</span></span>
+<span id="cb4-100"><a href="#cb4-100"></a>            <span class="dt">&quot;background&quot;</span><span class="fu">:</span> <span class="st">&quot;#fdf6e3&quot;</span><span class="fu">,</span></span>
+<span id="cb4-101"><a href="#cb4-101"></a>            <span class="dt">&quot;foreground&quot;</span><span class="fu">:</span> <span class="st">&quot;#657b83&quot;</span></span>
+<span id="cb4-102"><a href="#cb4-102"></a>        <span class="fu">}</span></span>
+<span id="cb4-103"><a href="#cb4-103"></a>    <span class="ot">]</span><span class="fu">,</span></span>
+<span id="cb4-104"><a href="#cb4-104"></a></span>
+<span id="cb4-105"><a href="#cb4-105"></a>    <span class="er">//</span> <span class="er">Add</span> <span class="er">custom</span> <span class="er">keybindings</span> <span class="er">to</span> <span class="er">this</span> <span class="er">array.</span></span>
+<span id="cb4-106"><a href="#cb4-106"></a>    <span class="er">//</span> <span class="er">To</span> <span class="er">unbind</span> <span class="er">a</span> <span class="er">key</span> <span class="er">combination</span> <span class="er">from</span> <span class="er">your</span> <span class="er">defaults.json</span><span class="fu">,</span> <span class="er">set</span> <span class="er">the</span> <span class="er">command</span> <span class="er">to</span> <span class="dt">&quot;unbound&quot;</span><span class="er">.</span></span>
+<span id="cb4-107"><a href="#cb4-107"></a>    <span class="er">//</span> <span class="er">To</span> <span class="er">learn</span> <span class="er">more</span> <span class="er">about</span> <span class="er">keybindings</span><span class="fu">,</span> <span class="er">visit</span> <span class="er">https</span><span class="fu">:</span><span class="er">//aka.ms/terminal-keybindings</span></span>
+<span id="cb4-108"><a href="#cb4-108"></a>    <span class="st">&quot;keybindings&quot;</span><span class="er">:</span></span>
+<span id="cb4-109"><a href="#cb4-109"></a>    <span class="ot">[</span></span>
+<span id="cb4-110"><a href="#cb4-110"></a>        <span class="er">//</span> <span class="er">Copy</span> <span class="er">and</span> <span class="er">paste</span> <span class="er">are</span> <span class="er">bound</span> <span class="er">to</span> <span class="er">Ctrl+Shift+C</span> <span class="er">and</span> <span class="er">Ctrl+Shift+V</span> <span class="er">in</span> <span class="er">your</span> <span class="er">defaults.json.</span></span>
+<span id="cb4-111"><a href="#cb4-111"></a>        <span class="er">//</span> <span class="er">These</span> <span class="er">two</span> <span class="er">lines</span> <span class="er">additionally</span> <span class="er">bind</span> <span class="er">them</span> <span class="er">to</span> <span class="er">Ctrl+C</span> <span class="er">and</span> <span class="er">Ctrl+V.</span></span>
+<span id="cb4-112"><a href="#cb4-112"></a>        <span class="er">//</span> <span class="er">To</span> <span class="er">learn</span> <span class="er">more</span> <span class="er">about</span> <span class="er">selection</span><span class="ot">,</span> <span class="er">visit</span> <span class="er">https://aka.ms/terminal-selection</span></span>
+<span id="cb4-113"><a href="#cb4-113"></a>        <span class="er">//</span> <span class="fu">{</span> <span class="dt">&quot;command&quot;</span><span class="fu">:</span> <span class="fu">{</span><span class="dt">&quot;action&quot;</span><span class="fu">:</span> <span class="st">&quot;copy&quot;</span><span class="fu">,</span> <span class="dt">&quot;singleLine&quot;</span><span class="fu">:</span> <span class="kw">false</span> <span class="fu">},</span> <span class="dt">&quot;keys&quot;</span><span class="fu">:</span> <span class="st">&quot;ctrl+c&quot;</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb4-114"><a href="#cb4-114"></a>        <span class="er">//</span> <span class="fu">{</span> <span class="dt">&quot;command&quot;</span><span class="fu">:</span> <span class="st">&quot;paste&quot;</span><span class="fu">,</span> <span class="dt">&quot;keys&quot;</span><span class="fu">:</span> <span class="st">&quot;ctrl+v&quot;</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb4-115"><a href="#cb4-115"></a></span>
+<span id="cb4-116"><a href="#cb4-116"></a>        <span class="er">//</span> <span class="er">Press</span> <span class="er">Ctrl+Shift+F</span> <span class="er">to</span> <span class="er">open</span> <span class="er">the</span> <span class="er">search</span> <span class="er">box</span></span>
+<span id="cb4-117"><a href="#cb4-117"></a>        <span class="fu">{</span> <span class="dt">&quot;command&quot;</span><span class="fu">:</span> <span class="st">&quot;find&quot;</span><span class="fu">,</span> <span class="dt">&quot;keys&quot;</span><span class="fu">:</span> <span class="st">&quot;ctrl+shift+f&quot;</span> <span class="fu">}</span><span class="ot">,</span></span>
+<span id="cb4-118"><a href="#cb4-118"></a></span>
+<span id="cb4-119"><a href="#cb4-119"></a>        <span class="er">//</span> <span class="er">Press</span> <span class="er">Alt+Shift+D</span> <span class="er">to</span> <span class="er">open</span> <span class="er">a</span> <span class="er">new</span> <span class="er">pane.</span></span>
+<span id="cb4-120"><a href="#cb4-120"></a>        <span class="er">//</span> <span class="er">-</span> <span class="st">&quot;split&quot;</span><span class="er">:</span> <span class="st">&quot;auto&quot;</span> <span class="er">makes</span> <span class="er">this</span> <span class="er">pane</span> <span class="er">open</span> <span class="er">in</span> <span class="er">the</span> <span class="er">direction</span> <span class="er">that</span> <span class="er">provides</span> <span class="er">the</span> <span class="er">most</span> <span class="er">surface</span> <span class="er">area.</span></span>
+<span id="cb4-121"><a href="#cb4-121"></a>        <span class="er">//</span> <span class="er">-</span> <span class="st">&quot;splitMode&quot;</span><span class="er">:</span> <span class="st">&quot;duplicate&quot;</span> <span class="er">makes</span> <span class="er">the</span> <span class="er">new</span> <span class="er">pane</span> <span class="er">use</span> <span class="er">the</span> <span class="er">focused</span> <span class="er">pane&#39;s</span> <span class="er">profile.</span></span>
+<span id="cb4-122"><a href="#cb4-122"></a>        <span class="er">//</span> <span class="er">To</span> <span class="er">learn</span> <span class="er">more</span> <span class="er">about</span> <span class="er">panes</span><span class="ot">,</span> <span class="er">visit</span> <span class="er">https://aka.ms/terminal-panes</span></span>
+<span id="cb4-123"><a href="#cb4-123"></a>        <span class="fu">{</span> <span class="dt">&quot;command&quot;</span><span class="fu">:</span> <span class="fu">{</span> <span class="dt">&quot;action&quot;</span><span class="fu">:</span> <span class="st">&quot;splitPane&quot;</span><span class="fu">,</span> <span class="dt">&quot;split&quot;</span><span class="fu">:</span> <span class="st">&quot;auto&quot;</span><span class="fu">,</span> <span class="dt">&quot;splitMode&quot;</span><span class="fu">:</span> <span class="st">&quot;duplicate&quot;</span> <span class="fu">},</span> <span class="dt">&quot;keys&quot;</span><span class="fu">:</span> <span class="st">&quot;alt+shift+d&quot;</span> <span class="fu">}</span></span>
+<span id="cb4-124"><a href="#cb4-124"></a>    <span class="ot">]</span></span>
+<span id="cb4-125"><a href="#cb4-125"></a><span class="fu">}</span></span></code></pre></div>
+<footer>
+    <hr><center>转载请注明出处<br>© 2022 ZimingYuan的博客</center>
+</footer>
 </body>
 </html>

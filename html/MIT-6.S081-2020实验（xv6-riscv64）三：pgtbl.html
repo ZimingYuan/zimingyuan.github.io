@@ -1,148 +1,129 @@
 <!DOCTYPE html>
-<!--
-==============================================================================
-           "GitHub HTML5 Pandoc Template" v2.2 — by Tristano Ajmone
-==============================================================================
-Copyright © Tristano Ajmone, 2017-2020, MIT License (MIT). Project's home:
-- https://github.com/tajmone/pandoc-goodies
-The CSS in this template reuses source code taken from the following projects:
-- GitHub Markdown CSS: Copyright © Sindre Sorhus, MIT License (MIT):
-  https://github.com/sindresorhus/github-markdown-css
-- Primer CSS: Copyright © 2016-2017 GitHub Inc., MIT License (MIT):
-  http://primercss.io/
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The MIT License
-Copyright (c) Tristano Ajmone, 2017-2020 (github.com/tajmone/pandoc-goodies)
-Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
-Copyright (c) 2017 GitHub Inc.
-"GitHub Pandoc HTML5 Template" is Copyright (c) Tristano Ajmone, 2017-2020,
-released under the MIT License (MIT); it contains readaptations of substantial
-portions of the following third party softwares:
-(1) "GitHub Markdown CSS", Copyright (c) Sindre Sorhus, MIT License (MIT).
-(2) "Primer CSS", Copyright (c) 2016 GitHub Inc., MIT License (MIT).
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-==============================================================================-->
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" data-theme="tufte">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/extra/classless.css" />
+<style>
+html[data-theme='tufte']{
+    --rem: 15px;
+    --navpos: absolute;
+    --width: 70rem;
+    --font-p: 1.4rem/2 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-h: 1.4rem/1.5 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --ornament: "";
+    --border: 1px solid var(--cmed);
+    /* foreground   | background color */
+    --cfg:   #111;    --cbg:    #fbf7ec;
+    --cdark: #111;    --clight: #fbf7ec;
+    --cmed: #b4d5fe;
+    --clink: #111;
+    --cemph: #111;
+}
+</style>
+  <script>
+      let search = () => {
+          let word = document.querySelector('input').value;
+          if (word.length == 0) {
+              alert('搜索内容不能为空！');
+          } else {
+              location.href = '/search.html?' + word;
+          }
+      };
+  </script>
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <title>MIT-6.S081-2020实验（xv6-riscv64）三：pgtbl</title>
-  <style type="text/css">
-@charset "UTF-8";.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#24292e;font-family:-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:16px;line-height:1.5;word-wrap:break-word;box-sizing:border-box;min-width:200px;max-width:980px;margin:0 auto;padding:45px}.markdown-body a{color:#0366d6;background-color:transparent;text-decoration:none;-webkit-text-decoration-skip:objects}.markdown-body a:active,.markdown-body a:hover{outline-width:0}.markdown-body a:hover{text-decoration:underline}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body strong{font-weight:600}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1{font-size:2em;margin:.67em 0;padding-bottom:.3em;border-bottom:1px solid #eaecef}.markdown-body h2{padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid #eaecef}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#6a737d}.markdown-body img{border-style:none}.markdown-body svg:not(:root){overflow:hidden}.markdown-body hr{box-sizing:content-box;height:.25em;margin:24px 0;padding:0;overflow:hidden;background-color:#e1e4e8;border:0}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body input{margin:0;overflow:visible;font:inherit;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=checkbox]{box-sizing:border-box;padding:0}.markdown-body *{box-sizing:border-box}.markdown-body blockquote{margin:0}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dd{margin-left:0}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:600}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace}.markdown-body pre{font:12px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;word-wrap:normal}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote{padding:0 1em;color:#6a737d;border-left:.25em solid #dfe2e5}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body table{display:block;width:100%;overflow:auto;border-spacing:0;border-collapse:collapse}.markdown-body table th{font-weight:600}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #dfe2e5}.markdown-body table tr{background-color:#fff;border-top:1px solid #c6cbd1}.markdown-body table tr:nth-child(2n){background-color:#f6f8fa}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body code{padding:.2em 0;margin:0;font-size:85%;background-color:rgba(27,31,35,.05);border-radius:3px}.markdown-body code::after,.markdown-body code::before{letter-spacing:-.2em;content:" "}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f6f8fa;border-radius:3px}.markdown-body pre code{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code::after,.markdown-body pre code::before{content:normal}.markdown-body .full-commit .btn-outline:not(:disabled):hover{color:#005cc5;border-color:#005cc5}.markdown-body kbd{box-shadow:inset 0 -1px 0 #959da5;display:inline-block;padding:3px 5px;font:11px/10px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;color:#444d56;vertical-align:middle;background-color:#fcfcfc;border:1px solid #c6cbd1;border-bottom-color:#959da5;border-radius:3px;box-shadow:inset 0 -1px 0 #959da5}.markdown-body :checked+.radio-label{position:relative;z-index:1;border-color:#0366d6}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item+.task-list-item{margin-top:3px}.markdown-body .task-list-item input{margin:0 .2em .25em -1.6em;vertical-align:middle}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.Alert,.Error,.Note,.Success,.Warning{padding:11px;margin-bottom:24px;border-style:solid;border-width:1px;border-radius:4px}.Alert p,.Error p,.Note p,.Success p,.Warning p{margin-top:0}.Alert p:last-child,.Error p:last-child,.Note p:last-child,.Success p:last-child,.Warning p:last-child{margin-bottom:0}.Alert{color:#246;background-color:#e2eef9;border-color:#bac6d3}.Warning{color:#4c4a42;background-color:#fff9ea;border-color:#dfd8c2}.Error{color:#911;background-color:#fcdede;border-color:#d2b2b2}.Success{color:#22662c;background-color:#e2f9e5;border-color:#bad3be}.Note{color:#2f363d;background-color:#f6f8fa;border-color:#d5d8da}.Alert h1,.Alert h2,.Alert h3,.Alert h4,.Alert h5,.Alert h6{color:#246;margin-bottom:0}.Warning h1,.Warning h2,.Warning h3,.Warning h4,.Warning h5,.Warning h6{color:#4c4a42;margin-bottom:0}.Error h1,.Error h2,.Error h3,.Error h4,.Error h5,.Error h6{color:#911;margin-bottom:0}.Success h1,.Success h2,.Success h3,.Success h4,.Success h5,.Success h6{color:#22662c;margin-bottom:0}.Note h1,.Note h2,.Note h3,.Note h4,.Note h5,.Note h6{color:#2f363d;margin-bottom:0}.Alert h1:first-child,.Alert h2:first-child,.Alert h3:first-child,.Alert h4:first-child,.Alert h5:first-child,.Alert h6:first-child,.Error h1:first-child,.Error h2:first-child,.Error h3:first-child,.Error h4:first-child,.Error h5:first-child,.Error h6:first-child,.Note h1:first-child,.Note h2:first-child,.Note h3:first-child,.Note h4:first-child,.Note h5:first-child,.Note h6:first-child,.Success h1:first-child,.Success h2:first-child,.Success h3:first-child,.Success h4:first-child,.Success h5:first-child,.Success h6:first-child,.Warning h1:first-child,.Warning h2:first-child,.Warning h3:first-child,.Warning h4:first-child,.Warning h5:first-child,.Warning h6:first-child{margin-top:0}h1.title,p.subtitle{text-align:center}h1.title.followed-by-subtitle{margin-bottom:0}p.subtitle{font-size:1.5em;font-weight:600;line-height:1.25;margin-top:0;margin-bottom:16px;padding-bottom:.3em}div.line-block{white-space:pre-line}
-  </style>
-  <style type="text/css">code{white-space: pre;}</style>
-  <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-  </style>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
-<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
-<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.staticfile.org/popper.js/1.12.9/popper.min.js" ></script>
-<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js" ></script>
-<link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">ZimingYuan的博客</a>
-        <div class="navbar-collapse">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/index.html">首页</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/html/随笔.html">随笔</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/html/CSP模板.html">CSP模板</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<article class="markdown-body">
-<header>
+    <nav>
+        <ul>
+            <li><big>ZimingYuan的博客</big></li>
+            <li><a href="/index.html">首页</a></li>
+            <li><a href="/html/随笔.html">随笔</a></li>
+            <li><a href="/html/CSP模板.html">CSP模板</a></li>
+            <li class="float-right sticky"><button onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="text" placeholder="搜索"></li>
+        </ul>
+    </nav>
+<header id="title-block-header">
 <h1 class="title">MIT-6.S081-2020实验（xv6-riscv64）三：pgtbl</h1>
+<hr>
 </header>
 <p><a href="https://pdos.csail.mit.edu/6.S081/2020/labs/pgtbl.html">实验文档</a></p>
 <h3 id="概述">概述</h3>
@@ -150,57 +131,57 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 id="内容">内容</h3>
 <h4 id="print-a-page-table">Print a page table</h4>
 <p>这个任务比较简单，只要仿照freewalk递归遍历就行了。</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> printwalk<span class="op">(</span>pagetable_t pt<span class="op">,</span> <span class="dt">int</span> dep<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">512</span><span class="op">;</span> i<span class="op">++){</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        pte_t pte <span class="op">=</span> pt<span class="op">[</span>i<span class="op">];</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span> <span class="op">(</span>pte <span class="op">&amp;</span> PTE_V<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>            <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> j <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> j <span class="op">&lt;</span> dep <span class="op">-</span> <span class="dv">1</span><span class="op">;</span> j<span class="op">++)</span> printf<span class="op">(</span><span class="st">&quot;.. &quot;</span><span class="op">);</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>            printf<span class="op">(</span><span class="st">&quot;..%d: pte %p &quot;</span><span class="op">,</span> i<span class="op">,</span> pte<span class="op">);</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>            uint64 child <span class="op">=</span> PTE2PA<span class="op">(</span>pte<span class="op">);</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>            printf<span class="op">(</span><span class="st">&quot;pa %p</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> child<span class="op">);</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>            <span class="cf">if</span> <span class="op">((</span>pte <span class="op">&amp;</span> <span class="op">(</span>PTE_R<span class="op">|</span>PTE_W<span class="op">|</span>PTE_X<span class="op">))</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>                printwalk<span class="op">((</span>pagetable_t<span class="op">)</span>child<span class="op">,</span> dep <span class="op">+</span> <span class="dv">1</span><span class="op">);</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> vmprint<span class="op">(</span>pagetable_t pt<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>    printf<span class="op">(</span><span class="st">&quot;page table %p</span><span class="sc">\n</span><span class="st">&quot;</span><span class="op">,</span> pt<span class="op">);</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    printwalk<span class="op">(</span>pt<span class="op">,</span> <span class="dv">1</span><span class="op">);</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1"></a><span class="dt">void</span> printwalk(pagetable_t pt, <span class="dt">int</span> dep) {</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    <span class="cf">for</span>(<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">512</span>; i++){</span>
+<span id="cb1-3"><a href="#cb1-3"></a>        pte_t pte = pt[i];</span>
+<span id="cb1-4"><a href="#cb1-4"></a>        <span class="cf">if</span> (pte &amp; PTE_V) {</span>
+<span id="cb1-5"><a href="#cb1-5"></a>            <span class="cf">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; dep - <span class="dv">1</span>; j++) printf(<span class="st">&quot;.. &quot;</span>);</span>
+<span id="cb1-6"><a href="#cb1-6"></a>            printf(<span class="st">&quot;..%d: pte %p &quot;</span>, i, pte);</span>
+<span id="cb1-7"><a href="#cb1-7"></a>            uint64 child = PTE2PA(pte);</span>
+<span id="cb1-8"><a href="#cb1-8"></a>            printf(<span class="st">&quot;pa %p</span><span class="sc">\n</span><span class="st">&quot;</span>, child);</span>
+<span id="cb1-9"><a href="#cb1-9"></a>            <span class="cf">if</span> ((pte &amp; (PTE_R|PTE_W|PTE_X)) == <span class="dv">0</span>)</span>
+<span id="cb1-10"><a href="#cb1-10"></a>                printwalk((pagetable_t)child, dep + <span class="dv">1</span>);</span>
+<span id="cb1-11"><a href="#cb1-11"></a>        }</span>
+<span id="cb1-12"><a href="#cb1-12"></a>    }</span>
+<span id="cb1-13"><a href="#cb1-13"></a>}</span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="dt">void</span> vmprint(pagetable_t pt) {</span>
+<span id="cb1-15"><a href="#cb1-15"></a>    printf(<span class="st">&quot;page table %p</span><span class="sc">\n</span><span class="st">&quot;</span>, pt);</span>
+<span id="cb1-16"><a href="#cb1-16"></a>    printwalk(pt, <span class="dv">1</span>);</span>
+<span id="cb1-17"><a href="#cb1-17"></a>}</span></code></pre></div>
 <h4 id="a-kernel-page-table-per-process">A kernel page table per process</h4>
 <p>这个任务需要给每个进程添加一个独立的内核页表，两个任务的总体目的是让每个进程独立拥有一个同时映射了用户内存区和内核内存区的内核页表。这样进程在进入内核态后，可以直接在自己这个内核页表中的用户内存区和内核内存区之间传递数据，不需要经过页表切换。首先我除了给proc结构体添加了kpagetable外，额外加了一个kstackpa表示kstack的物理地址，这一步不是必须的，因为结构体里已经保存了kstack的虚拟地址了，在用之前walk一遍也不是不行。加了之后初始化在申请kstack的时候就顺便保存了物理地址：</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>      <span class="dt">char</span> <span class="op">*</span>pa <span class="op">=</span> kalloc<span class="op">();</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span><span class="op">(</span>pa <span class="op">==</span> <span class="dv">0</span><span class="op">)</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>        panic<span class="op">(</span><span class="st">&quot;kalloc&quot;</span><span class="op">);</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>      p<span class="op">-&gt;</span>kstackpa <span class="op">=</span> pa<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1"></a>      <span class="dt">char</span> *pa = kalloc();</span>
+<span id="cb2-2"><a href="#cb2-2"></a>      <span class="cf">if</span>(pa == <span class="dv">0</span>)</span>
+<span id="cb2-3"><a href="#cb2-3"></a>        panic(<span class="st">&quot;kalloc&quot;</span>);</span>
+<span id="cb2-4"><a href="#cb2-4"></a>      p-&gt;kstackpa = pa;</span></code></pre></div>
 <p>然后是allocproc，需要申请kpagetable并对其进行映射：</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>  p<span class="op">-&gt;</span>kpagetable <span class="op">=</span> proc_kpagetable<span class="op">();</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>p<span class="op">-&gt;</span>kpagetable <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>      freeproc<span class="op">(</span>p<span class="op">);</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>      release<span class="op">(&amp;</span>p<span class="op">-&gt;</span>lock<span class="op">);</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>mappages<span class="op">(</span>p<span class="op">-&gt;</span>kpagetable<span class="op">,</span> <span class="op">(</span>uint64<span class="op">)</span>p<span class="op">-&gt;</span>kstack<span class="op">,</span> PGSIZE<span class="op">,</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>               <span class="op">(</span>uint64<span class="op">)</span>p<span class="op">-&gt;</span>kstackpa<span class="op">,</span> PTE_R <span class="op">|</span> PTE_W<span class="op">)</span> <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>      freeproc<span class="op">(</span>p<span class="op">);</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>      release<span class="op">(&amp;</span>p<span class="op">-&gt;</span>lock<span class="op">);</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1"></a>  p-&gt;kpagetable = proc_kpagetable();</span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="cf">if</span> (p-&gt;kpagetable == <span class="dv">0</span>) {</span>
+<span id="cb3-3"><a href="#cb3-3"></a>      freeproc(p);</span>
+<span id="cb3-4"><a href="#cb3-4"></a>      release(&amp;p-&gt;lock);</span>
+<span id="cb3-5"><a href="#cb3-5"></a>      <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb3-6"><a href="#cb3-6"></a>  }</span>
+<span id="cb3-7"><a href="#cb3-7"></a></span>
+<span id="cb3-8"><a href="#cb3-8"></a>  <span class="cf">if</span> (mappages(p-&gt;kpagetable, (uint64)p-&gt;kstack, PGSIZE,</span>
+<span id="cb3-9"><a href="#cb3-9"></a>               (uint64)p-&gt;kstackpa, PTE_R | PTE_W) != <span class="dv">0</span>) {</span>
+<span id="cb3-10"><a href="#cb3-10"></a>      freeproc(p);</span>
+<span id="cb3-11"><a href="#cb3-11"></a>      release(&amp;p-&gt;lock);</span>
+<span id="cb3-12"><a href="#cb3-12"></a>      <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb3-13"><a href="#cb3-13"></a>  }</span></code></pre></div>
 <p>proc_kpagetable的实现我写在vm.c里，借鉴了kvminit函数：</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>pagetable_t proc_kpagetable<span class="op">(</span><span class="dt">void</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>    pagetable_t kpagetable <span class="op">=</span> <span class="op">(</span>pagetable_t<span class="op">)</span> kalloc<span class="op">();</span></span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    memset<span class="op">(</span>kpagetable<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> PGSIZE<span class="op">);</span></span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>mappages<span class="op">(</span>kpagetable<span class="op">,</span> UART0<span class="op">,</span> PGSIZE<span class="op">,</span> UART0<span class="op">,</span> PTE_R <span class="op">|</span> PTE_W<span class="op">)</span> <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span> <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>mappages<span class="op">(</span>kpagetable<span class="op">,</span> VIRTIO0<span class="op">,</span> PGSIZE<span class="op">,</span> VIRTIO0<span class="op">,</span> PTE_R <span class="op">|</span> PTE_W<span class="op">)</span> <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span> <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>mappages<span class="op">(</span>kpagetable<span class="op">,</span> PLIC<span class="op">,</span> <span class="bn">0x400000</span><span class="op">,</span> PLIC<span class="op">,</span> PTE_R <span class="op">|</span> PTE_W<span class="op">)</span> <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span> <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>mappages<span class="op">(</span>kpagetable<span class="op">,</span> KERNBASE<span class="op">,</span> <span class="op">(</span>uint64<span class="op">)</span>etext<span class="op">-</span>KERNBASE<span class="op">,</span> KERNBASE<span class="op">,</span> PTE_R <span class="op">|</span> PTE_X<span class="op">)</span> <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span> <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>mappages<span class="op">(</span>kpagetable<span class="op">,</span> <span class="op">(</span>uint64<span class="op">)</span>etext<span class="op">,</span> PHYSTOP<span class="op">-(</span>uint64<span class="op">)</span>etext<span class="op">,</span> <span class="op">(</span>uint64<span class="op">)</span>etext<span class="op">,</span> PTE_R <span class="op">|</span> PTE_W<span class="op">)</span> <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span> <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>mappages<span class="op">(</span>kpagetable<span class="op">,</span> TRAMPOLINE<span class="op">,</span> PGSIZE<span class="op">,</span> <span class="op">(</span>uint64<span class="op">)</span>trampoline<span class="op">,</span> PTE_R <span class="op">|</span> PTE_X<span class="op">)</span> <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span> <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> kpagetable<span class="op">;</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1"></a>pagetable_t proc_kpagetable(<span class="dt">void</span>) {</span>
+<span id="cb4-2"><a href="#cb4-2"></a>    pagetable_t kpagetable = (pagetable_t) kalloc();</span>
+<span id="cb4-3"><a href="#cb4-3"></a>    memset(kpagetable, <span class="dv">0</span>, PGSIZE);</span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a>    <span class="cf">if</span> (mappages(kpagetable, UART0, PGSIZE, UART0, PTE_R | PTE_W) != <span class="dv">0</span>) <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb4-6"><a href="#cb4-6"></a>    <span class="cf">if</span> (mappages(kpagetable, VIRTIO0, PGSIZE, VIRTIO0, PTE_R | PTE_W) != <span class="dv">0</span>) <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb4-7"><a href="#cb4-7"></a>    <span class="cf">if</span> (mappages(kpagetable, PLIC, <span class="bn">0x400000</span>, PLIC, PTE_R | PTE_W) != <span class="dv">0</span>) <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb4-8"><a href="#cb4-8"></a>    <span class="cf">if</span> (mappages(kpagetable, KERNBASE, (uint64)etext-KERNBASE, KERNBASE, PTE_R | PTE_X) != <span class="dv">0</span>) <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb4-9"><a href="#cb4-9"></a>    <span class="cf">if</span> (mappages(kpagetable, (uint64)etext, PHYSTOP-(uint64)etext, (uint64)etext, PTE_R | PTE_W) != <span class="dv">0</span>) <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb4-10"><a href="#cb4-10"></a>    <span class="cf">if</span> (mappages(kpagetable, TRAMPOLINE, PGSIZE, (uint64)trampoline, PTE_R | PTE_X) != <span class="dv">0</span>) <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb4-11"><a href="#cb4-11"></a></span>
+<span id="cb4-12"><a href="#cb4-12"></a>    <span class="cf">return</span> kpagetable;</span>
+<span id="cb4-13"><a href="#cb4-13"></a>}</span></code></pre></div>
 <p>值得注意的是这个CLINT没有被映射，我也不知道这个区域代表什么什么意思，但实验文档中提到：</p>
 <blockquote>
 <p>However, this scheme does limit the maximum size of a user process to be less than the kernel’s lowest virtual address. After the kernel has booted, that address is <code>0xC000000</code> in xv6, the address of the PLIC registers;</p>
@@ -208,100 +189,96 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>memlayout.h中CLINT对应的常数是0x2000000，比0xC000000小，按照文档的指示是可以被用户区覆盖的，所以没有映射（映射了可能后面再映射用户内存会报remap错误）。</p>
 <p><em>Update2021.6.29：这个CLINT用来存储发生时钟中断时的一些额外信息，由于存取这些信息的过程都发生在机器态，不受页表控制，所以这个区域无需映射（甚至我认为原版的内核页表也不需要映射这个区域）。</em></p>
 <p>scheduler函数中切换进程后需要切换satp寄存器为这个进程的内核页表（因为现在在内核态）并刷新TLB，这一步还是比较简单的：</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>        p<span class="op">-&gt;</span>state <span class="op">=</span> RUNNING<span class="op">;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>        c<span class="op">-&gt;</span>proc <span class="op">=</span> p<span class="op">;</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>        w_satp<span class="op">(</span>MAKE_SATP<span class="op">(</span>p<span class="op">-&gt;</span>kpagetable<span class="op">));</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>        sfence_vma<span class="op">();</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>        swtch<span class="op">(&amp;</span>c<span class="op">-&gt;</span>context<span class="op">,</span> <span class="op">&amp;</span>p<span class="op">-&gt;</span>context<span class="op">);</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1"></a>        p-&gt;state = RUNNING;</span>
+<span id="cb5-2"><a href="#cb5-2"></a>        c-&gt;proc = p;</span>
+<span id="cb5-3"><a href="#cb5-3"></a>        w_satp(MAKE_SATP(p-&gt;kpagetable));</span>
+<span id="cb5-4"><a href="#cb5-4"></a>        sfence_vma();</span>
+<span id="cb5-5"><a href="#cb5-5"></a>        swtch(&amp;c-&gt;context, &amp;p-&gt;context);</span></code></pre></div>
 <p>最后是freeproc，基本也是仿照对用户页表的操作依样画葫芦：</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span><span class="op">(</span>p<span class="op">-&gt;</span>pagetable<span class="op">)</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    proc_freepagetable<span class="op">(</span>p<span class="op">-&gt;</span>pagetable<span class="op">,</span> p<span class="op">-&gt;</span>sz<span class="op">);</span></span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>p<span class="op">-&gt;</span>kpagetable<span class="op">)</span></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>      proc_kfreepagetable<span class="op">(</span>p<span class="op">-&gt;</span>kpagetable<span class="op">);</span></span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  p<span class="op">-&gt;</span>pagetable <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>  p<span class="op">-&gt;</span>kpagetable <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb6-1"><a href="#cb6-1"></a>  <span class="cf">if</span>(p-&gt;pagetable)</span>
+<span id="cb6-2"><a href="#cb6-2"></a>    proc_freepagetable(p-&gt;pagetable, p-&gt;sz);</span>
+<span id="cb6-3"><a href="#cb6-3"></a>  <span class="cf">if</span> (p-&gt;kpagetable)</span>
+<span id="cb6-4"><a href="#cb6-4"></a>      proc_kfreepagetable(p-&gt;kpagetable);</span>
+<span id="cb6-5"><a href="#cb6-5"></a>  p-&gt;pagetable = <span class="dv">0</span>;</span>
+<span id="cb6-6"><a href="#cb6-6"></a>  p-&gt;kpagetable = <span class="dv">0</span>;</span></code></pre></div>
 <p>proc_kfreepagetable我也写在vm.c里，基本上是仿照freewalk函数写的，但是freewalk函数要求把最底层页表的映射全部解除了才能调用，否则会报错。我嫌麻烦就直接一步了，遇到最底层就不递归，直接只释放页表：</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> proc_kfreepagetable<span class="op">(</span>pagetable_t pagetable<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span><span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> <span class="dv">512</span><span class="op">;</span> i<span class="op">++){</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>        pte_t pte <span class="op">=</span> pagetable<span class="op">[</span>i<span class="op">];</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span><span class="op">((</span>pte <span class="op">&amp;</span> PTE_V<span class="op">)</span> <span class="op">&amp;&amp;</span> <span class="op">(</span>pte <span class="op">&amp;</span> <span class="op">(</span>PTE_R<span class="op">|</span>PTE_W<span class="op">|</span>PTE_X<span class="op">))</span> <span class="op">==</span> <span class="dv">0</span><span class="op">){</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>            uint64 child <span class="op">=</span> PTE2PA<span class="op">(</span>pte<span class="op">);</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>            proc_kfreepagetable<span class="op">((</span>pagetable_t<span class="op">)</span>child<span class="op">);</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>            pagetable<span class="op">[</span>i<span class="op">]</span> <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>        <span class="op">}</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>    kfree<span class="op">((</span><span class="dt">void</span><span class="op">*)</span>pagetable<span class="op">);</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1"></a><span class="dt">void</span> proc_kfreepagetable(pagetable_t pagetable) {</span>
+<span id="cb7-2"><a href="#cb7-2"></a>    <span class="cf">for</span>(<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="dv">512</span>; i++){</span>
+<span id="cb7-3"><a href="#cb7-3"></a>        pte_t pte = pagetable[i];</span>
+<span id="cb7-4"><a href="#cb7-4"></a>        <span class="cf">if</span>((pte &amp; PTE_V) &amp;&amp; (pte &amp; (PTE_R|PTE_W|PTE_X)) == <span class="dv">0</span>){</span>
+<span id="cb7-5"><a href="#cb7-5"></a>            uint64 child = PTE2PA(pte);</span>
+<span id="cb7-6"><a href="#cb7-6"></a>            proc_kfreepagetable((pagetable_t)child);</span>
+<span id="cb7-7"><a href="#cb7-7"></a>            pagetable[i] = <span class="dv">0</span>;</span>
+<span id="cb7-8"><a href="#cb7-8"></a>        }</span>
+<span id="cb7-9"><a href="#cb7-9"></a>    }</span>
+<span id="cb7-10"><a href="#cb7-10"></a>    kfree((<span class="dt">void</span>*)pagetable);</span>
+<span id="cb7-11"><a href="#cb7-11"></a>}</span></code></pre></div>
 <h4 id="simplify-copyincopyinstr">Simplify <em>copyin/copyinstr</em></h4>
 <p>这个任务要求实现对copyin和copyinstr函数的完全替代，实际上这两个函数就是上面所说的直接在进程自己的内核页表中的用户内存区和内核内存区之间传递数据，基本就一个简单的memcpy操作，而且实验文件也已经给了，不用你实现，真正要你做的是在fork、exec、sbrk三个函数中实现内核页表的管理操作。</p>
 <p>先看fork函数，fork函数里复制了用户页表，那就依葫芦画瓢，也把内核页表复制一份：</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span><span class="op">(</span>kvmcopy<span class="op">(</span>np<span class="op">-&gt;</span>pagetable<span class="op">,</span> np<span class="op">-&gt;</span>kpagetable<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> p<span class="op">-&gt;</span>sz<span class="op">)</span> <span class="op">&lt;</span> <span class="dv">0</span><span class="op">){</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    freeproc<span class="op">(</span>np<span class="op">);</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>    release<span class="op">(&amp;</span>np<span class="op">-&gt;</span>lock<span class="op">);</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1"></a>  <span class="cf">if</span>(kvmcopy(np-&gt;pagetable, np-&gt;kpagetable, <span class="dv">0</span>, p-&gt;sz) &lt; <span class="dv">0</span>){</span>
+<span id="cb8-2"><a href="#cb8-2"></a>    freeproc(np);</span>
+<span id="cb8-3"><a href="#cb8-3"></a>    release(&amp;np-&gt;lock);</span>
+<span id="cb8-4"><a href="#cb8-4"></a>    <span class="cf">return</span> -<span class="dv">1</span>;</span>
+<span id="cb8-5"><a href="#cb8-5"></a>  }</span></code></pre></div>
 <p>注意这里因为两个进程kstack的物理地址不同，所以不能是两个进程的内核页表互相复制，而应该是新进程的内核页表复制自己的用户页表，因为新进程在申请内核页表时内核区已经映射完毕了，所以只需复制用户区即可，这里的复制指浅拷贝，即不是拷贝物理内存而是让两个页表指向同一个物理地址。</p>
 <p>kvmcopy函数在vm.c里，基本可以调已有的函数：</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dt">int</span> kvmcopy<span class="op">(</span>pagetable_t old<span class="op">,</span> pagetable_t new<span class="op">,</span> uint64 st<span class="op">,</span> uint64 en<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>    pte_t <span class="op">*</span>pte<span class="op">;</span></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>    uint64 pa<span class="op">,</span> i<span class="op">;</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>    uint flags<span class="op">;</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>en <span class="op">&gt;</span> PLIC<span class="op">)</span> <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>    st <span class="op">=</span> PGROUNDUP<span class="op">(</span>st<span class="op">);</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span><span class="op">(</span>i <span class="op">=</span> st<span class="op">;</span> i <span class="op">&lt;</span> en<span class="op">;</span> i <span class="op">+=</span> PGSIZE<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span><span class="op">((</span>pte <span class="op">=</span> walk<span class="op">(</span>old<span class="op">,</span> i<span class="op">,</span> <span class="dv">0</span><span class="op">))</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>            panic<span class="op">(</span><span class="st">&quot;kvmcopy: pte should exist&quot;</span><span class="op">);</span></span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span><span class="op">((*</span>pte <span class="op">&amp;</span> PTE_V<span class="op">)</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span></span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>            panic<span class="op">(</span><span class="st">&quot;kvmcopy: page not present&quot;</span><span class="op">);</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>        pa <span class="op">=</span> PTE2PA<span class="op">(*</span>pte<span class="op">);</span></span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>        flags <span class="op">=</span> PTE_FLAGS<span class="op">(*</span>pte<span class="op">)</span> <span class="op">&amp;</span> <span class="op">(~</span>PTE_U<span class="op">);</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>        <span class="cf">if</span><span class="op">(</span>mappages<span class="op">(</span>new<span class="op">,</span> i<span class="op">,</span> PGSIZE<span class="op">,</span> <span class="op">(</span>uint64<span class="op">)</span>pa<span class="op">,</span> flags<span class="op">)</span> <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span> <span class="cf">goto</span> err<span class="op">;</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>err<span class="op">:</span></span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>    uvmunmap<span class="op">(</span>new<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> i <span class="op">/</span> PGSIZE<span class="op">,</span> <span class="dv">0</span><span class="op">);</span></span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1"></a><span class="dt">int</span> kvmcopy(pagetable_t old, pagetable_t new, uint64 st, uint64 en) {</span>
+<span id="cb9-2"><a href="#cb9-2"></a>    pte_t *pte;</span>
+<span id="cb9-3"><a href="#cb9-3"></a>    uint64 pa, i;</span>
+<span id="cb9-4"><a href="#cb9-4"></a>    uint flags;</span>
+<span id="cb9-5"><a href="#cb9-5"></a></span>
+<span id="cb9-6"><a href="#cb9-6"></a>    <span class="cf">if</span> (en &gt; PLIC) <span class="cf">return</span> -<span class="dv">1</span>;</span>
+<span id="cb9-7"><a href="#cb9-7"></a></span>
+<span id="cb9-8"><a href="#cb9-8"></a>    st = PGROUNDUP(st);</span>
+<span id="cb9-9"><a href="#cb9-9"></a></span>
+<span id="cb9-10"><a href="#cb9-10"></a>    <span class="cf">for</span>(i = st; i &lt; en; i += PGSIZE) {</span>
+<span id="cb9-11"><a href="#cb9-11"></a>        <span class="cf">if</span>((pte = walk(old, i, <span class="dv">0</span>)) == <span class="dv">0</span>)</span>
+<span id="cb9-12"><a href="#cb9-12"></a>            panic(<span class="st">&quot;kvmcopy: pte should exist&quot;</span>);</span>
+<span id="cb9-13"><a href="#cb9-13"></a>        <span class="cf">if</span>((*pte &amp; PTE_V) == <span class="dv">0</span>)</span>
+<span id="cb9-14"><a href="#cb9-14"></a>            panic(<span class="st">&quot;kvmcopy: page not present&quot;</span>);</span>
+<span id="cb9-15"><a href="#cb9-15"></a>        pa = PTE2PA(*pte);</span>
+<span id="cb9-16"><a href="#cb9-16"></a>        flags = PTE_FLAGS(*pte) &amp; (~PTE_U);</span>
+<span id="cb9-17"><a href="#cb9-17"></a>        <span class="cf">if</span>(mappages(new, i, PGSIZE, (uint64)pa, flags) != <span class="dv">0</span>) <span class="cf">goto</span> err;</span>
+<span id="cb9-18"><a href="#cb9-18"></a>    }</span>
+<span id="cb9-19"><a href="#cb9-19"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb9-20"><a href="#cb9-20"></a>err:</span>
+<span id="cb9-21"><a href="#cb9-21"></a>    uvmunmap(new, <span class="dv">0</span>, i / PGSIZE, <span class="dv">0</span>);</span>
+<span id="cb9-22"><a href="#cb9-22"></a>    <span class="cf">return</span> -<span class="dv">1</span>;</span>
+<span id="cb9-23"><a href="#cb9-23"></a>}</span></code></pre></div>
 <p>补个自己的错误，就是忘了<code>st = PGROUNDUP(st)</code> 一句，这句很重要，因为对物理内存的操作都是以页为单位的，如果这句忘了，这个没对齐的地址可能就会落到之前某个已经映射过的页中间，导致重映射错误。害我调试了一个晚上……</p>
 <p>然后是exec函数，这里就有点坑了，我们观察到原函数在处理用户页表的时候是先开辟一个新的用户页表，然后该映射映射，再把老的用户页表释放掉，很自然的也会把这番操作套到内核页表上。但是，这样会<strong>爆空间</strong>！我被这个卡了很久，后来看了实验的测试程序，发现测试非常极限，会先不断申请空间直到空闲空间只剩一丁点的时候运行你的exec函数，这时你要是先开辟一个新的内核页表，老的内核页表还在，自然爆空间。看了别人的代码才知道正确做法是直接把内核页表的用户区全部解除映射，再重新映射上新的用户页表，这样有两个好处，一来省空间；二来不用释放老的内核页表，注意这个删除不是随便删就了事的，因为你当前是在内核态，这个进程正用着这个老页表，删了它直接翻车，还得先把satp切换为新页表并刷新TLB，这个我也调了很久，用上面的方法就不需要考虑这个问题。所以说内存这种东西，尽可能重用，谨慎删除：</p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>  oldpagetable <span class="op">=</span> p<span class="op">-&gt;</span>pagetable<span class="op">;</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  p<span class="op">-&gt;</span>pagetable <span class="op">=</span> pagetable<span class="op">;</span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  kvmdealloc<span class="op">(</span>p<span class="op">-&gt;</span>kpagetable<span class="op">,</span> p<span class="op">-&gt;</span>sz<span class="op">,</span> <span class="dv">0</span><span class="op">);</span></span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> <span class="op">(</span>kvmcopy<span class="op">(</span>p<span class="op">-&gt;</span>pagetable<span class="op">,</span> p<span class="op">-&gt;</span>kpagetable<span class="op">,</span> <span class="dv">0</span><span class="op">,</span> sz<span class="op">)</span> <span class="op">&lt;</span> <span class="dv">0</span><span class="op">)</span> <span class="cf">goto</span> bad<span class="op">;</span></span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1"></a>  oldpagetable = p-&gt;pagetable;</span>
+<span id="cb10-2"><a href="#cb10-2"></a>  p-&gt;pagetable = pagetable;</span>
+<span id="cb10-3"><a href="#cb10-3"></a>  kvmdealloc(p-&gt;kpagetable, p-&gt;sz, <span class="dv">0</span>);</span>
+<span id="cb10-4"><a href="#cb10-4"></a>  <span class="cf">if</span> (kvmcopy(p-&gt;pagetable, p-&gt;kpagetable, <span class="dv">0</span>, sz) &lt; <span class="dv">0</span>) <span class="cf">goto</span> bad;</span></code></pre></div>
 <p>开辟新内核页表的写法比上面还麻烦很多，正确写法空间效率和代码效率均强，真的服气。kvmdealloc函数代码如下，如前所述，只要解除映射即可：</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>uint64 kvmdealloc<span class="op">(</span>pagetable_t kpagetable<span class="op">,</span> uint64 oldsz<span class="op">,</span> uint64 newsz<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>newsz <span class="op">&gt;=</span> oldsz<span class="op">)</span></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> oldsz<span class="op">;</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">(</span>PGROUNDUP<span class="op">(</span>newsz<span class="op">)</span> <span class="op">&lt;</span> PGROUNDUP<span class="op">(</span>oldsz<span class="op">)){</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>        <span class="dt">int</span> npages <span class="op">=</span> <span class="op">(</span>PGROUNDUP<span class="op">(</span>oldsz<span class="op">)</span> <span class="op">-</span> PGROUNDUP<span class="op">(</span>newsz<span class="op">))</span> <span class="op">/</span> PGSIZE<span class="op">;</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>        uvmunmap<span class="op">(</span>kpagetable<span class="op">,</span> PGROUNDUP<span class="op">(</span>newsz<span class="op">),</span> npages<span class="op">,</span> <span class="dv">0</span><span class="op">);</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span> newsz<span class="op">;</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb11-1"><a href="#cb11-1"></a>uint64 kvmdealloc(pagetable_t kpagetable, uint64 oldsz, uint64 newsz) {</span>
+<span id="cb11-2"><a href="#cb11-2"></a>    <span class="cf">if</span>(newsz &gt;= oldsz)</span>
+<span id="cb11-3"><a href="#cb11-3"></a>        <span class="cf">return</span> oldsz;</span>
+<span id="cb11-4"><a href="#cb11-4"></a></span>
+<span id="cb11-5"><a href="#cb11-5"></a>    <span class="cf">if</span>(PGROUNDUP(newsz) &lt; PGROUNDUP(oldsz)){</span>
+<span id="cb11-6"><a href="#cb11-6"></a>        <span class="dt">int</span> npages = (PGROUNDUP(oldsz) - PGROUNDUP(newsz)) / PGSIZE;</span>
+<span id="cb11-7"><a href="#cb11-7"></a>        uvmunmap(kpagetable, PGROUNDUP(newsz), npages, <span class="dv">0</span>);</span>
+<span id="cb11-8"><a href="#cb11-8"></a>    }</span>
+<span id="cb11-9"><a href="#cb11-9"></a>    <span class="cf">return</span> newsz;</span>
+<span id="cb11-10"><a href="#cb11-10"></a>}</span></code></pre></div>
 <p>sbrk函数直接调用proc.c里的growproc函数，所以直接改这个函数。类似fork函数，内核页表只要随着用户页表来动就行，用户内存扩大，它就复制扩大的部分，用户内存缩小，它就对应解除缩小部分的映射：</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span><span class="op">(</span>n <span class="op">&gt;</span> <span class="dv">0</span><span class="op">){</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span><span class="op">((</span>sz <span class="op">=</span> uvmalloc<span class="op">(</span>p<span class="op">-&gt;</span>pagetable<span class="op">,</span> sz<span class="op">,</span> sz <span class="op">+</span> n<span class="op">))</span> <span class="op">==</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>      <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="op">(</span>kvmcopy<span class="op">(</span>p<span class="op">-&gt;</span>pagetable<span class="op">,</span> p<span class="op">-&gt;</span>kpagetable<span class="op">,</span> p<span class="op">-&gt;</span>sz<span class="op">,</span> p<span class="op">-&gt;</span>sz <span class="op">+</span> n<span class="op">)</span> <span class="op">!=</span> <span class="dv">0</span><span class="op">)</span> <span class="op">{</span></span>
-<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="op">-</span><span class="dv">1</span><span class="op">;</span></span>
-<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>    <span class="op">}</span></span>
-<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span> <span class="cf">else</span> <span class="cf">if</span><span class="op">(</span>n <span class="op">&lt;</span> <span class="dv">0</span><span class="op">){</span></span>
-<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>    sz <span class="op">=</span> uvmdealloc<span class="op">(</span>p<span class="op">-&gt;</span>pagetable<span class="op">,</span> sz<span class="op">,</span> sz <span class="op">+</span> n<span class="op">);</span></span>
-<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>    kvmdealloc<span class="op">(</span>p<span class="op">-&gt;</span>kpagetable<span class="op">,</span> p<span class="op">-&gt;</span>sz<span class="op">,</span> p<span class="op">-&gt;</span>sz <span class="op">+</span> n<span class="op">);</span></span>
-<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb12"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb12-1"><a href="#cb12-1"></a>  <span class="cf">if</span>(n &gt; <span class="dv">0</span>){</span>
+<span id="cb12-2"><a href="#cb12-2"></a>    <span class="cf">if</span>((sz = uvmalloc(p-&gt;pagetable, sz, sz + n)) == <span class="dv">0</span>) {</span>
+<span id="cb12-3"><a href="#cb12-3"></a>      <span class="cf">return</span> -<span class="dv">1</span>;</span>
+<span id="cb12-4"><a href="#cb12-4"></a>    }</span>
+<span id="cb12-5"><a href="#cb12-5"></a>    <span class="cf">if</span> (kvmcopy(p-&gt;pagetable, p-&gt;kpagetable, p-&gt;sz, p-&gt;sz + n) != <span class="dv">0</span>) {</span>
+<span id="cb12-6"><a href="#cb12-6"></a>        <span class="cf">return</span> -<span class="dv">1</span>;</span>
+<span id="cb12-7"><a href="#cb12-7"></a>    }</span>
+<span id="cb12-8"><a href="#cb12-8"></a>  } <span class="cf">else</span> <span class="cf">if</span>(n &lt; <span class="dv">0</span>){</span>
+<span id="cb12-9"><a href="#cb12-9"></a>    sz = uvmdealloc(p-&gt;pagetable, sz, sz + n);</span>
+<span id="cb12-10"><a href="#cb12-10"></a>    kvmdealloc(p-&gt;kpagetable, p-&gt;sz, p-&gt;sz + n);</span>
+<span id="cb12-11"><a href="#cb12-11"></a>  }</span></code></pre></div>
 <hr />
 <p>总结一下，这个实验难度其实是非常高的，我也因此写加调了好几天。我本人一开始的做法是照葫芦画瓢，直接修改uvmalloc和uvmdealloc函数让其同时处理用户页表和内核页表，结果这种设计到最后调不下去了。原因在于内核页表实际上就是对用户页表的一个引用，所以直接用一个浅拷贝函数kvmcopy就可以轻松直接地完成大量操作，再加上一个解除绑定的kvmdealloc，这种设计就非常简洁且容易调试，但是需要思考。这也说明架构和设计极其重要。</p>
-</article>
-<span class="bg-light text-muted border boder-primary d-block p-2 text-center">
-    转载请注明出处<br>
-    © 2022 ZimingYuan的博客
-</span>
-<div style="background-color: #ebd5a1; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; pointer-events: none; opacity: 0.2;">
-</div>
+<footer>
+    <hr><center>转载请注明出处<br>© 2022 ZimingYuan的博客</center>
+</footer>
 </body>
 </html>

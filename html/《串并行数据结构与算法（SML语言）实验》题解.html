@@ -1,148 +1,129 @@
 <!DOCTYPE html>
-<!--
-==============================================================================
-           "GitHub HTML5 Pandoc Template" v2.2 — by Tristano Ajmone
-==============================================================================
-Copyright © Tristano Ajmone, 2017-2020, MIT License (MIT). Project's home:
-- https://github.com/tajmone/pandoc-goodies
-The CSS in this template reuses source code taken from the following projects:
-- GitHub Markdown CSS: Copyright © Sindre Sorhus, MIT License (MIT):
-  https://github.com/sindresorhus/github-markdown-css
-- Primer CSS: Copyright © 2016-2017 GitHub Inc., MIT License (MIT):
-  http://primercss.io/
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The MIT License
-Copyright (c) Tristano Ajmone, 2017-2020 (github.com/tajmone/pandoc-goodies)
-Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
-Copyright (c) 2017 GitHub Inc.
-"GitHub Pandoc HTML5 Template" is Copyright (c) Tristano Ajmone, 2017-2020,
-released under the MIT License (MIT); it contains readaptations of substantial
-portions of the following third party softwares:
-(1) "GitHub Markdown CSS", Copyright (c) Sindre Sorhus, MIT License (MIT).
-(2) "Primer CSS", Copyright (c) 2016 GitHub Inc., MIT License (MIT).
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-==============================================================================-->
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" data-theme="tufte">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/extra/classless.css" />
+<style>
+html[data-theme='tufte']{
+    --rem: 15px;
+    --navpos: absolute;
+    --width: 70rem;
+    --font-p: 1.4rem/2 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-h: 1.4rem/1.5 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --ornament: "";
+    --border: 1px solid var(--cmed);
+    /* foreground   | background color */
+    --cfg:   #111;    --cbg:    #fbf7ec;
+    --cdark: #111;    --clight: #fbf7ec;
+    --cmed: #b4d5fe;
+    --clink: #111;
+    --cemph: #111;
+}
+</style>
+  <script>
+      let search = () => {
+          let word = document.querySelector('input').value;
+          if (word.length == 0) {
+              alert('搜索内容不能为空！');
+          } else {
+              location.href = '/search.html?' + word;
+          }
+      };
+  </script>
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <title>《串并行数据结构与算法（SML语言）实验》题解</title>
-  <style type="text/css">
-@charset "UTF-8";.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#24292e;font-family:-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:16px;line-height:1.5;word-wrap:break-word;box-sizing:border-box;min-width:200px;max-width:980px;margin:0 auto;padding:45px}.markdown-body a{color:#0366d6;background-color:transparent;text-decoration:none;-webkit-text-decoration-skip:objects}.markdown-body a:active,.markdown-body a:hover{outline-width:0}.markdown-body a:hover{text-decoration:underline}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body strong{font-weight:600}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1{font-size:2em;margin:.67em 0;padding-bottom:.3em;border-bottom:1px solid #eaecef}.markdown-body h2{padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid #eaecef}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#6a737d}.markdown-body img{border-style:none}.markdown-body svg:not(:root){overflow:hidden}.markdown-body hr{box-sizing:content-box;height:.25em;margin:24px 0;padding:0;overflow:hidden;background-color:#e1e4e8;border:0}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body input{margin:0;overflow:visible;font:inherit;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=checkbox]{box-sizing:border-box;padding:0}.markdown-body *{box-sizing:border-box}.markdown-body blockquote{margin:0}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dd{margin-left:0}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:600}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace}.markdown-body pre{font:12px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;word-wrap:normal}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote{padding:0 1em;color:#6a737d;border-left:.25em solid #dfe2e5}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body table{display:block;width:100%;overflow:auto;border-spacing:0;border-collapse:collapse}.markdown-body table th{font-weight:600}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #dfe2e5}.markdown-body table tr{background-color:#fff;border-top:1px solid #c6cbd1}.markdown-body table tr:nth-child(2n){background-color:#f6f8fa}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body code{padding:.2em 0;margin:0;font-size:85%;background-color:rgba(27,31,35,.05);border-radius:3px}.markdown-body code::after,.markdown-body code::before{letter-spacing:-.2em;content:" "}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f6f8fa;border-radius:3px}.markdown-body pre code{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code::after,.markdown-body pre code::before{content:normal}.markdown-body .full-commit .btn-outline:not(:disabled):hover{color:#005cc5;border-color:#005cc5}.markdown-body kbd{box-shadow:inset 0 -1px 0 #959da5;display:inline-block;padding:3px 5px;font:11px/10px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;color:#444d56;vertical-align:middle;background-color:#fcfcfc;border:1px solid #c6cbd1;border-bottom-color:#959da5;border-radius:3px;box-shadow:inset 0 -1px 0 #959da5}.markdown-body :checked+.radio-label{position:relative;z-index:1;border-color:#0366d6}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item+.task-list-item{margin-top:3px}.markdown-body .task-list-item input{margin:0 .2em .25em -1.6em;vertical-align:middle}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.Alert,.Error,.Note,.Success,.Warning{padding:11px;margin-bottom:24px;border-style:solid;border-width:1px;border-radius:4px}.Alert p,.Error p,.Note p,.Success p,.Warning p{margin-top:0}.Alert p:last-child,.Error p:last-child,.Note p:last-child,.Success p:last-child,.Warning p:last-child{margin-bottom:0}.Alert{color:#246;background-color:#e2eef9;border-color:#bac6d3}.Warning{color:#4c4a42;background-color:#fff9ea;border-color:#dfd8c2}.Error{color:#911;background-color:#fcdede;border-color:#d2b2b2}.Success{color:#22662c;background-color:#e2f9e5;border-color:#bad3be}.Note{color:#2f363d;background-color:#f6f8fa;border-color:#d5d8da}.Alert h1,.Alert h2,.Alert h3,.Alert h4,.Alert h5,.Alert h6{color:#246;margin-bottom:0}.Warning h1,.Warning h2,.Warning h3,.Warning h4,.Warning h5,.Warning h6{color:#4c4a42;margin-bottom:0}.Error h1,.Error h2,.Error h3,.Error h4,.Error h5,.Error h6{color:#911;margin-bottom:0}.Success h1,.Success h2,.Success h3,.Success h4,.Success h5,.Success h6{color:#22662c;margin-bottom:0}.Note h1,.Note h2,.Note h3,.Note h4,.Note h5,.Note h6{color:#2f363d;margin-bottom:0}.Alert h1:first-child,.Alert h2:first-child,.Alert h3:first-child,.Alert h4:first-child,.Alert h5:first-child,.Alert h6:first-child,.Error h1:first-child,.Error h2:first-child,.Error h3:first-child,.Error h4:first-child,.Error h5:first-child,.Error h6:first-child,.Note h1:first-child,.Note h2:first-child,.Note h3:first-child,.Note h4:first-child,.Note h5:first-child,.Note h6:first-child,.Success h1:first-child,.Success h2:first-child,.Success h3:first-child,.Success h4:first-child,.Success h5:first-child,.Success h6:first-child,.Warning h1:first-child,.Warning h2:first-child,.Warning h3:first-child,.Warning h4:first-child,.Warning h5:first-child,.Warning h6:first-child{margin-top:0}h1.title,p.subtitle{text-align:center}h1.title.followed-by-subtitle{margin-bottom:0}p.subtitle{font-size:1.5em;font-weight:600;line-height:1.25;margin-top:0;margin-bottom:16px;padding-bottom:.3em}div.line-block{white-space:pre-line}
-  </style>
-  <style type="text/css">code{white-space: pre;}</style>
-  <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-  </style>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
-<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
-<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.staticfile.org/popper.js/1.12.9/popper.min.js" ></script>
-<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js" ></script>
-<link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">ZimingYuan的博客</a>
-        <div class="navbar-collapse">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/index.html">首页</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/html/随笔.html">随笔</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/html/CSP模板.html">CSP模板</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<article class="markdown-body">
-<header>
+    <nav>
+        <ul>
+            <li><big>ZimingYuan的博客</big></li>
+            <li><a href="/index.html">首页</a></li>
+            <li><a href="/html/随笔.html">随笔</a></li>
+            <li><a href="/html/CSP模板.html">CSP模板</a></li>
+            <li class="float-right sticky"><button onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="text" placeholder="搜索"></li>
+        </ul>
+    </nav>
+<header id="title-block-header">
 <h1 class="title">《串并行数据结构与算法（SML语言）实验》题解</h1>
+<hr>
 </header>
 <h4 id="注意本题解仅供参考学习请勿直接抄袭代码否则造成的后果和笔者无关">注意：本题解仅供参考学习，请勿直接抄袭代码，否则造成的后果和笔者无关。</h4>
 <h3 id="第一题">第一题</h3>
@@ -151,287 +132,283 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h4 id="题解">题解：</h4>
 <p>快排，不解释。</p>
 <h4 id="代码省略了输入输出函数下同">代码（省略了输入输出函数，下同）：</h4>
-<div class="sourceCode" id="cb1"><pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> n = getInt ();</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> l = getIntTable (n);</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> qsort [] = []</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  | qsort l&#39; = <span class="kw">let</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> p = hd l&#39;;</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> l1 = <span class="dt">List</span>.filter (fn x =&gt; x &lt; p) l&#39;;</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> l2 = <span class="dt">List</span>.filter (fn x =&gt; x = p) l&#39;;</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> l3 = <span class="dt">List</span>.filter (fn x =&gt; x &gt; p) l&#39;;</span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">in</span> qsort(l1) @ l2 @ qsort(l3) <span class="kw">end</span>;</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>printIntTable (qsort l);</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">val</span> n = getInt ();</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">val</span> l = getIntTable (n);</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">fun</span> qsort [] = []</span>
+<span id="cb1-4"><a href="#cb1-4"></a>  | qsort l&#39; = <span class="kw">let</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>    <span class="kw">val</span> p = hd l&#39;;</span>
+<span id="cb1-6"><a href="#cb1-6"></a>    <span class="kw">val</span> l1 = <span class="dt">List</span>.filter (fn x =&gt; x &lt; p) l&#39;;</span>
+<span id="cb1-7"><a href="#cb1-7"></a>    <span class="kw">val</span> l2 = <span class="dt">List</span>.filter (fn x =&gt; x = p) l&#39;;</span>
+<span id="cb1-8"><a href="#cb1-8"></a>    <span class="kw">val</span> l3 = <span class="dt">List</span>.filter (fn x =&gt; x &gt; p) l&#39;;</span>
+<span id="cb1-9"><a href="#cb1-9"></a>  <span class="kw">in</span> qsort(l1) @ l2 @ qsort(l3) <span class="kw">end</span>;</span>
+<span id="cb1-10"><a href="#cb1-10"></a>printIntTable (qsort l);</span></code></pre></div>
 <h3 id="第二题">第二题</h3>
 <h4 id="题意-1">题意：</h4>
 <p>单源最短路，点数1000以内，边数3000以内。</p>
 <h4 id="题解-1">题解：</h4>
 <p>实在想不出SML语言怎么写邻接表，考虑到点数只有1000，所以直接用邻接矩阵，既然如此，优先队列优化也不带了，O(n^2)水过。 #### 代码：</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> inf = <span class="bn">0x3fffffff</span>;</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> n = getInt() <span class="kw">and</span> m = getInt() <span class="kw">and</span> s = getInt() - <span class="dv">1</span>;</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> g = Array2.<span class="dt">array</span> (n, n, inf); <span class="co">(* 邻接矩阵 *)</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="dt">List</span>.tabulate (n, fn x =&gt; Array2.update (g, x, x, <span class="dv">0</span>));</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> read _ = <span class="kw">let</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> a = getInt() - <span class="dv">1</span> <span class="kw">and</span> b = getInt() - <span class="dv">1</span> <span class="kw">and</span> c = getInt();</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> c1 = Int.<span class="dt">min</span> (c, Array2.sub (g, a, b));</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> c2 = Int.<span class="dt">min</span> (c, Array2.sub (g, b, a));</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> t1 = Array2.update (g, a, b, c1);</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> t2 = Array2.update (g, b, a, c2);</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span> <span class="dv">0</span> <span class="kw">end</span>;</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="dt">List</span>.tabulate (m, read);</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> d = <span class="dt">Array</span>.<span class="dt">array</span> (n, inf); <span class="co">(* 其他点到源点距离 *)</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> v = <span class="dt">Array</span>.<span class="dt">array</span> (n, <span class="kw">false</span>); <span class="co">(* 该点是否已访问 *)</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="dt">Array</span>.update(d, s, <span class="dv">0</span>);</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> relax _ = <span class="kw">let</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> (m, u) = <span class="dt">Array</span>.foldli</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>    (fn (i, a, (m, u)) =&gt; <span class="kw">if</span> (<span class="dt">not</span> (<span class="dt">Array</span>.sub (v, i))) andalso a &lt; m <span class="kw">then</span> (a, i)</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>                          <span class="kw">else</span> (m, u))</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>    (inf, ~<span class="dv">1</span>)</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>    d; <span class="co">(* 寻找d中最小的值 *)</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="kw">in</span> <span class="kw">if</span> u &lt;&gt; ~<span class="dv">1</span> <span class="kw">then</span> <span class="kw">let</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> t0 = <span class="dt">Array</span>.update(v, u, <span class="kw">true</span>);</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> t1 = Vector.foldli</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>      (fn (i, a, _) =&gt; <span class="kw">if</span> a &lt;&gt; inf andalso m + a &lt; <span class="dt">Array</span>.sub(d, i) <span class="kw">then</span> <span class="dt">Array</span>.update(d, i, m + a) <span class="co">(* 寻找能松弛的边（d[v] &gt; d[u] + e(u, v)） *)</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>      <span class="kw">else</span> ())</span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>      ()</span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>      (Array2.row (g, u));</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  <span class="kw">in</span> <span class="dv">0</span> <span class="kw">end</span> <span class="kw">else</span> <span class="dv">0</span> <span class="kw">end</span>;</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="dt">List</span>.tabulate (n, relax);</span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> out = <span class="dt">Array</span>.foldr (op ::) [] d; <span class="co">(* Array转List *)</span></span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>printIntTable (map (fn x =&gt; <span class="kw">if</span> x = inf <span class="kw">then</span> ~<span class="dv">1</span> <span class="kw">else</span> x) out);</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">val</span> inf = <span class="bn">0x3fffffff</span>;</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="kw">val</span> n = getInt() <span class="kw">and</span> m = getInt() <span class="kw">and</span> s = getInt() - <span class="dv">1</span>;</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="kw">val</span> g = Array2.<span class="dt">array</span> (n, n, inf); <span class="co">(* 邻接矩阵 *)</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="dt">List</span>.tabulate (n, fn x =&gt; Array2.update (g, x, x, <span class="dv">0</span>));</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="kw">fun</span> read _ = <span class="kw">let</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>  <span class="kw">val</span> a = getInt() - <span class="dv">1</span> <span class="kw">and</span> b = getInt() - <span class="dv">1</span> <span class="kw">and</span> c = getInt();</span>
+<span id="cb2-7"><a href="#cb2-7"></a>  <span class="kw">val</span> c1 = Int.<span class="dt">min</span> (c, Array2.sub (g, a, b));</span>
+<span id="cb2-8"><a href="#cb2-8"></a>  <span class="kw">val</span> c2 = Int.<span class="dt">min</span> (c, Array2.sub (g, b, a));</span>
+<span id="cb2-9"><a href="#cb2-9"></a>  <span class="kw">val</span> t1 = Array2.update (g, a, b, c1);</span>
+<span id="cb2-10"><a href="#cb2-10"></a>  <span class="kw">val</span> t2 = Array2.update (g, b, a, c2);</span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="kw">in</span> <span class="dv">0</span> <span class="kw">end</span>;</span>
+<span id="cb2-12"><a href="#cb2-12"></a><span class="dt">List</span>.tabulate (m, read);</span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="kw">val</span> d = <span class="dt">Array</span>.<span class="dt">array</span> (n, inf); <span class="co">(* 其他点到源点距离 *)</span></span>
+<span id="cb2-14"><a href="#cb2-14"></a><span class="kw">val</span> v = <span class="dt">Array</span>.<span class="dt">array</span> (n, <span class="kw">false</span>); <span class="co">(* 该点是否已访问 *)</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a><span class="dt">Array</span>.update(d, s, <span class="dv">0</span>);</span>
+<span id="cb2-16"><a href="#cb2-16"></a><span class="kw">fun</span> relax _ = <span class="kw">let</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a>  <span class="kw">val</span> (m, u) = <span class="dt">Array</span>.foldli</span>
+<span id="cb2-18"><a href="#cb2-18"></a>    (fn (i, a, (m, u)) =&gt; <span class="kw">if</span> (<span class="dt">not</span> (<span class="dt">Array</span>.sub (v, i))) andalso a &lt; m <span class="kw">then</span> (a, i)</span>
+<span id="cb2-19"><a href="#cb2-19"></a>                          <span class="kw">else</span> (m, u))</span>
+<span id="cb2-20"><a href="#cb2-20"></a>    (inf, ~<span class="dv">1</span>)</span>
+<span id="cb2-21"><a href="#cb2-21"></a>    d; <span class="co">(* 寻找d中最小的值 *)</span></span>
+<span id="cb2-22"><a href="#cb2-22"></a>  <span class="kw">in</span> <span class="kw">if</span> u &lt;&gt; ~<span class="dv">1</span> <span class="kw">then</span> <span class="kw">let</span></span>
+<span id="cb2-23"><a href="#cb2-23"></a>    <span class="kw">val</span> t0 = <span class="dt">Array</span>.update(v, u, <span class="kw">true</span>);</span>
+<span id="cb2-24"><a href="#cb2-24"></a>    <span class="kw">val</span> t1 = Vector.foldli</span>
+<span id="cb2-25"><a href="#cb2-25"></a>      (fn (i, a, _) =&gt; <span class="kw">if</span> a &lt;&gt; inf andalso m + a &lt; <span class="dt">Array</span>.sub(d, i) <span class="kw">then</span> <span class="dt">Array</span>.update(d, i, m + a) <span class="co">(* 寻找能松弛的边（d[v] &gt; d[u] + e(u, v)） *)</span></span>
+<span id="cb2-26"><a href="#cb2-26"></a>      <span class="kw">else</span> ())</span>
+<span id="cb2-27"><a href="#cb2-27"></a>      ()</span>
+<span id="cb2-28"><a href="#cb2-28"></a>      (Array2.row (g, u));</span>
+<span id="cb2-29"><a href="#cb2-29"></a>  <span class="kw">in</span> <span class="dv">0</span> <span class="kw">end</span> <span class="kw">else</span> <span class="dv">0</span> <span class="kw">end</span>;</span>
+<span id="cb2-30"><a href="#cb2-30"></a><span class="dt">List</span>.tabulate (n, relax);</span>
+<span id="cb2-31"><a href="#cb2-31"></a><span class="kw">val</span> out = <span class="dt">Array</span>.foldr (op ::) [] d; <span class="co">(* Array转List *)</span></span>
+<span id="cb2-32"><a href="#cb2-32"></a>printIntTable (map (fn x =&gt; <span class="kw">if</span> x = inf <span class="kw">then</span> ~<span class="dv">1</span> <span class="kw">else</span> x) out);</span></code></pre></div>
 <h3 id="第三题">第三题</h3>
 <h4 id="题意-2">题意：</h4>
 <p>寻找括号序列中最长的闭合字串（闭合就是满足串内所有括号匹配且最外面由括号包裹）。</p>
 <h4 id="题解-2">题解：</h4>
 <p>维护一个栈存储当前待匹配左括号出现的位置，每当出现一个右括号且栈不为空则用这个右括号和栈顶左括号的距离更新最大值，并让栈顶出栈。不过该算法是串行的，并行我想不出来。</p>
 <h4 id="代码省略了输入输出函数下同-1">代码（省略了输入输出函数，下同）：</h4>
-<div class="sourceCode" id="cb3"><pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> n = getInt ();</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> a = ListPair.zip (<span class="dt">List</span>.tabulate (n, fn x =&gt; x), getIntTable n);  <span class="co">(* 将读入的List和索引zip在一起 *)</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> calc ((i, x), (st, m)) = <span class="co">(* i是当前的位置，x表示当前是左还是右括号，st是栈，m是当前的最大值 *)</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">if</span> x = <span class="dv">0</span> <span class="kw">then</span> (i::st, m) <span class="kw">else</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> st = [] <span class="kw">then</span> (st, m) <span class="kw">else</span> <span class="kw">let</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>      <span class="kw">val</span> h = hd st;</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>      <span class="kw">val</span> tm = Int.<span class="dt">max</span> (m, i - h + <span class="dv">1</span>);</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="kw">in</span> (tl st, tm) <span class="kw">end</span>;</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> ans = #<span class="dv">2</span> (foldl calc ([], <span class="dv">0</span>) a);</span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>printInt ans;</span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">val</span> n = getInt ();</span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="kw">val</span> a = ListPair.zip (<span class="dt">List</span>.tabulate (n, fn x =&gt; x), getIntTable n);  <span class="co">(* 将读入的List和索引zip在一起 *)</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="kw">fun</span> calc ((i, x), (st, m)) = <span class="co">(* i是当前的位置，x表示当前是左还是右括号，st是栈，m是当前的最大值 *)</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="kw">if</span> x = <span class="dv">0</span> <span class="kw">then</span> (i::st, m) <span class="kw">else</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a>    <span class="kw">if</span> st = [] <span class="kw">then</span> (st, m) <span class="kw">else</span> <span class="kw">let</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>      <span class="kw">val</span> h = hd st;</span>
+<span id="cb3-7"><a href="#cb3-7"></a>      <span class="kw">val</span> tm = Int.<span class="dt">max</span> (m, i - h + <span class="dv">1</span>);</span>
+<span id="cb3-8"><a href="#cb3-8"></a>    <span class="kw">in</span> (tl st, tm) <span class="kw">end</span>;</span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="kw">val</span> ans = #<span class="dv">2</span> (foldl calc ([], <span class="dv">0</span>) a);</span>
+<span id="cb3-10"><a href="#cb3-10"></a>printInt ans;</span></code></pre></div>
 <h3 id="第四题">第四题</h3>
 <h4 id="题意-3">题意：</h4>
 <p>水平坐标轴上有n个楼房，每个楼房都有一个高度，且可能相互覆盖，要求求出这些楼房的轮廓线（即每一“段”的高度）。</p>
 <h4 id="题解-3">题解：</h4>
 <p>首先将高度离散化（按照大小映射到0，1，2……n），然后将楼房的左边界和右边界一起排序，同时维护一个串，每当遇到一个边界则让该串0到边界高度（离散化后）的元素+1（左边界）或-1（右边界），并查询修改后该串最大的不是0的元素的位置对应的高度和修改前该串最大的不是0的元素的位置对应的高度比较，如果不一样则输出。对这个串的修改和查询因为是区间修改和查询，我感觉需要用线段树，事实上这道题的通用版本（不在水平坐标轴上）确实只能用线段树，但是这道题因为区间修改查询的左端点都是0，所以可能O(nlogn)还有别的方法，我想不出。不过既然出题人给我们放宽了要求，所以用O(n2)应该也能过，于是我就在遇到边界时就直接在串里边界高度（离散化后）的单个元素+1或-1，并维护一个离散化高度的最大值，更新时如果当前是右边界且-1后离散化高度的最大值会改变则往左再查找，这一步会花O(n)，不过也省去了线段树大量的代码。</p>
 <h4 id="代码省略了输入输出函数下同-2">代码（省略了输入输出函数，下同）：</h4>
-<div class="sourceCode" id="cb4"><pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> sort f [] = [] | sort f (h :: a) = <span class="kw">let</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> a1 = <span class="dt">List</span>.filter (fn x =&gt; f (x, h)) a;</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> a2 = <span class="dt">List</span>.filter (fn x =&gt; <span class="dt">not</span> (f (x, h))) a;</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span> (sort f a1) @ [h] @ (sort f a2) <span class="kw">end</span>;  <span class="co">(* 泛型排序函数 *)</span></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> n = getInt();</span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> read _ = <span class="kw">let</span></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> a = getInt() <span class="kw">and</span> b = getInt() <span class="kw">and</span> c = getInt();</span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span> (a, b, c) <span class="kw">end</span>;</span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> reada = <span class="dt">List</span>.tabulate (n, read);</span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> sorta = sort (fn (x, y) =&gt; (#<span class="dv">2</span> x) &lt; (#<span class="dv">2</span> y)) reada; <span class="co">(* 按高度排序 *)</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> vechei = Vector.fromList (<span class="dt">List</span>.map (fn x =&gt; (#<span class="dv">2</span> x)) sorta); <span class="co">(* 将高度映射到离散化的数 *)</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> aa = ListPair.map</span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  (fn (x, (y, _, z)) =&gt; (y, x, z))</span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  (<span class="dt">List</span>.tabulate (n, fn x =&gt; x), sorta);</span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> f ([]) = [] | f (x :: y: (<span class="dt">int</span> * <span class="dt">int</span> * <span class="dt">int</span>) <span class="dt">list</span>) = (#<span class="dv">1</span> x, #<span class="dv">2</span> x, <span class="dv">1</span>) :: (#<span class="dv">3</span> x, #<span class="dv">2</span> x, <span class="dv">0</span>) :: f (y);</span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> borda = sort (fn (x, y) =&gt; (#<span class="dv">1</span> x) &lt; (#<span class="dv">1</span> y)) (f aa); <span class="co">(* 将边界排序 *)</span></span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> hei = <span class="dt">Array</span>.<span class="dt">array</span>(n, <span class="dv">0</span>);</span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> m = <span class="dt">Array</span>.<span class="dt">array</span>(<span class="dv">1</span>, ~<span class="dv">1</span>);</span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> f2 (a, b, c) =</span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">if</span> c = <span class="dv">1</span> <span class="kw">then</span> <span class="kw">let</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> t1 = <span class="dt">Array</span>.update (hei, b, (<span class="dt">Array</span>.sub (hei, b)) + <span class="dv">1</span>);</span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> tm = <span class="dt">Array</span>.sub (m, <span class="dv">0</span>);</span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> t2 = <span class="kw">if</span> <span class="dt">Array</span>.sub (hei, b) = <span class="dv">1</span> <span class="kw">then</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>      <span class="kw">if</span> b &gt; tm <span class="kw">then</span> <span class="kw">let</span> <span class="co">(* 如果左边界更新后大于原来的最大值 *)</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>        <span class="kw">val</span> t3 = <span class="kw">if</span> tm = ~<span class="dv">1</span> orelse</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>        (Vector.sub (vechei, b)) &lt;&gt; (Vector.sub (vechei, tm)) <span class="kw">then</span> <span class="kw">let</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>          <span class="kw">val</span> t5 = printIntTable [a, Vector.sub (vechei, b)];</span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>          <span class="kw">val</span> t6 = print (<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>        <span class="kw">in</span> () <span class="kw">end</span> <span class="kw">else</span> ();</span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>        <span class="kw">val</span> t4 = <span class="dt">Array</span>.update (m, <span class="dv">0</span>, b);</span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>      <span class="kw">in</span> () <span class="kw">end</span> <span class="kw">else</span> ()</span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>    <span class="kw">else</span> ()</span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>  <span class="kw">in</span> () <span class="kw">end</span> <span class="kw">else</span> <span class="kw">let</span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> t1 = <span class="dt">Array</span>.update (hei, b, (<span class="dt">Array</span>.sub (hei, b)) - <span class="dv">1</span>);</span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> t2 = <span class="kw">if</span> <span class="dt">Array</span>.sub (hei, b) = <span class="dv">0</span> <span class="kw">then</span></span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>      <span class="kw">if</span> b = <span class="dt">Array</span>.sub (m, <span class="dv">0</span>) <span class="kw">then</span> <span class="kw">let</span> <span class="co">(* 如果待更新的值等于最大值（即更新后最大值会减小） *)</span></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a>        <span class="kw">fun</span> find ~<span class="dv">1</span> = ~<span class="dv">1</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>          | find i = <span class="kw">if</span> (<span class="dt">Array</span>.sub (hei, i)) &gt; <span class="dv">0</span> <span class="kw">then</span> i <span class="kw">else</span> find (i - <span class="dv">1</span>);</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>        <span class="kw">val</span> t3 = <span class="dt">Array</span>.update (m, <span class="dv">0</span>, find b);</span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>        <span class="kw">val</span> tm = <span class="dt">Array</span>.sub (m, <span class="dv">0</span>);</span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>        <span class="kw">val</span> t4 = <span class="kw">if</span> tm = ~<span class="dv">1</span> <span class="kw">then</span> <span class="kw">let</span></span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>          <span class="kw">val</span> t5 = printIntTable [a, <span class="dv">0</span>];</span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>          <span class="kw">val</span> t6 = print (<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>        <span class="kw">in</span> () <span class="kw">end</span> <span class="kw">else</span></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>          <span class="kw">if</span> (Vector.sub (vechei, b)) &lt;&gt; (Vector.sub (vechei, tm)) <span class="kw">then</span> <span class="kw">let</span></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>            <span class="kw">val</span> t5 = printIntTable [a, Vector.sub (vechei, tm)];</span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>            <span class="kw">val</span> t6 = print (<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>          <span class="kw">in</span> () <span class="kw">end</span> <span class="kw">else</span> ();</span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>      <span class="kw">in</span> () <span class="kw">end</span> <span class="kw">else</span> ()</span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>    <span class="kw">else</span> ()</span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>  <span class="kw">in</span> () <span class="kw">end</span>;</span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a><span class="dt">List</span>.app f2 borda;</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">fun</span> sort f [] = [] | sort f (h :: a) = <span class="kw">let</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>  <span class="kw">val</span> a1 = <span class="dt">List</span>.filter (fn x =&gt; f (x, h)) a;</span>
+<span id="cb4-3"><a href="#cb4-3"></a>  <span class="kw">val</span> a2 = <span class="dt">List</span>.filter (fn x =&gt; <span class="dt">not</span> (f (x, h))) a;</span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="kw">in</span> (sort f a1) @ [h] @ (sort f a2) <span class="kw">end</span>;  <span class="co">(* 泛型排序函数 *)</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="kw">val</span> n = getInt();</span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="kw">fun</span> read _ = <span class="kw">let</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>  <span class="kw">val</span> a = getInt() <span class="kw">and</span> b = getInt() <span class="kw">and</span> c = getInt();</span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="kw">in</span> (a, b, c) <span class="kw">end</span>;</span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="kw">val</span> reada = <span class="dt">List</span>.tabulate (n, read);</span>
+<span id="cb4-10"><a href="#cb4-10"></a><span class="kw">val</span> sorta = sort (fn (x, y) =&gt; (#<span class="dv">2</span> x) &lt; (#<span class="dv">2</span> y)) reada; <span class="co">(* 按高度排序 *)</span></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="kw">val</span> vechei = Vector.fromList (<span class="dt">List</span>.map (fn x =&gt; (#<span class="dv">2</span> x)) sorta); <span class="co">(* 将高度映射到离散化的数 *)</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="kw">val</span> aa = ListPair.map</span>
+<span id="cb4-13"><a href="#cb4-13"></a>  (fn (x, (y, _, z)) =&gt; (y, x, z))</span>
+<span id="cb4-14"><a href="#cb4-14"></a>  (<span class="dt">List</span>.tabulate (n, fn x =&gt; x), sorta);</span>
+<span id="cb4-15"><a href="#cb4-15"></a><span class="kw">fun</span> f ([]) = [] | f (x :: y: (<span class="dt">int</span> * <span class="dt">int</span> * <span class="dt">int</span>) <span class="dt">list</span>) = (#<span class="dv">1</span> x, #<span class="dv">2</span> x, <span class="dv">1</span>) :: (#<span class="dv">3</span> x, #<span class="dv">2</span> x, <span class="dv">0</span>) :: f (y);</span>
+<span id="cb4-16"><a href="#cb4-16"></a><span class="kw">val</span> borda = sort (fn (x, y) =&gt; (#<span class="dv">1</span> x) &lt; (#<span class="dv">1</span> y)) (f aa); <span class="co">(* 将边界排序 *)</span></span>
+<span id="cb4-17"><a href="#cb4-17"></a><span class="kw">val</span> hei = <span class="dt">Array</span>.<span class="dt">array</span>(n, <span class="dv">0</span>);</span>
+<span id="cb4-18"><a href="#cb4-18"></a><span class="kw">val</span> m = <span class="dt">Array</span>.<span class="dt">array</span>(<span class="dv">1</span>, ~<span class="dv">1</span>);</span>
+<span id="cb4-19"><a href="#cb4-19"></a><span class="kw">fun</span> f2 (a, b, c) =</span>
+<span id="cb4-20"><a href="#cb4-20"></a>  <span class="kw">if</span> c = <span class="dv">1</span> <span class="kw">then</span> <span class="kw">let</span></span>
+<span id="cb4-21"><a href="#cb4-21"></a>    <span class="kw">val</span> t1 = <span class="dt">Array</span>.update (hei, b, (<span class="dt">Array</span>.sub (hei, b)) + <span class="dv">1</span>);</span>
+<span id="cb4-22"><a href="#cb4-22"></a>    <span class="kw">val</span> tm = <span class="dt">Array</span>.sub (m, <span class="dv">0</span>);</span>
+<span id="cb4-23"><a href="#cb4-23"></a>    <span class="kw">val</span> t2 = <span class="kw">if</span> <span class="dt">Array</span>.sub (hei, b) = <span class="dv">1</span> <span class="kw">then</span></span>
+<span id="cb4-24"><a href="#cb4-24"></a>      <span class="kw">if</span> b &gt; tm <span class="kw">then</span> <span class="kw">let</span> <span class="co">(* 如果左边界更新后大于原来的最大值 *)</span></span>
+<span id="cb4-25"><a href="#cb4-25"></a>        <span class="kw">val</span> t3 = <span class="kw">if</span> tm = ~<span class="dv">1</span> orelse</span>
+<span id="cb4-26"><a href="#cb4-26"></a>        (Vector.sub (vechei, b)) &lt;&gt; (Vector.sub (vechei, tm)) <span class="kw">then</span> <span class="kw">let</span></span>
+<span id="cb4-27"><a href="#cb4-27"></a>          <span class="kw">val</span> t5 = printIntTable [a, Vector.sub (vechei, b)];</span>
+<span id="cb4-28"><a href="#cb4-28"></a>          <span class="kw">val</span> t6 = print (<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</span>
+<span id="cb4-29"><a href="#cb4-29"></a>        <span class="kw">in</span> () <span class="kw">end</span> <span class="kw">else</span> ();</span>
+<span id="cb4-30"><a href="#cb4-30"></a>        <span class="kw">val</span> t4 = <span class="dt">Array</span>.update (m, <span class="dv">0</span>, b);</span>
+<span id="cb4-31"><a href="#cb4-31"></a>      <span class="kw">in</span> () <span class="kw">end</span> <span class="kw">else</span> ()</span>
+<span id="cb4-32"><a href="#cb4-32"></a>    <span class="kw">else</span> ()</span>
+<span id="cb4-33"><a href="#cb4-33"></a>  <span class="kw">in</span> () <span class="kw">end</span> <span class="kw">else</span> <span class="kw">let</span></span>
+<span id="cb4-34"><a href="#cb4-34"></a>    <span class="kw">val</span> t1 = <span class="dt">Array</span>.update (hei, b, (<span class="dt">Array</span>.sub (hei, b)) - <span class="dv">1</span>);</span>
+<span id="cb4-35"><a href="#cb4-35"></a>    <span class="kw">val</span> t2 = <span class="kw">if</span> <span class="dt">Array</span>.sub (hei, b) = <span class="dv">0</span> <span class="kw">then</span></span>
+<span id="cb4-36"><a href="#cb4-36"></a>      <span class="kw">if</span> b = <span class="dt">Array</span>.sub (m, <span class="dv">0</span>) <span class="kw">then</span> <span class="kw">let</span> <span class="co">(* 如果待更新的值等于最大值（即更新后最大值会减小） *)</span></span>
+<span id="cb4-37"><a href="#cb4-37"></a>        <span class="kw">fun</span> find ~<span class="dv">1</span> = ~<span class="dv">1</span></span>
+<span id="cb4-38"><a href="#cb4-38"></a>          | find i = <span class="kw">if</span> (<span class="dt">Array</span>.sub (hei, i)) &gt; <span class="dv">0</span> <span class="kw">then</span> i <span class="kw">else</span> find (i - <span class="dv">1</span>);</span>
+<span id="cb4-39"><a href="#cb4-39"></a>        <span class="kw">val</span> t3 = <span class="dt">Array</span>.update (m, <span class="dv">0</span>, find b);</span>
+<span id="cb4-40"><a href="#cb4-40"></a>        <span class="kw">val</span> tm = <span class="dt">Array</span>.sub (m, <span class="dv">0</span>);</span>
+<span id="cb4-41"><a href="#cb4-41"></a>        <span class="kw">val</span> t4 = <span class="kw">if</span> tm = ~<span class="dv">1</span> <span class="kw">then</span> <span class="kw">let</span></span>
+<span id="cb4-42"><a href="#cb4-42"></a>          <span class="kw">val</span> t5 = printIntTable [a, <span class="dv">0</span>];</span>
+<span id="cb4-43"><a href="#cb4-43"></a>          <span class="kw">val</span> t6 = print (<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</span>
+<span id="cb4-44"><a href="#cb4-44"></a>        <span class="kw">in</span> () <span class="kw">end</span> <span class="kw">else</span></span>
+<span id="cb4-45"><a href="#cb4-45"></a>          <span class="kw">if</span> (Vector.sub (vechei, b)) &lt;&gt; (Vector.sub (vechei, tm)) <span class="kw">then</span> <span class="kw">let</span></span>
+<span id="cb4-46"><a href="#cb4-46"></a>            <span class="kw">val</span> t5 = printIntTable [a, Vector.sub (vechei, tm)];</span>
+<span id="cb4-47"><a href="#cb4-47"></a>            <span class="kw">val</span> t6 = print (<span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>);</span>
+<span id="cb4-48"><a href="#cb4-48"></a>          <span class="kw">in</span> () <span class="kw">end</span> <span class="kw">else</span> ();</span>
+<span id="cb4-49"><a href="#cb4-49"></a>      <span class="kw">in</span> () <span class="kw">end</span> <span class="kw">else</span> ()</span>
+<span id="cb4-50"><a href="#cb4-50"></a>    <span class="kw">else</span> ()</span>
+<span id="cb4-51"><a href="#cb4-51"></a>  <span class="kw">in</span> () <span class="kw">end</span>;</span>
+<span id="cb4-52"><a href="#cb4-52"></a><span class="dt">List</span>.app f2 borda;</span></code></pre></div>
 <h3 id="第五题">第五题</h3>
 <h4 id="题意-4">题意：</h4>
 <p>给定一个括号序列，判断它是否是匹配的。</p>
 <h4 id="题解-4">题解：</h4>
 <p>把左括号看作+1，右括号看作-1，只要所有前缀和都大于0，最后总和等于0即可。这个是串行算法，我没想出并行算法怎么保证Work为n。</p>
 <h4 id="代码省略了输入输出函数下同-3">代码（省略了输入输出函数，下同）：</h4>
-<div class="sourceCode" id="cb5"><pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> n = getInt();</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> l = getIntTable n;</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> calc (x, (f, sum)) =</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> <span class="dt">not</span> f <span class="kw">then</span> (f, sum) <span class="kw">else</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> x = <span class="dv">0</span> <span class="kw">then</span> (f, sum + <span class="dv">1</span>) <span class="kw">else</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> sum = <span class="dv">0</span> <span class="kw">then</span> (<span class="kw">false</span>, sum) <span class="kw">else</span> (f, sum - <span class="dv">1</span>);</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> (a, b) = <span class="dt">List</span>.foldl calc (<span class="kw">true</span>, <span class="dv">0</span>) l;</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> a andalso b = <span class="dv">0</span> <span class="kw">then</span> printInt <span class="dv">1</span> <span class="kw">else</span> printInt <span class="dv">0</span>;</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">val</span> n = getInt();</span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">val</span> l = getIntTable n;</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="kw">fun</span> calc (x, (f, sum)) =</span>
+<span id="cb5-4"><a href="#cb5-4"></a>    <span class="kw">if</span> <span class="dt">not</span> f <span class="kw">then</span> (f, sum) <span class="kw">else</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>    <span class="kw">if</span> x = <span class="dv">0</span> <span class="kw">then</span> (f, sum + <span class="dv">1</span>) <span class="kw">else</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>    <span class="kw">if</span> sum = <span class="dv">0</span> <span class="kw">then</span> (<span class="kw">false</span>, sum) <span class="kw">else</span> (f, sum - <span class="dv">1</span>);</span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="kw">val</span> (a, b) = <span class="dt">List</span>.foldl calc (<span class="kw">true</span>, <span class="dv">0</span>) l;</span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="kw">if</span> a andalso b = <span class="dv">0</span> <span class="kw">then</span> printInt <span class="dv">1</span> <span class="kw">else</span> printInt <span class="dv">0</span>;</span></code></pre></div>
 <h3 id="第六题">第六题</h3>
 <h4 id="题意-5">题意：</h4>
 <p>高精度加、减、乘，不给用IntInf。</p>
 <h4 id="题解-5">题解：</h4>
 <p>类似小学列竖式不解释。注意要小心前导0，对操作数首先要清一次前导0，减法的结果当然要清一次，关键是乘法的结果也要清，防止因为0乘导致结果为0的情况。</p>
 <h4 id="代码省略了输入输出函数下同-4">代码（省略了输入输出函数，下同）：</h4>
-<div class="sourceCode" id="cb6"><pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> clear0 [] = [<span class="dv">0</span>] | clear0 l = <span class="kw">if</span> hd l = <span class="dv">0</span> <span class="kw">then</span> clear0 (tl l) <span class="kw">else</span> l;</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> n1 = getInt ();</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> num1 = <span class="dt">List</span>.rev (clear0 (getIntTable n1));</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> n2 = getInt ();</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> num2 = <span class="dt">List</span>.rev (clear0 (getIntTable n2));</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> plus (c, (a, b, [])) =</span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>  ((a + c) div <span class="dv">10</span>, ((a + c) <span class="kw">mod</span> <span class="dv">10</span>) :: b, [])</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>  | plus (c, (a, b, x :: l)) =</span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>   ((a + x + c) div <span class="dv">10</span>, ((a + x + c) <span class="kw">mod</span> <span class="dv">10</span>) :: b, l);</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> (a1, b1, _) = <span class="dt">List</span>.foldl plus (<span class="dv">0</span>, [], num2) num1;</span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> a1 &gt; <span class="dv">0</span> <span class="kw">then</span> printIntTable (a1 :: b1) <span class="kw">else</span> printIntTable b1;</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>printEndOfLine ();</span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> minus (c, (a, b, [])) =</span>
-<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">if</span> c - a &lt; <span class="dv">0</span> <span class="kw">then</span></span>
-<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span>, (<span class="dv">10</span> + c - a) :: b, [])</span>
-<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">else</span> (<span class="dv">0</span>, (c - a) :: b, [])</span>
-<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>  | minus (c, (a, b, x :: l)) =</span>
-<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="kw">if</span> c - x - a &lt; <span class="dv">0</span> <span class="kw">then</span></span>
-<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>    (<span class="dv">1</span>, (<span class="dv">10</span> + c - x - a) :: b, l)</span>
-<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="kw">else</span> (<span class="dv">0</span>, (c - x - a) :: b, l);</span>
-<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> (_, b2, _) = <span class="dt">List</span>.foldl minus (<span class="dv">0</span>, [], num2) num1;</span>
-<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>printIntTable (clear0 b2);</span>
-<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>printEndOfLine ();</span>
-<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> mul1D ((i, x), y) = <span class="kw">let</span></span>
-<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fun</span> mul2D (c, (a, b)) = ((a + c * x) div <span class="dv">10</span>, ((a + c * x) <span class="kw">mod</span> <span class="dv">10</span>) :: b);</span>
-<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> (a3, b3) = <span class="dt">List</span>.foldl mul2D (<span class="dv">0</span>, []) num1;</span>
-<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> c3 = <span class="dt">List</span>.rev ((<span class="kw">if</span> a3 &gt; <span class="dv">0</span> <span class="kw">then</span> a3 :: b3 <span class="kw">else</span> b3)</span>
-<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>    @ <span class="dt">List</span>.tabulate (i, fn x =&gt; <span class="dv">0</span>)); <span class="co">(* 第二个操作数第i位乘第一个操作数之后要补i个0 *)</span></span>
-<span id="cb6-31"><a href="#cb6-31" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> (a4, b4, _) = <span class="dt">List</span>.foldl plus (<span class="dv">0</span>, [], <span class="dt">List</span>.rev y) c3;</span>
-<span id="cb6-32"><a href="#cb6-32" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span> <span class="kw">if</span> a4 &gt; <span class="dv">0</span> <span class="kw">then</span> a4 :: b4 <span class="kw">else</span> b4 <span class="kw">end</span>;</span>
-<span id="cb6-33"><a href="#cb6-33" aria-hidden="true" tabindex="-1"></a>printIntTable (clear0 (<span class="dt">List</span>.foldl mul1D []</span>
-<span id="cb6-34"><a href="#cb6-34" aria-hidden="true" tabindex="-1"></a>  (ListPair.zip (<span class="dt">List</span>.tabulate (n2, fn x =&gt; x), num2))));</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">fun</span> clear0 [] = [<span class="dv">0</span>] | clear0 l = <span class="kw">if</span> hd l = <span class="dv">0</span> <span class="kw">then</span> clear0 (tl l) <span class="kw">else</span> l;</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="kw">val</span> n1 = getInt ();</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="kw">val</span> num1 = <span class="dt">List</span>.rev (clear0 (getIntTable n1));</span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="kw">val</span> n2 = getInt ();</span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="kw">val</span> num2 = <span class="dt">List</span>.rev (clear0 (getIntTable n2));</span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="kw">fun</span> plus (c, (a, b, [])) =</span>
+<span id="cb6-7"><a href="#cb6-7"></a>  ((a + c) div <span class="dv">10</span>, ((a + c) <span class="kw">mod</span> <span class="dv">10</span>) :: b, [])</span>
+<span id="cb6-8"><a href="#cb6-8"></a>  | plus (c, (a, b, x :: l)) =</span>
+<span id="cb6-9"><a href="#cb6-9"></a>   ((a + x + c) div <span class="dv">10</span>, ((a + x + c) <span class="kw">mod</span> <span class="dv">10</span>) :: b, l);</span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="kw">val</span> (a1, b1, _) = <span class="dt">List</span>.foldl plus (<span class="dv">0</span>, [], num2) num1;</span>
+<span id="cb6-11"><a href="#cb6-11"></a><span class="kw">if</span> a1 &gt; <span class="dv">0</span> <span class="kw">then</span> printIntTable (a1 :: b1) <span class="kw">else</span> printIntTable b1;</span>
+<span id="cb6-12"><a href="#cb6-12"></a>printEndOfLine ();</span>
+<span id="cb6-13"><a href="#cb6-13"></a></span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="kw">fun</span> minus (c, (a, b, [])) =</span>
+<span id="cb6-15"><a href="#cb6-15"></a>  <span class="kw">if</span> c - a &lt; <span class="dv">0</span> <span class="kw">then</span></span>
+<span id="cb6-16"><a href="#cb6-16"></a>    (<span class="dv">1</span>, (<span class="dv">10</span> + c - a) :: b, [])</span>
+<span id="cb6-17"><a href="#cb6-17"></a>  <span class="kw">else</span> (<span class="dv">0</span>, (c - a) :: b, [])</span>
+<span id="cb6-18"><a href="#cb6-18"></a>  | minus (c, (a, b, x :: l)) =</span>
+<span id="cb6-19"><a href="#cb6-19"></a>  <span class="kw">if</span> c - x - a &lt; <span class="dv">0</span> <span class="kw">then</span></span>
+<span id="cb6-20"><a href="#cb6-20"></a>    (<span class="dv">1</span>, (<span class="dv">10</span> + c - x - a) :: b, l)</span>
+<span id="cb6-21"><a href="#cb6-21"></a>  <span class="kw">else</span> (<span class="dv">0</span>, (c - x - a) :: b, l);</span>
+<span id="cb6-22"><a href="#cb6-22"></a><span class="kw">val</span> (_, b2, _) = <span class="dt">List</span>.foldl minus (<span class="dv">0</span>, [], num2) num1;</span>
+<span id="cb6-23"><a href="#cb6-23"></a>printIntTable (clear0 b2);</span>
+<span id="cb6-24"><a href="#cb6-24"></a>printEndOfLine ();</span>
+<span id="cb6-25"><a href="#cb6-25"></a></span>
+<span id="cb6-26"><a href="#cb6-26"></a><span class="kw">fun</span> mul1D ((i, x), y) = <span class="kw">let</span></span>
+<span id="cb6-27"><a href="#cb6-27"></a>  <span class="kw">fun</span> mul2D (c, (a, b)) = ((a + c * x) div <span class="dv">10</span>, ((a + c * x) <span class="kw">mod</span> <span class="dv">10</span>) :: b);</span>
+<span id="cb6-28"><a href="#cb6-28"></a>  <span class="kw">val</span> (a3, b3) = <span class="dt">List</span>.foldl mul2D (<span class="dv">0</span>, []) num1;</span>
+<span id="cb6-29"><a href="#cb6-29"></a>  <span class="kw">val</span> c3 = <span class="dt">List</span>.rev ((<span class="kw">if</span> a3 &gt; <span class="dv">0</span> <span class="kw">then</span> a3 :: b3 <span class="kw">else</span> b3)</span>
+<span id="cb6-30"><a href="#cb6-30"></a>    @ <span class="dt">List</span>.tabulate (i, fn x =&gt; <span class="dv">0</span>)); <span class="co">(* 第二个操作数第i位乘第一个操作数之后要补i个0 *)</span></span>
+<span id="cb6-31"><a href="#cb6-31"></a>  <span class="kw">val</span> (a4, b4, _) = <span class="dt">List</span>.foldl plus (<span class="dv">0</span>, [], <span class="dt">List</span>.rev y) c3;</span>
+<span id="cb6-32"><a href="#cb6-32"></a><span class="kw">in</span> <span class="kw">if</span> a4 &gt; <span class="dv">0</span> <span class="kw">then</span> a4 :: b4 <span class="kw">else</span> b4 <span class="kw">end</span>;</span>
+<span id="cb6-33"><a href="#cb6-33"></a>printIntTable (clear0 (<span class="dt">List</span>.foldl mul1D []</span>
+<span id="cb6-34"><a href="#cb6-34"></a>  (ListPair.zip (<span class="dt">List</span>.tabulate (n2, fn x =&gt; x), num2))));</span></code></pre></div>
 <h3 id="第七题">第七题</h3>
 <h4 id="题意-6">题意：</h4>
 <p>求无向图的割点和桥（割边）。</p>
 <h4 id="题解-6">题解：</h4>
 <p>Tarjan算法。我用Array套List实现邻接表，但是效率我有点不明，另外用大小为1的Array模拟可变变量是真的爽。</p>
 <h4 id="代码省略了输入输出函数下同-5">代码（省略了输入输出函数，下同）：</h4>
-<div class="sourceCode" id="cb7"><pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> n = getInt() <span class="kw">and</span> m = getInt();</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> g : (<span class="dt">int</span> * <span class="dt">int</span>) <span class="dt">list</span> <span class="dt">array</span> = <span class="dt">Array</span>.<span class="dt">array</span> (n, []);</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> reade i = <span class="kw">let</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> a = getInt() - <span class="dv">1</span> <span class="kw">and</span> b = getInt() - <span class="dv">1</span>;</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> t1 = <span class="dt">Array</span>.update(g, a,  (b, i) :: (<span class="dt">Array</span>.sub (g, a)));</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> t2 = <span class="dt">Array</span>.update(g, b,  (a, i) :: (<span class="dt">Array</span>.sub (g, b)));</span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span> <span class="dv">0</span> <span class="kw">end</span>;</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="dt">List</span>.tabulate (m, reade);</span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> cp = <span class="dt">Array</span>.<span class="dt">array</span> (n, <span class="kw">false</span>); <span class="co">(* 某点是否为割点 *)</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> ce = <span class="dt">Array</span>.<span class="dt">array</span> (m, <span class="kw">false</span>); <span class="co">(* 某边是否为桥 *)</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> dfn = <span class="dt">Array</span>.<span class="dt">array</span> (n, <span class="dv">0</span>);</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> low = <span class="dt">Array</span>.<span class="dt">array</span> (n, <span class="dv">0</span>);</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> cnt = <span class="dt">Array</span>.<span class="dt">array</span> (<span class="dv">1</span>, <span class="dv">1</span>);</span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> tarjan fa x = <span class="kw">let</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> num = <span class="dt">Array</span>.sub (cnt, <span class="dv">0</span>);</span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> t1 = <span class="dt">Array</span>.update (cnt, <span class="dv">0</span>, num + <span class="dv">1</span>);</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> t2 = <span class="dt">Array</span>.update (dfn, x, num);</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> t3 = <span class="dt">Array</span>.update (low, x, num);</span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> ch = <span class="dt">Array</span>.<span class="dt">array</span> (<span class="dv">1</span>, <span class="dv">0</span>);</span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fun</span> calc (i, j) =</span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> (<span class="dt">Array</span>.sub (dfn, i)) = <span class="dv">0</span> <span class="kw">then</span> <span class="kw">let</span></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>      <span class="kw">val</span> t1 = <span class="dt">Array</span>.update (ch, <span class="dv">0</span>, (<span class="dt">Array</span>.sub (ch, <span class="dv">0</span>)) + <span class="dv">1</span>);</span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>      <span class="kw">val</span> t2 = tarjan x i;</span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>      <span class="kw">val</span> t3 = <span class="dt">Array</span>.update (low, x,</span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a>        Int.<span class="dt">min</span>(<span class="dt">Array</span>.sub (low, x), <span class="dt">Array</span>.sub (low, i)));</span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a>      <span class="kw">val</span> t4 = <span class="kw">if</span> x = <span class="dv">0</span> andalso (<span class="dt">Array</span>.sub (ch, <span class="dv">0</span>)) &gt; <span class="dv">1</span> <span class="kw">then</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>        (<span class="dt">Array</span>.update (cp, x, <span class="kw">true</span>)) <span class="kw">else</span> ();</span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>      <span class="kw">val</span> t5 = <span class="kw">if</span> x &lt;&gt; <span class="dv">0</span> andalso (<span class="dt">Array</span>.sub (dfn, x)) &lt;= (<span class="dt">Array</span>.sub (low, i)) <span class="kw">then</span></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>        (<span class="dt">Array</span>.update (cp, x, <span class="kw">true</span>)) <span class="kw">else</span> ();</span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>      <span class="kw">val</span> t6 = <span class="kw">if</span> (<span class="dt">Array</span>.sub (dfn, x)) &lt; (<span class="dt">Array</span>.sub (low, i)) <span class="kw">then</span></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>        (<span class="dt">Array</span>.update (ce, j, <span class="kw">true</span>)) <span class="kw">else</span> ();</span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>    <span class="kw">in</span> () <span class="kw">end</span> <span class="kw">else</span></span>
-<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>      <span class="kw">if</span> i &lt;&gt; fa <span class="kw">then</span></span>
-<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>        <span class="dt">Array</span>.update (low, x, Int.<span class="dt">min</span>(<span class="dt">Array</span>.sub (low, x), <span class="dt">Array</span>.sub (dfn, i)))</span>
-<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>      <span class="kw">else</span> ();</span>
-<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> t4 = <span class="dt">List</span>.app calc (<span class="dt">Array</span>.sub (g, x));</span>
-<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span> () <span class="kw">end</span>;</span>
-<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a>tarjan ~<span class="dv">1</span> <span class="dv">0</span>;</span>
-<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>printInt (<span class="dt">Array</span>.foldl (fn (x, y) =&gt; <span class="kw">if</span> x <span class="kw">then</span> y + <span class="dv">1</span> <span class="kw">else</span> y) <span class="dv">0</span> cp);</span>
-<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>printInt (<span class="dt">Array</span>.foldl (fn (x, y) =&gt; <span class="kw">if</span> x <span class="kw">then</span> y + <span class="dv">1</span> <span class="kw">else</span> y) <span class="dv">0</span> ce);</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">val</span> n = getInt() <span class="kw">and</span> m = getInt();</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="kw">val</span> g : (<span class="dt">int</span> * <span class="dt">int</span>) <span class="dt">list</span> <span class="dt">array</span> = <span class="dt">Array</span>.<span class="dt">array</span> (n, []);</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="kw">fun</span> reade i = <span class="kw">let</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a>  <span class="kw">val</span> a = getInt() - <span class="dv">1</span> <span class="kw">and</span> b = getInt() - <span class="dv">1</span>;</span>
+<span id="cb7-5"><a href="#cb7-5"></a>  <span class="kw">val</span> t1 = <span class="dt">Array</span>.update(g, a,  (b, i) :: (<span class="dt">Array</span>.sub (g, a)));</span>
+<span id="cb7-6"><a href="#cb7-6"></a>  <span class="kw">val</span> t2 = <span class="dt">Array</span>.update(g, b,  (a, i) :: (<span class="dt">Array</span>.sub (g, b)));</span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="kw">in</span> <span class="dv">0</span> <span class="kw">end</span>;</span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="dt">List</span>.tabulate (m, reade);</span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="kw">val</span> cp = <span class="dt">Array</span>.<span class="dt">array</span> (n, <span class="kw">false</span>); <span class="co">(* 某点是否为割点 *)</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="kw">val</span> ce = <span class="dt">Array</span>.<span class="dt">array</span> (m, <span class="kw">false</span>); <span class="co">(* 某边是否为桥 *)</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="kw">val</span> dfn = <span class="dt">Array</span>.<span class="dt">array</span> (n, <span class="dv">0</span>);</span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="kw">val</span> low = <span class="dt">Array</span>.<span class="dt">array</span> (n, <span class="dv">0</span>);</span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="kw">val</span> cnt = <span class="dt">Array</span>.<span class="dt">array</span> (<span class="dv">1</span>, <span class="dv">1</span>);</span>
+<span id="cb7-14"><a href="#cb7-14"></a></span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="kw">fun</span> tarjan fa x = <span class="kw">let</span></span>
+<span id="cb7-16"><a href="#cb7-16"></a>  <span class="kw">val</span> num = <span class="dt">Array</span>.sub (cnt, <span class="dv">0</span>);</span>
+<span id="cb7-17"><a href="#cb7-17"></a>  <span class="kw">val</span> t1 = <span class="dt">Array</span>.update (cnt, <span class="dv">0</span>, num + <span class="dv">1</span>);</span>
+<span id="cb7-18"><a href="#cb7-18"></a>  <span class="kw">val</span> t2 = <span class="dt">Array</span>.update (dfn, x, num);</span>
+<span id="cb7-19"><a href="#cb7-19"></a>  <span class="kw">val</span> t3 = <span class="dt">Array</span>.update (low, x, num);</span>
+<span id="cb7-20"><a href="#cb7-20"></a>  <span class="kw">val</span> ch = <span class="dt">Array</span>.<span class="dt">array</span> (<span class="dv">1</span>, <span class="dv">0</span>);</span>
+<span id="cb7-21"><a href="#cb7-21"></a>  <span class="kw">fun</span> calc (i, j) =</span>
+<span id="cb7-22"><a href="#cb7-22"></a>    <span class="kw">if</span> (<span class="dt">Array</span>.sub (dfn, i)) = <span class="dv">0</span> <span class="kw">then</span> <span class="kw">let</span></span>
+<span id="cb7-23"><a href="#cb7-23"></a>      <span class="kw">val</span> t1 = <span class="dt">Array</span>.update (ch, <span class="dv">0</span>, (<span class="dt">Array</span>.sub (ch, <span class="dv">0</span>)) + <span class="dv">1</span>);</span>
+<span id="cb7-24"><a href="#cb7-24"></a>      <span class="kw">val</span> t2 = tarjan x i;</span>
+<span id="cb7-25"><a href="#cb7-25"></a>      <span class="kw">val</span> t3 = <span class="dt">Array</span>.update (low, x,</span>
+<span id="cb7-26"><a href="#cb7-26"></a>        Int.<span class="dt">min</span>(<span class="dt">Array</span>.sub (low, x), <span class="dt">Array</span>.sub (low, i)));</span>
+<span id="cb7-27"><a href="#cb7-27"></a>      <span class="kw">val</span> t4 = <span class="kw">if</span> x = <span class="dv">0</span> andalso (<span class="dt">Array</span>.sub (ch, <span class="dv">0</span>)) &gt; <span class="dv">1</span> <span class="kw">then</span></span>
+<span id="cb7-28"><a href="#cb7-28"></a>        (<span class="dt">Array</span>.update (cp, x, <span class="kw">true</span>)) <span class="kw">else</span> ();</span>
+<span id="cb7-29"><a href="#cb7-29"></a>      <span class="kw">val</span> t5 = <span class="kw">if</span> x &lt;&gt; <span class="dv">0</span> andalso (<span class="dt">Array</span>.sub (dfn, x)) &lt;= (<span class="dt">Array</span>.sub (low, i)) <span class="kw">then</span></span>
+<span id="cb7-30"><a href="#cb7-30"></a>        (<span class="dt">Array</span>.update (cp, x, <span class="kw">true</span>)) <span class="kw">else</span> ();</span>
+<span id="cb7-31"><a href="#cb7-31"></a>      <span class="kw">val</span> t6 = <span class="kw">if</span> (<span class="dt">Array</span>.sub (dfn, x)) &lt; (<span class="dt">Array</span>.sub (low, i)) <span class="kw">then</span></span>
+<span id="cb7-32"><a href="#cb7-32"></a>        (<span class="dt">Array</span>.update (ce, j, <span class="kw">true</span>)) <span class="kw">else</span> ();</span>
+<span id="cb7-33"><a href="#cb7-33"></a>    <span class="kw">in</span> () <span class="kw">end</span> <span class="kw">else</span></span>
+<span id="cb7-34"><a href="#cb7-34"></a>      <span class="kw">if</span> i &lt;&gt; fa <span class="kw">then</span></span>
+<span id="cb7-35"><a href="#cb7-35"></a>        <span class="dt">Array</span>.update (low, x, Int.<span class="dt">min</span>(<span class="dt">Array</span>.sub (low, x), <span class="dt">Array</span>.sub (dfn, i)))</span>
+<span id="cb7-36"><a href="#cb7-36"></a>      <span class="kw">else</span> ();</span>
+<span id="cb7-37"><a href="#cb7-37"></a>  <span class="kw">val</span> t4 = <span class="dt">List</span>.app calc (<span class="dt">Array</span>.sub (g, x));</span>
+<span id="cb7-38"><a href="#cb7-38"></a><span class="kw">in</span> () <span class="kw">end</span>;</span>
+<span id="cb7-39"><a href="#cb7-39"></a></span>
+<span id="cb7-40"><a href="#cb7-40"></a>tarjan ~<span class="dv">1</span> <span class="dv">0</span>;</span>
+<span id="cb7-41"><a href="#cb7-41"></a>printInt (<span class="dt">Array</span>.foldl (fn (x, y) =&gt; <span class="kw">if</span> x <span class="kw">then</span> y + <span class="dv">1</span> <span class="kw">else</span> y) <span class="dv">0</span> cp);</span>
+<span id="cb7-42"><a href="#cb7-42"></a>printInt (<span class="dt">Array</span>.foldl (fn (x, y) =&gt; <span class="kw">if</span> x <span class="kw">then</span> y + <span class="dv">1</span> <span class="kw">else</span> y) <span class="dv">0</span> ce);</span></code></pre></div>
 <h3 id="第八题">第八题</h3>
 <h4 id="题意-7">题意：</h4>
 <p>多次询问串中的区间最大值。串大小1000以内，询问次数5000以内。（RMQ问题）</p>
 <h4 id="题解-7">题解：</h4>
 <p>正解当然是O(nlogn)的倍增，不过串大小1000以内，所以直接开了个O(n2)的数组，预处理所有区间的最大值，然后询问就直接在数组中查询。</p>
 <h4 id="代码省略了输入输出函数下同-6">代码（省略了输入输出函数，下同）：</h4>
-<div class="sourceCode" id="cb8"><pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> n = getInt() <span class="kw">and</span> m = getInt();</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> l = ListPair.zip(<span class="dt">List</span>.tabulate (n, (fn x =&gt; x)), getIntTable n);</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> a = Array2.<span class="dt">array</span>(n, n, <span class="dv">0</span>);</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> f i = <span class="kw">let</span></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> cl = <span class="dt">List</span>.drop (l, i);</span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> t1 = Array2.update(a, i, i, #<span class="dv">2</span> (hd cl));</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> t = <span class="dt">List</span>.app (fn (x, y) =&gt;</span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>    Array2.update(a, i, x, Int.<span class="dt">max</span> (Array2.sub(a, i, x - <span class="dv">1</span>), y))) (tl cl);</span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span> <span class="dv">0</span> <span class="kw">end</span>;</span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="dt">List</span>.tabulate (n, f);</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="kw">fun</span> q _ = <span class="kw">let</span></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> l = getInt() - <span class="dv">1</span> <span class="kw">and</span> r = getInt() - <span class="dv">1</span>;</span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span> printInt (Array2.sub(a, l, r)) <span class="kw">end</span>;</span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="dt">List</span>.tabulate (m, q);</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">val</span> n = getInt() <span class="kw">and</span> m = getInt();</span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="kw">val</span> l = ListPair.zip(<span class="dt">List</span>.tabulate (n, (fn x =&gt; x)), getIntTable n);</span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="kw">val</span> a = Array2.<span class="dt">array</span>(n, n, <span class="dv">0</span>);</span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="kw">fun</span> f i = <span class="kw">let</span></span>
+<span id="cb8-5"><a href="#cb8-5"></a>  <span class="kw">val</span> cl = <span class="dt">List</span>.drop (l, i);</span>
+<span id="cb8-6"><a href="#cb8-6"></a>  <span class="kw">val</span> t1 = Array2.update(a, i, i, #<span class="dv">2</span> (hd cl));</span>
+<span id="cb8-7"><a href="#cb8-7"></a>  <span class="kw">val</span> t = <span class="dt">List</span>.app (fn (x, y) =&gt;</span>
+<span id="cb8-8"><a href="#cb8-8"></a>    Array2.update(a, i, x, Int.<span class="dt">max</span> (Array2.sub(a, i, x - <span class="dv">1</span>), y))) (tl cl);</span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="kw">in</span> <span class="dv">0</span> <span class="kw">end</span>;</span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="dt">List</span>.tabulate (n, f);</span>
+<span id="cb8-11"><a href="#cb8-11"></a><span class="kw">fun</span> q _ = <span class="kw">let</span></span>
+<span id="cb8-12"><a href="#cb8-12"></a>  <span class="kw">val</span> l = getInt() - <span class="dv">1</span> <span class="kw">and</span> r = getInt() - <span class="dv">1</span>;</span>
+<span id="cb8-13"><a href="#cb8-13"></a><span class="kw">in</span> printInt (Array2.sub(a, l, r)) <span class="kw">end</span>;</span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="dt">List</span>.tabulate (m, q);</span></code></pre></div>
 <h3 id="第九题">第九题</h3>
 <h4 id="题意-8">题意：</h4>
 <p>判断质数。待判断的数非常大，差不多有40位。</p>
 <h4 id="题解-8">题解：</h4>
 <p>朴素法T了，学习了Miller-Rabin算法，对于已知的n个素数，利用费马小定理和二次探测定理对待判断的数进行判定，判定失误的概率为4^(-n)，复杂度大概为O(nlogp)吧，n为已知素数的个数，p为待判断的数。</p>
 <h4 id="代码省略了输入输出函数下同-7">代码（省略了输入输出函数，下同）：</h4>
-<div class="sourceCode" id="cb9"><pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> n = getIntInf();</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="kw">val</span> t: IntInf.<span class="dt">int</span> <span class="dt">list</span> = [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">11</span>, <span class="dv">13</span>, <span class="dv">17</span>, <span class="dv">19</span>, <span class="dv">23</span>, <span class="dv">29</span>, <span class="dv">31</span>, <span class="dv">37</span>, <span class="dv">41</span>, <span class="dv">43</span>, <span class="dv">47</span>, <span class="dv">53</span>, <span class="dv">59</span>,</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>         <span class="dv">61</span>, <span class="dv">67</span>, <span class="dv">71</span>, <span class="dv">73</span>, <span class="dv">79</span>, <span class="dv">83</span>, <span class="dv">89</span>, <span class="dv">97</span>];</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="kw">if</span> (<span class="dt">List</span>.exists (fn x =&gt; x = n) t) <span class="kw">then</span> printString <span class="st">&quot;True&quot;</span> <span class="kw">else</span> <span class="kw">let</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fun</span> pow (a: IntInf.<span class="dt">int</span>, b: IntInf.<span class="dt">int</span>, c: IntInf.<span class="dt">int</span>) =</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>    case b <span class="kw">of</span></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>        <span class="dv">0</span> =&gt; <span class="dv">1</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>       |<span class="dv">1</span> =&gt; a <span class="kw">mod</span> c</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>       |otherwise =&gt; <span class="kw">let</span></span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>         <span class="kw">val</span> d = pow (a, b div <span class="dv">2</span>, c);</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">in</span> (<span class="kw">if</span> b <span class="kw">mod</span> <span class="dv">2</span> = <span class="dv">0</span> <span class="kw">then</span> d * d <span class="kw">mod</span> c <span class="kw">else</span> d * d * a <span class="kw">mod</span> c) <span class="kw">end</span>;</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> pm1 = n - <span class="dv">1</span>;</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fun</span> f1 (x: IntInf.<span class="dt">int</span>, cnt) =</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">if</span> x <span class="kw">mod</span> <span class="dv">2</span> = <span class="dv">0</span> <span class="kw">then</span> (f1 (x div <span class="dv">2</span>, cnt + <span class="dv">1</span>)) <span class="kw">else</span> (x, cnt);</span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>  <span class="kw">val</span> (base, k) = f1 (pm1, <span class="dv">0</span>);</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>  <span class="kw">fun</span> f2 (test: IntInf.<span class="dt">int</span>, flag) = <span class="kw">if</span> <span class="dt">not</span> flag <span class="kw">then</span> <span class="kw">false</span> <span class="kw">else</span> <span class="kw">let</span></span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> pbase = pow (test, base, n); </span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>    <span class="kw">fun</span> f3 (i, (r, aa: IntInf.<span class="dt">int</span>)) =</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>      <span class="kw">if</span> <span class="dt">not</span> r <span class="kw">then</span> (r, aa) <span class="kw">else</span> <span class="kw">let</span></span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a>        <span class="kw">val</span> rnext = aa * aa <span class="kw">mod</span> n;</span>
-<span id="cb9-21"><a href="#cb9-21" aria-hidden="true" tabindex="-1"></a>        <span class="kw">val</span> rr = <span class="dt">not</span> (rnext = <span class="dv">1</span> andalso aa &lt;&gt; <span class="dv">1</span> andalso aa &lt;&gt; n - <span class="dv">1</span>);</span>
-<span id="cb9-22"><a href="#cb9-22" aria-hidden="true" tabindex="-1"></a>        <span class="kw">val</span> ra = rnext;</span>
-<span id="cb9-23"><a href="#cb9-23" aria-hidden="true" tabindex="-1"></a>      <span class="kw">in</span> (rr, ra) <span class="kw">end</span>;</span>
-<span id="cb9-24"><a href="#cb9-24" aria-hidden="true" tabindex="-1"></a>    <span class="kw">val</span> (r, a) = <span class="dt">List</span>.foldl f3 (<span class="kw">true</span>, pbase) (<span class="dt">List</span>.tabulate (k, fn x =&gt; x));</span>
-<span id="cb9-25"><a href="#cb9-25" aria-hidden="true" tabindex="-1"></a>  <span class="kw">in</span> r andalso a = <span class="dv">1</span> <span class="kw">end</span>;</span>
-<span id="cb9-26"><a href="#cb9-26" aria-hidden="true" tabindex="-1"></a><span class="kw">in</span> (<span class="kw">if</span> <span class="dt">List</span>.foldl f2 <span class="kw">true</span> t <span class="kw">then</span> printString <span class="st">&quot;True&quot;</span> <span class="kw">else</span> printString <span class="st">&quot;False&quot;</span>) <span class="kw">end</span>;</span></code></pre></div>
-</article>
-<span class="bg-light text-muted border boder-primary d-block p-2 text-center">
-    转载请注明出处<br>
-    © 2022 ZimingYuan的博客
-</span>
-<div style="background-color: #ebd5a1; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; pointer-events: none; opacity: 0.2;">
-</div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">val</span> n = getIntInf();</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="kw">val</span> t: IntInf.<span class="dt">int</span> <span class="dt">list</span> = [<span class="dv">2</span>, <span class="dv">3</span>, <span class="dv">5</span>, <span class="dv">7</span>, <span class="dv">11</span>, <span class="dv">13</span>, <span class="dv">17</span>, <span class="dv">19</span>, <span class="dv">23</span>, <span class="dv">29</span>, <span class="dv">31</span>, <span class="dv">37</span>, <span class="dv">41</span>, <span class="dv">43</span>, <span class="dv">47</span>, <span class="dv">53</span>, <span class="dv">59</span>,</span>
+<span id="cb9-3"><a href="#cb9-3"></a>         <span class="dv">61</span>, <span class="dv">67</span>, <span class="dv">71</span>, <span class="dv">73</span>, <span class="dv">79</span>, <span class="dv">83</span>, <span class="dv">89</span>, <span class="dv">97</span>];</span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="kw">if</span> (<span class="dt">List</span>.exists (fn x =&gt; x = n) t) <span class="kw">then</span> printString <span class="st">&quot;True&quot;</span> <span class="kw">else</span> <span class="kw">let</span></span>
+<span id="cb9-5"><a href="#cb9-5"></a>  <span class="kw">fun</span> pow (a: IntInf.<span class="dt">int</span>, b: IntInf.<span class="dt">int</span>, c: IntInf.<span class="dt">int</span>) =</span>
+<span id="cb9-6"><a href="#cb9-6"></a>    case b <span class="kw">of</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a>        <span class="dv">0</span> =&gt; <span class="dv">1</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a>       |<span class="dv">1</span> =&gt; a <span class="kw">mod</span> c</span>
+<span id="cb9-9"><a href="#cb9-9"></a>       |otherwise =&gt; <span class="kw">let</span></span>
+<span id="cb9-10"><a href="#cb9-10"></a>         <span class="kw">val</span> d = pow (a, b div <span class="dv">2</span>, c);</span>
+<span id="cb9-11"><a href="#cb9-11"></a>    <span class="kw">in</span> (<span class="kw">if</span> b <span class="kw">mod</span> <span class="dv">2</span> = <span class="dv">0</span> <span class="kw">then</span> d * d <span class="kw">mod</span> c <span class="kw">else</span> d * d * a <span class="kw">mod</span> c) <span class="kw">end</span>;</span>
+<span id="cb9-12"><a href="#cb9-12"></a>  <span class="kw">val</span> pm1 = n - <span class="dv">1</span>;</span>
+<span id="cb9-13"><a href="#cb9-13"></a>  <span class="kw">fun</span> f1 (x: IntInf.<span class="dt">int</span>, cnt) =</span>
+<span id="cb9-14"><a href="#cb9-14"></a>    <span class="kw">if</span> x <span class="kw">mod</span> <span class="dv">2</span> = <span class="dv">0</span> <span class="kw">then</span> (f1 (x div <span class="dv">2</span>, cnt + <span class="dv">1</span>)) <span class="kw">else</span> (x, cnt);</span>
+<span id="cb9-15"><a href="#cb9-15"></a>  <span class="kw">val</span> (base, k) = f1 (pm1, <span class="dv">0</span>);</span>
+<span id="cb9-16"><a href="#cb9-16"></a>  <span class="kw">fun</span> f2 (test: IntInf.<span class="dt">int</span>, flag) = <span class="kw">if</span> <span class="dt">not</span> flag <span class="kw">then</span> <span class="kw">false</span> <span class="kw">else</span> <span class="kw">let</span></span>
+<span id="cb9-17"><a href="#cb9-17"></a>    <span class="kw">val</span> pbase = pow (test, base, n); </span>
+<span id="cb9-18"><a href="#cb9-18"></a>    <span class="kw">fun</span> f3 (i, (r, aa: IntInf.<span class="dt">int</span>)) =</span>
+<span id="cb9-19"><a href="#cb9-19"></a>      <span class="kw">if</span> <span class="dt">not</span> r <span class="kw">then</span> (r, aa) <span class="kw">else</span> <span class="kw">let</span></span>
+<span id="cb9-20"><a href="#cb9-20"></a>        <span class="kw">val</span> rnext = aa * aa <span class="kw">mod</span> n;</span>
+<span id="cb9-21"><a href="#cb9-21"></a>        <span class="kw">val</span> rr = <span class="dt">not</span> (rnext = <span class="dv">1</span> andalso aa &lt;&gt; <span class="dv">1</span> andalso aa &lt;&gt; n - <span class="dv">1</span>);</span>
+<span id="cb9-22"><a href="#cb9-22"></a>        <span class="kw">val</span> ra = rnext;</span>
+<span id="cb9-23"><a href="#cb9-23"></a>      <span class="kw">in</span> (rr, ra) <span class="kw">end</span>;</span>
+<span id="cb9-24"><a href="#cb9-24"></a>    <span class="kw">val</span> (r, a) = <span class="dt">List</span>.foldl f3 (<span class="kw">true</span>, pbase) (<span class="dt">List</span>.tabulate (k, fn x =&gt; x));</span>
+<span id="cb9-25"><a href="#cb9-25"></a>  <span class="kw">in</span> r andalso a = <span class="dv">1</span> <span class="kw">end</span>;</span>
+<span id="cb9-26"><a href="#cb9-26"></a><span class="kw">in</span> (<span class="kw">if</span> <span class="dt">List</span>.foldl f2 <span class="kw">true</span> t <span class="kw">then</span> printString <span class="st">&quot;True&quot;</span> <span class="kw">else</span> printString <span class="st">&quot;False&quot;</span>) <span class="kw">end</span>;</span></code></pre></div>
+<footer>
+    <hr><center>转载请注明出处<br>© 2022 ZimingYuan的博客</center>
+</footer>
 </body>
 </html>

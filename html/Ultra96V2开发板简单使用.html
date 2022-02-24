@@ -1,148 +1,129 @@
 <!DOCTYPE html>
-<!--
-==============================================================================
-           "GitHub HTML5 Pandoc Template" v2.2 — by Tristano Ajmone
-==============================================================================
-Copyright © Tristano Ajmone, 2017-2020, MIT License (MIT). Project's home:
-- https://github.com/tajmone/pandoc-goodies
-The CSS in this template reuses source code taken from the following projects:
-- GitHub Markdown CSS: Copyright © Sindre Sorhus, MIT License (MIT):
-  https://github.com/sindresorhus/github-markdown-css
-- Primer CSS: Copyright © 2016-2017 GitHub Inc., MIT License (MIT):
-  http://primercss.io/
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The MIT License
-Copyright (c) Tristano Ajmone, 2017-2020 (github.com/tajmone/pandoc-goodies)
-Copyright (c) Sindre Sorhus <sindresorhus@gmail.com> (sindresorhus.com)
-Copyright (c) 2017 GitHub Inc.
-"GitHub Pandoc HTML5 Template" is Copyright (c) Tristano Ajmone, 2017-2020,
-released under the MIT License (MIT); it contains readaptations of substantial
-portions of the following third party softwares:
-(1) "GitHub Markdown CSS", Copyright (c) Sindre Sorhus, MIT License (MIT).
-(2) "Primer CSS", Copyright (c) 2016 GitHub Inc., MIT License (MIT).
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-==============================================================================-->
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" data-theme="tufte">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/extra/classless.css" />
+<style>
+html[data-theme='tufte']{
+    --rem: 15px;
+    --navpos: absolute;
+    --width: 70rem;
+    --font-p: 1.4rem/2 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-h: 1.4rem/1.5 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --ornament: "";
+    --border: 1px solid var(--cmed);
+    /* foreground   | background color */
+    --cfg:   #111;    --cbg:    #fbf7ec;
+    --cdark: #111;    --clight: #fbf7ec;
+    --cmed: #b4d5fe;
+    --clink: #111;
+    --cemph: #111;
+}
+</style>
+  <script>
+      let search = () => {
+          let word = document.querySelector('input').value;
+          if (word.length == 0) {
+              alert('搜索内容不能为空！');
+          } else {
+              location.href = '/search.html?' + word;
+          }
+      };
+  </script>
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <title>Ultra96V2开发板简单使用</title>
-  <style type="text/css">
-@charset "UTF-8";.markdown-body{-ms-text-size-adjust:100%;-webkit-text-size-adjust:100%;color:#24292e;font-family:-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";font-size:16px;line-height:1.5;word-wrap:break-word;box-sizing:border-box;min-width:200px;max-width:980px;margin:0 auto;padding:45px}.markdown-body a{color:#0366d6;background-color:transparent;text-decoration:none;-webkit-text-decoration-skip:objects}.markdown-body a:active,.markdown-body a:hover{outline-width:0}.markdown-body a:hover{text-decoration:underline}.markdown-body a:not([href]){color:inherit;text-decoration:none}.markdown-body strong{font-weight:600}.markdown-body h1,.markdown-body h2,.markdown-body h3,.markdown-body h4,.markdown-body h5,.markdown-body h6{margin-top:24px;margin-bottom:16px;font-weight:600;line-height:1.25}.markdown-body h1{font-size:2em;margin:.67em 0;padding-bottom:.3em;border-bottom:1px solid #eaecef}.markdown-body h2{padding-bottom:.3em;font-size:1.5em;border-bottom:1px solid #eaecef}.markdown-body h3{font-size:1.25em}.markdown-body h4{font-size:1em}.markdown-body h5{font-size:.875em}.markdown-body h6{font-size:.85em;color:#6a737d}.markdown-body img{border-style:none}.markdown-body svg:not(:root){overflow:hidden}.markdown-body hr{box-sizing:content-box;height:.25em;margin:24px 0;padding:0;overflow:hidden;background-color:#e1e4e8;border:0}.markdown-body hr::before{display:table;content:""}.markdown-body hr::after{display:table;clear:both;content:""}.markdown-body input{margin:0;overflow:visible;font:inherit;font-family:inherit;font-size:inherit;line-height:inherit}.markdown-body [type=checkbox]{box-sizing:border-box;padding:0}.markdown-body *{box-sizing:border-box}.markdown-body blockquote{margin:0}.markdown-body ol,.markdown-body ul{padding-left:2em}.markdown-body ol ol,.markdown-body ul ol{list-style-type:lower-roman}.markdown-body ol ol,.markdown-body ol ul,.markdown-body ul ol,.markdown-body ul ul{margin-top:0;margin-bottom:0}.markdown-body ol ol ol,.markdown-body ol ul ol,.markdown-body ul ol ol,.markdown-body ul ul ol{list-style-type:lower-alpha}.markdown-body li>p{margin-top:16px}.markdown-body li+li{margin-top:.25em}.markdown-body dd{margin-left:0}.markdown-body dl{padding:0}.markdown-body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:600}.markdown-body dl dd{padding:0 16px;margin-bottom:16px}.markdown-body code{font-family:SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace}.markdown-body pre{font:12px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;word-wrap:normal}.markdown-body blockquote,.markdown-body dl,.markdown-body ol,.markdown-body p,.markdown-body pre,.markdown-body table,.markdown-body ul{margin-top:0;margin-bottom:16px}.markdown-body blockquote{padding:0 1em;color:#6a737d;border-left:.25em solid #dfe2e5}.markdown-body blockquote>:first-child{margin-top:0}.markdown-body blockquote>:last-child{margin-bottom:0}.markdown-body table{display:block;width:100%;overflow:auto;border-spacing:0;border-collapse:collapse}.markdown-body table th{font-weight:600}.markdown-body table td,.markdown-body table th{padding:6px 13px;border:1px solid #dfe2e5}.markdown-body table tr{background-color:#fff;border-top:1px solid #c6cbd1}.markdown-body table tr:nth-child(2n){background-color:#f6f8fa}.markdown-body img{max-width:100%;box-sizing:content-box;background-color:#fff}.markdown-body code{padding:.2em 0;margin:0;font-size:85%;background-color:rgba(27,31,35,.05);border-radius:3px}.markdown-body code::after,.markdown-body code::before{letter-spacing:-.2em;content:" "}.markdown-body pre>code{padding:0;margin:0;font-size:100%;word-break:normal;white-space:pre;background:0 0;border:0}.markdown-body .highlight{margin-bottom:16px}.markdown-body .highlight pre{margin-bottom:0;word-break:normal}.markdown-body .highlight pre,.markdown-body pre{padding:16px;overflow:auto;font-size:85%;line-height:1.45;background-color:#f6f8fa;border-radius:3px}.markdown-body pre code{display:inline;max-width:auto;padding:0;margin:0;overflow:visible;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}.markdown-body pre code::after,.markdown-body pre code::before{content:normal}.markdown-body .full-commit .btn-outline:not(:disabled):hover{color:#005cc5;border-color:#005cc5}.markdown-body kbd{box-shadow:inset 0 -1px 0 #959da5;display:inline-block;padding:3px 5px;font:11px/10px SFMono-Regular,Consolas,"Liberation Mono",Menlo,Courier,monospace;color:#444d56;vertical-align:middle;background-color:#fcfcfc;border:1px solid #c6cbd1;border-bottom-color:#959da5;border-radius:3px;box-shadow:inset 0 -1px 0 #959da5}.markdown-body :checked+.radio-label{position:relative;z-index:1;border-color:#0366d6}.markdown-body .task-list-item{list-style-type:none}.markdown-body .task-list-item+.task-list-item{margin-top:3px}.markdown-body .task-list-item input{margin:0 .2em .25em -1.6em;vertical-align:middle}.markdown-body::before{display:table;content:""}.markdown-body::after{display:table;clear:both;content:""}.markdown-body>:first-child{margin-top:0!important}.markdown-body>:last-child{margin-bottom:0!important}.Alert,.Error,.Note,.Success,.Warning{padding:11px;margin-bottom:24px;border-style:solid;border-width:1px;border-radius:4px}.Alert p,.Error p,.Note p,.Success p,.Warning p{margin-top:0}.Alert p:last-child,.Error p:last-child,.Note p:last-child,.Success p:last-child,.Warning p:last-child{margin-bottom:0}.Alert{color:#246;background-color:#e2eef9;border-color:#bac6d3}.Warning{color:#4c4a42;background-color:#fff9ea;border-color:#dfd8c2}.Error{color:#911;background-color:#fcdede;border-color:#d2b2b2}.Success{color:#22662c;background-color:#e2f9e5;border-color:#bad3be}.Note{color:#2f363d;background-color:#f6f8fa;border-color:#d5d8da}.Alert h1,.Alert h2,.Alert h3,.Alert h4,.Alert h5,.Alert h6{color:#246;margin-bottom:0}.Warning h1,.Warning h2,.Warning h3,.Warning h4,.Warning h5,.Warning h6{color:#4c4a42;margin-bottom:0}.Error h1,.Error h2,.Error h3,.Error h4,.Error h5,.Error h6{color:#911;margin-bottom:0}.Success h1,.Success h2,.Success h3,.Success h4,.Success h5,.Success h6{color:#22662c;margin-bottom:0}.Note h1,.Note h2,.Note h3,.Note h4,.Note h5,.Note h6{color:#2f363d;margin-bottom:0}.Alert h1:first-child,.Alert h2:first-child,.Alert h3:first-child,.Alert h4:first-child,.Alert h5:first-child,.Alert h6:first-child,.Error h1:first-child,.Error h2:first-child,.Error h3:first-child,.Error h4:first-child,.Error h5:first-child,.Error h6:first-child,.Note h1:first-child,.Note h2:first-child,.Note h3:first-child,.Note h4:first-child,.Note h5:first-child,.Note h6:first-child,.Success h1:first-child,.Success h2:first-child,.Success h3:first-child,.Success h4:first-child,.Success h5:first-child,.Success h6:first-child,.Warning h1:first-child,.Warning h2:first-child,.Warning h3:first-child,.Warning h4:first-child,.Warning h5:first-child,.Warning h6:first-child{margin-top:0}h1.title,p.subtitle{text-align:center}h1.title.followed-by-subtitle{margin-bottom:0}p.subtitle{font-size:1.5em;font-weight:600;line-height:1.25;margin-top:0;margin-bottom:16px;padding-bottom:.3em}div.line-block{white-space:pre-line}
-  </style>
-  <style type="text/css">code{white-space: pre;}</style>
-  <style type="text/css">
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-    color: #aaaaaa;
-  }
-pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
-code span.al { color: #ff0000; font-weight: bold; } /* Alert */
-code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
-code span.at { color: #7d9029; } /* Attribute */
-code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
-code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
-code span.ch { color: #4070a0; } /* Char */
-code span.cn { color: #880000; } /* Constant */
-code span.co { color: #60a0b0; font-style: italic; } /* Comment */
-code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
-code span.do { color: #ba2121; font-style: italic; } /* Documentation */
-code span.dt { color: #902000; } /* DataType */
-code span.dv { color: #40a070; } /* DecVal */
-code span.er { color: #ff0000; font-weight: bold; } /* Error */
-code span.ex { } /* Extension */
-code span.fl { color: #40a070; } /* Float */
-code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
-code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
-code span.kw { color: #007020; font-weight: bold; } /* Keyword */
-code span.op { color: #666666; } /* Operator */
-code span.ot { color: #007020; } /* Other */
-code span.pp { color: #bc7a00; } /* Preprocessor */
-code span.sc { color: #4070a0; } /* SpecialChar */
-code span.ss { color: #bb6688; } /* SpecialString */
-code span.st { color: #4070a0; } /* String */
-code span.va { color: #19177c; } /* Variable */
-code span.vs { color: #4070a0; } /* VerbatimString */
-code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
-  </style>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
-<link rel="stylesheet" href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css">
-<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.staticfile.org/popper.js/1.12.9/popper.min.js" ></script>
-<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js" ></script>
-<link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
-<link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">ZimingYuan的博客</a>
-        <div class="navbar-collapse">
-            <ul class="navbar-nav">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/index.html">首页</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/html/随笔.html">随笔</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="/html/CSP模板.html">CSP模板</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-<article class="markdown-body">
-<header>
+    <nav>
+        <ul>
+            <li><big>ZimingYuan的博客</big></li>
+            <li><a href="/index.html">首页</a></li>
+            <li><a href="/html/随笔.html">随笔</a></li>
+            <li><a href="/html/CSP模板.html">CSP模板</a></li>
+            <li class="float-right sticky"><button onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="text" placeholder="搜索"></li>
+        </ul>
+    </nav>
+<header id="title-block-header">
 <h1 class="title">Ultra96V2开发板简单使用</h1>
+<hr>
 </header>
 <h3 id="概述">概述</h3>
 <p>最近向老师借了一块Ultra96 V2开发板学习FPGA。之前虽然也有接触过FPGA开发板，但第一次用的是只有一个FPGA核的Artix-7开发板，用的也是最传统的流程，即写好verilog模块，调一下网表文件，然后直接烧录到FPGA中；第二次用的是Zynq系的Pynq z2开发板了，但是也是用别人生成好的比特流文件。所以这是我第一次使用Zynq系的开发板编写硬件程序。这里记录一个简单的HLS程序从编写到生成再到板子上运行的过程。</p>
@@ -151,17 +132,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>比较简单，从<a href="http://www.pynq.io/board">这里</a>下载对应的镜像，然后烧录到SD卡上。烧录的过程不一定要使用教程里推荐的软件，我就直接用平常制作系统盘的refus程序，经测试也可以。卡插上，连接Micro USB和电源就可以启动开发板。这个Micro USB可以充当网线的功能，所以开发板启动完可以在浏览器中输入192.168.3.1使用板子的Jupyter Notebook服务器，也可以直接ssh连接xilinx@192.168.3.1。</p>
 <h4 id="简单端口的hls程序运行">简单端口的HLS程序运行</h4>
 <p>HLS（High Level Synthesis，高层次综合）是Xilinx搞的将C/C++语言转换成Verilog/VHDL的技术，本文用HLS实现硬件程序。首先打开HLS IDE，创建项目，其中选择硬件的部分我选的是xqzu3eg-sfrc784-1-i。创建结束后添加代码（计算两个数的积）：</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;product.h&quot;</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> product<span class="op">(</span><span class="dt">in_t</span> a<span class="op">,</span> <span class="dt">in_t</span> b<span class="op">,</span> <span class="dt">out_t</span> <span class="op">&amp;</span>c<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="pp">#pragma HLS INTERFACE s_axilite register port=c</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="pp">#pragma HLS INTERFACE s_axilite register port=b</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="pp">#pragma HLS INTERFACE s_axilite register port=a</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="pp">#pragma HLS INTERFACE ap_ctrl_none port=return</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> a <span class="op">*</span> b<span class="op">;</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1"></a><span class="pp">#include </span><span class="im">&quot;product.h&quot;</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="dt">void</span> product(<span class="dt">in_t</span> a, <span class="dt">in_t</span> b, <span class="dt">out_t</span> &amp;c) {</span>
+<span id="cb1-4"><a href="#cb1-4"></a></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="pp">#pragma HLS INTERFACE s_axilite register port=c</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="pp">#pragma HLS INTERFACE s_axilite register port=b</span></span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="pp">#pragma HLS INTERFACE s_axilite register port=a</span></span>
+<span id="cb1-8"><a href="#cb1-8"></a><span class="pp">#pragma HLS INTERFACE ap_ctrl_none port=return</span></span>
+<span id="cb1-9"><a href="#cb1-9"></a></span>
+<span id="cb1-10"><a href="#cb1-10"></a>    c = a * b;</span>
+<span id="cb1-11"><a href="#cb1-11"></a>}</span></code></pre></div>
 <p>product.h包含了in_t和out_t的定义，这两个都是int类型。中间四行是给端口添加的修饰，前三行指定a、b和c为通过AXI总线控制的寄存器，在ZYNQ系的开发板中，PS端需要通过AXI总线读写寄存器来控制PL端的输入输出；第四行表示不生成product函数的返回值端口。注意用HLS编写的模块不能把模块输出作为函数的返回值，因为编译后如果生成返回值端口，在硬件模块正常运行的情况下返回值端口总是为0，我就被坑过一次，模块输出应该作为可变参数返回。</p>
 <p>这里我省略test bench的编写和C仿真的过程，直接点C Synthesis综合C代码，综合结束后点Export RTL生成IP核，后面在Vivado中使用。</p>
 <p>打开Vivado，创建项目，硬件的部分选择和HLS IDE里选的一样。创建结束后，在窗口左侧的Flow Navigator里点IP Catalog。在打开的IP Catalog标签里右键Vivado Repository，点Add Repository。这时可以选择刚才在HLS IDE里生成的IP核所在文件夹，一般是<code>HLS项目文件夹/solution1/impl/ip</code>，选择后在Vivado Repository上方就可以看到User Repository了，递归点开下拉箭头可以看到名为Product的IP核。</p>
@@ -171,171 +152,167 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>接下来就是在板子上运行了。刚才编写的硬件程序是在PL端运行的，还需要PS端的软件程序启动和控制硬件程序。正常的开发流程是使用Vitis IDE编写C/C++程序，然后利用串口通信将比特流烧录到PL端，再将软件程序传输到存储卡中。不过UltraV2开发板支持PYNQ框架，这个框架能让用户使用Python方便地编写软件程序，还能直接启动存储卡上的比特流文件，不需要串口通信。所以这里介绍基于PYNQ的方法。</p>
 <p>首先将比特流文件和属性文件传到存储卡中，这一步可以用浏览器打开Jupyter Notebook页面上传，也可以用scp命令。比特流文件的路径一般是<code>Vivado项目文件夹/项目名.runs/impl_1/BlockDesign名_wrapper.bit</code>，属性文件的路径一般是<code>Vivado项目文件夹/项目名.srcs/sources_1/bd/BlockDesign名/hw_handoff/BlockDesign名.hwh</code>，两者需传到存储卡同个路径下，名字（不包括扩展名）也要改成一样，不然PYNQ无法识别。注意这个属性文件在老版本的PYNQ中需要的是tcl文件，新版本（本文使用的PYNQ版本为2.7.0）换成了hwh文件，所以可能比较老的教程和本文不同。</p>
 <p>然后开始写Python脚本：</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pynq <span class="im">import</span> Overlay</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># 读取比特流文件，假设其放在用户目录</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>overlay <span class="op">=</span> Overlay(<span class="st">&#39;/home/xilinx/design_1_wrapper.bit&#39;</span>)</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># product_0是Block Design中用户定义的IP核的名字，见上图IP核上方黑色标题</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>product <span class="op">=</span> overlay.product_0</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># 利用AXI总线的功能，写入模块的输入端口寄存器</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>product.register_map.a <span class="op">=</span> <span class="dv">8</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>product.register_map.b <span class="op">=</span> <span class="dv">8</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 利用AXI总线的功能，打印模块的输出端口寄存器的值</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(product.register_map.c)</span></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">from</span> pynq <span class="im">import</span> Overlay</span>
+<span id="cb2-2"><a href="#cb2-2"></a></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="co"># 读取比特流文件，假设其放在用户目录</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a>overlay <span class="op">=</span> Overlay(<span class="st">&#39;/home/xilinx/design_1_wrapper.bit&#39;</span>)</span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="co"># product_0是Block Design中用户定义的IP核的名字，见上图IP核上方黑色标题</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>product <span class="op">=</span> overlay.product_0</span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="co"># 利用AXI总线的功能，写入模块的输入端口寄存器</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a>product.register_map.a <span class="op">=</span> <span class="dv">8</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a>product.register_map.b <span class="op">=</span> <span class="dv">8</span></span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="co"># 利用AXI总线的功能，打印模块的输出端口寄存器的值</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a><span class="bu">print</span>(product.register_map.c)</span></code></pre></div>
 <p>输出为64，符合预期。</p>
 <p>可以输出<code>product.register_map</code>查看模块包含的寄存器，除了a、b和c还有一些控制寄存器。除了通过以上的方式读写寄存器，还可以通过地址的方式，查看<code>HLS项目文件夹/solution1/impl/ip/drivers/模块名_v版本号/src/x模块名_hw.h</code>：</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">// ==============================================================</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">// Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="co">// Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co">// ==============================================================</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="co">// AXILiteS</span></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="co">// 0x00 : reserved</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co">// 0x04 : reserved</span></span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="co">// 0x08 : reserved</span></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a><span class="co">// 0x0c : reserved</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a><span class="co">// 0x10 : Data signal of a</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="co">//        bit 31~0 - a[31:0] (Read/Write)</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co">// 0x14 : reserved</span></span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a><span class="co">// 0x18 : Data signal of b</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a><span class="co">//        bit 31~0 - b[31:0] (Read/Write)</span></span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a><span class="co">// 0x1c : reserved</span></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co">// 0x20 : Data signal of c</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a><span class="co">//        bit 31~0 - c[31:0] (Read)</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a><span class="co">// 0x24 : Control signal of c</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a><span class="co">//        bit 0  - c_ap_vld (Read/COR)</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co">//        others - reserved</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="co">// (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a><span class="pp">#define XPRODUCT_AXILITES_ADDR_A_DATA 0x10</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a><span class="pp">#define XPRODUCT_AXILITES_BITS_A_DATA 32</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a><span class="pp">#define XPRODUCT_AXILITES_ADDR_B_DATA 0x18</span></span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a><span class="pp">#define XPRODUCT_AXILITES_BITS_B_DATA 32</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="pp">#define XPRODUCT_AXILITES_ADDR_C_DATA 0x20</span></span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a><span class="pp">#define XPRODUCT_AXILITES_BITS_C_DATA 32</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a><span class="pp">#define XPRODUCT_AXILITES_ADDR_C_CTRL 0x24</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1"></a><span class="co">// ==============================================================</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="co">// Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">// Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="co">// ==============================================================</span></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="co">// AXILiteS</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="co">// 0x00 : reserved</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co">// 0x04 : reserved</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="co">// 0x08 : reserved</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="co">// 0x0c : reserved</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="co">// 0x10 : Data signal of a</span></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co">//        bit 31~0 - a[31:0] (Read/Write)</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="co">// 0x14 : reserved</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="co">// 0x18 : Data signal of b</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="co">//        bit 31~0 - b[31:0] (Read/Write)</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="co">// 0x1c : reserved</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="co">// 0x20 : Data signal of c</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="co">//        bit 31~0 - c[31:0] (Read)</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="co">// 0x24 : Control signal of c</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a><span class="co">//        bit 0  - c_ap_vld (Read/COR)</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a><span class="co">//        others - reserved</span></span>
+<span id="cb3-21"><a href="#cb3-21"></a><span class="co">// (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)</span></span>
+<span id="cb3-22"><a href="#cb3-22"></a></span>
+<span id="cb3-23"><a href="#cb3-23"></a><span class="pp">#define XPRODUCT_AXILITES_ADDR_A_DATA 0x10</span></span>
+<span id="cb3-24"><a href="#cb3-24"></a><span class="pp">#define XPRODUCT_AXILITES_BITS_A_DATA 32</span></span>
+<span id="cb3-25"><a href="#cb3-25"></a><span class="pp">#define XPRODUCT_AXILITES_ADDR_B_DATA 0x18</span></span>
+<span id="cb3-26"><a href="#cb3-26"></a><span class="pp">#define XPRODUCT_AXILITES_BITS_B_DATA 32</span></span>
+<span id="cb3-27"><a href="#cb3-27"></a><span class="pp">#define XPRODUCT_AXILITES_ADDR_C_DATA 0x20</span></span>
+<span id="cb3-28"><a href="#cb3-28"></a><span class="pp">#define XPRODUCT_AXILITES_BITS_C_DATA 32</span></span>
+<span id="cb3-29"><a href="#cb3-29"></a><span class="pp">#define XPRODUCT_AXILITES_ADDR_C_CTRL 0x24</span></span></code></pre></div>
 <p>里面给出了寄存器的映射方案，因此上面的Python代码后几行我们也可以这样写：</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>product.write(<span class="bn">0x10</span>, <span class="dv">8</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>product.write(<span class="bn">0x18</span>, <span class="dv">8</span>)</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(product.read(<span class="bn">0x20</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1"></a>product.write(<span class="bn">0x10</span>, <span class="dv">8</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a>product.write(<span class="bn">0x18</span>, <span class="dv">8</span>)</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="bu">print</span>(product.read(<span class="bn">0x20</span>))</span></code></pre></div>
 <h4 id="bram端口的hls程序运行">BRAM端口的HLS程序运行</h4>
 <p>有时我们需要将数组（的头指针）传给模块，由模块对数组的所有元素进行计算。这种情况下HLS会生成BRAM端口的硬件模块，将参与计算的值存在BRAM中，模块再从BRAM中取数。这里给出一个计算向量点积的HLS代码：</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;product.h&quot;</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> product<span class="op">(</span><span class="dt">in_t</span> a<span class="op">[</span>VSIZE<span class="op">],</span> <span class="dt">in_t</span> b<span class="op">[</span>VSIZE<span class="op">],</span> <span class="dt">out_t</span> <span class="op">&amp;</span>c<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="pp">#pragma HLS INTERFACE s_axilite register port=c</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="pp">#pragma HLS INTERFACE s_axilite register port=b</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="pp">#pragma HLS INTERFACE s_axilite register port=a</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="pp">#pragma HLS INTERFACE ap_ctrl_none port=return</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="dt">out_t</span> r <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> VSIZE<span class="op">;</span> i<span class="op">++)</span> r <span class="op">+=</span> a<span class="op">[</span>i<span class="op">]</span> <span class="op">*</span> b<span class="op">[</span>i<span class="op">];</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> r<span class="op">;</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1"></a><span class="pp">#include </span><span class="im">&quot;product.h&quot;</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="dt">void</span> product(<span class="dt">in_t</span> a[VSIZE], <span class="dt">in_t</span> b[VSIZE], <span class="dt">out_t</span> &amp;c) {</span>
+<span id="cb5-4"><a href="#cb5-4"></a></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="pp">#pragma HLS INTERFACE s_axilite register port=c</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="pp">#pragma HLS INTERFACE s_axilite register port=b</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="pp">#pragma HLS INTERFACE s_axilite register port=a</span></span>
+<span id="cb5-8"><a href="#cb5-8"></a><span class="pp">#pragma HLS INTERFACE ap_ctrl_none port=return</span></span>
+<span id="cb5-9"><a href="#cb5-9"></a></span>
+<span id="cb5-10"><a href="#cb5-10"></a>    <span class="dt">out_t</span> r = <span class="dv">0</span>;</span>
+<span id="cb5-11"><a href="#cb5-11"></a>    <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; VSIZE; i++) r += a[i] * b[i];</span>
+<span id="cb5-12"><a href="#cb5-12"></a>    c = r;</span>
+<span id="cb5-13"><a href="#cb5-13"></a>}</span></code></pre></div>
 <p>VSIZE常量在product.h里定义了是16，其他和简单端口的HLS程序一样。按照前面的步骤生成IP核、创建Block Design并生成比特流。新的IP核和原来的端口一致，所以连线也没有变化。将比特流和属性文件放入存储卡，然后写Python脚本：</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pynq <span class="im">import</span> Overlay</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>overlay <span class="op">=</span> Overlay(<span class="st">&#39;/home/xilinx/design_1_wrapper.bit&#39;</span>)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>product <span class="op">=</span> overlay.product_0</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a><span class="co"># 用numpy创建第一个向量数组，值为[ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15]</span></span>
-<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.array(<span class="bu">range</span>(<span class="dv">16</span>), dtype<span class="op">=</span>np.int32)</span>
-<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 用numpy创建第二个向量数组，值为[32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47]</span></span>
-<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.array(<span class="bu">range</span>(<span class="dv">32</span>, <span class="dv">48</span>), dtype<span class="op">=</span>np.int32)</span>
-<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a><span class="co"># 将数组a写入第一个BRAM端口中</span></span>
-<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>product.write(<span class="bn">0x40</span>, a.tobytes())</span>
-<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a><span class="co"># 将数组b写入第二个BRAM端口中</span></span>
-<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>product.write(<span class="bn">0x80</span>, b.tobytes())</span>
-<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(product.register_map.c)</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1"></a><span class="im">from</span> pynq <span class="im">import</span> Overlay</span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb6-3"><a href="#cb6-3"></a></span>
+<span id="cb6-4"><a href="#cb6-4"></a>overlay <span class="op">=</span> Overlay(<span class="st">&#39;/home/xilinx/design_1_wrapper.bit&#39;</span>)</span>
+<span id="cb6-5"><a href="#cb6-5"></a>product <span class="op">=</span> overlay.product_0</span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="co"># 用numpy创建第一个向量数组，值为[ 0  1  2  3  4  5  6  7  8  9 10 11 12 13 14 15]</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a>a <span class="op">=</span> np.array(<span class="bu">range</span>(<span class="dv">16</span>), dtype<span class="op">=</span>np.int32)</span>
+<span id="cb6-8"><a href="#cb6-8"></a><span class="co"># 用numpy创建第二个向量数组，值为[32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47]</span></span>
+<span id="cb6-9"><a href="#cb6-9"></a>b <span class="op">=</span> np.array(<span class="bu">range</span>(<span class="dv">32</span>, <span class="dv">48</span>), dtype<span class="op">=</span>np.int32)</span>
+<span id="cb6-10"><a href="#cb6-10"></a><span class="co"># 将数组a写入第一个BRAM端口中</span></span>
+<span id="cb6-11"><a href="#cb6-11"></a>product.write(<span class="bn">0x40</span>, a.tobytes())</span>
+<span id="cb6-12"><a href="#cb6-12"></a><span class="co"># 将数组b写入第二个BRAM端口中</span></span>
+<span id="cb6-13"><a href="#cb6-13"></a>product.write(<span class="bn">0x80</span>, b.tobytes())</span>
+<span id="cb6-14"><a href="#cb6-14"></a><span class="bu">print</span>(product.register_map.c)</span></code></pre></div>
 <p>结果为5080，符合预期。</p>
 <p>可以看到AXI总线也支持通过地址读写BRAM，查看<code>HLS项目文件夹/solution1/impl/ip/drivers/模块名_v版本号/src/x模块名_hw.h</code>：</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">// ==============================================================</span></span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">// Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)</span></span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="co">// Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co">// ==============================================================</span></span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co">// AXILiteS</span></span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="co">// 0x00 : reserved</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="co">// 0x04 : reserved</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co">// 0x08 : reserved</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a><span class="co">// 0x0c : reserved</span></span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co">// 0xc0 : Data signal of c</span></span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co">//        bit 31~0 - c[31:0] (Read)</span></span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co">// 0xc4 : Control signal of c</span></span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="co">//        bit 0  - c_ap_vld (Read/COR)</span></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="co">//        others - reserved</span></span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co">// 0x40 ~</span></span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="co">// 0x7f : Memory &#39;a&#39; (16 * 32b)</span></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="co">//        Word n : bit [31:0] - a[n]</span></span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co">// 0x80 ~</span></span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="co">// 0xbf : Memory &#39;b&#39; (16 * 32b)</span></span>
-<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="co">//        Word n : bit [31:0] - b[n]</span></span>
-<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a><span class="co">// (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)</span></span>
-<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a><span class="pp">#define XPRODUCT_AXILITES_ADDR_C_DATA 0xc0</span></span>
-<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a><span class="pp">#define XPRODUCT_AXILITES_BITS_C_DATA 32</span></span>
-<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a><span class="pp">#define XPRODUCT_AXILITES_ADDR_C_CTRL 0xc4</span></span>
-<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a><span class="pp">#define XPRODUCT_AXILITES_ADDR_A_BASE 0x40</span></span>
-<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="pp">#define XPRODUCT_AXILITES_ADDR_A_HIGH 0x7f</span></span>
-<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a><span class="pp">#define XPRODUCT_AXILITES_WIDTH_A     32</span></span>
-<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a><span class="pp">#define XPRODUCT_AXILITES_DEPTH_A     16</span></span>
-<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a><span class="pp">#define XPRODUCT_AXILITES_ADDR_B_BASE 0x80</span></span>
-<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a><span class="pp">#define XPRODUCT_AXILITES_ADDR_B_HIGH 0xbf</span></span>
-<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a><span class="pp">#define XPRODUCT_AXILITES_WIDTH_B     32</span></span>
-<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a><span class="pp">#define XPRODUCT_AXILITES_DEPTH_B     16</span></span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb7-1"><a href="#cb7-1"></a><span class="co">// ==============================================================</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="co">// Vivado(TM) HLS - High-Level Synthesis from C, C++ and SystemC v2019.2 (64-bit)</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="co">// Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="co">// ==============================================================</span></span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="co">// AXILiteS</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="co">// 0x00 : reserved</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="co">// 0x04 : reserved</span></span>
+<span id="cb7-8"><a href="#cb7-8"></a><span class="co">// 0x08 : reserved</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="co">// 0x0c : reserved</span></span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="co">// 0xc0 : Data signal of c</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a><span class="co">//        bit 31~0 - c[31:0] (Read)</span></span>
+<span id="cb7-12"><a href="#cb7-12"></a><span class="co">// 0xc4 : Control signal of c</span></span>
+<span id="cb7-13"><a href="#cb7-13"></a><span class="co">//        bit 0  - c_ap_vld (Read/COR)</span></span>
+<span id="cb7-14"><a href="#cb7-14"></a><span class="co">//        others - reserved</span></span>
+<span id="cb7-15"><a href="#cb7-15"></a><span class="co">// 0x40 ~</span></span>
+<span id="cb7-16"><a href="#cb7-16"></a><span class="co">// 0x7f : Memory &#39;a&#39; (16 * 32b)</span></span>
+<span id="cb7-17"><a href="#cb7-17"></a><span class="co">//        Word n : bit [31:0] - a[n]</span></span>
+<span id="cb7-18"><a href="#cb7-18"></a><span class="co">// 0x80 ~</span></span>
+<span id="cb7-19"><a href="#cb7-19"></a><span class="co">// 0xbf : Memory &#39;b&#39; (16 * 32b)</span></span>
+<span id="cb7-20"><a href="#cb7-20"></a><span class="co">//        Word n : bit [31:0] - b[n]</span></span>
+<span id="cb7-21"><a href="#cb7-21"></a><span class="co">// (SC = Self Clear, COR = Clear on Read, TOW = Toggle on Write, COH = Clear on Handshake)</span></span>
+<span id="cb7-22"><a href="#cb7-22"></a></span>
+<span id="cb7-23"><a href="#cb7-23"></a><span class="pp">#define XPRODUCT_AXILITES_ADDR_C_DATA 0xc0</span></span>
+<span id="cb7-24"><a href="#cb7-24"></a><span class="pp">#define XPRODUCT_AXILITES_BITS_C_DATA 32</span></span>
+<span id="cb7-25"><a href="#cb7-25"></a><span class="pp">#define XPRODUCT_AXILITES_ADDR_C_CTRL 0xc4</span></span>
+<span id="cb7-26"><a href="#cb7-26"></a><span class="pp">#define XPRODUCT_AXILITES_ADDR_A_BASE 0x40</span></span>
+<span id="cb7-27"><a href="#cb7-27"></a><span class="pp">#define XPRODUCT_AXILITES_ADDR_A_HIGH 0x7f</span></span>
+<span id="cb7-28"><a href="#cb7-28"></a><span class="pp">#define XPRODUCT_AXILITES_WIDTH_A     32</span></span>
+<span id="cb7-29"><a href="#cb7-29"></a><span class="pp">#define XPRODUCT_AXILITES_DEPTH_A     16</span></span>
+<span id="cb7-30"><a href="#cb7-30"></a><span class="pp">#define XPRODUCT_AXILITES_ADDR_B_BASE 0x80</span></span>
+<span id="cb7-31"><a href="#cb7-31"></a><span class="pp">#define XPRODUCT_AXILITES_ADDR_B_HIGH 0xbf</span></span>
+<span id="cb7-32"><a href="#cb7-32"></a><span class="pp">#define XPRODUCT_AXILITES_WIDTH_B     32</span></span>
+<span id="cb7-33"><a href="#cb7-33"></a><span class="pp">#define XPRODUCT_AXILITES_DEPTH_B     16</span></span></code></pre></div>
 <p>可以看到a和b都有对应的base、high、width和depth常量，其中base表示BRAM在总线中映射的首地址，high表示末地址，width和depth则是BRAM的位宽和深度。write方法除了可以往地址里写数，还可以往地址里写字节串，所以用Numpy数组的tobytes方法将数组转换成字节串就可以写入BRAM中了。</p>
 <h4 id="dram端口的hls程序运行">DRAM端口的HLS程序运行</h4>
 <p>BRAM是FPGA片上的存储器，速度快但是容量低，当用户需要从PS端往PL端传输大量数据时就力不从心了。解决方法是使用PS端和PL端共享的DRAM，也就是内存，把需要用到的大量数据传到内存中，再由硬件按需读取，这时模块的端口就是DRAM端口，硬件会将端口寄存器里的值解释为DRAM地址然后从DRAM中读数。</p>
 <p>HLS代码如下：</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#include </span><span class="im">&quot;product.h&quot;</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="dt">void</span> product<span class="op">(</span><span class="dt">in_t</span> a<span class="op">[</span>VSIZE<span class="op">],</span> <span class="dt">in_t</span> b<span class="op">[</span>VSIZE<span class="op">],</span> <span class="dt">out_t</span> <span class="op">&amp;</span>c<span class="op">)</span> <span class="op">{</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="pp">#pragma HLS INTERFACE m_axi depth=512 port=b</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="pp">#pragma HLS INTERFACE m_axi depth=512 port=a</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="pp">#pragma HLS INTERFACE s_axilite register port=c</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="pp">#pragma HLS INTERFACE s_axilite register port=b</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="pp">#pragma HLS INTERFACE s_axilite register port=a</span></span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="pp">#pragma HLS INTERFACE ap_ctrl_none port=return</span></span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a>    <span class="dt">out_t</span> r <span class="op">=</span> <span class="dv">0</span><span class="op">;</span></span>
-<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> <span class="op">(</span><span class="dt">int</span> i <span class="op">=</span> <span class="dv">0</span><span class="op">;</span> i <span class="op">&lt;</span> VSIZE<span class="op">;</span> i<span class="op">++)</span> r <span class="op">+=</span> a<span class="op">[</span>i<span class="op">]</span> <span class="op">*</span> b<span class="op">[</span>i<span class="op">];</span></span>
-<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a>    c <span class="op">=</span> r<span class="op">;</span></span>
-<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a><span class="op">}</span></span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1"></a><span class="pp">#include </span><span class="im">&quot;product.h&quot;</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="dt">void</span> product(<span class="dt">in_t</span> a[VSIZE], <span class="dt">in_t</span> b[VSIZE], <span class="dt">out_t</span> &amp;c) {</span>
+<span id="cb8-4"><a href="#cb8-4"></a></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="pp">#pragma HLS INTERFACE m_axi depth=512 port=b</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="pp">#pragma HLS INTERFACE m_axi depth=512 port=a</span></span>
+<span id="cb8-7"><a href="#cb8-7"></a><span class="pp">#pragma HLS INTERFACE s_axilite register port=c</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="pp">#pragma HLS INTERFACE s_axilite register port=b</span></span>
+<span id="cb8-9"><a href="#cb8-9"></a><span class="pp">#pragma HLS INTERFACE s_axilite register port=a</span></span>
+<span id="cb8-10"><a href="#cb8-10"></a><span class="pp">#pragma HLS INTERFACE ap_ctrl_none port=return</span></span>
+<span id="cb8-11"><a href="#cb8-11"></a></span>
+<span id="cb8-12"><a href="#cb8-12"></a>    <span class="dt">out_t</span> r = <span class="dv">0</span>;</span>
+<span id="cb8-13"><a href="#cb8-13"></a>    <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; VSIZE; i++) r += a[i] * b[i];</span>
+<span id="cb8-14"><a href="#cb8-14"></a>    c = r;</span>
+<span id="cb8-15"><a href="#cb8-15"></a>}</span></code></pre></div>
 <p>和前面的代码基本一致，但多了两个端口修饰，将a和b同时声明为m_axi类型，表示这两个端口是DRAM端口，寄存器的值是DRAM地址，计算时要从DRAM中取数。depth是取数的位数，数组大小为16，int是32位，16乘32结果为512。</p>
 <p>继续按照前面的步骤生成IP核、创建Block Design，这时会发现product核的右侧多了一个m_axi_gmem的端口，需要经过总线连到DRAM。首先需要给ZYNQ核添加DRAM端口，办法是双击Zynq核对IP进行定制，在对话框左侧选择PS-PL Configuration，右边依次展开PS-PL Interfaces、Slave Interfaces、AXI HP，勾选AXI HPC0 FPD，然后点OK。这时会发现ZYNQ核多了一个S_AXI_HPC0_FPD端口（和一个时钟端口），再点Run Connection Automation，就可以自动连接了：</p>
 <p><img src="/img/Ultra96V2开发板简单使用_2.png" /></p>
 <p>相比前面多了一个AXI SmartConnect将product核和Zynq多出来的总线端口相连。继续按前面的步骤一直到生成比特流并传输文件。用来控制的Python脚本：</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pynq <span class="im">import</span> Overlay, allocate</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>overlay <span class="op">=</span> Overlay(<span class="st">&#39;/home/xilinx/design_1_wrapper.bit&#39;</span>)</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>product <span class="op">=</span> overlay.product_0</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>a <span class="op">=</span> np.array(<span class="bu">range</span>(<span class="dv">16</span>), dtype<span class="op">=</span>np.int32)</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>b <span class="op">=</span> np.array(<span class="bu">range</span>(<span class="dv">32</span>, <span class="dv">48</span>), dtype<span class="op">=</span>np.int32)</span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="co"># 创建连续的内存区域，供PL端读取</span></span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>mem_a <span class="op">=</span> allocate((<span class="dv">16</span>, ), dtype<span class="op">=</span>np.int32)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>mem_b <span class="op">=</span> allocate((<span class="dv">16</span>, ), dtype<span class="op">=</span>np.int32)</span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># 将numpy数组中的元素复制到刚才创建的内存区域中</span></span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>np.copyto(mem_a, a)</span>
-<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>np.copyto(mem_b, b)</span>
-<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="co"># 获取刚才创建的内存区域的地址</span></span>
-<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a>addr_a <span class="op">=</span> mem_a.device_address</span>
-<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a>addr_b <span class="op">=</span> mem_b.device_address</span>
-<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="co"># 将地址传给product的端口寄存器</span></span>
-<span id="cb9-18"><a href="#cb9-18" aria-hidden="true" tabindex="-1"></a>product.register_map.a <span class="op">=</span> addr_a</span>
-<span id="cb9-19"><a href="#cb9-19" aria-hidden="true" tabindex="-1"></a>product.register_map.b <span class="op">=</span> addr_b</span>
-<span id="cb9-20"><a href="#cb9-20" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(product.register_map.c)</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">from</span> pynq <span class="im">import</span> Overlay, allocate</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb9-3"><a href="#cb9-3"></a></span>
+<span id="cb9-4"><a href="#cb9-4"></a>overlay <span class="op">=</span> Overlay(<span class="st">&#39;/home/xilinx/design_1_wrapper.bit&#39;</span>)</span>
+<span id="cb9-5"><a href="#cb9-5"></a>product <span class="op">=</span> overlay.product_0</span>
+<span id="cb9-6"><a href="#cb9-6"></a>a <span class="op">=</span> np.array(<span class="bu">range</span>(<span class="dv">16</span>), dtype<span class="op">=</span>np.int32)</span>
+<span id="cb9-7"><a href="#cb9-7"></a>b <span class="op">=</span> np.array(<span class="bu">range</span>(<span class="dv">32</span>, <span class="dv">48</span>), dtype<span class="op">=</span>np.int32)</span>
+<span id="cb9-8"><a href="#cb9-8"></a><span class="co"># 创建连续的内存区域，供PL端读取</span></span>
+<span id="cb9-9"><a href="#cb9-9"></a>mem_a <span class="op">=</span> allocate((<span class="dv">16</span>, ), dtype<span class="op">=</span>np.int32)</span>
+<span id="cb9-10"><a href="#cb9-10"></a>mem_b <span class="op">=</span> allocate((<span class="dv">16</span>, ), dtype<span class="op">=</span>np.int32)</span>
+<span id="cb9-11"><a href="#cb9-11"></a><span class="co"># 将numpy数组中的元素复制到刚才创建的内存区域中</span></span>
+<span id="cb9-12"><a href="#cb9-12"></a>np.copyto(mem_a, a)</span>
+<span id="cb9-13"><a href="#cb9-13"></a>np.copyto(mem_b, b)</span>
+<span id="cb9-14"><a href="#cb9-14"></a><span class="co"># 获取刚才创建的内存区域的地址</span></span>
+<span id="cb9-15"><a href="#cb9-15"></a>addr_a <span class="op">=</span> mem_a.device_address</span>
+<span id="cb9-16"><a href="#cb9-16"></a>addr_b <span class="op">=</span> mem_b.device_address</span>
+<span id="cb9-17"><a href="#cb9-17"></a><span class="co"># 将地址传给product的端口寄存器</span></span>
+<span id="cb9-18"><a href="#cb9-18"></a>product.register_map.a <span class="op">=</span> addr_a</span>
+<span id="cb9-19"><a href="#cb9-19"></a>product.register_map.b <span class="op">=</span> addr_b</span>
+<span id="cb9-20"><a href="#cb9-20"></a><span class="bu">print</span>(product.register_map.c)</span></code></pre></div>
 <p>结果为5080，符合预期。</p>
 <p>注意Numpy直接创建的数组不一定是连续的内存区域，也很难获得物理地址，所以pynq提供了一个继承自Numpy数组的缓冲区类型，既能被PL端读取，又能很方便地和Numpy之间互相传数据。注意老版本分配缓冲区的做法是先实例化一个名为Xlnk的类，然后用这个类分配缓冲区，新版本（本文使用的PYNQ版本为2.7.0）修改了API。</p>
 <h3 id="总结">总结</h3>
 <p>目前网上关于这方面的教程良莠不齐，要么是只教到怎么装系统的，要么是用Vitis IDE走串口烧录的，要么只涉及简单端口的传输，要么针对的是常见的Zynq7000开发板，我也参考结合了很多资料才成功跑通并总结出本文，尤其是DRAM端口的相关内容。不过网上设计DRAM的一般使用的是流式传输，数据的传输是异步的，这种方法效率更高，适合传输大量数据，在Block Design的时候需要加上DMA核并连接中断相关端口，后面有时间再研究这种方法。</p>
 <p>如果使用HDL语言编写硬件模块流程也应该类似，Vivado应该有往HDL模块自动加上AXI总线协议并打包成IP核的功能，这点我也未尝试，后面有时间再研究。</p>
-</article>
-<span class="bg-light text-muted border boder-primary d-block p-2 text-center">
-    转载请注明出处<br>
-    © 2022 ZimingYuan的博客
-</span>
-<div style="background-color: #ebd5a1; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; pointer-events: none; opacity: 0.2;">
-</div>
+<footer>
+    <hr><center>转载请注明出处<br>© 2022 ZimingYuan的博客</center>
+</footer>
 </body>
 </html>
