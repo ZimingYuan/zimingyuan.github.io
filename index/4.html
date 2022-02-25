@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html data-theme="tufte" lang="zh-CN">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
-<link href="/extra/classless.css" rel="stylesheet"/>
+<html lang="zh-CN" data-theme="tufte">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="/extra/classless.css" />
 <style>
 html[data-theme='tufte']{
     --rem: 15px;
@@ -22,7 +22,7 @@ html[data-theme='tufte']{
     --cemph: #111;
 }
 </style>
-<script>
+        <script>
             let search = () => {
                 let word = document.querySelector('input').value;
                 if (word.length == 0) {
@@ -32,109 +32,111 @@ html[data-theme='tufte']{
                 }
             };
         </script>
-<link href="/img/favicon.ico" rel="icon" type="image/x-icon"/>
-<link href="/img/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
-<title>ZimingYuan的博客首页（第4页）</title>
-</head>
-<body>
-<nav>
-<ul>
-<li><big>ZimingYuan的博客</big></li>
-<li><a href="/index.html">首页</a></li>
-<li><a href="/html/随笔.html">随笔</a></li>
-<li><a href="/html/CSP模板.html">CSP模板</a></li>
-<li class="float-right sticky"><button onclick="search()">Go</button></li>
-<li class="float-right sticky"><input placeholder="搜索" type="text"/></li>
-</ul>
-</nav>
-<header>
-</header>
-<div class="row">
-<div class="col-9" id="Bloglist">
+        <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+        <title>ZimingYuan的博客首页（第4页）</title>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><big>ZimingYuan的博客</big></li>
+                <li><a href="/index.html">首页</a></li>
+                <li><a href="/html/随笔.html">随笔</a></li>
+                <li><a href="/html/CSP模板.html">CSP模板</a></li>
+                <li class="float-right sticky"><button onclick="search()">Go</button></li>
+                <li class="float-right sticky"><input type="text" placeholder="搜索"></li>
+            </ul>
+        </nav>
+        <header>
+        </header>
+        <div class="row">
+            <div class="col">
+                
 <div class="card">
-<h4><a href="/html/WindowsTerminal折腾记.html">WindowsTerminal折腾记</a></h4><hr/>
-<h5>摘要：</h5><p>背景 Windows Terminal最近出了1.0版本，界面非常美观，但要配置好还是要下一番功夫，而且网上的教程都是互相抄，所以特将我的配置过程记录如下。 字体 首先是字体，默认字体英文不错，但中文挺不好看的，而Windows Terminal不支持单字节字符和双字节字符配置不同的字体，所以我找到...</p>
-<em>2020年6月9日</em>
+    <h4><a href="/html/Unity3D+Post_Processing_Stack_V2自定义后处理效果研究.html">Unity3D+Post_Processing_Stack_V2自定义后处理效果研究</a></h4><hr>
+    <h5>摘要：</h5><p>背景 众所周知，Unity3D支持自定义后处理效果，实现过程有三步： 添加着色器，在着色器里书写后处理代码； 添加材质，把材质和着色器绑定； 给相机添加脚本，重写其OnRenderImage方法，将材质传入Graphics.Blit方法中。 但是在做最近的一个项目时，我使用了Unity3D的官方后处...</p>
+    <em>2020年7月14日</em>
 </div>
 
 <div class="card">
-<h4><a href="/html/关于PowerShell调用Linq的一组实验.html">关于PowerShell调用Linq的一组实验</a></h4><hr/>
-<h5>摘要：</h5><p>调用Linq返回的那个类型我不太清楚，但应该是一个实现了IEnumerable的类，不能直接当作数组使用，但可以用For-Object(%)进行迭代。因此可见，当Zip...</p>
-<em>2020年4月30日</em>
+    <h4><a href="/html/WindowsTerminal折腾记.html">WindowsTerminal折腾记</a></h4><hr>
+    <h5>摘要：</h5><p>背景 Windows Terminal最近出了1.0版本，界面非常美观，但要配置好还是要下一番功夫，而且网上的教程都是互相抄，所以特将我的配置过程记录如下。 字体 首先是字体，默认字体英文不错，但中文挺不好看的，而Windows Terminal不支持单字节字符和双字节字符配置不同的字体，所以我找到...</p>
+    <em>2020年6月9日</em>
 </div>
 
 <div class="card">
-<h4><a href="/html/PowerShell创建参考窗口.html">PowerShell创建参考窗口</a></h4><hr/>
-<h5>摘要：</h5><p>平常我们经常遇到这样一个问题，在使用一个窗口工作时常常需要参考其他窗口的文字或图片，此时就需要频繁切换窗口；或者是看视频时需要参考前面进度...</p>
-<em>2020年4月30日</em>
+    <h4><a href="/html/关于PowerShell调用Linq的一组实验.html">关于PowerShell调用Linq的一组实验</a></h4><hr>
+    <h5>摘要：</h5><p>调用Linq返回的那个类型我不太清楚，但应该是一个实现了IEnumerable的类，不能直接当作数组使用，但可以用For-Object(%)进行迭代。因此可见，当Zip...</p>
+    <em>2020年4月30日</em>
 </div>
 
 <div class="card">
-<h4><a href="/html/Sympy常用函数总结.html">Sympy常用函数总结</a></h4><hr/>
-<h5>摘要：</h5><p>基础 数学格式输出： 添加变量： 声明分数： 化简式子： 因式分解： 提取公因式： 约分： 裂项： 变换形式： 数列求和： 数列求积： 微积分 求导：...</p>
-<em>2020年4月6日</em>
+    <h4><a href="/html/PowerShell创建参考窗口.html">PowerShell创建参考窗口</a></h4><hr>
+    <h5>摘要：</h5><p>平常我们经常遇到这样一个问题，在使用一个窗口工作时常常需要参考其他窗口的文字或图片，此时就需要频繁切换窗口；或者是看视频时需要参考前面进度...</p>
+    <em>2020年4月30日</em>
 </div>
 
 <div class="card">
-<h4><a href="/html/Python切图脚本.html">Python切图脚本</a></h4><hr/>
-<h5>摘要：</h5><p>时值疫情，作业需要在网上提交。最近老师改变了交作业方式，现在需要将完整的作业图片切分成一题一题的提交，故本人写了个python脚本实现自动切分。...</p>
-<em>2020年3月2日</em>
+    <h4><a href="/html/Sympy常用函数总结.html">Sympy常用函数总结</a></h4><hr>
+    <h5>摘要：</h5><p>基础 数学格式输出： 添加变量： 声明分数： 化简式子： 因式分解： 提取公因式： 约分： 裂项： 变换形式： 数列求和： 数列求积： 微积分 求导：...</p>
+    <em>2020年4月6日</em>
 </div>
 
 <div class="card">
-<h4><a href="/html/用Graphviz画简单依赖图示例.html">用Graphviz画简单依赖图示例</a></h4><hr/>
-<h5>摘要：</h5><p>代码 编译 效果...</p>
-<em>2020年2月23日</em>
+    <h4><a href="/html/Python切图脚本.html">Python切图脚本</a></h4><hr>
+    <h5>摘要：</h5><p>时值疫情，作业需要在网上提交。最近老师改变了交作业方式，现在需要将完整的作业图片切分成一题一题的提交，故本人写了个python脚本实现自动切分。...</p>
+    <em>2020年3月2日</em>
 </div>
 
 <div class="card">
-<h4><a href="/html/gvim使用总结.html">gvim使用总结</a></h4><hr/>
-<h5>摘要：</h5><p>我的gvim配置 一些总结...</p>
-<em>2020年2月14日</em>
+    <h4><a href="/html/用Graphviz画简单依赖图示例.html">用Graphviz画简单依赖图示例</a></h4><hr>
+    <h5>摘要：</h5><p>代码 编译 效果...</p>
+    <em>2020年2月23日</em>
 </div>
 
 <div class="card">
-<h4><a href="/html/用Python演奏音乐.html">用Python演奏音乐</a></h4><hr/>
-<h5>摘要：</h5><p>笔者什么乐器也不会，乐理知识也只有中小学音乐课学的一点点。不过借助Python，调用编曲家常用的MIDI程序库，也能弹奏出一些简单的音乐，以下是笔者的一些心得。...</p>
-<em>2020年1月29日</em>
+    <h4><a href="/html/gvim使用总结.html">gvim使用总结</a></h4><hr>
+    <h5>摘要：</h5><p>我的gvim配置 一些总结...</p>
+    <em>2020年2月14日</em>
 </div>
 
 <div class="card">
-<h4><a href="/html/关于Haskell计算斐波那契数列的思考.html">关于Haskell计算斐波那契数列的思考</a></h4><hr/>
-<h5>摘要：</h5><p>众所周知，Haskell语言是一门函数式编程语言。函数式编程语言的一大特点就是数值和对象都是不可变的，而这与经常需要对状态目前的值进行修改的动态规划算法似乎有些“格格不入”，本文对几乎可以说是动态规划的最简单特例：斐波那契数列的求解提出几种算法（不包括矩阵快速幂优化、Monad和通项公式计算），探讨...</p>
-<em>2020年1月24日</em>
+    <h4><a href="/html/用Python演奏音乐.html">用Python演奏音乐</a></h4><hr>
+    <h5>摘要：</h5><p>笔者什么乐器也不会，乐理知识也只有中小学音乐课学的一点点。不过借助Python，调用编曲家常用的MIDI程序库，也能弹奏出一些简单的音乐，以下是笔者的一些心得。...</p>
+    <em>2020年1月29日</em>
 </div>
 
 <div class="card">
-<h4><a href="/html/用matplotlib绘制图片示例（新）.html">用matplotlib绘制图片示例（新）</a></h4><hr/>
-<h5>摘要：</h5><p>获得矢量图可以用jupyter导出为markdown格式然后下载导出的压缩包，里面的svg格式文件就是矢量图，可以直接拖进Word。 In [1]: import numpy as np from scipy import stats import matplotlib.pyplot as plt...</p>
-<em>2019年12月7日</em>
+    <h4><a href="/html/关于Haskell计算斐波那契数列的思考.html">关于Haskell计算斐波那契数列的思考</a></h4><hr>
+    <h5>摘要：</h5><p>众所周知，Haskell语言是一门函数式编程语言。函数式编程语言的一大特点就是数值和对象都是不可变的，而这与经常需要对状态目前的值进行修改的动态规划算法似乎有些“格格不入”，本文对几乎可以说是动态规划的最简单特例：斐波那契数列的求解提出几种算法（不包括矩阵快速幂优化、Monad和通项公式计算），探讨...</p>
+    <em>2020年1月24日</em>
 </div>
 <a href="/index.html"><button>1</button></a>
 <a href="/index/2.html"><button>2</button></a>
 <a href="/index/3.html"><button>3</button></a>
-<button disabled="">4</button>
+<button disabled>4</button>
 <a href="/index/5.html"><button>5</button></a>
-</div>
-<div class="col">
-<div class="card info">
-<p>关于我</p>
-<img class="card-img-top" src="/img/profile.png"/>
-<p>前偏远小渔村边缘OIer，现在是HUST计院普通大学生。</p>
-<p>
-<a href="https://github.com/ZimingYuan" target="_BLANK">Github</a>
+
+            </div>
+            <div class="col-3">
+                <div class="card info">
+                    <p>关于我</p>
+                    <img src="/img/profile.png"></img>
+                    <p>前偏远小渔村边缘OIer，现在是HUST计院普通大学生。</p>
+                    <p>
+                    <a href="https://github.com/ZimingYuan" target="_BLANK">Github</a>
                     Gitee上也有同名账户，同步大部分项目。
                     </p>
-<p>
+                    <p>
                     该博客为
                     <a href="https://www.cnblogs.com/YuanZiming/" target="_BLANK">我的博客园</a>
                     的备份，原博客有过去的一些文章以及细致的文章分类。
                     </p>
-</div>;
+                </div>;
             </div>
-</div>
-<footer>
-<hr/><center>转载请注明出处<br/>© 2022 ZimingYuan的博客</center>
-</footer>
-</body>
+        </div>
+        <footer>
+            <hr><center>转载请注明出处<br>© 2022 ZimingYuan的博客</center>
+        </footer>
+    </body>
 </html>

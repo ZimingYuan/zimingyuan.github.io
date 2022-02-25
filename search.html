@@ -44,7 +44,7 @@ html[data-theme='tufte']{
                         blog.innerHTML += card; cnt++;
                     }
                 }
-                title.textContent = '查找到' + cnt + '个结果';
+                title.textContent = `“${word}”查找到${cnt}个结果`;
             };
             req.send();
         })();
