@@ -1,184 +1,140 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html data-theme="tufte" lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
-<link href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet"/>
-<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.staticfile.org/popper.js/1.12.9/popper.min.js"></script>
-<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<link href="/extra/classless.css" rel="stylesheet"/>
+<style>
+html[data-theme='tufte']{
+    --rem: 15px;
+    --navpos: absolute;
+    --width: 70rem;
+    --font-p: 1.4rem/2 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-h: 1.4rem/1.5 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --ornament: "";
+    --border: 1px solid var(--cmed);
+    /* foreground   | background color */
+    --cfg:   #111;    --cbg:    #fbf7ec;
+    --cdark: #111;    --clight: #fbf7ec;
+    --cmed: #b4d5fe;
+    --clink: #111;
+    --cemph: #111;
+}
+</style>
+<script>
+            let search = () => {
+                let word = document.querySelector('input').value;
+                if (word.length == 0) {
+                    alert('搜索内容不能为空！');
+                } else {
+                    location.href = '/search.html?' + word;
+                }
+            };
+        </script>
 <link href="/img/favicon.ico" rel="icon" type="image/x-icon"/>
 <link href="/img/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
 <title>ZimingYuan的博客首页（第3页）</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-<div class="container">
-<a class="navbar-brand" href="#">ZimingYuan的博客</a>
-<div class="navbar-collapse">
-<ul class="navbar-nav">
-<li class="nav-item active">
-<a class="nav-link" href="/index.html">首页</a>
-</li>
-<li class="nav-item active">
-<a class="nav-link" href="/html/随笔.html">随笔</a>
-</li>
-<li class="nav-item active">
-<a class="nav-link" href="/html/CSP模板.html">CSP模板</a>
-</li>
+<nav>
+<ul>
+<li><big>ZimingYuan的博客</big></li>
+<li><a href="/index.html">首页</a></li>
+<li><a href="/html/随笔.html">随笔</a></li>
+<li><a href="/html/CSP模板.html">CSP模板</a></li>
+<li class="float-right sticky"><button onclick="search()">Go</button></li>
+<li class="float-right sticky"><input placeholder="搜索" type="text"/></li>
 </ul>
-</div>
-</div>
 </nav>
-<div class="container p-4">
+<header>
+</header>
 <div class="row">
 <div class="col-9" id="Bloglist">
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/MIT-6.S081-2020实验（xv6-riscv64）五：lazy.html">MIT-6.S081-2020实验（xv6-riscv64）五：lazy</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">实验文档 概述 这次实验主要实现Lazy allocation的功能，即进程在动态分配内存的时候先不分配，等到要用到发生缺页中断的时候再实际分配，核心是实现缺页中断的处理。xv6的文档介绍了三种缺页中断的应用，第一为Copy on write，即fork的时候先不复制内存，等到要用到发生缺页中断的时</p>
-<h6 class="card-subtitle text-muted text-right">2021年1月2日</h6>
-</div>
+<div class="card">
+<h4><a href="/html/MIT-6.S081-2020实验（xv6-riscv64）五：lazy.html">MIT-6.S081-2020实验（xv6-riscv64）五：lazy</a></h4><hr/>
+<h5>摘要：</h5><p>实验文档 概述 这次实验主要实现Lazy allocation的功能，即进程在动态分配内存的时候先不分配，等到要用到发生缺页中断的时候再实际分配，核心是实现缺页中断的处理。xv6的文档介绍了三种缺页中断的应用，第一为Copy on write，即fork的时候先不复制内存，等到要用到发生缺页中断的时...</p>
+<em>2021年1月2日</em>
 </div>
 
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/MIT-6.S081-2020实验（xv6-riscv64）四：traps.html">MIT-6.S081-2020实验（xv6-riscv64）四：traps</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">实验文档 概述 这次实验内容比较分散，总体来说难度不是太高。 内容 Backtrace 要求在内核中对程序的调用栈进行遍历，输出每一级调用的返回地址。首先我们分析Riscv的栈帧结构，查看call.asm中main函数的汇编代码： void main(void) { 1c: 1141 addi sp</p>
-<h6 class="card-subtitle text-muted text-right">2021年1月1日</h6>
-</div>
+<div class="card">
+<h4><a href="/html/MIT-6.S081-2020实验（xv6-riscv64）四：traps.html">MIT-6.S081-2020实验（xv6-riscv64）四：traps</a></h4><hr/>
+<h5>摘要：</h5><p>实验文档 概述 这次实验内容比较分散，总体来说难度不是太高。 内容 Backtrace 要求在内核中对程序的调用栈进行遍历，输出每一级调用的返回地址。首先我们分析Riscv的栈帧结构，查看call.asm中main函数的汇编代码： void main(void) { 1c: 1141 addi sp...</p>
+<em>2021年1月1日</em>
 </div>
 
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/MIT-6.S081-2020实验（xv6-riscv64）三：pgtbl.html">MIT-6.S081-2020实验（xv6-riscv64）三：pgtbl</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">实验文档 概述 这次实验主要涉及虚拟内存的管理，重点是和页表相关的操作。个人觉得难点主要还是在调试方面，因为一旦写到什么非法内存或者哪里内存泄漏了，基本只能抓瞎。我也是参考了github上别人的代码才最终完成了实验。 内容 Print a page table 这个任务比较简单，只要仿照freewa</p>
-<h6 class="card-subtitle text-muted text-right">2020年12月31日</h6>
-</div>
+<div class="card">
+<h4><a href="/html/MIT-6.S081-2020实验（xv6-riscv64）三：pgtbl.html">MIT-6.S081-2020实验（xv6-riscv64）三：pgtbl</a></h4><hr/>
+<h5>摘要：</h5><p>实验文档 概述 这次实验主要涉及虚拟内存的管理，重点是和页表相关的操作。个人觉得难点主要还是在调试方面，因为一旦写到什么非法内存或者哪里内存泄漏了，基本只能抓瞎。我也是参考了github上别人的代码才最终完成了实验。 内容 Print a page table 这个任务比较简单，只要仿照freewa...</p>
+<em>2020年12月31日</em>
 </div>
 
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/MIT-6.S081-2020实验（xv6-riscv64）二：syscall.html">MIT-6.S081-2020实验（xv6-riscv64）二：syscall</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">实验文档 概述 实验二主要涉及对系统函数调用过程的理解以及尝试自己手动添加系统调用。首先需要大致了解一下xv6系统调用的过程，这里以fork为例： 根据这个过程，就很容易完成本次实验了。 内容 trace 该实验需要打印其他系统调用的信息。根据上面的分析和文档说明，首先需要给user.h、usys.</p>
-<h6 class="card-subtitle text-muted text-right">2020年12月31日</h6>
-</div>
+<div class="card">
+<h4><a href="/html/MIT-6.S081-2020实验（xv6-riscv64）二：syscall.html">MIT-6.S081-2020实验（xv6-riscv64）二：syscall</a></h4><hr/>
+<h5>摘要：</h5><p>实验文档 概述 实验二主要涉及对系统函数调用过程的理解以及尝试自己手动添加系统调用。首先需要大致了解一下xv6系统调用的过程，这里以fork为例： 根据这个过程，就很容易完成本次实验了。 内容 trace 该实验需要打印其他系统调用的信息。根据上面的分析和文档说明，首先需要给user.h、usys....</p>
+<em>2020年12月31日</em>
 </div>
 
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/MIT-6.S081-2020实验（xv6-riscv64）一：util.html">MIT-6.S081-2020实验（xv6-riscv64）一：util</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">实验文档 概述 实验一主要涉及调用系统调用函数，这些系统调用函数基本都是符合POSIX规范的，和操作系统本身关系较小，在调试的时候也可以先把程序在外部的Linux下跑通然后再放进xv6中运行。 内容 sleep 基本没什么特别的内容，按说明的做就行了。 #include &amp;quot;kernel/types.</p>
-<h6 class="card-subtitle text-muted text-right">2020年12月31日</h6>
-</div>
+<div class="card">
+<h4><a href="/html/MIT-6.S081-2020实验（xv6-riscv64）一：util.html">MIT-6.S081-2020实验（xv6-riscv64）一：util</a></h4><hr/>
+<h5>摘要：</h5><p>实验文档 概述 实验一主要涉及调用系统调用函数，这些系统调用函数基本都是符合POSIX规范的，和操作系统本身关系较小，在调试的时候也可以先把程序在外部的Linux下跑通然后再放进xv6中运行。 内容 sleep 基本没什么特别的内容，按说明的做就行了。 #include &amp;quot;kernel/types....</p>
+<em>2020年12月31日</em>
 </div>
 
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/快速生成网络mp4视频缩略图技术.html">快速生成网络mp4视频缩略图技术</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">背景 由于网络原因，在下载视频之前我们往往会希望能够先生成一些视频的缩略图，大致浏览视频内容，再确定是否应花时间下载。如何能够快速得到视频多个帧的缩略图的同时尽量少的下载视频的内容，是一个值得研究的问题。 思路 众所周知，不考虑音频、字幕的话，视频是由多个图像帧拼接而成的，因此我们的目标也就是尽量只</p>
-<h6 class="card-subtitle text-muted text-right">2020年9月13日</h6>
-</div>
+<div class="card">
+<h4><a href="/html/快速生成网络mp4视频缩略图技术.html">快速生成网络mp4视频缩略图技术</a></h4><hr/>
+<h5>摘要：</h5><p>背景 由于网络原因，在下载视频之前我们往往会希望能够先生成一些视频的缩略图，大致浏览视频内容，再确定是否应花时间下载。如何能够快速得到视频多个帧的缩略图的同时尽量少的下载视频的内容，是一个值得研究的问题。 思路 众所周知，不考虑音频、字幕的话，视频是由多个图像帧拼接而成的，因此我们的目标也就是尽量只...</p>
+<em>2020年9月13日</em>
 </div>
 
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/用plantuml画图示例.html">用plantuml画图示例</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">依赖图： 代码： @startuml skinparam defaultFontName 微软雅黑 skinparam defaultFontSize 15 skinparam monochrome true skinparam shadowing false frame 二进制转十进制 { (二转</p>
-<h6 class="card-subtitle text-muted text-right">2020年9月6日</h6>
-</div>
+<div class="card">
+<h4><a href="/html/用plantuml画图示例.html">用plantuml画图示例</a></h4><hr/>
+<h5>摘要：</h5><p>依赖图： 代码： @startuml skinparam defaultFontName 微软雅黑 skinparam defaultFontSize 15 skinparam monochrome true skinparam shadowing false frame 二进制转十进制 { (二转...</p>
+<em>2020年9月6日</em>
 </div>
 
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/QQ缩略图和大图不同实现.html">QQ缩略图和大图不同实现</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">背景 最近在QQ群里看见别人发一张图，缩略图看着是一个样子，但打开大图以后却发现是另一张图，仔细观察这两张图发现缩略图是白色背景，大图是黑色背景，结合缩略图所在的对话框是白色的，打开大图的UI是黑色的，很容易猜到应该是依靠透明度实现的功能，因此研究了一下怎么用代码通过将两张图片混合来构造出满足要求的</p>
-<h6 class="card-subtitle text-muted text-right">2020年8月17日</h6>
-</div>
+<div class="card">
+<h4><a href="/html/QQ缩略图和大图不同实现.html">QQ缩略图和大图不同实现</a></h4><hr/>
+<h5>摘要：</h5><p>背景 最近在QQ群里看见别人发一张图，缩略图看着是一个样子，但打开大图以后却发现是另一张图，仔细观察这两张图发现缩略图是白色背景，大图是黑色背景，结合缩略图所在的对话框是白色的，打开大图的UI是黑色的，很容易猜到应该是依靠透明度实现的功能，因此研究了一下怎么用代码通过将两张图片混合来构造出满足要求的...</p>
+<em>2020年8月17日</em>
 </div>
 
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/Python制作字符图片.html">Python制作字符图片</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">背景 字符图片，即纯使用字符构造出一幅图片。关于这个，网上的教程和程序已经非常多了，都是使用不同复杂程度的字符模拟图片的灰度（比如字符&amp;#39;@&amp;#39;就比字符&amp;#39;,&amp;#39;复杂，但是我要做的是像这样的：（原图是星之卡比） (() /((/ -()/ (()-- --(//- --/-- -/()-- -)//--</p>
-<h6 class="card-subtitle text-muted text-right">2020年8月17日</h6>
-</div>
+<div class="card">
+<h4><a href="/html/Python制作字符图片.html">Python制作字符图片</a></h4><hr/>
+<h5>摘要：</h5><p>背景 字符图片，即纯使用字符构造出一幅图片。关于这个，网上的教程和程序已经非常多了，都是使用不同复杂程度的字符模拟图片的灰度（比如字符&amp;#39;@&amp;#39;就比字符&amp;#39;,&amp;#39;复杂，但是我要做的是像这样的：（原图是星之卡比） (() /((/ -()/ (()-- --(//- --/-- -/()-- -)//--...</p>
+<em>2020年8月17日</em>
 </div>
 
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/Unity3D+Post_Processing_Stack_V2自定义后处理效果研究.html">Unity3D+Post_Processing_Stack_V2自定义后处理效果研究</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">背景 众所周知，Unity3D支持自定义后处理效果，实现过程有三步： 添加着色器，在着色器里书写后处理代码； 添加材质，把材质和着色器绑定； 给相机添加脚本，重写其OnRenderImage方法，将材质传入Graphics.Blit方法中。 但是在做最近的一个项目时，我使用了Unity3D的官方后处</p>
-<h6 class="card-subtitle text-muted text-right">2020年7月14日</h6>
+<div class="card">
+<h4><a href="/html/Unity3D+Post_Processing_Stack_V2自定义后处理效果研究.html">Unity3D+Post_Processing_Stack_V2自定义后处理效果研究</a></h4><hr/>
+<h5>摘要：</h5><p>背景 众所周知，Unity3D支持自定义后处理效果，实现过程有三步： 添加着色器，在着色器里书写后处理代码； 添加材质，把材质和着色器绑定； 给相机添加脚本，重写其OnRenderImage方法，将材质传入Graphics.Blit方法中。 但是在做最近的一个项目时，我使用了Unity3D的官方后处...</p>
+<em>2020年7月14日</em>
 </div>
-</div>
-
-<ul class="pagination justify-content-center">
-<li class="page-item" id="previous">
-<a class="page-link" href="/index/2.html">上一页</a>
-</li>
-<li class=""><a class="page-link" href="/index.html">1</a></li><li class=""><a class="page-link" href="/index/2.html">2</a></li><li class="page-item active"><a class="page-link" href="/index/3.html">3</a></li><li class=""><a class="page-link" href="/index/4.html">4</a></li><li class=""><a class="page-link" href="/index/5.html">5</a></li><li class="page-item" id="next">
-<a class="page-link" href="/index/4.html">下一页</a>
-</li>
-</ul>
+<a href="/index.html"><button>1</button></a>
+<a href="/index/2.html"><button>2</button></a>
+<button disabled="">3</button>
+<a href="/index/4.html"><button>4</button></a>
+<a href="/index/5.html"><button>5</button></a>
 </div>
 <div class="col">
-<div class="card shadow mb-4">
-<h5 class="card-header text-center">
-                            关于我
-                        </h5>
-<div class="card-body">
+<div class="card info">
+<p>关于我</p>
 <img class="card-img-top" src="/img/profile.png"/>
-<p class="card-text">前偏远小渔村边缘OIer，现在是HUST计院普通大学生。</p>
-<p class="card-text">
+<p>前偏远小渔村边缘OIer，现在是HUST计院普通大学生。</p>
+<p>
 <a href="https://github.com/ZimingYuan" target="_BLANK">Github</a>
-                                Gitee上也有同名账户，同步大部分项目。
-                            </p>
-<p class="card-text">
-                                该博客为
-                                <a href="https://www.cnblogs.com/YuanZiming/" target="_BLANK">我的博客园</a>
-                                的备份，原博客有过去的一些文章以及细致的文章分类。
-                            </p>
+                    Gitee上也有同名账户，同步大部分项目。
+                    </p>
+<p>
+                    该博客为
+                    <a href="https://www.cnblogs.com/YuanZiming/" target="_BLANK">我的博客园</a>
+                    的备份，原博客有过去的一些文章以及细致的文章分类。
+                    </p>
+</div>;
+            </div>
 </div>
-</div>`;
-                </div>
-</div>
-</div>
-<span class="bg-light text-muted border boder-primary d-block p-2 text-center">
-            转载请注明出处<br/>
-            © 2022 ZimingYuan的博客
-        </span>
-<div style="background-color: #ebd5a1; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; pointer-events: none; opacity: 0.2;">
-</div>
+<footer>
+<hr/><center>转载请注明出处<br/>© 2022 ZimingYuan的博客</center>
+</footer>
 </body>
 </html>

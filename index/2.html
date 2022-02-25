@@ -1,184 +1,140 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html data-theme="tufte" lang="zh-CN">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
-<link href="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/css/bootstrap.min.css" rel="stylesheet"/>
-<script src="https://cdn.staticfile.org/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdn.staticfile.org/popper.js/1.12.9/popper.min.js"></script>
-<script src="https://cdn.staticfile.org/twitter-bootstrap/4.1.0/js/bootstrap.min.js"></script>
+<link href="/extra/classless.css" rel="stylesheet"/>
+<style>
+html[data-theme='tufte']{
+    --rem: 15px;
+    --navpos: absolute;
+    --width: 70rem;
+    --font-p: 1.4rem/2 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-h: 1.4rem/1.5 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --ornament: "";
+    --border: 1px solid var(--cmed);
+    /* foreground   | background color */
+    --cfg:   #111;    --cbg:    #fbf7ec;
+    --cdark: #111;    --clight: #fbf7ec;
+    --cmed: #b4d5fe;
+    --clink: #111;
+    --cemph: #111;
+}
+</style>
+<script>
+            let search = () => {
+                let word = document.querySelector('input').value;
+                if (word.length == 0) {
+                    alert('搜索内容不能为空！');
+                } else {
+                    location.href = '/search.html?' + word;
+                }
+            };
+        </script>
 <link href="/img/favicon.ico" rel="icon" type="image/x-icon"/>
 <link href="/img/favicon.ico" rel="shortcut icon" type="image/x-icon"/>
 <title>ZimingYuan的博客首页（第2页）</title>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top">
-<div class="container">
-<a class="navbar-brand" href="#">ZimingYuan的博客</a>
-<div class="navbar-collapse">
-<ul class="navbar-nav">
-<li class="nav-item active">
-<a class="nav-link" href="/index.html">首页</a>
-</li>
-<li class="nav-item active">
-<a class="nav-link" href="/html/随笔.html">随笔</a>
-</li>
-<li class="nav-item active">
-<a class="nav-link" href="/html/CSP模板.html">CSP模板</a>
-</li>
+<nav>
+<ul>
+<li><big>ZimingYuan的博客</big></li>
+<li><a href="/index.html">首页</a></li>
+<li><a href="/html/随笔.html">随笔</a></li>
+<li><a href="/html/CSP模板.html">CSP模板</a></li>
+<li class="float-right sticky"><button onclick="search()">Go</button></li>
+<li class="float-right sticky"><input placeholder="搜索" type="text"/></li>
 </ul>
-</div>
-</div>
 </nav>
-<div class="container p-4">
+<header>
+</header>
 <div class="row">
 <div class="col-9" id="Bloglist">
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/rCore-Tutorial-Book-v3学习笔记（四）.html">rCore-Tutorial-Book-v3学习笔记（四）</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">概述 第四个部分是实现系统的内存管理，核心当然就是虚拟地址和物理地址空间的管理了。xv6实验三让我有了心理阴影，所以在实验前我先整理了一下源代码，把项目的结构弄清晰，后面有错的时候方便查找。然后这一章节主要分成四个部分，第一部分是给内核代码添加动态内存分配支持，使得内核可以用上链表、可变数组等数据结</p>
-<h6 class="card-subtitle text-muted text-right">2021年3月20日</h6>
-</div>
+<div class="card">
+<h4><a href="/html/rCore-Tutorial-Book-v3学习笔记（四）.html">rCore-Tutorial-Book-v3学习笔记（四）</a></h4><hr/>
+<h5>摘要：</h5><p>概述 第四个部分是实现系统的内存管理，核心当然就是虚拟地址和物理地址空间的管理了。xv6实验三让我有了心理阴影，所以在实验前我先整理了一下源代码，把项目的结构弄清晰，后面有错的时候方便查找。然后这一章节主要分成四个部分，第一部分是给内核代码添加动态内存分配支持，使得内核可以用上链表、可变数组等数据结...</p>
+<em>2021年3月20日</em>
 </div>
 
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/rCore-Tutorial-Book-v3学习笔记（三）.html">rCore-Tutorial-Book-v3学习笔记（三）</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">概述 第三个部分是实现一个分时多任务的系统，也就是能够在多个任务运行期间进行切换，让一个程序在等待IO时其他程序能执行而不是傻等。虽然和并行有点类似，但目前使用到的都只有一个CPU，任何时候都只有一个程序在执行。分时多任务有两种：一种是程序自己主动让出控制权，有点类似于编程语言中协程的概念；一种是由</p>
-<h6 class="card-subtitle text-muted text-right">2021年2月26日</h6>
-</div>
+<div class="card">
+<h4><a href="/html/rCore-Tutorial-Book-v3学习笔记（三）.html">rCore-Tutorial-Book-v3学习笔记（三）</a></h4><hr/>
+<h5>摘要：</h5><p>概述 第三个部分是实现一个分时多任务的系统，也就是能够在多个任务运行期间进行切换，让一个程序在等待IO时其他程序能执行而不是傻等。虽然和并行有点类似，但目前使用到的都只有一个CPU，任何时候都只有一个程序在执行。分时多任务有两种：一种是程序自己主动让出控制权，有点类似于编程语言中协程的概念；一种是由...</p>
+<em>2021年2月26日</em>
 </div>
 
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/rCore-Tutorial-Book-v3学习笔记（二）.html">rCore-Tutorial-Book-v3学习笔记（二）</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">概述 第二部分是实现一个批处理系统。批处理系统顾名思义就是能输入好几个程序，然后对这些程序依次执行的操作系统。重点不是在批处理，而是在输入用户程序，这就要求用户程序和我们的系统有一种隔离，所以需要在这一部分的系统实现用户态和内核态的切换。 内容 这一部分的代码文件比上一部分多了好几个，大致说明一下功</p>
-<h6 class="card-subtitle text-muted text-right">2021年2月24日</h6>
-</div>
+<div class="card">
+<h4><a href="/html/rCore-Tutorial-Book-v3学习笔记（二）.html">rCore-Tutorial-Book-v3学习笔记（二）</a></h4><hr/>
+<h5>摘要：</h5><p>概述 第二部分是实现一个批处理系统。批处理系统顾名思义就是能输入好几个程序，然后对这些程序依次执行的操作系统。重点不是在批处理，而是在输入用户程序，这就要求用户程序和我们的系统有一种隔离，所以需要在这一部分的系统实现用户态和内核态的切换。 内容 这一部分的代码文件比上一部分多了好几个，大致说明一下功...</p>
+<em>2021年2月24日</em>
 </div>
 
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/rCore-Tutorial-Book-v3学习笔记（一）.html">rCore-Tutorial-Book-v3学习笔记（一）</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">概述 最近看到清华的一个操作系统教程rCore-Tutorial-Book，和其他实验不同的是，这个教程介绍的是完全从零开始实现一个Riscv操作系统。教程所用的编程语言是Rust，但是我的Rust水平只到勉强能看懂代码的地步，所以打算用C语言照着实现一遍。虽然说是照着实现，但不同的语言还是会带来不</p>
-<h6 class="card-subtitle text-muted text-right">2021年2月24日</h6>
-</div>
+<div class="card">
+<h4><a href="/html/rCore-Tutorial-Book-v3学习笔记（一）.html">rCore-Tutorial-Book-v3学习笔记（一）</a></h4><hr/>
+<h5>摘要：</h5><p>概述 最近看到清华的一个操作系统教程rCore-Tutorial-Book，和其他实验不同的是，这个教程介绍的是完全从零开始实现一个Riscv操作系统。教程所用的编程语言是Rust，但是我的Rust水平只到勉强能看懂代码的地步，所以打算用C语言照着实现一遍。虽然说是照着实现，但不同的语言还是会带来不...</p>
+<em>2021年2月24日</em>
 </div>
 
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/MIT-6.S081-2020实验（xv6-riscv64）十一：net.html">MIT-6.S081-2020实验（xv6-riscv64）十一：net</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">实验文档 概述 这次实验主要实现网卡驱动的一部分，文档内容非常长，实际实验不算难，跟着hint就行，但还是需要对整体框架有一定的了解。 内容 发送函数： int e1000_transmit(struct mbuf *m) { acquire(&amp;amp;e1000_lock); uint32 index =</p>
-<h6 class="card-subtitle text-muted text-right">2021年1月13日</h6>
-</div>
+<div class="card">
+<h4><a href="/html/MIT-6.S081-2020实验（xv6-riscv64）十一：net.html">MIT-6.S081-2020实验（xv6-riscv64）十一：net</a></h4><hr/>
+<h5>摘要：</h5><p>实验文档 概述 这次实验主要实现网卡驱动的一部分，文档内容非常长，实际实验不算难，跟着hint就行，但还是需要对整体框架有一定的了解。 内容 发送函数： int e1000_transmit(struct mbuf *m) { acquire(&amp;amp;e1000_lock); uint32 index =...</p>
+<em>2021年1月13日</em>
 </div>
 
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/MIT-6.S081-2020实验（xv6-riscv64）十：mmap.html">MIT-6.S081-2020实验（xv6-riscv64）十：mmap</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">实验文档 概述 这次实验要求实现Linux中的mmap函数的一个子集，相当于在第五次实验Lazy Allocation中加上了文件的操作。难度比较难定义，因为这个“子集”还是比较模糊的，如果仅仅只针对测试程序，做出一些简化性的假设，难度就不会太大，但如果不做这些假设，难度就会非常高。 内容 为了简化</p>
-<h6 class="card-subtitle text-muted text-right">2021年1月13日</h6>
-</div>
+<div class="card">
+<h4><a href="/html/MIT-6.S081-2020实验（xv6-riscv64）十：mmap.html">MIT-6.S081-2020实验（xv6-riscv64）十：mmap</a></h4><hr/>
+<h5>摘要：</h5><p>实验文档 概述 这次实验要求实现Linux中的mmap函数的一个子集，相当于在第五次实验Lazy Allocation中加上了文件的操作。难度比较难定义，因为这个“子集”还是比较模糊的，如果仅仅只针对测试程序，做出一些简化性的假设，难度就不会太大，但如果不做这些假设，难度就会非常高。 内容 为了简化...</p>
+<em>2021年1月13日</em>
 </div>
 
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/MIT-6.S081-2020实验（xv6-riscv64）九：fs.html">MIT-6.S081-2020实验（xv6-riscv64）九：fs</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">实验文档 概述 这次实验涉及文件系统，重点是对inode节点的操作。 内容 Large files 这个任务主要目的是支持更大的文件。和内存映射类似，文件系统中也有一个类似“页表”的结构，每个文件（inode）都有自己的一个“页表”，维护自己文件占用的文件块。和内存不同的是，这个“页表”的级别是自定</p>
-<h6 class="card-subtitle text-muted text-right">2021年1月11日</h6>
-</div>
+<div class="card">
+<h4><a href="/html/MIT-6.S081-2020实验（xv6-riscv64）九：fs.html">MIT-6.S081-2020实验（xv6-riscv64）九：fs</a></h4><hr/>
+<h5>摘要：</h5><p>实验文档 概述 这次实验涉及文件系统，重点是对inode节点的操作。 内容 Large files 这个任务主要目的是支持更大的文件。和内存映射类似，文件系统中也有一个类似“页表”的结构，每个文件（inode）都有自己的一个“页表”，维护自己文件占用的文件块。和内存不同的是，这个“页表”的级别是自定...</p>
+<em>2021年1月11日</em>
 </div>
 
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/MIT-6.S081-2020实验（xv6-riscv64）八：lock.html">MIT-6.S081-2020实验（xv6-riscv64）八：lock</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">实验文档 概述 这次实验主要涉及锁在内核的应用，没有用到什么特别的理论知识，但是编程的时候陷阱重重，要么资源竞争，要么死锁，和实验三差不多，非常考验耐心和细心。 内容 Memory allocator 这个任务要求给物理内存分配程序重新设计锁，使得等待锁时的阻塞尽量少。可以按CPU的数量将空闲内存分</p>
-<h6 class="card-subtitle text-muted text-right">2021年1月8日</h6>
-</div>
+<div class="card">
+<h4><a href="/html/MIT-6.S081-2020实验（xv6-riscv64）八：lock.html">MIT-6.S081-2020实验（xv6-riscv64）八：lock</a></h4><hr/>
+<h5>摘要：</h5><p>实验文档 概述 这次实验主要涉及锁在内核的应用，没有用到什么特别的理论知识，但是编程的时候陷阱重重，要么资源竞争，要么死锁，和实验三差不多，非常考验耐心和细心。 内容 Memory allocator 这个任务要求给物理内存分配程序重新设计锁，使得等待锁时的阻塞尽量少。可以按CPU的数量将空闲内存分...</p>
+<em>2021年1月8日</em>
 </div>
 
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/MIT-6.S081-2020实验（xv6-riscv64）七：thread.html">MIT-6.S081-2020实验（xv6-riscv64）七：thread</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">实验文档 概述 这次实验主要涉及多线程编程，和之前的实验不太一样，比较偏向于应用层面，除了任务一外都是在宿主机上编写多线程程序，应该是xv6不支持系统级的多线程。 内容 Uthread: switching between threads 这个任务要求对一个程序填空，这个程序在用户层面实现了多线程的</p>
-<h6 class="card-subtitle text-muted text-right">2021年1月6日</h6>
-</div>
+<div class="card">
+<h4><a href="/html/MIT-6.S081-2020实验（xv6-riscv64）七：thread.html">MIT-6.S081-2020实验（xv6-riscv64）七：thread</a></h4><hr/>
+<h5>摘要：</h5><p>实验文档 概述 这次实验主要涉及多线程编程，和之前的实验不太一样，比较偏向于应用层面，除了任务一外都是在宿主机上编写多线程程序，应该是xv6不支持系统级的多线程。 内容 Uthread: switching between threads 这个任务要求对一个程序填空，这个程序在用户层面实现了多线程的...</p>
+<em>2021年1月6日</em>
 </div>
 
-<div class="card shadow mb-4">
-<h5 class="card-header">
-<a href="/html/MIT-6.S081-2020实验（xv6-riscv64）六：cow.html">MIT-6.S081-2020实验（xv6-riscv64）六：cow</a>
-</h5>
-<div class="card-body">
-<h5 class="card-title">摘要：</h5>
-<p class="card-text">实验文档 概述 这次实验实现copy on write功能，和上次实验一样也是缺页中断的应用，但不同的是，这次实验涉及的物理内存和虚拟地址的操作要比上个实验多不少，因此难度也更大一些。 内容 首先是uvmcopy的部分，原来的操作是从老页表中获得虚拟地址对应的物理地址，创建一个新物理页，然后将老物理</p>
-<h6 class="card-subtitle text-muted text-right">2021年1月6日</h6>
+<div class="card">
+<h4><a href="/html/MIT-6.S081-2020实验（xv6-riscv64）六：cow.html">MIT-6.S081-2020实验（xv6-riscv64）六：cow</a></h4><hr/>
+<h5>摘要：</h5><p>实验文档 概述 这次实验实现copy on write功能，和上次实验一样也是缺页中断的应用，但不同的是，这次实验涉及的物理内存和虚拟地址的操作要比上个实验多不少，因此难度也更大一些。 内容 首先是uvmcopy的部分，原来的操作是从老页表中获得虚拟地址对应的物理地址，创建一个新物理页，然后将老物理...</p>
+<em>2021年1月6日</em>
 </div>
-</div>
-
-<ul class="pagination justify-content-center">
-<li class="page-item" id="previous">
-<a class="page-link" href="/index.html">上一页</a>
-</li>
-<li class=""><a class="page-link" href="/index.html">1</a></li><li class="page-item active"><a class="page-link" href="/index/2.html">2</a></li><li class=""><a class="page-link" href="/index/3.html">3</a></li><li class=""><a class="page-link" href="/index/4.html">4</a></li><li class=""><a class="page-link" href="/index/5.html">5</a></li><li class="page-item" id="next">
-<a class="page-link" href="/index/3.html">下一页</a>
-</li>
-</ul>
+<a href="/index.html"><button>1</button></a>
+<button disabled="">2</button>
+<a href="/index/3.html"><button>3</button></a>
+<a href="/index/4.html"><button>4</button></a>
+<a href="/index/5.html"><button>5</button></a>
 </div>
 <div class="col">
-<div class="card shadow mb-4">
-<h5 class="card-header text-center">
-                            关于我
-                        </h5>
-<div class="card-body">
+<div class="card info">
+<p>关于我</p>
 <img class="card-img-top" src="/img/profile.png"/>
-<p class="card-text">前偏远小渔村边缘OIer，现在是HUST计院普通大学生。</p>
-<p class="card-text">
+<p>前偏远小渔村边缘OIer，现在是HUST计院普通大学生。</p>
+<p>
 <a href="https://github.com/ZimingYuan" target="_BLANK">Github</a>
-                                Gitee上也有同名账户，同步大部分项目。
-                            </p>
-<p class="card-text">
-                                该博客为
-                                <a href="https://www.cnblogs.com/YuanZiming/" target="_BLANK">我的博客园</a>
-                                的备份，原博客有过去的一些文章以及细致的文章分类。
-                            </p>
+                    Gitee上也有同名账户，同步大部分项目。
+                    </p>
+<p>
+                    该博客为
+                    <a href="https://www.cnblogs.com/YuanZiming/" target="_BLANK">我的博客园</a>
+                    的备份，原博客有过去的一些文章以及细致的文章分类。
+                    </p>
+</div>;
+            </div>
 </div>
-</div>`;
-                </div>
-</div>
-</div>
-<span class="bg-light text-muted border boder-primary d-block p-2 text-center">
-            转载请注明出处<br/>
-            © 2022 ZimingYuan的博客
-        </span>
-<div style="background-color: #ebd5a1; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; pointer-events: none; opacity: 0.2;">
-</div>
+<footer>
+<hr/><center>转载请注明出处<br/>© 2022 ZimingYuan的博客</center>
+</footer>
 </body>
 </html>
