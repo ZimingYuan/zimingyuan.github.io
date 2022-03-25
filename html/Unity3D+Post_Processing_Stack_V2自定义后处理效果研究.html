@@ -127,7 +127,9 @@ html[data-theme='tufte']{
 </header>
 <h3 id="背景">背景</h3>
 <p>众所周知，Unity3D支持自定义后处理效果，实现过程有三步： 1. 添加着色器，在着色器里书写后处理代码； 2. 添加材质，把材质和着色器绑定； 3. 给相机添加脚本，重写其OnRenderImage方法，将材质传入Graphics.Blit方法中。</p>
-<p>但是在做最近的一个项目时，我使用了Unity3D的官方后处理插件Post Processing Stack V2（以下简称PPV2）来简化辉光、环境光遮蔽这类后处理效果的使用。但之后我又需要自定义一些后处理效果，此时就出现了问题。我发现我的OnRenderImage方法没有正常地接收到渲染帧经过插件处理后的纹理，而是接收到一个纯黑纹理，最后输出的也是纯黑，使得我的后处理效果无法正常工作，网上也找不到实际原因，可能和渲染管线的不同有关。为了解决这个问题，必须基于PPV2自定义一个效果，然后在其他代码中操作这个效果里的参数，由PPV2来执行我们的后处理效果。这个国内国外的教程都非常少，我主要参考了PPV2的官方文档，在<a href="https://docs.unity3d.com/Packages/com.unity.postprocessing@2.2/manual/">这里</a>给出。 ### 代码 #### 着色器</p>
+<p>但是在做最近的一个项目时，我使用了Unity3D的官方后处理插件Post Processing Stack V2（以下简称PPV2）来简化辉光、环境光遮蔽这类后处理效果的使用。但之后我又需要自定义一些后处理效果，此时就出现了问题。我发现我的OnRenderImage方法没有正常地接收到渲染帧经过插件处理后的纹理，而是接收到一个纯黑纹理，最后输出的也是纯黑，使得我的后处理效果无法正常工作，网上也找不到实际原因，可能和渲染管线的不同有关。为了解决这个问题，必须基于PPV2自定义一个效果，然后在其他代码中操作这个效果里的参数，由PPV2来执行我们的后处理效果。这个国内国外的教程都非常少，我主要参考了PPV2的官方文档，在<a href="https://docs.unity3d.com/Packages/com.unity.postprocessing@2.2/manual/">这里</a>给出。</p>
+<h3 id="代码">代码</h3>
+<h4 id="着色器">着色器</h4>
 <div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1"></a>Shader <span class="st">&quot;Hidden/Custom/Blend&quot;</span> {</span>
 <span id="cb1-2"><a href="#cb1-2"></a>    HLSLINCLUDE</span>
 <span id="cb1-3"><a href="#cb1-3"></a></span>
@@ -159,7 +161,8 @@ html[data-theme='tufte']{
 <span id="cb1-29"><a href="#cb1-29"></a>        }</span>
 <span id="cb1-30"><a href="#cb1-30"></a>    }</span>
 <span id="cb1-31"><a href="#cb1-31"></a>}</span></code></pre></div>
-<p>基本和文档中的一致，只是修改了片元着色器函数里的代码，实现将两张纹理进行混合的过程，另外由于这个文档比较新，实例的Shader语法好像和以前的CG语言不太一样，不知道是不是换成了HLSL。 #### 效果自定义</p>
+<p>基本和文档中的一致，只是修改了片元着色器函数里的代码，实现将两张纹理进行混合的过程，另外由于这个文档比较新，实例的Shader语法好像和以前的CG语言不太一样，不知道是不是换成了HLSL。</p>
+<h4 id="效果自定义">效果自定义</h4>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c#"><code class="sourceCode cs"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">using</span> System;</span>
 <span id="cb2-2"><a href="#cb2-2"></a><span class="kw">using</span> UnityEngine;</span>
 <span id="cb2-3"><a href="#cb2-3"></a><span class="kw">using</span> UnityEngine.<span class="fu">Rendering</span>.<span class="fu">PostProcessing</span>;</span>
@@ -180,7 +183,8 @@ html[data-theme='tufte']{
 <span id="cb2-18"><a href="#cb2-18"></a>        context.<span class="fu">command</span>.<span class="fu">BlitFullscreenTriangle</span>(context.<span class="fu">source</span>, context.<span class="fu">destination</span>, sheet, <span class="dv">0</span>);</span>
 <span id="cb2-19"><a href="#cb2-19"></a>    }</span>
 <span id="cb2-20"><a href="#cb2-20"></a>}</span></code></pre></div>
-<p>这里定义了两个类，一个是设置类，提供了后处理效果所需的各种属性，其中支持的属性类型可以在项目下Packages/Post Processing/PostProcessing/Runtime/ParameterOverride.cs里找到，对应的基础类型有int、float、color、vector2、vector3、vector4、spline和texture。第二个类用来重写后处理方法，一般在这里指定要用的shader和给shader里的变量赋值。 #### 修改效果参数</p>
+<p>这里定义了两个类，一个是设置类，提供了后处理效果所需的各种属性，其中支持的属性类型可以在项目下Packages/Post Processing/PostProcessing/Runtime/ParameterOverride.cs里找到，对应的基础类型有int、float、color、vector2、vector3、vector4、spline和texture。第二个类用来重写后处理方法，一般在这里指定要用的shader和给shader里的变量赋值。</p>
+<h4 id="修改效果参数">修改效果参数</h4>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c#"><code class="sourceCode cs"><span id="cb3-1"><a href="#cb3-1"></a>    <span class="dt">void</span> <span class="fu">Start</span>() {</span>
 <span id="cb3-2"><a href="#cb3-2"></a>        m_Blend = ScriptableObject.<span class="fu">CreateInstance</span>&lt;Blend&gt;();</span>
 <span id="cb3-3"><a href="#cb3-3"></a>        m_Blend.<span class="fu">enabled</span>.<span class="fu">Override</span>(<span class="kw">true</span>);</span>
@@ -196,7 +200,12 @@ html[data-theme='tufte']{
 <div class="sourceCode" id="cb5"><pre class="sourceCode c#"><code class="sourceCode cs"><span id="cb5-1"><a href="#cb5-1"></a>    <span class="kw">private</span> <span class="dt">void</span> <span class="fu">OnDestroy</span>() {</span>
 <span id="cb5-2"><a href="#cb5-2"></a>        RuntimeUtilities.<span class="fu">DestroyVolume</span>(m_Volume, <span class="kw">true</span>, <span class="kw">true</span>);</span>
 <span id="cb5-3"><a href="#cb5-3"></a>    }</span></code></pre></div>
-<p>注意在对象被销毁时要将创建的临时后处理体积销毁。如果没有这一段，更换场景时后处理会继续工作，不是我们想要的效果。 ### 总结 Unity3D+Post Processing Stack V2自定义后处理效果其实也是只有三步，就是编写后处理着色器、编写后处理效果类、编写操作后处理参数类。主要还是国内外的教程没有与时俱进导致资料查找困难，希望更多的新教程能不断涌现，方便开发者的学习。 ### 更新 #### 使用已有的后处理体积 在上面的代码中，后处理体积是临时创建的，所以自定义后处理效果也是由代码生成的。如果是修改已有的后处理效果的参数，可以使用下面的代码：</p>
+<p>注意在对象被销毁时要将创建的临时后处理体积销毁。如果没有这一段，更换场景时后处理会继续工作，不是我们想要的效果。</p>
+<h3 id="总结">总结</h3>
+<p>Unity3D+Post Processing Stack V2自定义后处理效果其实也是只有三步，就是编写后处理着色器、编写后处理效果类、编写操作后处理参数类。主要还是国内外的教程没有与时俱进导致资料查找困难，希望更多的新教程能不断涌现，方便开发者的学习。</p>
+<h3 id="更新">更新</h3>
+<h4 id="使用已有的后处理体积">使用已有的后处理体积</h4>
+<p>在上面的代码中，后处理体积是临时创建的，所以自定义后处理效果也是由代码生成的。如果是修改已有的后处理效果的参数，可以使用下面的代码：</p>
 <div class="sourceCode" id="cb6"><pre class="sourceCode c#"><code class="sourceCode cs"><span id="cb6-1"><a href="#cb6-1"></a>m_Volume = GetComponent&lt;PostProcessVolume&gt;();</span>
 <span id="cb6-2"><a href="#cb6-2"></a>volume.<span class="fu">profile</span>.<span class="fu">TryGetSettings</span>&lt;Blend&gt;(<span class="kw">out</span> m_Blend);</span></code></pre></div>
 <p>先获取脚本所在物体的后处理体积组件，然后直接获取已有的后处理效果的设置类，之后就可以修改属性了。</p>

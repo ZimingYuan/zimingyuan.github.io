@@ -126,7 +126,9 @@ html[data-theme='tufte']{
 <hr>
 </header>
 <h3 id="背景">0.背景</h3>
-<p>本弱初学PyQt5，写了一个GUI小程序，但在用PyInstaller打包时出现了不少问题，现将几个比较大的问题记录如下，希望以后能记住。 ### 1. 资源打包 首先是资源打包的问题，我写的程序引用了一张图片，那么在没经过特殊处理的情况下如果想让程序正常运行，就必须把图片放在和程序同一个目录下，但这样总觉得不太舒服。我在网上看到有三种解决方法：一是通过修改PyInstaller配置文件*.spec来实现打包，但是在我的环境下不成功；二是自己写程序对图片进行Base64编码存在字符串里并存储在另一个脚本中，然后令主程序import它；三是用PyQt5自带的工具：pyrcc5进行处理。本质上第三种和第二种的原理是基本一样的，但本着“不(xiang)重(jin)复(ban)造(fa)轮(tou)子(lan)”的原则，我更喜欢第三种。操作如下： 一、创建一个扩展名为qrc的文件，内容如下(mouse.ico是图片文件，且&lt;file&gt;标签可以有多个)：</p>
+<p>本弱初学PyQt5，写了一个GUI小程序，但在用PyInstaller打包时出现了不少问题，现将几个比较大的问题记录如下，希望以后能记住。</p>
+<h3 id="资源打包">1. 资源打包</h3>
+<p>首先是资源打包的问题，我写的程序引用了一张图片，那么在没经过特殊处理的情况下如果想让程序正常运行，就必须把图片放在和程序同一个目录下，但这样总觉得不太舒服。我在网上看到有三种解决方法：一是通过修改PyInstaller配置文件*.spec来实现打包，但是在我的环境下不成功；二是自己写程序对图片进行Base64编码存在字符串里并存储在另一个脚本中，然后令主程序import它；三是用PyQt5自带的工具：pyrcc5进行处理。本质上第三种和第二种的原理是基本一样的，但本着“不(xiang)重(jin)复(ban)造(fa)轮(tou)子(lan)”的原则，我更喜欢第三种。操作如下： 一、创建一个扩展名为qrc的文件，内容如下(mouse.ico是图片文件，且&lt;file&gt;标签可以有多个)：</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">&lt;RCC&gt;</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a>    <span class="kw">&lt;qresource</span><span class="ot"> prefix=</span><span class="st">&quot;/&quot;</span><span class="kw">&gt;</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a>        <span class="kw">&lt;file&gt;</span>mouse.ico<span class="kw">&lt;/file&gt;</span></span>
@@ -141,7 +143,9 @@ html[data-theme='tufte']{
 <h3 id="pyinstaller打包程序">2. PyInstaller打包程序</h3>
 <p>其次是打包的问题，如果按照普通命令打包，会产生“No module name ‘PyQt5.sip’”的错误，这是因为PyInstaller没有找全PyQt5依赖包，需要我们亲自指定：</p>
 <pre class="shell"><code>pyInstaller --hidden-import PyQt5.sip -F mousenew.py -w -i mouse.ico</code></pre>
-<p>这样就能成功打包了。 ### 3. 总结 注意以后打包时先别带-w参数，不然打包后的exe如果运行错误就直接弹个Fail to execute the script.然后就退出了，连调都没法调，如果是命令行打包，至少错了它还会在命令行打印Traceback，等命令行程序没错了再加-w。</p>
+<p>这样就能成功打包了。</p>
+<h3 id="总结">3. 总结</h3>
+<p>注意以后打包时先别带-w参数，不然打包后的exe如果运行错误就直接弹个Fail to execute the script.然后就退出了，连调都没法调，如果是命令行打包，至少错了它还会在命令行打印Traceback，等命令行程序没错了再加-w。</p>
 <footer>
     <hr><center>转载请注明出处<br>© 2022 ZimingYuan的博客</center>
 </footer>
