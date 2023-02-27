@@ -95,13 +95,19 @@ html[data-theme='tufte']{
 </style>
   <script>
       let search = () => {
-          let word = document.querySelector('input').value;
-          if (word.length == 0) {
-              alert('搜索内容不能为空！');
+          let word = document.querySelector('input');
+          if (word.value.length == 0) {
+              word.focus();
           } else {
-              location.href = '/search.html?' + word;
+              location.href = '/search.html?' + word.value;
           }
       };
+      window.onload = () => {
+          document.querySelector('input').addEventListener(
+              'keydown',  (event) => {
+                  if (event.key == 'Enter') search();
+          });
+      }
   </script>
   <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
@@ -117,8 +123,8 @@ html[data-theme='tufte']{
             <li><a href="/index.html">首页</a></li>
             <li><a href="/html/随笔.html">随笔</a></li>
             <li><a href="/html/CSP模板.html">CSP模板</a></li>
-            <li class="float-right sticky"><button onclick="search()">Go</button></li>
-            <li class="float-right sticky"><input type="text" placeholder="搜索"></li>
+            <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索" style="margin: 0"></li>
         </ul>
     </nav>
 <header id="title-block-header">
@@ -269,7 +275,7 @@ html[data-theme='tufte']{
 <p>这里缩成一行，意思是构造整数区间[0, 1 &lt;&lt; n的位宽)（注意是左闭右开区间），将整数区间里的所有数用apply检查一下（这里的apply是针对scala基础类型的），选出是质数的，这样就构造出了一个质数表。然后将质数表里的每个数和n比较一下，相等的为真，不等的为假，这样就构造出了一个布尔表，注意这个布尔，指的是SpinalHDL的Bool而不是scala的Boolean了，因为是UInt参与比较，用的也是三等于号。最后将布尔表或一下，如果表里有一个真值，即n和一个质数相等，则返回真。</p>
 <p>另外scala的匿名函数写起来真爽，连lambda关键字还是箭头标识符之类的都不用了，够简洁。</p>
 <footer>
-    <hr><center>转载请注明出处<br>© 2022 ZimingYuan的博客</center>
+    <hr><center>转载请注明出处<br>© 2023 ZimingYuan的博客</center>
 </footer>
 </body>
 </html>

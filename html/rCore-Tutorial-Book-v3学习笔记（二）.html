@@ -95,13 +95,19 @@ html[data-theme='tufte']{
 </style>
   <script>
       let search = () => {
-          let word = document.querySelector('input').value;
-          if (word.length == 0) {
-              alert('搜索内容不能为空！');
+          let word = document.querySelector('input');
+          if (word.value.length == 0) {
+              word.focus();
           } else {
-              location.href = '/search.html?' + word;
+              location.href = '/search.html?' + word.value;
           }
       };
+      window.onload = () => {
+          document.querySelector('input').addEventListener(
+              'keydown',  (event) => {
+                  if (event.key == 'Enter') search();
+          });
+      }
   </script>
   <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
@@ -117,8 +123,8 @@ html[data-theme='tufte']{
             <li><a href="/index.html">首页</a></li>
             <li><a href="/html/随笔.html">随笔</a></li>
             <li><a href="/html/CSP模板.html">CSP模板</a></li>
-            <li class="float-right sticky"><button onclick="search()">Go</button></li>
-            <li class="float-right sticky"><input type="text" placeholder="搜索"></li>
+            <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索" style="margin: 0"></li>
         </ul>
     </nav>
 <header id="title-block-header">
@@ -171,7 +177,8 @@ SECTIONS
         *(.text .text.*)
     }
     ...</code></pre>
-<p>注意到代码段专门把<code>.text.entry</code>这一段列出来放在最前面，所以如果指定了某函数是在这个段里的，那么链接器就会把这个函数放在最前面，也就是<code>BASE_ADDRESS</code>的位置。事实上，链接脚本里的<code>ENTRY</code>在内核编译中是没有意义的，这个“入口点”的定义放在ELF文件的元信息里，而我们在使用objcopy的过程中会把ELF的元信息去掉，那么<code>ENTRY</code>指定的东西也就被去掉了。在内核编译中，指令的地址才是最重要的，如果指定用户程序从0x80400000开始执行，那么用户程序0x80400000位置的第一条指令就是其入口点。而链接脚本的段定义配合语言中的段名指定正是决定变量和函数放在哪个内存位置的方法。如果不加段名指定，像上面的程序就可能把其他的函数放在0x80400000这个位置，那么内核在执行用户程序时就会先执行这个函数，然后当这个函数运行结束后返回时内核就傻了，不知道该返回到哪，只有_start函数最后有系统调用exit，能告诉内核运行下一个用户程序。</p>
+<p>注意到代码段专门把<code>.text.entry</code>这一段列出来放在最前面，所以如果指定了某函数是在这个段里的，那么链接器就会把这个函数放在最前面，也就是<code>BASE_ADDRESS</code>的位置。事实上，链接脚本里的<code>ENTRY</code>在内核编译中是没有意义的，这个“入口点”的定义放在ELF文件的元信息里，而我们在使用objcopy的过程中会把ELF的元信息去掉，那么<code>ENTRY</code>指定的东西也就被去掉了。</p>
+<p>在内核编译中，指令的地址才是最重要的，如果指定用户程序从0x80400000开始执行，那么用户程序0x80400000位置的第一条指令就是其入口点。而链接脚本的段定义配合语言中的段名指定正是决定变量和函数放在哪个内存位置的方法。如果不加段名指定，像上面的程序就可能把其他的函数放在0x80400000这个位置，那么内核在执行用户程序时就会先执行这个函数，然后当这个函数运行结束后返回时内核就傻了，不知道该返回到哪，只有_start函数最后有系统调用exit，能告诉内核运行下一个用户程序。</p>
 <p>然后是<code>batch.c</code>里的<code>app_init_context</code>函数：</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1"></a>TrapContext *app_init_context(usize entry, usize sp, TrapContext *cx) {</span>
 <span id="cb3-2"><a href="#cb3-2"></a>    usize sstatus; asm <span class="dt">volatile</span>(<span class="st">&quot;csrr %0, sstatus&quot;</span>:<span class="st">&quot;=r&quot;</span>(sstatus));</span>
@@ -220,7 +227,7 @@ TrapContext *trap_handler(TrapContext *cx) {
 }</code></pre>
 <p>同样的，scause的处理我也进行了硬编码，scause的第0到62位存储trap的原因，8表示是来自用户态的系统调用。</p>
 <footer>
-    <hr><center>转载请注明出处<br>© 2022 ZimingYuan的博客</center>
+    <hr><center>转载请注明出处<br>© 2023 ZimingYuan的博客</center>
 </footer>
 </body>
 </html>

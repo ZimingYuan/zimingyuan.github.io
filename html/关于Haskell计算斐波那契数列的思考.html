@@ -95,13 +95,19 @@ html[data-theme='tufte']{
 </style>
   <script>
       let search = () => {
-          let word = document.querySelector('input').value;
-          if (word.length == 0) {
-              alert('搜索内容不能为空！');
+          let word = document.querySelector('input');
+          if (word.value.length == 0) {
+              word.focus();
           } else {
-              location.href = '/search.html?' + word;
+              location.href = '/search.html?' + word.value;
           }
       };
+      window.onload = () => {
+          document.querySelector('input').addEventListener(
+              'keydown',  (event) => {
+                  if (event.key == 'Enter') search();
+          });
+      }
   </script>
   <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
@@ -117,8 +123,8 @@ html[data-theme='tufte']{
             <li><a href="/index.html">首页</a></li>
             <li><a href="/html/随笔.html">随笔</a></li>
             <li><a href="/html/CSP模板.html">CSP模板</a></li>
-            <li class="float-right sticky"><button onclick="search()">Go</button></li>
-            <li class="float-right sticky"><input type="text" placeholder="搜索"></li>
+            <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索" style="margin: 0"></li>
         </ul>
     </nav>
 <header id="title-block-header">
@@ -165,7 +171,7 @@ html[data-theme='tufte']{
 <h3 id="总结">总结</h3>
 <p>目前看来，haskell计算斐波那契数列的方法中，自底向上法效率最高且容易懂的应该是使用fold的方法，自顶向下法效率最高的应该是利用一个O(1)索引且支持惰性求值的数据结构作为记忆表进行记忆化搜索的方法。显然，使用自底向上更优一些，这在其他范式的语言也是一样，没有递归负担，容易优化（滚动数组省空间、特定问题使用单调队列、斜率优化等），而且部分函数式编程语言不支持惰性求值，则直接关上了记忆化搜索的大门。总的说来，斐波那契数列还是一个极为简单的例子，函数式语言实现动态规划，仍然是值得深入研究的一个问题。</p>
 <footer>
-    <hr><center>转载请注明出处<br>© 2022 ZimingYuan的博客</center>
+    <hr><center>转载请注明出处<br>© 2023 ZimingYuan的博客</center>
 </footer>
 </body>
 </html>

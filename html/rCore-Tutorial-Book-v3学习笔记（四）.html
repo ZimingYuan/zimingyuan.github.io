@@ -95,13 +95,19 @@ html[data-theme='tufte']{
 </style>
   <script>
       let search = () => {
-          let word = document.querySelector('input').value;
-          if (word.length == 0) {
-              alert('搜索内容不能为空！');
+          let word = document.querySelector('input');
+          if (word.value.length == 0) {
+              word.focus();
           } else {
-              location.href = '/search.html?' + word;
+              location.href = '/search.html?' + word.value;
           }
       };
+      window.onload = () => {
+          document.querySelector('input').addEventListener(
+              'keydown',  (event) => {
+                  if (event.key == 'Enter') search();
+          });
+      }
   </script>
   <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
@@ -117,8 +123,8 @@ html[data-theme='tufte']{
             <li><a href="/index.html">首页</a></li>
             <li><a href="/html/随笔.html">随笔</a></li>
             <li><a href="/html/CSP模板.html">CSP模板</a></li>
-            <li class="float-right sticky"><button onclick="search()">Go</button></li>
-            <li class="float-right sticky"><input type="text" placeholder="搜索"></li>
+            <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索" style="margin: 0"></li>
         </ul>
     </nav>
 <header id="title-block-header">
@@ -126,7 +132,13 @@ html[data-theme='tufte']{
 <hr>
 </header>
 <h3 id="概述">概述</h3>
-<p>第四个部分是实现系统的内存管理，核心当然就是虚拟地址和物理地址空间的管理了。xv6实验三让我有了心理阴影，所以在实验前我先整理了一下源代码，把项目的结构弄清晰，后面有错的时候方便查找。然后这一章节主要分成四个部分，第一部分是给内核代码添加动态内存分配支持，使得内核可以用上链表、可变数组等数据结构；第二部分是物理页帧管理，这个比较简单，主要是一个空闲页帧分配池的实现；第三部分是虚拟地址管理，就是实现虚拟页号到物理页号的映射、页表的查找和虚拟内存和物理内存之间数据的传递，这里我对rcore中的实现进行了很多简化；第四部分是地址空间管理机制和分时管理系统的融合，这一步最麻烦，需要对用户程序的虚拟地址空间进行划分和管理，以及解析elf文件和修改陷入前后、任务切换相关数据的操作。</p>
+<p>第四个部分是实现系统的内存管理，核心当然就是虚拟地址和物理地址空间的管理了。xv6实验三让我有了心理阴影，所以在实验前我先整理了一下源代码，把项目的结构弄清晰，后面有错的时候方便查找。然后这一章节主要分成四个部分：</p>
+<ol type="1">
+<li><p>给内核代码添加动态内存分配支持，使得内核可以用上链表、可变数组等数据结构；</p></li>
+<li><p>物理页帧管理，这个比较简单，主要是一个空闲页帧分配池的实现；</p></li>
+<li><p>虚拟地址管理，就是实现虚拟页号到物理页号的映射、页表的查找和虚拟内存和物理内存之间数据的传递，这里我对rcore中的实现进行了很多简化；</p></li>
+<li><p>地址空间管理机制和分时管理系统的融合，这一步最麻烦，需要对用户程序的虚拟地址空间进行划分和管理，以及解析elf文件和修改陷入前后、任务切换相关数据的操作。</p></li>
+</ol>
 <h3 id="内容">内容</h3>
 <p>新的项目结构如下：</p>
 <ul>
@@ -204,7 +216,8 @@ html[data-theme='tufte']{
 <p>map_area的参数没有给出待映射的物理页号。因为这个函数的调用只有两种情况，一种是映射内核空间，这种情况下虚拟页号等于物理页号，所以自己映射自己就行，对应alloc参数为0；一种是映射用户空间，这种情况随映射随创建就行，对应alloc为1。同理，unmap_area也是两种情况，一种是解映射时物理空间要保留，另外一种是解映射的时候顺便将对应的物理页帧释放掉。</p>
 <p>而copy_area主要实现虚拟地址里的数据和物理地址里的数据传递。这个函数也是两用的，当to_va为1时，意味着将data里的数据传给root页表对应的start_va虚拟地址开始的空间，比如在初始化用户程序的时候，需要将内核内存里用户程序的数据段复制到用户页表里；当to_va为0时，意味着将root页表对应的start_va虚拟地址开始的数据传给data，比如说在用户程序write调用的时候，将一个缓冲区地址传给内核，这个地址时虚拟地址，需要传到一段连续的物理空间中才能被内核使用。这个函数的难点就是在于连续的虚拟页号对应的物理页号不一定连续，所以需要将data指向的空间切分成小区域。对于每个虚拟页号，需要先进行一番find_pte找到物理页号，然后要计算当前要复制的小区域在物理页帧中的偏移量和复制长度，如果该小区域位于data的两端会出现不对齐的情况，这时偏移量可能大于0，复制长度小于页宽，需要进行条件判断。</p>
 <p>最后是新的地址管理和原来程序的融合。任务切换这一块不用怎么变，因为没有涉及到页表的切换，TaskContext也像前面一样放在内核栈底部。只有在初始化的时候需要将TaskContext中的ra的值由__restore改为trap_return函数。</p>
-<p>然后就是陷入了，先讲用户态进入内核态，首先第一步是“取回自己在进入用户态时失去的记忆”，不然没法切换页表，也没法切换sp进行下一步操作。而这个“记忆”就是TrapContext，由于此时还没有切换页表，所以TrapContext必须映射到用户的页表中，这也是每个用户的虚拟地址空间包含TRAPCONTEXT这一段的原因，同时用来保存“进入内核态的第一份数据”的sscratch寄存器，存的也就是TrapContext的地址。一番操作后，从TrapContext取出内核页表地址和内核栈地址后，就可以切换页表和设置sp了，然后跳转到陷入处理程序。注意现在的跳转用的是jr指令，目标是之前存在TrapContext里的trap_handle的地址，为什么要改这个呢？原因是之前__restore里的代码不依赖参数（a0、a1寄存器的值）的，所以如果这里用call指令，陷入处理结束后就可以自然地往下继续执行__restore里的代码。现在__restore依赖参数了，在trap_return函数里调用，不需要依靠call指令修改ra寄存器的值，所以用的是jr指令。</p>
+<p>然后就是陷入（trap）了，先讲用户态进入内核态，首先第一步是“取回自己在进入用户态时失去的记忆”，不然没法切换页表，也没法切换sp进行下一步操作。而这个“记忆”就是TrapContext，由于此时还没有切换页表，所以TrapContext必须映射到用户的页表中，这也是每个用户的虚拟地址空间包含TRAPCONTEXT这一段的原因，同时用来保存“进入内核态的第一份数据”的sscratch寄存器，存的也就是TrapContext的地址。一番操作后，从TrapContext取出内核页表地址和内核栈地址后，就可以切换页表和设置sp了，然后跳转到陷入处理程序。</p>
+<p>注意现在的跳转用的是jr指令，目标是之前存在TrapContext里的trap_handle的地址，为什么要改这个呢？原因是之前__restore里的代码不依赖参数（a0、a1寄存器的值）的，所以如果这里用call指令，陷入处理结束后就可以自然地往下继续执行__restore里的代码。现在__restore依赖参数了，在trap_return函数里调用，不需要依靠call指令修改ra寄存器的值，所以用的是jr指令。</p>
 <p>接着时内核态到用户态，现在新加了一个trap_return函数，原因是现在__restore函数有参数了，调用前需要准备一下参数。__restore函数需要写TrapContext，因此得先切换到用户页表和获取TrapContext的虚地址，这些就由参数给出。一番操作后，将TrapContext的虚地址传到sscratch中，设置sp为用户栈地址（存在TrapContext）里了，就可以指向用户程序了。</p>
 <p>因此初始化就需要对TrapContext和TaskContext的这些属性进行填充。这次还有一个大变化，就是直接读取elf格式的用户程序了，并在读取的过程中对程序的各段进行地址映射，并额外映射内核栈、用户栈、跳表代码和TrapContext。这里补充说一下跳表代码，其实就是trap.S里的汇编代码，因为里面涉及页表切换，需要保证切换前代码的虚拟地址和切换后代码的虚拟地址一样，所以才专门把跳表代码映射到所有页表的同一位置。</p>
 <p>这里着重说一下elf文件格式的解析，教程中用了外部库，实际上elf文件格式还是很容易解析的，因为里面的所有头信息都是固定大小，也不存在嵌套关系，所以只需要定义和头信息格式一致的结构体，就可以获得头信息的各项属性了。我这里用的是xv6里的elf.h：</p>
@@ -239,7 +252,7 @@ html[data-theme='tufte']{
 <span id="cb3-29"><a href="#cb3-29"></a>}</span></code></pre></div>
 <p>elf格式的第一个头包含整个elf文件的信息，比如入口点、段头在文件中的地址什么的。根据这个地址可以找到各段头。注意elf格式中包含两种段头，一种叫program header（简称ph），一种叫section header（简称sh），section header和程序中实际的段（比如在链接脚本里看到的data段、text段、bss段这些）是一一对应的，而每个program header则描述了连续的同权限的多个段。因为我们的程序可以映射和复制连续且同一权限的一块数据，所以按program header进行映射和复制即可。</p>
 <footer>
-    <hr><center>转载请注明出处<br>© 2022 ZimingYuan的博客</center>
+    <hr><center>转载请注明出处<br>© 2023 ZimingYuan的博客</center>
 </footer>
 </body>
 </html>

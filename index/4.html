@@ -24,13 +24,19 @@ html[data-theme='tufte']{
 </style>
         <script>
             let search = () => {
-                let word = document.querySelector('input').value;
-                if (word.length == 0) {
-                    alert('搜索内容不能为空！');
+                let word = document.querySelector('input');
+                if (word.value.length == 0) {
+                    word.focus();
                 } else {
-                    location.href = '/search.html?' + word;
+                    location.href = '/search.html?' + word.value;
                 }
             };
+            window.onload = () => {
+                document.querySelector('input').addEventListener(
+                    'keydown',  (event) => {
+                        if (event.key == 'Enter') search();
+                });
+            }
         </script>
         <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
         <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
@@ -43,8 +49,8 @@ html[data-theme='tufte']{
                 <li><a href="/index.html">首页</a></li>
                 <li><a href="/html/随笔.html">随笔</a></li>
                 <li><a href="/html/CSP模板.html">CSP模板</a></li>
-                <li class="float-right sticky"><button onclick="search()">Go</button></li>
-                <li class="float-right sticky"><input type="text" placeholder="搜索"></li>
+                <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
+                <li class="float-right sticky"><input type="search" placeholder="搜索" style="margin: 0"></li>
             </ul>
         </nav>
         <header>
@@ -122,7 +128,7 @@ html[data-theme='tufte']{
                 <div class="card info">
                     <p>关于我</p>
                     <img style="border-radius: 10%; padding: 5%" src="/img/profile.jpg"></img>
-                    <p>前偏远小渔村边缘OIer，现在是HUST计院普通大学生。</p>
+                    <p>前偏远小渔村边缘OIer，HUST计院普通大学生，现在是ICT搬砖工。</p>
                     <p>
                     <a href="https://github.com/ZimingYuan" target="_BLANK">Github</a>
                     Gitee上也有同名账户，同步大部分项目。
@@ -132,11 +138,11 @@ html[data-theme='tufte']{
                     <a href="https://www.cnblogs.com/YuanZiming/" target="_BLANK">我的博客园</a>
                     的备份，原博客有过去的一些文章以及细致的文章分类。
                     </p>
-                </div>;
+                </div>
             </div>
         </div>
         <footer>
-            <hr><center>转载请注明出处<br>© 2022 ZimingYuan的博客</center>
+            <hr><center>转载请注明出处<br>© 2023 ZimingYuan的博客</center>
         </footer>
     </body>
 </html>

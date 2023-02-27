@@ -95,13 +95,19 @@ html[data-theme='tufte']{
 </style>
   <script>
       let search = () => {
-          let word = document.querySelector('input').value;
-          if (word.length == 0) {
-              alert('搜索内容不能为空！');
+          let word = document.querySelector('input');
+          if (word.value.length == 0) {
+              word.focus();
           } else {
-              location.href = '/search.html?' + word;
+              location.href = '/search.html?' + word.value;
           }
       };
+      window.onload = () => {
+          document.querySelector('input').addEventListener(
+              'keydown',  (event) => {
+                  if (event.key == 'Enter') search();
+          });
+      }
   </script>
   <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
@@ -117,8 +123,8 @@ html[data-theme='tufte']{
             <li><a href="/index.html">首页</a></li>
             <li><a href="/html/随笔.html">随笔</a></li>
             <li><a href="/html/CSP模板.html">CSP模板</a></li>
-            <li class="float-right sticky"><button onclick="search()">Go</button></li>
-            <li class="float-right sticky"><input type="text" placeholder="搜索"></li>
+            <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索" style="margin: 0"></li>
         </ul>
     </nav>
 <header id="title-block-header">
@@ -558,33 +564,37 @@ html[data-theme='tufte']{
 <span id="cb29-5"><a href="#cb29-5"></a><span class="pp">#define INF </span><span class="bn">0x3fffffff</span></span>
 <span id="cb29-6"><a href="#cb29-6"></a><span class="pp">#define MOD </span><span class="dv">1000000007</span></span>
 <span id="cb29-7"><a href="#cb29-7"></a><span class="pp">#define LL </span><span class="dt">long</span><span class="pp"> </span><span class="dt">long</span></span>
-<span id="cb29-8"><a href="#cb29-8"></a><span class="pp">#define V </span>vector</span>
-<span id="cb29-9"><a href="#cb29-9"></a><span class="pp">#define M </span>unordered_map</span>
-<span id="cb29-10"><a href="#cb29-10"></a><span class="pp">#define P </span>pair</span>
-<span id="cb29-11"><a href="#cb29-11"></a><span class="pp">#define ST </span>string</span>
-<span id="cb29-12"><a href="#cb29-12"></a><span class="pp">#define PQ </span>priority_queue</span>
-<span id="cb29-13"><a href="#cb29-13"></a><span class="pp">#define V2</span>(T)<span class="pp"> </span>V&lt;V&lt;T&gt;&gt;</span>
-<span id="cb29-14"><a href="#cb29-14"></a><span class="pp">#define PII </span>P&lt;<span class="dt">int</span>,<span class="pp"> </span><span class="dt">int</span>&gt;</span>
-<span id="cb29-15"><a href="#cb29-15"></a><span class="pp">#define MII </span>M&lt;<span class="dt">int</span>,<span class="pp"> </span><span class="dt">int</span>&gt;</span>
-<span id="cb29-16"><a href="#cb29-16"></a><span class="pp">#define MSI </span>M&lt;ST,<span class="pp"> </span><span class="dt">int</span>&gt;</span>
-<span id="cb29-17"><a href="#cb29-17"></a><span class="pp">#define I </span>iterator</span>
-<span id="cb29-18"><a href="#cb29-18"></a><span class="pp">#define B </span>begin()</span>
-<span id="cb29-19"><a href="#cb29-19"></a><span class="pp">#define E </span>end()</span>
-<span id="cb29-20"><a href="#cb29-20"></a><span class="pp">#define S </span>size()</span>
-<span id="cb29-21"><a href="#cb29-21"></a><span class="pp">#define A</span>(T)<span class="pp"> </span>(T).begin(),<span class="pp"> </span>(T).end()</span>
-<span id="cb29-22"><a href="#cb29-22"></a><span class="pp">#define PB </span>push_back</span>
-<span id="cb29-23"><a href="#cb29-23"></a><span class="pp">#define F </span>find</span>
+<span id="cb29-8"><a href="#cb29-8"></a><span class="pp">#define I </span>iterator</span>
+<span id="cb29-9"><a href="#cb29-9"></a><span class="pp">#define B </span>begin()</span>
+<span id="cb29-10"><a href="#cb29-10"></a><span class="pp">#define E </span>end()</span>
+<span id="cb29-11"><a href="#cb29-11"></a><span class="pp">#define A</span>(T)<span class="pp"> </span>(T).begin(),<span class="pp"> </span>(T).end()</span>
+<span id="cb29-12"><a href="#cb29-12"></a><span class="pp">#define S </span>size()</span>
+<span id="cb29-13"><a href="#cb29-13"></a><span class="pp">#define V </span>vector</span>
+<span id="cb29-14"><a href="#cb29-14"></a><span class="pp">#define V2</span>(T)<span class="pp"> </span>V&lt;V&lt;T&gt;&gt;</span>
+<span id="cb29-15"><a href="#cb29-15"></a><span class="pp">#define V3</span>(T)<span class="pp"> </span>V&lt;V&lt;V&lt;T&gt;&gt;&gt;</span>
+<span id="cb29-16"><a href="#cb29-16"></a><span class="pp">#define ST </span>string</span>
+<span id="cb29-17"><a href="#cb29-17"></a><span class="pp">#define PB </span>push_back</span>
+<span id="cb29-18"><a href="#cb29-18"></a><span class="pp">#define M </span>unordered_map</span>
+<span id="cb29-19"><a href="#cb29-19"></a><span class="pp">#define MII </span>M&lt;<span class="dt">int</span>,<span class="pp"> </span><span class="dt">int</span>&gt;</span>
+<span id="cb29-20"><a href="#cb29-20"></a><span class="pp">#define MSI </span>M&lt;ST,<span class="pp"> </span><span class="dt">int</span>&gt;</span>
+<span id="cb29-21"><a href="#cb29-21"></a><span class="pp">#define F </span>find</span>
+<span id="cb29-22"><a href="#cb29-22"></a><span class="pp">#define P </span>pair</span>
+<span id="cb29-23"><a href="#cb29-23"></a><span class="pp">#define PII </span>P&lt;<span class="dt">int</span>,<span class="pp"> </span><span class="dt">int</span>&gt;</span>
 <span id="cb29-24"><a href="#cb29-24"></a><span class="pp">#define MP </span>make_pair</span>
 <span id="cb29-25"><a href="#cb29-25"></a><span class="pp">#define P1 </span>first</span>
 <span id="cb29-26"><a href="#cb29-26"></a><span class="pp">#define P2 </span>second</span>
-<span id="cb29-27"><a href="#cb29-27"></a></span>
-<span id="cb29-28"><a href="#cb29-28"></a><span class="kw">inline</span> <span class="dt">int</span> read() {</span>
-<span id="cb29-29"><a href="#cb29-29"></a>    <span class="dt">char</span> ch = getchar(); <span class="dt">int</span> f = <span class="dv">1</span>, x = <span class="dv">0</span>;</span>
-<span id="cb29-30"><a href="#cb29-30"></a>    <span class="cf">while</span> (ch &lt; <span class="ch">&#39;0&#39;</span> || ch &gt; <span class="ch">&#39;9&#39;</span>) { <span class="cf">if</span> (ch == <span class="ch">&#39;-&#39;</span>) f = -<span class="dv">1</span>; ch = getchar(); }</span>
-<span id="cb29-31"><a href="#cb29-31"></a>    <span class="cf">while</span> (ch &gt;= <span class="ch">&#39;0&#39;</span> &amp;&amp; ch &lt;= <span class="ch">&#39;9&#39;</span>) x = x * <span class="dv">10</span> + ch - <span class="ch">&#39;0&#39;</span>, ch = getchar();</span>
-<span id="cb29-32"><a href="#cb29-32"></a>    <span class="cf">return</span> f * x;</span>
-<span id="cb29-33"><a href="#cb29-33"></a>}</span></code></pre></div>
-<h3 id="gvim简易配置">gvim简易配置</h3>
+<span id="cb29-27"><a href="#cb29-27"></a><span class="pp">#define T </span>tuple</span>
+<span id="cb29-28"><a href="#cb29-28"></a><span class="pp">#define MT </span>make_tuple</span>
+<span id="cb29-29"><a href="#cb29-29"></a><span class="pp">#define Q </span>queue</span>
+<span id="cb29-30"><a href="#cb29-30"></a><span class="pp">#define PQ </span>priority_queue</span>
+<span id="cb29-31"><a href="#cb29-31"></a></span>
+<span id="cb29-32"><a href="#cb29-32"></a><span class="kw">inline</span> <span class="dt">int</span> read() {</span>
+<span id="cb29-33"><a href="#cb29-33"></a>    <span class="dt">char</span> ch = getchar(); <span class="dt">int</span> f = <span class="dv">1</span>, x = <span class="dv">0</span>;</span>
+<span id="cb29-34"><a href="#cb29-34"></a>    <span class="cf">while</span> (ch &lt; <span class="ch">&#39;0&#39;</span> || ch &gt; <span class="ch">&#39;9&#39;</span>) { <span class="cf">if</span> (ch == <span class="ch">&#39;-&#39;</span>) f = -<span class="dv">1</span>; ch = getchar(); }</span>
+<span id="cb29-35"><a href="#cb29-35"></a>    <span class="cf">while</span> (ch &gt;= <span class="ch">&#39;0&#39;</span> &amp;&amp; ch &lt;= <span class="ch">&#39;9&#39;</span>) x = x * <span class="dv">10</span> + ch - <span class="ch">&#39;0&#39;</span>, ch = getchar();</span>
+<span id="cb29-36"><a href="#cb29-36"></a>    <span class="cf">return</span> f * x;</span>
+<span id="cb29-37"><a href="#cb29-37"></a>}</span></code></pre></div>
+<h3 id="gvim简易配置windows下针对dev-c内置mingw64编译器">gvim简易配置（Windows下，针对Dev C++内置Mingw64编译器）</h3>
 <div class="sourceCode" id="cb30"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1"></a><span class="kw">set</span> <span class="ex">nocp</span></span>
 <span id="cb30-2"><a href="#cb30-2"></a><span class="kw">set</span> <span class="va">go=</span></span>
 <span id="cb30-3"><a href="#cb30-3"></a><span class="kw">set</span> <span class="ex">nu</span></span>
@@ -616,7 +626,7 @@ html[data-theme='tufte']{
 <span id="cb30-29"><a href="#cb30-29"></a><span class="ex">map</span> <span class="op">&lt;</span>C-F5<span class="op">&gt;</span> :call Comp()<span class="op">&lt;</span><span class="ex">CR</span><span class="op">&gt;</span></span>
 <span id="cb30-30"><a href="#cb30-30"></a><span class="ex">map</span> <span class="op">&lt;</span>C-F6<span class="op">&gt;</span> :call Run()<span class="op">&lt;</span><span class="ex">CR</span><span class="op">&gt;</span></span></code></pre></div>
 <footer>
-    <hr><center>转载请注明出处<br>© 2022 ZimingYuan的博客</center>
+    <hr><center>转载请注明出处<br>© 2023 ZimingYuan的博客</center>
 </footer>
 </body>
 </html>

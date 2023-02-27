@@ -95,13 +95,19 @@ html[data-theme='tufte']{
 </style>
   <script>
       let search = () => {
-          let word = document.querySelector('input').value;
-          if (word.length == 0) {
-              alert('搜索内容不能为空！');
+          let word = document.querySelector('input');
+          if (word.value.length == 0) {
+              word.focus();
           } else {
-              location.href = '/search.html?' + word;
+              location.href = '/search.html?' + word.value;
           }
       };
+      window.onload = () => {
+          document.querySelector('input').addEventListener(
+              'keydown',  (event) => {
+                  if (event.key == 'Enter') search();
+          });
+      }
   </script>
   <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
@@ -117,8 +123,8 @@ html[data-theme='tufte']{
             <li><a href="/index.html">首页</a></li>
             <li><a href="/html/随笔.html">随笔</a></li>
             <li><a href="/html/CSP模板.html">CSP模板</a></li>
-            <li class="float-right sticky"><button onclick="search()">Go</button></li>
-            <li class="float-right sticky"><input type="text" placeholder="搜索"></li>
+            <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索" style="margin: 0"></li>
         </ul>
     </nav>
 <header id="title-block-header">
@@ -153,8 +159,10 @@ html[data-theme='tufte']{
 <span id="cb1-22"><a href="#cb1-22"></a>    q-&gt;tail = (q-&gt;tail + <span class="dv">1</span>) % q-&gt;capacity; q-&gt;size++;</span>
 <span id="cb1-23"><a href="#cb1-23"></a>}</span></code></pre></div>
 <p>vector的操作很直观，queue要麻烦一些，为了节省空间，queue用的是循环队列，当队列满时，头索引和尾索引必然相等，因为尾索引是向右增加，头索引是像左减少的，所以扩容的时候需要将原缓冲区最左侧到尾索引的数据复制到新缓冲区的最左侧，将原缓冲区头索引到最右侧的数据复制到新缓冲区的最右侧，这时候就得计算好复制到新缓冲区的起始位置。</p>
-<p>然后是文件描述符的设计，rCore很好地利用了rust语言的面向对象特性，让File对象“继承”（我不确定rust语言里这个行为叫什么，大概类似于java里继承抽象类）管道、磁盘文件、设备等对象，这样File对象就只要实现一些最基本的方法和属性，比如定义文件写和文件读函数的指针，具体的属性和方法，如管道释放方法、管道读写权限、管道对应缓冲区、磁盘文件索引之类就通过“继承”赋予给File对象；xv6就比较朴素，在文件描述符里对应了多种多样的属性，但是没有定义函数指针，而是由统一的读写函数通过文件描述符里的文件类型属性判断；我则综合了两者，给文件描述符定义了包括读、写、释放、复制多个函数的指针，这样在读、写、释放的系统调用中就不用判断文件类型，而是调用对应的函数指针即可，同时也在文件描述符中额外定义了一个void类型的指针，用来指向这个文件“绑定”的数据，比如是管道文件，这个指针就指向一个管道。在调用文件处理函数指针的时候把文件指针传进去，由不同的函数来对这个“绑定”指针进行不同的解释，算是一种伪泛型吧。</p>
-<p>这里还有一点要注意的，就是文件的引用计数问题。这个问题对于rCore和xv6的意义不同。对于rCore来说，这个计数不是针对于单个的文件描述符，而是针对于文件描述符所产生的跨进程资源。比如管道文件，虽然每个进程各自持有，释放也各自释放就行，但是管道包含一个用来传输数据的缓冲队列，这个缓冲队列就是跨进程资源。这就需要引用计数，对于每个缓冲队列记录自己有多少个“管口”，当所有“管口”被关闭时，即没有管道引用它时，就要释放这个缓冲队列。这里rust又拿下一城：拥有内置了引用计数功能的智能指针，不需要显式地处理引用计数问题。再看看xv6，xv6是父子进程共享一个文件描述符，所以引用计数是文件描述符的一个属性，每次进程fork都会增加一次引用，释放文件会减少一次引用，当引用为0时将文件描述符及其对应的资源释放。我在文件描述符和进程的关系上遵循的是rCore，即每个进程持有一个独立的文件描述符，而把引用计数属性放在需要被释放的结构体中，比如这里就给管道添加了引用计数属性，同时定义了管道释放和复制的方法对其指向的缓冲区引用计数进行修改，这一步就比较像xv6，然后把这两个函数填入文件描述符的函数指针中，由fork函数和文件关闭函数调用。</p>
+<p>然后是文件描述符的设计，rCore很好地利用了rust语言的面向对象特性，让File对象“继承”（我不确定rust语言里这个行为叫什么，大概类似于java里继承抽象类）管道、磁盘文件、设备等对象，这样File对象就只要实现一些最基本的方法和属性，比如定义文件写和文件读函数的指针，具体的属性和方法，如管道释放方法、管道读写权限、管道对应缓冲区、磁盘文件索引之类就通过“继承”赋予给File对象；xv6就比较朴素，在文件描述符里对应了多种多样的属性，但是没有定义函数指针，而是由统一的读写函数通过文件描述符里的文件类型属性判断。</p>
+<p>我则综合了两者，给文件描述符定义了包括读、写、释放、复制多个函数的指针，这样在读、写、释放的系统调用中就不用判断文件类型，而是调用对应的函数指针即可，同时也在文件描述符中额外定义了一个void类型的指针，用来指向这个文件“绑定”的数据，比如是管道文件，这个指针就指向一个管道。在调用文件处理函数指针的时候把文件指针传进去，由不同的函数来对这个“绑定”指针进行不同的解释，算是一种伪泛型吧。</p>
+<p>这里还有一点要注意的，就是文件的引用计数问题。这个问题对于rCore和xv6的意义不同。对于rCore来说，这个计数不是针对于单个的文件描述符，而是针对于文件描述符所产生的跨进程资源。比如管道文件，虽然每个进程各自持有，释放也各自释放就行，但是管道包含一个用来传输数据的缓冲队列，这个缓冲队列就是跨进程资源。这就需要引用计数，对于每个缓冲队列记录自己有多少个“管口”，当所有“管口”被关闭时，即没有管道引用它时，就要释放这个缓冲队列。这里rust又拿下一城：拥有内置了引用计数功能的智能指针，不需要显式地处理引用计数问题。再看看xv6，xv6是父子进程共享一个文件描述符，所以引用计数是文件描述符的一个属性，每次进程fork都会增加一次引用，释放文件会减少一次引用，当引用为0时将文件描述符及其对应的资源释放。</p>
+<p>我在文件描述符和进程的关系上遵循的是rCore，即每个进程持有一个独立的文件描述符，而把引用计数属性放在需要被释放的结构体中，比如这里就给管道添加了引用计数属性，同时定义了管道释放和复制的方法对其指向的缓冲区引用计数进行修改，这一步就比较像xv6，然后把这两个函数填入文件描述符的函数指针中，由fork函数和文件关闭函数调用。</p>
 <p>这里给出管道相关的创建、读写、复制、释放函数：</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1"></a>usize pipe_read(File *self, <span class="dt">char</span> *buffer, usize len) {</span>
 <span id="cb2-2"><a href="#cb2-2"></a>    Pipe *p = (Pipe *)self-&gt;bind;</span>
@@ -196,9 +204,10 @@ html[data-theme='tufte']{
 <span id="cb2-38"><a href="#cb2-38"></a>    f-&gt;read = illegal_rw; f-&gt;write = pipe_write;</span>
 <span id="cb2-39"><a href="#cb2-39"></a>    f-&gt;copy = pipe_copy; f-&gt;close = pipe_close;</span>
 <span id="cb2-40"><a href="#cb2-40"></a>} </span></code></pre></div>
-<p>我这里Pipe结构体和rCore不太一样，rCore里Pipe对象的意思是“管口”，有额外的PipeRingBuffer对象表示管道本身。我这里Pipe就是管道本身，文件描述符中bind属性指向它，所以文件描述符本身就充当“管口”了。管道中还有一个wrefcnt属性表示写引用计数，在读函数中如果判断写引用计数为0，说明管道中不会再有新数据了，则直接返回已经读取的全部数据。在复制和释放管道文件的时候，判断释放应该修改写引用计数的方法是判断该文件的读函数是否指向<code>illegal_rw</code>，这个函数是一个直接返回错误的函数，用来填充该文件不支持的操作对应函数指针，如果管道文件的读函数指向<code>illegal_rw</code>，说明这个管道文件不支持读取，是写管口，此时就应该修改写引用计数。</p>
+<p>我这里Pipe结构体和rCore不太一样，rCore里Pipe对象的意思是“管口”，有额外的PipeRingBuffer对象表示管道本身。我这里Pipe就是管道本身，文件描述符中bind属性指向它，所以文件描述符本身就充当“管口”了。管道中还有一个wrefcnt属性表示写引用计数，在读函数中如果判断写引用计数为0，说明管道中不会再有新数据了，则直接返回已经读取的全部数据。</p>
+<p>在复制和释放管道文件的时候，判断释放应该修改写引用计数的方法是判断该文件的读函数是否指向<code>illegal_rw</code>，这个函数是一个直接返回错误的函数，用来填充该文件不支持的操作对应函数指针，如果管道文件的读函数指向<code>illegal_rw</code>，说明这个管道文件不支持读取，是写管口，此时就应该修改写引用计数。</p>
 <footer>
-    <hr><center>转载请注明出处<br>© 2022 ZimingYuan的博客</center>
+    <hr><center>转载请注明出处<br>© 2023 ZimingYuan的博客</center>
 </footer>
 </body>
 </html>

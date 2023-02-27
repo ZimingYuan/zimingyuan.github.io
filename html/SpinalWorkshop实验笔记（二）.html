@@ -95,13 +95,19 @@ html[data-theme='tufte']{
 </style>
   <script>
       let search = () => {
-          let word = document.querySelector('input').value;
-          if (word.length == 0) {
-              alert('搜索内容不能为空！');
+          let word = document.querySelector('input');
+          if (word.value.length == 0) {
+              word.focus();
           } else {
-              location.href = '/search.html?' + word;
+              location.href = '/search.html?' + word.value;
           }
       };
+      window.onload = () => {
+          document.querySelector('input').addEventListener(
+              'keydown',  (event) => {
+                  if (event.key == 'Enter') search();
+          });
+      }
   </script>
   <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
@@ -117,8 +123,8 @@ html[data-theme='tufte']{
             <li><a href="/index.html">首页</a></li>
             <li><a href="/html/随笔.html">随笔</a></li>
             <li><a href="/html/CSP模板.html">CSP模板</a></li>
-            <li class="float-right sticky"><button onclick="search()">Go</button></li>
-            <li class="float-right sticky"><input type="text" placeholder="搜索"></li>
+            <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索" style="margin: 0"></li>
         </ul>
     </nav>
 <header id="title-block-header">
@@ -317,7 +323,7 @@ html[data-theme='tufte']{
 <p>实现方式是定义一个寄存器作为当前信号的后继，这样当前信号下降的时候后继寄存器还没下降。我一开始没仔细看，选了后面那个没参数的重载。结果那个后继寄存器没初始化！众所周知，没有初始化会导致一些匪夷所思的结果，我就遇到了诸如when (cond) {do A} otherwise {do B}和when (!cond) {do B} otherwise {do A}结果不一样和计数器只能用Reg不能用Counter之类的诡异问题。最后看了波形才明白，原因是后继寄存器一开始为1，所以只要当前信号是低电平都会返回1。我只想吐槽一句，写第二个重载的人是不是SpinalHDL项目组里的内鬼，这不是纯坑爹吗？事实上，我觉得初始值直接默认为假就可以了，根本就没有初始值为真能返回正确结果的情况。</p></li>
 </ul>
 <footer>
-    <hr><center>转载请注明出处<br>© 2022 ZimingYuan的博客</center>
+    <hr><center>转载请注明出处<br>© 2023 ZimingYuan的博客</center>
 </footer>
 </body>
 </html>

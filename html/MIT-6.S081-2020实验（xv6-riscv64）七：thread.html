@@ -95,13 +95,19 @@ html[data-theme='tufte']{
 </style>
   <script>
       let search = () => {
-          let word = document.querySelector('input').value;
-          if (word.length == 0) {
-              alert('搜索内容不能为空！');
+          let word = document.querySelector('input');
+          if (word.value.length == 0) {
+              word.focus();
           } else {
-              location.href = '/search.html?' + word;
+              location.href = '/search.html?' + word.value;
           }
       };
+      window.onload = () => {
+          document.querySelector('input').addEventListener(
+              'keydown',  (event) => {
+                  if (event.key == 'Enter') search();
+          });
+      }
   </script>
   <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
@@ -117,8 +123,8 @@ html[data-theme='tufte']{
             <li><a href="/index.html">首页</a></li>
             <li><a href="/html/随笔.html">随笔</a></li>
             <li><a href="/html/CSP模板.html">CSP模板</a></li>
-            <li class="float-right sticky"><button onclick="search()">Go</button></li>
-            <li class="float-right sticky"><input type="text" placeholder="搜索"></li>
+            <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索" style="margin: 0"></li>
         </ul>
     </nav>
 <header id="title-block-header">
@@ -130,7 +136,8 @@ html[data-theme='tufte']{
 <p>这次实验主要涉及多线程编程，和之前的实验不太一样，比较偏向于应用层面，除了任务一外都是在宿主机上编写多线程程序，应该是xv6不支持系统级的多线程。</p>
 <h3 id="内容">内容</h3>
 <h4 id="uthread-switching-between-threads">Uthread: switching between threads</h4>
-<p>这个任务要求对一个程序填空，这个程序在用户层面实现了多线程的调度。但实际上这个调度和xv6内核的进程调度非常相似。首先是对thread_schedule函数进行填空，只需要调用切换函数就行了，根据文档的说明，这个切换函数是保存当前线程用到的所有callee-saved寄存器，然后将这些寄存器全部赋值为下一个线程里保存的值，联想到xv6内核里的context结构体就是用来保存这些寄存器的，所以直接复制过来并作为thread结构体的一个属性，那么调用切换函数就会像这样：</p>
+<p>这个任务要求对一个程序填空，这个程序在用户层面实现了多线程的调度。但实际上这个调度和xv6内核的进程调度非常相似。</p>
+<p>首先是对thread_schedule函数进行填空，只需要调用切换函数就行了，根据文档的说明，这个切换函数是保存当前线程用到的所有callee-saved寄存器，然后将这些寄存器全部赋值为下一个线程里保存的值，联想到xv6内核里的context结构体就是用来保存这些寄存器的，所以直接复制过来并作为thread结构体的一个属性，那么调用切换函数就会像这样：</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1"></a>thread_switch((uint64)(&amp;t-&gt;context), (uint64)(&amp;current_thread-&gt;context));</span></code></pre></div>
 <p>thread_switch()在uthread_switch.S里实现，这里我不贴代码了，因为和kernel文件夹里的swtch.S里的内容基本一样。</p>
 <p>注意文档里的这句话：</p>
@@ -173,7 +180,7 @@ html[data-theme='tufte']{
 <hr />
 <p>总结一下，这次实验基本没怎么涉及操作系统的理论，重点还是并行程序的应用。不过不管是国内还是国外，操作系统课在进程（线程）这一章节教的也基本上都是竞争、同步、死锁这些应用上的问题，可能进程（线程）的独特之处就在这里，虽然是操作系统中的重点部分，但最值得关注的还是应用上的问题。</p>
 <footer>
-    <hr><center>转载请注明出处<br>© 2022 ZimingYuan的博客</center>
+    <hr><center>转载请注明出处<br>© 2023 ZimingYuan的博客</center>
 </footer>
 </body>
 </html>
