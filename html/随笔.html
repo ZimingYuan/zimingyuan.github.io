@@ -131,15 +131,25 @@ html[data-theme='tufte']{
 <h1 class="title">随笔</h1>
 <hr>
 </header>
+<h3 id="批量将z开头的文件名中的z去掉">批量将z开头的文件名中的z去掉</h3>
+<p>Linux Shell:</p>
+<pre><code>for i in $(ls z*); do mv $i ${i:1}; done</code></pre>
+<p>PowerShell:</p>
+<pre><code>foreach ($i in ls z*) { mv $i.name $i.name.substring(1) }</code></pre>
+<h3 id="批量用ffmpeg将wav文件转码成mp3文件文件名前缀不变">批量用ffmpeg将wav文件转码成mp3文件，文件名前缀不变</h3>
+<p>Linux Shell:</p>
+<pre><code>for i in $(ls *.wav); do ffmpeg -i $i -acodec mp3 ${i%.*}.mp3; done</code></pre>
+<p>PowerShell:</p>
+<pre><code>foreach ($i in ls *.wav) { ffmpeg -i $i.name -acodec mp3 $i.name.replace(&#39;wav&#39;, &#39;mp3&#39;) }</code></pre>
 <h3 id="取消git在windows下自动把克隆代码的换行符改成dos格式">取消git在Windows下自动把克隆代码的换行符改成DOS格式</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">git</span> config --global core.autocrlf input</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">git</span> config --global core.autocrlf input</span></code></pre></div>
 <h3 id="git-克隆子项目">git 克隆子项目</h3>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">git</span> submodule update --init</span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">git</span> submodule update --init</span></code></pre></div>
 <p>后加<code>--recursive</code>表示递归克隆，后加子项目名表示只克隆对应子项目</p>
 <p>删除克隆缓存：</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="fu">git</span> rm --cache</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">git</span> rm --cache</span></code></pre></div>
 <h3 id="powershell下将文件放到剪贴板">powershell下将文件放到剪贴板</h3>
-<div class="sourceCode" id="cb4"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">Add-Type</span> -AssemblyName System.<span class="fu">Windows</span>.<span class="fu">Forms</span>; [System.<span class="fu">Windows</span>.<span class="fu">Forms</span>.<span class="fu">Clipboard</span>]::SetFileDropList(&#39;E:\1.<span class="fu">txt</span>&#39;);</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">Add-Type</span> -AssemblyName System.<span class="fu">Windows</span>.<span class="fu">Forms</span>; [System.<span class="fu">Windows</span>.<span class="fu">Forms</span>.<span class="fu">Clipboard</span>]::SetFileDropList(&#39;E:\1.<span class="fu">txt</span>&#39;);</span></code></pre></div>
 <p>注意文件路径必须是绝对路径</p>
 <hr />
 <h3 id="用magick将图片白色处变透明">用magick将图片白色处变透明</h3>
@@ -147,9 +157,9 @@ html[data-theme='tufte']{
 <hr />
 <h3 id="powershell下转进制">powershell下转进制</h3>
 <p>十进制转二进制</p>
-<div class="sourceCode" id="cb6"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb6-1"><a href="#cb6-1"></a>[Convert]::ToString(100, 2)</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb10-1"><a href="#cb10-1"></a>[Convert]::ToString(100, 2)</span></code></pre></div>
 <p>二进制转十进制</p>
-<div class="sourceCode" id="cb7"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1"></a>[Convert]::ToInt32(&#39;100&#39;, 2)</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb11-1"><a href="#cb11-1"></a>[Convert]::ToInt32(&#39;100&#39;, 2)</span></code></pre></div>
 <hr />
 <h3 id="vim按编码输入unicode字符">vim按编码输入unicode字符</h3>
 <pre><code>&lt;Ctrl-V&gt;U0001f022</code></pre>
@@ -184,16 +194,6 @@ html[data-theme='tufte']{
 <h3 id="magick把svg格式转为png格式">Magick把svg格式转为png格式</h3>
 <pre><code>magick convert -density 600 src.svg dst.png</code></pre>
 <p>注意分辨率这个选项要放在源文件名前面。</p>
-<h3 id="批量将z开头的文件名中的z去掉">批量将z开头的文件名中的z去掉</h3>
-<p>Linux Shell:</p>
-<pre><code>for i in $(ls z*); do mv $i ${i:1}; done</code></pre>
-<p>PowerShell:</p>
-<pre><code>foreach ($i in ls z*) { mv $i.name $i.name.substring(1) }</code></pre>
-<h3 id="批量用ffmpeg将wav文件转码成mp3文件文件名前缀不变">批量用ffmpeg将wav文件转码成mp3文件，文件名前缀不变</h3>
-<p>Linux Shell:</p>
-<pre><code>for i in $(ls *.wav); do ffmpeg -i $i -acodec mp3 ${i%.*}.mp3; done</code></pre>
-<p>PowerShell:</p>
-<pre><code>foreach ($i in ls *.wav) { ffmpeg -i $i.name -acodec mp3 $i.name.replace(&#39;wav&#39;, &#39;mp3&#39;) }</code></pre>
 <footer>
     <hr><center>转载请注明出处<br>© 2023 ZimingYuan的博客</center>
 </footer>
