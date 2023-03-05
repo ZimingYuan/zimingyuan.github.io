@@ -59,6 +59,30 @@ html[data-theme='tufte']{
             <div class="col">
                 
 <div class="card">
+    <h4><a href="/html/SpinalWorkshop实验笔记（三）.html">SpinalWorkshop实验笔记（三）</a></h4><hr>
+    <h5>摘要：</h5><p>概述 本文涉及Stream、WavePlayer、UDP、Mandelbrot四个实验。实验地址 最后的这四个实验中的三个都和Stream类息息相关。Stream类最关键的是要掌握它的两个特性：需要握手和实时变化。 需要握手指的是Stream的传输数据需要其valid信号和ready信号均为真，而这...</p>
+    <em>2021年12月22日</em>
+</div>
+
+<div class="card">
+    <h4><a href="/html/SpinalWorkshop实验笔记（二）.html">SpinalWorkshop实验笔记（二）</a></h4><hr>
+    <h5>摘要：</h5><p>概述 本文涉及Function、Apb3Decoder、Timer、BlackBoxAndClock四个实验。实验地址 内容 Function 本实验的电路分两个阶段： 识别字符串：用从Flow中获得的字符匹配参数字符串 获得数据：匹配成功后，从字符串后面获得一定量的字节构成一个整数输出 难点在于识...</p>
+    <em>2021年12月17日</em>
+</div>
+
+<div class="card">
+    <h4><a href="/html/SpinalWorkshop实验笔记（一）.html">SpinalWorkshop实验笔记（一）</a></h4><hr>
+    <h5>摘要：</h5><p>概述 最近在学习SpinalHDL，在github上看到了SpinalHDL实验，于是试着做了做。虽然这些实验的答案在仓库里给出来了，但我是FPGA初学者，虽然会一点verilog却对各种总线一窍不通，也不了解scala，所以即使要理解这些实验也花费了一番功夫。在这里记录一下我做这些实验的感想。本文...</p>
+    <em>2021年12月15日</em>
+</div>
+
+<div class="card">
+    <h4><a href="/html/PYNQ开发板上使用USB声卡+OSS兼容层播放音频.html">PYNQ开发板上使用USB声卡+OSS兼容层播放音频</a></h4><hr>
+    <h5>摘要：</h5><p>PYNQ开发板上使用USB声卡+OSS兼容层播放音频需要经过联网装库，编译驱动模块，运行三个步骤。 联网装库 首先需要将PYNQ开发板连上网，才能安装所需的库。方法是在电脑上设置共享网络，但要注意大部分操作系统在共享网络的时候无法自己指定本机IP，所以需要修改PYNQ开发板的IP来适应电脑自动设置的...</p>
+    <em>2021年10月22日</em>
+</div>
+
+<div class="card">
     <h4><a href="/html/TestOS移植K210开发板.html">TestOS移植K210开发板</a></h4><hr>
     <h5>摘要：</h5><p>概述 本文介绍前六个部分在移植K210开发板遇到的问题，第七章比较麻烦，就放弃了。这里选用K210开发板的原因是rCore教程提供了K210的使用教程，同时RustSBI也提供了相应的适配，使得我能够在几乎不改变内核代码的情况下进行移植，所以还是感谢rCore教程的作者、RustSBI的作者洛佳大佬...</p>
     <em>2021年6月17日</em>
@@ -92,30 +116,6 @@ html[data-theme='tufte']{
     <h4><a href="/html/rCore-Tutorial-Book-v3学习笔记（四）.html">rCore-Tutorial-Book-v3学习笔记（四）</a></h4><hr>
     <h5>摘要：</h5><p>概述 第四个部分是实现系统的内存管理，核心当然就是虚拟地址和物理地址空间的管理了。xv6实验三让我有了心理阴影，所以在实验前我先整理了一下源代码，把项目的结构弄清晰，后面有错的时候方便查找。然后这一章节主要分成四个部分，第一部分是给内核代码添加动态内存分配支持，使得内核可以用上链表、可变数组等数据结...</p>
     <em>2021年3月20日</em>
-</div>
-
-<div class="card">
-    <h4><a href="/html/rCore-Tutorial-Book-v3学习笔记（三）.html">rCore-Tutorial-Book-v3学习笔记（三）</a></h4><hr>
-    <h5>摘要：</h5><p>概述 第三个部分是实现一个分时多任务的系统，也就是能够在多个任务运行期间进行切换，让一个程序在等待IO时其他程序能执行而不是傻等。虽然和并行有点类似，但目前使用到的都只有一个CPU，任何时候都只有一个程序在执行。分时多任务有两种：一种是程序自己主动让出控制权，有点类似于编程语言中协程的概念；一种是由...</p>
-    <em>2021年2月26日</em>
-</div>
-
-<div class="card">
-    <h4><a href="/html/rCore-Tutorial-Book-v3学习笔记（二）.html">rCore-Tutorial-Book-v3学习笔记（二）</a></h4><hr>
-    <h5>摘要：</h5><p>概述 第二部分是实现一个批处理系统。批处理系统顾名思义就是能输入好几个程序，然后对这些程序依次执行的操作系统。重点不是在批处理，而是在输入用户程序，这就要求用户程序和我们的系统有一种隔离，所以需要在这一部分的系统实现用户态和内核态的切换。 内容 这一部分的代码文件比上一部分多了好几个，大致说明一下功...</p>
-    <em>2021年2月24日</em>
-</div>
-
-<div class="card">
-    <h4><a href="/html/rCore-Tutorial-Book-v3学习笔记（一）.html">rCore-Tutorial-Book-v3学习笔记（一）</a></h4><hr>
-    <h5>摘要：</h5><p>概述 最近看到清华的一个操作系统教程rCore-Tutorial-Book，和其他实验不同的是，这个教程介绍的是完全从零开始实现一个Riscv操作系统。教程所用的编程语言是Rust，但是我的Rust水平只到勉强能看懂代码的地步，所以打算用C语言照着实现一遍。虽然说是照着实现，但不同的语言还是会带来不...</p>
-    <em>2021年2月24日</em>
-</div>
-
-<div class="card">
-    <h4><a href="/html/MIT-6.S081-2020实验（xv6-riscv64）十一：net.html">MIT-6.S081-2020实验（xv6-riscv64）十一：net</a></h4><hr>
-    <h5>摘要：</h5><p>实验文档 概述 这次实验主要实现网卡驱动的一部分，文档内容非常长，实际实验不算难，跟着hint就行，但还是需要对整体框架有一定的了解。 内容 发送函数： int e1000_transmit(struct mbuf *m) { acquire(&amp;e1000_lock); uint32 index =...</p>
-    <em>2021年1月13日</em>
 </div>
 <a href="/index.html"><button>1</button></a>
 <button disabled>2</button>
