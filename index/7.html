@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="tufte">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="/extra/classless.css" />
+<style>
+html[data-theme='tufte']{
+    --rem: 15px;
+    --navpos: absolute;
+    --width: 70rem;
+    --font-p: 1.4rem/2 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-h: 1.4rem/1.5 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --ornament: "";
+    --border: 1px solid var(--cmed);
+    /* foreground   | background color */
+    --cfg:   #111;    --cbg:    #fbf7ec;
+    --cdark: #111;    --clight: #fbf7ec;
+    --cmed: #b4d5fe;
+    --clink: #111;
+    --cemph: #111;
+}
+</style>
+        <script>
+            let search = () => {
+                let word = document.querySelector('input');
+                if (word.value.length == 0) {
+                    word.focus();
+                } else {
+                    location.href = '/search.html?' + word.value;
+                }
+            };
+            window.onload = () => {
+                document.querySelector('input').addEventListener(
+                    'keydown',  (event) => {
+                        if (event.key == 'Enter') search();
+                });
+            }
+        </script>
+        <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+        <title>ZimingYuan的博客首页（第7页）</title>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><big>ZimingYuan的博客</big></li>
+                <li><a href="/index.html">首页</a></li>
+                <li><a href="/html/随笔.html">随笔</a></li>
+                <li><a href="/html/CSP模板.html">CSP模板</a></li>
+                <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
+                <li class="float-right sticky"><input type="search" placeholder="搜索" style="margin: 0"></li>
+            </ul>
+        </nav>
+        <header>
+        </header>
+        <div class="row">
+            <div class="col">
+                
+<div class="card">
+    <h4><a href="/html/git基本操作.html">git基本操作</a></h4><hr>
+    <h5>摘要：</h5><p>在当前文件夹创建git目录 添加当前文件夹的文件或确认文件修改（未保存） 添加该文件夹所有文件 删除当前文件夹的文件（未保存） 保存并说明 查看之前的更改 添加密钥 然后将.ssh文件夹里的id_rsa.pub文件内容复制粘贴到GitHub的设置里面 设置本地用户名和邮箱 添加远程服务器 查看远程服...</p>
+    <em>2018年9月21日</em>
+</div>
+
+<div class="card">
+    <h4><a href="/html/ffmpeg常见用法总结.html">ffmpeg常见用法总结</a></h4><hr>
+    <h5>摘要：</h5><p>1. 视频/音频剪切： 去掉 ss指令表示从头开始 去掉 t指令表示剪切到结尾 2. wav转MP3： 3. 视频/音频连接： 创建input.txt 然后输入命令 4.分离视频中的音频和视频 分离视频 分离音频 注意视频中包含的音频常常是aac格式，故如果output_file的后缀名是mp3会报...</p>
+    <em>2018年8月28日</em>
+</div>
+<a href="/index.html"><button>1</button></a>
+<a href="/index/2.html"><button>2</button></a>
+<a href="/index/3.html"><button>3</button></a>
+<a href="/index/4.html"><button>4</button></a>
+<a href="/index/5.html"><button>5</button></a>
+<a href="/index/6.html"><button>6</button></a>
+<button disabled>7</button>
+
+            </div>
+            <div class="col-3">
+                <div class="card info">
+                    <p>关于我</p>
+                    <img style="border-radius: 10%; padding: 5%" src="/img/profile.jpg"></img>
+                    <p>前偏远小渔村边缘OIer，HUST计院普通大学生，现在是ICT搬砖工。</p>
+                    <p>
+                    <a href="https://github.com/ZimingYuan" target="_BLANK">Github</a>
+                    Gitee上也有同名账户，同步大部分项目。
+                    </p>
+                    <p>
+                    <a href="https://www.cnblogs.com/YuanZiming/" target="_BLANK">我的博客园</a>
+                    也是我的博客，有过去的一些文章以及细致的文章分类。
+                    </p>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <hr><center>转载请注明出处<br>© 2023 ZimingYuan的博客</center>
+        </footer>
+    </body>
+</html>

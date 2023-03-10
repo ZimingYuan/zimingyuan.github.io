@@ -70,9 +70,8 @@ html[data-theme='tufte']{
 <hr>
 </header>
 <h3 id="我的gvim配置">我的gvim配置</h3>
-<pre class="shell"><code>set nocompatible
-&quot; 显示相关
-set go=
+<pre class="shell"><code>&quot; 显示相关
+set nocompatible
 set number 
 set cursorline  
 set nowrap 
@@ -97,9 +96,6 @@ set softtabstop=4
 set shiftwidth=4
 set expandtab
 set smarttab 
-&quot; 字体相关
-set guifont=Consolas:h16
-set guifontwide=楷体:h16
 &quot; 状态栏相关
 set laststatus=2
 set statusline=Name:\&#39;%t\&#39;%m%r\ \ Type:%Y\ \ Enc:%{&amp;fenc}\ \ Fmt:%{&amp;ff}\ \ Pos:(%l,%c)\ \ Total:%L\ lines
@@ -114,6 +110,10 @@ set pastetoggle=&lt;F9&gt;
 nmap &lt;C-p&gt; :tabp&lt;CR&gt;
 nmap &lt;C-n&gt; :tabn&lt;CR&gt;
 nmap &lt;C-c&gt; :tabc&lt;CR&gt;
+&quot; GUI相关
+set go=
+set guifont=Consolas:h16
+set guifontwide=楷体:h16
 &quot; netrw相关
 let g:netrw_banner = 0
 let g:netrw_liststyle = 3
