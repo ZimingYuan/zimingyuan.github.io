@@ -119,10 +119,10 @@ html[data-theme='tufte']{
 <body>
     <nav>
         <ul>
-            <li><big>ZimingYuan的博客</big></li>
-            <li><a href="/index.html">首页</a></li>
+            <li><big>VnYzm的博客</big></li>
+            <li><a href="/index.html">主页</a></li>
             <li><a href="/html/随笔.html">随笔</a></li>
-            <li><a href="/html/CSP模板.html">CSP模板</a></li>
+            <li><a href="/miscellany.html">杂谈</a></li>
             <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
             <li class="float-right sticky"><input type="search" placeholder="搜索" style="margin: 0"></li>
         </ul>
@@ -216,7 +216,7 @@ html[data-theme='tufte']{
 <hr />
 <p>总结一下，缺页中断的发生时刻应该是在MMU访问到一个PTE_V位为0的PTE时，在xv6中这个PTE的其他位是没有意义的，而在riscv-pk（用在spike模拟器上的代理内核）则让PTE的其他位指向一个标记结构体，里面包含了这个缺页的信息，比如该缺页是否是因为内存被置换到硬盘上了，置换到了哪个位置等信息，这样就使得该系统可以处理多种原因导致的缺页中断，而xv6应该是不支持硬盘虚拟内存的。</p>
 <footer>
-    <hr><center>转载请注明出处<br>© 2023 ZimingYuan的博客</center>
+    <hr><center>转载请注明出处<br>© 2023 VnYzm的博客</center>
 </footer>
 </body>
 </html>

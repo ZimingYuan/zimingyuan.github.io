@@ -38,7 +38,7 @@ html[data-theme='tufte']{
                         let card =
 `<div class="card">
     <h4><a href="/html/${passage.name}.html">${passage.name}</a></h4><hr>
-    <h5>摘要：</h5><p>${passage.abstract}</p>
+    <p>${passage.abstract}</p>
     <em>${passage.date}</em>
 </div>`;
                         blog.innerHTML += card; cnt++;
@@ -70,10 +70,10 @@ html[data-theme='tufte']{
     <body>
         <nav>
             <ul>
-                <li><big>ZimingYuan的博客</big></li>
-                <li><a href="/index.html">首页</a></li>
+                <li><big>VnYzm的博客</big></li>
+                <li><a href="/index.html">主页</a></li>
                 <li><a href="/html/随笔.html">随笔</a></li>
-                <li><a href="/html/CSP模板.html">CSP模板</a></li>
+                <li><a href="/miscellany.html">杂谈</a></li>
                 <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
                 <li class="float-right sticky"><input type="search" placeholder="搜索" style="margin: 0"></li>
             </ul>
@@ -84,7 +84,7 @@ html[data-theme='tufte']{
         <div id="Bloglist">
         </div>
         <footer>
-            <hr><center>转载请注明出处<br>© 2023 ZimingYuan的博客</center>
+            <hr><center>转载请注明出处<br>© 2023 VnYzm的博客</center>
         </footer>
     </body>
 </html>

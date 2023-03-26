@@ -119,10 +119,10 @@ html[data-theme='tufte']{
 <body>
     <nav>
         <ul>
-            <li><big>ZimingYuan的博客</big></li>
-            <li><a href="/index.html">首页</a></li>
+            <li><big>VnYzm的博客</big></li>
+            <li><a href="/index.html">主页</a></li>
             <li><a href="/html/随笔.html">随笔</a></li>
-            <li><a href="/html/CSP模板.html">CSP模板</a></li>
+            <li><a href="/miscellany.html">杂谈</a></li>
             <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
             <li class="float-right sticky"><input type="search" placeholder="搜索" style="margin: 0"></li>
         </ul>
@@ -178,7 +178,7 @@ html[data-theme='tufte']{
 <p>这里<code>-ffreestanding</code>的意思是允许重新定义标准库里已经有的函数，比如我自己定义了一个printf函数（主要内容是从xv6复制的，这里就显现出Rust的好了，Rust的格式化输出是定义在语言内部的，只需要重写字符串的输出方式，C的整个格式化都得重写），和stdio.h那个同名，不加这个编译选项就会报错。在编译完后，需要用objcopy把程序的elf元信息去掉，因为裸机只能理解代码，不能解析elf格式，经过objcopy后整个文件上来就是二进制代码，裸机可以直接执行。最后是SBI把内核放到的位置，我放在0x8020_0000，和教程的0x8002_0000不太一样，相应的linker script里的内容也要改。</p>
 <p>顺便提一下如何使用gdb调试，首先编译的时候必须用<code>-g</code>往二进制文件里添加调试符号表，接着在最后执行qemu的时候添加选项<code>-s -S</code>意思是监听调试端口1234，同时在执行第一句汇编指令前停下来等待gdb连接。然后打开另一个终端，运行<code>riscv-elf-gdb 二进制文件</code>，gdb的程序名不一定是这个，只要是riscv目标版本的都可以，二进制文件指的是没有经过objcopy，gcc直接编译出来的文件。进入gdb后运行命令<code>target remote :1234</code>，连上qemu以后就可以进行查看代码、加断点、单步执行等操作了。</p>
 <footer>
-    <hr><center>转载请注明出处<br>© 2023 ZimingYuan的博客</center>
+    <hr><center>转载请注明出处<br>© 2023 VnYzm的博客</center>
 </footer>
 </body>
 </html>
