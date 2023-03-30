@@ -1,5 +1,11 @@
 [
     {
+        "name": "flv重封装H264、AAC流",
+        "date": "2023年3月30日",
+        "category": "index",
+        "abstract": "学校有一个网课系统，该系统的客户端是使用Silver light（一个.NET相关的技术框架，类似Flash）实现的，不支持跨平台。我对它的代码进行了分析，发现它会从服务器中接收H264格式的视频裸流和AAC格式的音频裸流..."
+    },
+    {
         "name": "动漫观后感：夏日重现",
         "date": "2023年3月9日",
         "category": "miscellany",
