@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN" data-theme="tufte">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/extra/classless.css" />
+<style>
+html[data-theme='tufte']{
+    --rem: 15px;
+    --navpos: absolute;
+    --width: 70rem;
+    --font-p: 1.4rem/2 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-h: 1.4rem/1.5 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --ornament: "";
+    --border: 1px solid var(--cmed);
+    /* foreground   | background color */
+    --cfg:   #111;    --cbg:    #fbf7ec;
+    --cdark: #111;    --clight: #fbf7ec;
+    --cmed: #b4d5fe;
+    --clink: #111;
+    --cemph: #111;
+}
+</style>
+  <script>
+      let search = () => {
+          let word = document.querySelector('input');
+          if (word.value.length == 0) {
+              word.focus();
+          } else {
+              location.href = '/search.html?' + word.value;
+          }
+      };
+      window.onload = () => {
+          document.querySelector('input').addEventListener(
+              'keydown',  (event) => {
+                  if (event.key == 'Enter') search();
+          });
+      }
+  </script>
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <title>SSH实现多跳代理</title>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><big>VnYzm的博客</big></li>
+            <li><a href="/index.html">主页</a></li>
+            <li><a href="/html/随笔.html">随笔</a></li>
+            <li><a href="/miscellany.html">杂谈</a></li>
+            <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索" style="margin: 0"></li>
+        </ul>
+    </nav>
+<header id="title-block-header">
+<h1 class="title">SSH实现多跳代理</h1>
+<hr>
+</header>
+<h3 id="背景">背景</h3>
+<p>我们实验室有两台服务器，其中一台无法从外网访问，另一台设置了内网穿透。我平常在无法从外网访问的那台服务器上做实验，所以如果在实验室外要连接那台服务器就需要将设置了内网穿透的服务器作为跳板，通过两次ssh登进实验服务器。</p>
+<p>最近我的实验需要联网下载包，但是服务器要联网需通过登录认证服务网页进行认证，而服务器又没有安装远程桌面，直接通过命令行访问认证网页实在是力不从心。所以我需要想办法设置代理，使得我可以通过自己电脑上的浏览器通过实验服务器访问认证网页，从而登录上网。</p>
+<p>总结一下需求，就是网络中有A、B、C、D四个节点，其中A和B互联，B和C互联，C和D互联，如何设置使得A能访问D。</p>
+<h3 id="方法">方法</h3>
+<p>考虑简单情况，如果B和D是互联的，那么就可以直接通过ssh的Socks代理实现功能，具体步骤如下：</p>
+<ol type="1">
+<li>在A运行：<code>ssh -N -D 127.0.0.1:Aport Busername@Bhostname</code>。其中Aport可以是A上任意闲置的端口。</li>
+<li>在A中打开浏览器，设置浏览器的代理为<code>socks5://127.0.0.1:Aport</code>，然后输入D的网址，即可访问认证网页。</li>
+</ol>
+<p>实际上，相当于A对D的请求被ssh代理转发到B上，由B的sshd进程访问D。所以如果B服务器要上网，通过这种方法在D上认证后能够上网的就是B。那么如何将A对D的请求转发到C上，由C访问D呢？</p>
+<h4 id="失败方法">失败方法</h4>
+<p>我一开始考虑的方法是利用ssh的端口转发功能，端口转发实现的是将远程服务器的端口映射到本地端口。这么说是不是很抽象，然而大部分博客就是这样说的，能看懂就见鬼了。以我的需求做例子，在B上运行命令：<code>ssh -L Bport:Dhostname:Dport Cusername@Chostname</code>，其中Bport可以是B上任意闲置的端口，实现的功能就是可以通过访问Bport端口透过C访问D了。那么理论上我就可以通过前面所说的Socks代理方法用A访问D：</p>
+<ol type="1">
+<li>在A运行：<code>ssh -N -D 127.0.0.1:Aport Busername@Bhostname</code>。其中Aport可以是A上任意闲置的端口。</li>
+<li>在A中打开浏览器，设置浏览器的代理为<code>socks5://127.0.0.1:Aport</code>，然后输入<code>https://127.0.0.1:Bport</code>，通过B代理透过C访问D。</li>
+</ol>
+<p>为了测试，我在B上运行<code>curl -I https://127.0.0.1:Bport</code>，连是能连，但返回了证书错误，说明如果验证网页是http，方法应该是可行的。可惜认证网页是https，让我不得不去寻找其他方法。</p>
+<p>顺带一提，ssh的端口转发功能分为两种，一种是本地端口转发，一种是远程端口转发，前面使用参数<code>-L</code>的方法是本地端口映射，如果要使用远程端口映射，则在<strong>C</strong>上运行命令<code>ssh -R Bport:Dhostname:Dport Busername@Bhostname</code>，其中Bport可以是B上任意闲置的端口，实现的功能和本地端口映射完全等价，不过本地端口转发是B上的ssh负责监听，转发给C上的sshd负责请求；远程端口转发是B上的sshd负责监听，转发给C上的ssh负责请求，ssh和sshd互换了身份，当然对于我的需求，两种方法都不满足。</p>
+<h4 id="成功方法">成功方法</h4>
+<p>我在网上搜相关资料的时候，意外搜到一个给ssh本身添加代理的方法，顿时有了灵感。如果我能通过某种方法，使A能够直连到C，这样我就可以将C作为Socks5代理连到D了。那么如何使A直连到C呢？给ssh本身添加代理就是解决方案！具体步骤如下：</p>
+<ol type="1">
+<li>在A运行：<code>ssh -N -D 127.0.0.1:Aport1 Busername@Bhostname</code>，其中Aport1可以是A上任意闲置的端口。</li>
+<li>在A运行：<code>ssh -o ProxyCommand='C:\Program Files\Git\mingw64\bin\connect.exe -S 127.0.0.1:Aport1 %h %p' -p 20022 -N -D 127.0.0.1:Aport2 Cusername@Chostname</code>，其中Aport2可以是A上任意和Aport1不一样的闲置端口。</li>
+<li>在A中打开浏览器，设置浏览器的代理为<code>socks5://127.0.0.1:Aport2</code>，然后输入D的网址，即可访问认证网页。</li>
+</ol>
+<p>注意A是Windows系统，所以给ssh添加代理的方法是使用<code>connect.exe</code>，Linux下使用的是Netcat，网上有很多相关资料。另外就是这个<code>connect.exe</code>似乎是Git自带的一个程序，我刚好电脑里有Git就用上了，不知道有没有别的办法。</p>
+<p>这个方法的意思是先建立一个B服务器的代理，然后建立一个通过B代理连接C服务器的代理，再通过C代理连接D。从A出发的对D的请求，先通过第二条ssh指令转变为往C发送，而往C发送的请求通过第一条ssh指令转变为往B发送，B的sshd收到以后往C发送，C的sshd收到以后往D发送，就实现了功能。</p>
+<h3 id="扩展">扩展</h3>
+<p>基于该方法，不难将其扩展到任意跳服务器的代理。比如将我需求中的两跳服务器改为三跳，即有A、B、C、D、E五个节点，A和B互联，B和C互联，C和D互联，D和E互联，怎么从A连到E。参考前面方法，只需要在A执行三个ssh代理命令即可：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">ssh</span> -N -D 127.0.0.1:Aport1 Busername@Bhostname</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">ssh</span> -o ProxyCommand=<span class="st">&#39;C:\Program Files\Git\mingw64\bin\connect.exe -S 127.0.0.1:Aport1 %h %p&#39;</span> -p 20022 -N -D 127.0.0.1:Aport2 Cusername@Chostname</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">ssh</span> -o ProxyCommand=<span class="st">&#39;C:\Program Files\Git\mingw64\bin\connect.exe -S 127.0.0.1:Aport2 %h %p&#39;</span> -p 20022 -N -D 127.0.0.1:Aport3 Dusername@Dhostname</span></code></pre></div>
+<p>三条命令在不同的命令行窗口下执行。用浏览器设置Socks5代理端口为Aport3，就能访问E了。再多跳数也是如此，跳数多少就执行多少条ssh代理命令。</p>
+<footer>
+    <hr><center>转载请注明出处<br>© 2023 VnYzm的博客</center>
+</footer>
+</body>
+</html>
