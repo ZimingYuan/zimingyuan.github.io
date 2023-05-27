@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" data-theme="tufte">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN" data-theme="tufte">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
@@ -142,78 +142,124 @@ html[data-theme='tufte']{
 <h3 id="思路">思路</h3>
 <p>OpenCV中有很多用来对特征点进行检测和计算的函数，这些函数能够利用像素点及其周围的灰度检测其是否是图像中的特征点，并计算出它的信息，比如ORB、SIFT、SURF、AKANA。同时OpenCV还有一些利用特征点的信息对特征点进行匹配的算法，比如BF、FLANN。我们可以先把参与匹配的每个图片的特征点和信息计算出来，然后对图片两两进行特征点匹配，如果两幅图片匹配上的特征点数量超过一个定值，即认为这两个图片相似。这种方法因为是直接对图像的特征进行考虑，因此对于大小、色调、主人公的位置不同的相似图片也能很好的匹配。</p>
 <p>对于特征点检测，这些算法分为两类，一类输出的特征点信息是二进制串，包括ORB、AKANA等，一类输出的特征点信息是浮点数，包括SIFT、SURF，但是SIFT和SURF这两个算法是有专利的，商用要付钱，所以OpenCV把它们放进了Contrib扩展包里面，如果你用的是python版的OpenCV，必须下载3.4.2.16版本的opencv-contrib-python才能用OpenCV里的SIFT和SURF函数。我用的是C++版本的OpenCV，你需要下载OpenCV的源码和OpenCV-contrib扩展包然后自己编译，很麻烦，所以我选择的是ORB。对于特征点匹配，FLANN不论效率还是效果都比BF好很多（当然也有可能是我BF没用对），但是网上很多教程（包括OpenCV自己的文档）都是ORB配BF，SIFT配FLANN，StackOverflow也有人问ORB怎么搭配FLANN使用，有的回答直接说特征点信息是整数的算法不能搭配FLANN，但幸好这个问题下的另一个人给出了FLANN搭配ORB时的参数，（https://stackoverflow.com/questions/43830849/opencv-use-flann-with-orb-descriptors-to-match-features）这也说明了这个问题还是被很多人忽视的，毕竟当今世界是深度学习的天下，很少人去关注这些传统算法了。</p>
-<p>这个程序效率比较低，需要进行一些优化。首先我们用于求特征点和匹配的图片应该是原图的灰度图经过缩小后的版本，同时注意这个操作不要用cv::resize完成，不然会慢很多，直接在imread的时候指定第二个参数为cv::IMREAD_REDUCE_COLOR_4可以在读入图片的同时缩小。当然，瓶颈还是在那个两两匹配的二重循环里，为了减少FLANN的操作，我先预处理出图像各个通道的平均值，用这个值来大致表示这个图像的色调，在二重循环中，如果两个图片的平均值相差太大（我设置的是60），就认为它们不相似，不进行特征点匹配，当然这样会导致多出不少漏网之鱼，不过实践证明这样做大部分相似的图片还是不会被筛掉的，而且速度也提高了很多。</p>
+<p>这个程序效率比较低，需要进行一些优化。首先我们用于求特征点和匹配的图片应该是原图的灰度图经过缩小后的版本，同时注意这个操作不要用cv::resize完成，不然会慢很多，直接在imread的时候指定第二个参数为cv::IMREAD_REDUCE_COLOR_4可以在读入图片的同时缩小。<del>当然，瓶颈还是在那个两两匹配的二重循环里，为了减少FLANN的操作，我先预处理出图像各个通道的平均值，用这个值来大致表示这个图像的色调，在二重循环中，如果两个图片的平均值相差太大（我设置的是60），就认为它们不相似，不进行特征点匹配，当然这样会导致多出不少漏网之鱼，不过实践证明这样做大部分相似的图片还是不会被筛掉的，而且速度也提高了很多。</del> 为了降低实例代码的复杂度，把相关代码删掉了，读者可以自行参考文档添加相关优化。</p>
 <h3 id="代码">代码</h3>
 <div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1"></a><span class="pp">#include </span><span class="im">&lt;io.h&gt;</span></span>
 <span id="cb1-2"><a href="#cb1-2"></a><span class="pp">#include </span><span class="im">&lt;ctime&gt;</span></span>
 <span id="cb1-3"><a href="#cb1-3"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
 <span id="cb1-4"><a href="#cb1-4"></a><span class="pp">#include </span><span class="im">&lt;opencv2/opencv.hpp&gt;</span></span>
 <span id="cb1-5"><a href="#cb1-5"></a></span>
-<span id="cb1-6"><a href="#cb1-6"></a><span class="dt">bool</span> judge(cv::Scalar &amp;a, cv::Scalar &amp;b, <span class="dt">int</span> num) {</span>
-<span id="cb1-7"><a href="#cb1-7"></a>    <span class="cf">return</span> <span class="bu">std::</span>abs(a[<span class="dv">0</span>] - b[<span class="dv">0</span>]) &lt; num &amp;&amp; <span class="bu">std::</span>abs(a[<span class="dv">1</span>] - b[<span class="dv">1</span>]) &lt; num &amp;&amp; <span class="bu">std::</span>abs(a[<span class="dv">2</span>] - b[<span class="dv">2</span>]) &lt; num; <span class="dv">8</span> }</span>
-<span id="cb1-8"><a href="#cb1-8"></a></span>
-<span id="cb1-9"><a href="#cb1-9"></a><span class="dt">int</span> main() {</span>
-<span id="cb1-10"><a href="#cb1-10"></a></span>
-<span id="cb1-11"><a href="#cb1-11"></a>    <span class="dt">clock_t</span> start = clock(); <span class="co">//计时开始</span></span>
-<span id="cb1-12"><a href="#cb1-12"></a>    <span class="bu">std::</span>vector &lt;cv::String&gt; filelist;</span>
-<span id="cb1-13"><a href="#cb1-13"></a>    <span class="kw">typedef</span> <span class="bu">std::</span>tuple &lt;cv::String, cv::String, <span class="dt">int</span>&gt; data;</span>
-<span id="cb1-14"><a href="#cb1-14"></a>    <span class="bu">std::</span>vector &lt;<span class="bu">std::</span>vector &lt;cv::KeyPoint&gt;&gt; kplist;</span>
-<span id="cb1-15"><a href="#cb1-15"></a>    <span class="bu">std::</span>vector &lt;cv::Mat&gt; deslist;</span>
-<span id="cb1-16"><a href="#cb1-16"></a>    <span class="bu">std::</span>vector &lt;cv::Scalar&gt; averagebgr;</span>
-<span id="cb1-17"><a href="#cb1-17"></a>    <span class="bu">std::</span>vector &lt;data&gt; same;</span>
-<span id="cb1-18"><a href="#cb1-18"></a></span>
-<span id="cb1-19"><a href="#cb1-19"></a>    _finddata_t fd;</span>
-<span id="cb1-20"><a href="#cb1-20"></a>    <span class="dt">intptr_t</span> pf = _findfirst(<span class="st">&quot;D:/image/*.??g&quot;</span>, &amp;fd); filelist.push_back(cv::String(<span class="st">&quot;D:/宋奕欣/&quot;</span>) + fd.name);</span>
-<span id="cb1-21"><a href="#cb1-21"></a>    <span class="cf">while</span> (!_findnext(pf, &amp;fd)) filelist.push_back(cv::String(<span class="st">&quot;D:/image/&quot;</span>) + fd.name);</span>
-<span id="cb1-22"><a href="#cb1-22"></a>    _findclose(pf); <span class="co">//列举出图片，这里用的是io.h里的_findfirst和_findnext，通配符.??g筛选出.jpg和.png的文件</span></span>
-<span id="cb1-23"><a href="#cb1-23"></a></span>
-<span id="cb1-24"><a href="#cb1-24"></a>    cv::Ptr &lt;cv::ORB&gt; orb = cv::ORB::create();</span>
-<span id="cb1-25"><a href="#cb1-25"></a>    <span class="cf">for</span> (<span class="kw">auto</span> i : filelist) {</span>
-<span id="cb1-26"><a href="#cb1-26"></a>        cv::Mat imgo = cv::imread(i, cv::IMREAD_REDUCED_COLOR_4);</span>
-<span id="cb1-27"><a href="#cb1-27"></a>        averagebgr.push_back(cv::mean(imgo)); <span class="co">//求各通道平均值</span></span>
-<span id="cb1-28"><a href="#cb1-28"></a>        cv::Mat img; cv::cvtColor(imgo, img, cv::COLOR_BGR2GRAY);</span>
-<span id="cb1-29"><a href="#cb1-29"></a>        <span class="bu">std::</span>vector&lt;cv::KeyPoint&gt; kp; cv::Mat des; <span class="co">//kp是特征点，des是特征点的信息</span></span>
-<span id="cb1-30"><a href="#cb1-30"></a>        orb-&gt;detectAndCompute(img, cv::Mat(), kp, des);</span>
-<span id="cb1-31"><a href="#cb1-31"></a>        kplist.push_back(kp);</span>
-<span id="cb1-32"><a href="#cb1-32"></a>        deslist.push_back(des);</span>
-<span id="cb1-33"><a href="#cb1-33"></a>    }</span>
-<span id="cb1-34"><a href="#cb1-34"></a></span>
-<span id="cb1-35"><a href="#cb1-35"></a>    <span class="bu">std::</span>cout &lt;&lt; <span class="st">&quot;Successfully found keypoints.&quot;</span> &lt;&lt; <span class="bu">std::</span>endl;</span>
-<span id="cb1-36"><a href="#cb1-36"></a></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="dt">int</span> main() {</span>
+<span id="cb1-7"><a href="#cb1-7"></a></span>
+<span id="cb1-8"><a href="#cb1-8"></a>    <span class="bu">std::</span>vector &lt;cv::String&gt; filelist;</span>
+<span id="cb1-9"><a href="#cb1-9"></a>    <span class="kw">typedef</span> <span class="bu">std::</span>tuple &lt;cv::String, cv::String, <span class="dt">int</span>&gt; data;</span>
+<span id="cb1-10"><a href="#cb1-10"></a>    <span class="bu">std::</span>vector &lt;<span class="bu">std::</span>vector &lt;cv::KeyPoint&gt;&gt; kplist;</span>
+<span id="cb1-11"><a href="#cb1-11"></a>    <span class="bu">std::</span>vector &lt;cv::Mat&gt; deslist;</span>
+<span id="cb1-12"><a href="#cb1-12"></a>    <span class="bu">std::</span>vector &lt;data&gt; same;</span>
+<span id="cb1-13"><a href="#cb1-13"></a></span>
+<span id="cb1-14"><a href="#cb1-14"></a>    _finddata_t fd;</span>
+<span id="cb1-15"><a href="#cb1-15"></a>    <span class="dt">intptr_t</span> pf = _findfirst(<span class="st">&quot;*.??g&quot;</span>, &amp;fd);</span>
+<span id="cb1-16"><a href="#cb1-16"></a>    filelist.push_back(fd.name);</span>
+<span id="cb1-17"><a href="#cb1-17"></a>    <span class="cf">while</span> (!_findnext(pf, &amp;fd)) filelist.push_back(fd.name);</span>
+<span id="cb1-18"><a href="#cb1-18"></a>    _findclose(pf);</span>
+<span id="cb1-19"><a href="#cb1-19"></a>    <span class="co">//列举出图片，这里用的是io.h里的_findfirst和_findnext，通配符.??g筛选出.jpg和.png的文件</span></span>
+<span id="cb1-20"><a href="#cb1-20"></a></span>
+<span id="cb1-21"><a href="#cb1-21"></a>    cv::Ptr &lt;cv::ORB&gt; orb = cv::ORB::create();</span>
+<span id="cb1-22"><a href="#cb1-22"></a>    <span class="cf">for</span> (<span class="kw">auto</span> i : filelist) {</span>
+<span id="cb1-23"><a href="#cb1-23"></a>        cv::Mat img = cv::imread(i, cv::IMREAD_REDUCED_GRAYSCALE_4);</span>
+<span id="cb1-24"><a href="#cb1-24"></a>        <span class="bu">std::</span>vector&lt;cv::KeyPoint&gt; kp; cv::Mat des;</span>
+<span id="cb1-25"><a href="#cb1-25"></a>        <span class="co">//kp是特征点，des是特征点的信息</span></span>
+<span id="cb1-26"><a href="#cb1-26"></a>        orb-&gt;detectAndCompute(img, cv::Mat(), kp, des);</span>
+<span id="cb1-27"><a href="#cb1-27"></a>        kplist.push_back(kp);</span>
+<span id="cb1-28"><a href="#cb1-28"></a>        deslist.push_back(des);</span>
+<span id="cb1-29"><a href="#cb1-29"></a>    }</span>
+<span id="cb1-30"><a href="#cb1-30"></a></span>
+<span id="cb1-31"><a href="#cb1-31"></a>    <span class="bu">std::</span>cout &lt;&lt; <span class="st">&quot;Successfully found keypoints.&quot;</span> &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb1-32"><a href="#cb1-32"></a></span>
+<span id="cb1-33"><a href="#cb1-33"></a>    cv::FlannBasedMatcher flann(cv::makePtr&lt;cv::flann::LshIndexParams&gt;(<span class="dv">12</span>, <span class="dv">20</span>, <span class="dv">2</span>));</span>
+<span id="cb1-34"><a href="#cb1-34"></a>    <span class="co">//这个cv::makePtr&lt;cv::flann::LshIndexParams&gt;(12, 20, 2)就是使FLANN能搭配ORB的参数，默认构造函数指定的是随机KD树算法，只能用于SIFT和SURF</span></span>
+<span id="cb1-35"><a href="#cb1-35"></a>    <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; filelist.size(); i++)</span>
+<span id="cb1-36"><a href="#cb1-36"></a>        <span class="cf">for</span> (<span class="dt">int</span> j = i + <span class="dv">1</span>; j &lt; filelist.size(); j++) {</span>
 <span id="cb1-37"><a href="#cb1-37"></a></span>
-<span id="cb1-38"><a href="#cb1-38"></a>    cv::FlannBasedMatcher flann(cv::makePtr&lt;cv::flann::LshIndexParams&gt;(<span class="dv">12</span>, <span class="dv">20</span>, <span class="dv">2</span>)); <span class="co">//这个cv::makePtr&lt;cv::flann::LshIndexParams&gt;(12, 20, 2)就是使FLANN能搭配ORB的参数，默认构造函数指定的是随机KD树算法，只能用于SIFT和SURF</span></span>
-<span id="cb1-39"><a href="#cb1-39"></a>    <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; filelist.size(); i++)</span>
-<span id="cb1-40"><a href="#cb1-40"></a>        <span class="cf">for</span> (<span class="dt">int</span> j = i + <span class="dv">1</span>; j &lt; filelist.size(); j++) {</span>
+<span id="cb1-38"><a href="#cb1-38"></a>            <span class="bu">std::</span>vector&lt;cv::KeyPoint&gt; kpl, kps; cv::Mat desl, dess;</span>
+<span id="cb1-39"><a href="#cb1-39"></a>            kpl = kplist[i]; desl = deslist[i];</span>
+<span id="cb1-40"><a href="#cb1-40"></a>            kps = kplist[j]; dess = deslist[j];</span>
 <span id="cb1-41"><a href="#cb1-41"></a></span>
-<span id="cb1-42"><a href="#cb1-42"></a>            <span class="cf">if</span> (!judge(averagebgr[i], averagebgr[j], <span class="dv">60</span>)) <span class="cf">continue</span>;</span>
-<span id="cb1-43"><a href="#cb1-43"></a></span>
-<span id="cb1-44"><a href="#cb1-44"></a>            <span class="bu">std::</span>vector&lt;cv::KeyPoint&gt; kpl, kps; cv::Mat desl, dess;</span>
-<span id="cb1-45"><a href="#cb1-45"></a>            kpl = kplist[i]; desl = deslist[i];</span>
-<span id="cb1-46"><a href="#cb1-46"></a>            kps = kplist[j]; dess = deslist[j];</span>
-<span id="cb1-47"><a href="#cb1-47"></a></span>
-<span id="cb1-48"><a href="#cb1-48"></a>            <span class="bu">std::</span>vector &lt;<span class="bu">std::</span>vector &lt;cv::DMatch&gt; &gt; matches; flann.knnMatch(dess, desl, matches, <span class="dv">2</span>);</span>
-<span id="cb1-49"><a href="#cb1-49"></a>            <span class="bu">std::</span>vector &lt;cv::DMatch&gt; good;</span>
-<span id="cb1-50"><a href="#cb1-50"></a>            <span class="cf">for</span> (<span class="kw">auto</span> k : matches) {</span>
-<span id="cb1-51"><a href="#cb1-51"></a>                <span class="cf">if</span> (k.size() &gt; <span class="dv">1</span> &amp;&amp; k[<span class="dv">0</span>].distance &lt; <span class="fl">0.5</span> * k[<span class="dv">1</span>].distance) good.push_back(k[<span class="dv">0</span>]); <span class="co">//knnMatch的k=2时，每个Dmatch会返回distance最小的两组匹配，当最小的这两组的distance相差足够大时，较小的那一组才可能是合法匹配</span></span>
-<span id="cb1-52"><a href="#cb1-52"></a>            }</span>
-<span id="cb1-53"><a href="#cb1-53"></a></span>
-<span id="cb1-54"><a href="#cb1-54"></a>            <span class="cf">if</span> (good.size() &gt; <span class="dv">10</span>) same.push_back(<span class="bu">std::</span>make_tuple(filelist[i], filelist[j], good.size()));    </span>
-<span id="cb1-55"><a href="#cb1-55"></a></span>
-<span id="cb1-56"><a href="#cb1-56"></a>            <span class="co">// cv::Mat img; cv::drawMatches(imgs, kps, imgl, kpl, good, img, cv::Scalar(0, 255, 0));</span></span>
-<span id="cb1-57"><a href="#cb1-57"></a>            <span class="co">// cv::imshow(&quot;img&quot;, img); cv::waitKey();</span></span>
-<span id="cb1-58"><a href="#cb1-58"></a>        }</span>
-<span id="cb1-59"><a href="#cb1-59"></a></span>
-<span id="cb1-60"><a href="#cb1-60"></a>    <span class="bu">std::</span>sort(same.begin(), same.end(), [](data x, data y) {</span>
-<span id="cb1-61"><a href="#cb1-61"></a>        <span class="cf">return</span> <span class="bu">std::</span>get&lt;<span class="dv">2</span>&gt;(x) &gt; <span class="bu">std::</span>get&lt;<span class="dv">2</span>&gt;(y);</span>
-<span id="cb1-62"><a href="#cb1-62"></a>    }); <span class="co">//把匹配的图片按匹配的特征点数排序</span></span>
-<span id="cb1-63"><a href="#cb1-63"></a>    <span class="cf">for</span> (data i : same) {</span>
-<span id="cb1-64"><a href="#cb1-64"></a>        <span class="bu">std::</span>cout &lt;&lt; <span class="bu">std::</span>get&lt;<span class="dv">0</span>&gt;(i) &lt;&lt; <span class="ch">&#39; &#39;</span> &lt;&lt; <span class="bu">std::</span>get&lt;<span class="dv">1</span>&gt;(i) &lt;&lt; <span class="ch">&#39; &#39;</span> &lt;&lt; <span class="bu">std::</span>get&lt;<span class="dv">2</span>&gt;(i) &lt;&lt; <span class="bu">std::</span>endl;</span>
-<span id="cb1-65"><a href="#cb1-65"></a>    }</span>
-<span id="cb1-66"><a href="#cb1-66"></a></span>
-<span id="cb1-67"><a href="#cb1-67"></a>    <span class="bu">std::</span>cout &lt;&lt; (<span class="dt">double</span>)(clock() - start) / CLOCKS_PER_SEC &lt;&lt; <span class="bu">std::</span>endl;</span>
-<span id="cb1-68"><a href="#cb1-68"></a>    system(<span class="st">&quot;pause&quot;</span>);</span>
-<span id="cb1-69"><a href="#cb1-69"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
-<span id="cb1-70"><a href="#cb1-70"></a>}</span></code></pre></div>
+<span id="cb1-42"><a href="#cb1-42"></a>            <span class="bu">std::</span>vector&lt;<span class="bu">std::</span>vector&lt;cv::DMatch&gt;&gt; matches;</span>
+<span id="cb1-43"><a href="#cb1-43"></a>            flann.knnMatch(dess, desl, matches, <span class="dv">2</span>);</span>
+<span id="cb1-44"><a href="#cb1-44"></a>            <span class="bu">std::</span>vector &lt;cv::DMatch&gt; good;</span>
+<span id="cb1-45"><a href="#cb1-45"></a>            <span class="cf">for</span> (<span class="kw">auto</span> k : matches) {</span>
+<span id="cb1-46"><a href="#cb1-46"></a>                <span class="cf">if</span> (k.size() &gt; <span class="dv">1</span> &amp;&amp; k[<span class="dv">0</span>].distance &lt; <span class="fl">0.5</span> * k[<span class="dv">1</span>].distance)</span>
+<span id="cb1-47"><a href="#cb1-47"></a>                    good.push_back(k[<span class="dv">0</span>]);</span>
+<span id="cb1-48"><a href="#cb1-48"></a>                <span class="co">//knnMatch的k=2时，每个Dmatch会返回distance最小的两组匹配，当最小的这两组的distance相差足够大时，较小的那一组才可能是合法匹配</span></span>
+<span id="cb1-49"><a href="#cb1-49"></a>            }</span>
+<span id="cb1-50"><a href="#cb1-50"></a></span>
+<span id="cb1-51"><a href="#cb1-51"></a>            <span class="cf">if</span> (good.size() &gt; <span class="dv">10</span>) {</span>
+<span id="cb1-52"><a href="#cb1-52"></a>                same.push_back(<span class="bu">std::</span>make_tuple(filelist[i], filelist[j], good.size()));    </span>
+<span id="cb1-53"><a href="#cb1-53"></a>                <span class="co">// cv::Mat img;</span></span>
+<span id="cb1-54"><a href="#cb1-54"></a>                <span class="co">// cv::drawMatches(cv::imread(filelist[i], cv::IMREAD_REDUCED_GRAYSCALE_4), kpl, cv::imread(filelist[j], cv::IMREAD_REDUCED_GRAYSCALE_4), kps, good, img);</span></span>
+<span id="cb1-55"><a href="#cb1-55"></a>                <span class="co">// cv::imshow(&quot;img&quot;, img); cv::waitKey();</span></span>
+<span id="cb1-56"><a href="#cb1-56"></a>            }</span>
+<span id="cb1-57"><a href="#cb1-57"></a>        }</span>
+<span id="cb1-58"><a href="#cb1-58"></a></span>
+<span id="cb1-59"><a href="#cb1-59"></a>    <span class="bu">std::</span>sort(same.begin(), same.end(), [](data x, data y) {</span>
+<span id="cb1-60"><a href="#cb1-60"></a>        <span class="cf">return</span> <span class="bu">std::</span>get&lt;<span class="dv">2</span>&gt;(x) &gt; <span class="bu">std::</span>get&lt;<span class="dv">2</span>&gt;(y);</span>
+<span id="cb1-61"><a href="#cb1-61"></a>    }); <span class="co">//把匹配的图片按匹配的特征点数排序</span></span>
+<span id="cb1-62"><a href="#cb1-62"></a>    <span class="cf">for</span> (data i: same) {</span>
+<span id="cb1-63"><a href="#cb1-63"></a>        <span class="bu">std::</span>cout &lt;&lt; <span class="bu">std::</span>get&lt;<span class="dv">0</span>&gt;(i) &lt;&lt; <span class="ch">&#39; &#39;</span> &lt;&lt; <span class="bu">std::</span>get&lt;<span class="dv">1</span>&gt;(i) &lt;&lt; <span class="ch">&#39; &#39;</span> &lt;&lt; <span class="bu">std::</span>get&lt;<span class="dv">2</span>&gt;(i) &lt;&lt; <span class="bu">std::</span>endl;</span>
+<span id="cb1-64"><a href="#cb1-64"></a>    }</span>
+<span id="cb1-65"><a href="#cb1-65"></a></span>
+<span id="cb1-66"><a href="#cb1-66"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb1-67"><a href="#cb1-67"></a>}</span></code></pre></div>
+<h3 id="update-2023.5.27">Update 2023.5.27</h3>
+<p>最近学了图像处理课程，想起来这篇文章，所以在这重新回顾一下。关于特征点检测部分，主要挑选的是具有尺度不变性和旋转不变性的特征点检测算法，比如SIFT和ORB，前面也说了，两者得到的特征向量类型不同，因此后面的匹配过程也不一样。</p>
+<p>FLANN库实际上是OpenCV实现的一个最近邻检索库，和Faiss这种库是类似的，里面实现了多种最近邻检索算法，这些算法当然比BF，也就是brute-force暴力算法快。最近邻检索算法一般分为四类：量化、哈希、基于树的和基于图的。其中KD树是基于树的，因为涉及到空间的划分，所以只能支持浮点特征向量。而LSH全称是局部敏感性哈希，其核心是针对特征向量设计距离哈希函数，浮点向量可以用欧氏距离，二进制向量可以用海明距离，所以两种向量类型都可以支持。当然FLANN其实还是蛮弱的，一方面基于图的和量化相关的算法没有，另一方面没有支持GPU。可以使用Faiss库，支持的算法多，而且一部分算法也有GPU优化，也可以直接用PyTorch实现一个GPU上跑的暴力算法，效率都会有很大提升。</p>
+<p>之前因为没搞清楚怎么在Python版的OpenCV里给FlannBasedMatcher传入LshIndexParams，后来在<a href="https://answers.opencv.org/question/44592/flann-index-in-python-training-fails-with-segfault/">这里</a>找到了，遂在这里给出Python代码：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="im">import</span> cv2</span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="im">import</span> glob</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="im">from</span> matplotlib <span class="im">import</span> pyplot <span class="im">as</span> plt</span>
+<span id="cb2-4"><a href="#cb2-4"></a></span>
+<span id="cb2-5"><a href="#cb2-5"></a>filelist <span class="op">=</span> glob.glob(<span class="st">&#39;*.??g&#39;</span>)</span>
+<span id="cb2-6"><a href="#cb2-6"></a>orb <span class="op">=</span> cv2.ORB_create()</span>
+<span id="cb2-7"><a href="#cb2-7"></a>kplist <span class="op">=</span> []</span>
+<span id="cb2-8"><a href="#cb2-8"></a>deslist <span class="op">=</span> []</span>
+<span id="cb2-9"><a href="#cb2-9"></a>index_params<span class="op">=</span> {<span class="st">&#39;algorithm&#39;</span>: <span class="dv">6</span>}</span>
+<span id="cb2-10"><a href="#cb2-10"></a>flann <span class="op">=</span> cv2.FlannBasedMatcher(index_params)<span class="op">;</span></span>
+<span id="cb2-11"><a href="#cb2-11"></a>same <span class="op">=</span> []</span>
+<span id="cb2-12"><a href="#cb2-12"></a></span>
+<span id="cb2-13"><a href="#cb2-13"></a><span class="cf">for</span> i <span class="kw">in</span> filelist:</span>
+<span id="cb2-14"><a href="#cb2-14"></a>    img <span class="op">=</span> cv2.imread(i, cv2.IMREAD_REDUCED_GRAYSCALE_4)<span class="op">;</span></span>
+<span id="cb2-15"><a href="#cb2-15"></a>    kp, des <span class="op">=</span> orb.detectAndCompute(img, <span class="va">None</span>)<span class="op">;</span></span>
+<span id="cb2-16"><a href="#cb2-16"></a>    kplist.append(kp)<span class="op">;</span></span>
+<span id="cb2-17"><a href="#cb2-17"></a>    deslist.append(des)<span class="op">;</span></span>
+<span id="cb2-18"><a href="#cb2-18"></a></span>
+<span id="cb2-19"><a href="#cb2-19"></a><span class="bu">print</span>(<span class="st">&quot;Successfully found keypoints.&quot;</span>)</span>
+<span id="cb2-20"><a href="#cb2-20"></a></span>
+<span id="cb2-21"><a href="#cb2-21"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(filelist)):</span>
+<span id="cb2-22"><a href="#cb2-22"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(i <span class="op">+</span> <span class="dv">1</span>, <span class="bu">len</span>(filelist)):</span>
+<span id="cb2-23"><a href="#cb2-23"></a></span>
+<span id="cb2-24"><a href="#cb2-24"></a>        kpl, desl <span class="op">=</span> kplist[i], deslist[i]</span>
+<span id="cb2-25"><a href="#cb2-25"></a>        kps, dess <span class="op">=</span> kplist[j], deslist[j]</span>
+<span id="cb2-26"><a href="#cb2-26"></a></span>
+<span id="cb2-27"><a href="#cb2-27"></a>        matches <span class="op">=</span> flann.knnMatch(dess, desl, k<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb2-28"><a href="#cb2-28"></a>        good <span class="op">=</span> []</span>
+<span id="cb2-29"><a href="#cb2-29"></a></span>
+<span id="cb2-30"><a href="#cb2-30"></a>        <span class="cf">for</span> k <span class="kw">in</span> matches:</span>
+<span id="cb2-31"><a href="#cb2-31"></a>            <span class="cf">if</span> <span class="bu">len</span>(k) <span class="op">&gt;</span> <span class="dv">1</span> <span class="kw">and</span> k[<span class="dv">0</span>].distance <span class="op">&lt;</span> <span class="fl">0.5</span> <span class="op">*</span> k[<span class="dv">1</span>].distance:</span>
+<span id="cb2-32"><a href="#cb2-32"></a>                good.append(k[<span class="dv">0</span>])</span>
+<span id="cb2-33"><a href="#cb2-33"></a></span>
+<span id="cb2-34"><a href="#cb2-34"></a>        <span class="cf">if</span> <span class="bu">len</span>(good) <span class="op">&gt;</span> <span class="dv">10</span>:</span>
+<span id="cb2-35"><a href="#cb2-35"></a>            same.append((filelist[i], filelist[j], <span class="bu">len</span>(good)))</span>
+<span id="cb2-36"><a href="#cb2-36"></a>            <span class="co"># img = cv2.drawMatches(cv2.imread(filelist[j], cv2.IMREAD_REDUCED_GRAYSCALE_4), kps, cv2.imread(filelist[i], cv2.IMREAD_REDUCED_GRAYSCALE_4), kpl, good, None);</span></span>
+<span id="cb2-37"><a href="#cb2-37"></a>            <span class="co"># plt.imshow(img)</span></span>
+<span id="cb2-38"><a href="#cb2-38"></a>            <span class="co"># plt.show()</span></span>
+<span id="cb2-39"><a href="#cb2-39"></a></span>
+<span id="cb2-40"><a href="#cb2-40"></a>same <span class="op">=</span> <span class="bu">iter</span>(<span class="bu">sorted</span>(same, key<span class="op">=</span><span class="kw">lambda</span> x: x[<span class="dv">2</span>], reverse<span class="op">=</span><span class="va">True</span>))</span>
+<span id="cb2-41"><a href="#cb2-41"></a><span class="cf">for</span> i <span class="kw">in</span> same:</span>
+<span id="cb2-42"><a href="#cb2-42"></a>    <span class="bu">print</span>(i)</span></code></pre></div>
+<p>直接传入一个字典就可以了，具体取值可以看OpenCV的源码（具体可以查看<a href="https://github.com/opencv/opencv/tree/master/modules/flann/include/opencv2/flann/">FLANN模块</a>下<code>all_indices.h</code>、<code>defines.h</code>这几个文件，LshIndexParams构造函数的三个参数取值都是默认值，这里就没给出了。根据前面的分析，理论上LSH是支持浮点特征向量的，但源码默认是海明距离，所以估计还要传什么参数，我没有仔细研究，还请读者自行思考。</p>
+<p><img src="/img/使用OpenCV对图片进行特征点检测和匹配（C++）.jpg" /></p>
+<p>从运行结果可以看到，ORB特征点好像对颜色对比度较大的角点比较感兴趣，所以可能在检测特征点之前把图片的对比度拉高一点效果会更好。</p>
 <footer>
     <hr><center>转载请注明出处<br>© 2023 VnYzm的博客</center>
 </footer>
