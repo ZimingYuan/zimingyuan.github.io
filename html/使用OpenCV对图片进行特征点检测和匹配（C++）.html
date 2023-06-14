@@ -260,6 +260,7 @@ html[data-theme='tufte']{
 <p>直接传入一个字典就可以了，具体取值可以看OpenCV的源码（具体可以查看<a href="https://github.com/opencv/opencv/tree/master/modules/flann/include/opencv2/flann/">FLANN模块</a>下<code>all_indices.h</code>、<code>defines.h</code>这几个文件，LshIndexParams构造函数的三个参数取值都是默认值，这里就没给出了。根据前面的分析，理论上LSH是支持浮点特征向量的，但源码默认是海明距离，所以估计还要传什么参数，我没有仔细研究，还请读者自行思考。</p>
 <p><img src="/img/使用OpenCV对图片进行特征点检测和匹配（C++）.jpg" /></p>
 <p>从运行结果可以看到，ORB特征点好像对颜色对比度较大的角点比较感兴趣，所以可能在检测特征点之前把图片的对比度拉高一点效果会更好。</p>
+<p>顺便说一下，SIFT专利已于2020年3月到期，Github上的OpenCV源代码已将SIFT收录至主分支，不知Python版的OpenCV库是否已更新。</p>
 <footer>
     <hr><center>转载请注明出处<br>© 2023 VnYzm的博客</center>
 </footer>
