@@ -153,17 +153,17 @@ html[data-theme='tufte']{
 <h4 id="成功方法">成功方法</h4>
 <p>我在网上搜相关资料的时候，意外搜到一个给ssh本身添加代理的方法，顿时有了灵感。如果我能通过某种方法，使A能够直连到C，这样我就可以将C作为Socks5代理连到D了。那么如何使A直连到C呢？给ssh本身添加代理就是解决方案！具体步骤如下：</p>
 <ol type="1">
-<li>在A运行：<code>ssh -N -D 127.0.0.1:Aport1 Busername@Bhostname</code>，其中Aport1可以是A上任意闲置的端口。</li>
-<li>在A运行：<code>ssh -o ProxyCommand='C:\Program Files\Git\mingw64\bin\connect.exe -S 127.0.0.1:Aport1 %h %p' -p 20022 -N -D 127.0.0.1:Aport2 Cusername@Chostname</code>，其中Aport2可以是A上任意和Aport1不一样的闲置端口。</li>
+<li>在A运行：<code>ssh -p Bport -N -D 127.0.0.1:Aport1 Busername@Bhostname</code>，其中Aport1可以是A上任意闲置的端口。</li>
+<li>在A运行：<code>ssh -o ProxyCommand='C:\Program Files\Git\mingw64\bin\connect.exe -S 127.0.0.1:Aport1 %h %p' -p Cport -N -D 127.0.0.1:Aport2 Cusername@Chostname</code>，其中Aport2可以是A上任意和Aport1不一样的闲置端口。</li>
 <li>在A中打开浏览器，设置浏览器的代理为<code>socks5://127.0.0.1:Aport2</code>，然后输入D的网址，即可访问认证网页。</li>
 </ol>
-<p>注意A是Windows系统，所以给ssh添加代理的方法是使用<code>connect.exe</code>，Linux下使用的是Netcat，网上有很多相关资料。另外就是这个<code>connect.exe</code>似乎是Git自带的一个程序，我刚好电脑里有Git就用上了，不知道有没有别的办法。</p>
+<p>注意A是Windows系统，所以给ssh添加代理的方法是使用<code>connect.exe</code>，Linux下使用的是Netcat，网上有很多相关资料。另外就是这个<code>connect.exe</code>似乎是Git自带的一个程序，我刚好电脑里有Git就用上了，不知道有没有别的办法。<code>Bport</code>和<code>Cport</code>分别是服务器B和服务器C开放SSH的端口，如果是默认的22端口则可以不加此参数。</p>
 <p>这个方法的意思是先建立一个B服务器的代理，然后建立一个通过B代理连接C服务器的代理，再通过C代理连接D。从A出发的对D的请求，先通过第二条ssh指令转变为往C发送，而往C发送的请求通过第一条ssh指令转变为往B发送，B的sshd收到以后往C发送，C的sshd收到以后往D发送，就实现了功能。</p>
 <h3 id="扩展">扩展</h3>
 <p>基于该方法，不难将其扩展到任意跳服务器的代理。比如将我需求中的两跳服务器改为三跳，即有A、B、C、D、E五个节点，A和B互联，B和C互联，C和D互联，D和E互联，怎么从A连到E。参考前面方法，只需要在A执行三个ssh代理命令即可：</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">ssh</span> -N -D 127.0.0.1:Aport1 Busername@Bhostname</span>
-<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">ssh</span> -o ProxyCommand=<span class="st">&#39;C:\Program Files\Git\mingw64\bin\connect.exe -S 127.0.0.1:Aport1 %h %p&#39;</span> -p 20022 -N -D 127.0.0.1:Aport2 Cusername@Chostname</span>
-<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">ssh</span> -o ProxyCommand=<span class="st">&#39;C:\Program Files\Git\mingw64\bin\connect.exe -S 127.0.0.1:Aport2 %h %p&#39;</span> -p 20022 -N -D 127.0.0.1:Aport3 Dusername@Dhostname</span></code></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">ssh</span> -p Bport -N -D 127.0.0.1:Aport1 Busername@Bhostname</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="fu">ssh</span> -o ProxyCommand=<span class="st">&#39;C:\Program Files\Git\mingw64\bin\connect.exe -S 127.0.0.1:Aport1 %h %p&#39;</span> -p Cport -N -D 127.0.0.1:Aport2 Cusername@Chostname</span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="fu">ssh</span> -o ProxyCommand=<span class="st">&#39;C:\Program Files\Git\mingw64\bin\connect.exe -S 127.0.0.1:Aport2 %h %p&#39;</span> -p Dport -N -D 127.0.0.1:Aport3 Dusername@Dhostname</span></code></pre></div>
 <p>三条命令在不同的命令行窗口下执行。用浏览器设置Socks5代理端口为Aport3，就能访问E了。再多跳数也是如此，跳数多少就执行多少条ssh代理命令。</p>
 <footer>
     <hr><center>转载请注明出处<br>© 2023 VnYzm的博客</center>
