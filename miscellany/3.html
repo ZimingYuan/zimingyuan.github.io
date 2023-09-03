@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="tufte">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="/extra/classless.css" />
+<style>
+html[data-theme='tufte']{
+    --rem: 15px;
+    --navpos: absolute;
+    --width: 70rem;
+    --font-p: 1.4rem/2 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-h: 1.4rem/1.5 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --ornament: "";
+    --border: 1px solid var(--cmed);
+    /* foreground   | background color */
+    --cfg:   #111;    --cbg:    #fbf7ec;
+    --cdark: #111;    --clight: #fbf7ec;
+    --cmed: #b4d5fe;
+    --clink: #111;
+    --cemph: #111;
+}
+</style>
+        <script>
+            let search = () => {
+                let word = document.querySelector('input');
+                if (word.value.length == 0) {
+                    word.focus();
+                } else {
+                    location.href = '/search.html?' + word.value;
+                }
+            };
+            window.onload = () => {
+                document.querySelector('input').addEventListener(
+                    'keydown',  (event) => {
+                        if (event.key == 'Enter') search();
+                });
+            }
+        </script>
+        <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+        <title>VnYzm的博客（第3页）</title>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><big>VnYzm的博客</big></li>
+                <li><a href="/index.html">主页</a></li>
+                <li><a href="/html/随笔.html">随笔</a></li>
+                <li><a href="/miscellany.html"><strong>杂谈</strong></a></li>
+                <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
+                <li class="float-right sticky"><input type="search" placeholder="搜索" style="margin: 0"></li>
+            </ul>
+        </nav>
+        <header>
+        </header>
+        <div class="row">
+            <div class="col">
+                <blockquote class="warn">
+                    <p>⚠ 所有观后感、玩后感均包含对应作品的<b>重度剧透</b>！</p>
+                </blockquote>
+                
+<div class="card">
+    <h4><a href="/html/动漫观后感：Clannad.html">动漫观后感：Clannad</a></h4><hr>
+    <p>看了几集clannad，目前还是日常，不过每集基本上都留有一些悬念，比如好几集片头都有的少女在一间幽闭的房间里制作一台机器人的场景。后面不知怎么展开，评论都说是神作，让我坚持看完吧...</p>
+    <em>2020年6月7日</em>
+</div>
+<a href="/miscellany.html"><button>1</button></a>
+<a href="/miscellany/2.html"><button>2</button></a>
+<button disabled>3</button>
+
+            </div>
+            <div class="col-3">
+                <div class="card">
+                    <h4>关于我</h4>
+                    <hr>
+                    <img style="border-radius: 10%; padding: 5%" src="/img/profile.jpg"></img>
+                    <p>前偏远小渔村边缘OIer，HUST计院普通大学生，现在是ICT搬砖工。</p>
+                    <p>最近太摆了没什么干货可以写，所以放了一些摸鱼后的观后感、玩后感，极为主观，仅供大家看个乐呵。</p>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <hr><center>转载请注明出处<br>© 2023 VnYzm的博客</center>
+        </footer>
+    </body>
+</html>

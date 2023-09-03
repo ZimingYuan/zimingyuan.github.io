@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN" data-theme="tufte">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/extra/classless.css" />
+<style>
+html[data-theme='tufte']{
+    --rem: 15px;
+    --navpos: absolute;
+    --width: 70rem;
+    --font-p: 1.4rem/2 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-h: 1.4rem/1.5 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --ornament: "";
+    --border: 1px solid var(--cmed);
+    /* foreground   | background color */
+    --cfg:   #111;    --cbg:    #fbf7ec;
+    --cdark: #111;    --clight: #fbf7ec;
+    --cmed: #b4d5fe;
+    --clink: #111;
+    --cemph: #111;
+}
+</style>
+  <script>
+      let search = () => {
+          let word = document.querySelector('input');
+          if (word.value.length == 0) {
+              word.focus();
+          } else {
+              location.href = '/search.html?' + word.value;
+          }
+      };
+      window.onload = () => {
+          document.querySelector('input').addEventListener(
+              'keydown',  (event) => {
+                  if (event.key == 'Enter') search();
+          });
+      }
+  </script>
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <title>自定义CUDA实现PyTorch算子的四种简单方法</title>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><big>VnYzm的博客</big></li>
+            <li><a href="/index.html">主页</a></li>
+            <li><a href="/html/随笔.html">随笔</a></li>
+            <li><a href="/miscellany.html">杂谈</a></li>
+            <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索" style="margin: 0"></li>
+        </ul>
+    </nav>
+<header id="title-block-header">
+<h1 class="title">自定义CUDA实现PyTorch算子的四种简单方法</h1>
+<hr>
+</header>
+<h3 id="背景">背景</h3>
+<p>在探索新的深度学习算法的时候，我们可能会遇到PyTorch提供的算子不能满足需求的情况，这时候就需要自定义PyTorch算子，将我们的算法集成到PyTorch的工作流中。同时，为了提高运算效率，算子往往都需要使用CUDA实现。所幸，PyTorch及很多其他Python库都提供了简化这一过程的方法，完全不需要PyTorch库源文件等其他代码（Tensorflow：🤧）。接下来本文会介绍自定义CUDA实现PyTorch算子的四种简单方法，包括使用Taichi库、Numba库、Cupy库和PyTorch的cpp_extension模块，以及其他的一些和GPU编程相关的内容。</p>
+<h3 id="cuda编程的一些工具">CUDA编程的一些工具</h3>
+<p>工欲善其事，必先利其器。在研究CUDA实现算子之前，先看看几个实用的CUDA工具，这些工具可以帮助检查CUDA代码里的访存错误和研究CUDA代码的性能瓶颈，而且对Native和Python程序都适用。</p>
+<h4 id="检查各算子运行时间">检查各算子运行时间</h4>
+<p>检查各算子的运行时间，可以使用<code>nvprof</code>工具，这个工具是安装CUDA时自带的。<code>nvprof</code>的<code>gpu trace</code>功能能够检测出一个程序内部各CUDA算子的运行时间、Kernel数目、使用的SRAM大小、寄存器数量等信息，可以观察CUDA程序整体的运行时间主要花在哪，是计算相关的算子，还是数据搬运相关的算子，得到一个整体的结果。</p>
+<p><code>gpu trace</code>功能的命令行如下（以运行Python脚本为例）：</p>
+<pre class="shell"><code>nvprof --print-gpu-trace python test.py</code></pre>
+<p>在新版本的CUDA中，<code>nvprof</code>的这一功能被搬到<code>Nsight System</code>工具包里了，所以命令行变为：</p>
+<pre class="shell"><code>nsys nvprof --print-gpu-trace python test.py</code></pre>
+<p>注意<code>Nsight System</code>是需要另外安装的，以上两条命令都需要管理员或root权限。</p>
+<h4 id="检查各算子的运行参数">检查各算子的运行参数</h4>
+<p>对于一个运行慢的算子，我们需要知道它哪里慢了，是计算次数太多，还是访存次数太多，还是Cache命中率太低，都需要一一检查。想要获得这些参数，需要使用<code>nvprof</code>的<code>metrics</code>功能，比如我想知道各算子的内存访问总大小，可以用下面的命令行：</p>
+<pre class="shell"><code>nvprof --metrics dram_read_bytes python .\test.py</code></pre>
+<p><a href="https://docs.nvidia.com/cuda/profiler-users-guide/index.html">nvprof文档</a>给出了<code>metrics</code>功能支持的参数类型。可以按照需要修改命令行。</p>
+<p>在新版本的CUDA中，<code>nvprof</code>的这一功能被搬到<code>Nsight Compute</code>工具包里了，这个工具包同样需要另外安装，以上的命令行变为：</p>
+<pre class="shell"><code>ncu --metrics dram__bytes_read.sum python3 test.py</code></pre>
+<p>注意<code>Nsight Compute</code>使用的参数名称和<code>nvprof</code>不一样，<a href="https://docs.nvidia.com/nsight-compute/NsightComputeCli/index.html#nvprof-metric-comparison">Nsight Compute文档</a>给出了两者参数名称的对应。以上的命令都需要管理员或root权限，此外，在Docker容器里执行还需要在<code>docker run</code>命令里添加<code>--privileged</code>参数，否则这两条命令无法执行。</p>
+<h4 id="检查算子的访存错误">检查算子的访存错误</h4>
+<p>由于CUDA程序基本都是直接对native的数组进行操作，因此各种访存越界、溢出等错误都有可能发生，所幸，CUDA提供了<code>Compute Sanitizer</code>工具帮我们在运行时检测这类错误。假设要检查名为<code>test</code>的算子中的访存错误，则命令行为：</p>
+<pre class="shell"><code>compute-sanitizer --kernel-regex kns=test --tool memcheck python test.py</code></pre>
+<p>就会自动检测发生访存错误的指令地址、非法访问的地址以及可能的合法内存区域的地址，可以根据这个检查是越了上界还是下界。注意用<code>Compute Santizer</code>检测时程序会运行得非常慢，所以最好把要检测的函数提取出来做单元测试。</p>
+<p>另外，当CUDA内部运行错误时，Python的报错代码行有时候会和实际代码行大相径庭，这时就需要在运行时指定<code>CUDA_LAUNCH_BLOCKING</code>环境变量为1，即：</p>
+<pre class="shell"><code>CUDA_LAUNCH_BLOCKING=1 python test.py</code></pre>
+<p>这样至少更容易看到是哪个算子出错了，为进一步缩小错误范围打下基础。</p>
+<h3 id="测试需求">测试需求</h3>
+<p>设<code>float32</code>类型的张量<code>src</code>的大小为n*m*p，<code>unsigned char</code>类型张量<code>idx</code>的大小为m*c，且每个数的大小都在[0, p)这个区间里，现在需要按照idx对src进行索引，得到一个大小为n*m*c的<code>float32</code>类型张量<code>dst</code>。用Python代码表示是这样的：</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(n):</span>
+<span id="cb7-2"><a href="#cb7-2"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(m):</span>
+<span id="cb7-3"><a href="#cb7-3"></a>        <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(c):</span>
+<span id="cb7-4"><a href="#cb7-4"></a>            dst[i, j, k] <span class="op">=</span> src[i, j, idx[j, k]]</span></code></pre></div>
+<p>这个需求在Pytorch里可以用<code>gather</code>方法实现：</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1"></a>_idx <span class="op">=</span> torch.tile(idx.to(dtype<span class="op">=</span>torch.int64).unsqueeze(<span class="dv">0</span>), (n, <span class="dv">1</span>, <span class="dv">1</span>))</span>
+<span id="cb8-2"><a href="#cb8-2"></a>dst <span class="op">=</span> torch.gather(src, <span class="dv">2</span>, _idx)</span></code></pre></div>
+<p>设n=512，m=64，p=256，c=512，以上方法在Colab的免费显卡上运行时间为1.61毫秒。很明显，这种方式存在两个问题：</p>
+<ul>
+<li><code>gather</code>只支持int64类型的索引。因此还需要对<code>idx</code>进行类型转换，浪费了转换的时间以及传输大数组的时间；</li>
+<li><code>gather</code>要求<code>idx</code>和<code>src</code>的维度数量完全一致，不支持广播。因此还需要使用<code>tile</code>方法对<code>idx</code>进行复制，浪费了复制的时间以及传输大数组的时间。</li>
+</ul>
+<p>因此理论上我们对这个需求用CUDA自定义一个算子，能够提高程序的运行效率。</p>
+<h3 id="使用taichi库自定义算子">使用Taichi库自定义算子</h3>
+<p><a href="https://docs.taichi-lang.cn/">Taichi</a>库是一种支持使用Python语言编写高性能算子的库（准确来说是使用Taichi语言编写，但算子直接写在Python文件里，且Taichi语言的大部分语法都和Python一致，所以可以大致认为是使用Python语言编写）。它的特色在于编写时不用考虑Kernel级的CUDA编程细节，只需要像平常写程序那样写，Taichi运行时就会自动将其编译成CUDA程序了。</p>
+<p>根据上面的需求，可以写出以下程序：</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">import</span> taichi <span class="im">as</span> ti</span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="co"># 定义算子</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="at">@ti.kernel</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="kw">def</span> taichi_gather(src: ti.types.ndarray(), idx: ti.types.ndarray(), dst: ti.types.ndarray(), n: ti.int32, m: ti.int32, c: ti.int32):</span>
+<span id="cb9-5"><a href="#cb9-5"></a>    <span class="cf">for</span> i, j, k <span class="kw">in</span> ti.ndrange(n, m, c):</span>
+<span id="cb9-6"><a href="#cb9-6"></a>        dst[i, j, k] <span class="op">=</span> src[i, j, idx[j, k]]</span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="co"># 执行算子</span></span>
+<span id="cb9-8"><a href="#cb9-8"></a>dst <span class="op">=</span> torch.empty((n, m, c), device<span class="op">=</span><span class="st">&#39;cuda&#39;</span>)</span>
+<span id="cb9-9"><a href="#cb9-9"></a>taichi_gather(src, idx, dst, n, m, c)</span></code></pre></div>
+<p>可以看到写起来和写普通Python代码没什么区别，当然像Numpy、Pytorch库里的算子是不能在Taichi算子里调用的。运行时间是0.89毫秒（注意算子编译是在第一次执行算子的时候，所以测时间需要测第二次之后的执行时间，这是JIT（即时编译）的特性，后面基于Numba、Cupy的方法也一样），可以看到比用Pytorch的<code>gather</code>方法快了接近一倍，主要是省去了<code>tile</code>的开销和<code>int64</code>类型的传输带宽。</p>
+<p>注意Taichi是直接在Pytorch张量所在的显存上操作，因此需要确保张量的显存空间是连续的，可以通过张量的<code>is_contiguous</code>方法确认是否连续，通过<code>contiguous</code>方法得到一个连续张量（如果原张量本就连续，该方法返回原张量的引用，否则返回一个新的连续张量）。</p>
+<p>使用Taichi库自定义算子非常简单方便，基本不用考虑什么细节，不过毕竟是由编译器自动将串行程序转换成并行程序。像我们的需求不存在数据依赖，因此很容易就可以编译出高效率的程序；但实际需求中数据依赖还是很复杂的，编译器行为偏保守，能够保证程序的正确性，但效率就没办法保证了。如果用过FPGA的HLS（高层次综合），就知道要“说服”编译器优化某个地方是多么棘手，因此在需要极致优化的时候反而不如用更底层的工具。</p>
+<h3 id="使用numba库自定义算子">使用Numba库自定义算子</h3>
+<p><a href="https://numba.pydata.org/">Numba</a>库也支持编写CUDA算子直接操作Pytorch张量的显存空间，和Taichi相比，它需要从Kernel级编写算子了，但和传统的CUDA编程相比，它又支持使用Python编写CUDA程序。</p>
+<p>同样，根据上面的需求，可以写出下面的程序：</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1"></a><span class="im">from</span> numba <span class="im">import</span> cuda</span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="co"># 定义算子</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="at">@cuda.jit</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="kw">def</span> numba_gather(src, idx, dst, n, m, c):</span>
+<span id="cb10-5"><a href="#cb10-5"></a>    <span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(cuda.blockIdx.x, n, cuda.gridDim.x):</span>
+<span id="cb10-6"><a href="#cb10-6"></a>        <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(cuda.blockIdx.y, m, cuda.gridDim.y):</span>
+<span id="cb10-7"><a href="#cb10-7"></a>            <span class="cf">for</span> k <span class="kw">in</span> <span class="bu">range</span>(cuda.threadIdx.x, c, cuda.blockDim.x):</span>
+<span id="cb10-8"><a href="#cb10-8"></a>                dst[i, j, k] <span class="op">=</span> src[i, j, idx[j, k]]</span>
+<span id="cb10-9"><a href="#cb10-9"></a><span class="co"># 执行算子</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a>dst <span class="op">=</span> torch.empty((n, m, c), device<span class="op">=</span><span class="st">&#39;cuda&#39;</span>)</span>
+<span id="cb10-11"><a href="#cb10-11"></a>numba_gather[(<span class="dv">64</span>, <span class="dv">32</span>), <span class="dv">128</span>](cuda.as_cuda_array(src), cuda.as_cuda_array(idx), cuda.as_cuda_array(dst), n, m, c)</span></code></pre></div>
+<p>可以看到，作为Kernel级的算子，就需要考虑每个GPU thread需要计算的内容。这里我将枚举<code>n</code>映射到GPU block的第一维，枚举<code>m</code>映射到GPU block的第二维，枚举<code>c</code>映射到GPU thread。循环的起始点和步长体现了GPU编程的一个原则，就是尽量让所有GPU thread在同一时间内并行访问的数据连续，这样可以更好地利用缓存实现并行读取。另外，相比于Taichi，Numba需要显示地将张量用<code>cuda.as_cuda_array</code>方法包装后才能传入算子，同时还需要自己定义GPU block各维和GPU thread各维的个数，这就需要反复尝试才能找到最优组合。我在Colab的免费显卡上得到的最优组合是这个，其他GPU可能还不太一样。</p>
+<p>运行时间是0.83毫秒，略快于Taichi，当然如果是更复杂的算子效率提升也会更大，代价就是需要耗费更多的精力去想Kernel级的程序怎么写，还要根据GPU架构尝试各种写法和参数搭配才能实现更高的性能。</p>
+<h3 id="使用cupy库自定义算子">使用Cupy库自定义算子</h3>
+<p><a href="https://cupy.dev/">Cupy</a>库原本主打的是做“带Cuda优化的Numpy”，API都尽可能做到和Numpy相同，不过Pytorch也基本能做到这一点，所以大家基本都用Pytorch。但是Cupy集成了编译CUDA算子的字符串的功能，这一点还是让它有用武之地，而且它也支持直接操作Pytorch张量显存。相比于Numba，CUDA算子是用C++实现的，因此支持所有CUDA的原生API，包括像<code>#pragma unroll</code>这样的优化指令，这些都是Numba没有的。</p>
+<p>根据上面的需求写出的程序如下：</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1"></a><span class="im">import</span> cupy <span class="im">as</span> cp</span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="co"># 定义算子</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>cupy_gather <span class="op">=</span> <span class="st">&#39;&#39;&#39;</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="st">extern &quot;C&quot; __global__ void cupy_gather(float* src, unsigned char * idx, float *dst, int n, int m, int p, int c) {</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="st">    #pragma unroll</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="st">    for (int i = blockIdx.x; i &lt; n; i += gridDim.x) {</span></span>
+<span id="cb11-7"><a href="#cb11-7"></a><span class="st">        #pragma unroll</span></span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="st">        for (int j = blockIdx.y; j &lt; m; j += gridDim.y) {</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="st">            #pragma unroll</span></span>
+<span id="cb11-10"><a href="#cb11-10"></a><span class="st">            for (int k = threadIdx.x; k &lt; c; k += blockDim.x) {</span></span>
+<span id="cb11-11"><a href="#cb11-11"></a><span class="st">                dst[i * m * c + j * c + k] = src[i * m * p + j * p + idx[j * c + k]];</span></span>
+<span id="cb11-12"><a href="#cb11-12"></a><span class="st">            }</span></span>
+<span id="cb11-13"><a href="#cb11-13"></a><span class="st">        }</span></span>
+<span id="cb11-14"><a href="#cb11-14"></a><span class="st">    }</span></span>
+<span id="cb11-15"><a href="#cb11-15"></a><span class="st">}</span></span>
+<span id="cb11-16"><a href="#cb11-16"></a><span class="st">&#39;&#39;&#39;</span></span>
+<span id="cb11-17"><a href="#cb11-17"></a>cupy_gather <span class="op">=</span> cp.RawKernel(cupy_gather, <span class="st">&#39;cupy_gather&#39;</span>)</span>
+<span id="cb11-18"><a href="#cb11-18"></a><span class="co"># 执行算子</span></span>
+<span id="cb11-19"><a href="#cb11-19"></a>dst <span class="op">=</span> torch.empty((n, m, c), device<span class="op">=</span><span class="st">&#39;cuda&#39;</span>)</span>
+<span id="cb11-20"><a href="#cb11-20"></a>cupy_gather(grid<span class="op">=</span>(<span class="dv">64</span>, <span class="dv">32</span>,), block<span class="op">=</span>(<span class="dv">256</span>,), args<span class="op">=</span>[src.data_ptr(), idx.data_ptr(), dst.data_ptr(), n, m, p, c])</span></code></pre></div>
+<p>运行时间0.50毫秒，可以看到比Numba又快了不少。优化指令的使用是一方面的原因，但并不是主要的，因为我循环边界啥的都是变量，循环展开肯定做得很不全面；更主要的原因是C++程序就没有那么多运行时检查了，而且数组的访问地址也是显式计算的，因此可以全速执行。代价就是调试的时候很酸爽，遇到非法地址的运行错误就很难受。所以在算子实现上可以先用低效率的Numba实现一遍，毕竟Numba会把数组越界之类的错误清楚地显示出来，等bug调完后再上Cupy，当然<code>Compute Sanitizer</code>用得熟练的也可以直接上Cupy，看具体需求。</p>
+<p>另外，Cupy版本的算子每个block下thread的数量为256是最优配置，不知道为什么和Numba不同，自己写Kernel就很容易遇到这种玄学问题。另外Cupy是使用<code>data_ptr</code>方法获得张量的显存地址。</p>
+<h3 id="使用pytorch的cpp_extension模块编译算子">使用Pytorch的cpp_extension模块编译算子</h3>
+<p>使用<a href="https://pytorch.org/docs/stable/cpp_extension.html">cpp_extension</a>模块的方法应该不算是JIT的范畴了，本质思路应该是先将C++和CUDA代码编译成一个动态库，然后再由Python代码加载这个动态库执行算子。但相比于那种需要定义一大堆代码，写一大堆配置，还需要把整个库的源码都下载下来才能编译的方法已经非常简单了，而且是“热更新”的，改了C++和CUDA代码之后重新运行一下Python脚本，就会自动重新编译，所以也很方便。</p>
+<p>上面的需求实现代码分三部分：首先是CUDA代码，写在<code>extension_gather.cu</code>中：</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">// extension_gather.cu</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a>__global__ <span class="dt">void</span> cuda_extension_gather(<span class="dt">float</span>* src, <span class="dt">unsigned</span> <span class="dt">char</span> * idx, <span class="dt">float</span> *dst, <span class="dt">int</span> n, <span class="dt">int</span> m, <span class="dt">int</span> p, <span class="dt">int</span> c) {</span>
+<span id="cb12-3"><a href="#cb12-3"></a>    <span class="pp">#pragma unroll</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a>    <span class="cf">for</span> (<span class="dt">int</span> i = blockIdx.x; i &lt; n; i += gridDim.x) {</span>
+<span id="cb12-5"><a href="#cb12-5"></a>        <span class="pp">#pragma unroll</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a>        <span class="cf">for</span> (<span class="dt">int</span> j = blockIdx.y; j &lt; m; j += gridDim.y) {</span>
+<span id="cb12-7"><a href="#cb12-7"></a>            <span class="pp">#pragma unroll</span></span>
+<span id="cb12-8"><a href="#cb12-8"></a>            <span class="cf">for</span> (<span class="dt">int</span> k = threadIdx.x; k &lt; c; k += blockDim.x) {</span>
+<span id="cb12-9"><a href="#cb12-9"></a>                dst[i * m * c + j * c + k] = src[i * m * p + j * p + idx[j * c + k]];</span>
+<span id="cb12-10"><a href="#cb12-10"></a>            }</span>
+<span id="cb12-11"><a href="#cb12-11"></a>        }</span>
+<span id="cb12-12"><a href="#cb12-12"></a>    }</span>
+<span id="cb12-13"><a href="#cb12-13"></a>}</span>
+<span id="cb12-14"><a href="#cb12-14"></a><span class="dt">void</span> launch_extension_gather(<span class="dt">float</span>* src, <span class="dt">unsigned</span> <span class="dt">char</span> * idx, <span class="dt">float</span> *dst, <span class="dt">int</span> n, <span class="dt">int</span> m, <span class="dt">int</span> p, <span class="dt">int</span> c) {</span>
+<span id="cb12-15"><a href="#cb12-15"></a>    dim3 grid(<span class="dv">64</span>, <span class="dv">32</span>), block(<span class="dv">256</span>);</span>
+<span id="cb12-16"><a href="#cb12-16"></a>    cuda_extension_gather&lt;&lt;&lt;grid, block&gt;&gt;&gt;(src, idx, dst, n, m, p, c);</span>
+<span id="cb12-17"><a href="#cb12-17"></a>}</span></code></pre></div>
+<p>可以看到上面Kernel和Cupy定义的是一模一样的，下面就是传统的CUDA Kernel的启动函数。然后需要写<code>extension_gather.cpp</code>：</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">// extension_gather.cpp</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="pp">#include </span><span class="im">&lt;torch/extension.h&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="dt">void</span> launch_extension_gather(<span class="dt">float</span>* src, <span class="dt">unsigned</span> <span class="dt">char</span> * idx, <span class="dt">float</span> *dst, <span class="dt">int</span> n, <span class="dt">int</span> m, <span class="dt">int</span> p, <span class="dt">int</span> c);</span>
+<span id="cb13-4"><a href="#cb13-4"></a>torch::Tensor extension_gather(torch::Tensor &amp;src, torch::Tensor &amp;idx, <span class="dt">int</span> n, <span class="dt">int</span> m, <span class="dt">int</span> p, <span class="dt">int</span> c) {</span>
+<span id="cb13-5"><a href="#cb13-5"></a>    <span class="ot">assert</span>(src.is_contiguous());</span>
+<span id="cb13-6"><a href="#cb13-6"></a>    <span class="ot">assert</span>(idx.is_contiguous());</span>
+<span id="cb13-7"><a href="#cb13-7"></a>    <span class="kw">auto</span> dst = torch::empty({n, m, c}, torch::device(src.device()));</span>
+<span id="cb13-8"><a href="#cb13-8"></a>    launch_extension_gather((<span class="dt">float</span> *)src.data_ptr(), (<span class="dt">unsigned</span> <span class="dt">char</span> *)idx.data_ptr(), (<span class="dt">float</span> *)dst.data_ptr(), n, m, p, c);</span>
+<span id="cb13-9"><a href="#cb13-9"></a>    <span class="cf">return</span> dst;</span>
+<span id="cb13-10"><a href="#cb13-10"></a>}</span>
+<span id="cb13-11"><a href="#cb13-11"></a>PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {</span>
+<span id="cb13-12"><a href="#cb13-12"></a>  m.def(<span class="st">&quot;extension_gather&quot;</span>, &amp;extension_gather, <span class="st">&quot;our gather&quot;</span>);</span>
+<span id="cb13-13"><a href="#cb13-13"></a>}</span></code></pre></div>
+<p>这里我引用了<code>torch/extension.h</code>，这样就可以使用Pytorch的C++前端了。可以看到这里也是用<code>data_ptr</code>方法获取张量的显存地址，同时我把创建<code>dst</code>张量的过程放在函数里了，这样就可以用和调用Pytorch其他方法一样的方式调用自定义算子。最后用Pytorch自带的pybind11注册函数的Python接口。Python端执行算子的过程就很简单了：</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># 编译、加载算子</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a>extension_gather <span class="op">=</span> load(name<span class="op">=</span><span class="st">&#39;extension_gather&#39;</span>, sources<span class="op">=</span>[<span class="st">&#39;extension_gather.cu&#39;</span>, <span class="st">&#39;extension_gather.cpp&#39;</span>], verbose<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="co"># 执行算子</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a>dst <span class="op">=</span> extension_gather.extension_gather(src, idx, n, m, p, c)</span></code></pre></div>
+<p>运行时间为0.49毫秒，比Cupy微微快一点，原因可能是Cupy调用算子的开销要更大一些，或者是把原本在Python里创建<code>dst</code>的代码移到C++程序里会减少一点Python解释代码的开销。这种方法的好处主要还是代码好管理，如果要写很多算子，或者是需要引用库文件，或者是要用到什么C++高级特性的时候，可能编写完整的CUDA和C++源文件要更方便一些。</p>
+<h3 id="总结">总结</h3>
+<p>作为目前最流行的深度学习库之一，Pytorch一直在推出各种方便用户使用的功能，其他高性能计算库也纷纷增加了对Pytorch的兼容和支持，这让我们自定义CUDA实现PyTorch算子变得非常简单和便捷。不过，CUDA编程博大精深，想要实现高效率的算子，并不是一件简单的事情。因此我们一方面还是应该尽可能使用Pytorch提供的算子，毕竟经过这么长时间的更新和迭代，性能肯定是最优的；另一方面也需要认真学习CUDA编程，了解GPU架构，在迫不得已需要自己实现算子的情况下善用各种优化技术和工具，才能不断榨取“性能之油”。</p>
+<footer>
+    <hr><center>转载请注明出处<br>© 2023 VnYzm的博客</center>
+</footer>
+</body>
+</html>
