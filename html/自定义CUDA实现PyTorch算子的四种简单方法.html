@@ -250,22 +250,26 @@ html[data-theme='tufte']{
 <p>可以看到上面Kernel和Cupy定义的是一模一样的，下面就是传统的CUDA Kernel的启动函数。然后需要写<code>extension_gather.cpp</code>：</p>
 <div class="sourceCode" id="cb13"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1"></a><span class="co">// extension_gather.cpp</span></span>
 <span id="cb13-2"><a href="#cb13-2"></a><span class="pp">#include </span><span class="im">&lt;torch/extension.h&gt;</span></span>
-<span id="cb13-3"><a href="#cb13-3"></a><span class="dt">void</span> launch_extension_gather(<span class="dt">float</span>* src, <span class="dt">unsigned</span> <span class="dt">char</span> * idx, <span class="dt">float</span> *dst, <span class="dt">int</span> n, <span class="dt">int</span> m, <span class="dt">int</span> p, <span class="dt">int</span> c);</span>
-<span id="cb13-4"><a href="#cb13-4"></a>torch::Tensor extension_gather(torch::Tensor &amp;src, torch::Tensor &amp;idx, <span class="dt">int</span> n, <span class="dt">int</span> m, <span class="dt">int</span> p, <span class="dt">int</span> c) {</span>
-<span id="cb13-5"><a href="#cb13-5"></a>    <span class="ot">assert</span>(src.is_contiguous());</span>
-<span id="cb13-6"><a href="#cb13-6"></a>    <span class="ot">assert</span>(idx.is_contiguous());</span>
-<span id="cb13-7"><a href="#cb13-7"></a>    <span class="kw">auto</span> dst = torch::empty({n, m, c}, torch::device(src.device()));</span>
-<span id="cb13-8"><a href="#cb13-8"></a>    launch_extension_gather((<span class="dt">float</span> *)src.data_ptr(), (<span class="dt">unsigned</span> <span class="dt">char</span> *)idx.data_ptr(), (<span class="dt">float</span> *)dst.data_ptr(), n, m, p, c);</span>
-<span id="cb13-9"><a href="#cb13-9"></a>    <span class="cf">return</span> dst;</span>
-<span id="cb13-10"><a href="#cb13-10"></a>}</span>
-<span id="cb13-11"><a href="#cb13-11"></a>PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {</span>
-<span id="cb13-12"><a href="#cb13-12"></a>  m.def(<span class="st">&quot;extension_gather&quot;</span>, &amp;extension_gather, <span class="st">&quot;our gather&quot;</span>);</span>
-<span id="cb13-13"><a href="#cb13-13"></a>}</span></code></pre></div>
+<span id="cb13-3"><a href="#cb13-3"></a></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="dt">void</span> launch_extension_gather(<span class="dt">float</span>* src, <span class="dt">unsigned</span> <span class="dt">char</span> * idx, <span class="dt">float</span> *dst, <span class="dt">int</span> n, <span class="dt">int</span> m, <span class="dt">int</span> p, <span class="dt">int</span> c);</span>
+<span id="cb13-5"><a href="#cb13-5"></a></span>
+<span id="cb13-6"><a href="#cb13-6"></a>torch::Tensor extension_gather(torch::Tensor &amp;src, torch::Tensor &amp;idx, <span class="dt">int</span> n, <span class="dt">int</span> m, <span class="dt">int</span> p, <span class="dt">int</span> c) {</span>
+<span id="cb13-7"><a href="#cb13-7"></a>    <span class="ot">assert</span>(src.is_contiguous());</span>
+<span id="cb13-8"><a href="#cb13-8"></a>    <span class="ot">assert</span>(idx.is_contiguous());</span>
+<span id="cb13-9"><a href="#cb13-9"></a>    <span class="kw">auto</span> dst = torch::empty({n, m, c}, torch::device(src.device()));</span>
+<span id="cb13-10"><a href="#cb13-10"></a>    launch_extension_gather((<span class="dt">float</span> *)src.data_ptr(), (<span class="dt">unsigned</span> <span class="dt">char</span> *)idx.data_ptr(), (<span class="dt">float</span> *)dst.data_ptr(), n, m, p, c);</span>
+<span id="cb13-11"><a href="#cb13-11"></a>    <span class="cf">return</span> dst;</span>
+<span id="cb13-12"><a href="#cb13-12"></a>}</span>
+<span id="cb13-13"><a href="#cb13-13"></a></span>
+<span id="cb13-14"><a href="#cb13-14"></a>PYBIND11_MODULE(TORCH_EXTENSION_NAME, m) {</span>
+<span id="cb13-15"><a href="#cb13-15"></a>  m.def(<span class="st">&quot;extension_gather&quot;</span>, &amp;extension_gather, <span class="st">&quot;our gather&quot;</span>);</span>
+<span id="cb13-16"><a href="#cb13-16"></a>}</span></code></pre></div>
 <p>这里我引用了<code>torch/extension.h</code>，这样就可以使用Pytorch的C++前端了。可以看到这里也是用<code>data_ptr</code>方法获取张量的显存地址，同时我把创建<code>dst</code>张量的过程放在函数里了，这样就可以用和调用Pytorch其他方法一样的方式调用自定义算子。最后用Pytorch自带的pybind11注册函数的Python接口。Python端执行算子的过程就很简单了：</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="co"># 编译、加载算子</span></span>
-<span id="cb14-2"><a href="#cb14-2"></a>extension_gather <span class="op">=</span> load(name<span class="op">=</span><span class="st">&#39;extension_gather&#39;</span>, sources<span class="op">=</span>[<span class="st">&#39;extension_gather.cu&#39;</span>, <span class="st">&#39;extension_gather.cpp&#39;</span>], verbose<span class="op">=</span><span class="va">True</span>)</span>
-<span id="cb14-3"><a href="#cb14-3"></a><span class="co"># 执行算子</span></span>
-<span id="cb14-4"><a href="#cb14-4"></a>dst <span class="op">=</span> extension_gather.extension_gather(src, idx, n, m, p, c)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1"></a><span class="im">from</span> torch.utils.cpp_extension <span class="im">import</span> load</span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="co"># 编译、加载算子</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a>extension_gather <span class="op">=</span> load(name<span class="op">=</span><span class="st">&#39;extension_gather&#39;</span>, sources<span class="op">=</span>[<span class="st">&#39;extension_gather.cu&#39;</span>, <span class="st">&#39;extension_gather.cpp&#39;</span>], verbose<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="co"># 执行算子</span></span>
+<span id="cb14-5"><a href="#cb14-5"></a>dst <span class="op">=</span> extension_gather.extension_gather(src, idx, n, m, p, c)</span></code></pre></div>
 <p>运行时间为0.49毫秒，比Cupy微微快一点，原因可能是Cupy调用算子的开销要更大一些，或者是把原本在Python里创建<code>dst</code>的代码移到C++程序里会减少一点Python解释代码的开销。这种方法的好处主要还是代码好管理，如果要写很多算子，或者是需要引用库文件，或者是要用到什么C++高级特性的时候，可能编写完整的CUDA和C++源文件要更方便一些。</p>
 <h3 id="总结">总结</h3>
 <p>作为目前最流行的深度学习库之一，Pytorch一直在推出各种方便用户使用的功能，其他高性能计算库也纷纷增加了对Pytorch的兼容和支持，这让我们自定义CUDA实现PyTorch算子变得非常简单和便捷。不过，CUDA编程博大精深，想要实现高效率的算子，并不是一件简单的事情。因此我们一方面还是应该尽可能使用Pytorch提供的算子，毕竟经过这么长时间的更新和迭代，性能肯定是最优的；另一方面也需要认真学习CUDA编程，了解GPU架构，在迫不得已需要自己实现算子的情况下善用各种优化技术和工具，才能不断榨取“性能之油”。</p>
