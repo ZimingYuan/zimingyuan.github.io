@@ -36,6 +36,7 @@ html[data-theme='tufte']{
                     'keydown',  (event) => {
                         if (event.key == 'Enter') search();
                 });
+                document.querySelector('#email').innerText = window.atob(document.querySelector('#email').innerText);
             }
         </script>
         <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
@@ -81,12 +82,49 @@ html[data-theme='tufte']{
     <p>1. 视频/音频剪切： 去掉 ss指令表示从头开始 去掉 t指令表示剪切到结尾 2. wav转MP3： 3. 视频/音频连接： 创建input.txt 然后输入命令 4.分离视频中的音频和视频 分离视频 分离音频 注意视频中包含的音频常常是aac格式，故如果output_file的后缀名是mp3会报...</p>
     <em>2018年8月28日</em>
 </div>
+
+<div class="card">
+    <h4><a href="/html/题解归档：2016年11月.html">题解归档：2016年11月</a></h4><hr>
+    <p>字符串哈希、线段树、最小割（Dinic）、tarjan缩点、LCA（倍增）</p>
+    <em>2016年11月16日</em>
+</div>
+
+<div class="card">
+    <h4><a href="/html/题解归档：2016年10月.html">题解归档：2016年10月</a></h4><hr>
+    <p>SPFA（SLF优化）、差分约束系统、最大流（Dinic）、可并堆（斜堆）</p>
+    <em>2016年10月31日</em>
+</div>
+
+<div class="card">
+    <h4><a href="/html/题解归档：2016年9月.html">题解归档：2016年9月</a></h4><hr>
+    <p>AC自动机、KD树、莫队算法、树链剖分（无线段树）、主席树、RMQ（倍增）、LCA（倍增）、线段树、tarjan缩点</p>
+    <em>2016年9月29日</em>
+</div>
+
+<div class="card">
+    <h4><a href="/html/题解归档：2016年8月.html">题解归档：2016年8月</a></h4><hr>
+    <p>RMQ（倍增）、最大流（Dinic）、可并堆（斜堆）、伸展树、斜率优化DP、主席树、乘法逆元、树堆、Manacher、KMP</p>
+    <em>2016年8月31日</em>
+</div>
+
+<div class="card">
+    <h4><a href="/html/题解归档：2016年7月.html">题解归档：2016年7月</a></h4><hr>
+    <p>最小链覆盖、可并堆（左偏树）、线段树</p>
+    <em>2016年7月31日</em>
+</div>
+
+<div class="card">
+    <h4><a href="/html/题解归档：2016年6月.html">题解归档：2016年6月</a></h4><hr>
+    <p>费用流、LCA（倍增）、最小割（Dinic）、最大流（Dinic）、树堆、KMP、复数、树链剖分（无线段树）、斜率优化DP、高斯消元、AC自动机、主席树、可持久化线段树</p>
+    <em>2016年6月30日</em>
+</div>
 <a href="/index.html"><button>1</button></a>
 <a href="/index/2.html"><button>2</button></a>
 <a href="/index/3.html"><button>3</button></a>
 <a href="/index/4.html"><button>4</button></a>
 <a href="/index/5.html"><button>5</button></a>
 <button disabled>6</button>
+<a href="/index/7.html"><button>7</button></a>
 
             </div>
             <div class="col-3">
@@ -103,7 +141,7 @@ html[data-theme='tufte']{
                     <a href="https://www.cnblogs.com/YuanZiming/" target="_BLANK">我的博客园</a>
                     也是我的博客，有过去的一些文章以及细致的文章分类。
                     </p>
-                    <p>联系方式：<a href="mailto:yzmyzm99@outlook.com">yzmyzm99@outlook.com</a></p>
+                    <p>联系方式：<span id="email">eXpteXptOTlAb3V0bG9vay5jb20=</span></p>
                 </div>
             </div>
         </div>

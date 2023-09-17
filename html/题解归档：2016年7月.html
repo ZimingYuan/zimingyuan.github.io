@@ -1,0 +1,1122 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN" data-theme="tufte">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/extra/classless.css" />
+<style>
+html[data-theme='tufte']{
+    --rem: 15px;
+    --navpos: absolute;
+    --width: 70rem;
+    --font-p: 1.4rem/2 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-h: 1.4rem/1.5 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --ornament: "";
+    --border: 1px solid var(--cmed);
+    /* foreground   | background color */
+    --cfg:   #111;    --cbg:    #fbf7ec;
+    --cdark: #111;    --clight: #fbf7ec;
+    --cmed: #b4d5fe;
+    --clink: #111;
+    --cemph: #111;
+}
+</style>
+  <script>
+      let search = () => {
+          let word = document.querySelector('input');
+          if (word.value.length == 0) {
+              word.focus();
+          } else {
+              location.href = '/search.html?' + word.value;
+          }
+      };
+      window.onload = () => {
+          document.querySelector('input').addEventListener(
+              'keydown',  (event) => {
+                  if (event.key == 'Enter') search();
+          });
+      }
+  </script>
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <title>题解归档：2016年7月</title>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" type="text/javascript"></script>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><big>VnYzm的博客</big></li>
+            <li><a href="/index.html">主页</a></li>
+            <li><a href="/html/随笔.html">随笔</a></li>
+            <li><a href="/miscellany.html">杂谈</a></li>
+            <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索" style="margin: 0"></li>
+        </ul>
+    </nav>
+<header id="title-block-header">
+<h1 class="title">题解归档：2016年7月</h1>
+<hr>
+</header>
+<h3 id="bzoj1143ctsc2008祭祀river2016.7.1">bzoj1143[CTSC2008]祭祀river（2016.7.1）</h3>
+<h4 id="题意">题意</h4>
+<p>Y族居住地水系是一个由岔口和河道组成的网络。每条河道连接着两个岔口，并且水在河道内按照一个固定的方向流动。水系中不会有环流。由于人数众多的原因，Y族的祭祀活动会在多个岔口上同时举行。Y族人认为，如果水流可以从一个祭祀点流到另外一个祭祀点，那么祭祀就会失去它神圣的意义。求保持祭祀神圣性的基础上祭祀的地点数目的最大值。</p>
+<h4 id="题解">题解</h4>
+<p>利用各种性质。首先，题目的模型被称为最长反链，即在有向无环图中求一个点集使其两两不可达。Dilworth定理：最长反链长度=最小链覆盖（用最少的链覆盖所有节点）（%<a href="http://vfleaking.blog.163.com/blog/static/1748076342012918105514527/">vfk大神的证明</a>然而我看不懂）。求最小链覆盖的方法：建一个二分图，如果点a、b可达，则将左边的a与右边的边相连，求最大独立集。然后又有最大独立集=点数n（指二分图的半边的点数）-二分图最大匹配。</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="pp">#include </span><span class="im">&lt;queue&gt;</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a><span class="pp">#define INF </span><span class="bn">0x3fffffff</span></span>
+<span id="cb1-6"><a href="#cb1-6"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb1-7"><a href="#cb1-7"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb1-8"><a href="#cb1-8"></a></span>
+<span id="cb1-9"><a href="#cb1-9"></a><span class="dt">int</span> n,m,a[<span class="dv">200</span>][<span class="dv">200</span>],s,t;</span>
+<span id="cb1-10"><a href="#cb1-10"></a><span class="kw">struct</span> e{<span class="dt">int</span> t,c,n;}; e es[<span class="dv">100000</span>]; <span class="dt">int</span> ess,g[<span class="dv">1000</span>];</span>
+<span id="cb1-11"><a href="#cb1-11"></a><span class="kw">inline</span> <span class="dt">void</span> pe(<span class="dt">int</span> f,<span class="dt">int</span> t,<span class="dt">int</span> c){</span>
+<span id="cb1-12"><a href="#cb1-12"></a>    es[++ess]=(e){t,c,g[f]};g[f]=ess;es[++ess]=(e){f,<span class="dv">0</span>,g[t]};g[t]=ess;</span>
+<span id="cb1-13"><a href="#cb1-13"></a>}</span>
+<span id="cb1-14"><a href="#cb1-14"></a><span class="dt">void</span> init(){ess=-<span class="dv">1</span>; memset(g,-<span class="dv">1</span>,<span class="kw">sizeof</span>(g));}</span>
+<span id="cb1-15"><a href="#cb1-15"></a>queue &lt;<span class="dt">int</span>&gt; q; <span class="dt">int</span> h[<span class="dv">1000</span>];</span>
+<span id="cb1-16"><a href="#cb1-16"></a><span class="dt">bool</span> bfs(<span class="dt">int</span> s,<span class="dt">int</span> t){</span>
+<span id="cb1-17"><a href="#cb1-17"></a>    <span class="cf">while</span>(! q.empty())q.pop(); memset(h,-<span class="dv">1</span>,<span class="kw">sizeof</span>(h)); h[s]=<span class="dv">0</span>; q.push(s);</span>
+<span id="cb1-18"><a href="#cb1-18"></a>    <span class="cf">while</span>(! q.empty()){</span>
+<span id="cb1-19"><a href="#cb1-19"></a>        <span class="dt">int</span> x=q.front(); q.pop();</span>
+<span id="cb1-20"><a href="#cb1-20"></a>        <span class="cf">for</span>(<span class="dt">int</span> i=g[x];i!=-<span class="dv">1</span>;i=es[i].n)<span class="cf">if</span>(es[i].c&amp;&amp;h[es[i].t]==-<span class="dv">1</span>)h[es[i].t]=h[x]+<span class="dv">1</span>,q.push(es[i].t);</span>
+<span id="cb1-21"><a href="#cb1-21"></a>    }</span>
+<span id="cb1-22"><a href="#cb1-22"></a>    <span class="cf">if</span>(h[t]==-<span class="dv">1</span>)<span class="cf">return</span> <span class="dv">0</span>;<span class="cf">else</span> <span class="cf">return</span> <span class="dv">1</span>;</span>
+<span id="cb1-23"><a href="#cb1-23"></a>}</span>
+<span id="cb1-24"><a href="#cb1-24"></a><span class="dt">int</span> dfs(<span class="dt">int</span> x,<span class="dt">int</span> t,<span class="dt">int</span> f){</span>
+<span id="cb1-25"><a href="#cb1-25"></a>    <span class="cf">if</span>(x==t)<span class="cf">return</span> f; <span class="dt">int</span> used=<span class="dv">0</span>;</span>
+<span id="cb1-26"><a href="#cb1-26"></a>    <span class="cf">for</span>(<span class="dt">int</span> i=g[x];i!=-<span class="dv">1</span>;i=es[i].n)<span class="cf">if</span>(es[i].c&amp;&amp;h[es[i].t]==h[x]+<span class="dv">1</span>){</span>
+<span id="cb1-27"><a href="#cb1-27"></a>        <span class="dt">int</span> w=dfs(es[i].t,t,min(f,es[i].c));</span>
+<span id="cb1-28"><a href="#cb1-28"></a>        es[i].c-=w; es[i^<span class="dv">1</span>].c+=w; used+=w; f-=w; <span class="cf">if</span>(f==<span class="dv">0</span>)<span class="cf">return</span> used;</span>
+<span id="cb1-29"><a href="#cb1-29"></a>    }</span>
+<span id="cb1-30"><a href="#cb1-30"></a>    <span class="cf">if</span>(used==<span class="dv">0</span>)h[x]=-<span class="dv">1</span>; <span class="cf">return</span> used;</span>
+<span id="cb1-31"><a href="#cb1-31"></a>}</span>
+<span id="cb1-32"><a href="#cb1-32"></a><span class="dt">int</span> dinic(<span class="dt">int</span> s,<span class="dt">int</span> t){<span class="dt">int</span> ans=<span class="dv">0</span>; <span class="cf">while</span>(bfs(s,t))ans+=dfs(s,t,INF); <span class="cf">return</span> ans;};</span>
+<span id="cb1-33"><a href="#cb1-33"></a><span class="dt">int</span> main(){</span>
+<span id="cb1-34"><a href="#cb1-34"></a>    scanf(<span class="st">&quot;</span><span class="sc">%d%d</span><span class="st">&quot;</span>,&amp;n,&amp;m); memset(a,<span class="dv">0</span>,<span class="kw">sizeof</span>(a));</span>
+<span id="cb1-35"><a href="#cb1-35"></a>    inc(i,<span class="dv">1</span>,m){<span class="dt">int</span> a1,b1; scanf(<span class="st">&quot;</span><span class="sc">%d%d</span><span class="st">&quot;</span>,&amp;a1,&amp;b1); a[a1][b1]=<span class="dv">1</span>;}</span>
+<span id="cb1-36"><a href="#cb1-36"></a>    inc(k,<span class="dv">1</span>,n)inc(i,<span class="dv">1</span>,n)inc(j,<span class="dv">1</span>,n)a[i][j]|=a[i][k]&amp;a[k][j];</span>
+<span id="cb1-37"><a href="#cb1-37"></a>    s=<span class="dv">0</span>; t=n+n+<span class="dv">1</span>; init();</span>
+<span id="cb1-38"><a href="#cb1-38"></a>    inc(i,<span class="dv">1</span>,n)pe(s,i,<span class="dv">1</span>),pe(i+n,t,<span class="dv">1</span>);</span>
+<span id="cb1-39"><a href="#cb1-39"></a>    inc(i,<span class="dv">1</span>,n)inc(j,<span class="dv">1</span>,n)<span class="cf">if</span>(a[i][j])pe(i,j+n,<span class="dv">1</span>);</span>
+<span id="cb1-40"><a href="#cb1-40"></a>    printf(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span>,n-dinic(s,t));</span>
+<span id="cb1-41"><a href="#cb1-41"></a>}</span></code></pre></div>
+<h3 id="bzoj4590shoi2015自动刷题机2016.7.1">bzoj4590[Shoi2015]自动刷题机（2016.7.1）</h3>
+<h4 id="题意-1">题意</h4>
+<p>有一种自动刷题机。每秒，有两种可能的结果：写了x行代码，或删掉了之前写的y行代码。（如果y大于当前代码长度则相当于全部删除。）一旦自动刷题机在某秒结束时积累了大于等于n行的代码，它就会自动AC一题，然后新建一个文件开始写下一题。知道共切了k道题。求n可能的最小值和最大值。操作数和k≤100000</p>
+<h4 id="题解-1">题解</h4>
+<p>由于n越小切题数越多，故二分n就行了。反思：没看到找不到要输出-1的要求，加上二分边界太小，wa了好几发QAQ~</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="pp">#define maxn </span><span class="dv">100010</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb2-6"><a href="#cb2-6"></a><span class="pp">#define ll </span><span class="dt">long</span><span class="pp"> </span><span class="dt">long</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb2-8"><a href="#cb2-8"></a></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="dt">int</span> n; ll k,opt[maxn],l,r,ansl,ansr;;</span>
+<span id="cb2-10"><a href="#cb2-10"></a><span class="kw">inline</span> <span class="dt">int</span> read(){</span>
+<span id="cb2-11"><a href="#cb2-11"></a>    <span class="dt">char</span> ch=getchar(); <span class="dt">int</span> f=<span class="dv">1</span>,x=<span class="dv">0</span>;</span>
+<span id="cb2-12"><a href="#cb2-12"></a>    <span class="cf">while</span>(ch&lt;<span class="ch">&#39;0&#39;</span>||ch&gt;<span class="ch">&#39;9&#39;</span>){<span class="cf">if</span>(ch==<span class="ch">&#39;-&#39;</span>)f=-<span class="dv">1</span>; ch=getchar();} <span class="cf">while</span>(ch&gt;=<span class="ch">&#39;0&#39;</span>&amp;&amp;ch&lt;=<span class="ch">&#39;9&#39;</span>)x=x*<span class="dv">10</span>+ch-<span class="ch">&#39;0&#39;</span>,ch=getchar();</span>
+<span id="cb2-13"><a href="#cb2-13"></a>    <span class="cf">return</span> f*x;</span>
+<span id="cb2-14"><a href="#cb2-14"></a>}</span>
+<span id="cb2-15"><a href="#cb2-15"></a>ll check(ll x){</span>
+<span id="cb2-16"><a href="#cb2-16"></a>    ll y=<span class="dv">0</span>,z=<span class="dv">0</span>; inc(i,<span class="dv">1</span>,n){z+=opt[i]; <span class="cf">if</span>(z&lt;<span class="dv">0</span>)z=<span class="dv">0</span>; <span class="cf">if</span>(z&gt;=x)y++,z=<span class="dv">0</span>;} <span class="cf">return</span> y;</span>
+<span id="cb2-17"><a href="#cb2-17"></a>}</span>
+<span id="cb2-18"><a href="#cb2-18"></a><span class="dt">int</span> main(){</span>
+<span id="cb2-19"><a href="#cb2-19"></a>    n=read(); k=(ll)read(); inc(i,<span class="dv">1</span>,n)opt[i]=(ll)read();</span>
+<span id="cb2-20"><a href="#cb2-20"></a>    l=<span class="dv">1</span>; r=<span class="fl">1e15</span>; <span class="cf">while</span>(l&lt;=r){ll mid=l+r&gt;&gt;<span class="dv">1</span>; <span class="cf">if</span>(check(mid)&lt;=k)ansl=mid,r=mid-<span class="dv">1</span>;<span class="cf">else</span> l=mid+<span class="dv">1</span>;}</span>
+<span id="cb2-21"><a href="#cb2-21"></a>    l=<span class="dv">1</span>; r=<span class="fl">1e15</span>; <span class="cf">while</span>(l&lt;=r){ll mid=l+r&gt;&gt;<span class="dv">1</span>; <span class="cf">if</span>(check(mid)&lt;k)r=mid-<span class="dv">1</span>;<span class="cf">else</span> ansr=mid,l=mid+<span class="dv">1</span>;}</span>
+<span id="cb2-22"><a href="#cb2-22"></a>    <span class="cf">if</span>(check(ansl)!=k||check(ansr)!=k)printf(<span class="st">&quot;-1&quot;</span>);<span class="cf">else</span> printf(<span class="st">&quot;</span><span class="sc">%lld</span><span class="st"> </span><span class="sc">%lld</span><span class="st">&quot;</span>,ansl,ansr);</span>
+<span id="cb2-23"><a href="#cb2-23"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb2-24"><a href="#cb2-24"></a>}</span></code></pre></div>
+<h3 id="bzoj3195jxoi2012奇怪的道路2016.7.2">bzoj3195[Jxoi2012]奇怪的道路（2016.7.2）</h3>
+<h4 id="题意-2">题意</h4>
+<p>n座城市。m条道路连接在这些城市之间，一对城市之间可能存在多条道路。对于任何一条道路，设它连接的两个城市分别为u和v，必定满足1 &lt;=|u - v| &lt;= K。此外，任何一个城市都与恰好偶数条道路相连（0也被认为是偶数）。这n个城市之间究竟有多少种可能的连接方法模1000000007后的结果。n，m≤30，m≤8</p>
+<h4 id="题解-2">题解</h4>
+<p>dp。f[i][j][S][l]表示现在处理第i个点，已经练了第j条边，与i相差≤k的点度数奇偶性状态S，正在处理的要和i连边的l。实现挺复杂的，具体看代码。</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="pp">#define ll </span><span class="dt">long</span><span class="pp"> </span><span class="dt">long</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a><span class="pp">#define mod </span><span class="dv">1000000007</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb3-8"><a href="#cb3-8"></a></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="dt">int</span> n,m,kk; ll f[<span class="dv">40</span>][<span class="dv">40</span>][<span class="dv">1</span>&lt;&lt;<span class="dv">9</span>][<span class="dv">10</span>];</span>
+<span id="cb3-10"><a href="#cb3-10"></a><span class="dt">int</span> main(){</span>
+<span id="cb3-11"><a href="#cb3-11"></a>    scanf(<span class="st">&quot;</span><span class="sc">%d%d%d</span><span class="st">&quot;</span>,&amp;n,&amp;m,&amp;kk);</span>
+<span id="cb3-12"><a href="#cb3-12"></a>    f[<span class="dv">2</span>][<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>]=<span class="dv">1</span>;</span>
+<span id="cb3-13"><a href="#cb3-13"></a>    inc(i,<span class="dv">2</span>,n)inc(j,<span class="dv">0</span>,m)inc(k,<span class="dv">0</span>,(<span class="dv">1</span>&lt;&lt;kk+<span class="dv">1</span>)-<span class="dv">1</span>){</span>
+<span id="cb3-14"><a href="#cb3-14"></a>        inc(l,<span class="dv">0</span>,kk-<span class="dv">1</span>){</span>
+<span id="cb3-15"><a href="#cb3-15"></a>            f[i][j][k][l+<span class="dv">1</span>]=(f[i][j][k][l+<span class="dv">1</span>]+f[i][j][k][l])%mod;</span>
+<span id="cb3-16"><a href="#cb3-16"></a>            <span class="cf">if</span>(j&lt;m&amp;&amp;i-kk+l&gt;<span class="dv">0</span>)</span>
+<span id="cb3-17"><a href="#cb3-17"></a>                f[i][j+<span class="dv">1</span>][k^(<span class="dv">1</span>&lt;&lt;kk)^(<span class="dv">1</span>&lt;&lt;l)][l]=(f[i][j+<span class="dv">1</span>][k^(<span class="dv">1</span>&lt;&lt;kk)^(<span class="dv">1</span>&lt;&lt;l)][l]+f[i][j][k][l])%mod;</span>
+<span id="cb3-18"><a href="#cb3-18"></a>        }</span>
+<span id="cb3-19"><a href="#cb3-19"></a>        <span class="cf">if</span>(!(k&amp;<span class="dv">1</span>)&amp;&amp;f[i][j][k][kk])f[i+<span class="dv">1</span>][j][k&gt;&gt;<span class="dv">1</span>][<span class="dv">0</span>]=f[i][j][k][kk];</span>
+<span id="cb3-20"><a href="#cb3-20"></a>    }</span>
+<span id="cb3-21"><a href="#cb3-21"></a>    printf(<span class="st">&quot;</span><span class="sc">%lld</span><span class="st">&quot;</span>,f[n+<span class="dv">1</span>][m][<span class="dv">0</span>][<span class="dv">0</span>]);</span>
+<span id="cb3-22"><a href="#cb3-22"></a>}</span></code></pre></div>
+<h3 id="bzoj1806ioi2007miners-矿工配餐2016.7.2">bzoj1806[Ioi2007]Miners 矿工配餐（2016.7.2）</h3>
+<h4 id="题意-3">题意</h4>
+<p>现有两个煤矿，有三种类型的食品车。每当一个新的食品车到达煤矿时，矿工们就会比较这种新的食品和前两次（或者少于两次，如果前面运送食品的次数不足两次）的食品。如果这几次食品车都是同一类型的食品，则矿工们产出一个单位的煤； 如果这几次食品车中有两种不同类型的食品，则矿工们产出两个单位的煤；如果这几次食品车中有三种不同类型的食品，则矿工们产出三个单位的煤。 预先已知食品车的类型及其被配送的顺序，求通过分配食品车去的煤矿得到的最大产煤量。</p>
+<h4 id="题解-3">题解</h4>
+<p>dp，f[i][a][b][c][d]表示送第i辆车来时矿洞1的前两次吃a和b，矿洞2的前两次吃c和d，当b或d为0表示该矿洞只送过一辆车，当a、b或c、d为0时表示该矿洞没送过车。i可以滚动掉，同时i需倒序枚举。求矿工采煤量的分类讨论比较复杂，具体看代码。</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="pp">#define dec</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&gt;=k;i--)</span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="pp">#define maxn </span><span class="dv">100010</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb4-8"><a href="#cb4-8"></a></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="dt">int</span> cg(<span class="dt">char</span> a){</span>
+<span id="cb4-10"><a href="#cb4-10"></a>    <span class="cf">if</span>(a==<span class="ch">&#39;M&#39;</span>)<span class="cf">return</span> <span class="dv">1</span>;<span class="cf">else</span> <span class="cf">if</span>(a==<span class="ch">&#39;F&#39;</span>)<span class="cf">return</span> <span class="dv">2</span>;<span class="cf">else</span> <span class="cf">if</span>(a==<span class="ch">&#39;B&#39;</span>)<span class="cf">return</span> <span class="dv">3</span>;</span>
+<span id="cb4-11"><a href="#cb4-11"></a>}</span>
+<span id="cb4-12"><a href="#cb4-12"></a><span class="dt">int</span> f[maxn],n,x[<span class="dv">4</span>][<span class="dv">4</span>][<span class="dv">4</span>][<span class="dv">4</span>],y[<span class="dv">4</span>][<span class="dv">4</span>][<span class="dv">4</span>][<span class="dv">4</span>]; <span class="dt">char</span> s[maxn];</span>
+<span id="cb4-13"><a href="#cb4-13"></a><span class="dt">int</span> main(){</span>
+<span id="cb4-14"><a href="#cb4-14"></a>    scanf(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span>,&amp;n); scanf(<span class="st">&quot;</span><span class="sc">%s</span><span class="st">&quot;</span>,s+<span class="dv">1</span>);</span>
+<span id="cb4-15"><a href="#cb4-15"></a>    inc(i,<span class="dv">1</span>,n){<span class="cf">if</span>(s[i]==<span class="ch">&#39;M&#39;</span>)f[i]=<span class="dv">1</span>; <span class="cf">if</span>(s[i]==<span class="ch">&#39;F&#39;</span>)f[i]=<span class="dv">2</span>; <span class="cf">if</span>(s[i]==<span class="ch">&#39;B&#39;</span>)f[i]=<span class="dv">3</span>;} memset(x,<span class="dv">0</span>,<span class="kw">sizeof</span>(x));</span>
+<span id="cb4-16"><a href="#cb4-16"></a>    dec(i,n,<span class="dv">1</span>){</span>
+<span id="cb4-17"><a href="#cb4-17"></a>        memset(y,<span class="dv">0</span>,<span class="kw">sizeof</span>(y));</span>
+<span id="cb4-18"><a href="#cb4-18"></a>        inc(j1,<span class="dv">0</span>,<span class="dv">3</span>)inc(j2,<span class="dv">0</span>,<span class="dv">3</span>)inc(j3,<span class="dv">0</span>,<span class="dv">3</span>)inc(j4,<span class="dv">0</span>,<span class="dv">3</span>){</span>
+<span id="cb4-19"><a href="#cb4-19"></a>            <span class="cf">if</span>((j1&amp;&amp;!j2)||(j3&amp;&amp;!j4))<span class="cf">continue</span>; <span class="dt">int</span> plus1,plus2;</span>
+<span id="cb4-20"><a href="#cb4-20"></a>            <span class="cf">if</span>((!j1&amp;&amp;!j2)||(!j1&amp;&amp;j2==f[i])||(j1==j2&amp;&amp;j2==f[i]))plus1=<span class="dv">1</span>;<span class="cf">else</span></span>
+<span id="cb4-21"><a href="#cb4-21"></a>            <span class="cf">if</span>(j1!=j2&amp;&amp;j2!=f[i]&amp;&amp;j1!=f[i]&amp;&amp;j1&amp;&amp;j2)plus1=<span class="dv">3</span>;<span class="cf">else</span> plus1=<span class="dv">2</span>;</span>
+<span id="cb4-22"><a href="#cb4-22"></a>            <span class="cf">if</span>((!j3&amp;&amp;!j4)||(!j3&amp;&amp;j4==f[i])||(j3==j4&amp;&amp;j4==f[i]))plus2=<span class="dv">1</span>;<span class="cf">else</span></span>
+<span id="cb4-23"><a href="#cb4-23"></a>            <span class="cf">if</span>(j3!=j4&amp;&amp;j4!=f[i]&amp;&amp;j3!=f[i]&amp;&amp;j3&amp;&amp;j4)plus2=<span class="dv">3</span>;<span class="cf">else</span> plus2=<span class="dv">2</span>;</span>
+<span id="cb4-24"><a href="#cb4-24"></a>            y[j1][j2][j3][j4]=max(x[j2][f[i]][j3][j4]+plus1,x[j1][j2][j4][f[i]]+plus2);</span>
+<span id="cb4-25"><a href="#cb4-25"></a>        }</span>
+<span id="cb4-26"><a href="#cb4-26"></a>        swap(x,y);</span>
+<span id="cb4-27"><a href="#cb4-27"></a>    }</span>
+<span id="cb4-28"><a href="#cb4-28"></a>    printf(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span>,x[<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>][<span class="dv">0</span>]); <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb4-29"><a href="#cb4-29"></a>}</span></code></pre></div>
+<h3 id="bzoj4002jloi2015有意义的字符串2016.7.10">bzoj4002[JLOI2015]有意义的字符串（2016.7.10）</h3>
+<h4 id="题意-4">题意</h4>
+<p>求<span class="math inline">\((\frac{b+\sqrt{d}}{2})^n\)</span>的整数部分。<span class="math inline">\(b^2&lt;d&lt;10^{18},n&lt;10^{18},d\equiv 1(mod 4),b^2\equiv 1(mod 4)\)</span>，模数约等于<span class="math inline">\(7\times 10^{18}\)</span>。</p>
+<h4 id="题解-4">题解</h4>
+<p>神题。由一些性质可以得出一个数列:<span class="math inline">\(A_n=bA_{n-1}+\frac{d-b^2}{4}*A_{n-2}\)</span>，且这个数列的通项公式为<span class="math inline">\(A_n=(\frac{b+\sqrt{d}}{2})^n+(\frac{b-\sqrt{d}}{2})^n\)</span>，且由题目条件得<span class="math inline">\(\frac{d-b^2}{4}\)</span>为正整数，故可以用矩阵乘法求出<span class="math inline">\(A_n\)</span>，由于<span class="math inline">\(\frac{b-\sqrt{d}}{2}\in(-1,0]\)</span>，故答案为<span class="math inline">\(A_n-1\)</span>当且仅当n为偶数且<span class="math inline">\(b^2\neq d\)</span>。矩阵递推式：</p>
+<p><span class="math display">\[
+\begin{bmatrix}
+    A_{n-1} &amp; A_{n-2} \\
+    0 &amp; 0
+\end{bmatrix}\times\begin{bmatrix}
+    b &amp; 1 \\
+    \frac{d-b^2}{4} &amp; 0
+\end{bmatrix}=\begin{bmatrix}
+    A_n &amp; A_{n-1} \\
+    0 &amp; 0
+\end{bmatrix}
+\]</span></p>
+<p>反思：蒟蒻不知道矩乘不满足交换律，调了很久样例。同时由于模数太大，除了需要用unsigned long long外，乘法还要用快速乘（就是用快速幂的方法计算乘法）以防溢出。</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="pp">#define ll </span><span class="dt">unsigned</span><span class="pp"> </span><span class="dt">long</span><span class="pp"> </span><span class="dt">long</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb5-6"><a href="#cb5-6"></a><span class="pp">#define mod </span><span class="dv">7528443412579576937</span></span>
+<span id="cb5-7"><a href="#cb5-7"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb5-8"><a href="#cb5-8"></a></span>
+<span id="cb5-9"><a href="#cb5-9"></a><span class="kw">struct</span> M{</span>
+<span id="cb5-10"><a href="#cb5-10"></a>    ll a[<span class="dv">5</span>][<span class="dv">5</span>];</span>
+<span id="cb5-11"><a href="#cb5-11"></a>    M(){inc(i,<span class="dv">0</span>,<span class="dv">1</span>)inc(j,<span class="dv">0</span>,<span class="dv">1</span>)a[i][j]=<span class="dv">0</span>;}</span>
+<span id="cb5-12"><a href="#cb5-12"></a>};</span>
+<span id="cb5-13"><a href="#cb5-13"></a>ll b,d,n; M st,ans;</span>
+<span id="cb5-14"><a href="#cb5-14"></a>ll cheng(ll a,ll b){</span>
+<span id="cb5-15"><a href="#cb5-15"></a>    <span class="cf">if</span>(b==<span class="dv">0</span>)<span class="cf">return</span> <span class="dv">0</span>; <span class="cf">if</span>(b==<span class="dv">1</span>)<span class="cf">return</span> a; ll c=cheng(a,b&gt;&gt;<span class="dv">1</span>)%mod;</span>
+<span id="cb5-16"><a href="#cb5-16"></a>    <span class="cf">if</span>(b&amp;<span class="dv">1</span>)<span class="cf">return</span> ((c+c)%mod+a)%mod;<span class="cf">else</span> <span class="cf">return</span> (c+c)%mod;</span>
+<span id="cb5-17"><a href="#cb5-17"></a>}</span>
+<span id="cb5-18"><a href="#cb5-18"></a>M mul(M a,M b){</span>
+<span id="cb5-19"><a href="#cb5-19"></a>    M c; inc(i,<span class="dv">0</span>,<span class="dv">1</span>)inc(j,<span class="dv">0</span>,<span class="dv">1</span>)inc(k,<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb5-20"><a href="#cb5-20"></a>        c.a[i][j]=(c.a[i][j]+cheng(a.a[i][k],b.a[k][j]))%mod;</span>
+<span id="cb5-21"><a href="#cb5-21"></a>    <span class="cf">return</span> c;</span>
+<span id="cb5-22"><a href="#cb5-22"></a>}</span>
+<span id="cb5-23"><a href="#cb5-23"></a>M pow(M a,ll b){</span>
+<span id="cb5-24"><a href="#cb5-24"></a>    <span class="cf">if</span>(b==<span class="dv">1</span>)<span class="cf">return</span> a; M c=pow(a,b&gt;&gt;<span class="dv">1</span>); <span class="cf">if</span>(b&amp;<span class="dv">1</span>)<span class="cf">return</span> mul(mul(c,c),a);<span class="cf">else</span> <span class="cf">return</span> mul(c,c);</span>
+<span id="cb5-25"><a href="#cb5-25"></a>}</span>
+<span id="cb5-26"><a href="#cb5-26"></a><span class="dt">int</span> main(){</span>
+<span id="cb5-27"><a href="#cb5-27"></a>    scanf(<span class="st">&quot;</span><span class="sc">%lld%lld%lld</span><span class="st">&quot;</span>,&amp;b,&amp;d,&amp;n);</span>
+<span id="cb5-28"><a href="#cb5-28"></a>    <span class="cf">if</span>(n==<span class="dv">0</span>){printf(<span class="st">&quot;1&quot;</span>); <span class="cf">return</span> <span class="dv">0</span>;}</span>
+<span id="cb5-29"><a href="#cb5-29"></a>    st.a[<span class="dv">0</span>][<span class="dv">0</span>]=b%mod; st.a[<span class="dv">0</span>][<span class="dv">1</span>]=<span class="dv">2</span>;</span>
+<span id="cb5-30"><a href="#cb5-30"></a>    <span class="cf">if</span>(n==<span class="dv">1</span>)ans=st;<span class="cf">else</span>{</span>
+<span id="cb5-31"><a href="#cb5-31"></a>        ans.a[<span class="dv">0</span>][<span class="dv">0</span>]=b%mod; ans.a[<span class="dv">0</span>][<span class="dv">1</span>]=<span class="dv">1</span>; ans.a[<span class="dv">1</span>][<span class="dv">0</span>]=(d-b*b)/<span class="dv">4</span>%mod;</span>
+<span id="cb5-32"><a href="#cb5-32"></a>        ans=pow(ans,n-<span class="dv">1</span>); ans=mul(st,ans);</span>
+<span id="cb5-33"><a href="#cb5-33"></a>    }</span>
+<span id="cb5-34"><a href="#cb5-34"></a>    <span class="cf">if</span>(b*b!=d&amp;&amp;!(n&amp;<span class="dv">1</span>))printf(<span class="st">&quot;</span><span class="sc">%lld</span><span class="st">&quot;</span>,(ans.a[<span class="dv">0</span>][<span class="dv">0</span>]+mod-<span class="dv">1</span>)%mod);<span class="cf">else</span> printf(<span class="st">&quot;</span><span class="sc">%lld</span><span class="st">&quot;</span>,ans.a[<span class="dv">0</span>][<span class="dv">0</span>]);</span>
+<span id="cb5-35"><a href="#cb5-35"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb5-36"><a href="#cb5-36"></a>}</span></code></pre></div>
+<h3 id="bzoj4003jloi2015城池攻占2016.7.11">bzoj4003[JLOI2015]城池攻占（2016.7.11）</h3>
+<h4 id="题意-5">题意</h4>
+<p>有n个城池组成根节点为1的树，m个人，当一个人的战斗力大于等于攻打城市的防御力，就能攻占这个城市，来到这个城市的父节点，否则该人会牺牲在这个城市。当一个城市被攻占时，会使攻占的人的战斗力加或乘上某个数。现在给出m个人的最开始攻打的城市和初始战斗力，求在每个城市的牺牲人数和每个人一共攻打几个城市。注意这m个人处在不同的时空，即攻击互不影响，且每个人会一直往上攻打除非牺牲或到达根节点。</p>
+<h4 id="题解-5">题解</h4>
+<p>由于对一些数乘一个正数或加一个数这些数的相对大小不变，故可以用可并堆。每个人作为堆的一个节点，然后dfs，对每个节点将所有其子节点存储的堆合并，把牺牲的节点弹出，并对剩余的节点打标记。注意打或下传乘标记时还要将这个节点的加标记也一起乘上乘标记，因为(v[x]+tagpl[x])*tagmu[x]=v[x]*tagmu[x]+tagpl[x]*tagmu[x]。关于用什么堆，网上有人用斜堆结果T了，所以用复杂度稍微好一点的左偏树，只比斜堆多一个存节点最大深度的数组和多一句判断，也不难写。（斜堆也试了一下，也就慢了1s半，不知道是我斜堆(7s)写得好还是左偏树(5.5s)写得烂）。反思：脑子进水了，乘tagmu[x]写出乘x，wa了四次QAQ~</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="pp">#define ll </span><span class="dt">long</span><span class="pp"> </span><span class="dt">long</span></span>
+<span id="cb6-6"><a href="#cb6-6"></a><span class="pp">#define maxn </span><span class="dv">300010</span></span>
+<span id="cb6-7"><a href="#cb6-7"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb6-8"><a href="#cb6-8"></a></span>
+<span id="cb6-9"><a href="#cb6-9"></a><span class="kw">inline</span> ll read(){</span>
+<span id="cb6-10"><a href="#cb6-10"></a>    <span class="dt">char</span> ch=getchar(); ll f=<span class="dv">1</span>,x=<span class="dv">0</span>;</span>
+<span id="cb6-11"><a href="#cb6-11"></a>    <span class="cf">while</span>(ch&lt;<span class="ch">&#39;0&#39;</span>||ch&gt;<span class="ch">&#39;9&#39;</span>){<span class="cf">if</span>(ch==<span class="ch">&#39;-&#39;</span>)f=-<span class="dv">1</span>; ch=getchar();}</span>
+<span id="cb6-12"><a href="#cb6-12"></a>    <span class="cf">while</span>(ch&gt;=<span class="ch">&#39;0&#39;</span>&amp;&amp;ch&lt;=<span class="ch">&#39;9&#39;</span>)x=x*<span class="dv">10</span>+ch-<span class="ch">&#39;0&#39;</span>,ch=getchar();</span>
+<span id="cb6-13"><a href="#cb6-13"></a>    <span class="cf">return</span> f*x;</span>
+<span id="cb6-14"><a href="#cb6-14"></a>}</span>
+<span id="cb6-15"><a href="#cb6-15"></a><span class="dt">int</span> n,m;</span>
+<span id="cb6-16"><a href="#cb6-16"></a><span class="kw">struct</span> e{<span class="dt">int</span> t,n;}; e es[maxn]; <span class="dt">int</span> g[maxn],ess;</span>
+<span id="cb6-17"><a href="#cb6-17"></a><span class="dt">void</span> pe(<span class="dt">int</span> f,<span class="dt">int</span> t){es[++ess]=(e){t,g[f]}; g[f]=ess;}</span>
+<span id="cb6-18"><a href="#cb6-18"></a>ll h[maxn],opt[maxn],p[maxn],ans[maxn],rt[maxn],die[maxn],d[maxn],st[maxn];</span>
+<span id="cb6-19"><a href="#cb6-19"></a>ll ch[maxn][<span class="dv">2</span>],v[maxn],tagmu[maxn],tagpl[maxn],dep[maxn];</span>
+<span id="cb6-20"><a href="#cb6-20"></a><span class="dt">void</span> pushdown(<span class="dt">int</span> x){</span>
+<span id="cb6-21"><a href="#cb6-21"></a>    <span class="dt">int</span> lc=ch[x][<span class="dv">0</span>],rc=ch[x][<span class="dv">1</span>];</span>
+<span id="cb6-22"><a href="#cb6-22"></a>    <span class="cf">if</span>(tagmu[x]!=<span class="dv">1</span>||tagpl[x]!=<span class="dv">0</span>){</span>
+<span id="cb6-23"><a href="#cb6-23"></a>        <span class="cf">if</span>(lc)v[lc]=v[lc]*tagmu[x]+tagpl[x],</span>
+<span id="cb6-24"><a href="#cb6-24"></a>            tagmu[lc]*=tagmu[x],tagpl[lc]=tagpl[lc]*tagmu[x]+tagpl[x];</span>
+<span id="cb6-25"><a href="#cb6-25"></a>        <span class="cf">if</span>(rc)v[rc]=v[rc]*tagmu[x]+tagpl[x],</span>
+<span id="cb6-26"><a href="#cb6-26"></a>            tagmu[rc]*=tagmu[x],tagpl[rc]=tagpl[rc]*tagmu[x]+tagpl[x];</span>
+<span id="cb6-27"><a href="#cb6-27"></a>        tagpl[x]=<span class="dv">0</span>; tagmu[x]=<span class="dv">1</span>;</span>
+<span id="cb6-28"><a href="#cb6-28"></a>    }</span>
+<span id="cb6-29"><a href="#cb6-29"></a>}</span>
+<span id="cb6-30"><a href="#cb6-30"></a><span class="dt">int</span> merge(<span class="dt">int</span> x,<span class="dt">int</span> y){</span>
+<span id="cb6-31"><a href="#cb6-31"></a>    <span class="cf">if</span>(!x||!y)<span class="cf">return</span> x+y; <span class="cf">if</span>(v[y]&lt;v[x])swap(x,y); pushdown(x);</span>
+<span id="cb6-32"><a href="#cb6-32"></a>    ch[x][<span class="dv">1</span>]=merge(ch[x][<span class="dv">1</span>],y); <span class="cf">if</span>(dep[ch[x][<span class="dv">0</span>]]&lt;dep[ch[x][<span class="dv">1</span>]])swap(ch[x][<span class="dv">0</span>],ch[x][<span class="dv">1</span>]);</span>
+<span id="cb6-33"><a href="#cb6-33"></a>    dep[x]=dep[ch[x][<span class="dv">0</span>]]+<span class="dv">1</span>; <span class="cf">return</span> x;</span>
+<span id="cb6-34"><a href="#cb6-34"></a>}</span>
+<span id="cb6-35"><a href="#cb6-35"></a><span class="dt">int</span> pop(<span class="dt">int</span> x){</span>
+<span id="cb6-36"><a href="#cb6-36"></a>    pushdown(x); <span class="dt">int</span> y=merge(ch[x][<span class="dv">0</span>],ch[x][<span class="dv">1</span>]); ch[x][<span class="dv">0</span>]=ch[x][<span class="dv">1</span>]=<span class="dv">0</span>; <span class="cf">return</span> y;</span>
+<span id="cb6-37"><a href="#cb6-37"></a>}</span>
+<span id="cb6-38"><a href="#cb6-38"></a><span class="dt">int</span> dfs(<span class="dt">int</span> x){</span>
+<span id="cb6-39"><a href="#cb6-39"></a>    <span class="dt">int</span> y=rt[x];</span>
+<span id="cb6-40"><a href="#cb6-40"></a>    <span class="cf">for</span>(<span class="dt">int</span> i=g[x];i;i=es[i].n)d[es[i].t]=d[x]+<span class="dv">1</span>,dfs(es[i].t),y=merge(y,rt[es[i].t]);</span>
+<span id="cb6-41"><a href="#cb6-41"></a>    <span class="cf">while</span>(y&amp;&amp;v[y]&lt;h[x])die[y]=x,y=pop(y),ans[x]++;</span>
+<span id="cb6-42"><a href="#cb6-42"></a>    <span class="cf">if</span>(x!=<span class="dv">1</span>){</span>
+<span id="cb6-43"><a href="#cb6-43"></a>        <span class="cf">if</span>(opt[x])v[y]*=p[x],tagmu[y]*=p[x],tagpl[y]*=p[x];<span class="cf">else</span> v[y]+=p[x],tagpl[y]+=p[x];</span>
+<span id="cb6-44"><a href="#cb6-44"></a>    }</span>
+<span id="cb6-45"><a href="#cb6-45"></a>    rt[x]=y; <span class="cf">return</span> y;</span>
+<span id="cb6-46"><a href="#cb6-46"></a>}</span>
+<span id="cb6-47"><a href="#cb6-47"></a><span class="dt">int</span> main(){</span>
+<span id="cb6-48"><a href="#cb6-48"></a>    n=read(); m=read(); inc(i,<span class="dv">1</span>,n)h[i]=read();</span>
+<span id="cb6-49"><a href="#cb6-49"></a>    inc(i,<span class="dv">2</span>,n){<span class="dt">int</span> a=read(); pe(a,i); opt[i]=read(); p[i]=read();}</span>
+<span id="cb6-50"><a href="#cb6-50"></a>    inc(i,<span class="dv">1</span>,m){</span>
+<span id="cb6-51"><a href="#cb6-51"></a>        v[i]=read(); tagmu[i]=<span class="dv">1</span>; dep[i]=<span class="dv">1</span>; st[i]=read(); rt[st[i]]=merge(rt[st[i]],i);</span>
+<span id="cb6-52"><a href="#cb6-52"></a>    }</span>
+<span id="cb6-53"><a href="#cb6-53"></a>    d[<span class="dv">1</span>]=<span class="dv">1</span>; <span class="dt">int</span> x=dfs(<span class="dv">1</span>); inc(i,<span class="dv">1</span>,n)printf(<span class="st">&quot;</span><span class="sc">%lld\n</span><span class="st">&quot;</span>,ans[i]);</span>
+<span id="cb6-54"><a href="#cb6-54"></a>    inc(i,<span class="dv">1</span>,m)printf(<span class="st">&quot;</span><span class="sc">%lld\n</span><span class="st">&quot;</span>,d[st[i]]-d[die[i]]);</span>
+<span id="cb6-55"><a href="#cb6-55"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb6-56"><a href="#cb6-56"></a>}</span></code></pre></div>
+<h3 id="bzoj1798ahoi2009seq-维护序列seq2016.7.14">bzoj1798[Ahoi2009]Seq 维护序列seq（2016.7.14）</h3>
+<h4 id="题意-6">题意</h4>
+<p>维护序列，支持区间加、区间乘、区间求和模一个数。序列大小和操作数≤100000</p>
+<h4 id="题解-6">题解</h4>
+<p>线段树，加标记和乘标记的处理同bzoj4003。模的时候注意细节。</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="pp">#define maxn </span><span class="dv">100010</span></span>
+<span id="cb7-6"><a href="#cb7-6"></a><span class="pp">#define ll </span><span class="dt">long</span><span class="pp"> </span><span class="dt">long</span></span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb7-8"><a href="#cb7-8"></a></span>
+<span id="cb7-9"><a href="#cb7-9"></a><span class="dt">int</span> n,m; ll sm[maxn*<span class="dv">3</span>],tgpl[maxn*<span class="dv">3</span>],tgmu[maxn*<span class="dv">3</span>],v[maxn],p; <span class="dt">bool</span> iss[maxn*<span class="dv">3</span>];</span>
+<span id="cb7-10"><a href="#cb7-10"></a><span class="kw">inline</span> <span class="dt">int</span> read(){</span>
+<span id="cb7-11"><a href="#cb7-11"></a>    <span class="dt">char</span> ch=getchar(); <span class="dt">int</span> f=<span class="dv">1</span>,x=<span class="dv">0</span>;</span>
+<span id="cb7-12"><a href="#cb7-12"></a>    <span class="cf">while</span>(ch&lt;<span class="ch">&#39;0&#39;</span>||ch&gt;<span class="ch">&#39;9&#39;</span>){<span class="cf">if</span>(ch==<span class="ch">&#39;-&#39;</span>)f=-<span class="dv">1</span>; ch=getchar();}</span>
+<span id="cb7-13"><a href="#cb7-13"></a>    <span class="cf">while</span>(ch&gt;=<span class="ch">&#39;0&#39;</span>&amp;&amp;ch&lt;=<span class="ch">&#39;9&#39;</span>)x=x*<span class="dv">10</span>+ch-<span class="ch">&#39;0&#39;</span>,ch=getchar();</span>
+<span id="cb7-14"><a href="#cb7-14"></a>    <span class="cf">return</span> f*x;</span>
+<span id="cb7-15"><a href="#cb7-15"></a>}</span>
+<span id="cb7-16"><a href="#cb7-16"></a><span class="dt">void</span> pushdown(<span class="dt">int</span> x,<span class="dt">int</span> l,<span class="dt">int</span> r){</span>
+<span id="cb7-17"><a href="#cb7-17"></a>    <span class="cf">if</span>(tgmu[x]!=<span class="dv">1</span>||tgpl[x]!=<span class="dv">0</span>){</span>
+<span id="cb7-18"><a href="#cb7-18"></a>        <span class="cf">if</span>(!iss[x]){</span>
+<span id="cb7-19"><a href="#cb7-19"></a>            <span class="dt">int</span> lc=x&lt;&lt;<span class="dv">1</span>,rc=x&lt;&lt;<span class="dv">1</span>|<span class="dv">1</span>; <span class="dt">int</span> mid=l+r&gt;&gt;<span class="dv">1</span>;</span>
+<span id="cb7-20"><a href="#cb7-20"></a>            sm[lc]=(sm[lc]*tgmu[x]%p+tgpl[x]*(mid-l+<span class="dv">1</span>)%p)%p;</span>
+<span id="cb7-21"><a href="#cb7-21"></a>            sm[rc]=(sm[rc]*tgmu[x]%p+tgpl[x]*(r-mid)%p)%p;</span>
+<span id="cb7-22"><a href="#cb7-22"></a>            tgmu[lc]=tgmu[lc]*tgmu[x]%p; tgmu[rc]=tgmu[rc]*tgmu[x]%p;</span>
+<span id="cb7-23"><a href="#cb7-23"></a>            tgpl[lc]=(tgpl[lc]*tgmu[x]%p+tgpl[x])%p; tgpl[rc]=(tgpl[rc]*tgmu[x]%p+tgpl[x])%p;</span>
+<span id="cb7-24"><a href="#cb7-24"></a>        }</span>
+<span id="cb7-25"><a href="#cb7-25"></a>        tgpl[x]=<span class="dv">0</span>; tgmu[x]=<span class="dv">1</span>;</span>
+<span id="cb7-26"><a href="#cb7-26"></a>    }</span>
+<span id="cb7-27"><a href="#cb7-27"></a>}</span>
+<span id="cb7-28"><a href="#cb7-28"></a><span class="dt">int</span> update(<span class="dt">int</span> x){</span>
+<span id="cb7-29"><a href="#cb7-29"></a>    <span class="cf">if</span>(!iss[x])sm[x]=(sm[x&lt;&lt;<span class="dv">1</span>]+sm[x&lt;&lt;<span class="dv">1</span>|<span class="dv">1</span>])%p;</span>
+<span id="cb7-30"><a href="#cb7-30"></a>}</span>
+<span id="cb7-31"><a href="#cb7-31"></a><span class="dt">void</span> build(<span class="dt">int</span> x,<span class="dt">int</span> l,<span class="dt">int</span> r){</span>
+<span id="cb7-32"><a href="#cb7-32"></a>    tgmu[x]=<span class="dv">1</span>; <span class="cf">if</span>(l==r){sm[x]=v[l]; iss[x]=<span class="dv">1</span>; <span class="cf">return</span>;} <span class="dt">int</span> mid=l+r&gt;&gt;<span class="dv">1</span>; iss[x]=<span class="dv">0</span>;</span>
+<span id="cb7-33"><a href="#cb7-33"></a>    build(x&lt;&lt;<span class="dv">1</span>,l,mid); build(x&lt;&lt;<span class="dv">1</span>|<span class="dv">1</span>,mid+<span class="dv">1</span>,r); update(x);</span>
+<span id="cb7-34"><a href="#cb7-34"></a>}</span>
+<span id="cb7-35"><a href="#cb7-35"></a><span class="dt">void</span> modmu(<span class="dt">int</span> x,<span class="dt">int</span> l,<span class="dt">int</span> r,<span class="dt">int</span> ql,<span class="dt">int</span> qr,ll val){</span>
+<span id="cb7-36"><a href="#cb7-36"></a>    pushdown(x,l,r);</span>
+<span id="cb7-37"><a href="#cb7-37"></a>    <span class="cf">if</span>(ql&lt;=l&amp;&amp;r&lt;=qr){</span>
+<span id="cb7-38"><a href="#cb7-38"></a>        sm[x]=sm[x]*val%p; tgmu[x]=tgmu[x]*val%p; tgpl[x]=tgpl[x]*val%p; <span class="cf">return</span>;</span>
+<span id="cb7-39"><a href="#cb7-39"></a>    }</span>
+<span id="cb7-40"><a href="#cb7-40"></a>    <span class="dt">int</span> mid=l+r&gt;&gt;<span class="dv">1</span>;</span>
+<span id="cb7-41"><a href="#cb7-41"></a>    <span class="cf">if</span>(ql&lt;=mid)modmu(x&lt;&lt;<span class="dv">1</span>,l,mid,ql,qr,val); <span class="cf">if</span>(mid&lt;qr)modmu(x&lt;&lt;<span class="dv">1</span>|<span class="dv">1</span>,mid+<span class="dv">1</span>,r,ql,qr,val);</span>
+<span id="cb7-42"><a href="#cb7-42"></a>    update(x);</span>
+<span id="cb7-43"><a href="#cb7-43"></a>}</span>
+<span id="cb7-44"><a href="#cb7-44"></a><span class="dt">void</span> modpl(<span class="dt">int</span> x,<span class="dt">int</span> l,<span class="dt">int</span> r,<span class="dt">int</span> ql,<span class="dt">int</span> qr,ll val){</span>
+<span id="cb7-45"><a href="#cb7-45"></a>    pushdown(x,l,r);</span>
+<span id="cb7-46"><a href="#cb7-46"></a>    <span class="cf">if</span>(ql&lt;=l&amp;&amp;r&lt;=qr){</span>
+<span id="cb7-47"><a href="#cb7-47"></a>        sm[x]=(sm[x]+val*(r-l+<span class="dv">1</span>)%p)%p; tgpl[x]=(tgpl[x]+val)%p; <span class="cf">return</span>;</span>
+<span id="cb7-48"><a href="#cb7-48"></a>    }</span>
+<span id="cb7-49"><a href="#cb7-49"></a>    <span class="dt">int</span> mid=l+r&gt;&gt;<span class="dv">1</span>;</span>
+<span id="cb7-50"><a href="#cb7-50"></a>    <span class="cf">if</span>(ql&lt;=mid)modpl(x&lt;&lt;<span class="dv">1</span>,l,mid,ql,qr,val); <span class="cf">if</span>(mid&lt;qr)modpl(x&lt;&lt;<span class="dv">1</span>|<span class="dv">1</span>,mid+<span class="dv">1</span>,r,ql,qr,val);</span>
+<span id="cb7-51"><a href="#cb7-51"></a>    update(x);</span>
+<span id="cb7-52"><a href="#cb7-52"></a>}</span>
+<span id="cb7-53"><a href="#cb7-53"></a>ll query(<span class="dt">int</span> x,<span class="dt">int</span> l,<span class="dt">int</span> r,<span class="dt">int</span> ql,<span class="dt">int</span> qr){</span>
+<span id="cb7-54"><a href="#cb7-54"></a>    pushdown(x,l,r);</span>
+<span id="cb7-55"><a href="#cb7-55"></a>    <span class="cf">if</span>(ql&lt;=l&amp;&amp;r&lt;=qr)<span class="cf">return</span> sm[x]; <span class="dt">int</span> mid=l+r&gt;&gt;<span class="dv">1</span>; ll q=<span class="dv">0</span>;</span>
+<span id="cb7-56"><a href="#cb7-56"></a>    <span class="cf">if</span>(ql&lt;=mid)q=(q+query(x&lt;&lt;<span class="dv">1</span>,l,mid,ql,qr))%p;</span>
+<span id="cb7-57"><a href="#cb7-57"></a>    <span class="cf">if</span>(mid&lt;qr)q=(q+query(x&lt;&lt;<span class="dv">1</span>|<span class="dv">1</span>,mid+<span class="dv">1</span>,r,ql,qr))%p; <span class="cf">return</span> q;</span>
+<span id="cb7-58"><a href="#cb7-58"></a>}</span>
+<span id="cb7-59"><a href="#cb7-59"></a><span class="dt">int</span> main(){</span>
+<span id="cb7-60"><a href="#cb7-60"></a>    n=read(); p=read(); inc(i,<span class="dv">1</span>,n)v[i]=read()%p; build(<span class="dv">1</span>,<span class="dv">1</span>,n); m=read();</span>
+<span id="cb7-61"><a href="#cb7-61"></a>    inc(i,<span class="dv">1</span>,m){</span>
+<span id="cb7-62"><a href="#cb7-62"></a>        <span class="dt">int</span> opt=read();</span>
+<span id="cb7-63"><a href="#cb7-63"></a>        <span class="cf">if</span>(opt==<span class="dv">1</span>){</span>
+<span id="cb7-64"><a href="#cb7-64"></a>            <span class="dt">int</span> x=read(),y=read(); ll z=read()%p; modmu(<span class="dv">1</span>,<span class="dv">1</span>,n,x,y,z);</span>
+<span id="cb7-65"><a href="#cb7-65"></a>        }</span>
+<span id="cb7-66"><a href="#cb7-66"></a>        <span class="cf">if</span>(opt==<span class="dv">2</span>){</span>
+<span id="cb7-67"><a href="#cb7-67"></a>            <span class="dt">int</span> x=read(),y=read(); ll z=read()%p; modpl(<span class="dv">1</span>,<span class="dv">1</span>,n,x,y,z);</span>
+<span id="cb7-68"><a href="#cb7-68"></a>        }</span>
+<span id="cb7-69"><a href="#cb7-69"></a>        <span class="cf">if</span>(opt==<span class="dv">3</span>){</span>
+<span id="cb7-70"><a href="#cb7-70"></a>            <span class="dt">int</span> x=read(),y=read(); printf(<span class="st">&quot;</span><span class="sc">%lld\n</span><span class="st">&quot;</span>,query(<span class="dv">1</span>,<span class="dv">1</span>,n,x,y)%p);</span>
+<span id="cb7-71"><a href="#cb7-71"></a>        }</span>
+<span id="cb7-72"><a href="#cb7-72"></a>    }</span>
+<span id="cb7-73"><a href="#cb7-73"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb7-74"><a href="#cb7-74"></a>}</span></code></pre></div>
+<h3 id="bzoj2282sdoi2011消防2016.7.15">bzoj2282[Sdoi2011]消防（2016.7.15）</h3>
+<h4 id="题意-7">题意</h4>
+<p>在树上找一条路径，使得端点到这条路径的距离最大值最小。</p>
+<h4 id="题解-7">题解</h4>
+<p>一个坑，就是这个路径可以不包含任意一条边，只包含一个节点。因此可以证明这条路径在树的直径上，把树的直径上的所有边存入一个序列，对直径上每个点求其它不在路径上的点与它的最大距离mxd，然后用双指针维护序列的一段使得和≤s，比较答案和序列两端到直径首末端的距离及序列中的点的最大mxd的较大值。序列中的点的最大mxd值用单调队列即可维护，怎么求树的直径呢？先对任意节点dfs/bfs求出最大距离的点，再对这个点作dfs/bfs求出与其距离最大的点，第二次遍历到第二个点所经过的路径就是树的直径。</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="pp">#define maxn </span><span class="dv">300010</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb8-7"><a href="#cb8-7"></a></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="kw">inline</span> <span class="dt">int</span> read(){</span>
+<span id="cb8-9"><a href="#cb8-9"></a>    <span class="dt">char</span> ch=getchar(); <span class="dt">int</span> f=<span class="dv">1</span>,x=<span class="dv">0</span>;</span>
+<span id="cb8-10"><a href="#cb8-10"></a>    <span class="cf">while</span>(ch&lt;<span class="ch">&#39;0&#39;</span>||ch&gt;<span class="ch">&#39;9&#39;</span>){<span class="cf">if</span>(ch==<span class="ch">&#39;-&#39;</span>)f=-<span class="dv">1</span>; ch=getchar();}</span>
+<span id="cb8-11"><a href="#cb8-11"></a>    <span class="cf">while</span>(ch&gt;=<span class="ch">&#39;0&#39;</span>&amp;&amp;ch&lt;=<span class="ch">&#39;9&#39;</span>)x=x*<span class="dv">10</span>+ch-<span class="ch">&#39;0&#39;</span>,ch=getchar();</span>
+<span id="cb8-12"><a href="#cb8-12"></a>    <span class="cf">return</span> f*x;</span>
+<span id="cb8-13"><a href="#cb8-13"></a>}</span>
+<span id="cb8-14"><a href="#cb8-14"></a><span class="dt">int</span> n,s,d[maxn],f[maxn],p[maxn],ed[maxn],mxd[maxn],tot,fr,ta,q1[maxn],q2[maxn],l,r,now,ans,sm[maxn];</span>
+<span id="cb8-15"><a href="#cb8-15"></a><span class="dt">bool</span> vis[maxn];</span>
+<span id="cb8-16"><a href="#cb8-16"></a><span class="kw">struct</span> e{<span class="dt">int</span> t,w,n;}; e es[maxn*<span class="dv">3</span>]; <span class="dt">int</span> g[maxn],ess;</span>
+<span id="cb8-17"><a href="#cb8-17"></a><span class="dt">void</span> pe(<span class="dt">int</span> f,<span class="dt">int</span> t,<span class="dt">int</span> w){</span>
+<span id="cb8-18"><a href="#cb8-18"></a>    es[++ess]=(e){t,w,g[f]}; g[f]=ess; es[++ess]=(e){f,w,g[t]}; g[t]=ess;</span>
+<span id="cb8-19"><a href="#cb8-19"></a>}</span>
+<span id="cb8-20"><a href="#cb8-20"></a><span class="dt">void</span> dfs1(<span class="dt">int</span> x,<span class="dt">int</span> fa){</span>
+<span id="cb8-21"><a href="#cb8-21"></a>    <span class="cf">for</span>(<span class="dt">int</span> i=g[x];i;i=es[i].n)<span class="cf">if</span>(es[i].t!=fa)d[es[i].t]=d[x]+es[i].w,dfs1(es[i].t,x);</span>
+<span id="cb8-22"><a href="#cb8-22"></a>}</span>
+<span id="cb8-23"><a href="#cb8-23"></a><span class="dt">void</span> dfs2(<span class="dt">int</span> x){</span>
+<span id="cb8-24"><a href="#cb8-24"></a>    <span class="cf">for</span>(<span class="dt">int</span> i=g[x];i;i=es[i].n)<span class="cf">if</span>(i!=f[x])d[es[i].t]=d[x]+es[i].w,f[es[i].t]=i^<span class="dv">1</span>,dfs2(es[i].t);</span>
+<span id="cb8-25"><a href="#cb8-25"></a>}</span>
+<span id="cb8-26"><a href="#cb8-26"></a><span class="dt">void</span> dfs3(<span class="dt">int</span> x){</span>
+<span id="cb8-27"><a href="#cb8-27"></a>    <span class="cf">for</span>(<span class="dt">int</span> i=g[x];i;i=es[i].n)<span class="cf">if</span>(!vis[es[i].t])</span>
+<span id="cb8-28"><a href="#cb8-28"></a>        d[es[i].t]=d[x]+es[i].w,mxd[<span class="dv">0</span>]=max(mxd[<span class="dv">0</span>],d[es[i].t]),vis[es[i].t]=<span class="dv">1</span>,dfs3(es[i].t);</span>
+<span id="cb8-29"><a href="#cb8-29"></a>}</span>
+<span id="cb8-30"><a href="#cb8-30"></a><span class="dt">int</span> main(){</span>
+<span id="cb8-31"><a href="#cb8-31"></a>    n=read(); s=read(); ess=<span class="dv">1</span>; inc(i,<span class="dv">1</span>,n-<span class="dv">1</span>){<span class="dt">int</span> a=read(),b=read(),c=read(); pe(a,b,c);}</span>
+<span id="cb8-32"><a href="#cb8-32"></a>    d[<span class="dv">1</span>]=<span class="dv">0</span>; dfs1(<span class="dv">1</span>,<span class="dv">0</span>); <span class="dt">int</span> mx1=<span class="dv">1</span>; inc(i,<span class="dv">1</span>,n)<span class="cf">if</span>(d[i]&gt;d[mx1])mx1=i; d[mx1]=<span class="dv">0</span>; f[mx1]=<span class="dv">0</span>; dfs2(mx1);</span>
+<span id="cb8-33"><a href="#cb8-33"></a>    <span class="dt">int</span> mx2=mx1; inc(i,<span class="dv">1</span>,n)<span class="cf">if</span>(d[i]&gt;d[mx2])mx2=i;</span>
+<span id="cb8-34"><a href="#cb8-34"></a>    <span class="cf">for</span>(<span class="dt">int</span> i=mx2;i;i=es[f[i]].t)tot++,p[tot]=i,ed[tot]=es[f[i]].w,vis[i]=<span class="dv">1</span>;</span>
+<span id="cb8-35"><a href="#cb8-35"></a>    inc(i,<span class="dv">1</span>,tot)d[p[i]]=<span class="dv">0</span>,mxd[<span class="dv">0</span>]=<span class="dv">0</span>,dfs3(p[i]),mxd[i]=mxd[<span class="dv">0</span>],sm[i]=sm[i-<span class="dv">1</span>]+ed[i];</span>
+<span id="cb8-36"><a href="#cb8-36"></a>    l=<span class="dv">1</span>; r=<span class="dv">1</span>; now=ed[<span class="dv">1</span>]; fr=ta=<span class="dv">1</span>; q1[<span class="dv">1</span>]=mxd[<span class="dv">1</span>]; q2[<span class="dv">1</span>]=<span class="dv">1</span>; ans=<span class="bn">0x3fffffff</span>;</span>
+<span id="cb8-37"><a href="#cb8-37"></a>    <span class="cf">while</span>(l&lt;=r&amp;&amp;l&lt;=tot-<span class="dv">1</span>){</span>
+<span id="cb8-38"><a href="#cb8-38"></a>        <span class="cf">while</span>(r&lt;=tot-<span class="dv">1</span>&amp;&amp;now&lt;=s){</span>
+<span id="cb8-39"><a href="#cb8-39"></a>            ans=min(ans,max(max(q1[fr],sm[l-<span class="dv">1</span>]),sm[tot-<span class="dv">1</span>]-sm[r-<span class="dv">1</span>])); r++;</span>
+<span id="cb8-40"><a href="#cb8-40"></a>            <span class="cf">while</span>(fr&lt;=ta&amp;&amp;mxd[r]&gt;q1[ta])ta--; q1[++ta]=mxd[r]; q2[ta]=r; now+=ed[r];</span>
+<span id="cb8-41"><a href="#cb8-41"></a>        }</span>
+<span id="cb8-42"><a href="#cb8-42"></a>        <span class="cf">if</span>(q2[fr]==l)fr++; now-=ed[l]; l++;</span>
+<span id="cb8-43"><a href="#cb8-43"></a>        <span class="cf">if</span>(l&lt;=tot-<span class="dv">1</span>&amp;&amp;now&lt;=s)ans=min(ans,max(max(q1[fr],sm[l-<span class="dv">1</span>]),sm[tot-<span class="dv">1</span>]-sm[r]));</span>
+<span id="cb8-44"><a href="#cb8-44"></a>    }</span>
+<span id="cb8-45"><a href="#cb8-45"></a>    inc(i,<span class="dv">1</span>,tot)ans=min(ans,max(max(mxd[i],sm[i-<span class="dv">1</span>]),sm[tot-<span class="dv">1</span>]-sm[i-<span class="dv">1</span>]));</span>
+<span id="cb8-46"><a href="#cb8-46"></a>    printf(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span>,ans); <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb8-47"><a href="#cb8-47"></a>}</span></code></pre></div>
+<h3 id="bzoj3874ahoi2014宅男计划2016.7.19">bzoj3874[Ahoi2014]宅男计划（2016.7.19）</h3>
+<h4 id="题意-8">题意</h4>
+<p>n种食物，每种有价钱和保质期。每次叫外卖要F元，可以购买任意多份食物。共有m元，问一共能过多少天使得每天都能吃到一份不过期的食物。n≤200，其他都≤10^18。</p>
+<h4 id="题解-8">题解</h4>
+<p>先排序+单调队列去掉那些价钱贵保质期反而短的外卖，剩下的队列按保质期从短到长排（也就是价钱从便宜到贵排）。然后有结论：生存天数为以叫外卖次数为自变量的单峰函数。因此三分叫外卖次数（注意上界为m/最便宜外卖的价钱），如何根据叫外卖次数求生存天数呢？又有结论：每次叫外卖间隔时间越平均越优。设叫外卖次数为k，从便宜到贵买，依次扩充叫外卖间隔时间，当最后钱不够买齐k组当前食物时，则能买多少组买多少。</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb9-1"><a href="#cb9-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb9-5"><a href="#cb9-5"></a><span class="pp">#define ll </span><span class="dt">long</span><span class="pp"> </span><span class="dt">long</span></span>
+<span id="cb9-6"><a href="#cb9-6"></a><span class="pp">#define maxn </span><span class="dv">300</span></span>
+<span id="cb9-7"><a href="#cb9-7"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb9-8"><a href="#cb9-8"></a></span>
+<span id="cb9-9"><a href="#cb9-9"></a><span class="kw">inline</span> ll read(){</span>
+<span id="cb9-10"><a href="#cb9-10"></a>    <span class="dt">char</span> ch=getchar(); ll f=<span class="dv">1</span>,x=<span class="dv">0</span>;</span>
+<span id="cb9-11"><a href="#cb9-11"></a>    <span class="cf">while</span>(ch&lt;<span class="ch">&#39;0&#39;</span>||ch&gt;<span class="ch">&#39;9&#39;</span>){<span class="cf">if</span>(ch==<span class="ch">&#39;-&#39;</span>)f=-<span class="dv">1</span>; ch=getchar();}</span>
+<span id="cb9-12"><a href="#cb9-12"></a>    <span class="cf">while</span>(ch&gt;=<span class="ch">&#39;0&#39;</span>&amp;&amp;ch&lt;=<span class="ch">&#39;9&#39;</span>)x=x*<span class="dv">10</span>+ch-<span class="ch">&#39;0&#39;</span>,ch=getchar();</span>
+<span id="cb9-13"><a href="#cb9-13"></a>    <span class="cf">return</span> f*x;</span>
+<span id="cb9-14"><a href="#cb9-14"></a>}</span>
+<span id="cb9-15"><a href="#cb9-15"></a><span class="kw">struct</span> nd{ll p,s;}; nd a1[maxn],a2[maxn];</span>
+<span id="cb9-16"><a href="#cb9-16"></a>ll p[maxn],s[maxn],m,f,l,r,ans; <span class="dt">int</span> n;</span>
+<span id="cb9-17"><a href="#cb9-17"></a><span class="dt">bool</span> cmp(nd a,nd b){<span class="cf">return</span> a.s==b.s?a.p&gt;b.p:a.s&lt;b.s;}</span>
+<span id="cb9-18"><a href="#cb9-18"></a>ll calc(ll k){</span>
+<span id="cb9-19"><a href="#cb9-19"></a>    ll cost=m-k*f,day=<span class="dv">0</span>,ans=<span class="dv">0</span>;</span>
+<span id="cb9-20"><a href="#cb9-20"></a>    inc(i,<span class="dv">1</span>,n){</span>
+<span id="cb9-21"><a href="#cb9-21"></a>        <span class="cf">if</span>(a2[i].s&gt;=day){</span>
+<span id="cb9-22"><a href="#cb9-22"></a>            ll a=min(cost/a2[i].p/k,a2[i].s-day+<span class="dv">1</span>); day+=a; ans+=a*k; cost-=a*k*a2[i].p;</span>
+<span id="cb9-23"><a href="#cb9-23"></a>        }</span>
+<span id="cb9-24"><a href="#cb9-24"></a>        <span class="cf">if</span>(a2[i].s&gt;=day){</span>
+<span id="cb9-25"><a href="#cb9-25"></a>            ll a=min(k,cost/a2[i].p); day++; ans+=a; cost-=a*a2[i].p;</span>
+<span id="cb9-26"><a href="#cb9-26"></a>        }</span>
+<span id="cb9-27"><a href="#cb9-27"></a>    }</span>
+<span id="cb9-28"><a href="#cb9-28"></a>    <span class="cf">return</span> ans;</span>
+<span id="cb9-29"><a href="#cb9-29"></a>}</span>
+<span id="cb9-30"><a href="#cb9-30"></a><span class="dt">int</span> main(){</span>
+<span id="cb9-31"><a href="#cb9-31"></a>    m=read(); f=read(); n=(<span class="dt">int</span>)read(); inc(i,<span class="dv">1</span>,n)a1[i].p=read(),a1[i].s=read(); sort(a1+<span class="dv">1</span>,a1+<span class="dv">1</span>+n,cmp);</span>
+<span id="cb9-32"><a href="#cb9-32"></a>    r=<span class="dv">1</span>; a2[r]=a1[<span class="dv">1</span>];</span>
+<span id="cb9-33"><a href="#cb9-33"></a>    inc(i,<span class="dv">2</span>,n){<span class="cf">while</span>(r&amp;&amp;a2[r].p&gt;a1[i].p)r--; a2[++r]=a1[i];} n=r;</span>
+<span id="cb9-34"><a href="#cb9-34"></a>    l=<span class="dv">1</span>; r=(m/(f+a2[<span class="dv">1</span>].p)); ans=<span class="dv">0</span>;</span>
+<span id="cb9-35"><a href="#cb9-35"></a>    <span class="cf">while</span>(l&lt;=r){</span>
+<span id="cb9-36"><a href="#cb9-36"></a>        ll mid1=l+(r-l)/<span class="dv">3</span>,mid2=r-(r-l)/<span class="dv">3</span>,c1=calc(mid1),c2=calc(mid2);</span>
+<span id="cb9-37"><a href="#cb9-37"></a>        <span class="cf">if</span>(c1&lt;c2)ans=max(ans,c2),l=mid1+<span class="dv">1</span>;</span>
+<span id="cb9-38"><a href="#cb9-38"></a>        <span class="cf">else</span> <span class="cf">if</span>(c1&gt;c2)ans=max(ans,c1),r=mid2-<span class="dv">1</span>;</span>
+<span id="cb9-39"><a href="#cb9-39"></a>        <span class="cf">else</span> ans=max(ans,c1),l=mid1+<span class="dv">1</span>,r=mid2-<span class="dv">1</span>;</span>
+<span id="cb9-40"><a href="#cb9-40"></a>    }</span>
+<span id="cb9-41"><a href="#cb9-41"></a>    printf(<span class="st">&quot;</span><span class="sc">%lld</span><span class="st">&quot;</span>,ans); <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb9-42"><a href="#cb9-42"></a>}</span></code></pre></div>
+<h3 id="bzoj2423haoi2010最长公共子序列2016.7.22">bzoj2423[HAOI2010]最长公共子序列（2016.7.22）</h3>
+<h4 id="题意-9">题意</h4>
+<p>求两个字符串的最长公共子序列长度和个数。字符串长度均≤5000。</p>
+<h4 id="题解-9">题解</h4>
+<p>dp，设f[i][j]表示x串i位到末位，y串j位到末位的最长长度，g[i][j]表示x串i位到末位，y串j位到末位的最长长度的个数，方程：</p>
+<p>x[i]==y[j]:f[i][j]=f[i+1][j+1]+1 g[i][j]=g[i+1][j+1]+(f[i][j]==f[i+1][j])<em>g[i+1][j]+(f[i][j]==f[i][j+1])</em>g[i][j+1]; x[i]!=y[j]:f[i][j]=max(f[i+1][j],f[i][j+1]); g[i][j]=(f[i][j]==f[i+1][j])<em>g[i+1][j]+(f[i][j]==f[i][j+1])</em>g[i][j+1]-(f[i][j]==f[i+1][j]&amp;&amp;f[i][j]==f[i][j+1]&amp;&amp;f[i][j]==f[i+1][j+1])*g[i+1][j+1];</p>
+<p>边界就是g[xn+1][1..yn+1]=1和g[xn][yn+1]=1，滚动一下就行。</p>
+<p>反思：蒟蒻wa了好多发，包括红色部分漏了，模的时候没有考虑负数和边界条件写错，但根本原因还是对dp的循环写法的不熟练（以前总是写记忆化搜索，导致现在一要滚动数组就GG），尤其是边界如何处理方面。</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb10-1"><a href="#cb10-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb10-5"><a href="#cb10-5"></a><span class="pp">#define dec</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&gt;=k;i--)</span>
+<span id="cb10-6"><a href="#cb10-6"></a><span class="pp">#define maxn </span><span class="dv">6000</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a><span class="pp">#define ll </span><span class="dt">long</span><span class="pp"> </span><span class="dt">long</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a><span class="pp">#define mod </span><span class="dv">100000000</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb10-10"><a href="#cb10-10"></a></span>
+<span id="cb10-11"><a href="#cb10-11"></a><span class="dt">char</span> sx[maxn],sy[maxn]; <span class="dt">int</span> nx,ny;</span>
+<span id="cb10-12"><a href="#cb10-12"></a>ll fx[maxn],fy[maxn],gx[maxn],gy[maxn];</span>
+<span id="cb10-13"><a href="#cb10-13"></a><span class="dt">int</span> main(){</span>
+<span id="cb10-14"><a href="#cb10-14"></a>    scanf(<span class="st">&quot;</span><span class="sc">%s</span><span class="st">&quot;</span>,sx+<span class="dv">1</span>); scanf(<span class="st">&quot;</span><span class="sc">%s</span><span class="st">&quot;</span>,sy+<span class="dv">1</span>); nx=strlen(sx+<span class="dv">1</span>)-<span class="dv">1</span>; ny=strlen(sy+<span class="dv">1</span>)-<span class="dv">1</span>;</span>
+<span id="cb10-15"><a href="#cb10-15"></a>    inc(i,<span class="dv">1</span>,ny+<span class="dv">1</span>)gx[i]=<span class="dv">1</span>; gy[ny+<span class="dv">1</span>]=<span class="dv">1</span>;</span>
+<span id="cb10-16"><a href="#cb10-16"></a>    dec(i,nx,<span class="dv">1</span>){</span>
+<span id="cb10-17"><a href="#cb10-17"></a>        dec(j,ny,<span class="dv">1</span>){</span>
+<span id="cb10-18"><a href="#cb10-18"></a>            <span class="cf">if</span>(sx[i]==sy[j]){</span>
+<span id="cb10-19"><a href="#cb10-19"></a>                fy[j]=fx[j+<span class="dv">1</span>]+<span class="dv">1</span>; gy[j]=gx[j+<span class="dv">1</span>]+(fy[j]==fx[j])*gx[j]+(fy[j]==fy[j+<span class="dv">1</span>])*gy[j+<span class="dv">1</span>];</span>
+<span id="cb10-20"><a href="#cb10-20"></a>                gy[j]%=mod;</span>
+<span id="cb10-21"><a href="#cb10-21"></a>            }<span class="cf">else</span>{</span>
+<span id="cb10-22"><a href="#cb10-22"></a>                fy[j]=max(fx[j],fy[j+<span class="dv">1</span>]);</span>
+<span id="cb10-23"><a href="#cb10-23"></a>                gy[j]=(fy[j]==fx[j])*gx[j]+(fy[j]==fy[j+<span class="dv">1</span>])*gy[j+<span class="dv">1</span>]-(fy[j]==fx[j]&amp;&amp;fy[j]==fy[j+<span class="dv">1</span>]&amp;&amp;fy[j]==fx[j+<span class="dv">1</span>])*gx[j+<span class="dv">1</span>];</span>
+<span id="cb10-24"><a href="#cb10-24"></a>                gy[j]+=mod; gy[j]%=mod;</span>
+<span id="cb10-25"><a href="#cb10-25"></a>            }</span>
+<span id="cb10-26"><a href="#cb10-26"></a>        }</span>
+<span id="cb10-27"><a href="#cb10-27"></a>        swap(fx,fy); swap(gx,gy);</span>
+<span id="cb10-28"><a href="#cb10-28"></a>    }</span>
+<span id="cb10-29"><a href="#cb10-29"></a>    printf(<span class="st">&quot;</span><span class="sc">%lld\n%lld</span><span class="st">&quot;</span>,fx[<span class="dv">1</span>],gx[<span class="dv">1</span>]); <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb10-30"><a href="#cb10-30"></a>}</span></code></pre></div>
+<h3 id="bzoj4631踩气球2016.7.23">bzoj4631踩气球（2016.7.23）</h3>
+<h4 id="题意-10">题意</h4>
+<p>有一个序列和一个区间集合，每次将序列中的一个数-1，求此时集合里有多少个区间和为0。序列大小≤100000，区间数≤100000，操作数≤100000。</p>
+<h4 id="题解-10">题解</h4>
+<p>此题解法其实并不难，对序列建线段树，用线段树每个节点维护区间和及覆盖该区间的集合内的区间的链表，同时记录每个集合内区间被分割为多少个区间。操作时就把查询经过的节点的区间和-1，如果为0则将覆盖该节点的区间的分割数-1，当分割数为0就让答案++。问题是复杂度，总是要遍历链表不会很慢吗？后来仔细想了一下，每次向线段树挂区间时最多挂log2n个节点，共影响到mlog2n个节点，因此遍历链表的总节点数为mlog2n，且当一个节点区间和变为0遍历链表后就永远不会再遍历，因此总复杂度大致是O(mlog2n)。</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb11-1"><a href="#cb11-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb11-5"><a href="#cb11-5"></a><span class="pp">#define maxn </span><span class="dv">100100</span></span>
+<span id="cb11-6"><a href="#cb11-6"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb11-7"><a href="#cb11-7"></a></span>
+<span id="cb11-8"><a href="#cb11-8"></a><span class="kw">struct</span> nd{<span class="dt">int</span> v,n;}; nd nds[maxn*<span class="dv">50</span>]; <span class="dt">int</span> v[maxn*<span class="dv">4</span>],tot[maxn],g[maxn*<span class="dv">4</span>],n,m,a[maxn],q,ans,ndss;</span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="kw">inline</span> <span class="dt">int</span> read(){</span>
+<span id="cb11-10"><a href="#cb11-10"></a>    <span class="dt">char</span> ch=getchar(); <span class="dt">int</span> f=<span class="dv">1</span>,x=<span class="dv">0</span>;</span>
+<span id="cb11-11"><a href="#cb11-11"></a>    <span class="cf">while</span>(ch&lt;<span class="ch">&#39;0&#39;</span>||ch&gt;<span class="ch">&#39;9&#39;</span>){<span class="cf">if</span>(ch==<span class="ch">&#39;-&#39;</span>)f=-<span class="dv">1</span>; ch=getchar();}</span>
+<span id="cb11-12"><a href="#cb11-12"></a>    <span class="cf">while</span>(ch&gt;=<span class="ch">&#39;0&#39;</span>&amp;&amp;ch&lt;=<span class="ch">&#39;9&#39;</span>)x=x*<span class="dv">10</span>+ch-<span class="ch">&#39;0&#39;</span>,ch=getchar();</span>
+<span id="cb11-13"><a href="#cb11-13"></a>    <span class="cf">return</span> f*x;</span>
+<span id="cb11-14"><a href="#cb11-14"></a>}</span>
+<span id="cb11-15"><a href="#cb11-15"></a><span class="dt">void</span> ins(<span class="dt">int</span> num,<span class="dt">int</span> node){</span>
+<span id="cb11-16"><a href="#cb11-16"></a>    nds[++ndss]=(nd){num,g[node]}; g[node]=ndss;</span>
+<span id="cb11-17"><a href="#cb11-17"></a>}</span>
+<span id="cb11-18"><a href="#cb11-18"></a><span class="dt">void</span> update(<span class="dt">int</span> x){</span>
+<span id="cb11-19"><a href="#cb11-19"></a>    <span class="cf">for</span>(<span class="dt">int</span> i=g[x];i;i=nds[i].n){tot[nds[i].v]--; <span class="cf">if</span>(!tot[nds[i].v])ans++;}</span>
+<span id="cb11-20"><a href="#cb11-20"></a>}</span>
+<span id="cb11-21"><a href="#cb11-21"></a><span class="dt">void</span> build(<span class="dt">int</span> x,<span class="dt">int</span> l,<span class="dt">int</span> r){</span>
+<span id="cb11-22"><a href="#cb11-22"></a>    <span class="cf">if</span>(l==r){v[x]=a[l]; <span class="cf">return</span>;}; <span class="dt">int</span> mid=l+r&gt;&gt;<span class="dv">1</span>;</span>
+<span id="cb11-23"><a href="#cb11-23"></a>    build(x&lt;&lt;<span class="dv">1</span>,l,mid); build(x&lt;&lt;<span class="dv">1</span>|<span class="dv">1</span>,mid+<span class="dv">1</span>,r); v[x]=v[x&lt;&lt;<span class="dv">1</span>]+v[x&lt;&lt;<span class="dv">1</span>|<span class="dv">1</span>];</span>
+<span id="cb11-24"><a href="#cb11-24"></a>}</span>
+<span id="cb11-25"><a href="#cb11-25"></a><span class="dt">void</span> insert(<span class="dt">int</span> x,<span class="dt">int</span> l,<span class="dt">int</span> r,<span class="dt">int</span> ql,<span class="dt">int</span> qr,<span class="dt">int</span> num){</span>
+<span id="cb11-26"><a href="#cb11-26"></a>    <span class="cf">if</span>(ql&lt;=l&amp;&amp;r&lt;=qr){ins(num,x); tot[num]++; <span class="cf">return</span>;} <span class="dt">int</span> mid=l+r&gt;&gt;<span class="dv">1</span>;</span>
+<span id="cb11-27"><a href="#cb11-27"></a>    <span class="cf">if</span>(ql&lt;=mid)insert(x&lt;&lt;<span class="dv">1</span>,l,mid,ql,qr,num); <span class="cf">if</span>(mid&lt;qr)insert(x&lt;&lt;<span class="dv">1</span>|<span class="dv">1</span>,mid+<span class="dv">1</span>,r,ql,qr,num);</span>
+<span id="cb11-28"><a href="#cb11-28"></a>}</span>
+<span id="cb11-29"><a href="#cb11-29"></a><span class="dt">void</span> change(<span class="dt">int</span> x,<span class="dt">int</span> l,<span class="dt">int</span> r,<span class="dt">int</span> q){</span>
+<span id="cb11-30"><a href="#cb11-30"></a>    v[x]--; <span class="cf">if</span>(!v[x])update(x); <span class="cf">if</span>(l==r)<span class="cf">return</span>; <span class="dt">int</span> mid=l+r&gt;&gt;<span class="dv">1</span>;</span>
+<span id="cb11-31"><a href="#cb11-31"></a>    <span class="cf">if</span>(q&lt;=mid)change(x&lt;&lt;<span class="dv">1</span>,l,mid,q);<span class="cf">else</span> change(x&lt;&lt;<span class="dv">1</span>|<span class="dv">1</span>,mid+<span class="dv">1</span>,r,q);</span>
+<span id="cb11-32"><a href="#cb11-32"></a>}</span>
+<span id="cb11-33"><a href="#cb11-33"></a><span class="dt">int</span> main(){</span>
+<span id="cb11-34"><a href="#cb11-34"></a>    <span class="co">//freopen(&quot;in.txt&quot;,&quot;r&quot;,stdin);</span></span>
+<span id="cb11-35"><a href="#cb11-35"></a>    n=read(); m=read(); inc(i,<span class="dv">1</span>,n)a[i]=read(); build(<span class="dv">1</span>,<span class="dv">1</span>,n);</span>
+<span id="cb11-36"><a href="#cb11-36"></a>    inc(i,<span class="dv">1</span>,m){<span class="dt">int</span> l=read(),r=read(); insert(<span class="dv">1</span>,<span class="dv">1</span>,n,l,r,i);} q=read();</span>
+<span id="cb11-37"><a href="#cb11-37"></a>    inc(i,<span class="dv">1</span>,q){<span class="dt">int</span> x=(read()+ans-<span class="dv">1</span>)%n+<span class="dv">1</span>; change(<span class="dv">1</span>,<span class="dv">1</span>,n,x); printf(<span class="st">&quot;</span><span class="sc">%d\n</span><span class="st">&quot;</span>,ans);}</span>
+<span id="cb11-38"><a href="#cb11-38"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb11-39"><a href="#cb11-39"></a>}</span></code></pre></div>
+<h3 id="bzoj4591shoi2015超能粒子炮改2016.7.24">bzoj4591[Shoi2015]超能粒子炮·改（2016.7.24）</h3>
+<h4 id="题意-11">题意</h4>
+<p>求<span class="math inline">\((\sum_{i=0}^k{C(n,i)})\%2333\)</span>。n，k≤10^18</p>
+<h4 id="题解-11">题解</h4>
+<p>根据Lucas定理（我不会），C(n,k)%2333=C(n/2333,k/2333)*C(n%2333,k%2333)，故可以进行一些化简（把模省去了）</p>
+<p><span class="math display">\[
+\begin{split}
+\sum_{i=0}^k{C(n,i)}&amp;=\sum_{i=0}^k{C(n/2333,i/2333)*C(n\%2333,i\%2333)} \\
+&amp;=\sum_{i=0}^{k/2333-1}{(C(n/2333,i)\sum_{j=0}^{2332}{C(n\%2333,j))}} \\
+&amp;+C(n/2333,k/2333)*\sum_{i=0}^{k\%2333}{C(n\%2333,i)}
+\end{split}
+\]</span></p>
+<p>一开始先递推出i,j≤2333的C[i][j]和sm[i][j]（表示<span class="math inline">\(\sum_{k=0}^j{C[i][k]}\)</span>），然后上式橙色部分可以看做红色部分的简化部分，递归求解直到n，k的范围≤2333就return sm[n][k]，同时上式中蓝色部分也可以用Lucas定理递归求解到n，k范围≤2333时return C[n][k]。</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb12-3"><a href="#cb12-3"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb12-4"><a href="#cb12-4"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="pp">#define ll </span><span class="dt">long</span><span class="pp"> </span><span class="dt">long</span></span>
+<span id="cb12-6"><a href="#cb12-6"></a><span class="pp">#define maxn </span><span class="dv">2334</span></span>
+<span id="cb12-7"><a href="#cb12-7"></a><span class="pp">#define mod </span><span class="dv">2333</span></span>
+<span id="cb12-8"><a href="#cb12-8"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb12-9"><a href="#cb12-9"></a></span>
+<span id="cb12-10"><a href="#cb12-10"></a><span class="kw">inline</span> ll read(){</span>
+<span id="cb12-11"><a href="#cb12-11"></a>    <span class="dt">char</span> ch=getchar(); ll f=<span class="dv">1</span>,x=<span class="dv">0</span>;</span>
+<span id="cb12-12"><a href="#cb12-12"></a>    <span class="cf">while</span>(ch&lt;<span class="ch">&#39;0&#39;</span>||ch&gt;<span class="ch">&#39;9&#39;</span>){<span class="cf">if</span>(ch==<span class="ch">&#39;-&#39;</span>)f=-<span class="dv">1</span>; ch=getchar();}</span>
+<span id="cb12-13"><a href="#cb12-13"></a>    <span class="cf">while</span>(ch&gt;=<span class="ch">&#39;0&#39;</span>&amp;&amp;ch&lt;=<span class="ch">&#39;9&#39;</span>)x=x*<span class="dv">10</span>+ch-<span class="ch">&#39;0&#39;</span>,ch=getchar();</span>
+<span id="cb12-14"><a href="#cb12-14"></a>    <span class="cf">return</span> f*x;</span>
+<span id="cb12-15"><a href="#cb12-15"></a>}</span>
+<span id="cb12-16"><a href="#cb12-16"></a>ll n,k,c[maxn][maxn],sm[maxn][maxn]; <span class="dt">int</span> t;</span>
+<span id="cb12-17"><a href="#cb12-17"></a><span class="dt">void</span> calc(){</span>
+<span id="cb12-18"><a href="#cb12-18"></a>    c[<span class="dv">0</span>][<span class="dv">0</span>]=sm[<span class="dv">0</span>][<span class="dv">0</span>]=<span class="dv">1</span>; inc(i,<span class="dv">1</span>,mod)sm[<span class="dv">0</span>][i]=<span class="dv">1</span>;</span>
+<span id="cb12-19"><a href="#cb12-19"></a>    inc(i,<span class="dv">1</span>,mod){</span>
+<span id="cb12-20"><a href="#cb12-20"></a>        c[i][<span class="dv">0</span>]=sm[i][<span class="dv">0</span>]=<span class="dv">1</span>;</span>
+<span id="cb12-21"><a href="#cb12-21"></a>        inc(j,<span class="dv">1</span>,i)c[i][j]=(c[i-<span class="dv">1</span>][j-<span class="dv">1</span>]+c[i-<span class="dv">1</span>][j])%mod;</span>
+<span id="cb12-22"><a href="#cb12-22"></a>        inc(j,<span class="dv">1</span>,mod)sm[i][j]=(sm[i][j-<span class="dv">1</span>]+c[i][j])%mod;</span>
+<span id="cb12-23"><a href="#cb12-23"></a>    }</span>
+<span id="cb12-24"><a href="#cb12-24"></a>}</span>
+<span id="cb12-25"><a href="#cb12-25"></a>ll solvec(ll n,ll k){</span>
+<span id="cb12-26"><a href="#cb12-26"></a>    <span class="cf">if</span>(n&lt;=mod&amp;&amp;k&lt;=mod)<span class="cf">return</span> c[n][k];<span class="cf">else</span> <span class="cf">return</span> solvec(n/mod,k/mod)*c[n%mod][k%mod]%mod;</span>
+<span id="cb12-27"><a href="#cb12-27"></a>}</span>
+<span id="cb12-28"><a href="#cb12-28"></a>ll solvesm(ll n,ll k){</span>
+<span id="cb12-29"><a href="#cb12-29"></a>    <span class="cf">if</span>(k&lt;mod)<span class="cf">return</span> solvec(n/mod,k/mod)*sm[n%mod][k%mod]%mod;</span>
+<span id="cb12-30"><a href="#cb12-30"></a>    <span class="cf">return</span> (solvesm(n/mod,k/mod-<span class="dv">1</span>)*sm[n%mod][mod-<span class="dv">1</span>]%mod+solvec(n/mod,k/mod)*sm[n%mod][k%mod]%mod)%mod;</span>
+<span id="cb12-31"><a href="#cb12-31"></a>}</span>
+<span id="cb12-32"><a href="#cb12-32"></a><span class="dt">int</span> main(){</span>
+<span id="cb12-33"><a href="#cb12-33"></a>    t=read(); calc();</span>
+<span id="cb12-34"><a href="#cb12-34"></a>    inc(i,<span class="dv">1</span>,t){n=read(); k=read(); printf(<span class="st">&quot;</span><span class="sc">%lld\n</span><span class="st">&quot;</span>,solvesm(n,k)%mod);}</span>
+<span id="cb12-35"><a href="#cb12-35"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb12-36"><a href="#cb12-36"></a>}</span></code></pre></div>
+<h3 id="bzoj4423amppz2013bytehattan2016.7.24">bzoj4423[AMPPZ2013]Bytehattan（2016.7.24）</h3>
+<h4 id="题意-12">题意</h4>
+<p>n*n的顶点图，一开始相邻顶点均有边相连，现在删掉k条边，希望知道每次删边后边的两个端点是否联通。n≤1500，k≤2*n*(n-1)，边最多被删一次。</p>
+<h4 id="题解-12">题解</h4>
+<p>隐隐觉得是并查集，但不知道删边怎么表示。在膜拜了题解后明白原来可以转成对偶图（以格子和外框为节点），原图的删边就是新图的加边。每次新图加边时就判断是否会产生环，若会，说明原图的两个端点在删边后不连通。</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb13-2"><a href="#cb13-2"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb13-3"><a href="#cb13-3"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb13-4"><a href="#cb13-4"></a><span class="pp">#define maxn </span><span class="dv">2000</span></span>
+<span id="cb13-5"><a href="#cb13-5"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb13-6"><a href="#cb13-6"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb13-7"><a href="#cb13-7"></a></span>
+<span id="cb13-8"><a href="#cb13-8"></a><span class="dt">int</span> pos[maxn][maxn],fa[<span class="dv">2</span>*maxn*maxn],tot,n,k,x[<span class="dv">2</span>],y[<span class="dv">2</span>]; <span class="dt">bool</span> ans; <span class="dt">char</span> s[<span class="dv">2</span>][<span class="dv">5</span>];</span>
+<span id="cb13-9"><a href="#cb13-9"></a><span class="kw">inline</span> <span class="dt">int</span> read(){</span>
+<span id="cb13-10"><a href="#cb13-10"></a>    <span class="dt">char</span> ch=getchar(); <span class="dt">int</span> f=<span class="dv">1</span>,x=<span class="dv">0</span>;</span>
+<span id="cb13-11"><a href="#cb13-11"></a>    <span class="cf">while</span>(ch&lt;<span class="ch">&#39;0&#39;</span>||ch&gt;<span class="ch">&#39;9&#39;</span>){<span class="cf">if</span>(ch==<span class="ch">&#39;-&#39;</span>)f=-<span class="dv">1</span>; ch=getchar();}</span>
+<span id="cb13-12"><a href="#cb13-12"></a>    <span class="cf">while</span>(ch&gt;=<span class="ch">&#39;0&#39;</span>&amp;&amp;ch&lt;=<span class="ch">&#39;9&#39;</span>)x=x*<span class="dv">10</span>+ch-<span class="ch">&#39;0&#39;</span>,ch=getchar();</span>
+<span id="cb13-13"><a href="#cb13-13"></a>    <span class="cf">return</span> f*x;</span>
+<span id="cb13-14"><a href="#cb13-14"></a>}</span>
+<span id="cb13-15"><a href="#cb13-15"></a><span class="dt">int</span> find(<span class="dt">int</span> x){<span class="cf">return</span> x==fa[x]?x:fa[x]=find(fa[x]);}</span>
+<span id="cb13-16"><a href="#cb13-16"></a><span class="dt">int</span> main(){</span>
+<span id="cb13-17"><a href="#cb13-17"></a>    n=read(); k=read(); tot=<span class="dv">0</span>; inc(i,<span class="dv">1</span>,n-<span class="dv">1</span>)inc(j,<span class="dv">1</span>,n-<span class="dv">1</span>)pos[i][j]=++tot; inc(i,<span class="dv">1</span>,tot)fa[i]=i;</span>
+<span id="cb13-18"><a href="#cb13-18"></a>    inc(i,<span class="dv">1</span>,k){</span>
+<span id="cb13-19"><a href="#cb13-19"></a>        x[<span class="dv">0</span>]=read(),y[<span class="dv">0</span>]=read(); scanf(<span class="st">&quot;</span><span class="sc">%s</span><span class="st">&quot;</span>,s[<span class="dv">0</span>]); x[<span class="dv">1</span>]=read(),y[<span class="dv">1</span>]=read(); scanf(<span class="st">&quot;</span><span class="sc">%s</span><span class="st">&quot;</span>,s[<span class="dv">1</span>]);</span>
+<span id="cb13-20"><a href="#cb13-20"></a>        <span class="cf">if</span>(s[ans][<span class="dv">0</span>]==<span class="ch">&#39;N&#39;</span>){</span>
+<span id="cb13-21"><a href="#cb13-21"></a>            <span class="dt">int</span> a=find(pos[x[ans]-<span class="dv">1</span>][y[ans]]),b=find(pos[x[ans]][y[ans]]);</span>
+<span id="cb13-22"><a href="#cb13-22"></a>            <span class="cf">if</span>(a==b)ans=<span class="dv">1</span>;<span class="cf">else</span> fa[a]=b,ans=<span class="dv">0</span>;</span>
+<span id="cb13-23"><a href="#cb13-23"></a>        }</span>
+<span id="cb13-24"><a href="#cb13-24"></a>        <span class="cf">else</span>{</span>
+<span id="cb13-25"><a href="#cb13-25"></a>            <span class="dt">int</span> a=find(pos[x[ans]][y[ans]-<span class="dv">1</span>]),b=find(pos[x[ans]][y[ans]]);</span>
+<span id="cb13-26"><a href="#cb13-26"></a>            <span class="cf">if</span>(a==b)ans=<span class="dv">1</span>;<span class="cf">else</span> fa[a]=b,ans=<span class="dv">0</span>;</span>
+<span id="cb13-27"><a href="#cb13-27"></a>        }</span>
+<span id="cb13-28"><a href="#cb13-28"></a>        <span class="cf">if</span>(!ans)puts(<span class="st">&quot;TAK&quot;</span>);<span class="cf">else</span> puts(<span class="st">&quot;NIE&quot;</span>);</span>
+<span id="cb13-29"><a href="#cb13-29"></a>    }</span>
+<span id="cb13-30"><a href="#cb13-30"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb13-31"><a href="#cb13-31"></a>}</span></code></pre></div>
+<h3 id="bzoj1606usaco2008-dechay-for-sale-购买干草2016.7.27">bzoj1606[Usaco2008 Dec]Hay For Sale 购买干草*（2016.7.27）</h3>
+<h4 id="题意-13">题意</h4>
+<p>容器体积为c，n个物体，每个有一个体积，求不超过容器能放入的最大体积。n≤5000，c≤50000</p>
+<h4 id="题解-13">题解</h4>
+<p>裸01背包。</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb14-2"><a href="#cb14-2"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb14-3"><a href="#cb14-3"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb14-4"><a href="#cb14-4"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb14-5"><a href="#cb14-5"></a><span class="pp">#define dec</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&gt;=k;i--)</span>
+<span id="cb14-6"><a href="#cb14-6"></a><span class="pp">#define maxn </span><span class="dv">50100</span></span>
+<span id="cb14-7"><a href="#cb14-7"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb14-8"><a href="#cb14-8"></a></span>
+<span id="cb14-9"><a href="#cb14-9"></a><span class="kw">inline</span> <span class="dt">int</span> read(){</span>
+<span id="cb14-10"><a href="#cb14-10"></a>    <span class="dt">char</span> ch=getchar(); <span class="dt">int</span> f=<span class="dv">1</span>,x=<span class="dv">0</span>;</span>
+<span id="cb14-11"><a href="#cb14-11"></a>    <span class="cf">while</span>(ch&lt;<span class="ch">&#39;0&#39;</span>||ch&gt;<span class="ch">&#39;9&#39;</span>){<span class="cf">if</span>(ch==<span class="ch">&#39;-&#39;</span>)f=-<span class="dv">1</span>; ch=getchar();}</span>
+<span id="cb14-12"><a href="#cb14-12"></a>    <span class="cf">while</span>(ch&gt;=<span class="ch">&#39;0&#39;</span>&amp;&amp;ch&lt;=<span class="ch">&#39;9&#39;</span>)x=x*<span class="dv">10</span>+ch-<span class="ch">&#39;0&#39;</span>,ch=getchar();</span>
+<span id="cb14-13"><a href="#cb14-13"></a>    <span class="cf">return</span> f*x;</span>
+<span id="cb14-14"><a href="#cb14-14"></a>}</span>
+<span id="cb14-15"><a href="#cb14-15"></a><span class="dt">int</span> n,c,f[maxn];</span>
+<span id="cb14-16"><a href="#cb14-16"></a><span class="dt">int</span> main(){</span>
+<span id="cb14-17"><a href="#cb14-17"></a>    c=read(); n=read();</span>
+<span id="cb14-18"><a href="#cb14-18"></a>    inc(i,<span class="dv">1</span>,n){</span>
+<span id="cb14-19"><a href="#cb14-19"></a>        <span class="dt">int</span> a=read(); dec(j,c,a)f[j]=max(f[j],f[j-a]+a);</span>
+<span id="cb14-20"><a href="#cb14-20"></a>    }</span>
+<span id="cb14-21"><a href="#cb14-21"></a>    printf(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span>,f[c]); <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb14-22"><a href="#cb14-22"></a>}</span></code></pre></div>
+<h3 id="bzoj1679usaco2005-janmoo-volume-牛的呼声2016.7.27">bzoj1679[Usaco2005 Jan]Moo Volume 牛的呼声*（2016.7.27）</h3>
+<h4 id="题意-14">题意</h4>
+<p>N只牛，每只牛都与其他N-1只牛聊着天。一个对话的进行，需要两只牛都按照和她们间距离等大的音量吼叫，计算音量和。N≤10000</p>
+<h4 id="题解-14">题解</h4>
+<p>第i只牛与前i-1只牛对话的音量和是x=sum[1..i-1]+sum[2..i-1]+sum[3..i-1]+…+sum[i-1..i-1]，x+(sum[1..0]+sum[1..1]+sum[1..2]+sum[1..3]+…+sum[1..i-2])=sum[1..i-1]<em>(i-1)，令sm[i]=sum[1..i]，则x=sm[i-1]</em>(i-1)-sigma(j,1,i-2)sm[j]，而这个sigma(j,1,i-2)sm[j]也可以在开始时求出。</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb15-2"><a href="#cb15-2"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb15-3"><a href="#cb15-3"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb15-4"><a href="#cb15-4"></a><span class="pp">#define maxn </span><span class="dv">10100</span></span>
+<span id="cb15-5"><a href="#cb15-5"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb15-6"><a href="#cb15-6"></a><span class="pp">#define ll </span><span class="dt">long</span><span class="pp"> </span><span class="dt">long</span></span>
+<span id="cb15-7"><a href="#cb15-7"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb15-8"><a href="#cb15-8"></a></span>
+<span id="cb15-9"><a href="#cb15-9"></a><span class="kw">inline</span> <span class="dt">int</span> read(){</span>
+<span id="cb15-10"><a href="#cb15-10"></a>    <span class="dt">char</span> ch=getchar(); <span class="dt">int</span> f=<span class="dv">1</span>,x=<span class="dv">0</span>;</span>
+<span id="cb15-11"><a href="#cb15-11"></a>    <span class="cf">while</span>(ch&lt;<span class="ch">&#39;0&#39;</span>||ch&gt;<span class="ch">&#39;9&#39;</span>){<span class="cf">if</span>(ch==<span class="ch">&#39;-&#39;</span>)f=-<span class="dv">1</span>; ch=getchar();}</span>
+<span id="cb15-12"><a href="#cb15-12"></a>    <span class="cf">while</span>(ch&gt;=<span class="ch">&#39;0&#39;</span>&amp;&amp;ch&lt;=<span class="ch">&#39;9&#39;</span>)x=x*<span class="dv">10</span>+ch-<span class="ch">&#39;0&#39;</span>,ch=getchar();</span>
+<span id="cb15-13"><a href="#cb15-13"></a>    <span class="cf">return</span> f*x;</span>
+<span id="cb15-14"><a href="#cb15-14"></a>}</span>
+<span id="cb15-15"><a href="#cb15-15"></a><span class="dt">int</span> n; ll a[maxn],sms[maxn],smb[maxn],ans;</span>
+<span id="cb15-16"><a href="#cb15-16"></a><span class="dt">int</span> main(){</span>
+<span id="cb15-17"><a href="#cb15-17"></a>    n=read(); inc(i,<span class="dv">1</span>,n)a[i]=read(); sort(a+<span class="dv">1</span>,a+n+<span class="dv">1</span>); ans=<span class="dv">0</span>;</span>
+<span id="cb15-18"><a href="#cb15-18"></a>    inc(i,<span class="dv">1</span>,n-<span class="dv">1</span>)a[i]=a[i+<span class="dv">1</span>]-a[i],sms[i]=sms[i-<span class="dv">1</span>]+a[i],smb[i]=smb[i-<span class="dv">1</span>]+sms[i];</span>
+<span id="cb15-19"><a href="#cb15-19"></a>    inc(i,<span class="dv">2</span>,n)ans+=sms[i-<span class="dv">1</span>]*(i-<span class="dv">1</span>)-smb[i-<span class="dv">2</span>];</span>
+<span id="cb15-20"><a href="#cb15-20"></a>    printf(<span class="st">&quot;</span><span class="sc">%lld</span><span class="st">&quot;</span>,ans*<span class="dv">2</span>); <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb15-21"><a href="#cb15-21"></a>}</span></code></pre></div>
+<h3 id="bzoj1666usaco2006-octanother-cow-number-game-奶牛的数字游戏2016.7.27">bzoj1666[Usaco2006 Oct]Another Cow Number Game 奶牛的数字游戏*（2016.7.27）</h3>
+<h4 id="题意-15">题意</h4>
+<p>一个数为偶数就让它/2，为奇数就让它*3+1，问多少步可以让它变成1。n≤1000000</p>
+<h4 id="题解-15">题解</h4>
+<p>模拟。</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb16-1"><a href="#cb16-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2"></a><span class="dt">int</span> main(){</span>
+<span id="cb16-3"><a href="#cb16-3"></a>    <span class="dt">int</span> n; scanf(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span>,&amp;n); <span class="dt">int</span> ans=<span class="dv">0</span>;</span>
+<span id="cb16-4"><a href="#cb16-4"></a>    <span class="cf">while</span>(n!=<span class="dv">1</span>){<span class="cf">if</span>(n&amp;<span class="dv">1</span>)n=n*<span class="dv">3</span>+<span class="dv">1</span>;<span class="cf">else</span> n&gt;&gt;=<span class="dv">1</span>; ans++;}</span>
+<span id="cb16-5"><a href="#cb16-5"></a>    printf(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span>,ans); <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb16-6"><a href="#cb16-6"></a>}</span></code></pre></div>
+<h3 id="bzoj1610usaco2008-febline连线游戏2016.7.27">bzoj1610[Usaco2008 Feb]Line连线游戏*（2016.7.27）</h3>
+<h4 id="题意-16">题意</h4>
+<p>n个点，问最多能画多少条线使两两不平行。n≤200。</p>
+<h4 id="题解-16">题解</h4>
+<p>枚举所有线，排序后去重。</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb17-1"><a href="#cb17-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb17-2"><a href="#cb17-2"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb17-3"><a href="#cb17-3"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb17-4"><a href="#cb17-4"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb17-5"><a href="#cb17-5"></a><span class="pp">#define maxn </span><span class="dv">50000</span></span>
+<span id="cb17-6"><a href="#cb17-6"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb17-7"><a href="#cb17-7"></a></span>
+<span id="cb17-8"><a href="#cb17-8"></a><span class="kw">inline</span> <span class="dt">int</span> read(){</span>
+<span id="cb17-9"><a href="#cb17-9"></a>    <span class="dt">char</span> ch=getchar(); <span class="dt">int</span> f=<span class="dv">1</span>,x=<span class="dv">0</span>;</span>
+<span id="cb17-10"><a href="#cb17-10"></a>    <span class="cf">while</span>(ch&lt;<span class="ch">&#39;0&#39;</span>||ch&gt;<span class="ch">&#39;9&#39;</span>){<span class="cf">if</span>(ch==<span class="ch">&#39;-&#39;</span>)f=-<span class="dv">1</span>; ch=getchar();}</span>
+<span id="cb17-11"><a href="#cb17-11"></a>    <span class="cf">while</span>(ch&gt;=<span class="ch">&#39;0&#39;</span>&amp;&amp;ch&lt;=<span class="ch">&#39;9&#39;</span>)x=x*<span class="dv">10</span>+ch-<span class="ch">&#39;0&#39;</span>,ch=getchar();</span>
+<span id="cb17-12"><a href="#cb17-12"></a>    <span class="cf">return</span> f*x;</span>
+<span id="cb17-13"><a href="#cb17-13"></a>}</span>
+<span id="cb17-14"><a href="#cb17-14"></a><span class="dt">double</span> xl[maxn]; <span class="dt">bool</span> hx; <span class="dt">int</span> n,x[<span class="dv">300</span>],y[<span class="dv">300</span>],tot,ans;</span>
+<span id="cb17-15"><a href="#cb17-15"></a><span class="dt">int</span> main(){</span>
+<span id="cb17-16"><a href="#cb17-16"></a>    n=read(); inc(i,<span class="dv">1</span>,n)x[i]=read(),y[i]=read();</span>
+<span id="cb17-17"><a href="#cb17-17"></a>    inc(i,<span class="dv">1</span>,n)inc(j,i+<span class="dv">1</span>,n){</span>
+<span id="cb17-18"><a href="#cb17-18"></a>        <span class="cf">if</span>(x[i]==x[j])hx=<span class="dv">1</span>;<span class="cf">else</span> xl[++tot]=(<span class="dt">double</span>)(y[i]-y[j])/(x[i]-x[j]);</span>
+<span id="cb17-19"><a href="#cb17-19"></a>    }</span>
+<span id="cb17-20"><a href="#cb17-20"></a>    sort(xl+<span class="dv">1</span>,xl+tot+<span class="dv">1</span>); ans=unique(xl+<span class="dv">1</span>,xl+tot+<span class="dv">1</span>)-xl-<span class="dv">1</span>;</span>
+<span id="cb17-21"><a href="#cb17-21"></a>    printf(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span>,ans+hx); <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb17-22"><a href="#cb17-22"></a>}</span></code></pre></div>
+<h3 id="bzoj1626usaco2007-decbuilding-roads-修建道路2016.7.27">bzoj1626[Usaco2007 Dec]Building Roads 修建道路*（2016.7.27）</h3>
+<h4 id="题意-17">题意</h4>
+<p>坐标系上n个点，其中一些点连了边，问使点连通还要连边的最小总长度。n≤1000。</p>
+<h4 id="题解-17">题解</h4>
+<p>用并查集维护连通块，先将连好边的点合并，然后再按长度从小到大连边。</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb18-1"><a href="#cb18-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb18-2"><a href="#cb18-2"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a><span class="pp">#include </span><span class="im">&lt;cmath&gt;</span></span>
+<span id="cb18-5"><a href="#cb18-5"></a><span class="pp">#define maxn </span><span class="dv">1100</span></span>
+<span id="cb18-6"><a href="#cb18-6"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb18-7"><a href="#cb18-7"></a><span class="pp">#define ll </span><span class="dt">long</span><span class="pp"> </span><span class="dt">long</span></span>
+<span id="cb18-8"><a href="#cb18-8"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb18-9"><a href="#cb18-9"></a></span>
+<span id="cb18-10"><a href="#cb18-10"></a><span class="kw">inline</span> <span class="dt">int</span> read(){</span>
+<span id="cb18-11"><a href="#cb18-11"></a>    <span class="dt">char</span> ch=getchar(); <span class="dt">int</span> f=<span class="dv">1</span>,x=<span class="dv">0</span>;</span>
+<span id="cb18-12"><a href="#cb18-12"></a>    <span class="cf">while</span>(ch&lt;<span class="ch">&#39;0&#39;</span>||ch&gt;<span class="ch">&#39;9&#39;</span>){<span class="cf">if</span>(ch==<span class="ch">&#39;-&#39;</span>)f=-<span class="dv">1</span>; ch=getchar();}</span>
+<span id="cb18-13"><a href="#cb18-13"></a>    <span class="cf">while</span>(ch&gt;=<span class="ch">&#39;0&#39;</span>&amp;&amp;ch&lt;=<span class="ch">&#39;9&#39;</span>)x=x*<span class="dv">10</span>+ch-<span class="ch">&#39;0&#39;</span>,ch=getchar();</span>
+<span id="cb18-14"><a href="#cb18-14"></a>    <span class="cf">return</span> f*x;</span>
+<span id="cb18-15"><a href="#cb18-15"></a>}</span>
+<span id="cb18-16"><a href="#cb18-16"></a><span class="dt">int</span> n,m,fa[maxn],cnt; ll x[maxn],y[maxn];</span>
+<span id="cb18-17"><a href="#cb18-17"></a><span class="dt">int</span> find(<span class="dt">int</span> x){<span class="cf">return</span> x==fa[x]?x:fa[x]=find(fa[x]);}</span>
+<span id="cb18-18"><a href="#cb18-18"></a><span class="kw">struct</span> e{<span class="dt">int</span> f,t; ll len;}; e es[maxn*maxn]; <span class="dt">int</span> ess;</span>
+<span id="cb18-19"><a href="#cb18-19"></a><span class="dt">bool</span> cmp(e a,e b){<span class="cf">return</span> a.len&lt;b.len;}</span>
+<span id="cb18-20"><a href="#cb18-20"></a><span class="kw">inline</span> <span class="dt">bool</span> merge(<span class="dt">int</span> _x,<span class="dt">int</span> _y){<span class="dt">int</span> x=find(_x),y=find(_y); <span class="cf">if</span>(x==y)<span class="cf">return</span> <span class="dv">0</span>; fa[x]=y; <span class="cf">return</span> <span class="dv">1</span>;}</span>
+<span id="cb18-21"><a href="#cb18-21"></a><span class="dt">int</span> main(){</span>
+<span id="cb18-22"><a href="#cb18-22"></a>    n=read(); m=read(); inc(i,<span class="dv">1</span>,n)x[i]=read(),y[i]=read(),fa[i]=i;</span>
+<span id="cb18-23"><a href="#cb18-23"></a>    inc(i,<span class="dv">1</span>,n)inc(j,i+<span class="dv">1</span>,n)es[++ess]=(e){i,j,(x[j]-x[i])*(x[j]-x[i])+(y[j]-y[i])*(y[j]-y[i])};</span>
+<span id="cb18-24"><a href="#cb18-24"></a>    sort(es+<span class="dv">1</span>,es+ess+<span class="dv">1</span>,cmp);</span>
+<span id="cb18-25"><a href="#cb18-25"></a>    inc(i,<span class="dv">1</span>,m){<span class="dt">int</span> a=read(),b=read(); <span class="cf">if</span>(merge(a,b))cnt++;} <span class="dt">double</span> ans=<span class="dv">0</span>;</span>
+<span id="cb18-26"><a href="#cb18-26"></a>    inc(i,<span class="dv">1</span>,ess){<span class="cf">if</span>(merge(es[i].f,es[i].t))ans+=sqrt(es[i].len),cnt++; <span class="cf">if</span>(cnt==n-<span class="dv">1</span>)<span class="cf">break</span>;}</span>
+<span id="cb18-27"><a href="#cb18-27"></a>    printf(<span class="st">&quot;%.2lf&quot;</span>,ans); <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb18-28"><a href="#cb18-28"></a>}</span></code></pre></div>
+<h3 id="bzoj1689usaco2005-open-muddy-roads-泥泞的路2016.7.29">bzoj1689[Usaco2005 Open] Muddy roads 泥泞的路*（2016.7.29）</h3>
+<h4 id="题意-18">题意</h4>
+<p>数轴上n个互不覆盖的区间，问要用多少个长为L的线段覆盖。n≤10000</p>
+<h4 id="题解-18">题解</h4>
+<p>排序区间，然后从每个区间左端点开始铺木板，如果最后一块木板能够铺到下一个区间就铺，以此类推。</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb19-1"><a href="#cb19-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb19-2"><a href="#cb19-2"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb19-3"><a href="#cb19-3"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb19-4"><a href="#cb19-4"></a><span class="pp">#define maxn </span><span class="dv">10100</span></span>
+<span id="cb19-5"><a href="#cb19-5"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb19-6"><a href="#cb19-6"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb19-7"><a href="#cb19-7"></a></span>
+<span id="cb19-8"><a href="#cb19-8"></a><span class="kw">inline</span> <span class="dt">int</span> read(){</span>
+<span id="cb19-9"><a href="#cb19-9"></a>    <span class="dt">char</span> ch=getchar(); <span class="dt">int</span> f=<span class="dv">1</span>,x=<span class="dv">0</span>;</span>
+<span id="cb19-10"><a href="#cb19-10"></a>    <span class="cf">while</span>(ch&lt;<span class="ch">&#39;0&#39;</span>||ch&gt;<span class="ch">&#39;9&#39;</span>){<span class="cf">if</span>(ch==<span class="ch">&#39;-&#39;</span>)f=-<span class="dv">1</span>; ch=getchar();}</span>
+<span id="cb19-11"><a href="#cb19-11"></a>    <span class="cf">while</span>(ch&gt;=<span class="ch">&#39;0&#39;</span>&amp;&amp;ch&lt;=<span class="ch">&#39;9&#39;</span>)x=x*<span class="dv">10</span>+ch-<span class="ch">&#39;0&#39;</span>,ch=getchar();</span>
+<span id="cb19-12"><a href="#cb19-12"></a>    <span class="cf">return</span> f*x;</span>
+<span id="cb19-13"><a href="#cb19-13"></a>}</span>
+<span id="cb19-14"><a href="#cb19-14"></a><span class="kw">struct</span> rg{<span class="dt">int</span> l,r;}; rg rgs[maxn]; <span class="dt">int</span> n,l,ans;</span>
+<span id="cb19-15"><a href="#cb19-15"></a><span class="dt">bool</span> cmp(rg a,rg b){<span class="cf">return</span> a.l&lt;b.l;}</span>
+<span id="cb19-16"><a href="#cb19-16"></a><span class="dt">int</span> main(){</span>
+<span id="cb19-17"><a href="#cb19-17"></a>    n=read(); l=read();</span>
+<span id="cb19-18"><a href="#cb19-18"></a>    inc(i,<span class="dv">1</span>,n)rgs[i].l=read(),</span>
+<span id="cb19-19"><a href="#cb19-19"></a>    rgs[i].r=read()-<span class="dv">1</span>;</span>
+<span id="cb19-20"><a href="#cb19-20"></a>    sort(rgs+<span class="dv">1</span>,rgs+<span class="dv">1</span>+n,cmp); <span class="dt">int</span> i=<span class="dv">1</span>;</span>
+<span id="cb19-21"><a href="#cb19-21"></a>    <span class="cf">while</span>(i&lt;=n){</span>
+<span id="cb19-22"><a href="#cb19-22"></a>        ans+=(rgs[i].r-rgs[i].l+l)/l; <span class="dt">int</span> rem=(rgs[i].r-rgs[i].l+<span class="dv">1</span>)%l; <span class="cf">if</span>(rem)rem=l-rem;</span>
+<span id="cb19-23"><a href="#cb19-23"></a>        <span class="cf">while</span>(i&lt;n&amp;&amp;rem&gt;=rgs[i+<span class="dv">1</span>].r-rgs[i].r)rem-=(rgs[i+<span class="dv">1</span>].r-rgs[i].r),i++;</span>
+<span id="cb19-24"><a href="#cb19-24"></a>        <span class="cf">if</span>(i==n)<span class="cf">break</span>; <span class="cf">if</span>(rem&gt;=rgs[i+<span class="dv">1</span>].l-rgs[i].r)rgs[i+<span class="dv">1</span>].l+=rem-(rgs[i+<span class="dv">1</span>].l-rgs[i].r)+<span class="dv">1</span>;</span>
+<span id="cb19-25"><a href="#cb19-25"></a>        i++;</span>
+<span id="cb19-26"><a href="#cb19-26"></a>    }</span>
+<span id="cb19-27"><a href="#cb19-27"></a>    printf(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span>,ans); <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb19-28"><a href="#cb19-28"></a>}</span></code></pre></div>
+<h3 id="bzoj1620usaco2008-novtime-management-时间管理2016.7.29">bzoj1620[Usaco2008 Nov]Time Management 时间管理*（2016.7.29）</h3>
+<h4 id="题意-19">题意</h4>
+<p>n个任务，每个有一个所需时间和最晚完成时刻，问最晚要从什么时候开始工作。n≤1000</p>
+<h4 id="题解-19">题解</h4>
+<p>贪心，按最晚完成时刻从早到晚排序，如果当前任务来不及完成，就将前面的任务往前推，否则累积一个“自由时间”。当推任务时，如果之前有“自由时间”，就用自由时间减往前推的时间，否则用最晚开始时间去减往前推的时间。反思：我开始贪错了，按最晚开始时刻从早到晚排序，结果WA很久。现在还是想不太清楚原因，希望哪位神犇能帮我指出。</p>
+<p>以下数据会出错：</p>
+<p>2</p>
+<p>10 20</p>
+<p>1 12</p>
+<p>如果按正确的应该输出9，但按我的错解输出的是1。</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb20-1"><a href="#cb20-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb20-2"><a href="#cb20-2"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb20-3"><a href="#cb20-3"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb20-4"><a href="#cb20-4"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb20-5"><a href="#cb20-5"></a><span class="pp">#define maxn </span><span class="dv">1100</span></span>
+<span id="cb20-6"><a href="#cb20-6"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb20-7"><a href="#cb20-7"></a></span>
+<span id="cb20-8"><a href="#cb20-8"></a><span class="kw">inline</span> <span class="dt">int</span> read(){</span>
+<span id="cb20-9"><a href="#cb20-9"></a>    <span class="dt">char</span> ch=getchar(); <span class="dt">int</span> f=<span class="dv">1</span>,x=<span class="dv">0</span>;</span>
+<span id="cb20-10"><a href="#cb20-10"></a>    <span class="cf">while</span>(ch&lt;<span class="ch">&#39;0&#39;</span>||ch&gt;<span class="ch">&#39;9&#39;</span>){<span class="cf">if</span>(ch==<span class="ch">&#39;-&#39;</span>)f=-<span class="dv">1</span>; ch=getchar();}</span>
+<span id="cb20-11"><a href="#cb20-11"></a>    <span class="cf">while</span>(ch&gt;=<span class="ch">&#39;0&#39;</span>&amp;&amp;ch&lt;=<span class="ch">&#39;9&#39;</span>)x=x*<span class="dv">10</span>+ch-<span class="ch">&#39;0&#39;</span>,ch=getchar();</span>
+<span id="cb20-12"><a href="#cb20-12"></a>    <span class="cf">return</span> f*x;</span>
+<span id="cb20-13"><a href="#cb20-13"></a>}</span>
+<span id="cb20-14"><a href="#cb20-14"></a><span class="dt">int</span> n; <span class="kw">struct</span> job{<span class="dt">int</span> t,s;}; job jobs[maxn];</span>
+<span id="cb20-15"><a href="#cb20-15"></a><span class="dt">bool</span> cmp(job a,job b){<span class="cf">return</span> a.s==b.s?a.t&lt;b.t:a.s&lt;b.s;};</span>
+<span id="cb20-16"><a href="#cb20-16"></a><span class="dt">int</span> main(){</span>
+<span id="cb20-17"><a href="#cb20-17"></a>    n=read(); inc(i,<span class="dv">1</span>,n)jobs[i].t=read(),jobs[i].s=read(); sort(jobs+<span class="dv">1</span>,jobs+<span class="dv">1</span>+n,cmp);</span>
+<span id="cb20-18"><a href="#cb20-18"></a>    <span class="dt">int</span> ans=jobs[<span class="dv">1</span>].s-jobs[<span class="dv">1</span>].t,rem=<span class="dv">0</span>;</span>
+<span id="cb20-19"><a href="#cb20-19"></a>    inc(i,<span class="dv">2</span>,n){</span>
+<span id="cb20-20"><a href="#cb20-20"></a>        <span class="cf">if</span>(jobs[i].s-jobs[i].t&lt;jobs[i-<span class="dv">1</span>].s)rem-=jobs[i-<span class="dv">1</span>].s-(jobs[i].s-jobs[i].t);</span>
+<span id="cb20-21"><a href="#cb20-21"></a>        <span class="cf">else</span> rem+=jobs[i].s-jobs[i].t-jobs[i-<span class="dv">1</span>].s;</span>
+<span id="cb20-22"><a href="#cb20-22"></a>        <span class="cf">if</span>(rem&lt;<span class="dv">0</span>)ans+=rem,rem=<span class="dv">0</span>; <span class="cf">if</span>(ans&lt;<span class="dv">0</span>){printf(<span class="st">&quot;-1&quot;</span>); <span class="cf">return</span> <span class="dv">0</span>;}</span>
+<span id="cb20-23"><a href="#cb20-23"></a>    }</span>
+<span id="cb20-24"><a href="#cb20-24"></a>    printf(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span>,ans); <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb20-25"><a href="#cb20-25"></a>}</span></code></pre></div>
+<h3 id="bzoj1609usaco2008-febeating-together麻烦的聚餐2016.7.29">bzoj1609[Usaco2008 Feb]Eating Together麻烦的聚餐*（2016.7.29）</h3>
+<h4 id="题意-20">题意</h4>
+<p>一个序列只由1﹑2﹑3三种数组成。求最少要改变多少个数使它变成不下降序列或不上升序列。序列大小≤30000</p>
+<h4 id="题解-20">题解</h4>
+<p>DP。设f[i][j]表示正在考虑第i个数，上一个数是j。求不下降序列最少改变个数方程：</p>
+<p>f[i][j]=min(f[i+1][k]+1,k∈[j,3]),a[i]&lt;j</p>
+<p>f[i][j]=min(f[i+1][a[i]],f[i+1][k]+1,k∈[j,3]且k!=a[i])a[i]&gt;=j</p>
+<p>求不上升同理。</p>
+<div class="sourceCode" id="cb21"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb21-1"><a href="#cb21-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb21-2"><a href="#cb21-2"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb21-3"><a href="#cb21-3"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb21-4"><a href="#cb21-4"></a><span class="pp">#define maxn </span><span class="dv">50000</span></span>
+<span id="cb21-5"><a href="#cb21-5"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb21-6"><a href="#cb21-6"></a><span class="pp">#define dec</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&gt;=k;i--)</span>
+<span id="cb21-7"><a href="#cb21-7"></a><span class="pp">#define INF </span><span class="bn">0x3fffffff</span></span>
+<span id="cb21-8"><a href="#cb21-8"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb21-9"><a href="#cb21-9"></a></span>
+<span id="cb21-10"><a href="#cb21-10"></a><span class="dt">int</span> n,a[maxn],x[<span class="dv">5</span>],y[<span class="dv">5</span>],ans;</span>
+<span id="cb21-11"><a href="#cb21-11"></a><span class="dt">int</span> main(){</span>
+<span id="cb21-12"><a href="#cb21-12"></a>    scanf(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span>,&amp;n); inc(i,<span class="dv">1</span>,n)scanf(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span>,&amp;a[i]); memset(x,<span class="dv">0</span>,<span class="kw">sizeof</span>(x));</span>
+<span id="cb21-13"><a href="#cb21-13"></a>    dec(i,n,<span class="dv">1</span>){</span>
+<span id="cb21-14"><a href="#cb21-14"></a>        memset(y,<span class="dv">0</span>,<span class="kw">sizeof</span>(y));</span>
+<span id="cb21-15"><a href="#cb21-15"></a>        inc(j,<span class="dv">1</span>,<span class="dv">3</span>)<span class="cf">if</span>(a[i]&lt;j){</span>
+<span id="cb21-16"><a href="#cb21-16"></a>            y[j]=INF; inc(k,j,<span class="dv">3</span>)y[j]=min(y[j],x[k]+<span class="dv">1</span>);</span>
+<span id="cb21-17"><a href="#cb21-17"></a>        }<span class="cf">else</span>{</span>
+<span id="cb21-18"><a href="#cb21-18"></a>            y[j]=x[a[i]]; inc(k,j,<span class="dv">3</span>)<span class="cf">if</span>(k!=a[i])y[j]=min(y[j],x[k]+<span class="dv">1</span>);</span>
+<span id="cb21-19"><a href="#cb21-19"></a>        }</span>
+<span id="cb21-20"><a href="#cb21-20"></a>        swap(x,y);</span>
+<span id="cb21-21"><a href="#cb21-21"></a>    }</span>
+<span id="cb21-22"><a href="#cb21-22"></a>    ans=INF; inc(i,<span class="dv">1</span>,<span class="dv">3</span>)ans=min(ans,x[i]); memset(x,<span class="dv">0</span>,<span class="kw">sizeof</span>(x));</span>
+<span id="cb21-23"><a href="#cb21-23"></a>    dec(i,n,<span class="dv">1</span>){</span>
+<span id="cb21-24"><a href="#cb21-24"></a>        memset(y,<span class="dv">0</span>,<span class="kw">sizeof</span>(y));</span>
+<span id="cb21-25"><a href="#cb21-25"></a>        inc(j,<span class="dv">1</span>,<span class="dv">3</span>)<span class="cf">if</span>(a[i]&gt;j){</span>
+<span id="cb21-26"><a href="#cb21-26"></a>            y[j]=INF; dec(k,j,<span class="dv">1</span>)y[j]=min(y[j],x[k]+<span class="dv">1</span>);</span>
+<span id="cb21-27"><a href="#cb21-27"></a>        }<span class="cf">else</span>{</span>
+<span id="cb21-28"><a href="#cb21-28"></a>            y[j]=x[a[i]]; dec(k,j,<span class="dv">1</span>)<span class="cf">if</span>(k!=a[i])y[j]=min(y[j],x[k]+<span class="dv">1</span>);</span>
+<span id="cb21-29"><a href="#cb21-29"></a>        }</span>
+<span id="cb21-30"><a href="#cb21-30"></a>        swap(x,y);</span>
+<span id="cb21-31"><a href="#cb21-31"></a>    }</span>
+<span id="cb21-32"><a href="#cb21-32"></a>    inc(i,<span class="dv">1</span>,<span class="dv">3</span>)ans=min(ans,x[i]); printf(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span>,ans); <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb21-33"><a href="#cb21-33"></a>}</span></code></pre></div>
+<h3 id="bzoj1601usaco2008-oct灌水2016.7.29">bzoj1601[Usaco2008 Oct]灌水*（2016.7.29）</h3>
+<h4 id="题意-21">题意</h4>
+<p>n块土地，要让它们全部都灌到水。使一个土地灌到水需要在这块土地上建水库或使它直接或间接与有水库的土地相连。给出在每块土地上建水库的费用和土地间两两连边的费用，求最小费用。n≤300</p>
+<h4 id="题解-21">题解</h4>
+<p>建一个超级源，让它们和所有土地连边，费用为在这块土地上建水库的费用。然后就是求最小生成树了。</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb22-1"><a href="#cb22-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb22-2"><a href="#cb22-2"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb22-3"><a href="#cb22-3"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb22-4"><a href="#cb22-4"></a><span class="pp">#include </span><span class="im">&lt;cmath&gt;</span></span>
+<span id="cb22-5"><a href="#cb22-5"></a><span class="pp">#define maxn </span><span class="dv">400</span></span>
+<span id="cb22-6"><a href="#cb22-6"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb22-7"><a href="#cb22-7"></a><span class="pp">#define ll </span><span class="dt">long</span><span class="pp"> </span><span class="dt">long</span></span>
+<span id="cb22-8"><a href="#cb22-8"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb22-9"><a href="#cb22-9"></a></span>
+<span id="cb22-10"><a href="#cb22-10"></a><span class="kw">inline</span> <span class="dt">int</span> read(){</span>
+<span id="cb22-11"><a href="#cb22-11"></a>    <span class="dt">char</span> ch=getchar(); <span class="dt">int</span> f=<span class="dv">1</span>,x=<span class="dv">0</span>;</span>
+<span id="cb22-12"><a href="#cb22-12"></a>    <span class="cf">while</span>(ch&lt;<span class="ch">&#39;0&#39;</span>||ch&gt;<span class="ch">&#39;9&#39;</span>){<span class="cf">if</span>(ch==<span class="ch">&#39;-&#39;</span>)f=-<span class="dv">1</span>; ch=getchar();}</span>
+<span id="cb22-13"><a href="#cb22-13"></a>    <span class="cf">while</span>(ch&gt;=<span class="ch">&#39;0&#39;</span>&amp;&amp;ch&lt;=<span class="ch">&#39;9&#39;</span>)x=x*<span class="dv">10</span>+ch-<span class="ch">&#39;0&#39;</span>,ch=getchar();</span>
+<span id="cb22-14"><a href="#cb22-14"></a>    <span class="cf">return</span> f*x;</span>
+<span id="cb22-15"><a href="#cb22-15"></a>}</span>
+<span id="cb22-16"><a href="#cb22-16"></a><span class="dt">int</span> n,fa[maxn],cnt,ans;</span>
+<span id="cb22-17"><a href="#cb22-17"></a><span class="dt">int</span> find(<span class="dt">int</span> x){<span class="cf">return</span> x==fa[x]?x:fa[x]=find(fa[x]);}</span>
+<span id="cb22-18"><a href="#cb22-18"></a><span class="kw">struct</span> e{<span class="dt">int</span> f,t,len;}; e es[maxn*maxn+maxn]; <span class="dt">int</span> ess;</span>
+<span id="cb22-19"><a href="#cb22-19"></a><span class="dt">bool</span> cmp(e a,e b){<span class="cf">return</span> a.len&lt;b.len;}</span>
+<span id="cb22-20"><a href="#cb22-20"></a><span class="kw">inline</span> <span class="dt">bool</span> merge(<span class="dt">int</span> _x,<span class="dt">int</span> _y){<span class="dt">int</span> x=find(_x),y=find(_y); <span class="cf">if</span>(x==y)<span class="cf">return</span> <span class="dv">0</span>; fa[x]=y; <span class="cf">return</span> <span class="dv">1</span>;}</span>
+<span id="cb22-21"><a href="#cb22-21"></a><span class="dt">int</span> main(){</span>
+<span id="cb22-22"><a href="#cb22-22"></a>    n=read(); inc(i,<span class="dv">1</span>,n){<span class="dt">int</span> a=read(); es[++ess]=(e){<span class="dv">0</span>,i,a}; fa[i]=i;}</span>
+<span id="cb22-23"><a href="#cb22-23"></a>    inc(i,<span class="dv">1</span>,n)inc(j,<span class="dv">1</span>,n){<span class="dt">int</span> a=read(); <span class="cf">if</span>(i&lt;j)es[++ess]=(e){i,j,a};}</span>
+<span id="cb22-24"><a href="#cb22-24"></a>    sort(es+<span class="dv">1</span>,es+ess+<span class="dv">1</span>,cmp); cnt=<span class="dv">0</span>;</span>
+<span id="cb22-25"><a href="#cb22-25"></a>    inc(i,<span class="dv">1</span>,ess){<span class="cf">if</span>(merge(es[i].f,es[i].t))ans+=es[i].len,cnt++; <span class="cf">if</span>(cnt==n)<span class="cf">break</span>;}</span>
+<span id="cb22-26"><a href="#cb22-26"></a>    printf(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span>,ans); <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb22-27"><a href="#cb22-27"></a>}</span></code></pre></div>
+<h3 id="bzoj1664usaco2006-opencounty-fair-events-参加节日庆祝2016.7.30">bzoj1664[Usaco2006 Open]County Fair Events 参加节日庆祝*（2016.7.30）</h3>
+<h4 id="题意-22">题意</h4>
+<p>有N个节日，每个节日有个开始时间,及持续时间。牛想尽可能多的参加节日，问最多可以参加多少。注意牛的转移速度是极快的，不花时间，且节日必须完整参加。N≤10000，开始时刻和持续时间≤100000。</p>
+<h4 id="题解-22">题解</h4>
+<p>dp。设f[i]表示i时刻到最后时刻最多可以参加多少节日。则f[i]=max(f[i+1],f[range[j].r+1],j为时刻i开始的节日)。</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb23-1"><a href="#cb23-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb23-2"><a href="#cb23-2"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb23-3"><a href="#cb23-3"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb23-4"><a href="#cb23-4"></a><span class="pp">#define maxn </span><span class="dv">10100</span></span>
+<span id="cb23-5"><a href="#cb23-5"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb23-6"><a href="#cb23-6"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb23-7"><a href="#cb23-7"></a></span>
+<span id="cb23-8"><a href="#cb23-8"></a><span class="kw">inline</span> <span class="dt">int</span> read(){</span>
+<span id="cb23-9"><a href="#cb23-9"></a>    <span class="dt">char</span> ch=getchar(); <span class="dt">int</span> f=<span class="dv">1</span>,x=<span class="dv">0</span>;</span>
+<span id="cb23-10"><a href="#cb23-10"></a>    <span class="cf">while</span>(ch&lt;<span class="ch">&#39;0&#39;</span>||ch&gt;<span class="ch">&#39;9&#39;</span>){<span class="cf">if</span>(ch==<span class="ch">&#39;-&#39;</span>)f=-<span class="dv">1</span>; ch=getchar();}</span>
+<span id="cb23-11"><a href="#cb23-11"></a>    <span class="cf">while</span>(ch&gt;=<span class="ch">&#39;0&#39;</span>&amp;&amp;ch&lt;=<span class="ch">&#39;9&#39;</span>)x=x*<span class="dv">10</span>+ch-<span class="ch">&#39;0&#39;</span>,ch=getchar();</span>
+<span id="cb23-12"><a href="#cb23-12"></a>    <span class="cf">return</span> f*x;</span>
+<span id="cb23-13"><a href="#cb23-13"></a>}</span>
+<span id="cb23-14"><a href="#cb23-14"></a><span class="kw">struct</span> rg{<span class="dt">int</span> len,n;}; rg rgs[maxn]; <span class="dt">int</span> f[maxn*<span class="dv">20</span>],n,mx,g[maxn*<span class="dv">20</span>];</span>
+<span id="cb23-15"><a href="#cb23-15"></a><span class="dt">int</span> main(){</span>
+<span id="cb23-16"><a href="#cb23-16"></a>    n=read(); inc(i,<span class="dv">1</span>,n){<span class="dt">int</span> a=read(),b=read(); rgs[i]=(rg){b,g[a]}; g[a]=i; mx=max(mx,a);}</span>
+<span id="cb23-17"><a href="#cb23-17"></a>    <span class="cf">for</span>(<span class="dt">int</span> i=mx;i&gt;=<span class="dv">1</span>;i--){</span>
+<span id="cb23-18"><a href="#cb23-18"></a>        f[i]=f[i+<span class="dv">1</span>]; <span class="cf">for</span>(<span class="dt">int</span> j=g[i];j;j=rgs[j].n)f[i]=max(f[i],f[i+rgs[j].len]+<span class="dv">1</span>);</span>
+<span id="cb23-19"><a href="#cb23-19"></a>    }</span>
+<span id="cb23-20"><a href="#cb23-20"></a>    printf(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span>,f[<span class="dv">1</span>]); <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb23-21"><a href="#cb23-21"></a>}</span></code></pre></div>
+<h3 id="bzoj1650usaco2006-decriver-hopscotch-跳石子2016.7.30">bzoj1650[Usaco2006 Dec]River Hopscotch 跳石子*（2016.7.30）</h3>
+<h4 id="题意-23">题意</h4>
+<p>数轴上有n个石子，第i个石头的坐标为Di，现在要从0跳到L，每次跳都从一个石子跳到相邻的下一个石子。现在问移走这M个石子后，相邻两个石子及0到最前一个石子及最后一个石子到L距离的最小值的最大值是多少。n≤50000</p>
+<h4 id="题解-23">题解</h4>
+<p>为什么有NOIP2015即视感~二分距离最小值，然后如果当前石子和上一个石子相差小于二分值就将这个石子移走，如果位置L与上一个石子相差小于二分值，此时若还没有移满M个且有没移走的石子，就可以将其移走，否则不合法。</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb24-1"><a href="#cb24-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb24-2"><a href="#cb24-2"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb24-3"><a href="#cb24-3"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb24-4"><a href="#cb24-4"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb24-5"><a href="#cb24-5"></a><span class="pp">#define maxn </span><span class="dv">50100</span></span>
+<span id="cb24-6"><a href="#cb24-6"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb24-7"><a href="#cb24-7"></a></span>
+<span id="cb24-8"><a href="#cb24-8"></a><span class="kw">inline</span> <span class="dt">int</span> read(){</span>
+<span id="cb24-9"><a href="#cb24-9"></a>    <span class="dt">char</span> ch=getchar(); <span class="dt">int</span> f=<span class="dv">1</span>,x=<span class="dv">0</span>;</span>
+<span id="cb24-10"><a href="#cb24-10"></a>    <span class="cf">while</span>(ch&lt;<span class="ch">&#39;0&#39;</span>||ch&gt;<span class="ch">&#39;9&#39;</span>){<span class="cf">if</span>(ch==<span class="ch">&#39;-&#39;</span>)f=-<span class="dv">1</span>; ch=getchar();}</span>
+<span id="cb24-11"><a href="#cb24-11"></a>    <span class="cf">while</span>(ch&gt;=<span class="ch">&#39;0&#39;</span>&amp;&amp;ch&lt;=<span class="ch">&#39;9&#39;</span>)x=x*<span class="dv">10</span>+ch-<span class="ch">&#39;0&#39;</span>,ch=getchar();</span>
+<span id="cb24-12"><a href="#cb24-12"></a>    <span class="cf">return</span> f*x;</span>
+<span id="cb24-13"><a href="#cb24-13"></a>}</span>
+<span id="cb24-14"><a href="#cb24-14"></a><span class="dt">int</span> n,m,d,rc[maxn],l,r,ans;</span>
+<span id="cb24-15"><a href="#cb24-15"></a><span class="dt">bool</span> check(<span class="dt">int</span> x){</span>
+<span id="cb24-16"><a href="#cb24-16"></a>    <span class="dt">int</span> y=<span class="dv">0</span>,z=<span class="dv">0</span>;</span>
+<span id="cb24-17"><a href="#cb24-17"></a>    inc(i,<span class="dv">1</span>,n){<span class="cf">if</span>(rc[i]-y&lt;x){z++; <span class="cf">if</span>(z&gt;m)<span class="cf">return</span> <span class="dv">0</span>;}<span class="cf">else</span> y=rc[i];}</span>
+<span id="cb24-18"><a href="#cb24-18"></a>    <span class="cf">if</span>(d-y&lt;x&amp;&amp;(z==m||z==n))<span class="cf">return</span> <span class="dv">0</span>; <span class="cf">return</span> <span class="dv">1</span>;</span>
+<span id="cb24-19"><a href="#cb24-19"></a>}</span>
+<span id="cb24-20"><a href="#cb24-20"></a><span class="dt">int</span> main(){</span>
+<span id="cb24-21"><a href="#cb24-21"></a>    d=read(); n=read(); m=read(); inc(i,<span class="dv">1</span>,n)rc[i]=read(); sort(rc+<span class="dv">1</span>,rc+n+<span class="dv">1</span>); l=<span class="dv">1</span>; r=<span class="dv">1000000000</span>;</span>
+<span id="cb24-22"><a href="#cb24-22"></a>    <span class="cf">while</span>(l&lt;=r){</span>
+<span id="cb24-23"><a href="#cb24-23"></a>        <span class="dt">int</span> mid=(l+r)&gt;&gt;<span class="dv">1</span>; <span class="cf">if</span>(check(mid))ans=mid,l=mid+<span class="dv">1</span>;<span class="cf">else</span> r=mid-<span class="dv">1</span>;</span>
+<span id="cb24-24"><a href="#cb24-24"></a>    }</span>
+<span id="cb24-25"><a href="#cb24-25"></a>    printf(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span>,ans); <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb24-26"><a href="#cb24-26"></a>}</span></code></pre></div>
+<h3 id="bzoj1639usaco2007-marmonthly-expense-月度开支2016.7.31">bzoj1639[Usaco2007 Mar]Monthly Expense 月度开支*（2016.7.31）</h3>
+<h4 id="题意-24">题意</h4>
+<p>n天，每天有一个花费，现在要将它们分成连续的m段，要求所有段的总花费的最大值最小。求这个值。n，m≤100000</p>
+<h4 id="题解-24">题解</h4>
+<p>二分花费，小于二分值的天作为一段。注意二分的下界应该是每天花费的最大值。</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb25-1"><a href="#cb25-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb25-2"><a href="#cb25-2"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb25-3"><a href="#cb25-3"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb25-4"><a href="#cb25-4"></a><span class="pp">#define maxn </span><span class="dv">100100</span></span>
+<span id="cb25-5"><a href="#cb25-5"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb25-6"><a href="#cb25-6"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb25-7"><a href="#cb25-7"></a></span>
+<span id="cb25-8"><a href="#cb25-8"></a><span class="kw">inline</span> <span class="dt">int</span> read(){</span>
+<span id="cb25-9"><a href="#cb25-9"></a>    <span class="dt">char</span> ch=getchar(); <span class="dt">int</span> f=<span class="dv">1</span>,x=<span class="dv">0</span>;</span>
+<span id="cb25-10"><a href="#cb25-10"></a>    <span class="cf">while</span>(ch&lt;<span class="ch">&#39;0&#39;</span>||ch&gt;<span class="ch">&#39;9&#39;</span>){<span class="cf">if</span>(ch==<span class="ch">&#39;-&#39;</span>)f=-<span class="dv">1</span>; ch=getchar();}</span>
+<span id="cb25-11"><a href="#cb25-11"></a>    <span class="cf">while</span>(ch&gt;=<span class="ch">&#39;0&#39;</span>&amp;&amp;ch&lt;=<span class="ch">&#39;9&#39;</span>)x=x*<span class="dv">10</span>+ch-<span class="ch">&#39;0&#39;</span>,ch=getchar();</span>
+<span id="cb25-12"><a href="#cb25-12"></a>    <span class="cf">return</span> f*x;</span>
+<span id="cb25-13"><a href="#cb25-13"></a>}</span>
+<span id="cb25-14"><a href="#cb25-14"></a><span class="dt">int</span> n,m,mon[maxn],l,r,ans;</span>
+<span id="cb25-15"><a href="#cb25-15"></a><span class="dt">bool</span> check(<span class="dt">int</span> x){</span>
+<span id="cb25-16"><a href="#cb25-16"></a>    <span class="dt">int</span> y=<span class="dv">1</span>,z=<span class="dv">0</span>;</span>
+<span id="cb25-17"><a href="#cb25-17"></a>    inc(i,<span class="dv">1</span>,n){</span>
+<span id="cb25-18"><a href="#cb25-18"></a>        <span class="cf">if</span>(z+mon[i]&gt;x){y++; z=mon[i]; <span class="cf">if</span>(y&gt;m)<span class="cf">return</span> <span class="dv">0</span>;}<span class="cf">else</span> z+=mon[i];</span>
+<span id="cb25-19"><a href="#cb25-19"></a>    }</span>
+<span id="cb25-20"><a href="#cb25-20"></a>    <span class="cf">return</span> <span class="dv">1</span>;</span>
+<span id="cb25-21"><a href="#cb25-21"></a>}</span>
+<span id="cb25-22"><a href="#cb25-22"></a><span class="dt">int</span> main(){</span>
+<span id="cb25-23"><a href="#cb25-23"></a>    n=read(); m=read(); inc(i,<span class="dv">1</span>,n)mon[i]=read(),l=max(l,mon[i]),r+=mon[i];</span>
+<span id="cb25-24"><a href="#cb25-24"></a>    <span class="cf">while</span>(l&lt;=r){</span>
+<span id="cb25-25"><a href="#cb25-25"></a>        <span class="dt">int</span> mid=(l+r)&gt;&gt;<span class="dv">1</span>; <span class="cf">if</span>(check(mid))ans=mid,r=mid-<span class="dv">1</span>;<span class="cf">else</span> l=mid+<span class="dv">1</span>;</span>
+<span id="cb25-26"><a href="#cb25-26"></a>    }</span>
+<span id="cb25-27"><a href="#cb25-27"></a>    printf(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span>,ans); <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb25-28"><a href="#cb25-28"></a>}</span></code></pre></div>
+<h3 id="bzoj1612usaco2008-jancow-contest奶牛的比赛2016.7.31">bzoj1612[Usaco2008 Jan]Cow Contest奶牛的比赛*（2016.7.31）</h3>
+<h4 id="题意-25">题意</h4>
+<p>n头能力不一样的奶牛，给出m对奶牛之间的能力比较结果，要求判断多少奶牛的能力排名已经确定。n≤100，m≤4500。</p>
+<h4 id="题解-25">题解</h4>
+<p>把每个结果看成一条有向边，对每头奶牛dfs，求出每头奶牛赢几头奶牛，输几头奶牛。如果赢数加输数等于n-1，那么这头奶牛的排名就可以确定。</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb26-1"><a href="#cb26-1"></a><span class="pp">#include </span><span class="im">&lt;cstdio&gt;</span></span>
+<span id="cb26-2"><a href="#cb26-2"></a><span class="pp">#include </span><span class="im">&lt;cstring&gt;</span></span>
+<span id="cb26-3"><a href="#cb26-3"></a><span class="pp">#include </span><span class="im">&lt;algorithm&gt;</span></span>
+<span id="cb26-4"><a href="#cb26-4"></a><span class="pp">#define maxn </span><span class="dv">101</span></span>
+<span id="cb26-5"><a href="#cb26-5"></a><span class="pp">#define inc</span>(i,j,k)<span class="pp"> </span><span class="cf">for</span>(<span class="dt">int</span><span class="pp"> </span>i=j;i&lt;=k;i++)</span>
+<span id="cb26-6"><a href="#cb26-6"></a><span class="kw">using</span> <span class="kw">namespace</span> std;</span>
+<span id="cb26-7"><a href="#cb26-7"></a></span>
+<span id="cb26-8"><a href="#cb26-8"></a><span class="kw">inline</span> <span class="dt">int</span> read(){</span>
+<span id="cb26-9"><a href="#cb26-9"></a>    <span class="dt">char</span> ch=getchar(); <span class="dt">int</span> f=<span class="dv">1</span>,x=<span class="dv">0</span>;</span>
+<span id="cb26-10"><a href="#cb26-10"></a>    <span class="cf">while</span>(ch&lt;<span class="ch">&#39;0&#39;</span>||ch&gt;<span class="ch">&#39;9&#39;</span>){<span class="cf">if</span>(ch==<span class="ch">&#39;-&#39;</span>)f=-<span class="dv">1</span>; ch=getchar();}</span>
+<span id="cb26-11"><a href="#cb26-11"></a>    <span class="cf">while</span>(ch&gt;=<span class="ch">&#39;0&#39;</span>&amp;&amp;ch&lt;=<span class="ch">&#39;9&#39;</span>)x=x*<span class="dv">10</span>+ch-<span class="ch">&#39;0&#39;</span>,ch=getchar();</span>
+<span id="cb26-12"><a href="#cb26-12"></a>    <span class="cf">return</span> f*x;</span>
+<span id="cb26-13"><a href="#cb26-13"></a>}</span>
+<span id="cb26-14"><a href="#cb26-14"></a><span class="kw">struct</span> e{<span class="dt">int</span> t,n;}; e es[maxn*<span class="dv">45</span>]; <span class="dt">int</span> ess,g[maxn]; <span class="dt">bool</span> vis[maxn];</span>
+<span id="cb26-15"><a href="#cb26-15"></a><span class="dt">void</span> pe(<span class="dt">int</span> f,<span class="dt">int</span> t){es[++ess]=(e){t,g[f]}; g[f]=ess;}</span>
+<span id="cb26-16"><a href="#cb26-16"></a><span class="dt">int</span> win[maxn],lose[maxn],n,m,ans;</span>
+<span id="cb26-17"><a href="#cb26-17"></a><span class="dt">void</span> dfs(<span class="dt">int</span> st,<span class="dt">int</span> x){</span>
+<span id="cb26-18"><a href="#cb26-18"></a>    <span class="cf">for</span>(<span class="dt">int</span> i=g[x];i;i=es[i].n)<span class="cf">if</span>(!vis[es[i].t]){</span>
+<span id="cb26-19"><a href="#cb26-19"></a>        lose[es[i].t]++; win[st]++; vis[es[i].t]=<span class="dv">1</span>; dfs(st,es[i].t);</span>
+<span id="cb26-20"><a href="#cb26-20"></a>    }</span>
+<span id="cb26-21"><a href="#cb26-21"></a>}</span>
+<span id="cb26-22"><a href="#cb26-22"></a><span class="dt">int</span> main(){</span>
+<span id="cb26-23"><a href="#cb26-23"></a>    n=read(); m=read();</span>
+<span id="cb26-24"><a href="#cb26-24"></a>    inc(i,<span class="dv">1</span>,m){<span class="dt">int</span> a=read(),b=read(); pe(a,b);}</span>
+<span id="cb26-25"><a href="#cb26-25"></a>    inc(i,<span class="dv">1</span>,n)memset(vis,<span class="dv">0</span>,<span class="kw">sizeof</span>(vis)),dfs(i,i);</span>
+<span id="cb26-26"><a href="#cb26-26"></a>    inc(i,<span class="dv">1</span>,n)<span class="cf">if</span>(win[i]+lose[i]==n-<span class="dv">1</span>)ans++; printf(<span class="st">&quot;</span><span class="sc">%d</span><span class="st">&quot;</span>,ans); <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb26-27"><a href="#cb26-27"></a>}</span></code></pre></div>
+<footer>
+    <hr><center>转载请注明出处<br>© 2023 VnYzm的博客</center>
+</footer>
+</body>
+</html>

@@ -36,6 +36,7 @@ html[data-theme='tufte']{
                     'keydown',  (event) => {
                         if (event.key == 'Enter') search();
                 });
+                document.querySelector('#email').innerText = window.atob(document.querySelector('#email').innerText);
             }
         </script>
         <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
@@ -123,6 +124,7 @@ html[data-theme='tufte']{
 <a href="/index/4.html"><button>4</button></a>
 <a href="/index/5.html"><button>5</button></a>
 <a href="/index/6.html"><button>6</button></a>
+<a href="/index/7.html"><button>7</button></a>
 
             </div>
             <div class="col-3">
@@ -139,7 +141,7 @@ html[data-theme='tufte']{
                     <a href="https://www.cnblogs.com/YuanZiming/" target="_BLANK">我的博客园</a>
                     也是我的博客，有过去的一些文章以及细致的文章分类。
                     </p>
-                    <p>联系方式：<a href="mailto:yzmyzm99@outlook.com">yzmyzm99@outlook.com</a></p>
+                    <p>联系方式：<span id="email">eXpteXptOTlAb3V0bG9vay5jb20=</span></p>
                 </div>
             </div>
         </div>

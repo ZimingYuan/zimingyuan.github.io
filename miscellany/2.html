@@ -36,6 +36,7 @@ html[data-theme='tufte']{
                     'keydown',  (event) => {
                         if (event.key == 'Enter') search();
                 });
+                document.querySelector('#email').innerText = window.atob(document.querySelector('#email').innerText);
             }
         </script>
         <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
@@ -61,6 +62,12 @@ html[data-theme='tufte']{
                     <p>⚠ 所有观后感、玩后感均包含对应作品的<b>重度剧透</b>！</p>
                 </blockquote>
                 
+<div class="card">
+    <h4><a href="/html/动漫观后感：夏日重现.html">动漫观后感：夏日重现</a></h4><hr>
+    <p>注：本文包含重启咲良田的剧透。看了夏日重现的前七集，感觉还挺好看的。男主非常聪明有行动力，让我想到当年看的重启咲良田了。同样是loop题材，男主每次重启又是做笔记又是录像找证据什么的，步步为营，可惜就是敌人不是人...</p>
+    <em>2023年3月9日</em>
+</div>
+
 <div class="card">
     <h4><a href="/html/游戏玩后感：海沙风云.html">游戏玩后感：海沙风云</a></h4><hr>
     <p>这几天玩完了海沙风云的警察线，包含米勒和皮特两个角色的线路。这是我第一次玩国产视觉小说游戏，主角是女的，也没有专门的恋爱情节，所以算不上gal...</p>
@@ -114,12 +121,6 @@ html[data-theme='tufte']{
     <p>开始玩rewrite了，rewrite的日常感觉好长，5年前我观摩大佬玩过一点，知道这部游戏的世界观极其宏大，但前期又是老掉牙的日常+后宫，真的是迫不及待。而且我准备一周目自己玩的...</p>
     <em>2021年2月13日</em>
 </div>
-
-<div class="card">
-    <h4><a href="/html/动漫观后感：命运石之门.html">动漫观后感：命运石之门</a></h4><hr>
-    <p>一口气看完了命运石之门，后面确实精彩，而且我也梳理清楚了时间线。在第一天牧濑应该是中钵杀的，但被冈伦发现，发了个短信，而阿至正在开微波炉，所以这个短信被过去的sern截获...</p>
-    <em>2020年7月21日</em>
-</div>
 <a href="/miscellany.html"><button>1</button></a>
 <button disabled>2</button>
 <a href="/miscellany/3.html"><button>3</button></a>
@@ -132,8 +133,7 @@ html[data-theme='tufte']{
                     <img style="border-radius: 10%; padding: 5%" src="/img/profile.jpg"></img>
                     <p>前偏远小渔村边缘OIer，HUST计院普通大学生，现在是ICT搬砖工。</p>
                     <p>最近太摆了没什么干货可以写，所以放了一些摸鱼后的观后感、玩后感，极为主观，仅供大家看个乐呵。</p>
-                    <p>联系方式：<a href="mailto:yzmyzm99@outlook.com">yzmyzm99@outlook.com</a></p>
-
+                    <p>联系方式：<span id="email">eXpteXptOTlAb3V0bG9vay5jb20=</span></p>
                 </div>
             </div>
         </div>

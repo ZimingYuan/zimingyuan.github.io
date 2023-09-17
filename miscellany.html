@@ -36,6 +36,7 @@ html[data-theme='tufte']{
                     'keydown',  (event) => {
                         if (event.key == 'Enter') search();
                 });
+                document.querySelector('#email').innerText = window.atob(document.querySelector('#email').innerText);
             }
         </script>
         <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
@@ -61,6 +62,12 @@ html[data-theme='tufte']{
                     <p>⚠ 所有观后感、玩后感均包含对应作品的<b>重度剧透</b>！</p>
                 </blockquote>
                 
+<div class="card">
+    <h4><a href="/html/游戏玩后感：苍之彼方的四重奏.html">游戏玩后感：苍之彼方的四重奏</a></h4><hr>
+    <p>在刚开始入gal坑的时候，我对这部作品的兴趣其实没有很大，毕竟还是运动题材，我又是老宅男了。不过后面看到它评分很高，加上贴吧里有个粉丝把自己的ACM竞赛生涯和这部游戏联系起来...</p>
+    <em>2023年9月17日</em>
+</div>
+
 <div class="card">
     <h4><a href="/html/krkr引擎解包工具介绍.html">krkr引擎解包工具介绍</a></h4><hr>
     <p>krkr引擎是日本的一个开源免费galgame游戏引擎，由于不用钱，也不用自己维护，所以被很多游戏所使用。我知道的就包括柚子社全家桶、Lose全家桶、《9nine》、《Atri》这些...</p>
@@ -114,12 +121,6 @@ html[data-theme='tufte']{
     <p>看完了向山进发的第一季，这部动漫第一季全是3分钟的泡面番，二三季则是每集十几分钟，到第四季才是和其他动漫一样的时长。我对登山其实没啥兴趣，因为协调性太差+恐高，每次下山都是胆战心惊的。我看这部动漫主要也是放松...</p>
     <em>2023年4月5日</em>
 </div>
-
-<div class="card">
-    <h4><a href="/html/动漫观后感：夏日重现.html">动漫观后感：夏日重现</a></h4><hr>
-    <p>注：本文包含重启咲良田的剧透。看了夏日重现的前七集，感觉还挺好看的。男主非常聪明有行动力，让我想到当年看的重启咲良田了。同样是loop题材，男主每次重启又是做笔记又是录像找证据什么的，步步为营，可惜就是敌人不是人...</p>
-    <em>2023年3月9日</em>
-</div>
 <button disabled>1</button>
 <a href="/miscellany/2.html"><button>2</button></a>
 <a href="/miscellany/3.html"><button>3</button></a>
@@ -132,8 +133,7 @@ html[data-theme='tufte']{
                     <img style="border-radius: 10%; padding: 5%" src="/img/profile.jpg"></img>
                     <p>前偏远小渔村边缘OIer，HUST计院普通大学生，现在是ICT搬砖工。</p>
                     <p>最近太摆了没什么干货可以写，所以放了一些摸鱼后的观后感、玩后感，极为主观，仅供大家看个乐呵。</p>
-                    <p>联系方式：<a href="mailto:yzmyzm99@outlook.com">yzmyzm99@outlook.com</a></p>
-
+                    <p>联系方式：<span id="email">eXpteXptOTlAb3V0bG9vay5jb20=</span></p>
                 </div>
             </div>
         </div>
