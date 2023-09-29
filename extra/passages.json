@@ -1,5 +1,11 @@
 [
     {
+        "name": "最简单的算卦方法之一：梅花易数法",
+        "date": "2023年9月29日",
+        "category": "miscellany",
+        "abstract": "虽然我个人对神秘学、玄学之类的东西没什么兴趣，整体是唯物主义者，但是掌握一种“占卜”的方式感觉还是挺酷的，很适合在聚会、联谊之类的场合表演表演，拉近和别人之间的关系..."
+    },
+    {
         "name": "游戏玩后感：LittleBustersEX",
         "date": "2022年10月3日（2023.9更新）",
         "category": "miscellany",
@@ -93,7 +99,7 @@
         "name": "CSP模板",
         "date": "2023年2月27日",
         "category": "index",
-        "abstract": "Dijkstra struct nd{ int d, u; bool operator < (const nd &a) const { return d>a.d; } }; int d[maxn]; bool vis[maxn]; priority_queue<nd>q; void dijkstra(int s,int t){ ..."
+        "abstract": "CSP考试所用材料，包含宏定义、常用算法、简捷Vim配置等..."
     },
     {
         "name": "游戏玩后感：海沙风云",
@@ -135,7 +141,7 @@
         "name": "markdown测试",
         "date": "2022年2月25日",
         "category": "index",
-        "abstract": "标题1 标题2 标题3 标题4 标题5 标题6 加粗 倾斜 code 删除 ai markdown教程1 无序1 无序2 无序3 有序1 有序2 有序 引用 // multiline code import python print('hello world')..."
+        "abstract": "测试一下本博客（准确来说是Pandoc）的Markdown支持..."
     },
     {
         "name": "Ultra96V2开发板简单使用",

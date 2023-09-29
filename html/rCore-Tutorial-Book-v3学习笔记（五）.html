@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" data-theme="tufte">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN" data-theme="tufte">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
@@ -123,8 +123,9 @@ html[data-theme='tufte']{
             <li><a href="/index.html">主页</a></li>
             <li><a href="/html/随笔.html">随笔</a></li>
             <li><a href="/miscellany.html">杂谈</a></li>
+            <li><a href="/friends.html">友链</a></li>
             <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
-            <li class="float-right sticky"><input type="search" placeholder="搜索" style="margin: 0"></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索标题" style="margin: 0"></li>
         </ul>
     </nav>
 <header id="title-block-header">
@@ -310,7 +311,12 @@ html[data-theme='tufte']{
 <li><p>目前内核本身运行其实是串行的，还是因为目前的实现里时钟中断只会在用户态里被触发。这就给了我偷懒的机会，内核中所有地方都没有实现锁机制。rust语言层面支持，借助库可以直接上，所以rCore是有的，而C语言则只能自己实现（当然也可以借鉴xv6）。我打算后面如果把时钟中断扩展到内核态或者让qemu启用多核运行模式时再对这一块进行处理。</p></li>
 </ul>
 <footer>
-    <hr><center>转载请注明出处<br>© 2023 VnYzm的博客</center>
+    <hr>
+    <center>
+        Powered by <a href="https://github.com/ZimingYuan/Yblogs">Yblogs</a><br>
+        转载请注明出处<br>
+        © 2023 VnYzm的博客
+    </center>
 </footer>
 </body>
 </html>

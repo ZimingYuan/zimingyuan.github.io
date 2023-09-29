@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="tufte">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="/extra/classless.css" />
+<style>
+html[data-theme='tufte']{
+    --rem: 15px;
+    --navpos: absolute;
+    --width: 70rem;
+    --font-p: 1.4rem/2 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-h: 1.4rem/1.5 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --ornament: "";
+    --border: 1px solid var(--cmed);
+    /* foreground   | background color */
+    --cfg:   #111;    --cbg:    #fbf7ec;
+    --cdark: #111;    --clight: #fbf7ec;
+    --cmed: #b4d5fe;
+    --clink: #111;
+    --cemph: #111;
+}
+</style>
+    <script>
+        let search = () => {
+            let word = document.querySelector('input');
+            if (word.value.length == 0) {
+                word.focus();
+            } else {
+                location.href = '/search.html?' + word.value;
+            }
+        };
+        window.onload = () => {
+            document.querySelector('input').addEventListener(
+                'keydown',  (event) => {
+                    if (event.key == 'Enter') search();
+            });
+        }
+    </script>
+    <style>
+        .avatar {
+            width: 5em;
+            height: 5em;
+            border-radius: 0.6em;
+            border-style: solid;
+            border-width: medium;
+            border-color: var(--cmed);
+            float: left;
+            margin-top: 0.2em !important;
+            margin-bottom: 0.2em !important;
+            margin-left: 0em !important;
+            margin-right: 1em !important;
+        }
+    </style>
+        <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+        <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+        <title>友情链接</title>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><big>VnYzm的博客</big></li>
+                <li><a href="/index.html">主页</a></li>
+                <li><a href="/html/随笔.html">随笔</a></li>
+                <li><a href="/miscellany.html">杂谈</a></li>
+                <li><a href="/friends.html"><strong>友链</strong></a></li>
+                <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
+                <li class="float-right sticky"><input type="search" placeholder="搜索标题" style="margin: 0"></li>
+            </ul>
+        </nav>
+        <header>
+            <h1>友情链接</h1>
+        </header>
+        <div class="row">
+            <div class="col">
+                <div class="row">
+<div class="col-6">
+    <div class="card">
+        <img class="avatar" src="https://avatars.githubusercontent.com/u/44976445"></img>
+        <a href="https://blog.bj-yan.top/"><strong>北屿</strong></a>
+        <br>
+        <span>北屿小智障！</span>
+    </div>
+</div>
+
+<div class="col-6">
+    <div class="card">
+        <img class="avatar" src="https://sydddl.github.io/img/avatar_hufbc9dc5a6fdabfcb7bc64a3668907b4c_1259297_300x0_resize_box_3.png"></img>
+        <a href="https://sydddl.github.io/"><strong>DeathSprout</strong></a>
+        <br>
+        <span>欢迎来我的赛博小窝</span>
+    </div>
+</div>
+</div>
+<div class="row">
+<div class="col-6">
+    <div class="card">
+        <img class="avatar" src="https://baozi.run/assets/img/touxiang.jpeg"></img>
+        <a href="https://baozi.run/"><strong>包子丶</strong></a>
+        <br>
+        <span>好奇者，探索者</span>
+    </div>
+</div>
+
+<div class="col-6">
+    <div class="card">
+        <img class="avatar" src="https://cdn.jsdelivr.net/gh/zEpoch/imageHome@main/avatar.png"></img>
+        <a href="https://www.zepoch.cc/"><strong>zepoch</strong></a>
+        <br>
+        <span>记录我的工作学习与生活</span>
+    </div>
+</div>
+</div>
+<div class="row">
+<div class="col-6">
+    <div class="card">
+        <img class="avatar" src="https://peng-yq.github.io/img/avatar-pyq.jpg"></img>
+        <a href="https://peng-yq.github.io"><strong>PYQ Blog</strong></a>
+        <br>
+        <span>想成为真正的工程师</span>
+    </div>
+</div>
+
+<div class="col-6">
+    <div class="card">
+        <img class="avatar" src="https://miroier.github.io/images/avatar.png"></img>
+        <a href="https://miroier.github.io/"><strong>Seclusion</strong></a>
+        <br>
+        <span>keep calm and carry on</span>
+    </div>
+</div>
+</div>
+<div class="row">
+<div class="col-6">
+    <div class="card">
+        <img class="avatar" src="http://www.gislxz.com/wp-content/uploads/2021/08/cropped-QQ%E5%9B%BE%E7%89%8720210803110348.jpg"></img>
+        <a href="https://www.gislxz.com/"><strong>吱吱的小站</strong></a>
+        <br>
+        <span>Et Omnia Vanitas</span>
+    </div>
+</div>
+
+<div class="col-6">
+    <div class="card">
+        <img class="avatar" src="https://qgrain.github.io/img/qq.jpg"></img>
+        <a href="https://qgrain.github.io/"><strong>Zhiyu's Blog</strong></a>
+        <br>
+        <span>JUST DO IT ! ┏ (゜ω゜)= ☞</span>
+    </div>
+</div>
+</div>
+<div class="row">
+<div class="col-6">
+    <div class="card">
+        <img class="avatar" src="http://www.static.senghe.top/config/4bf70e102b2e97c8b286eb251ebc1865.jpg"></img>
+        <a href="http://www.senghe.top/"><strong>无限进步！</strong></a>
+        <br>
+        <span>无限进步！</span>
+    </div>
+</div>
+
+<div class="col-6">
+    <div class="card">
+        <img class="avatar" src="https://ymiir.top/assets/img/touxiang.jpg"></img>
+        <a href="https://ymiir.top/"><strong>月梦の技术博客</strong></a>
+        <br>
+        <span>博学而笃志，切问而近思。</span>
+    </div>
+</div>
+</div>
+<div class="row">
+<div class="col-6">
+    <div class="card">
+        <img class="avatar" src="https://dimsmary.tech/img/Zero.png"></img>
+        <a href="https://dimsmary.tech/"><strong>Dimsmary</strong></a>
+        <br>
+        <span>Do What U Wanna Do</span>
+    </div>
+</div>
+
+<div class="col-6">
+    <div class="card">
+        <img class="avatar" src="https://foruda.gitee.com/avatar/1680592789363171979/2238128_thhh_sunny_1680592789.png"></img>
+        <a href="https://fsdn.sunny.icu/"><strong>FSDN</strong></a>
+        <br>
+        <span>FairySunny's Developer Notes</span>
+    </div>
+</div>
+</div>
+
+            </div>
+            <div class="col-3">
+                <div class="row">
+                    <div class="col">
+                        <div class="card">
+                            <h4>关于我</h4>
+                            <hr>
+                            <img style="border-radius: 10%; padding: 5%" src="/img/profile.jpg"></img>
+                            <p>网站名称：VnYzm</p>
+                            <p>网站地址：zimingyuan.github.io</p>
+                            <p>网站描述：分享技术心得和摸鱼感想</p>
+                            <p>欢迎联系我添加友链~</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <footer>
+            <hr>
+            <center>
+                Powered by <a href="https://github.com/ZimingYuan/Yblogs">Yblogs</a><br>
+                转载请注明出处<br>
+                © 2023 VnYzm的博客
+            </center>
+        </footer>
+    </body>
+</html>

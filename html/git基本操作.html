@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" data-theme="tufte">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN" data-theme="tufte">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
@@ -61,8 +61,9 @@ html[data-theme='tufte']{
             <li><a href="/index.html">主页</a></li>
             <li><a href="/html/随笔.html">随笔</a></li>
             <li><a href="/miscellany.html">杂谈</a></li>
+            <li><a href="/friends.html">友链</a></li>
             <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
-            <li class="float-right sticky"><input type="search" placeholder="搜索" style="margin: 0"></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索标题" style="margin: 0"></li>
         </ul>
     </nav>
 <header id="title-block-header">
@@ -109,7 +110,12 @@ git checkout 分支名</code></pre>
 <pre><code>git merge B A</code></pre>
 <p>合并分为以下情况： * 若B是A之前的版本或A是B之前的版本，则合并无效 * 若B和A是同一版本衍生出的两个不同版本（比方说本地克隆了C，并把C改成了B，而网上的C经过PullRequest或其他人的push变成了A，然后把Afetch了下来），此时： * 若B和A修改的是不同文件，或同一文件的不同行，则merge会将两个修改合并（比方说C包括1.txt 2.txt 3.txt，A删除了3.txt变成1.txt 2.txt，B删除了2.txt变成1.txt 3.txt，则B合并到A后A只剩1.txt）。 * 若B和A修改的是同一文件的同一行（实际情况可能不限于这个，反正就是改乱了），merge会失败，并将B和A冲突的文件的内容加上冲突提示标记，你需要手动将这个文件改成你预期的解决冲突后的样子。</p>
 <footer>
-    <hr><center>转载请注明出处<br>© 2023 VnYzm的博客</center>
+    <hr>
+    <center>
+        Powered by <a href="https://github.com/ZimingYuan/Yblogs">Yblogs</a><br>
+        转载请注明出处<br>
+        © 2023 VnYzm的博客
+    </center>
 </footer>
 </body>
 </html>

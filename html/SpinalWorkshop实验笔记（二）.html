@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" data-theme="tufte">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN" data-theme="tufte">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
@@ -123,8 +123,9 @@ html[data-theme='tufte']{
             <li><a href="/index.html">主页</a></li>
             <li><a href="/html/随笔.html">随笔</a></li>
             <li><a href="/miscellany.html">杂谈</a></li>
+            <li><a href="/friends.html">友链</a></li>
             <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
-            <li class="float-right sticky"><input type="search" placeholder="搜索" style="margin: 0"></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索标题" style="margin: 0"></li>
         </ul>
     </nav>
 <header id="title-block-header">
@@ -323,7 +324,12 @@ html[data-theme='tufte']{
 <p>实现方式是定义一个寄存器作为当前信号的后继，这样当前信号下降的时候后继寄存器还没下降。我一开始没仔细看，选了后面那个没参数的重载。结果那个后继寄存器没初始化！众所周知，没有初始化会导致一些匪夷所思的结果，我就遇到了诸如when (cond) {do A} otherwise {do B}和when (!cond) {do B} otherwise {do A}结果不一样和计数器只能用Reg不能用Counter之类的诡异问题。最后看了波形才明白，原因是后继寄存器一开始为1，所以只要当前信号是低电平都会返回1。我只想吐槽一句，写第二个重载的人是不是SpinalHDL项目组里的内鬼，这不是纯坑爹吗？事实上，我觉得初始值直接默认为假就可以了，根本就没有初始值为真能返回正确结果的情况。</p></li>
 </ul>
 <footer>
-    <hr><center>转载请注明出处<br>© 2023 VnYzm的博客</center>
+    <hr>
+    <center>
+        Powered by <a href="https://github.com/ZimingYuan/Yblogs">Yblogs</a><br>
+        转载请注明出处<br>
+        © 2023 VnYzm的博客
+    </center>
 </footer>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="" data-theme="tufte">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN" data-theme="tufte">
 <head>
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
@@ -123,8 +123,9 @@ html[data-theme='tufte']{
             <li><a href="/index.html">主页</a></li>
             <li><a href="/html/随笔.html">随笔</a></li>
             <li><a href="/miscellany.html">杂谈</a></li>
+            <li><a href="/friends.html">友链</a></li>
             <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
-            <li class="float-right sticky"><input type="search" placeholder="搜索" style="margin: 0"></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索标题" style="margin: 0"></li>
         </ul>
     </nav>
 <header id="title-block-header">
@@ -207,7 +208,12 @@ html[data-theme='tufte']{
 <p>我这里Pipe结构体和rCore不太一样，rCore里Pipe对象的意思是“管口”，有额外的PipeRingBuffer对象表示管道本身。我这里Pipe就是管道本身，文件描述符中bind属性指向它，所以文件描述符本身就充当“管口”了。管道中还有一个wrefcnt属性表示写引用计数，在读函数中如果判断写引用计数为0，说明管道中不会再有新数据了，则直接返回已经读取的全部数据。</p>
 <p>在复制和释放管道文件的时候，判断释放应该修改写引用计数的方法是判断该文件的读函数是否指向<code>illegal_rw</code>，这个函数是一个直接返回错误的函数，用来填充该文件不支持的操作对应函数指针，如果管道文件的读函数指向<code>illegal_rw</code>，说明这个管道文件不支持读取，是写管口，此时就应该修改写引用计数。</p>
 <footer>
-    <hr><center>转载请注明出处<br>© 2023 VnYzm的博客</center>
+    <hr>
+    <center>
+        Powered by <a href="https://github.com/ZimingYuan/Yblogs">Yblogs</a><br>
+        转载请注明出处<br>
+        © 2023 VnYzm的博客
+    </center>
 </footer>
 </body>
 </html>

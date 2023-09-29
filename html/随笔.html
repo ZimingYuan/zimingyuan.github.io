@@ -123,36 +123,41 @@ html[data-theme='tufte']{
             <li><a href="/index.html">主页</a></li>
             <li><a href="/html/随笔.html">随笔</a></li>
             <li><a href="/miscellany.html">杂谈</a></li>
+            <li><a href="/friends.html">友链</a></li>
             <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
-            <li class="float-right sticky"><input type="search" placeholder="搜索" style="margin: 0"></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索标题" style="margin: 0"></li>
         </ul>
     </nav>
 <header id="title-block-header">
 <h1 class="title">随笔</h1>
 <hr>
 </header>
+<h3 id="powershell下查找文件内容包含字符串txt的文件">powershell下查找文件内容包含字符串<code>txt</code>的文件</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">sls</span> -pattern txt *</span></code></pre></div>
+<h3 id="powershell下查找扩展名为txt的文件">powershell下查找扩展名为txt的文件</h3>
+<div class="sourceCode" id="cb2"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb2-1"><a href="#cb2-1"></a><span class="fu">gci</span> -r -fi *.<span class="fu">txt</span></span></code></pre></div>
 <h3 id="windows添加arp项">Windows添加ARP项</h3>
-<div class="sourceCode" id="cb1"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1"></a>netsh -c <span class="st">&quot;i i&quot;</span> add neighbors 接口号 <span class="st">&quot;目标IP地址&quot;</span> <span class="st">&quot;目标MAC地址&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1"></a>netsh -c <span class="st">&quot;i i&quot;</span> add neighbors 接口号 <span class="st">&quot;目标IP地址&quot;</span> <span class="st">&quot;目标MAC地址&quot;</span></span></code></pre></div>
 <p>其中接口号可以用<code>arp -a</code>查看，需要自行转换成10进制，也可以用<code>netsh i i show in</code>查看。</p>
 <h3 id="批量将z开头的文件名中的z去掉">批量将z开头的文件名中的z去掉</h3>
 <p>Linux Shell:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">for</span> <span class="ex">i</span> in <span class="va">$(</span><span class="fu">ls</span> z*<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span> <span class="fu">mv</span> <span class="va">$i</span> <span class="va">${i:1}</span><span class="kw">;</span> <span class="kw">done</span></span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">for</span> <span class="ex">i</span> in <span class="va">$(</span><span class="fu">ls</span> z*<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span> <span class="fu">mv</span> <span class="va">$i</span> <span class="va">${i:1}</span><span class="kw">;</span> <span class="kw">done</span></span></code></pre></div>
 <p>PowerShell:</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">foreach</span> (<span class="va">$i</span> <span class="kw">in</span> <span class="fu">ls</span> z*) { <span class="fu">mv</span> <span class="va">$i</span>.<span class="fu">name</span> <span class="va">$i</span>.<span class="fu">name</span>.<span class="fu">substring</span>(1) }</span></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">foreach</span> (<span class="va">$i</span> <span class="kw">in</span> <span class="fu">ls</span> z*) { <span class="fu">mv</span> <span class="va">$i</span>.<span class="fu">name</span> <span class="va">$i</span>.<span class="fu">name</span>.<span class="fu">substring</span>(1) }</span></code></pre></div>
 <h3 id="批量用ffmpeg将wav文件转码成mp3文件文件名前缀不变">批量用ffmpeg将wav文件转码成mp3文件，文件名前缀不变</h3>
 <p>Linux Shell:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">for</span> <span class="ex">i</span> in <span class="va">$(</span><span class="fu">ls</span> *.wav<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span> <span class="ex">ffmpeg</span> -i <span class="va">$i</span> -acodec mp3 <span class="va">${i%</span>.*<span class="va">}</span>.mp3<span class="kw">;</span> <span class="kw">done</span></span></code></pre></div>
+<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">for</span> <span class="ex">i</span> in <span class="va">$(</span><span class="fu">ls</span> *.wav<span class="va">)</span><span class="kw">;</span> <span class="kw">do</span> <span class="ex">ffmpeg</span> -i <span class="va">$i</span> -acodec mp3 <span class="va">${i%</span>.*<span class="va">}</span>.mp3<span class="kw">;</span> <span class="kw">done</span></span></code></pre></div>
 <p>PowerShell:</p>
-<div class="sourceCode" id="cb5"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">foreach</span> (<span class="va">$i</span> <span class="kw">in</span> <span class="fu">ls</span> *.<span class="fu">wav</span>) { ffmpeg -i <span class="va">$i</span>.<span class="fu">name</span> -acodec mp3 <span class="va">$i</span>.<span class="fu">name</span>.<span class="fu">replace</span>(&#39;wav&#39;, &#39;mp3&#39;) }</span></code></pre></div>
+<div class="sourceCode" id="cb7"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">foreach</span> (<span class="va">$i</span> <span class="kw">in</span> <span class="fu">ls</span> *.<span class="fu">wav</span>) { ffmpeg -i <span class="va">$i</span>.<span class="fu">name</span> -acodec mp3 <span class="va">$i</span>.<span class="fu">name</span>.<span class="fu">replace</span>(&#39;wav&#39;, &#39;mp3&#39;) }</span></code></pre></div>
 <h3 id="取消git在windows下自动把克隆代码的换行符改成dos格式">取消git在Windows下自动把克隆代码的换行符改成DOS格式</h3>
-<div class="sourceCode" id="cb6"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">git</span> config --global core.autocrlf input</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">git</span> config --global core.autocrlf input</span></code></pre></div>
 <h3 id="git-克隆子项目">git 克隆子项目</h3>
-<div class="sourceCode" id="cb7"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">git</span> submodule update --init</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">git</span> submodule update --init</span></code></pre></div>
 <p>后加<code>--recursive</code>表示递归克隆，后加子项目名表示只克隆对应子项目</p>
 <p>删除克隆缓存：</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="fu">git</span> rm --cache</span></code></pre></div>
+<div class="sourceCode" id="cb10"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1"></a><span class="fu">git</span> rm --cache</span></code></pre></div>
 <h3 id="powershell下将文件放到剪贴板">powershell下将文件放到剪贴板</h3>
-<div class="sourceCode" id="cb9"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">Add-Type</span> -AssemblyName System.<span class="fu">Windows</span>.<span class="fu">Forms</span>; [System.<span class="fu">Windows</span>.<span class="fu">Forms</span>.<span class="fu">Clipboard</span>]::SetFileDropList(&#39;E:\1.<span class="fu">txt</span>&#39;);</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb11-1"><a href="#cb11-1"></a><span class="fu">Add-Type</span> -AssemblyName System.<span class="fu">Windows</span>.<span class="fu">Forms</span>; [System.<span class="fu">Windows</span>.<span class="fu">Forms</span>.<span class="fu">Clipboard</span>]::SetFileDropList(&#39;E:\1.<span class="fu">txt</span>&#39;);</span></code></pre></div>
 <p>注意文件路径必须是绝对路径</p>
 <hr />
 <h3 id="用magick将图片白色处变透明">用magick将图片白色处变透明</h3>
@@ -160,9 +165,9 @@ html[data-theme='tufte']{
 <hr />
 <h3 id="powershell下转进制">powershell下转进制</h3>
 <p>十进制转二进制</p>
-<div class="sourceCode" id="cb11"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb11-1"><a href="#cb11-1"></a>[Convert]::ToString(100, 2)</span></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb13-1"><a href="#cb13-1"></a>[Convert]::ToString(100, 2)</span></code></pre></div>
 <p>二进制转十进制</p>
-<div class="sourceCode" id="cb12"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb12-1"><a href="#cb12-1"></a>[Convert]::ToInt32(&#39;100&#39;, 2)</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb14-1"><a href="#cb14-1"></a>[Convert]::ToInt32(&#39;100&#39;, 2)</span></code></pre></div>
 <hr />
 <h3 id="vim按编码输入unicode字符">vim按编码输入unicode字符</h3>
 <pre><code>&lt;Ctrl-V&gt;U0001f022</code></pre>
@@ -198,7 +203,12 @@ html[data-theme='tufte']{
 <pre><code>magick convert -density 600 src.svg dst.png</code></pre>
 <p>注意分辨率这个选项要放在源文件名前面。</p>
 <footer>
-    <hr><center>转载请注明出处<br>© 2023 VnYzm的博客</center>
+    <hr>
+    <center>
+        Powered by <a href="https://github.com/ZimingYuan/Yblogs">Yblogs</a><br>
+        转载请注明出处<br>
+        © 2023 VnYzm的博客
+    </center>
 </footer>
 </body>
 </html>

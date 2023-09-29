@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN" data-theme="tufte">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/extra/classless.css" />
+<style>
+html[data-theme='tufte']{
+    --rem: 15px;
+    --navpos: absolute;
+    --width: 70rem;
+    --font-p: 1.4rem/2 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-h: 1.4rem/1.5 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --ornament: "";
+    --border: 1px solid var(--cmed);
+    /* foreground   | background color */
+    --cfg:   #111;    --cbg:    #fbf7ec;
+    --cdark: #111;    --clight: #fbf7ec;
+    --cmed: #b4d5fe;
+    --clink: #111;
+    --cemph: #111;
+}
+</style>
+  <script>
+      let search = () => {
+          let word = document.querySelector('input');
+          if (word.value.length == 0) {
+              word.focus();
+          } else {
+              location.href = '/search.html?' + word.value;
+          }
+      };
+      window.onload = () => {
+          document.querySelector('input').addEventListener(
+              'keydown',  (event) => {
+                  if (event.key == 'Enter') search();
+          });
+      }
+  </script>
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <title>最简单的算卦方法之一：梅花易数法</title>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><big>VnYzm的博客</big></li>
+            <li><a href="/index.html">主页</a></li>
+            <li><a href="/html/随笔.html">随笔</a></li>
+            <li><a href="/miscellany.html">杂谈</a></li>
+            <li><a href="/friends.html">友链</a></li>
+            <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索标题" style="margin: 0"></li>
+        </ul>
+    </nav>
+<header id="title-block-header">
+<h1 class="title">最简单的算卦方法之一：梅花易数法</h1>
+<hr>
+</header>
+<h3 id="背景">背景</h3>
+<p>虽然我个人对神秘学、玄学之类的东西没什么兴趣，整体是唯物主义者，但是掌握一种“占卜”的方式感觉还是挺酷的，很适合在聚会、联谊之类的场合表演表演，拉近和别人之间的关系，而且据说很多女生都对这些东西很感兴趣（动漫、游戏里那些摸水晶球、玩塔罗牌的基本都是女生），所以没事的时候就了解了一下。</p>
+<p>比起西方色彩的塔罗牌，我更喜欢带有中国传统文化色彩的易经八卦。北宋的易学家邵雍先生发明了一种非常简单的算卦方法，自学都能很容易学会，这就是<strong>梅花易数法</strong>，比其他算卦方法，如<em>六爻</em>等要简单的多，我也在这里分享一下。</p>
+<h3 id="内容">内容</h3>
+<p>古今中外，各种占卜方式无外乎分三个步骤：<strong>随机、查表和解析</strong>。比方说塔罗牌，就是先通过某种方式抽卡（随机），然后根据卡面的内容在百科书之类地方找到抽象的描述（查表），再由卜者对抽象的描述结合咨询者的实际情况进行进一步的解释（解析）。再比如寺庙求签，第一步是摇签筒得到签（随机），根据签的编号可以得到对应的谒语（查表），然后再去找高僧解释谒语（解析）。一般前两步都是花点时间就能学会的，属于“术”的范畴。最后一步才是关键，因为卜者的解析直接解析直接决定了咨询者对占卜准不准的体验感，考验的就是卜者的心理学知识和口才，属于“道”的范畴了，这才是卜者们吃饭的本事。</p>
+<p>本文介绍的梅花易数法主要也是<strong>前两步</strong>（邵先生的原著里倒是有不少案例和根据五行相生相克等易学原理去解释卦象的内容，这些倒是第三步），第一步对应梅花易数法里的起卦，第二步对应梅花易数法里的解卦。第三步就靠大家自己的理解了，反正我是不懂这些。</p>
+<h4 id="起卦">起卦</h4>
+<blockquote>
+<p>凡起卦不问数多少，即以此数作卦数，过八数即以八数递除。一八除不尽，再除二八，三八，直至除尽，以余数作卦。如得八数整，即坤卦，更不必除也。</p>
+</blockquote>
+<blockquote>
+<p>凡起动爻，以重卦总数除六，以余数作动爻。如不满六，止用此数为动爻，不必再除。如过六数，则除之一六，不尽再除二六、三六，直至除尽，以余数作动爻。若一爻动，则看此一爻，是阳爻则变阴爻，阴爻则变阳爻。取爻当以时加之。</p>
+</blockquote>
+<p>起卦，在梅花易数法就是通过某种随机方法获得本卦、互卦、变卦三个卦象。这个随机方法再进行细分，就是首先获得两个随机数，用其中一个对八取余得到上卦，另一个对八取余得到下卦，两数之和对六取余得到动爻数。如果余数为零，则用除数对应卦和爻，卦与余数的对应关系如下：</p>
+<blockquote>
+<p>干，一；兑，二；离，三；震，四；巽，五；坎，六；艮，七；坤，八。</p>
+</blockquote>
+<p>然后上卦和下卦的卦象一拼，就是本卦。本卦从上到下数，第2、3、4行（以下称爻）组成新的上卦，和第3、4、5爻组成新的下卦，新的上卦和下卦一拼，就是互卦。本卦<strong>从下到上</strong>动爻数对应的那一行反转（连的变成断的，断的变成连的）得到的新卦象就是变卦。卦和卦象的对应关系可以用最经典那句话助记：</p>
+<blockquote>
+<p>干三连，坤六断，震仰盂，艮覆碗，离中虚，坎中满，兑上缺，巽下断。</p>
+</blockquote>
+<p>比如“䷽”，就是上面是震卦，下面是艮（gen）卦；“䷿”，就是上面是离卦，下面是坎卦；“䷛”，就是上面是兑卦，下面是巽（xun）卦。然后是随机数的获取，这个就比较随便了，邵先生原文举了如用年月日、用眼前看到的东西的数量、用手头文章的字数之类的方法，网上也有让咨询人随便想两个数的方法，而我，作为经常用Windows系统的程序员，当然就要用Powershell起卦法了😂：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb1-1"><a href="#cb1-1"></a><span class="fu">get-random</span> -maximum 108</span></code></pre></div>
+<p>之所以选的是108，是因为108同时是8的倍数也是6的倍数，保证起卦是随机分布，而且108为天罡地煞数之和，也很有道家色彩👍。</p>
+<p>下面举个起卦的例子，我运行两次上面的代码，得到随机数99和42，分别模8，得到3和2，两数相加和模6，得到5。然后3对应离卦，离中虚，2对应兑卦，兑上缺，所以本卦是“䷥”。取第2-4爻为上卦，第3-5爻为下卦，得到互卦为“䷾”。本卦从下到上数第5爻从“–”变成“——”，得到变卦为“䷉”，起卦结束。</p>
+<h3 id="解卦">解卦</h3>
+<p>解卦，就是去易经里查本卦、互卦和变卦对应的描述。这里我推荐<a href="https://yijing.5000yan.com/zhouyi/">这个网站</a>，里面包含了每种卦在易经里的解释原文和译文，其他易学家的易经注释原文和译文，还有现代人的解释。不过一般易经里描述卦象都不会说什么离兑卦怎么怎么样，而是用卦的属性，比如离为火，兑为泽，那么就是火泽卦。这里给出每种卦的属性：</p>
+<blockquote>
+<p>乾（干）为天，坤为地，震为雷，艮为山，离为火，坎为水，兑为泽，巽为风</p>
+</blockquote>
+<p>我其实推荐大家把卦象和属性背下来，因为这也算是中华传统文化常识的一部分，方便在看一些带点道家元素的艺术作品时理解，比如《成龙历险记》恶魔篇里，盘古宝盒上的卦象和每个恶魔的属性都是一一对应的；再比如《西游记》里，孙悟空在八卦炉里的时候就是躲在巽位，因为那里有风所以不会着火，风也把孙悟空熏成火眼金睛。这些都是一个体系的内容。</p>
+<p>下面举个解卦的例子，承接上面，根据卦的属性，可知本卦是火泽卦，互卦是水火卦，变卦是天泽卦。查表可知，火泽睽：</p>
+<blockquote>
+<p>睽，小事吉。 彖曰：睽，火动而上，泽动而下；二女同居，其志不同行；说而丽乎明，柔进而上行，得中而应乎刚；是以小事吉。天地睽，而其事同也；男女睽，而其志通也；万物睽，而其事类也；睽之时用大矣哉！ 象曰：上火下泽，睽；君子以同而异。</p>
+</blockquote>
+<p>本卦指的是事物发生的初始过程。易经的解释是做好小事。我理解是要求稳，求同存异。</p>
+<p>水火既济：</p>
+<blockquote>
+<p>既济，亨小，利贞，初吉终乱。 彖曰：既济，亨，小者亨也。利贞，刚柔正而位当也。初吉，柔得中也。终止则乱，其道穷也。 象曰：水在火上，既济；君子以思患而豫防之。</p>
+</blockquote>
+<p>互卦指事物发生变化的过程。易经的解释是要守正道，注意起初吉祥最终混乱的可能。我理解是当前好与坏的力量达到了一个平衡状态，因此要做正事，维持好现在的平衡。</p>
+<p>天泽履：</p>
+<blockquote>
+<p>履虎尾，不咥人，亨。 彖曰：履，柔履刚也。说而应乎乾，是以履虎尾，不咥人，亨。刚中正，履帝位而不疚，光明也。 象曰：上天下泽，履。君子以辨上下，定民志。</p>
+</blockquote>
+<p>变卦指事物发生变化之后的结果。易经的解释是踩了老虎尾巴，老虎不咬人，吉。我理解是会遇到一些不好的事情，但实际没太大后果，因此小吉。</p>
+<p>我的理解大家看个乐就行，毕竟我也不是什么算命高手。各位也可以看到中国的算卦和西方的塔罗牌占卜也有点异曲同工之妙，塔罗牌的牌面也是什么愚者、魔术师这些意象，都是挺抽象的事物。</p>
+<h3 id="总结">总结</h3>
+<p>这篇文章就这样结束了，不过还是要说一下，当年武王伐纣，占卜结果全是凶兆，姜太公一句“枯骨死草，何知而凶！”，力劝武王，最后也是赢了。所以说就算占卜结果不太好，也应该多往好的方面去想，去解释。这恐怕也是易经内容这么抽象的原因，就是给卜者自己发挥的空间。古今中外也存在那种一直抽塔罗牌或重新起卦，直到结果为“吉”的占卜方法。不管怎么说，事在人为，好的心态、积极的心理暗示才是成功的必要条件。</p>
+<footer>
+    <hr>
+    <center>
+        Powered by <a href="https://github.com/ZimingYuan/Yblogs">Yblogs</a><br>
+        转载请注明出处<br>
+        © 2023 VnYzm的博客
+    </center>
+</footer>
+</body>
+</html>
