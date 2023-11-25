@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN" data-theme="tufte">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/extra/classless.css" />
+<style>
+html[data-theme='tufte']{
+    --rem: 15px;
+    --navpos: absolute;
+    --width: 70rem;
+    --font-p: 1.4rem/2 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-h: 1.4rem/1.5 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --ornament: "";
+    --border: 1px solid var(--cmed);
+    /* foreground   | background color */
+    --cfg:   #111;    --cbg:    #fbf7ec;
+    --cdark: #111;    --clight: #fbf7ec;
+    --cmed: #b4d5fe;
+    --clink: #111;
+    --cemph: #111;
+}
+</style>
+  <script>
+      let search = () => {
+          let word = document.querySelector('input');
+          if (word.value.length == 0) {
+              word.focus();
+          } else {
+              location.href = '/search.html?' + word.value;
+          }
+      };
+      window.onload = () => {
+          document.querySelector('input').addEventListener(
+              'keydown',  (event) => {
+                  if (event.key == 'Enter') search();
+          });
+      }
+  </script>
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <title>SpinalHDL上板过程记录</title>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><big>VnYzm的博客</big></li>
+            <li><a href="/index.html">主页</a></li>
+            <li><a href="/html/随笔.html">随笔</a></li>
+            <li><a href="/miscellany.html">杂谈</a></li>
+            <li><a href="/friends.html">友链</a></li>
+            <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索标题" style="margin: 0"></li>
+        </ul>
+    </nav>
+<header id="title-block-header">
+<h1 class="title">SpinalHDL上板过程记录</h1>
+<hr>
+</header>
+<h3 id="背景">背景</h3>
+<p>最近帮老师做一个硬件项目，使用SpinalHDL实现。实际用起来还是觉得这玩意不错，它能够抽象到“生成Verilog代码”这一层面，通过程序简化生成的逻辑，可以减少很多直接用Verilog需要编写的重复代码。同时它声明的端口名称和硬件逻辑是能够直接对应到Verilog代码的，所以查看波形调试也比较方便，这就比Chisel乃至HLS有优势了。不过Scala我用起来还是不太习惯，主要是它同时包含了函数式和面向对象的大量特性，很多概念我也不是很熟悉，只能勉强着用。</p>
+<p>当然，SpinalHDL有个缺点，那就是资料和教程太少，中文和英文的都一样，所以刚开始做项目的时候老师也在担心SpinalHDL开发会不会遇到什么问题。好在最后在FPGA开发板上顺利跑通了。硬件代码本身的开发没什么好说的，主要是仿真跑通后到在真正硬件上跑通颇费了一番周折。所以这里记录一下SpinalHDL上板过程遇到的几个问题，也算是抛砖引玉，希望大佬们补充一下SpinalHDL资料和教程在这方面的空白吧。</p>
+<h3 id="片上存储">片上存储</h3>
+<p>先说一下SpinalHDL的片上存储模块，也就是最基本的<code>Mem</code>。假设我需要一个宽度为64bits，深度为65536的片上存储，SpinalHDL里是这样写的：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">val</span> ram = <span class="fu">Mem</span>(<span class="fu">Bits</span>(<span class="dv">64</span> bits), <span class="dv">1</span> &lt;&lt; <span class="dv">16</span>)</span></code></pre></div>
+<p>在Verilog里，它会生成一个寄存器数组：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode verilog"><code class="sourceCode verilog"><span id="cb2-1"><a href="#cb2-1"></a><span class="dt">reg</span> [<span class="dv">63</span>:<span class="dv">0</span>] ram[<span class="dv">0</span>:<span class="dv">65535</span>];</span></code></pre></div>
+<p>正常情况下，Vivado能够自动将这个寄存器数组例化为BRAM，当然，这是有前提的，就是这个寄存器数组的读写逻辑符合BRAM的端口配置，即最多为两个读写端口，否则综合的时候就会报错。那么SpinalHDL里如何指定端口数目呢？其实就是看程序里执行了多少条<code>write</code>、<code>readAsync</code>、<code>readSync</code>和<code>readWriteSync</code>方法，一条对应一个端口。前面三个方法对应的是只读/只写端口，最后一个对应读写端口。</p>
+<p>注意只读和只写逻辑不会自动合并为读写端口，假设一个模块调用了<code>write</code>、<code>readSync</code>和<code>readWriteSync</code>三个方法，那么将会生成一个只写端口，一个只读端口和一个读写端口，将无法通过Vivado的综合流程。因此，如果模块中同时包含和读数据相关的信号和写数据相关的信号，又希望这两条信号共用一个读写端口，则只能用<code>readWriteSync</code>方法实现，然后通过多路选择器和读、写使能信号控制读和写的选择。</p>
+<h3 id="axilite">AxiLite</h3>
+<p>我们做的项目用的是Zynq系列的开发板。前面的文章也说过，这种开发板上运行的硬件程序主要通过AxiLite总线接收控制信息。AxiLite在SpinalHDL里有支持：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">val</span> io = <span class="kw">new</span> Bundle {</span>
+<span id="cb3-2"><a href="#cb3-2"></a>  <span class="kw">val</span> axilite = <span class="fu">slave</span>(<span class="fu">AxiLite4</span>(addressWidth=<span class="dv">6</span>, dataWidth=<span class="dv">32</span>))</span>
+<span id="cb3-3"><a href="#cb3-3"></a>}</span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="kw">val</span> registers = <span class="kw">new</span> <span class="fu">AxiLite4SlaveFactory</span>(io.<span class="fu">instruction</span>)</span></code></pre></div>
+<p>即可声明一个控制最多64个32位寄存器的AxiLite总线，之后就可以通过<a href="https://spinalhdl.github.io/SpinalDoc-RTD/master/SpinalHDL/Libraries/bus_slave_factory.html">BasSlaveFactory</a>提供的相关方法绑定和控制这些寄存器了，似乎也可以通过<a href="https://spinalhdl.github.io/SpinalDoc-RTD/master/SpinalHDL/Libraries/regIf.html">RegInterface</a>实现类似的工作，不过我没有尝试。</p>
+<p>仿真的话就使用AxiLite4Driver即可：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">val</span> axilite = <span class="fu">AxiLite4Driver</span>(dut.<span class="fu">io</span>.<span class="fu">axilite</span>, dut.<span class="fu">clockDomain</span>)</span>
+<span id="cb4-2"><a href="#cb4-2"></a>axilite.<span class="fu">write</span>(<span class="bn">0x4</span>, <span class="fu">BigInt</span>(<span class="st">&quot;2333&quot;</span>, <span class="dv">16</span>))</span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="fu">println</span>(axilite.<span class="fu">read</span>(<span class="bn">0x4</span>).<span class="fu">toInt</span>)</span></code></pre></div>
+<p>AxiLite4Driver文档里好像没有介绍用法，因此需要自己查阅<a href="https://github.com/SpinalHDL/SpinalHDL/blob/dev/lib/src/main/scala/spinal/lib/bus/amba4/axilite/sim/AxiLite4Driver.scala">源码</a>。</p>
+<p>直接把SpinalHDL生成的Verilog放进Vivado里，生成的IP核AxiLite相关的端口都是分散的，在Block Design的时候不会被正确连接，因此还需要使用Vivado的打包功能<code>Create and Package New IP</code>，然后在<code>Ports and Interfaces</code>里创建Axi映射，将Verilog里Axilite对应端口和Vivado里的Axilite信号映射起来，之后在<code>Addressing and Memory</code>里查看刚映射的端口地址有没有被自动配置上，注意自动配置经常会没有更新，这时得多重启几次项目，确保自动配置完成才行。打包完的IP核就可以在Block Design里顺利以Axilite的方式连接了。</p>
+<p>另一个需要密切注意的地方就是SpinalHDL的清零端口是<strong>高电平</strong>清零（reset），这个和Vivado里其他IP核常见的低电平清零（resetn）不一样。因此在使用Block Design的清零信号源的时候，注意是将名字带有<strong>reset</strong>的信号连到我们IP核的清零端，而不是名字带有<em>resetn</em>的。这一点坑了我非常久，因为清零信号始终为高电平导致IP一直清零，无法正常工作，也不能接收任何外界信号，让我非常的迷惑。</p>
+<h3 id="axi">Axi</h3>
+<p>大量数据的传输，也就是和DRAM的交互需要使用Axi总线。SpinalHDL通过<code>Axi4</code>接口类支持Axi协议，其中包含<code>Axi4ar</code>、<code>Axi4r</code>、<code>Axi4w</code>等多个通道，分别对应Axi的读地址传输、读数据传输、写数据传输等。由于Axi的Burst传输逻辑比较复杂，所以可以用一些别人写好的类，如<a href="https://github.com/c-thaler/DmaUnit">DmaUnit</a>等（其实我觉得SpinalHDL官方应该提供一些开箱即用的模块，像这个<code>DmaUnit</code>里也存在一些逻辑上的问题，用的时候总觉得胆战心惊的）。另外，注意Axi端口是master，和Axilite端口是slave不一样。</p>
+<p>仿真则有官方模块，即<code>AxiMemorySim</code>：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode scala"><code class="sourceCode scala"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">val</span> dramSim = <span class="fu">AxiMemorySim</span>(dut.<span class="fu">io</span>.<span class="fu">axi</span>, dut.<span class="fu">clockDomain</span>, <span class="kw">new</span> AxiMemorySimConfig)</span>
+<span id="cb5-2"><a href="#cb5-2"></a>dramSim.<span class="fu">memory</span>.<span class="fu">loadBinary</span>(<span class="bn">0x0</span>, <span class="st">&quot;dram32.bin&quot;</span>)</span>
+<span id="cb5-3"><a href="#cb5-3"></a>dramSim.<span class="fu">start</span>()</span>
+<span id="cb5-4"><a href="#cb5-4"></a><span class="co">// ...</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>dramSim.<span class="fu">memory</span>.<span class="fu">saveBinary</span>(<span class="bn">0x0</span>, <span class="dv">4096</span>, <span class="st">&quot;output.bin&quot;</span>)</span></code></pre></div>
+<p>和<code>Axilite4Driver</code>一样，没有官方文档，需要查阅<a href="https://github.com/SpinalHDL/SpinalHDL/blob/dev/lib/src/main/scala/spinal/lib/bus/amba4/axi/sim/AxiMemorySim.scala">源码</a>才知道用法。</p>
+<p>上板的时候和Axilite一样，需要在Vivado里打包IP功能里创建新的Axi映射，映射对应端口和信号，才能在Block Design里顺利连接。</p>
+<p>关于Axi，需要注意的一点是SpinalHDL默认的是Axi4协议，而部分FPGA的PS核只支持最高Axi3协议，这个可以双击PS核查看。这两个协议差别不是很大，只有两点比较重要：一个是两者支持的最高Burst Size不一样，Axi3的比较小，最高为16，所以如果要在这样的FPGA上运行需要将硬件模块的Burst Size也设置成16；另一个是两者的Burst Cache含义不同，因此如果你不是非常熟悉Burst Cache的话，保险起见，直接将Axi读地址和写地址通道的<code>cache</code>端口置0或者直接在Axi的构造参数配置类<code>Axi4Config</code>里将<code>useCache</code>设置为0。我就被后者坑了很久，<code>cache</code>端口设置错了，结果读数据和写数据返回的<code>resp</code>全部为3（0为正常），我看了网上的资料还以为是no slave，查了半天连线和地址映射，一直没想到是缓存的问题。硬件博大精深，像我这种小白出了错只能盲试然后把希望交给运气😥，所以才希望将经验留给后来者，贯彻人人为我为我人人的雷锋精神😎。</p>
+<h3 id="总结">总结</h3>
+<p>这次感觉SpinalHDL确实是蛮好用的，而且也证明了使用SpinalHDL设计硬件原型并在FPGA上跑通的可行性，至少在体系结构的科研方面确实是一个好用的工具。希望我的这篇文章能帮大家解决一些类似的问题，大家也来使用SpinalHDL吧！</p>
+<footer>
+    <hr>
+    <center>
+        Powered by <a href="https://github.com/ZimingYuan/Yblogs" target="_blank">Yblogs</a><br>
+        转载请注明出处<br>
+        © 2023 VnYzm的博客
+    </center>
+</footer>
+</body>
+</html>
