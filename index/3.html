@@ -61,6 +61,12 @@ html[data-theme='tufte']{
             <div class="col">
                 
 <div class="card">
+    <h4><a href="/html/rCore-Tutorial-Book-v3学习笔记（一）.html">rCore-Tutorial-Book-v3学习笔记（一）</a></h4><hr>
+    <p>概述 最近看到清华的一个操作系统教程rCore-Tutorial-Book，和其他实验不同的是，这个教程介绍的是完全从零开始实现一个Riscv操作系统。教程所用的编程语言是Rust，但是我的Rust水平只到勉强能看懂代码的地步，所以打算用C语言照着实现一遍。虽然说是照着实现，但不同的语言还是会带来不...</p>
+    <em>2021年2月24日</em>
+</div>
+
+<div class="card">
     <h4><a href="/html/MIT-6.S081-2020实验（xv6-riscv64）十一：net.html">MIT-6.S081-2020实验（xv6-riscv64）十一：net</a></h4><hr>
     <p>实验文档 概述 这次实验主要实现网卡驱动的一部分，文档内容非常长，实际实验不算难，跟着hint就行，但还是需要对整体框架有一定的了解。 内容 发送函数： int e1000_transmit(struct mbuf *m) { acquire(&amp;e1000_lock); uint32 index =...</p>
     <em>2021年1月13日</em>
@@ -113,12 +119,6 @@ html[data-theme='tufte']{
     <p>实验文档 概述 这次实验主要涉及虚拟内存的管理，重点是和页表相关的操作。个人觉得难点主要还是在调试方面，因为一旦写到什么非法内存或者哪里内存泄漏了，基本只能抓瞎。我也是参考了github上别人的代码才最终完成了实验。 内容 Print a page table 这个任务比较简单，只要仿照freewa...</p>
     <em>2020年12月31日</em>
 </div>
-
-<div class="card">
-    <h4><a href="/html/MIT-6.S081-2020实验（xv6-riscv64）二：syscall.html">MIT-6.S081-2020实验（xv6-riscv64）二：syscall</a></h4><hr>
-    <p>实验文档 概述 实验二主要涉及对系统函数调用过程的理解以及尝试自己手动添加系统调用。首先需要大致了解一下xv6系统调用的过程，这里以fork为例： 根据这个过程，就很容易完成本次实验了。 内容 trace 该实验需要打印其他系统调用的信息。根据上面的分析和文档说明，首先需要给user.h、usys....</p>
-    <em>2020年12月31日</em>
-</div>
 <div style="padding-top: 2em; text-align: center">
 <a href="/index.html"><button style="padding: 0.2em 0.6em; margin: 0.1em">1</button></a>
 <a href="/index/2.html"><button style="padding: 0.2em 0.6em; margin: 0.1em">2</button></a>
@@ -153,7 +153,7 @@ html[data-theme='tufte']{
             <center>
                 Powered by <a href="https://github.com/ZimingYuan/Yblogs" target="_blank">Yblogs</a><br>
                 转载请注明出处<br>
-                © 2023 VnYzm的博客
+                © 2024 VnYzm的博客
             </center>
         </footer>
     </body>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN" data-theme="tufte">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/extra/classless.css" />
+<style>
+html[data-theme='tufte']{
+    --rem: 15px;
+    --navpos: absolute;
+    --width: 70rem;
+    --font-p: 1.4rem/2 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-h: 1.4rem/1.5 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --ornament: "";
+    --border: 1px solid var(--cmed);
+    /* foreground   | background color */
+    --cfg:   #111;    --cbg:    #fbf7ec;
+    --cdark: #111;    --clight: #fbf7ec;
+    --cmed: #b4d5fe;
+    --clink: #111;
+    --cemph: #111;
+}
+</style>
+  <script>
+      let search = () => {
+          let word = document.querySelector('input');
+          if (word.value.length == 0) {
+              word.focus();
+          } else {
+              location.href = '/search.html?' + word.value;
+          }
+      };
+      window.onload = () => {
+          document.querySelector('input').addEventListener(
+              'keydown',  (event) => {
+                  if (event.key == 'Enter') search();
+          });
+      }
+  </script>
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <title>Windows上使用VTune分析PyTorchExtension调用的Cpp程序</title>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><big>VnYzm的博客</big></li>
+            <li><a href="/index.html">主页</a></li>
+            <li><a href="/html/随笔.html">随笔</a></li>
+            <li><a href="/miscellany.html">杂谈</a></li>
+            <li><a href="/friends.html">友链</a></li>
+            <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索标题" style="margin: 0"></li>
+        </ul>
+    </nav>
+<header id="title-block-header">
+<h1 class="title">Windows上使用VTune分析PyTorchExtension调用的Cpp程序</h1>
+<hr>
+</header>
+<h3 id="概述">概述</h3>
+<p>最近在实现一个通过<a href="https://pytorch.org/tutorials/advanced/cpp_extension.html">PyTorch Extension扩展PyTorch算子</a>的C++算法，需要分析代码的运行瓶颈进行针对性优化。Intel VTune就是一个能从汇编级和源码级分析CPU运行瓶颈的工具。由于不明原因我没在服务器上跑通命令行版的VTune，所以把程序搬到Windows下分析了，因此记录一下Windows上使用VTune分析PyTorchExtension调用的Cpp程序的全配置流程。</p>
+<h3 id="跑通python程序">跑通Python程序</h3>
+<p>第一步是跑通Python程序，主要是配置工具链实现对C++算子的JIT编译。Python这边的配置就不说了，按错误提示补全没装的库（如Ninja）就行，这里说一下Windows下编译器工具链的安装。由于Windows下PyTorch是用微软的编译器MSVC编译的，所以要编译我们的算子也得用MSVC，首先就得安装（如果之前装过Visual Studio的C++编译套件就可以跳过这一步）：</p>
+<ol type="1">
+<li>下载Visual Studio Installer，和系统适应的版本就行。</li>
+<li>在Visual Studio Installer选择要安装的工具，在“单个组件”里找到MSVC生成工具和Windows SDK，选最新版本的即可。</li>
+</ol>
+<p><img src="/img/Windows上使用VTune分析PyTorchExtension调用的Cpp程序_1.png" /></p>
+<p><img src="/img/Windows上使用VTune分析PyTorchExtension调用的Cpp程序_2.png" /></p>
+<p>MSVC生成工具包含编译器、链接器等工具，Windows SDK则包含了操作系统相关的库。这也纠正了我之前的观点，我以为C/C++和其他现代语言一样，标准库和操作系统无关，编译工具链装上就自动有标准库了，实际上并不是，对于那些C相关的库，MSVC生成工具里就只有里面啥也没有的<code>cstdio</code>、<code>cstdlib</code>这些头文件，只有装了Windows SDK，它们才能引用到真正包含库函数的<code>stdio.h</code>、<code>stdlib.h</code>这些头文件，就和Linux里单装gcc不行，还得装上glibc才能编译C/C++程序。</p>
+<ol start="3" type="1">
+<li>安装完之后就可以运行了，在此之前如果程序是从Linux里搬过来的，需要改一下编译参数，因为MSVC的编译参数和gcc不太一样，如<code>-std=c++17</code>需要改成<code>/std:c++17</code>、<code>-O2</code>改成<code>/O2</code>。以及关于AVX的使用，gcc需要具体指定使用的AVX指令的类别，而MSVC只有AVX、AVX2、AVX512三个级别依次升高的选项。比方说我要用<code>_mm256_fmadd_ps</code>这个函数，如果是MSVC直接用<code>/arch:AVX2</code>就可以了，而gcc则要用<code>-mfma</code>指定具体用的是AVX里的FMA系列指令，AVX的具体指令类别可参考<a href="https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html">Intel的文档</a>，gcc的相关编译参数可参考<a href="https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html">gcc的文档</a>。</li>
+<li>从开始菜单进入MSVC的命令行环境<code>x64 Native Tools Command Prompt for VS 2022</code>，cd到Python脚本所在位置，然后运行脚本，如果可以顺利运行说明配置完成。</li>
+</ol>
+<h3 id="vtune配置">VTune配置</h3>
+<p>VTune里创建项目然后点Configure Analysis就能配置运行，填上程序（python）、参数（脚本文件名）和工作目录（脚本运行时的当前路径）即可。</p>
+<p><img src="/img/Windows上使用VTune分析PyTorchExtension调用的Cpp程序_3.png" /></p>
+<p>不过不能直接运行，因为MSVC的环境变量是通过脚本配置的，前面之所以要进入专门的MSVC命令行环境也是这个原因。所幸VTune提供Wrapper Script功能（在Advace Option里面），可以写一个批处理脚本让它在启动Python之前先运行MSVC的脚本配置环境变量：</p>
+<pre class="bat"><code>call &quot;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat&quot;
+%*</code></pre>
+<p>第一行就是运行用来配置环境变量的脚本，脚本的路径视Visual Studio的安装路径而定，第二行表示运行VTune分析的程序。在VTune的Wrapper Script里加载这个脚本，点左下角的运行按钮，就可以顺利运行了。</p>
+<p>分析的过程中需要对照汇编代码和C++代码，这就需要给程序添加调试信息，只需要在Python脚本里添加编译参数<code>-Z7</code>，<strong>添加链接参数</strong><code>/DEBUG</code>即可，即：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a>extension <span class="op">=</span> load(</span>
+<span id="cb2-2"><a href="#cb2-2"></a>        name<span class="op">=</span><span class="st">&#39;extension&#39;</span>,</span>
+<span id="cb2-3"><a href="#cb2-3"></a>        sources<span class="op">=</span>[<span class="st">&#39;extension.cpp&#39;</span>],</span>
+<span id="cb2-4"><a href="#cb2-4"></a>        extra_cflags<span class="op">=</span>[<span class="st">&#39;/std:c++17&#39;</span>, <span class="st">&#39;/O2&#39;</span>, <span class="st">&#39;-Z7&#39;</span>, <span class="st">&#39;/arch:AVX2&#39;</span>],</span>
+<span id="cb2-5"><a href="#cb2-5"></a>        extra_ldflags<span class="op">=</span>[<span class="st">&#39;/DEBUG&#39;</span>],</span>
+<span id="cb2-6"><a href="#cb2-6"></a>        verbose<span class="op">=</span><span class="va">True</span>)</span></code></pre></div>
+<p>这样就能在VTune里浏览C++代码了，再次强调<code>/DEBUG</code>是加在链接参数（<code>extra_ldflags</code>）里面的，放错位置会导致C++代码不显示。</p>
+<h3 id="总结">总结</h3>
+<p>微软的工具链特点就是如果全用它的工具开发（Visual Studio一把梭）就非常方便，傻瓜式操作，但如果想要将它的工具和其他工具协同使用，往往就需要颇费一般功夫，Powershell的二进制管道设计也体现了这一点。不过好在微软的工具链文档也是业界最全的，想搜的东西基本都能搜得到。</p>
+<footer>
+    <hr>
+    <center>
+        Powered by <a href="https://github.com/ZimingYuan/Yblogs" target="_blank">Yblogs</a><br>
+        转载请注明出处<br>
+        © 2024 VnYzm的博客
+    </center>
+</footer>
+</body>
+</html>

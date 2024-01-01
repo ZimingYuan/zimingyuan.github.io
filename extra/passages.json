@@ -1,5 +1,11 @@
 [
     {
+        "name": "Windows上使用VTune分析PyTorchExtension调用的Cpp程序",
+        "date": "2024年1月1日",
+        "category": "index",
+        "abstract": "最近在实现一个通过PyTorch Extension扩展PyTorch算子的C++算法，需要分析代码的运行瓶颈进行针对性优化。Intel VTune就是一个能从汇编级和源码级分析CPU运行瓶颈的工具。由于不明原因我没在服务器上跑通命令行版的VTune..."
+    },
+    {
         "name": "SpinalHDL上板过程记录",
         "date": "2023年11月25日",
         "category": "index",
