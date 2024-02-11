@@ -4,6 +4,8 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="description" content="" />
+  <meta name="keywords" content="" />
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -128,10 +130,6 @@ html[data-theme='tufte']{
             <li class="float-right sticky"><input type="search" placeholder="搜索标题" style="margin: 0"></li>
         </ul>
     </nav>
-<header id="title-block-header">
-<h1 class="title">Windows上使用VTune分析PyTorchExtension调用的Cpp程序</h1>
-<hr>
-</header>
 <h3 id="概述">概述</h3>
 <p>最近在实现一个通过<a href="https://pytorch.org/tutorials/advanced/cpp_extension.html">PyTorch Extension扩展PyTorch算子</a>的C++算法，需要分析代码的运行瓶颈进行针对性优化。Intel VTune就是一个能从汇编级和源码级分析CPU运行瓶颈的工具。由于不明原因我没在服务器上跑通命令行版的VTune，所以把程序搬到Windows下分析了，因此记录一下Windows上使用VTune分析PyTorchExtension调用的Cpp程序的全配置流程。</p>
 <h3 id="跑通python程序">跑通Python程序</h3>
