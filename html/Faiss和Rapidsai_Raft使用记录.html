@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN" data-theme="tufte">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="description" content="Faiss和Rapidsai_Raft使用记录" />
+  <meta name="keywords" content="faiss, rapidsai, raft, cagra, vector search" />
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/extra/classless.css" />
+<style>
+html[data-theme='tufte']{
+    --rem: 15px;
+    --navpos: absolute;
+    --width: 70rem;
+    --font-p: 1.4rem/2 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-h: 1.4rem/1.5 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --ornament: "";
+    --border: 1px solid var(--cmed);
+    /* foreground   | background color */
+    --cfg:   #111;    --cbg:    #fbf7ec;
+    --cdark: #111;    --clight: #fbf7ec;
+    --cmed: #b4d5fe;
+    --clink: #111;
+    --cemph: #111;
+}
+</style>
+  <script>
+      let search = () => {
+          let word = document.querySelector('input');
+          if (word.value.length == 0) {
+              word.focus();
+          } else {
+              location.href = '/search.html?' + word.value;
+          }
+      };
+      window.onload = () => {
+          document.querySelector('input').addEventListener(
+              'keydown',  (event) => {
+                  if (event.key == 'Enter') search();
+          });
+      }
+  </script>
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <title>Faiss和Rapidsai_Raft使用记录</title>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><big>VnYzm的博客</big></li>
+            <li><a href="/index.html">主页</a></li>
+            <li><a href="/html/随笔.html">随笔</a></li>
+            <li><a href="/miscellany.html">杂谈</a></li>
+            <li><a href="/friends.html">友链</a></li>
+            <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索标题" style="margin: 0"></li>
+        </ul>
+    </nav>
+<header id="title-block-header">
+<h1 class="title">Faiss和Rapidsai_Raft使用记录</h1>
+<hr>
+</header>
+<h3 id="背景">背景</h3>
+<p>最近在做基于图的近似向量检索的实验，需要用到<a href="https://github.com/facebookresearch/faiss">Faiss</a>库和Rapids系列的<a href="https://github.com/rapidsai/raft">Raft</a>库，同时由于要统计一些算法内部的数据，因此不能直接使用它们预编译的Python库，而要手动从源码编译并通过C++调用，这里记录一下编译运行时遇到的一些问题和技巧，其中Raft的坑尤其多。</p>
+<h3 id="faiss">Faiss</h3>
+<h4 id="编译">编译</h4>
+<p>Faiss库编译比较简单，按照官网的教程即可。不过使用默认cmake开关编译出来的效率比较低，如果要和预编译的Python库对齐的话需要手动指定cmake开关。首先需要安装Intel的矩阵库MKL，按照<a href="https://www.intel.cn/content/www/cn/zh/developer/tools/oneapi/base-toolkit-download.html">这个网站</a>的操作来即可，因为系统是Ubuntu，所以我选择的是APT安装方式，按照网站添加了源然后<code>apt install intel-oneapi-mkl-devel</code>。然后我使用的cmake开关是：</p>
+<pre class="shell"><code>cmake -DFAISS_ENABLE_GPU=OFF -DFAISS_ENABLE_PYTHON=OFF -DBUILD_TESTING=OFF -DBUILD_SHARED_LIBS=OFF -DCMAKE_BUILD_TYPE=Release -DFAISS_OPT_LEVEL=avx512 -DBLA_VENDOR=Intel10_64_dyn -DMKL_LIBRARIES=/path/to/mkl/libs</code></pre>
+<p>前四个和效率没什么关系，看你需不需要编译GPU、Python库、测试代码和动态库。<code>-DFAISS_OPT_LEVEL=avx512</code>用来指定距离计算时用什么级别的向量化指令，需要根据你的CPU架构而定，我用的服务器支持AVX512，可以通过<code>cat /proc/cpuinfo</code>查看你的CPU支持情况，一般AVX2都是支持的，所以可以设置为`<code>-DFAISS_OPT_LEVEL=avx2</code>。之后正常make就可以了，没什么坑。</p>
+<h4 id="使用">使用</h4>
+<p>使用的时候，使用如下的编译指令：</p>
+<pre class="shell"><code>g++ run.cpp -O3 \
+-I ../faiss -L ../faiss/build/faiss -fopenmp -lfaiss_avx512 \
+-m64  -lmkl_intel_lp64 -lmkl_gnu_thread -lmkl_core -lgomp -lpthread -lm -ldl \
+-o run</code></pre>
+<p>其中，<code>-I</code>跟的是faiss源码所在目录，<code>-L</code>跟的是编译出来的<code>libfaiss.a</code>所在目录，如果你前面make install了就不用加这两个参数。<code>-lfaiss_avx512</code>和上面编译faiss时的cmake开关是对应的，如果选择了AVX512，这里就可以链接<code>libfaiss_avx512.a</code>，如果选择了AVX2，则得链接<code>libfaiss_avx2.a</code>，即使用参数<code>-lfaiss_avx2</code>。当然，不管选择哪个cmake开关，都会默认编译出一个没用AVX的版本<code>libfaiss.a</code>，所以使用<code>-lfaiss</code>也可以，尽管效率会比较低。</p>
+<p>第三行的是Intel MKL的编译参数，以上只是我个人的选项，建议通过<a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/onemkl-link-line-advisor.html">这个网站</a>自动生成。注意两点，一个是<code>Select interface layer</code>这一栏，一定要选<code>C API with 32-bit integer</code>，不然可能会<a href="https://github.com/facebookresearch/faiss/issues/2641">报错</a>；另一个是<code>Select OpenMP library</code>根据你用的OpenMP库来选，如果你装过<code>libiomp</code>就可以选Intel的OpenMP库，不过我比较过它和GNU的OpenMP在我用的Faiss算法上效率差不多，所以用哪个应该都无所谓。生成完了用<code>Use this link line</code>里的内容替换上面的第三行。</p>
+<h4 id="技巧">技巧</h4>
+<p>这里介绍三个技巧，前两个针对预编译的Python库，第三个针对C++库：</p>
+<ol type="1">
+<li><p>Python可以使用contrib子目录下的内容，里面包含了一些实用函数，比如<code>vecs_io.py</code>里的函数可以很方便的读写SIFT1M/GIST1M数据集的文件格式；<code>torch_utils.py</code>则可以自动包装faiss里的常见索引让它们能直接接受pytorch张量作为参数，GPU张量也可以直接传进去，节省了传到Host端的numpy数组再传到显存的开销。</p></li>
+<li><p>Faiss内有的属性或者方法返回值没有提供Python包装，比如返回一个vector或者指针，这就可以用<code>faiss/python</code>文件下的几个文件解决，具体而言，可以使用<code>array_conversions.py</code>提供的<code>vector_to_array</code>、<code>copy_array_to_vector</code>进行转换；而<code>swigfaiss.swig</code>则定义了不少更底层的操作，比如<code>swig_ptr</code>可以将numpy数组转换成C指针，<code>memcpy</code>可以在Python代码里对不同C指针指向的数据进行倒腾，<code>omp_set_num_threads</code>可以设置faiss内部的线程数。这些在Python代码里都用<code>faiss.XXX()</code>调用即可。</p></li>
+<li><p>有时需要统计Faiss里图算法的距离计算次数，直接改库的代码比较麻烦，可以通过继承距离计算类和Flat类，然后传给图算法的构造函数，距离计算次数用全局变量来存储，具体代码如下（以HNSW为例）：</p></li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1"></a><span class="pp">#include </span><span class="im">&lt;faiss/IndexFlat.h&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="pp">#include </span><span class="im">&lt;faiss/IndexHNSW.h&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="pp">#include </span><span class="im">&lt;faiss/utils/distances.h&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="dt">long</span> <span class="dt">long</span> total_dist;</span>
+<span id="cb3-6"><a href="#cb3-6"></a></span>
+<span id="cb3-7"><a href="#cb3-7"></a><span class="co">// 和faiss/IndexFlat.cpp里的实现基本一致，仅仅删去了一些没用到的代码并添加了total_dist的统计</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a><span class="kw">struct</span> FlatL2Dis : FlatCodesDistanceComputer {</span>
+<span id="cb3-9"><a href="#cb3-9"></a>    <span class="dt">size_t</span> d;</span>
+<span id="cb3-10"><a href="#cb3-10"></a>    <span class="dt">idx_t</span> nb;</span>
+<span id="cb3-11"><a href="#cb3-11"></a>    <span class="at">const</span> <span class="dt">float</span>* q;</span>
+<span id="cb3-12"><a href="#cb3-12"></a>    <span class="at">const</span> <span class="dt">float</span>* b;</span>
+<span id="cb3-13"><a href="#cb3-13"></a></span>
+<span id="cb3-14"><a href="#cb3-14"></a>    <span class="dt">float</span> distance_to_code(<span class="at">const</span> <span class="dt">uint8_t</span>* code) <span class="kw">final</span> {</span>
+<span id="cb3-15"><a href="#cb3-15"></a>        total_dist++;</span>
+<span id="cb3-16"><a href="#cb3-16"></a>        <span class="cf">return</span> fvec_L2sqr(q, (<span class="dt">float</span>*)code, d);</span>
+<span id="cb3-17"><a href="#cb3-17"></a>    }</span>
+<span id="cb3-18"><a href="#cb3-18"></a>    <span class="dt">float</span> symmetric_dis(<span class="dt">idx_t</span> i, <span class="dt">idx_t</span> j) <span class="kw">override</span> {</span>
+<span id="cb3-19"><a href="#cb3-19"></a>        total_dist++;</span>
+<span id="cb3-20"><a href="#cb3-20"></a>        <span class="cf">return</span> fvec_L2sqr(b + j * d, b + i * d, d);</span>
+<span id="cb3-21"><a href="#cb3-21"></a>    }</span>
+<span id="cb3-22"><a href="#cb3-22"></a>    <span class="kw">explicit</span> FlatL2Dis(<span class="at">const</span> IndexFlat&amp; storage, <span class="at">const</span> <span class="dt">float</span>* q = <span class="kw">nullptr</span>):</span>
+<span id="cb3-23"><a href="#cb3-23"></a>        FlatCodesDistanceComputer(storage.codes.data(), storage.code_size),</span>
+<span id="cb3-24"><a href="#cb3-24"></a>        d(storage.d), nb(storage.ntotal), q(q), b(storage.get_xb()) {}</span>
+<span id="cb3-25"><a href="#cb3-25"></a>    <span class="dt">void</span> set_query(<span class="at">const</span> <span class="dt">float</span>* x) <span class="kw">override</span> {</span>
+<span id="cb3-26"><a href="#cb3-26"></a>        q = x;</span>
+<span id="cb3-27"><a href="#cb3-27"></a>    }</span>
+<span id="cb3-28"><a href="#cb3-28"></a>};</span>
+<span id="cb3-29"><a href="#cb3-29"></a></span>
+<span id="cb3-30"><a href="#cb3-30"></a><span class="co">// 因为IndexFlat定义在faiss/IndexFlat.h头文件里，所以可以直接继承IndexFlat，只重载get_FlatCodesDistanceComputer</span></span>
+<span id="cb3-31"><a href="#cb3-31"></a><span class="kw">struct</span> IndexFlatMy: IndexFlat {</span>
+<span id="cb3-32"><a href="#cb3-32"></a>    <span class="kw">explicit</span> IndexFlatMy(<span class="dt">idx_t</span> d): IndexFlat(d, METRIC_L2) {}</span>
+<span id="cb3-33"><a href="#cb3-33"></a>    IndexFlatMy() {}</span>
+<span id="cb3-34"><a href="#cb3-34"></a>    FlatCodesDistanceComputer* get_FlatCodesDistanceComputer() <span class="at">const</span> <span class="kw">override</span> {</span>
+<span id="cb3-35"><a href="#cb3-35"></a>        <span class="cf">return</span> <span class="kw">new</span> FlatL2Dis(*<span class="kw">this</span>);</span>
+<span id="cb3-36"><a href="#cb3-36"></a>    }</span>
+<span id="cb3-37"><a href="#cb3-37"></a>};</span>
+<span id="cb3-38"><a href="#cb3-38"></a></span>
+<span id="cb3-39"><a href="#cb3-39"></a><span class="co">// ...</span></span>
+<span id="cb3-40"><a href="#cb3-40"></a></span>
+<span id="cb3-41"><a href="#cb3-41"></a>IndexFlatMy indexflatmy(d);</span>
+<span id="cb3-42"><a href="#cb3-42"></a>IndexHNSW index(&amp;indexflatmy, <span class="dv">32</span>);</span>
+<span id="cb3-43"><a href="#cb3-43"></a></span>
+<span id="cb3-44"><a href="#cb3-44"></a>total_dist = <span class="dv">0</span>;</span>
+<span id="cb3-45"><a href="#cb3-45"></a>index.add(myn, traindata.data());</span>
+<span id="cb3-46"><a href="#cb3-46"></a>printf(<span class="st">&quot;</span><span class="sc">%lld\n</span><span class="st">&quot;</span>, total_dist);</span></code></pre></div>
+<h3 id="raft">Raft</h3>
+<p>Raft这个库，主要是为了使用其中GNND和CAGRA算法，坑多得不可理喻，我尝试了好几次才最终成功。</p>
+<h4 id="编译-1">编译</h4>
+<p>编译就是一个大坑，因为直接按文档里的指示是编译不出来的😅。按照文档的指示，Raft库有三种用法：</p>
+<ul>
+<li>第一种是Python预编译库，这个没啥问题，但用不了GNND算法，CAGRA算法也必须整体使用，无法分别统计两阶段的时间，也无法调整更细致的参数；</li>
+<li>第二种是C++预编译库，通过Conda安装，然后去include Raft的Runtime API（<code>cpp/include/raft_runtime</code>下那些），但问题是这些Runtime API也要引用Raft本体API啊，所以我是理解不了这一种方案相比第三种方案到底有什么意义；</li>
+<li>第三种就是直接引用源码，由于这个库是header-only template library，所以理论上直接在代码里include想要的头文件然后想办法编译成功就行了。我就是这样想的，然后就掉进重重深坑里摔得狗血临头。关键在于这个库依赖非常多Rapids家族其他的库，而这些库又没有上APT源，因此很难解决盘根错结的依赖关系以及各种环境变量、路径的设置，然后它还用的是自己的CMake插件，下载了啥更是一团浆糊。在经历了Spdlog版本不对，未引用libcudacxx等错误之后，编译器最终死在了层层叠叠不知道是C++标准还是NVCC兼容性导致的一堆语法错误中🤪。</li>
+</ul>
+<p>正确方法藏在<a href="https://github.com/rapidsai/raft/tree/branch-24.04/cpp/template">这里</a>。具体操作步骤如下：</p>
+<ol type="1">
+<li>强烈建议科学上网，因为它会用CMake插件自动从Github抓取依赖库，Github以及它的子域名能否访问是个玄学，至少我这里不科学上网总会卡在某个地方，手动改成镜像网址也不现实，至少我是看不懂它乱七八糟的配置路径，而且每次编译的时候都要保持联网并且科学上网状态（挺离谱的）。</li>
+<li>把整个项目克隆下来，然后将<code>cpp/template</code>这个文件夹单独复制出来，之后的操作都在这个文件夹下操作，所以克隆的项目可以删掉了。</li>
+<li>按照你的需要修改src文件夹下的代码，修改<code>CMakeLists.txt</code>以添加链接库、增删要编译的源文件，然后<code>./build.sh</code>就可以编译了，编译时间比较长，因为需要抓取依赖库。编译后的程序在<code>build</code>文件夹下。</li>
+</ol>
+<h4 id="运行">运行</h4>
+<p>运行也是一个大坑，这里直接给出我执行CAGRA两阶段的代码：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb4-1"><a href="#cb4-1"></a><span class="pp">#include </span><span class="im">&lt;vector&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a><span class="pp">#include </span><span class="im">&lt;raft/core/copy.cuh&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="pp">#include </span><span class="im">&lt;raft/core/mdspan.hpp&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a><span class="pp">#include </span><span class="im">&lt;raft/neighbors/cagra.cuh&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5"></a></span>
+<span id="cb4-6"><a href="#cb4-6"></a><span class="kw">using</span> <span class="kw">namespace</span> raft::neighbors;</span>
+<span id="cb4-7"><a href="#cb4-7"></a></span>
+<span id="cb4-8"><a href="#cb4-8"></a><span class="co">// 读取SIFT1M数据文件的函数</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="kw">template</span>&lt;<span class="kw">typename</span> T&gt; <span class="dt">int</span> vecs_read(<span class="at">const</span> <span class="bu">std::</span>string &amp;filename, <span class="bu">std::</span>vector&lt;T&gt; &amp;out, <span class="dt">long</span> <span class="dt">long</span> cnt) {</span>
+<span id="cb4-10"><a href="#cb4-10"></a>    <span class="bu">std::</span>ifstream f(filename, <span class="bu">std::</span>ios<span class="bu">::</span>binary); <span class="cf">if</span> (!f) <span class="cf">return</span> -<span class="dv">1</span>;</span>
+<span id="cb4-11"><a href="#cb4-11"></a>    <span class="dt">int</span> dim; f.read((<span class="dt">char</span> *)&amp;dim, <span class="dv">4</span>); out.resize(cnt * dim); f.seekg(<span class="dv">0</span>, <span class="bu">std::</span>ios<span class="bu">::</span>beg);</span>
+<span id="cb4-12"><a href="#cb4-12"></a>    <span class="cf">for</span> (<span class="dt">long</span> <span class="dt">long</span> i = <span class="dv">0</span>; i &lt; cnt; i++) {</span>
+<span id="cb4-13"><a href="#cb4-13"></a>        f.seekg(<span class="dv">4</span>, <span class="bu">std::</span>ios<span class="bu">::</span>cur); f.read((<span class="dt">char</span> *)(out.data() + i * dim), dim * <span class="kw">sizeof</span>(T));</span>
+<span id="cb4-14"><a href="#cb4-14"></a>    }</span>
+<span id="cb4-15"><a href="#cb4-15"></a>    <span class="cf">return</span> dim;</span>
+<span id="cb4-16"><a href="#cb4-16"></a>}</span>
+<span id="cb4-17"><a href="#cb4-17"></a></span>
+<span id="cb4-18"><a href="#cb4-18"></a><span class="dt">int</span> main(<span class="dt">int</span> argc, <span class="dt">char</span>** argv) {</span>
+<span id="cb4-19"><a href="#cb4-19"></a></span>
+<span id="cb4-20"><a href="#cb4-20"></a>    <span class="dt">int</span> myn = <span class="dv">1000000</span>;</span>
+<span id="cb4-21"><a href="#cb4-21"></a>    <span class="bu">std::</span>vector&lt;<span class="dt">float</span>&gt; traindata;</span>
+<span id="cb4-22"><a href="#cb4-22"></a>    <span class="dt">int</span> d = vecs_read(argv[<span class="dv">1</span>], traindata, myn); printf(<span class="st">&quot;</span><span class="sc">%d\n</span><span class="st">&quot;</span>, d);</span>
+<span id="cb4-23"><a href="#cb4-23"></a>    raft::device_resources dev_resources;</span>
+<span id="cb4-24"><a href="#cb4-24"></a></span>
+<span id="cb4-25"><a href="#cb4-25"></a>    <span class="co">// 定义host矩阵，然后将读取的向量数据库传过去，再定义device矩阵，最后将host矩阵的内容复制到device矩阵</span></span>
+<span id="cb4-26"><a href="#cb4-26"></a>    <span class="kw">auto</span> host_dataset = raft::make_host_matrix&lt;<span class="dt">float</span>, <span class="dt">int64_t</span>&gt;(dev_resources, myn, d);</span>
+<span id="cb4-27"><a href="#cb4-27"></a>    <span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; myn; i++)</span>
+<span id="cb4-28"><a href="#cb4-28"></a>        <span class="cf">for</span> (<span class="dt">int</span> j = <span class="dv">0</span>; j &lt; d; j++)</span>
+<span id="cb4-29"><a href="#cb4-29"></a>            host_dataset(i, j) = traindata[i * d + j];</span>
+<span id="cb4-30"><a href="#cb4-30"></a>    <span class="kw">auto</span> dataset = raft::make_device_matrix&lt;<span class="dt">float</span>, <span class="dt">int64_t</span>&gt;(dev_resources, myn, d);</span>
+<span id="cb4-31"><a href="#cb4-31"></a>    raft::copy(dev_resources, dataset.view(), host_dataset.view());</span>
+<span id="cb4-32"><a href="#cb4-32"></a></span>
+<span id="cb4-33"><a href="#cb4-33"></a>    <span class="co">// 我用的是使用GNND构建CAGRA一阶段KNN图的方式</span></span>
+<span id="cb4-34"><a href="#cb4-34"></a>    experimental::nn_descent::index_params build_params;</span>
+<span id="cb4-35"><a href="#cb4-35"></a>    build_params.graph_degree = <span class="dv">64</span>;</span>
+<span id="cb4-36"><a href="#cb4-36"></a>    <span class="kw">auto</span> knn_graph = raft::make_host_matrix&lt;<span class="dt">int64_t</span>, <span class="dt">int64_t</span>&gt;(myn, <span class="dv">64</span>);</span>
+<span id="cb4-37"><a href="#cb4-37"></a>    cagra::build_knn_graph(dev_resources, raft::make_const_mdspan(dataset.view()), knn_graph.view(), build_params);</span>
+<span id="cb4-38"><a href="#cb4-38"></a></span>
+<span id="cb4-39"><a href="#cb4-39"></a>    <span class="co">// 二阶段优化</span></span>
+<span id="cb4-40"><a href="#cb4-40"></a>    <span class="kw">auto</span> optimized_graph = raft::make_host_matrix&lt;<span class="dt">int64_t</span>, <span class="dt">int64_t</span>&gt;(myn, <span class="dv">32</span>);</span>
+<span id="cb4-41"><a href="#cb4-41"></a>    cagra::optimize(dev_resources, knn_graph.view(), optimized_graph.view());</span>
+<span id="cb4-42"><a href="#cb4-42"></a></span>
+<span id="cb4-43"><a href="#cb4-43"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb4-44"><a href="#cb4-44"></a>}</span></code></pre></div>
+<p>有两个坑点，第一个是如何将读取的向量数据库传到设备中，我查了偌大的文档居然没一处提到。demo再这么说也得用一个比较实际的向量数据库作示例吧，竟然用随机生成的数据库。这个库还专门为随机生成向量数据库提供了一套API，而没有提供和vector还是传统数组交互的API，真的是无语😅😅😅……虽然也有可能是我才疏学浅没找到API，但就像我说的，要是真有这种API，正常就应该在最明显的地方（比如README）给个示例，最好是用SIFT1M这种常用的benchmark，然后把读取、训练、查询明明白白的展示出来。最后没办法，仿照<a href="https://docs.rapids.ai/api/raft/stable/vector_search_tutorial/">这个</a>写了个暴力复制。个人猜测<code>host_matrix</code>和<code>device_matrix</code>应该是有API能够暴露指针的，然后通过memcpy或者cudaMemcpy倒腾数据，因为Python库可以直接用pytorch或者cupy的张量作接口，但我确实是没在C++这边找到。</p>
+<p>第二个坑点是<code>cagra::build_knn_graph</code>和<code>cagra::optimize</code>的模板类型需求，稍有不慎编译就过不了，通过<code>cpp/include/raft/neighbors/detail/cagra/cagra_build.cuh</code>可以看到两个函数分别限制了<code>knn_graph</code>和<code>optimized_graph</code>的第二个模板参数必须是<code>int64_t</code>，同时限制了它们的第一个模板参数必须一致。</p>
+<h3 id="总结">总结</h3>
+<p>以Faiss为代表的大部分库编译运行基本都没太大问题，<code>cmake ..</code>，缺啥补啥，然后<code>make -j</code>，使用时<code>-I</code>、<code>-L</code>、<code>-l</code>指定好路径和链接库就完事了；麻烦的还是想Raft这种的，集齐了header-only、cuda、cmake插件等诸多坑点，加上文档写的太垃圾，才会这么恶心。遇到这种麻烦库，绝招就是去找它目录下的testing、demo、template这种文件夹或者同开发者以这些名字命名的仓库，一般这种地方提供的cmakelists/makefile总是可用的。</p>
+<footer>
+    <hr>
+    <center>
+        Powered by <a href="https://github.com/ZimingYuan/Yblogs" target="_blank">Yblogs</a><br>
+        转载请注明出处<br>
+        © 2024 VnYzm的博客
+    </center>
+</footer>
+</body>
+</html>
