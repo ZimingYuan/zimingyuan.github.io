@@ -1,5 +1,17 @@
 [
     {
+        "name": "Xilinx_HLS使用记录",
+        "date": "2024年6月30日",
+        "category": "index",
+        "abstract": "最近做一个FPGA加速项目，不想写HDL，所以又选择了HLS。之前的文章《Ultra96V2开发板简单使用》中介绍了如何用HLS写IP核并且在Ultra96V2开发板上通过Pynq环境跑起来，但是我现在用的是OpenSSD开发板..."
+    },
+    {
+        "name": "游戏玩后感：告别回忆2",
+        "date": "2024年6月28日",
+        "category": "miscellany",
+        "abstract": "久闻《告别回忆（秋之回忆）》系列大名，今年出了早期系列的Steam重置版，所以买了其中评价最高的2和4来玩。玩完了秋之回忆2的萤线。这里我没说共通线，因为我根本不知道哪里是共通线，哪里是个人线..."
+    },
+    {
         "name": "游戏玩后感：恋爱绮谭",
         "date": "2024年5月19日",
         "category": "miscellany",
