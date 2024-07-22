@@ -4,6 +4,8 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="description" content="rCore-Tutorial-Book-v3学习笔记（七）" />
+  <meta name="keywords" content="" />
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -133,7 +135,7 @@ html[data-theme='tufte']{
 <hr>
 </header>
 <h3 id="概述">概述</h3>
-<p>上一节介绍了文件系统格式的解析，主要涵盖文件系统的文件节点层核块缓存层；本节主要介绍块设备的处理，以及附带的命令行参数、重定向等实现。</p>
+<p>上一节介绍了文件系统格式的解析，主要涵盖文件系统的文件节点层和块缓存层；本节主要介绍块设备的处理，以及附带的命令行参数、重定向等实现。</p>
 <h3 id="内容">内容</h3>
 <p>先介绍上一节跳过的文件描述符层。基本都是调用文件节点层的各类函数，这里仅给出close和创建函数：</p>
 <div class="sourceCode" id="cb1"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb1-1"><a href="#cb1-1"></a><span class="dt">void</span> fnode_close(File *self) {</span>

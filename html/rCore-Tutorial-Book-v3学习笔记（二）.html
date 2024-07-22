@@ -4,6 +4,8 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="description" content="rCore-Tutorial-Book-v3学习笔记（二）" />
+  <meta name="keywords" content="" />
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -204,28 +206,26 @@ SECTIONS
 </blockquote>
 <p>这里谈一下这一部分栈是怎么切换的。首先明确一点，目前用到的地址全是物理地址，没有用户态和内核态之间的页表切换，riscv和x86不一样，也没有段寄存器这些东西，所以在本部分中sp寄存器指向哪哪就是当前的栈。KERNEL_TOP和USER_TOP虽然为了反映程序中栈从高向低增长的特性，用的都是“TOP”，但是为了贴合现实生活中的栈以方便理解，下面都用“内核栈底”、“用户栈底”来描述。</p>
 <p>在程序启动时，和实验一一样，sp指向了<code>boot_stack</code>，那么那里就是入口函数<code>load_all</code>所用的栈。然后<code>load_all</code>调用<code>run_next_app</code>，后者调用<code>app_init_context</code>，这里对<code>TrapContext</code>的操作修改的都是内核栈的栈底，把<code>USER_TOP</code>传给了<code>TrapContext</code>里的sp寄存器，并返回了<code>TrapContext</code>的指针。</p>
-<p>然后进入restore，第一句<code>mv sp, a0</code>，将<code>TrapContext</code>的指针传给了sp，这一步就相当于重置了内核栈，把内核栈重置为栈底只有一个<code>TrapContext</code>的状态，同时此处也将程序当前的栈从<code>boot_stack</code>转到内核栈了。然后各条指令都是在处理内核栈里的那一个<code>TrapContext</code>。之后<code>csrw sscratch, t2</code>将刚才传进x[2]的用户栈栈底传给sscratch寄存器，最后一句<code>csrrw sp, sscratch, sp</code>，sscratch被设置为了内核栈顶，sp也指向了用户栈底。这就是上面问题的解答。比较有趣的地方是每次<code>run_next_app</code>的时候都会重置一下内核栈，这一方面是节省空间，另一方面也是为了写起来便捷，不过在后面的程序中应该会改掉。</p>
-<pre class="trap.s```有个小细节，就是因为代码里用到了宏，如果要用符号常量调用宏，须在代码最前面加上`.altmacro`，原因我也不知道，这方面资料太少了，如果不加，宏就会直接把参数替换成符号常量的名字，而不是其代表的值。"><code>
-最后是`trap_handler`函数：
-
-```c
-TrapContext *trap_handler(TrapContext *cx) {
-    usize scause, stval;
-    asm volatile (
-            &quot;csrr %0, scause\n&quot;
-            &quot;csrr %1, stval\n&quot;
-            :&quot;=r&quot;(scause), &quot;=r&quot;(stval)
-            );
-    switch (scause &amp; (~(1L &lt;&lt; 63))) {
-        case 8:
-            cx-&gt;sepc += 4;
-            cx-&gt;x[10] = syscall(cx-&gt;x[17], cx-&gt;x[10], cx-&gt;x[11], cx-&gt;x[12]);
-            break;
-        default:
-            panic(&quot;Other trap&quot;);
-    }
-    return cx;
-}</code></pre>
+<p>然后进入restore，第一句<code>mv sp, a0</code>，将<code>TrapContext</code>的指针传给了sp，这一步就相当于重置了内核栈，把内核栈重置为栈底只有一个<code>TrapContext</code>的状态，同时此处也将程序当前的栈从<code>boot_stack</code>转到内核栈了。然后各条指令都是在处理内核栈里的那一个<code>TrapContext</code>。之后<code>csrw sscratch, t2</code>将刚才传进x[2]的用户栈栈底传给sscratch寄存器，最后一句<code>csrrw sp, sscratch, sp</code>，sscratch被设置为了内核栈底，sp也指向了用户栈底。这就是上面问题的解答。比较有趣的地方是每次<code>run_next_app</code>的时候都会重置一下内核栈，这一方面是节省空间，另一方面也是为了写起来便捷，不过在后面的程序中应该会改掉。</p>
+<p><code>trap.S</code>有个小细节，就是因为代码里用到了宏，如果要用符号常量调用宏，须在代码最前面加上<code>.altmacro</code>，原因我也不知道，这方面资料太少了，如果不加，宏就会直接把参数替换成符号常量的名字，而不是其代表的值。</p>
+<p>最后是<code>trap_handler</code>函数：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1"></a>TrapContext *trap_handler(TrapContext *cx) {</span>
+<span id="cb5-2"><a href="#cb5-2"></a>    usize scause, stval;</span>
+<span id="cb5-3"><a href="#cb5-3"></a>    asm <span class="dt">volatile</span> (</span>
+<span id="cb5-4"><a href="#cb5-4"></a>            <span class="st">&quot;csrr %0, scause</span><span class="sc">\n</span><span class="st">&quot;</span></span>
+<span id="cb5-5"><a href="#cb5-5"></a>            <span class="st">&quot;csrr %1, stval</span><span class="sc">\n</span><span class="st">&quot;</span></span>
+<span id="cb5-6"><a href="#cb5-6"></a>            :<span class="st">&quot;=r&quot;</span>(scause), <span class="st">&quot;=r&quot;</span>(stval)</span>
+<span id="cb5-7"><a href="#cb5-7"></a>            );</span>
+<span id="cb5-8"><a href="#cb5-8"></a>    <span class="cf">switch</span> (scause &amp; (~(<span class="dv">1</span><span class="bu">L</span> &lt;&lt; <span class="dv">63</span>))) {</span>
+<span id="cb5-9"><a href="#cb5-9"></a>        <span class="cf">case</span> <span class="dv">8</span>:</span>
+<span id="cb5-10"><a href="#cb5-10"></a>            cx-&gt;sepc += <span class="dv">4</span>;</span>
+<span id="cb5-11"><a href="#cb5-11"></a>            cx-&gt;x[<span class="dv">10</span>] = syscall(cx-&gt;x[<span class="dv">17</span>], cx-&gt;x[<span class="dv">10</span>], cx-&gt;x[<span class="dv">11</span>], cx-&gt;x[<span class="dv">12</span>]);</span>
+<span id="cb5-12"><a href="#cb5-12"></a>            <span class="cf">break</span>;</span>
+<span id="cb5-13"><a href="#cb5-13"></a>        <span class="cf">default</span>:</span>
+<span id="cb5-14"><a href="#cb5-14"></a>            panic(<span class="st">&quot;Other trap&quot;</span>);</span>
+<span id="cb5-15"><a href="#cb5-15"></a>    }</span>
+<span id="cb5-16"><a href="#cb5-16"></a>    <span class="cf">return</span> cx;</span>
+<span id="cb5-17"><a href="#cb5-17"></a>}</span></code></pre></div>
 <p>同样的，scause的处理我也进行了硬编码，scause的第0到62位存储trap的原因，8表示是来自用户态的系统调用。</p>
 <footer>
     <hr>

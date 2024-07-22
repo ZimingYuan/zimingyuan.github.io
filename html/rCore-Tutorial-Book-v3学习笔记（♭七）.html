@@ -4,6 +4,8 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="description" content="rCore-Tutorial-Book-v3学习笔记（♭七）" />
+  <meta name="keywords" content="" />
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -199,13 +201,14 @@ html[data-theme='tufte']{
 <span id="cb3-30"><a href="#cb3-30"></a>}</span></code></pre></div>
 <p>其中，find_file传入当前路径的inode（dinode存储当前路径）和文件（夹）名在里面查找指定的文件（夹），返回其inode号（注意inode号一律从1开始，根目录的inode号固定为2），get_inode函数根据inode号赋值dinode，即修改当前路径。在创建文件时，注意add_file和init_inode两个函数不能反着执行，因为init_inode里会将dinode修改成刚分配的新inode，而add_file需要dinode里保存的父文件夹。</p>
 <p>get_inode函数获得inode信息，每个inode是一个128字节的字符串，连续排放在块组描述表给出的块地址中，所以可以利用整除和取模运算根据inode编号获得inode。upd_inode用来更新inode，和get_inode几乎一样，一并给出：</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1"></a><span class="dt">void</span> get_inode(<span class="dt">int</span> inode_num, <span class="dt">char</span> *buf) {                                          bcache_rw(inode_table + (inode_num - <span class="dv">1</span>) * <span class="dv">128</span> / BSIZE,</span>
-<span id="cb4-2"><a href="#cb4-2"></a>            ((inode_num - <span class="dv">1</span>) * <span class="dv">128</span>) % BSIZE, <span class="dv">128</span>, buf, <span class="dv">0</span>);</span>
-<span id="cb4-3"><a href="#cb4-3"></a>}</span>
-<span id="cb4-4"><a href="#cb4-4"></a><span class="dt">void</span> upd_inode(<span class="dt">int</span> inode_num, <span class="dt">char</span> *buf) {</span>
-<span id="cb4-5"><a href="#cb4-5"></a>    bcache_rw(inode_table + (inode_num - <span class="dv">1</span>) * <span class="dv">128</span> / BSIZE,</span>
-<span id="cb4-6"><a href="#cb4-6"></a>            ((inode_num - <span class="dv">1</span>) * <span class="dv">128</span>) % BSIZE, <span class="dv">128</span>, buf, <span class="dv">1</span>);</span>
-<span id="cb4-7"><a href="#cb4-7"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb4-1"><a href="#cb4-1"></a><span class="dt">void</span> get_inode(<span class="dt">int</span> inode_num, <span class="dt">char</span> *buf) {                                          </span>
+<span id="cb4-2"><a href="#cb4-2"></a>    bcache_rw(inode_table + (inode_num - <span class="dv">1</span>) * <span class="dv">128</span> / BSIZE,</span>
+<span id="cb4-3"><a href="#cb4-3"></a>            ((inode_num - <span class="dv">1</span>) * <span class="dv">128</span>) % BSIZE, <span class="dv">128</span>, buf, <span class="dv">0</span>);</span>
+<span id="cb4-4"><a href="#cb4-4"></a>}</span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="dt">void</span> upd_inode(<span class="dt">int</span> inode_num, <span class="dt">char</span> *buf) {</span>
+<span id="cb4-6"><a href="#cb4-6"></a>    bcache_rw(inode_table + (inode_num - <span class="dv">1</span>) * <span class="dv">128</span> / BSIZE,</span>
+<span id="cb4-7"><a href="#cb4-7"></a>            ((inode_num - <span class="dv">1</span>) * <span class="dv">128</span>) % BSIZE, <span class="dv">128</span>, buf, <span class="dv">1</span>);</span>
+<span id="cb4-8"><a href="#cb4-8"></a>}</span></code></pre></div>
 <p>从inode中可以查找该inode对应的文件或文件夹的内容，查找方法后面介绍。文件的内容自然就是其本身的内容，而文件夹的内容是连续排列的一组入口索引。每个入口索引大小不定，包含其对应的子文件（夹）的inode编号（4字节）、索引大小（2字节）、文件（夹）名长度（1字节）、类型（1字节）和文件（夹）名（不定长）。注意入口索引不能跨块，需要按4字节对齐同时存放入口索引的块内不能有空隙，所以最后一个入口索引往往会比较大以充满整个块，这时就会出现入口索引的大小大于其所有属性大小的和的情况。find_file函数就是对入口索引进行查找：</p>
 <div class="sourceCode" id="cb5"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb5-1"><a href="#cb5-1"></a><span class="dt">int</span> find_file(<span class="dt">char</span> *s, <span class="dt">int</span> len, <span class="dt">char</span> *dinode) {</span>
 <span id="cb5-2"><a href="#cb5-2"></a>    <span class="dt">int</span> size = TO32(dinode + <span class="dv">4</span>); <span class="dt">char</span> *entry = bd_malloc(size);</span>
@@ -254,31 +257,33 @@ html[data-theme='tufte']{
 <span id="cb7-11"><a href="#cb7-11"></a>    panic(<span class="st">&quot;alloc_inode: no free inode&quot;</span>);</span>
 <span id="cb7-12"><a href="#cb7-12"></a>}</span></code></pre></div>
 <p>add_file函数在指定文件夹的入口索引表中创建一个新入口索引，将文件名、大小、名字、inode号等填入索引。这里比较麻烦的就是如前所述，最后一个入口索引往往会比较大以充满整个块。如果每次创建新入口索引的时候都是直接创建在最后一个入口索引后面，那么相当于每个入口索引都要占一个块，会浪费大量空间，所以这里需要看一下最后一个入口索引在文件名后面到块末尾还有没有足够的空间装下新索引，有的话就缩小一下它的大小，然后让新索引填满剩下的空间：</p>
-<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1"></a><span class="dt">void</span> add_file(<span class="dt">char</span> *name, <span class="dt">int</span> len, <span class="dt">int</span> inode_num, <span class="dt">int</span> inodep_num, <span class="dt">char</span> *dinode)     <span class="dt">int</span> size = TO32(dinode + <span class="dv">4</span>); <span class="dt">char</span> *entry = bd_malloc(size);</span>
-<span id="cb8-2"><a href="#cb8-2"></a>    read_inode(dinode, <span class="dv">0</span>, size, entry); <span class="dt">int</span> i = <span class="dv">0</span>;</span>
-<span id="cb8-3"><a href="#cb8-3"></a>    <span class="cf">while</span> (i + TO16(entry + i + <span class="dv">4</span>) &lt; size) i += TO16(entry + i + <span class="dv">4</span>);</span>
-<span id="cb8-4"><a href="#cb8-4"></a>    u8 l = entry[i + <span class="dv">6</span>]; <span class="dt">int</span> real_size = (<span class="dv">8</span> + l + <span class="dv">3</span>) / <span class="dv">4</span> * <span class="dv">4</span>;</span>
-<span id="cb8-5"><a href="#cb8-5"></a>    <span class="cf">if</span> (TO16(entry + i + <span class="dv">4</span>) - real_size &gt;= (<span class="dv">8</span> + len + <span class="dv">3</span>) / <span class="dv">4</span> * <span class="dv">4</span>) {</span>
-<span id="cb8-6"><a href="#cb8-6"></a>        TO16(entry + i + <span class="dv">4</span>) = real_size;</span>
-<span id="cb8-7"><a href="#cb8-7"></a>        TO32(entry + i + real_size) = inode_num;</span>
-<span id="cb8-8"><a href="#cb8-8"></a>        TO16(entry + i + real_size + <span class="dv">4</span>) = size - i - real_size;</span>
-<span id="cb8-9"><a href="#cb8-9"></a>        entry[i + real_size + <span class="dv">6</span>] = len; entry[i + real_size + <span class="dv">7</span>] = <span class="dv">1</span>;</span>
-<span id="cb8-10"><a href="#cb8-10"></a>        memcpy(entry + i + real_size + <span class="dv">8</span>, name, len);</span>
-<span id="cb8-11"><a href="#cb8-11"></a>        write_inode(inodep_num, dinode, <span class="dv">0</span>, size, entry);</span>
-<span id="cb8-12"><a href="#cb8-12"></a>    } <span class="cf">else</span> {</span>
-<span id="cb8-13"><a href="#cb8-13"></a>        real_size = (<span class="dv">8</span> + len + <span class="dv">3</span>) / <span class="dv">4</span> * <span class="dv">4</span>; memset(entry, <span class="dv">0</span>, real_size);</span>
-<span id="cb8-14"><a href="#cb8-14"></a>        TO32(entry) = inode_num; TO16(entry + <span class="dv">4</span>) = BSIZE;</span>
-<span id="cb8-15"><a href="#cb8-15"></a>        entry[<span class="dv">6</span>] = len; entry[<span class="dv">7</span>] = <span class="dv">1</span>; memcpy(entry + <span class="dv">8</span>, name, len);</span>
-<span id="cb8-16"><a href="#cb8-16"></a>        write_inode(inodep_num, dinode, size, size + real_size, entry);</span>
-<span id="cb8-17"><a href="#cb8-17"></a>    }</span>
-<span id="cb8-18"><a href="#cb8-18"></a>    bd_free(entry);</span>
-<span id="cb8-19"><a href="#cb8-19"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb8-1"><a href="#cb8-1"></a><span class="dt">void</span> add_file(<span class="dt">char</span> *name, <span class="dt">int</span> len, <span class="dt">int</span> inode_num, <span class="dt">int</span> inodep_num, <span class="dt">char</span> *dinode) {</span>
+<span id="cb8-2"><a href="#cb8-2"></a>    <span class="dt">int</span> size = TO32(dinode + <span class="dv">4</span>); <span class="dt">char</span> *entry = bd_malloc(size);</span>
+<span id="cb8-3"><a href="#cb8-3"></a>    read_inode(dinode, <span class="dv">0</span>, size, entry); <span class="dt">int</span> i = <span class="dv">0</span>;</span>
+<span id="cb8-4"><a href="#cb8-4"></a>    <span class="cf">while</span> (i + TO16(entry + i + <span class="dv">4</span>) &lt; size) i += TO16(entry + i + <span class="dv">4</span>);</span>
+<span id="cb8-5"><a href="#cb8-5"></a>    u8 l = entry[i + <span class="dv">6</span>]; <span class="dt">int</span> real_size = (<span class="dv">8</span> + l + <span class="dv">3</span>) / <span class="dv">4</span> * <span class="dv">4</span>;</span>
+<span id="cb8-6"><a href="#cb8-6"></a>    <span class="cf">if</span> (TO16(entry + i + <span class="dv">4</span>) - real_size &gt;= (<span class="dv">8</span> + len + <span class="dv">3</span>) / <span class="dv">4</span> * <span class="dv">4</span>) {</span>
+<span id="cb8-7"><a href="#cb8-7"></a>        TO16(entry + i + <span class="dv">4</span>) = real_size;</span>
+<span id="cb8-8"><a href="#cb8-8"></a>        TO32(entry + i + real_size) = inode_num;</span>
+<span id="cb8-9"><a href="#cb8-9"></a>        TO16(entry + i + real_size + <span class="dv">4</span>) = size - i - real_size;</span>
+<span id="cb8-10"><a href="#cb8-10"></a>        entry[i + real_size + <span class="dv">6</span>] = len; entry[i + real_size + <span class="dv">7</span>] = <span class="dv">1</span>;</span>
+<span id="cb8-11"><a href="#cb8-11"></a>        memcpy(entry + i + real_size + <span class="dv">8</span>, name, len);</span>
+<span id="cb8-12"><a href="#cb8-12"></a>        write_inode(inodep_num, dinode, <span class="dv">0</span>, size, entry);</span>
+<span id="cb8-13"><a href="#cb8-13"></a>    } <span class="cf">else</span> {</span>
+<span id="cb8-14"><a href="#cb8-14"></a>        real_size = (<span class="dv">8</span> + len + <span class="dv">3</span>) / <span class="dv">4</span> * <span class="dv">4</span>; memset(entry, <span class="dv">0</span>, real_size);</span>
+<span id="cb8-15"><a href="#cb8-15"></a>        TO32(entry) = inode_num; TO16(entry + <span class="dv">4</span>) = BSIZE;</span>
+<span id="cb8-16"><a href="#cb8-16"></a>        entry[<span class="dv">6</span>] = len; entry[<span class="dv">7</span>] = <span class="dv">1</span>; memcpy(entry + <span class="dv">8</span>, name, len);</span>
+<span id="cb8-17"><a href="#cb8-17"></a>        write_inode(inodep_num, dinode, size, size + real_size, entry);</span>
+<span id="cb8-18"><a href="#cb8-18"></a>    }</span>
+<span id="cb8-19"><a href="#cb8-19"></a>    bd_free(entry);</span>
+<span id="cb8-20"><a href="#cb8-20"></a>}</span></code></pre></div>
 <p>这里用到了write_inode函数，这个函数会自动扩大文件大小使得所有数据都能被写到文件中。所以当新索引挤不进最后一个索引内的时候就直接把新索引写到最后一个索引后面（注意要按4字节对齐）。</p>
 <p>init_inode就比较简单了，大部分属性都可以填成0。但值得注意的是前两个字节，存放文件类型和权限，文件类型是普通文件（8），权限设置成类似平常用的<code>chmod 777</code>里的777，这个777是8进制，十六进制1ff。根据这个属性的定义，高4字节是文件类型，低12字节是权限，所以这个属性应赋值为81ff：</p>
-<div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1"></a><span class="dt">void</span> init_inode(<span class="dt">int</span> inode_num, <span class="dt">char</span> *dinode) {                                      memset(dinode, <span class="dv">0</span>, <span class="dv">128</span>);</span>
-<span id="cb9-2"><a href="#cb9-2"></a>    TO16(dinode) = <span class="bn">0x81ff</span>; TO16(dinode + <span class="dv">26</span>) = <span class="dv">1</span>;</span>
-<span id="cb9-3"><a href="#cb9-3"></a>    upd_inode(inode_num, dinode);</span>
-<span id="cb9-4"><a href="#cb9-4"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb9-1"><a href="#cb9-1"></a><span class="dt">void</span> init_inode(<span class="dt">int</span> inode_num, <span class="dt">char</span> *dinode) {</span>
+<span id="cb9-2"><a href="#cb9-2"></a>    memset(dinode, <span class="dv">0</span>, <span class="dv">128</span>);</span>
+<span id="cb9-3"><a href="#cb9-3"></a>    TO16(dinode) = <span class="bn">0x81ff</span>; TO16(dinode + <span class="dv">26</span>) = <span class="dv">1</span>;</span>
+<span id="cb9-4"><a href="#cb9-4"></a>    upd_inode(inode_num, dinode);</span>
+<span id="cb9-5"><a href="#cb9-5"></a>}</span></code></pre></div>
 <p>根据文件系统的设计，写文件的时候文件基本只能越写越大，因此需要清空文件的函数。其内容就是将inode的文件大小属性设置为0，然后将文件占用的块全部清空。ext2格式文件内容的组织是由零级索引、一级索引、二级索引……组成的。对于inode，其第40字节开始就是索引。共12个零级索引，1个一级索引，一个二级索引，一个三级索引。每个索引都是4字节，如果一个块为1024字节，那么共可索引的块数是12+256+256*256+256*256*256。要清除文件占用的所有块，可以递归对这些索引进行查找：</p>
 <div class="sourceCode" id="cb10"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb10-1"><a href="#cb10-1"></a><span class="dt">int</span> dfs_clear(<span class="dt">int</span> block_num, <span class="dt">int</span> dep) {</span>
 <span id="cb10-2"><a href="#cb10-2"></a>    <span class="cf">if</span> (block_num == <span class="dv">0</span>) <span class="cf">return</span> <span class="dv">1</span>;</span>
@@ -354,27 +359,30 @@ html[data-theme='tufte']{
 <span id="cb13-8"><a href="#cb13-8"></a>            bcache_rw(TO32(dinode + <span class="dv">40</span> + <span class="dv">4</span> * l0), st, cplen, buf + cpoff, <span class="dv">0</span>);</span>
 <span id="cb13-9"><a href="#cb13-9"></a>            l0++;</span>
 <span id="cb13-10"><a href="#cb13-10"></a>        } <span class="cf">else</span> <span class="cf">if</span> (l0 == <span class="dv">12</span>) {</span>
-<span id="cb13-11"><a href="#cb13-11"></a>            <span class="dt">int</span> block_no; bcache_rw(TO32(dinode + <span class="dv">88</span>), l1 * <span class="dv">4</span>, <span class="dv">4</span>, &amp;block_no, <span class="dv">0</span>);            bcache_rw(block_no, st, cplen, buf + cpoff, <span class="dv">0</span>); l1++;</span>
-<span id="cb13-12"><a href="#cb13-12"></a>            <span class="cf">if</span> (l1 == BSIZE / <span class="dv">4</span>) { l1 = <span class="dv">0</span>; l0++; }</span>
-<span id="cb13-13"><a href="#cb13-13"></a>        } <span class="cf">else</span> <span class="cf">if</span> (l0 == <span class="dv">13</span>) {</span>
-<span id="cb13-14"><a href="#cb13-14"></a>            <span class="dt">int</span> block_no; bcache_rw(TO32(dinode + <span class="dv">92</span>), l1 * <span class="dv">4</span>, <span class="dv">4</span>, &amp;block_no, <span class="dv">0</span>);            bcache_rw(block_no, l2 * <span class="dv">4</span>, <span class="dv">4</span>, &amp;block_no, <span class="dv">0</span>);</span>
-<span id="cb13-15"><a href="#cb13-15"></a>            bcache_rw(block_no, st, cplen, buf + cpoff, <span class="dv">0</span>); l2++;</span>
-<span id="cb13-16"><a href="#cb13-16"></a>            <span class="cf">if</span> (l2 == BSIZE / <span class="dv">4</span>) { l2 = <span class="dv">0</span>; l1++; }</span>
-<span id="cb13-17"><a href="#cb13-17"></a>            <span class="cf">if</span> (l1 == BSIZE / <span class="dv">4</span>) panic(<span class="st">&quot;read_inode: len too large&quot;</span>);</span>
-<span id="cb13-18"><a href="#cb13-18"></a>        } <span class="cf">else</span> panic(<span class="st">&quot;read_inode: len too large&quot;</span>);</span>
-<span id="cb13-19"><a href="#cb13-19"></a>        st = <span class="dv">0</span>; len -= cplen; cpoff += cplen;</span>
-<span id="cb13-20"><a href="#cb13-20"></a>    }</span>
-<span id="cb13-21"><a href="#cb13-21"></a>}</span></code></pre></div>
+<span id="cb13-11"><a href="#cb13-11"></a>            <span class="dt">int</span> block_no; bcache_rw(TO32(dinode + <span class="dv">88</span>), l1 * <span class="dv">4</span>, <span class="dv">4</span>, &amp;block_no, <span class="dv">0</span>);</span>
+<span id="cb13-12"><a href="#cb13-12"></a>            bcache_rw(block_no, st, cplen, buf + cpoff, <span class="dv">0</span>); l1++;</span>
+<span id="cb13-13"><a href="#cb13-13"></a>            <span class="cf">if</span> (l1 == BSIZE / <span class="dv">4</span>) { l1 = <span class="dv">0</span>; l0++; }</span>
+<span id="cb13-14"><a href="#cb13-14"></a>        } <span class="cf">else</span> <span class="cf">if</span> (l0 == <span class="dv">13</span>) {</span>
+<span id="cb13-15"><a href="#cb13-15"></a>            <span class="dt">int</span> block_no; bcache_rw(TO32(dinode + <span class="dv">92</span>), l1 * <span class="dv">4</span>, <span class="dv">4</span>, &amp;block_no, <span class="dv">0</span>);</span>
+<span id="cb13-16"><a href="#cb13-16"></a>            bcache_rw(block_no, l2 * <span class="dv">4</span>, <span class="dv">4</span>, &amp;block_no, <span class="dv">0</span>);</span>
+<span id="cb13-17"><a href="#cb13-17"></a>            bcache_rw(block_no, st, cplen, buf + cpoff, <span class="dv">0</span>); l2++;</span>
+<span id="cb13-18"><a href="#cb13-18"></a>            <span class="cf">if</span> (l2 == BSIZE / <span class="dv">4</span>) { l2 = <span class="dv">0</span>; l1++; }</span>
+<span id="cb13-19"><a href="#cb13-19"></a>            <span class="cf">if</span> (l1 == BSIZE / <span class="dv">4</span>) panic(<span class="st">&quot;read_inode: len too large&quot;</span>);</span>
+<span id="cb13-20"><a href="#cb13-20"></a>        } <span class="cf">else</span> panic(<span class="st">&quot;read_inode: len too large&quot;</span>);</span>
+<span id="cb13-21"><a href="#cb13-21"></a>        st = <span class="dv">0</span>; len -= cplen; cpoff += cplen;</span>
+<span id="cb13-22"><a href="#cb13-22"></a>    }</span>
+<span id="cb13-23"><a href="#cb13-23"></a>}</span></code></pre></div>
 <p>find_block函数用来计算l0、l1、l2的初始值，具体也是各种条件判断：</p>
-<div class="sourceCode" id="cb14"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb14-1"><a href="#cb14-1"></a><span class="dt">void</span> find_block(<span class="dt">char</span> *dinode, usize st, <span class="dt">int</span> *l0, <span class="dt">int</span> *l1, <span class="dt">int</span> *l2) {                *l0 = <span class="dv">0</span>, *l1 = <span class="dv">0</span>, *l2 = <span class="dv">0</span>; <span class="dt">int</span> bn = BSIZE / <span class="dv">4</span>;</span>
-<span id="cb14-2"><a href="#cb14-2"></a>    <span class="cf">if</span> (st &lt; BSIZE * <span class="dv">12</span>) *l0 = st / BSIZE;</span>
-<span id="cb14-3"><a href="#cb14-3"></a>    <span class="cf">else</span> <span class="cf">if</span> (st &lt; BSIZE * <span class="dv">12</span> + bn * BSIZE) {</span>
-<span id="cb14-4"><a href="#cb14-4"></a>        *l0 = <span class="dv">12</span>; *l1 = (st - BSIZE * <span class="dv">12</span>) % BSIZE;</span>
-<span id="cb14-5"><a href="#cb14-5"></a>    } <span class="cf">else</span> <span class="cf">if</span> (st &lt; BSIZE * <span class="dv">12</span> + bn * BSIZE + bn * bn * BSIZE) {</span>
-<span id="cb14-6"><a href="#cb14-6"></a>        *l0 = <span class="dv">13</span>; *l1 = (st - BSIZE * <span class="dv">12</span>) / (bn * BSIZE);</span>
-<span id="cb14-7"><a href="#cb14-7"></a>        *l2 = ((st - BSIZE * <span class="dv">12</span>) % (bn * BSIZE)) / BSIZE;</span>
-<span id="cb14-8"><a href="#cb14-8"></a>    } <span class="cf">else</span> panic(<span class="st">&quot;find_block: offset too large&quot;</span>);</span>
-<span id="cb14-9"><a href="#cb14-9"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb14"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb14-1"><a href="#cb14-1"></a><span class="dt">void</span> find_block(<span class="dt">char</span> *dinode, usize st, <span class="dt">int</span> *l0, <span class="dt">int</span> *l1, <span class="dt">int</span> *l2) {</span>
+<span id="cb14-2"><a href="#cb14-2"></a>    *l0 = <span class="dv">0</span>, *l1 = <span class="dv">0</span>, *l2 = <span class="dv">0</span>; <span class="dt">int</span> bn = BSIZE / <span class="dv">4</span>;</span>
+<span id="cb14-3"><a href="#cb14-3"></a>    <span class="cf">if</span> (st &lt; BSIZE * <span class="dv">12</span>) *l0 = st / BSIZE;</span>
+<span id="cb14-4"><a href="#cb14-4"></a>    <span class="cf">else</span> <span class="cf">if</span> (st &lt; BSIZE * <span class="dv">12</span> + bn * BSIZE) {</span>
+<span id="cb14-5"><a href="#cb14-5"></a>        *l0 = <span class="dv">12</span>; *l1 = (st - BSIZE * <span class="dv">12</span>) % BSIZE;</span>
+<span id="cb14-6"><a href="#cb14-6"></a>    } <span class="cf">else</span> <span class="cf">if</span> (st &lt; BSIZE * <span class="dv">12</span> + bn * BSIZE + bn * bn * BSIZE) {</span>
+<span id="cb14-7"><a href="#cb14-7"></a>        *l0 = <span class="dv">13</span>; *l1 = (st - BSIZE * <span class="dv">12</span>) / (bn * BSIZE);</span>
+<span id="cb14-8"><a href="#cb14-8"></a>        *l2 = ((st - BSIZE * <span class="dv">12</span>) % (bn * BSIZE)) / BSIZE;</span>
+<span id="cb14-9"><a href="#cb14-9"></a>    } <span class="cf">else</span> panic(<span class="st">&quot;find_block: offset too large&quot;</span>);</span>
+<span id="cb14-10"><a href="#cb14-10"></a>}</span></code></pre></div>
 <p>write_inode在read_inode的基础上就是需要当待写的块不存在时，需要分配块并把块号填入到索引中：</p>
 <div class="sourceCode" id="cb15"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb15-1"><a href="#cb15-1"></a><span class="dt">void</span> write_inode(<span class="dt">int</span> inode_num, <span class="dt">char</span> *dinode, usize st, usize len, <span class="dt">char</span> *buf) {</span>
 <span id="cb15-2"><a href="#cb15-2"></a>    <span class="cf">if</span> (st + len &gt; TO32(dinode + <span class="dv">4</span>)) {</span>
@@ -391,27 +399,29 @@ html[data-theme='tufte']{
 <span id="cb15-13"><a href="#cb15-13"></a>            upd_inode(inode_num, dinode);</span>
 <span id="cb15-14"><a href="#cb15-14"></a>        }</span>
 <span id="cb15-15"><a href="#cb15-15"></a>        <span class="cf">if</span> (l0 &lt; <span class="dv">12</span>) {</span>
-<span id="cb15-16"><a href="#cb15-16"></a>            bcache_rw(TO32(dinode + <span class="dv">40</span> + <span class="dv">4</span> * l0), st, cplen, buf + cpoff, <span class="dv">1</span>); l0++;        } <span class="cf">else</span> <span class="cf">if</span> (l0 == <span class="dv">12</span>) {</span>
-<span id="cb15-17"><a href="#cb15-17"></a>            <span class="dt">int</span> block_no = get_alloc_block(TO32(dinode + <span class="dv">88</span>), l1);</span>
-<span id="cb15-18"><a href="#cb15-18"></a>            bcache_rw(block_no, st, cplen, buf + cpoff, <span class="dv">1</span>); l1++;</span>
-<span id="cb15-19"><a href="#cb15-19"></a>            <span class="cf">if</span> (l1 == BSIZE / <span class="dv">4</span>) { l1 = <span class="dv">0</span>; l0++; }</span>
-<span id="cb15-20"><a href="#cb15-20"></a>        } <span class="cf">else</span> <span class="cf">if</span> (l0 == <span class="dv">13</span>) {</span>
-<span id="cb15-21"><a href="#cb15-21"></a>            <span class="dt">int</span> block_no = get_alloc_block(TO32(dinode + <span class="dv">92</span>), l1);</span>
-<span id="cb15-22"><a href="#cb15-22"></a>            block_no = get_alloc_block(block_no, l1);</span>
-<span id="cb15-23"><a href="#cb15-23"></a>            bcache_rw(block_no, st, cplen, buf + cpoff, <span class="dv">1</span>); l2++;</span>
-<span id="cb15-24"><a href="#cb15-24"></a>            <span class="cf">if</span> (l2 == BSIZE / <span class="dv">4</span>) { l2 = <span class="dv">0</span>; l1++; }</span>
-<span id="cb15-25"><a href="#cb15-25"></a>            <span class="cf">if</span> (l1 == BSIZE / <span class="dv">4</span>) panic(<span class="st">&quot;write_inode: len too large&quot;</span>);</span>
-<span id="cb15-26"><a href="#cb15-26"></a>        } <span class="cf">else</span> panic(<span class="st">&quot;write_inode: len too large&quot;</span>);</span>
-<span id="cb15-27"><a href="#cb15-27"></a>        st = <span class="dv">0</span>; len -= cplen; cpoff += cplen;</span>
-<span id="cb15-28"><a href="#cb15-28"></a>    }</span>
-<span id="cb15-29"><a href="#cb15-29"></a>}</span></code></pre></div>
+<span id="cb15-16"><a href="#cb15-16"></a>            bcache_rw(TO32(dinode + <span class="dv">40</span> + <span class="dv">4</span> * l0), st, cplen, buf + cpoff, <span class="dv">1</span>); l0++;</span>
+<span id="cb15-17"><a href="#cb15-17"></a>        } <span class="cf">else</span> <span class="cf">if</span> (l0 == <span class="dv">12</span>) {</span>
+<span id="cb15-18"><a href="#cb15-18"></a>            <span class="dt">int</span> block_no = get_alloc_block(TO32(dinode + <span class="dv">88</span>), l1);</span>
+<span id="cb15-19"><a href="#cb15-19"></a>            bcache_rw(block_no, st, cplen, buf + cpoff, <span class="dv">1</span>); l1++;</span>
+<span id="cb15-20"><a href="#cb15-20"></a>            <span class="cf">if</span> (l1 == BSIZE / <span class="dv">4</span>) { l1 = <span class="dv">0</span>; l0++; }</span>
+<span id="cb15-21"><a href="#cb15-21"></a>        } <span class="cf">else</span> <span class="cf">if</span> (l0 == <span class="dv">13</span>) {</span>
+<span id="cb15-22"><a href="#cb15-22"></a>            <span class="dt">int</span> block_no = get_alloc_block(TO32(dinode + <span class="dv">92</span>), l1);</span>
+<span id="cb15-23"><a href="#cb15-23"></a>            block_no = get_alloc_block(block_no, l1);</span>
+<span id="cb15-24"><a href="#cb15-24"></a>            bcache_rw(block_no, st, cplen, buf + cpoff, <span class="dv">1</span>); l2++;</span>
+<span id="cb15-25"><a href="#cb15-25"></a>            <span class="cf">if</span> (l2 == BSIZE / <span class="dv">4</span>) { l2 = <span class="dv">0</span>; l1++; }</span>
+<span id="cb15-26"><a href="#cb15-26"></a>            <span class="cf">if</span> (l1 == BSIZE / <span class="dv">4</span>) panic(<span class="st">&quot;write_inode: len too large&quot;</span>);</span>
+<span id="cb15-27"><a href="#cb15-27"></a>        } <span class="cf">else</span> panic(<span class="st">&quot;write_inode: len too large&quot;</span>);</span>
+<span id="cb15-28"><a href="#cb15-28"></a>        st = <span class="dv">0</span>; len -= cplen; cpoff += cplen;</span>
+<span id="cb15-29"><a href="#cb15-29"></a>    }</span>
+<span id="cb15-30"><a href="#cb15-30"></a>}</span></code></pre></div>
 <p>当inode上的索引为空时，肯定是要分配的，不管它是零级还是一级还是其他级，分配完就更新inode。在逐级找到要写入的块时，我用get_alloc_block函数把重复操作包装起来了，主要就是如果索引中该块大于0则返回，等于0则分配新块并写到索引中：</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb16-1"><a href="#cb16-1"></a><span class="dt">int</span> get_alloc_block(<span class="dt">int</span> now_block, <span class="dt">int</span> index) {                                         <span class="dt">int</span> x; bcache_rw(now_block, index * <span class="dv">4</span>, <span class="dv">4</span>, &amp;x, <span class="dv">0</span>);</span>
-<span id="cb16-2"><a href="#cb16-2"></a>    <span class="cf">if</span> (!x) {</span>
-<span id="cb16-3"><a href="#cb16-3"></a>        x = alloc_block(); bcache_rw(now_block, index * <span class="dv">4</span>, <span class="dv">4</span>, &amp;x, <span class="dv">1</span>);</span>
-<span id="cb16-4"><a href="#cb16-4"></a>    }</span>
-<span id="cb16-5"><a href="#cb16-5"></a>    <span class="cf">return</span> x;</span>
-<span id="cb16-6"><a href="#cb16-6"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb16"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb16-1"><a href="#cb16-1"></a><span class="dt">int</span> get_alloc_block(<span class="dt">int</span> now_block, <span class="dt">int</span> index) {</span>
+<span id="cb16-2"><a href="#cb16-2"></a>    <span class="dt">int</span> x; bcache_rw(now_block, index * <span class="dv">4</span>, <span class="dv">4</span>, &amp;x, <span class="dv">0</span>);</span>
+<span id="cb16-3"><a href="#cb16-3"></a>    <span class="cf">if</span> (!x) {</span>
+<span id="cb16-4"><a href="#cb16-4"></a>        x = alloc_block(); bcache_rw(now_block, index * <span class="dv">4</span>, <span class="dv">4</span>, &amp;x, <span class="dv">1</span>);</span>
+<span id="cb16-5"><a href="#cb16-5"></a>    }</span>
+<span id="cb16-6"><a href="#cb16-6"></a>    <span class="cf">return</span> x;</span>
+<span id="cb16-7"><a href="#cb16-7"></a>}</span></code></pre></div>
 <p>注意当写入的内容大于文件大小时，inode_write还要更新文件大小。</p>
 <p>以上是文件节点层的内容，非常复杂和繁琐。其本质也就是对二进制格式文件的读写，复杂性主要在于三个方面，一个是文件系统本身的复杂性，像各类算法竞赛、考试，文件系统相关的题目一直一来都是各色”大模拟“题、”码农“题的常客，既包括对路径的字符串解析、又包括对文件树的操作，操作往往有多个种类，这就涉及状态的处理了；二是二进制格式文件的写比读要困难的多，因为读只需要关注想读的内容在哪、多大就行了，而写则需要适应整个格式的要求，除了写对应的内容，还需要修改各类元数据以满足文件格式的要求。就像我这个程序，如果只需要读取文件的话，那么和分配inode、block、创建文件相关的函数全部可以扔掉了，代码至少少掉七成；三是文件系统布局本身的复杂性，尤其是inode的多级索引那块比较繁琐。</p>
 <p>块缓存层就比较简单了，替换策略用的是LRU算法，通过时间戳实现。具体而言，每次读写块分三步：</p>
