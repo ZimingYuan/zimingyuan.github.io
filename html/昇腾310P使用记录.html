@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN" data-theme="tufte">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="description" content="昇腾310P使用记录" />
+  <meta name="keywords" content="昇腾310P, 昇腾, Ascend, Ascend 310P, CANN, Ascend C, Atlas 300I" />
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/extra/classless.css" />
+<style>
+html[data-theme='tufte']{
+    --rem: 15px;
+    --navpos: absolute;
+    --width: 70rem;
+    --font-p: 1.4rem/2 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-h: 1.4rem/1.5 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --ornament: "";
+    --border: 1px solid var(--cmed);
+    /* foreground   | background color */
+    --cfg:   #111;    --cbg:    #fbf7ec;
+    --cdark: #111;    --clight: #fbf7ec;
+    --cmed: #b4d5fe;
+    --clink: #111;
+    --cemph: #111;
+}
+</style>
+  <script>
+      let search = () => {
+          let word = document.querySelector('input');
+          if (word.value.length == 0) {
+              word.focus();
+          } else {
+              location.href = '/search.html?' + word.value;
+          }
+      };
+      window.onload = () => {
+          document.querySelector('input').addEventListener(
+              'keydown',  (event) => {
+                  if (event.key == 'Enter') search();
+          });
+      }
+  </script>
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <title>昇腾310P使用记录</title>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><big>VnYzm的博客</big></li>
+            <li><a href="/index.html">主页</a></li>
+            <li><a href="/html/随笔.html">随笔</a></li>
+            <li><a href="/miscellany.html">杂谈</a></li>
+            <li><a href="/friends.html">友链</a></li>
+            <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索标题" style="margin: 0"></li>
+        </ul>
+    </nav>
+<header id="title-block-header">
+<h1 class="title">昇腾310P使用记录</h1>
+<hr>
+</header>
+<h3 id="概述">概述</h3>
+<p>课题组最近的项目需要用到华为的昇腾计算卡，和CUDA汗牛充栋的教程和文档相比，作为一款比较新的计算卡产品，昇腾在网上基本没什么教程，可以参考的只有官方文档、官方代码仓库和官方论坛。因此我在使用的过程中，也经过了很多探索，踩了不少坑，所以在这里记录一下我遇到的一些问题和解决方案。</p>
+<p>特别强调一下，我使用的是Atlas 300I这个型号的昇腾卡，其中的处理器是<strong>昇腾310P（Ascend 310P）</strong>，具体SOC版本是Ascend310P3。这点很重要，因为昇腾的API兼容性比较差，同个API对不同型号的处理器支持差别很大，因此在查看文档的时候一定要注意检查这个API是否支持自己的处理器，以及自己的处理器支持哪些模板参数组合、哪些重载版本。如果使用了自己的处理器不支持的API，程序不会报异常，而是直接跳过该API的调用，到时候调试排错能让人心态崩溃🤪！<strong>本文只针对我所用的昇腾310P处理器。</strong></p>
+<p>另外一个要注意的地方是文档，随着CANN库的升级，昇腾的官方文档也在不断迭代，在这过程中修正老文档中的错误。所以要看就要看最新的，而且得是社区版文档。比方说我就在商用版的文档中发现了一个错误，本来想去论坛上提问的，后来看了社区版文档发现已经改了，然后我又在社区版文档里找到了一个商业版文档代码示例里漏加的语句，加上以后一个之前一直跑不通的程序就跑通了，我也是无语😅。总而言之，不要看商用版文档，要看最新的社区版文档。截至本文撰写时，最新版本的社区文档是<a href="https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha002">8.0.RC3.alpha002</a>。本文也只针对这个版本的CANN库。</p>
+<h3 id="ascend-cl">Ascend CL</h3>
+<p>Ascend CL（ACL）是CANN库的上层API，主要负责初始化、内存管理、调用官方算子、执行部署好的模型推理等操作。我使用的是Python版本的API，因为可以用Numpy来执行数据的预处理和后处理等操作，比用C++方便不少。大部分的内容文档里都讲的很清楚了，我就只说几个点。</p>
+<h4 id="内存管理">内存管理</h4>
+<p>和GPU类似，在执行计算前需要把主机DRAM的数据搬移到昇腾卡的DRAM上。这里我写了一个类，方便管理设备缓冲：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">class</span> Buffer():</span>
+<span id="cb1-2"><a href="#cb1-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>, size, shape<span class="op">=</span><span class="va">None</span>, acltype<span class="op">=</span><span class="va">None</span>):</span>
+<span id="cb1-3"><a href="#cb1-3"></a>        <span class="co"># size以字节为单位</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a>        <span class="co"># 如果这个显存需要用在模型推理的输入输出，则要给出shape和acltype参数，这样才能生成张量描述和数据缓冲结构供API调用</span></span>
+<span id="cb1-5"><a href="#cb1-5"></a>        <span class="va">self</span>.array, ret <span class="op">=</span> acl.rt.malloc(size, ACL_MEM_MALLOC_HUGE_FIRST)</span>
+<span id="cb1-6"><a href="#cb1-6"></a>        <span class="cf">assert</span>(ret <span class="op">==</span> ACL_SUCCESS)</span>
+<span id="cb1-7"><a href="#cb1-7"></a>        <span class="va">self</span>.size <span class="op">=</span> size</span>
+<span id="cb1-8"><a href="#cb1-8"></a>        <span class="cf">if</span> shape <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="kw">and</span> acltype <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb1-9"><a href="#cb1-9"></a>            <span class="va">self</span>.desc <span class="op">=</span> acl.create_tensor_desc(acltype, shape, ACL_FORMAT_ND)</span>
+<span id="cb1-10"><a href="#cb1-10"></a>            <span class="va">self</span>.<span class="bu">buffer</span> <span class="op">=</span> acl.create_data_buffer(<span class="va">self</span>.array, size)</span>
+<span id="cb1-11"><a href="#cb1-11"></a>        <span class="cf">else</span>:</span>
+<span id="cb1-12"><a href="#cb1-12"></a>            <span class="va">self</span>.desc <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb1-13"><a href="#cb1-13"></a>            <span class="va">self</span>.<span class="bu">buffer</span> <span class="op">=</span> <span class="va">None</span></span>
+<span id="cb1-14"><a href="#cb1-14"></a></span>
+<span id="cb1-15"><a href="#cb1-15"></a>    <span class="kw">def</span> from_np(<span class="va">self</span>, a):</span>
+<span id="cb1-16"><a href="#cb1-16"></a>        <span class="co"># 从numpy复制到显存</span></span>
+<span id="cb1-17"><a href="#cb1-17"></a>        ret <span class="op">=</span> acl.rt.memcpy(<span class="va">self</span>.array, <span class="va">self</span>.size, a.ctypes.data, <span class="va">self</span>.size, ACL_MEMCPY_HOST_TO_DEVICE)</span>
+<span id="cb1-18"><a href="#cb1-18"></a>        <span class="cf">assert</span>(ret <span class="op">==</span> ACL_SUCCESS)</span>
+<span id="cb1-19"><a href="#cb1-19"></a></span>
+<span id="cb1-20"><a href="#cb1-20"></a>    <span class="kw">def</span> to_np(<span class="va">self</span>, a):</span>
+<span id="cb1-21"><a href="#cb1-21"></a>        <span class="co"># 从显存复制到numpy</span></span>
+<span id="cb1-22"><a href="#cb1-22"></a>        ret <span class="op">=</span> acl.rt.memcpy(a.ctypes.data, <span class="va">self</span>.size, <span class="va">self</span>.array, <span class="va">self</span>.size, ACL_MEMCPY_DEVICE_TO_HOST)</span>
+<span id="cb1-23"><a href="#cb1-23"></a>         <span class="cf">assert</span>(ret <span class="op">==</span> ACL_SUCCESS)</span>
+<span id="cb1-24"><a href="#cb1-24"></a></span>
+<span id="cb1-25"><a href="#cb1-25"></a>     <span class="kw">def</span> <span class="fu">__del__</span>(<span class="va">self</span>):</span>
+<span id="cb1-26"><a href="#cb1-26"></a>         <span class="cf">if</span> <span class="va">self</span>.desc <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb1-27"><a href="#cb1-27"></a>             acl.destroy_tensor_desc(<span class="va">self</span>.desc)</span>
+<span id="cb1-28"><a href="#cb1-28"></a>         <span class="cf">if</span> <span class="va">self</span>.<span class="bu">buffer</span> <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span>:</span>
+<span id="cb1-29"><a href="#cb1-29"></a>             ret <span class="op">=</span> acl.destroy_data_buffer(<span class="va">self</span>.<span class="bu">buffer</span>)</span>
+<span id="cb1-30"><a href="#cb1-30"></a>         ret <span class="op">=</span> acl.rt.free(<span class="va">self</span>.array)</span></code></pre></div>
+<p>注意三点：</p>
+<ul>
+<li>由于ACL在执行模型推理的时候还需要输入输出张量的具体描述信息，所以这里我就在创建设备缓冲的同时顺便也把这些描述信息一起生成了，放在<code>self.desc</code>和<code>self.buffer</code>属性里。</li>
+<li>这里和numpy的交互过程我没有用官方的API<code>numpy_to_ptr</code>/<code>bytes_to_ptr</code>，前者即将废弃，后者会有额外的复制操作，总之都有点问题，不如直接用numpy官方的返回地址方法<code>array.ctypes.data</code>，注意如果调用前numpy数组物理地址不连续（例如经过了转置），需要调用<code>numpy.ascontiguousarray</code>把它弄成连续的。</li>
+<li>Python变量的析构时间不确定，而ACL在<code>finalize</code>会自动释放显存，因此如果是在调用<code>finalize</code>在执行析构函数就会报错，所以需要在调用<code>finalize</code>前使用<code>del XXX</code>手动析构。</li>
+</ul>
+<h4 id="调用官方算子">调用官方算子</h4>
+<p>文档写得太复杂了，总结起来分为以下三步：</p>
+<ol type="1">
+<li>写算子描述json文件，里面包含了要调用的所有算子的输入输出张量大小、格式等</li>
+<li>使用ATC工具讲json文件转成om文件</li>
+<li>程序里加载om文件，初始化，申请资源，调用<code>acl.op.execute_v2</code>，释放资源等</li>
+</ol>
+<p>具体操作可以参考<a href="https://gitee.com/ascend/samples">代码仓库</a>，可能只有C++版本的，不过Ascend CL的Python版本和C++版本API基本都是一一对应的关系，很容易翻译过来。json文件的写法以及每种算子如何描述都可以在文档中查到。</p>
+<p>这里有一个比较容易让人误解的地方，就是所谓的<a href="https://www.hiascend.com/document/detail/zh/CANNCommunityEdition/80RC3alpha002/devguide/appdevg/aclpythondevg/aclpythondevg_0070.html">CBLAS接口</a>，我开始以为这玩意和cuBLAS一样，是一套可以直接调用的矩阵乘法API，结果用的时候一直报错。后来才知道这玩意本质上是<code>acl.op.execute_v2</code>套皮，内部执行的是GEMM算子，所以还是得走前面那三步，只不过能少声明几个结构体罢了。有点不明白这个API的意义是啥，误导cuBLAS用户吗🤔？</p>
+<h4 id="模型推理">模型推理</h4>
+<p>调用官方算子的时候需要执行多少函数就得在json文件里声明多少算子，其中的中间张量也得手动执行申请显存、申请张量描述结构体等操作，极其麻烦。所以不仅是神经网络模型，普通的需要通过执行多个函数来完成的操作也建议构建成模型然后让ACL一次性执行完。模型推理也分为以下三步：</p>
+<ol type="1">
+<li>准备ONNX模型</li>
+<li>使用ATC工具讲ONNX文件转成om文件</li>
+<li>程序里加载om文件，初始化，申请资源，调用<code>acl.mdl.execute</code>，释放资源等</li>
+</ol>
+<p>ONNX模型我直接用PyTorch生成：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">class</span> model(torch.nn.Module):</span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="kw">def</span> <span class="fu">__init__</span>(<span class="va">self</span>):</span>
+<span id="cb2-3"><a href="#cb2-3"></a>        <span class="bu">super</span>(model, <span class="va">self</span>).<span class="fu">__init__</span>()</span>
+<span id="cb2-4"><a href="#cb2-4"></a>        <span class="co"># ...</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>    <span class="kw">def</span> forward(<span class="va">self</span>, x):</span>
+<span id="cb2-6"><a href="#cb2-6"></a>        <span class="co"># ...</span></span>
+<span id="cb2-7"><a href="#cb2-7"></a>constructadc <span class="op">=</span> model()</span>
+<span id="cb2-8"><a href="#cb2-8"></a>x <span class="op">=</span> torch.rand(<span class="dv">1</span>, <span class="dv">128</span>)</span>
+<span id="cb2-9"><a href="#cb2-9"></a>torch.onnx.export(</span>
+<span id="cb2-10"><a href="#cb2-10"></a>        model, x, <span class="st">&#39;model.onnx&#39;</span>, export_params<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb2-11"><a href="#cb2-11"></a>        input_names <span class="op">=</span> [<span class="st">&#39;x&#39;</span>], output_names <span class="op">=</span> [<span class="st">&#39;r&#39;</span>])</span></code></pre></div>
+<p>我用如下的命令转换：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb3-1"><a href="#cb3-1"></a><span class="ex">atc</span> --model=model.onnx --framework=5 --output=model --input_shape=<span class="st">&quot;x:1,128&quot;</span> --soc_version=Ascend310P3</span></code></pre></div>
+<p>要进一步提高精度，可以添加<code>--precision_mode_v2=origin</code>参数，不过推理效率会低不少。</p>
+<h3 id="ascend-c">Ascend C</h3>
+<p>有时我们需要对算子内部的存储层次和循环结构进行更精细的控制，Ascend C就可以满足我们的要求，实际上它对应的也是Nvidia的CUDA算子。不过虽然Ascend C和CUDA一样用的都是C++语言，调用语法也有些相像，但实际上两者的编程模式差别很大，因为昇腾的架构和GPU的架构本身就有着决定性的不同。这里我介绍一下自己所用的调用方式，对其和GPU架构的比较以及用API时遇到的一些坑点。</p>
+<h4 id="调用方式">调用方式</h4>
+<p>在本文中，我采用的是Pybind11的调用方式，和我之前的文章《自定义CUDA实现PyTorch算子的四种简单方法》比较类似，用一个源文件写算子，一个源文件写接口，不过这个就不能让Pytorch Extension自动编译了，而需要自己用CMake和Make编译，具体可以参考<a href="https://gitee.com/ascend/samples/tree/master/operator/AddCustomSample/KernelLaunch/CppExtensions">样例代码</a>，里面的CMakeFile可以直接拿来改，把源代码文件名换掉就可以了。样例代码里函数接口传入的是Pytorch张量，如果没用Pytorch的话，可以把函数的参数类型改成<code>uint64_t</code>，然后在Python端直接把之前<code>acl.rt.malloc</code>返回的指针传进去。</p>
+<p>另外，我在编译的时候报错提示算子文件找不到其引用的头文件，这个头文件是C++标准库里的，按理来说正常编译都是会自动引用。代码仓库里有人在Issue里提过类似的问题，但最后通过更新库的版本、切换环境什么的就解决了，只有我一直解决不了，最后临时用以下命令解决了：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1"></a><span class="va">CPLUS_INCLUDE_PATH=</span>/usr/include/c++/9/:/usr/include/aarch64-linux-gnu/c++/9/ <span class="fu">make</span> -j</span></code></pre></div>
+<p>其实就是在编译的时候强制让编译器额外去这些目录找头文件。<code>make -j</code>前面这一段也可以加在<code>bash run.sh</code>前面（如果是用一键脚本进行编译的话），或者直接用<code>export</code>声明环境变量。这个问题不一定每个人都会遇到，我怀疑可能和服务器架构有关，之前师兄想把卡装在已有的服务器上结果识别不了，没办法只能采购华为自己出的服务器，华为服务器用的是ARM架构的鲲鹏CPU，而昇腾CANN库的开发人员用的可能是x64的，所以可能就会出现BUG，当然这也只是猜测，反正指定一下环境变量基本就没什么问题了。</p>
+<h4 id="编程模式">编程模式</h4>
+<p>Ascend C虽然在上层API上和CUDA挺像的，但编程模式和CUDA相差很大。原因是GPU由大量计算核（CUDA core）组成，本质上是同构架构，开发者所写的程序跑在这些计算核上，每个计算核跑一样的程序，因此编程模式也比较类似于使用OpenMP编程。而昇腾计算卡则是由少量AI核组成，而每个AI核内部又由AI cpu、Vector core和Cube core组成，本质上是异构架构，开发者所写的程序跑在AI cpu上，同时AI cpu将程序中的任务调度给Vector core和Cube core，因此编程模式比较类似于使用Numpy编程，需要通过固定的几种Ascend C API的组合来构建整个程序，这些Ascend C API所对应的就是Vector core和Cube core所支持的计算操作。</p>
+<p>这两种编程模式，在我看来，互有优劣。Ascend C的优势在于编程简单，像Numpy上手十分轻松，而OpenMP在考虑并行数据流方面则需要下一番功夫。同时，Ascend C的编程模式也实现了对大部分架构细节的隐藏，像缓存、地址对齐这些基本不太需要考虑；而CUDA则不一样，读写合并、bank conflict这些都是高性能编程必须考虑的点，如果没有处理好，将会引起大量额外开销。此外，Ascend C代码跑在AI cpu上，本质上是Arm架构的处理器，编程方式和普通平台上没有任何不同；而CUDA编程的是CUDA core，和普通平台相比不擅长做分支，指令调度也不太一样，需要额外学习。因此，在教程和文档齐备的情况下，Ascend C应该是比CUDA好上手很多的。</p>
+<p>CUDA则胜在它的灵活性，Ascend C在编程上只能用它所提供的API，对于一些比较复杂的任务，要么无法用现有的API实现，只能通过AI cpu来实现，效率很低，要么需要组合API，通过绕弯子的方式实现，需要大量的额外开销。而CUDA则不一样，理论上可以以并行的方式实现一切C++能够实现的功能。此外，GPU现在引入了Tensor core，在架构上也偏异构了；而昇腾的架构则很难通过改进来执行图形计算，限制还是比较多的。</p>
+<h4 id="排序api">排序API</h4>
+<p>注意这里讨论的排序API不包括<code>TopK</code>，因为它和其他API差别太大，而且我没用过，所以不敢妄言。</p>
+<p>昇腾310P（其他处理器不一定一样）上的Ascend C排序API的核心数据结构都是由n个<code>Region Proposal</code>结构体组成的数组，其中n是要排序的数据个数，<code>Region Proposal</code>结构体包含8个属性，其中<code>score</code>属性是排序关键字，另外七个属性都可以自由存储数据。API包含三种：</p>
+<ul>
+<li>合成数据API：用来将一个数组复制到前面所说的<code>Region Proposal</code>数组中的某个属性。包含两个函数：
+<ul>
+<li>架构无关函数<code>Concat</code>。这个函数参数很直观，包含输入张量<code>srcLocal</code>、输出张量<code>dstLocal</code>（<code>Region Proposal</code>数组），要复制到哪个属性<code>modeNumber</code>，要复制的元素组数<code>repeatTimes</code>。</li>
+<li>少数几种处理器（包含Ascend 310P）专属的函数<code>ProposalConcat</code>。这个函数的参数就比较奇葩：没有指定目标属性，同时还有个临时张量参数<code>tmpLocal</code>。如果看它的用法，更奇怪了，临时张量参数<code>tmpLocal</code>给出的是<code>Range Proposal</code>数组，而输出张量参数<code>concatLocal</code>给出的则是一个空张量。经过实验，结论有两点：
+<ul>
+<li>目标属性是<code>score</code>，这也容易理解，毕竟输入是待排序的关键字数组；</li>
+<li>函数执行后的<code>concatLocal</code>实际上和<code>tmpLocal</code>指向同一片存储区域，也就是说，这个函数把数据复制到<code>Range Proposal</code>数组<code>tmpLocal</code>里以后，<strong>让空的<code>concatLocal</code>作为引用指向了<code>tmpLocal</code></strong>。所以我觉得这个函数的设计其实挺迷惑的，为啥不直接去掉<code>tmpLocal</code>这个参数，然后要求用户把分配好足够空间的张量传给<code>concatLocal</code>呢？这样设计不仅奇怪，还容易误导用户，用户可能调用完函数把<code>tmpLocal</code>拿去做别的用途，结果就会把<code>concatLocal</code>的内容也改了。这里就是一个大坑，所以建议如果程序专门就是针对310P的，完全没必要用这个函数，功能又少又易错，昇腾官方也最好考虑一下是否要重新设计这个函数。</li>
+</ul></li>
+</ul></li>
+<li>排序执行API：主要包含<code>Sort</code>、<code>MrgSort</code>这两个，还有一些架构专属API，由于用途比较狭窄（比如只能16个16个排序），所以就不提了。<code>Sort</code>我觉得设计也有点问题，为什么要把排序和索引复制混在同一个函数中做呢？一方面用户不知道索引会被复制到<code>Region Proposal</code>的哪个属性（实验证明是<code>label</code>属性）；另一方面可能我只想把一部分索引复制到数组里，然后整个数组排序，但这个函数就强迫我每次执行的时候复制索引的数量都必须和待排序的数组的大小一致，这就会带来额外的开销。<code>MrgSort</code>挺直观的，没什么坑点，看看样例代码就会用了，注意商业版文档（我看的是8.0.RC2.2）关于<code>isExhaustedSuspension</code>模板参数的解释写反了，新的社区版文档解释是对的。</li>
+<li>分离数据API：是合成数据API的反操作，用来将<code>Region Proposal</code>数组中的某个属性复制到普通数组中，同样包含架构无关函数<code>Extract</code>和架构专属函数<code>ProposalExtract</code>，后者和<code>ProposalConcat</code>是对应的；前者也很直观，就是把<code>score</code>和<code>label</code>两个属性分别复制到两个数组，还是挺容易理解的。</li>
+</ul>
+<p>此外，<code>Range Proposal</code>数组的类型虽然只能是<code>float</code>和<code>half</code>，但实际上除了排序关键字之外的属性想存什么类型的数都是可以的。直接取一个其他类型的<code>LocalTensor</code>写数据，然后对这个<code>LocalTensor</code>所属的<code>TQue/TBuf</code>用<code>EnQue+DeQue/Get</code>取一个<code>float/half</code>的<code>LocalTensor</code>，再把它复制到<code>Range Proposal</code>数组里即可。实际上<code>Sort</code>函数内部应该也是这样处理索引的。</p>
+<p>但这里就有一个坑，如果索引超过了65535，而数据类型是<code>half</code>，那就会出问题，毕竟<code>half</code>就16位，不管怎么变换类型都无法准确存下这么大的数，更重要的是，由于<code>Sort</code>接收的索引类型是<code>uint32_t</code>，所以用户在生成索引的时候可能一直用的都是32位整数，没意识到<code>half</code>类型的<code>Range Proposal</code>存不下。解决方法要么改用<code>float</code>类型的<code>Range Proposal</code>，要么就是让索引放缩，把倍数和余数拆分到除了<code>score</code>之外的各个属性中，保证全部属性都小于65536，不过这就比较麻烦。</p>
+<h4 id="同步api">同步API</h4>
+<p>官方代码样例基本都是非常规整的流水线程序，因此用的是<code>TQue</code>来存储数据，但实际需求中可能有些数据会反复被重用，这时还是用<code>TBuf</code>来存储好一些，但是<code>TBuf</code>没有自动同步功能，所以<strong>如果从<code>TBuf</code>中取的<code>LocalTensor</code>经过API计算后要复制到<code>GlobalTensor</code>，或者<code>GlobalTensor</code>中的数据要复制到<code>TBuf</code>中取的<code>LocalTensor</code>然后进行API计算，此时就需要同步</strong>。具体同步API可以查看文档中的<code>TQueSync</code>相关，虽然同步时要Set一下Wait一下而不是只用一个函数很怪，但总体还是很容易理解的。</p>
+<h4 id="矩阵乘法api">矩阵乘法API</h4>
+<p>由于我做的项目没怎么用到矩阵乘法API，所以我对其也不是很了解，这里仅记录一下我使用矩阵乘法API的流程，后面可能还会再补充原理和优化方法之类的。</p>
+<p>首先是在Host端声明一个TCubeTiling，把它复制到设备内存中：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb5-1"><a href="#cb5-1"></a><span class="co">// m*k,k*n</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a><span class="kw">auto</span> ascendcPlatform = platform_ascendc::PlatformAscendCManager::GetInstance();</span>
+<span id="cb5-3"><a href="#cb5-3"></a>matmul_tiling::MatmulApiTiling cubeTiling(*ascendcPlatform);</span>
+<span id="cb5-4"><a href="#cb5-4"></a>cubeTiling.SetAType(matmul_tiling::TPosition::VECOUT, matmul_tiling::CubeFormat::ND, matmul_tiling::DataType::DT_FLOAT16);</span>
+<span id="cb5-5"><a href="#cb5-5"></a>cubeTiling.SetBType(matmul_tiling::TPosition::VECOUT, matmul_tiling::CubeFormat::ND, matmul_tiling::DataType::DT_FLOAT16);</span>
+<span id="cb5-6"><a href="#cb5-6"></a>cubeTiling.SetCType(matmul_tiling::TPosition::VECIN, matmul_tiling::CubeFormat::ND, matmul_tiling::DataType::DT_FLOAT16);</span>
+<span id="cb5-7"><a href="#cb5-7"></a>cubeTiling.SetShape(m, k, n);</span>
+<span id="cb5-8"><a href="#cb5-8"></a>cubeTiling.SetOrgShape(m, k, n);</span>
+<span id="cb5-9"><a href="#cb5-9"></a>cubeTiling.SetBias(<span class="kw">false</span>);</span>
+<span id="cb5-10"><a href="#cb5-10"></a>optiling::TCubeTiling tiling;</span>
+<span id="cb5-11"><a href="#cb5-11"></a><span class="cf">if</span> (cubeTiling.GetTiling(tiling) == -<span class="dv">1</span>) <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb5-12"><a href="#cb5-12"></a></span>
+<span id="cb5-13"><a href="#cb5-13"></a><span class="dt">uint32_t</span> tiling_size = tiling.GetDataSize();</span>
+<span id="cb5-14"><a href="#cb5-14"></a><span class="dt">uint64_t</span> device_tiling;</span>
+<span id="cb5-15"><a href="#cb5-15"></a>aclError err = aclrtMalloc((<span class="dt">void</span> **)&amp;device_tiling, tiling_size, ACL_MEM_MALLOC_HUGE_FIRST);</span>
+<span id="cb5-16"><a href="#cb5-16"></a><span class="cf">if</span> (err != ACL_SUCCESS) <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb5-17"><a href="#cb5-17"></a><span class="dt">uint8_t</span> *host_tiling = <span class="kw">new</span> <span class="dt">uint8_t</span>[tiling_size];</span>
+<span id="cb5-18"><a href="#cb5-18"></a>tiling.SaveToBuffer(host_tiling, tiling_size);</span>
+<span id="cb5-19"><a href="#cb5-19"></a>err = aclrtMemcpy((<span class="dt">void</span> *)device_tiling, tiling_size, host_tiling, tiling_size, ACL_MEMCPY_HOST_TO_DEVICE);</span>
+<span id="cb5-20"><a href="#cb5-20"></a><span class="cf">if</span> (err != ACL_SUCCESS) {</span>
+<span id="cb5-21"><a href="#cb5-21"></a>    <span class="kw">delete</span>[] host_tiling;</span>
+<span id="cb5-22"><a href="#cb5-22"></a>    aclrtFree((<span class="dt">void</span> *)device_tiling);</span>
+<span id="cb5-23"><a href="#cb5-23"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
+<span id="cb5-24"><a href="#cb5-24"></a>}</span>
+<span id="cb5-25"><a href="#cb5-25"></a><span class="kw">delete</span>[] host_tiling;</span></code></pre></div>
+<p>然后在设备端把显存中的TCubeTiling复制过来（样例代码是这样写的，但我觉得是不是把<code>__gm__ uint8_t*</code>直接强转成<code>TCubeTiling*</code>是不是也可以）：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb6-1"><a href="#cb6-1"></a><span class="co">// __gm__ uint8_t *tiling</span></span>
+<span id="cb6-2"><a href="#cb6-2"></a>TCubeTiling tctiling;</span>
+<span id="cb6-3"><a href="#cb6-3"></a><span class="dt">int</span> *dst = <span class="kw">reinterpret_cast</span>&lt;<span class="dt">int</span> *&gt;(&amp;tctiling);</span>
+<span id="cb6-4"><a href="#cb6-4"></a><span class="kw">auto</span> src = <span class="kw">reinterpret_cast</span>&lt;__gm__ <span class="dt">int</span> *&gt;(tiling);</span>
+<span id="cb6-5"><a href="#cb6-5"></a><span class="cf">for</span> (<span class="dt">int</span> i = <span class="dv">0</span>; i &lt; <span class="kw">sizeof</span>(TCubeTiling) / <span class="kw">sizeof</span>(<span class="dt">int</span>); i++) {</span>
+<span id="cb6-6"><a href="#cb6-6"></a>    dst[i] = src[i];</span>
+<span id="cb6-7"><a href="#cb6-7"></a>}</span></code></pre></div>
+<p>然后声明<code>Matmul</code>类和注册。注意这<code>Matmul</code>类和《西游记》里的人参果似的，人参果摘果比吃果还麻烦，而<code>Matmul</code>声明也比调用麻烦：</p>
+<ul>
+<li><code>Matmul</code>声明完必须立即<code>REGIST_MATMUL_OBJ</code>，不能分开，包括把<code>Matmul</code>声明成类里的成员变量也不行。否则就会程序就会卡死，非常奇怪，我想不出原因，但事实就是如此。</li>
+<li><code>Matmul</code>不能作为类里引用类型的成员变量。比方说在类里声明了一个成员引用，然后在主函数里声明一个<code>Matmul</code>，注册后再通过类的构造函数把<code>Matmul</code>的引用传进去，这也是不行的。而且很奇怪，似乎如果只执行一次矩阵乘法是没问题的，但执行多次矩阵乘法就会结果错误。</li>
+</ul>
+<p>最后的做法是在类里的一个成员函数里声明成局部变量，注册后把引用作为参数传给另一个成员函数，就可以了，反正很玄乎：</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">using</span> <span class="kw">namespace</span> matmul;</span>
+<span id="cb7-2"><a href="#cb7-2"></a><span class="kw">using</span> <span class="dt">matmul_t</span> = Matmul&lt;MatmulType&lt;AscendC::TPosition::VECOUT, CubeFormat::ND, half&gt;,</span>
+<span id="cb7-3"><a href="#cb7-3"></a>      MatmulType&lt;AscendC::TPosition::VECOUT, CubeFormat::ND, half&gt;,</span>
+<span id="cb7-4"><a href="#cb7-4"></a>      MatmulType&lt;AscendC::TPosition::VECIN, CubeFormat::ND, half&gt;&gt;;</span>
+<span id="cb7-5"><a href="#cb7-5"></a><span class="dt">matmul_t</span> mm;</span>
+<span id="cb7-6"><a href="#cb7-6"></a>REGIST_MATMUL_OBJ(&amp;pipe, GetSysWorkSpacePtr(), mm, &amp;tiling);</span>
+<span id="cb7-7"><a href="#cb7-7"></a><span class="cf">for</span> (<span class="co">/*...*/</span>) {</span>
+<span id="cb7-8"><a href="#cb7-8"></a>    <span class="co">// ...</span></span>
+<span id="cb7-9"><a href="#cb7-9"></a>    Sum(mm);</span>
+<span id="cb7-10"><a href="#cb7-10"></a>    <span class="co">// ...</span></span>
+<span id="cb7-11"><a href="#cb7-11"></a>}</span></code></pre></div>
+<p>然后是具体执行：</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb8-1"><a href="#cb8-1"></a>mm.SetTensorA(A_ten, <span class="kw">false</span>);</span>
+<span id="cb8-2"><a href="#cb8-2"></a>mm.SetTensorB(B_ten, <span class="kw">false</span>);</span>
+<span id="cb8-3"><a href="#cb8-3"></a>mm.IterateAll(C_ten);</span>
+<span id="cb8-4"><a href="#cb8-4"></a>mm.End();</span></code></pre></div>
+<p>注意如果输入输出矩阵中包含<code>GlobalTensor</code>的话需要额外调用一个<code>mm.SetLocalWorkspace</code>方法（我试的结果是这样，但和文档有点出入，建议自己亲自在Host端执行<code>MatmulGetTmpBufSize</code>看看返回值，如果是0就可以不调用），这个商业版文档也没提（我看的是8.0.RC2.2），坑死我了😤。</p>
+<h4 id="杂项">杂项</h4>
+<p>这里谈一下Ascend C里Tensor的类型转换，如果是数值相关的转换，比如浮点<code>1.0</code>转成整数<code>1</code>这种，则使用<code>Cast</code>函数，要注意两点：</p>
+<ul>
+<li>看清文档里<strong>每个架构</strong><code>Cast</code>所支持的舍入模式，比如<code>float</code>转<code>half</code>，文档前面介绍了好几种舍入模式，结果到了后面又说310P只支持<code>CAST_NONE/CAST_ODD</code>，如果用了处理器架构所不支持的舍入模式，程序也不会报错，就默默地啥也不做，非常坑爹。</li>
+<li>有些类型之间不能直接转换，这就需要两次或者多次<code>Cast</code>，比如<code>uint8_t</code>转<code>int32_t</code>，就需要先转成<code>half</code>再转成<code>int32_t</code>，具体也是要看处理器架构支持的转换类型。</li>
+</ul>
+<p>如果是二进制级别的转换，比如<code>int32_t</code>转<code>uint32_t</code>，如果要转换的数是非负数，那么转换前后的二进制表示是一样的。这时就直接对要转换的<code>LocalTensor</code>所属的<code>TQue/TBuf</code>用<code>EnQue+DeQue/Get</code>重新取一个转换后类型的<code>LocalTensor</code>即可，因为<code>TQue/TBuf</code>是无类型的，所以在二进制级别上可以解释成任意类型。</p>
+<p>另外关于高阶API的<code>ArithProgression</code>函数，虽然可以指定它生成整数序列，但它的内部应该是用浮点数来实现的，因此当整数序列比较大时，会产生精度误差，这点需要注意。比如说我想生成一个一亿到一亿加一万的整数序列，由于浮点数的尾数没有那么多位，到时候可能每个数都和预期的差个几或十几。正确做法是生成零到一万的整数序列，然后再用Add把序列所有数都加上一亿，这样就没有精度问题了。</p>
+<h3 id="总结">总结</h3>
+<p>总体而言，我觉得昇腾的文档写的还可以，大部分内容都有附上示例代码，总体脉络还是挺清晰的。但项目需求千千万，示例代码也无法覆盖所有的情况，这时就会遇到坑了。CUDA为什么用的人多，就是有足够牛的项目验证了它的可行性，同时基于它的无数项目也都把坑都踩光了，遇到什么问题网上大体都搜得到。相比之下，国内以昇腾为代表的各种GPU、计算卡在这方面还存在不少差距。所以我在这里把遇到的问题记录下来，既是方便自己回忆，也是分享给大家，希望能够为我国的科技发展作出贡献🤗。</p>
+<footer>
+    <hr>
+    <center>
+        Powered by <a href="https://github.com/ZimingYuan/Yblogs" target="_blank">Yblogs</a><br>
+        转载请注明出处<br>
+        © 2024 VnYzm的博客
+    </center>
+</footer>
+</body>
+</html>

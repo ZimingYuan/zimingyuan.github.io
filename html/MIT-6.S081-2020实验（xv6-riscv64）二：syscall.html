@@ -4,6 +4,8 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="description" content="MIT-6.S081-2020实验（xv6-riscv64）二：syscall" />
+  <meta name="keywords" content="" />
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -149,7 +151,7 @@ html[data-theme='tufte']{
 <div class="sourceCode" id="cb2"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb2-1"><a href="#cb2-1"></a>  <span class="cf">if</span> (p-&gt;mask &amp; (<span class="dv">1</span> &lt;&lt; num))</span>
 <span id="cb2-2"><a href="#cb2-2"></a>       printf(<span class="st">&quot;%d: syscall %s -&gt; %d</span><span class="sc">\n</span><span class="st">&quot;</span>, p-&gt;pid, callnames[num - <span class="dv">1</span>], p-&gt;trapframe-&gt;a0);</span></code></pre></div>
 <h4 id="sysinfo">sysinfo</h4>
-<p>添加系统调用的过程和上一个人物类似，这里就不提了。具体sys_sysinfo函数的实现需要首先获得所需要的信息，然后获得传进系统调用函数的地址参数，将获得的信息复制到这个地址，由于是涉及内核态和用户态的地址转换，所以需要使用copyout函数：</p>
+<p>添加系统调用的过程和上一个任务类似，这里就不提了。具体sys_sysinfo函数的实现需要首先获得所需要的信息，然后获得传进系统调用函数的地址参数，将获得的信息复制到这个地址，由于是涉及内核态和用户态的地址转换，所以需要使用copyout函数：</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode c"><code class="sourceCode c"><span id="cb3-1"><a href="#cb3-1"></a>uint64 sys_sysinfo(<span class="dt">void</span>) {</span>
 <span id="cb3-2"><a href="#cb3-2"></a>    uint64 ip; <span class="kw">struct</span> sysinfo si;</span>
 <span id="cb3-3"><a href="#cb3-3"></a>    si.freemem = freemem();</span>
