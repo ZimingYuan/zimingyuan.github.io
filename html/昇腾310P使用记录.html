@@ -249,8 +249,8 @@ html[data-theme='tufte']{
 <span id="cb5-4"><a href="#cb5-4"></a>cubeTiling.SetAType(matmul_tiling::TPosition::VECOUT, matmul_tiling::CubeFormat::ND, matmul_tiling::DataType::DT_FLOAT16);</span>
 <span id="cb5-5"><a href="#cb5-5"></a>cubeTiling.SetBType(matmul_tiling::TPosition::VECOUT, matmul_tiling::CubeFormat::ND, matmul_tiling::DataType::DT_FLOAT16);</span>
 <span id="cb5-6"><a href="#cb5-6"></a>cubeTiling.SetCType(matmul_tiling::TPosition::VECIN, matmul_tiling::CubeFormat::ND, matmul_tiling::DataType::DT_FLOAT16);</span>
-<span id="cb5-7"><a href="#cb5-7"></a>cubeTiling.SetShape(m, k, n);</span>
-<span id="cb5-8"><a href="#cb5-8"></a>cubeTiling.SetOrgShape(m, k, n);</span>
+<span id="cb5-7"><a href="#cb5-7"></a>cubeTiling.SetShape(m, n, k);</span>
+<span id="cb5-8"><a href="#cb5-8"></a>cubeTiling.SetOrgShape(m, n, k);</span>
 <span id="cb5-9"><a href="#cb5-9"></a>cubeTiling.SetBias(<span class="kw">false</span>);</span>
 <span id="cb5-10"><a href="#cb5-10"></a>optiling::TCubeTiling tiling;</span>
 <span id="cb5-11"><a href="#cb5-11"></a><span class="cf">if</span> (cubeTiling.GetTiling(tiling) == -<span class="dv">1</span>) <span class="cf">return</span> <span class="dv">0</span>;</span>
