@@ -301,6 +301,7 @@ html[data-theme='tufte']{
 <span id="cb8-3"><a href="#cb8-3"></a>mm.IterateAll(C_ten);</span>
 <span id="cb8-4"><a href="#cb8-4"></a>mm.End();</span></code></pre></div>
 <p>注意如果输入输出矩阵中包含<code>GlobalTensor</code>的话需要额外调用一个<code>mm.SetLocalWorkspace</code>方法（我试的结果是这样，但和文档有点出入，建议自己亲自在Host端执行<code>MatmulGetTmpBufSize</code>看看返回值，如果是0就可以不调用），这个商业版文档也没提（我看的是8.0.RC2.2），坑死我了😤。</p>
+<p>Update: <strong>上面说的不对，<code>MatmulGetTmpBufSize</code>返回0并不意味着可以不调用<code>SetLocalWorkspace</code>。</strong> 当输入输出矩阵都是<code>LocalTensor</code>的情况下，此时虽然<code>MatmulGetTmpBufSize</code>返回0，但有时候仍会出现计算结果错误的情况（我这边的出错现象是输出矩阵的每一行值都相等），此时需要将输出矩阵换成<code>GlobalTensor</code>，然后查看<code>MatmulGetTmpBufSize</code>的返回值，并依据返回值申请buffer和调用<code>SetLocalWorkspace</code>，之后再将输出矩阵改回<code>LocalTensor</code>。</p>
 <h4 id="杂项">杂项</h4>
 <p>这里谈一下Ascend C里Tensor的类型转换，如果是数值相关的转换，比如浮点<code>1.0</code>转成整数<code>1</code>这种，则使用<code>Cast</code>函数，要注意两点：</p>
 <ul>
