@@ -65,6 +65,12 @@ html[data-theme='tufte']{
             <div class="col">
                 
 <div class="card">
+    <h4><a href="/html/MIT-6.S081-2020实验（xv6-riscv64）六：cow.html">MIT-6.S081-2020实验（xv6-riscv64）六：cow</a></h4><hr>
+    <p>实验文档 概述 这次实验实现copy on write功能，和上次实验一样也是缺页中断的应用，但不同的是，这次实验涉及的物理内存和虚拟地址的操作要比上个实验多不少，因此难度也更大一些。 内容 首先是uvmcopy的部分，原来的操作是从老页表中获得虚拟地址对应的物理地址，创建一个新物理页，然后将老物理...</p>
+    <em>2021年1月6日</em>
+</div>
+
+<div class="card">
     <h4><a href="/html/MIT-6.S081-2020实验（xv6-riscv64）五：lazy.html">MIT-6.S081-2020实验（xv6-riscv64）五：lazy</a></h4><hr>
     <p>实验文档 概述 这次实验主要实现Lazy allocation的功能，即进程在动态分配内存的时候先不分配，等到要用到发生缺页中断的时候再实际分配，核心是实现缺页中断的处理。xv6的文档介绍了三种缺页中断的应用，第一为Copy on write，即fork的时候先不复制内存，等到要用到发生缺页中断的时...</p>
     <em>2021年1月2日</em>
@@ -116,12 +122,6 @@ html[data-theme='tufte']{
     <h4><a href="/html/Python制作字符图片.html">Python制作字符图片</a></h4><hr>
     <p>背景 字符图片，即纯使用字符构造出一幅图片。关于这个，网上的教程和程序已经非常多了，都是使用不同复杂程度的字符模拟图片的灰度（比如字符&#39;@&#39;就比字符&#39;,&#39;复杂，但是我要做的是像这样的：（原图是星之卡比）...</p>
     <em>2020年8月17日</em>
-</div>
-
-<div class="card">
-    <h4><a href="/html/Unity3D+Post_Processing_Stack_V2自定义后处理效果研究.html">Unity3D+Post_Processing_Stack_V2自定义后处理效果研究</a></h4><hr>
-    <p>背景 众所周知，Unity3D支持自定义后处理效果，实现过程有三步： 添加着色器，在着色器里书写后处理代码； 添加材质，把材质和着色器绑定； 给相机添加脚本，重写其OnRenderImage方法，将材质传入Graphics.Blit方法中。 但是在做最近的一个项目时，我使用了Unity3D的官方后处...</p>
-    <em>2020年7月14日</em>
 </div>
 <div style="padding-top: 2em; text-align: center">
 <a href="/index.html"><button style="padding: 0.2em 0.6em; margin: 0.1em">1</button></a>

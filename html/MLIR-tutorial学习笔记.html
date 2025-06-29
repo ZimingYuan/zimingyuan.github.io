@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN" data-theme="tufte">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="description" content="MLIR-tutorial学习笔记" />
+  <meta name="keywords" content="mlir, llvm, ai编译器" />
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/extra/classless.css" />
+<style>
+html[data-theme='tufte']{
+    --rem: 15px;
+    --navpos: absolute;
+    --width: 70rem;
+    --font-p: 1.4rem/2 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-h: 1.4rem/1.5 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --ornament: "";
+    --border: 1px solid var(--cmed);
+    /* foreground   | background color */
+    --cfg:   #111;    --cbg:    #fbf7ec;
+    --cdark: #111;    --clight: #fbf7ec;
+    --cmed: #b4d5fe;
+    --clink: #111;
+    --cemph: #111;
+}
+</style>
+  <script>
+      let search = () => {
+          let word = document.querySelector('input');
+          if (word.value.length == 0) {
+              word.focus();
+          } else {
+              location.href = '/search.html?' + word.value;
+          }
+      };
+      window.onload = () => {
+          document.querySelector('input').addEventListener(
+              'keydown',  (event) => {
+                  if (event.key == 'Enter') search();
+          });
+      }
+  </script>
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <title>MLIR-tutorial学习笔记</title>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><big>VnYzm的博客</big></li>
+            <li><a href="/index.html">主页</a></li>
+            <li><a href="/html/随笔.html">随笔</a></li>
+            <li><a href="/miscellany.html">杂谈</a></li>
+            <li><a href="/friends.html">友链</a></li>
+            <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索标题" style="margin: 0"></li>
+        </ul>
+    </nav>
+<header id="title-block-header">
+<h1 class="title">MLIR-tutorial学习笔记</h1>
+<hr>
+</header>
+<h2 id="概述">概述</h2>
+<p>最近在学习 MLIR，一开始学的是 MLIR 官方的 <a href="https://mlir.llvm.org/docs/Tutorials/Toy/">Toy Tutorial</a>，但总感觉不得要领。后面在 Github上看到了北京大学周可行写的 <a href="https://github.com/KEKE046/mlir-tutorial">MLIR-tutorial</a>，非常清晰易懂，成功跟着做了一遍。在这里记录一下我在跟教程的过程中遇到的一些问题。顺便一提，大模型真的是一位好老师，之前我学习的是大模型没怎么学过的昇腾编程，所以用不上大模型的强大能力，如今在学 MLIR 的时候才体会到大模型的强大助学能力，对代码有什么不理解或者疑问，直接问它，它都能够解释得非常清楚。回忆起当年学习操作系统时面对浩如烟海的 OSWiki 时的无所适从，不禁感叹一句：科学的力量真伟大。</p>
+<p>我使用的是 GitHub <a href="https://github.com/llvm/llvm-project/">llvm-project</a> 2025 年 6 月 9 日的 main 分支，commit 编号为 <code>66911b7546f9afcf5f2b842ef0b9a39788dfef39</code></p>
+<h2 id="内容">内容</h2>
+<h3 id="引用-tablegen-生成的文件">引用 TableGen 生成的文件</h3>
+<p>首先是关于 TableGen 生成的头文件和代码文件的引用问题。MLIR 一个比较有特色的写法是通过宏定义开关来控制引用的内容，例如</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb1-1"><a href="#cb1-1"></a><span class="pp">#define GET_OP_CLASSES</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="pp">#include </span><span class="im">&quot;Toy.h.inc&quot;</span></span></code></pre></div>
+<p>这段代码用来引用 <code>Toy.h.inc</code> 文件里关于 Toy 方言定义的内容。但有一点要注意，每次打开宏定义开关引用完文件后开关会自动关闭，也就是说，如果如果要引用两个具有相同宏定义开关的文件，就得写两次宏定义，不能省略，比如要同时引用 <code>Toy.h.inc</code> 和 <code>Toy.cpp.inc</code> 里的内容，就需要这样写：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb2-1"><a href="#cb2-1"></a><span class="pp">#define GET_OP_CLASSES</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="pp">#include </span><span class="im">&quot;Toy.h.inc&quot;</span></span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="pp">#define GET_OP_CLASSES</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="pp">#include </span><span class="im">&quot;Toy.cpp.inc&quot;</span></span></code></pre></div>
+<p>原因是这些文件里一般是这样写的：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb3-1"><a href="#cb3-1"></a><span class="pp">#ifdef GET_OP_CLASSES</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a><span class="pp">#undef GET_OP_CLASSES</span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="co">// …</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a><span class="pp">#endif</span></span></code></pre></div>
+<p>另外，这些头文件和代码文件的引用也有顺序，<code>.h.inc</code> 文件需要在 <code>.cpp.inc</code> 文件前引用，类型和方言定义相关的头文件需要在算子定义的头文件之前引用。</p>
+<h3 id="constantop-相关">ConstantOp 相关</h3>
+<p><code>ConstantOp</code> 的原始写法是这样的：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode llvm"><code class="sourceCode llvm"><span id="cb4-1"><a href="#cb4-1"></a><span class="fu">%a</span> = <span class="st">&quot;toy.const&quot;</span>() { value = <span class="dv">0</span> } : () -&gt; <span class="dt">i32</span></span></code></pre></div>
+<p>如果不加 <code>assemblyFormat</code>，就必须按照原始写法。当按照教程里定义了 <code>ConstantOp</code> 的 <code>assemblyFormat</code> 以及自动类型推断后就可以这样写：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode llvm"><code class="sourceCode llvm"><span id="cb5-1"><a href="#cb5-1"></a><span class="fu">%a</span> = toy.const <span class="dv">0</span></span></code></pre></div>
+<p>这个时候 <code>%a</code> 默认类型推断结果是 <code>i64</code> 类型，如果要让其被推断 <code>i32</code> 类型，可在 MLIR 程序里这样写：</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode llvm"><code class="sourceCode llvm"><span id="cb6-1"><a href="#cb6-1"></a><span class="fu">%a</span> = toy.const <span class="dv">0</span>: <span class="dt">i32</span></span></code></pre></div>
+<p>这里 <code>0 : i32</code> 被当成了一个整体，表示 <code>value</code> 的值是 <code>i32</code> 类型的 <code>0</code>，所以可以正确解析。</p>
+<p>在第十章里面，教程自定义了一个<code>ToyInteger</code>类型，并且将 <code>toy::ConstantOp</code> 的结果类型设置为该类型。这个时候就不能写 <code>%a = toy.const 0</code> 或者 <code>%a = toy.const 0: !toy.int&lt;32&gt;</code> 了，因为 MLIR 无法将 0 解释成 <code>ToyInteger</code>。正确方法有两种，一是使用原始写法：</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode llvm"><code class="sourceCode llvm"><span id="cb7-1"><a href="#cb7-1"></a><span class="fu">%a</span> = <span class="st">&quot;toy.const&quot;</span>() { value = <span class="dv">0</span> } : () -&gt; !toy.int&lt;<span class="dv">32</span>&gt;</span></code></pre></div>
+<p>相当于强制指定了 <code>%a</code> 的类型为 <code>ToyInteger</code>，不用自动推断。另一种方法是直接把自动推断关了，即将 <code>toy::ConstantOp</code> 的定义改为：</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode sh"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1"></a><span class="ex">def</span> ConstantOp : ToyOp<span class="op">&lt;</span><span class="st">&quot;const&quot;</span>, [Pure]<span class="op">&gt;</span> {</span>
+<span id="cb8-2"><a href="#cb8-2"></a>  <span class="bu">let</span> summary = <span class="st">&quot;const operation&quot;</span><span class="kw">;</span></span>
+<span id="cb8-3"><a href="#cb8-3"></a>  <span class="bu">let</span> arguments = (ins APIntAttr:<span class="va">$value</span>);</span>
+<span id="cb8-4"><a href="#cb8-4"></a>  <span class="bu">let</span> results = (outs ToyInteger:<span class="va">$result</span>);</span>
+<span id="cb8-5"><a href="#cb8-5"></a>  <span class="bu">let</span> assemblyFormat = <span class="st">&quot;</span><span class="va">$value</span><span class="st"> attr-dict </span><span class="kw">`</span><span class="bu">:</span><span class="kw">`</span><span class="st"> type(</span><span class="va">$result</span><span class="st">)&quot;</span><span class="kw">;</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>}</span></code></pre></div>
+<p>然后在 MLIR 里这样写：</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode llvm"><code class="sourceCode llvm"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">%a</span> = toy.const <span class="dv">0</span>: <span class="dt">i32</span>: !toy.int&lt;<span class="dv">32</span>&gt;</span></code></pre></div>
+<h3 id="callop-定义">CallOp 定义</h3>
+<p>教程里 <code>toy::CallOp</code> 是这样定义的：</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1"></a>def CallOp <span class="op">:</span> ToyOp<span class="op">&lt;</span><span class="st">&quot;call&quot;</span><span class="op">,</span> [CallOpInterface]<span class="op">&gt;</span> <span class="op">{</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a>  <span class="kw">let</span> summary <span class="op">=</span> <span class="st">&quot;call operation&quot;</span><span class="op">;</span></span>
+<span id="cb10-3"><a href="#cb10-3"></a>  <span class="kw">let</span> <span class="kw">arguments</span> <span class="op">=</span> (ins <span class="dt">SymbolRefAttr</span><span class="op">:</span>$callee<span class="op">,</span> Variadic<span class="op">&lt;</span>AnyType<span class="op">&gt;:</span>$arg_operands)<span class="op">;</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a>  <span class="kw">let</span> results <span class="op">=</span> (outs <span class="dt">AnyType</span><span class="op">:</span>$result)<span class="op">;</span></span>
+<span id="cb10-5"><a href="#cb10-5"></a>  <span class="kw">let</span> assemblyFormat <span class="op">=</span> <span class="st">&quot;$callee `(` $arg_operands `)` attr-dict `:` functional-type($arg_operands, results)&quot;</span><span class="op">;</span></span>
+<span id="cb10-6"><a href="#cb10-6"></a>  <span class="kw">let</span> extraClassDeclaration <span class="op">=</span> [<span class="op">{</span></span>
+<span id="cb10-7"><a href="#cb10-7"></a>    <span class="dt">mlir</span><span class="op">::</span>CallInterfaceCallable <span class="at">getCallableForCallee</span>() <span class="op">{</span></span>
+<span id="cb10-8"><a href="#cb10-8"></a>      <span class="cf">return</span> <span class="at">getCalleeAttr</span>()<span class="op">;</span></span>
+<span id="cb10-9"><a href="#cb10-9"></a>    <span class="op">}</span></span>
+<span id="cb10-10"><a href="#cb10-10"></a>    <span class="kw">void</span> <span class="at">setCalleeFromCallable</span>(<span class="dt">mlir</span><span class="op">::</span>CallInterfaceCallable callee) <span class="op">{</span></span>
+<span id="cb10-11"><a href="#cb10-11"></a>      <span class="at">setCalleeAttr</span>(<span class="va">callee</span>.<span class="at">get</span><span class="op">&lt;</span><span class="dt">mlir</span><span class="op">::</span>SymbolRefAttr<span class="op">&gt;</span>())<span class="op">;</span></span>
+<span id="cb10-12"><a href="#cb10-12"></a>    <span class="op">}</span></span>
+<span id="cb10-13"><a href="#cb10-13"></a>  <span class="op">}</span>]<span class="op">;</span></span>
+<span id="cb10-14"><a href="#cb10-14"></a><span class="op">}</span></span></code></pre></div>
+<p>然而，在我的 MLIR 版本下，这样定义会报错：</p>
+<blockquote>
+<p>error: ‘class toy::CallOp’ has no member named ‘setArgAttrsAttr’<br />
+error: ‘class toy::CallOp’ has no member named ‘getArgAttrsAttr’<br />
+error: ‘class toy::CallOp’ has no member named ‘RemoveArgAttrsAttr’<br />
+error: ‘class toy::CallOp’ has no member named ‘setResAttrsAttr’<br />
+error: ‘class toy::CallOp’ has no member named ‘getResAttrsAttr’<br />
+error: ‘class toy::CallOp’ has no member named ‘removeResAttrsAttr’</p>
+</blockquote>
+<p>原因是在<a href="https://github.com/llvm/llvm-project/commit/327d627066e6452b081365b595657d17f2690a3b">这个 commit</a> 里，为了提高 <code>CallOpInterface</code> 和 <code>CallableOpInterface</code>（FuncOp 依赖的Interface）的一致性，维护者给 <code>CallOpInterface</code> 也添加了 <code>$arg_attrs</code> 和 <code>$res_attrs</code> 这两个属性，所以如果用了这个 Interface 的自定义 Op 没有定义这两个属性，就会报错。</p>
+<p>要解决这个问题，在定义 <code>toy::CallOp</code> 的参数时把这俩属性加上去就可以了：</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode js"><code class="sourceCode javascript"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">let</span> <span class="kw">arguments</span> <span class="op">=</span> (ins SymbolRefAttr<span class="op">:</span>$callee<span class="op">,</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>    OptionalAttr<span class="op">&lt;</span>DictArrayAttr<span class="op">&gt;:</span>$arg_attrs<span class="op">,</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>    OptionalAttr<span class="op">&lt;</span>DictArrayAttr<span class="op">&gt;:</span>$res_attrs<span class="op">,</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>    Variadic<span class="op">&lt;</span>AnyType<span class="op">&gt;:</span>$arg_operands)<span class="op">;</span></span></code></pre></div>
+<p>在添加完这两个属性后，<code>toy::CallOp</code> 能正常编译，但第九章做 Op 替换的时候又会出现问题了，原因是现在 <code>toy::CallOp</code> 多了俩参数，因此 TableGen 生成的 <code>build</code> 方法也会多俩参数，教程里在调用 <code>replaceOpWithNewOp</code> 没有加上那两个参数，转发到 <code>build</code> 方法后就会报参数不匹配的错误了。</p>
+<p>直观的想法是在调用 <code>replaceOpWithNewOp</code> 方法前用 <code>getArgAttrs</code> 和 <code>getResAttr</code> 获取一下这两个参数，但要注意的是，因为我 <code>$arg_attrs</code> 和 <code>$res_attrs</code> 的类型是 <code>OptionalAttr</code>，所以 <code>getArgAttrs</code> 和 <code>getResAttr</code> 返回的类型是 <code>std::optional&lt;mlir::ArrayAttr&gt;</code>，然而，<code>build</code> 方法的对应参数却是没有 <code>std::optional</code> 包装的普通 <code>mlir::ArrayAttr</code>，即：</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb12-1"><a href="#cb12-1"></a><span class="dt">void</span> FuncOp::build(::mlir::OpBuilder &amp;odsBuilder, ::mlir::OperationState &amp;odsState, ::mlir::StringAttr sym_name, ::mlir::TypeAttr <span class="dt">function_type</span>, <span class="co">/*optional*/</span>::mlir::ArrayAttr arg_attrs, <span class="co">/*optional*/</span>::mlir::ArrayAttr res_attrs) {</span></code></pre></div>
+<p>注释里都说了是 <code>optional</code>，但却不用 <code>std::optional</code> 包装起来，不是很能理解。不过改起来也不麻烦，调用 <code>replaceOpWithNewOp</code> 时传 <code>getArgAttrs().value_or(nullptr)</code> 和 <code>getResAttrs().value_or(nullptr)</code> 即可。</p>
+<h3 id="pass-中删除-op">Pass 中删除 Op</h3>
+<p>第八章 DCE Pass 里删除 Op 时是反向删除：</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb13-1"><a href="#cb13-1"></a><span class="cf">for</span>(<span class="kw">auto</span> v: reverse(opToRemove)) {</span>
+<span id="cb13-2"><a href="#cb13-2"></a>    v-&gt;erase();</span>
+<span id="cb13-3"><a href="#cb13-3"></a>}</span></code></pre></div>
+<p>对于教程中的实例 MLIR 程序，如果不反向删除也不会有什么问题，但如果 Op 里包含子块，比如 If、For 之类，由于获得<code>opToRemove</code>列表的<code>walk</code>函数是先序遍历，且删除父 Op的时候会同时删除内部的子 Op，因此如果正向删除的话可能会出现先删父 Op，此时子 Op 也被自动删除，再删子 Op，最终子 Op 被重复删除的情况。这可能会导致程序崩溃等问题。</p>
+<h3 id="rootupdate-系列方法">RootUpdate 系列方法</h3>
+<p>第九章在转换 <code>ReturnOp</code> 的时候是这样写的：</p>
+<div class="sourceCode" id="cb14"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb14-1"><a href="#cb14-1"></a>LogicalResult matchAndRewrite(ReturnOp op, ReturnOpAdaptor adaptor, ConversionPatternRewriter &amp; rewriter) <span class="at">const</span> {</span>
+<span id="cb14-2"><a href="#cb14-2"></a>    <span class="kw">auto</span> data = adaptor.getData();</span>
+<span id="cb14-3"><a href="#cb14-3"></a>    rewriter.startRootUpdate(op);</span>
+<span id="cb14-4"><a href="#cb14-4"></a>    op.getDataMutable().assign(data);</span>
+<span id="cb14-5"><a href="#cb14-5"></a>    rewriter.finalizeRootUpdate(op);</span>
+<span id="cb14-6"><a href="#cb14-6"></a>    <span class="cf">return</span> success();</span>
+<span id="cb14-7"><a href="#cb14-7"></a>}</span></code></pre></div>
+<p>然而，MLIR 从版本 18.x 开始删掉了 <code>RootUpdate</code> 系列方法，改成了 <code>OpModification</code> 系列方法，不过用法没什么区别。其实这个地方并不一定需要使用这些方法对 Op 进行就地变换，和其他变换函数一样用 <code>replaceOpWithNewOp</code> 也是可以的。</p>
+<h3 id="op-转换的具体流程">Op 转换的具体流程</h3>
+<p>在第九章 <code>ConvertToyToArithPass</code> 类的 <code>runOnOperation</code> 方法定义了如何对 Op 进行转换，教程解释得比较粗糙，我查看了 <a href="https://mlir.llvm.org/docs/DialectConversion/">MLIR 的官方文档</a>，并自己做了下实验，大致看懂了代码。</p>
+<p>首先，要转换一个 Op，有两个关键条件，一个是用来转换的 Pattern，另一个是用来判断转换后是否合法的 Pattern，如果这两个 Pattern 缺少一个，就不能转换。在 <code>applyPartialConversion</code> 的情况下就是放弃转换，继续处理下一个 Op，在 <code>applyFullConversion</code> 的情况下，如果有判断是否合法的 Pattern，并且判定不转换也合法，那就继续处理下一个 Op，否则就是直接报错。</p>
+<p>用来转换的 Pattern 在教程中通过 <code>RewritePatternSet</code> 定义，然后代码里添加了两种 Pattern：</p>
+<div class="sourceCode" id="cb15"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb15-1"><a href="#cb15-1"></a>patterns.add&lt;AddOpPat, SubOpPat, ConstantOpPat, ReturnOpPat, CallOpPat&gt;(converter, &amp;getContext());</span>
+<span id="cb15-2"><a href="#cb15-2"></a>populateFunctionOpInterfaceTypeConversionPattern&lt;toy::FuncOp&gt;(patterns, converter);</span></code></pre></div>
+<p>第一行往 Pattern 中添加了除了 <code>toy::FuncOp</code> 的 Op 转换泛式，第二行则专门针对 <code>toy::FuncOp</code> 添加转换泛式，原因是其他 Op 转换只需要转换操作数就行，而 FuncOp 还得考虑返回类型以及 Region 内部用到其参数的各个 Op，所以需要专门处理。</p>
+<p>对于判断是否合法的 Pattern，教程里这样定义：</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb16-1"><a href="#cb16-1"></a>target.addLegalDialect&lt;arith::ArithDialect&gt;();</span>
+<span id="cb16-2"><a href="#cb16-2"></a>target.addDynamicallyLegalOp&lt;toy::ReturnOp, toy::CallOp&gt;([](Operation* f) {</span>
+<span id="cb16-3"><a href="#cb16-3"></a>        <span class="cf">return</span> llvm::all_of(f-&gt;getOperandTypes(),</span>
+<span id="cb16-4"><a href="#cb16-4"></a>                [](Type t) {<span class="cf">return</span> !isa&lt;toy::ToyIntegerType&gt;(t);});</span>
+<span id="cb16-5"><a href="#cb16-5"></a>        });</span>
+<span id="cb16-6"><a href="#cb16-6"></a>target.addDynamicallyLegalOp&lt;toy::FuncOp&gt;([](toy::FuncOp f) {</span>
+<span id="cb16-7"><a href="#cb16-7"></a>        <span class="cf">return</span> llvm::all_of(f.getArgumentTypes(),</span>
+<span id="cb16-8"><a href="#cb16-8"></a>                [](Type t) {<span class="cf">return</span> !isa&lt;toy::ToyIntegerType&gt;(t);});</span>
+<span id="cb16-9"><a href="#cb16-9"></a>        });</span></code></pre></div>
+<p>首先，利用 <code>addLegalDialect</code> 将 Arith 方言的 Op 全部定义为合法，这样转换成 Arith Op 的 <code>AddOp</code>、<code>SubOp</code>、<code>ConstantOp</code> 就有了判断是否合法的 Pattern。这里也可以用 <code>addLegalOp</code> 分别定义哪些 Op 为合法。对于 <code>ReturnOp</code>、<code>CallOp</code> 和 <code>FuncOp</code>，负责转换的 Pattern 只转换了操作数的类型，因此这里调用 <code>addDynamicallyLegalOp</code>，通过函数判断转换后的 Op 是否合法。</p>
+<p>这时，如果我忘了定义判断 <code>FuncOp</code> 是否合法的 Pattern，<code>FuncOp</code> 不会被转换，但是后面的 Op 的操作数被转换了，例如</p>
+<div class="sourceCode" id="cb17"><pre class="sourceCode llvm"><code class="sourceCode llvm"><span id="cb17-1"><a href="#cb17-1"></a>toy.func <span class="fu">@add</span>(<span class="fu">%a</span>: !toy.int&lt;<span class="dv">32</span>&gt;, <span class="fu">%b</span>: !toy.int&lt;<span class="dv">32</span>&gt;) -&gt; !toy.int&lt;<span class="dv">32</span>&gt; {</span>
+<span id="cb17-2"><a href="#cb17-2"></a>  <span class="fu">%c</span> = toy.add <span class="fu">%a</span>, <span class="fu">%b</span> : !toy.int&lt;<span class="dv">32</span>&gt;</span>
+<span id="cb17-3"><a href="#cb17-3"></a>  toy.return <span class="fu">%c</span> : !toy.int&lt;<span class="dv">32</span>&gt;</span>
+<span id="cb17-4"><a href="#cb17-4"></a>}</span></code></pre></div>
+<p>被转换成</p>
+<div class="sourceCode" id="cb18"><pre class="sourceCode llvm"><code class="sourceCode llvm"><span id="cb18-1"><a href="#cb18-1"></a>toy.func <span class="fu">@add</span>(<span class="fu">%a</span>: !toy.int&lt;<span class="dv">32</span>&gt;, <span class="fu">%b</span>: !toy.int&lt;<span class="dv">32</span>&gt;) -&gt; !toy.int&lt;<span class="dv">32</span>&gt; {</span>
+<span id="cb18-2"><a href="#cb18-2"></a>  <span class="fu">%c</span> = arith.addi <span class="fu">%a</span>, <span class="fu">%b</span> : <span class="dt">i32</span></span>
+<span id="cb18-3"><a href="#cb18-3"></a>  toy.return <span class="fu">%c</span> : <span class="dt">i32</span></span>
+<span id="cb18-4"><a href="#cb18-4"></a>}</span></code></pre></div>
+<p>转换结束后解释器发现 <code>%a</code> 和 <code>%b</code> 的类型前后不一致，就会报错</p>
+<blockquote>
+<p>failed to legalize unresolved materialization from (‘!toy.int&lt;32&gt;’) to (‘i32’) that remained live after conversion</p>
+</blockquote>
+<p>这个时候可以用</p>
+<div class="sourceCode" id="cb19"><pre class="sourceCode cpp"><code class="sourceCode cpp"><span id="cb19-1"><a href="#cb19-1"></a>converter.addTargetMaterialization([](OpBuilder&amp; builder, Type resultType, ValueRange inputs, Location loc)</span>
+<span id="cb19-2"><a href="#cb19-2"></a>        <span class="cf">return</span> builder.create&lt;UnrealizedConversionCastOp&gt;(loc, resultType, inputs).getResult(<span class="dv">0</span>);</span>
+<span id="cb19-3"><a href="#cb19-3"></a>        });</span></code></pre></div>
+<p>自动插入类型转换，保证解释通过。注意这里其实隐含了一个错误，就是 <code>toy.return</code> 返回了一个 <code>i32</code> 类型的值，但函数要求的返回值类型是 <code>!toy.int&lt;32&gt;</code>。之所以解释能够通过，应该是因为教程中没有给 <code>toy::ReturnOp</code> 添加专门的检查函数，如果把 <code>toy.return</code> 换成 <code>func.return</code>，解释器是能够发现并报错的。</p>
+<p>除了 <code>TargetMaterialization</code>，还有另一种自动类型转换，用<code>SourceMaterialization</code> 添加，前者适用于某个指令的操作数是从其他 Op 或函数参数来的，但该指令里操作数的类型被改变了而其他 Op 或参数的类型没有改变的情况，比如上面的就是函数的参数类型没有改变，但 AddOp 的操作数类型改变了。后者则适用于指令里操作数类型没被改变但其他 Op 或参数的类型改变的情况，比如</p>
+<div class="sourceCode" id="cb20"><pre class="sourceCode llvm"><code class="sourceCode llvm"><span id="cb20-1"><a href="#cb20-1"></a>toy.func <span class="fu">@add</span>(<span class="fu">%a</span>: <span class="dt">i32</span>, <span class="fu">%b</span>: <span class="dt">i32</span>) -&gt; <span class="dt">i32</span> {</span>
+<span id="cb20-2"><a href="#cb20-2"></a>  <span class="fu">%c</span> = toy.add <span class="fu">%a</span>, <span class="fu">%b</span> : !toy.int&lt;<span class="dv">32</span>&gt;</span>
+<span id="cb20-3"><a href="#cb20-3"></a>  toy.return <span class="fu">%c</span> : !toy.int&lt;<span class="dv">32</span>&gt;</span>
+<span id="cb20-4"><a href="#cb20-4"></a>}</span></code></pre></div>
+<p>这个时候就可以通过 <code>addSourceMaterialization</code> 使其解释通过。</p>
+<p>注意这里在调试的时候有个坑点，就是没加 <code>addTargetMaterialization</code> 的时候，如果用 <code>--debug</code> 命令参数看解释器的转换过程，会发现转换的中间输出里面有自动添加的 <code>builtin.unrealized_conversion_cast</code> 命令，但结果还是会报错。并且，只有在需要的类型转换是 <code>TargetMaterialization</code> 的情况下才会出现这样的中间输出，感觉很奇怪，不知道这个中间输出和报错有什么关系。</p>
+<h2 id="总结">总结</h2>
+<p>个人认为在“程序员三大浪漫”（图形学、操作系统、编译器）里，编译器门槛最高。这不是说编译器最难，而是说图形学和操作系统都是普通人能够接触到并由浅入深入门的。例如图形学，普通人可能会从打游戏、画画、做MMD到学习制作游戏、3D 建模、渲染，再到研究着色器、游戏引擎、建模软件，从而踏入图形学的大门；操作系统普通人也可以从玩电子电路、机器人到玩单片机、树莓派，再到自己修改、裁剪编译 Linux，从而踏入操作系统的大门。只有编译器，如果不是非常硬核的程序员，一般也不会想到去自己研究和实现，我虽然本科的时候上过编译原理的课程，但实际上对编译器也是知之甚少。</p>
+<p>然而，随着当下大家开始卷 AI 加速器，各种 GPU、NPU、TPU 层出不穷，AI 编译器也获得了越来越多的关注。MLIR 是编写 AI 编译器的强大工具，目前也是处在不断发展的阶段，个人感觉其通过“方言”这个概念在不同阶段下进行组合和转换的思路挺有意思的，但 MLIR 及其所属的 LLVM 这个项目非常庞大，如果要深入学习也不是一件容易的事。</p>
+<p>不过，MLIR-tutorial 这个教程确实是非常通俗易懂，让我对 MLIR 有了个基础的了解，所以我也将学习这个教程的心得分享给大家，希望能给其他 MLIR 学习者一点启发，也算是对教程作者的感谢。</p>
+<footer>
+    <hr>
+    <center>
+        Powered by <a href="https://github.com/ZimingYuan/Yblogs" target="_blank">Yblogs</a><br>
+        转载请注明出处<br>
+        © 2025 VnYzm的博客
+    </center>
+</footer>
+</body>
+</html>
