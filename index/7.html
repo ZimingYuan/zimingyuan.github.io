@@ -33,13 +33,6 @@ html[data-theme='tufte']{
                     location.href = '/search.html?' + word.value;
                 }
             };
-            window.onload = () => {
-                document.querySelector('input').addEventListener(
-                    'keydown',  (event) => {
-                        if (event.key == 'Enter') search();
-                });
-                document.querySelector('#email').innerText = window.atob(document.querySelector('#email').innerText);
-            }
         </script>
         <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
         <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
@@ -50,9 +43,9 @@ html[data-theme='tufte']{
             <ul>
                 <li><big>VnYzm的博客</big></li>
                 <li><a href="/index.html"><strong>主页</strong></a></li>
-                <li><a href="/html/随笔.html">随笔</a></li>
                 <li><a href="/miscellany.html">杂谈</a></li>
                 <li><a href="/friends.html">友链</a></li>
+                <li><a href="/html/关于.html">关于</a></li>
                 <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
                 <li class="float-right sticky"><input type="search" placeholder="搜索标题" style="margin: 0"></li>
             </ul>
@@ -64,12 +57,6 @@ html[data-theme='tufte']{
         <div class="row">
             <div class="col">
                 
-<div class="card">
-    <h4><a href="/html/题解归档：2016年11月.html">题解归档：2016年11月</a></h4><hr>
-    <p>字符串哈希、线段树、最小割（Dinic）、tarjan缩点、LCA（倍增）</p>
-    <em>2016年11月16日</em>
-</div>
-
 <div class="card">
     <h4><a href="/html/题解归档：2016年10月.html">题解归档：2016年10月</a></h4><hr>
     <p>SPFA（SLF优化）、差分约束系统、最大流（Dinic）、可并堆（斜堆）</p>
@@ -127,23 +114,6 @@ html[data-theme='tufte']{
 <button disabled style="padding: 0.2em 0.6em; margin: 0.1em">7</button>
 </div>
 
-            </div>
-            <div class="col-3">
-                <div class="card">
-                    <h4>关于我</h4>
-                    <hr>
-                    <img style="border-radius: 10%; padding: 5%" src="/img/profile.jpg"></img>
-                    <p>前偏远小渔村边缘OIer，HUST计院普通大学生，现在是ICT搬砖工。</p>
-                    <p>
-                    <a href="https://github.com/ZimingYuan" target="_BLANK">Github</a>
-                    Gitee上也有同名账户，同步大部分项目。
-                    </p>
-                    <p>
-                    <a href="https://www.cnblogs.com/YuanZiming/" target="_BLANK">我的博客园</a>
-                    也是我的博客，有过去的一些文章以及细致的文章分类。
-                    </p>
-                    <p>联系方式：<span id="email">eXpteXptOTlAb3V0bG9vay5jb20=</span></p>
-                </div>
             </div>
         </div>
         <footer>

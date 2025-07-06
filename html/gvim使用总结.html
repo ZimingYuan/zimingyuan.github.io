@@ -61,9 +61,9 @@ html[data-theme='tufte']{
         <ul>
             <li><big>VnYzm的博客</big></li>
             <li><a href="/index.html">主页</a></li>
-            <li><a href="/html/随笔.html">随笔</a></li>
             <li><a href="/miscellany.html">杂谈</a></li>
             <li><a href="/friends.html">友链</a></li>
+            <li><a href="/html/关于.html">关于</a></li>
             <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
             <li class="float-right sticky"><input type="search" placeholder="搜索标题" style="margin: 0"></li>
         </ul>
@@ -162,6 +162,10 @@ autocmd TabNew * call feedkeys(&quot;:Le\&lt;CR&gt;&quot;)    </code></pre>
 <li><p><code>Ctrl-w&lt;/&gt;/-/+</code> 缩小/放大当前编辑区的宽度/缩小/放大当前编辑器的高度</p></li>
 <li><p><code>:[vertical] res [+|-][number]</code> 将当前编辑区的宽度/高度缩小/放大/设为number</p></li>
 <li><p><code>:e ++enc=codename</code> 临时添加当前文件的读取编码（如shift_jis）</p></li>
+<li><p><code>:set fenc=gbk</code> 换编码保存</p></li>
+<li><p><code>[\x00-\xff]</code> 匹配双字节字符</p></li>
+<li><p><code>[\u4e00-\u9fa5]</code> 匹配中文字符</p></li>
+<li><p><code>&lt;Ctrl-V&gt;U0001f022</code> 按编码输入unicode字符，编号为8位的16进制数，如在插入模式下输入上述代码得到🀢（麻将“梅”）。</p></li>
 </ul>
 <footer>
     <hr>

@@ -33,13 +33,6 @@ html[data-theme='tufte']{
                     location.href = '/search.html?' + word.value;
                 }
             };
-            window.onload = () => {
-                document.querySelector('input').addEventListener(
-                    'keydown',  (event) => {
-                        if (event.key == 'Enter') search();
-                });
-                document.querySelector('#email').innerText = window.atob(document.querySelector('#email').innerText);
-            }
         </script>
         <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
         <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
@@ -50,9 +43,9 @@ html[data-theme='tufte']{
             <ul>
                 <li><big>VnYzm的博客</big></li>
                 <li><a href="/index.html">主页</a></li>
-                <li><a href="/html/随笔.html">随笔</a></li>
                 <li><a href="/miscellany.html"><strong>杂谈</strong></a></li>
                 <li><a href="/friends.html">友链</a></li>
+                <li><a href="/html/关于.html">关于</a></li>
                 <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
                 <li class="float-right sticky"><input type="search" placeholder="搜索标题" style="margin: 0"></li>
             </ul>
@@ -65,9 +58,6 @@ html[data-theme='tufte']{
             <div class="col">
                 <blockquote class="warn">
                     <p>⚠ 所有观后感、玩后感的内容除“通关概况”外均包含对应作品的<b>重度剧透</b>！</p>
-                </blockquote>
-                <blockquote class="hint">
-                    <p>玩后感、观后感中所用图片无特殊说明的均来源于动漫、游戏内截图。</p>
                 </blockquote>
                 
 <div class="card">
@@ -137,16 +127,6 @@ html[data-theme='tufte']{
 <a href="/miscellany/5.html"><button style="padding: 0.2em 0.6em; margin: 0.1em">5</button></a>
 </div>
 
-            </div>
-            <div class="col-3">
-                <div class="card">
-                    <h4>关于我</h4>
-                    <hr>
-                    <img style="border-radius: 10%; padding: 5%" src="/img/profile.jpg"></img>
-                    <p>前偏远小渔村边缘OIer，HUST计院普通大学生，现在是ICT搬砖工。</p>
-                    <p>最近太摆了没什么干货可以写，所以放了一些摸鱼后的观后感、玩后感，极为主观，仅供大家看个乐呵。</p>
-                    <p>联系方式：<span id="email">eXpteXptOTlAb3V0bG9vay5jb20=</span></p>
-                </div>
             </div>
         </div>
         <footer>

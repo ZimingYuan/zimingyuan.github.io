@@ -33,13 +33,6 @@ html[data-theme='tufte']{
                     location.href = '/search.html?' + word.value;
                 }
             };
-            window.onload = () => {
-                document.querySelector('input').addEventListener(
-                    'keydown',  (event) => {
-                        if (event.key == 'Enter') search();
-                });
-                document.querySelector('#email').innerText = window.atob(document.querySelector('#email').innerText);
-            }
         </script>
         <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
         <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
@@ -50,9 +43,9 @@ html[data-theme='tufte']{
             <ul>
                 <li><big>VnYzm的博客</big></li>
                 <li><a href="/index.html"><strong>主页</strong></a></li>
-                <li><a href="/html/随笔.html">随笔</a></li>
                 <li><a href="/miscellany.html">杂谈</a></li>
                 <li><a href="/friends.html">友链</a></li>
+                <li><a href="/html/关于.html">关于</a></li>
                 <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
                 <li class="float-right sticky"><input type="search" placeholder="搜索标题" style="margin: 0"></li>
             </ul>
@@ -64,12 +57,6 @@ html[data-theme='tufte']{
         <div class="row">
             <div class="col">
                 
-<div class="card">
-    <h4><a href="/html/markdown测试.html">markdown测试</a></h4><hr>
-    <p>测试一下本博客（准确来说是Pandoc）的Markdown支持...</p>
-    <em>2022年2月25日</em>
-</div>
-
 <div class="card">
     <h4><a href="/html/Ultra96V2开发板简单使用.html">Ultra96V2开发板简单使用</a></h4><hr>
     <p>概述 最近向老师借了一块Ultra96 V2开发板学习FPGA。之前虽然也有接触过FPGA开发板，但第一次用的是只有一个FPGA核的Artix-7开发板，用的也是最传统的流程，即写好verilog模块，调一下网表文件，然后直接烧录到FPGA中；第二次用的是Zynq系的Pynq z2开发板了，但是也是...</p>
@@ -123,6 +110,12 @@ html[data-theme='tufte']{
     <p>概述 第六部分是实现基本的文件数据结构、标准输入输出文件和管道文件。相对来讲比较简单，不过因为每个进程的文件描述符表需要用一个既能动态扩增又能直接索引的数据结构，所以我顺便自己实现了一个简单的vector，并利用相同的思想实现了一个队列，使用非常简单，所以又把queue.h换掉了。 内容 首先是ve...</p>
     <em>2021年4月10日</em>
 </div>
+
+<div class="card">
+    <h4><a href="/html/rCore-Tutorial-Book-v3学习笔记（五）.html">rCore-Tutorial-Book-v3学习笔记（五）</a></h4><hr>
+    <p>概述 第五个部分是实现进程相关的函数，相比前面几次任务难度高了不少。同时为了适应前面的内存函数，进程函数的实现基本也得靠自己了。由于用户程序增加了不少，所以我还增改了一下Makefile，并写了一个Python脚本用来生成link_app.S。 内容 首先是Makefile，之前一直是把Makefi...</p>
+    <em>2021年4月3日</em>
+</div>
 <div style="padding-top: 2em; text-align: center">
 <a href="/index.html"><button style="padding: 0.2em 0.6em; margin: 0.1em">1</button></a>
 <button disabled style="padding: 0.2em 0.6em; margin: 0.1em">2</button>
@@ -133,23 +126,6 @@ html[data-theme='tufte']{
 <a href="/index/7.html"><button style="padding: 0.2em 0.6em; margin: 0.1em">7</button></a>
 </div>
 
-            </div>
-            <div class="col-3">
-                <div class="card">
-                    <h4>关于我</h4>
-                    <hr>
-                    <img style="border-radius: 10%; padding: 5%" src="/img/profile.jpg"></img>
-                    <p>前偏远小渔村边缘OIer，HUST计院普通大学生，现在是ICT搬砖工。</p>
-                    <p>
-                    <a href="https://github.com/ZimingYuan" target="_BLANK">Github</a>
-                    Gitee上也有同名账户，同步大部分项目。
-                    </p>
-                    <p>
-                    <a href="https://www.cnblogs.com/YuanZiming/" target="_BLANK">我的博客园</a>
-                    也是我的博客，有过去的一些文章以及细致的文章分类。
-                    </p>
-                    <p>联系方式：<span id="email">eXpteXptOTlAb3V0bG9vay5jb20=</span></p>
-                </div>
             </div>
         </div>
         <footer>

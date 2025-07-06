@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="description" content="PYNQ开发板上使用USB声卡+OSS兼容层播放音频" />
+  <meta name="description" content="PowerShell创建参考窗口" />
   <meta name="keywords" content="" />
   <style>
     code{white-space: pre-wrap;}
@@ -113,7 +113,7 @@ html[data-theme='tufte']{
   </script>
   <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
-  <title>PYNQ开发板上使用USB声卡+OSS兼容层播放音频</title>
+  <title>PowerShell创建参考窗口</title>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -123,15 +123,15 @@ html[data-theme='tufte']{
         <ul>
             <li><big>VnYzm的博客</big></li>
             <li><a href="/index.html">主页</a></li>
-            <li><a href="/html/随笔.html">随笔</a></li>
             <li><a href="/miscellany.html">杂谈</a></li>
             <li><a href="/friends.html">友链</a></li>
+            <li><a href="/html/关于.html">关于</a></li>
             <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
             <li class="float-right sticky"><input type="search" placeholder="搜索标题" style="margin: 0"></li>
         </ul>
     </nav>
 <header id="title-block-header">
-<h1 class="title">PYNQ开发板上使用USB声卡+OSS兼容层播放音频</h1>
+<h1 class="title">PowerShell创建参考窗口</h1>
 <hr>
 </header>
 <h3 id="背景">背景</h3>
@@ -180,6 +180,23 @@ html[data-theme='tufte']{
 <span id="cb6-16"><a href="#cb6-16"></a>    <span class="fu">Invoke-Command</span> <span class="va">$click</span>; <span class="co"># 先执行一次，把当前图片放进窗口</span></span>
 <span id="cb6-17"><a href="#cb6-17"></a>    <span class="va">$form</span>.<span class="fu">ShowDialog</span>(); <span class="co"># 显示窗口</span></span>
 <span id="cb6-18"><a href="#cb6-18"></a>}</span></code></pre></div>
+<h3 id="附一些powershell命令">附：一些PowerShell命令</h3>
+<p><strong>powershell下转进制</strong></p>
+<p>十进制转二进制</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb7-1"><a href="#cb7-1"></a>[Convert]::ToString(100, 2)</span></code></pre></div>
+<p>二进制转十进制</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb8-1"><a href="#cb8-1"></a>[Convert]::ToInt32(&#39;100&#39;, 2)</span></code></pre></div>
+<p><strong>powershell下将文件放到剪贴板</strong></p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb9-1"><a href="#cb9-1"></a><span class="fu">Add-Type</span> -AssemblyName System.<span class="fu">Windows</span>.<span class="fu">Forms</span>; [System.<span class="fu">Windows</span>.<span class="fu">Forms</span>.<span class="fu">Clipboard</span>]::SetFileDropList(&#39;E:\1.<span class="fu">txt</span>&#39;);</span></code></pre></div>
+<p>注意文件路径必须是绝对路径</p>
+<p><strong>批量用ffmpeg将wav文件转码成mp3文件，文件名前缀不变</strong></p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb10-1"><a href="#cb10-1"></a><span class="kw">foreach</span> (<span class="va">$i</span> <span class="kw">in</span> <span class="fu">ls</span> *.<span class="fu">wav</span>) { ffmpeg -i <span class="va">$i</span>.<span class="fu">name</span> -acodec mp3 <span class="va">$i</span>.<span class="fu">name</span>.<span class="fu">replace</span>(&#39;wav&#39;, &#39;mp3&#39;) }</span></code></pre></div>
+<p><strong>批量将z开头的文件名中的z去掉</strong></p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">foreach</span> (<span class="va">$i</span> <span class="kw">in</span> <span class="fu">ls</span> z*) { <span class="fu">mv</span> <span class="va">$i</span>.<span class="fu">name</span> <span class="va">$i</span>.<span class="fu">name</span>.<span class="fu">substring</span>(1) }</span></code></pre></div>
+<p><strong>powershell下查找文件内容包含字符串<code>txt</code>的文件</strong></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb12-1"><a href="#cb12-1"></a><span class="fu">sls</span> -pattern txt *</span></code></pre></div>
+<p><strong>powershell下查找扩展名为txt的文件</strong></p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode powershell"><code class="sourceCode powershell"><span id="cb13-1"><a href="#cb13-1"></a><span class="fu">gci</span> -r -fi *.<span class="fu">txt</span></span></code></pre></div>
 <footer>
     <hr>
     <center>

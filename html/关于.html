@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="description" content="ffmpeg常见用法总结" />
+  <meta name="description" content="关于" />
   <meta name="keywords" content="" />
   <style>
     code{white-space: pre-wrap;}
@@ -51,7 +51,7 @@ html[data-theme='tufte']{
   </script>
   <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
-  <title>ffmpeg常见用法总结</title>
+  <title>关于</title>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -69,45 +69,33 @@ html[data-theme='tufte']{
         </ul>
     </nav>
 <header id="title-block-header">
-<h1 class="title">ffmpeg常见用法总结</h1>
+<h1 class="title">关于</h1>
 <hr>
 </header>
-<h3 id="视频音频剪切">1. 视频/音频剪切：</h3>
-<pre class="shell"><code>ffmpeg [-t 00:00:20] -i input_file [-ss 00:00:10] output_file</code></pre>
-<ul>
-<li>去掉-ss指令表示从头开始</li>
-<li>去掉-t指令表示剪切到结尾</li>
-</ul>
-<h3 id="wav转mp3">2. wav转MP3：</h3>
-<pre class="shell"><code>ffmpeg -i input.wav -acodec mp3 output.mp3</code></pre>
-<h3 id="视频音频连接">3. 视频/音频连接：</h3>
-<p>创建input.txt</p>
-<pre class="shell"><code>file &#39;/input/input_file1&#39;
-file &#39;/input/input_file2&#39;
-file &#39;/input/input_file3&#39;</code></pre>
-<p>然后输入命令</p>
-<pre class="shell"><code>ffmpeg -safe 0 -f concat -i input.txt -acodec copy -vcodec copy output_file</code></pre>
-<h3 id="分离视频中的音频和视频">4.分离视频中的音频和视频</h3>
-<ul>
-<li>分离视频</li>
-</ul>
-<pre class="shell"><code>ffmpeg -i input_file -vcodec copy -an output_file</code></pre>
-<ul>
-<li>分离音频</li>
-</ul>
-<pre class="shell"><code>ffmpeg -i input_file -acodec copy -vn output_file</code></pre>
-<p>注意视频中包含的音频常常是aac格式，故如果output_file的后缀名是mp3会报错。</p>
-<h3 id="合成音频和视频">5.合成音频和视频</h3>
-<pre class="shell"><code>ffmpeg -i audio_file -i video_file -acodec copy -vcodec copy output_file</code></pre>
-<p>如果audio_file是mp3格式，建议先转码为aac格式再合成，因为该命令要求mp3的采样率为44100Hz，如果audio_file的采样率不是44100Hz则需重采样，而对aac文件没有这样的要求。</p>
-<h3 id="修改视频的帧率和分辨率">6. 修改视频的帧率和分辨率</h3>
-<pre class="shell"><code>ffmpeg -i video_file -r 30 -s 宽x高 output_file</code></pre>
-<p>注意那个乘号是小写字母x，宽和高以像素为单位，如720x480。</p>
-<h3 id="改变视频的速度音频和画面">7. 改变视频的速度（音频和画面）</h3>
-<pre class="shell"><code>ffmpeg -i input_file -vf  &quot;setpts=倍数的倒数*PTS&quot; -af &quot;atempo=倍数&quot; output_file</code></pre>
-<p>比方说要让视频放慢2倍，即0.5倍速，则倍数的倒数为2，倍数为0.5。</p>
-<hr />
-<p>以后遇到再更新</p>
+<p><img src="/img/profile.jpg" style="border: 3px solid #b4d5fe; border-radius: 10%; width: 20%; height: 20%;"/></p>
+<h3 id="自我介绍">自我介绍</h3>
+<p>大家好，我是 VnYzm。<code>Yzm</code> 是我名字的缩写。<code>Vn</code> 来源于我个人生造的词 <code>Vegetable Noob</code>，<code>Vegetable</code> 是“菜”的英文，<code>Noob</code> 是“菜鸟”的英文。我以中西结合的“菜鸟”和自己的名字结合起来作为网名，希望能够激励自己勇于接触新事物，时刻保持着一颗“菜鸟”之心，在探索的过程中不断进步。</p>
+<h3 id="学习经历">学习经历</h3>
+<p>我从中学开始学习编程，作为底边 OIer 参加过算法竞赛。本科在江城喻家山下学习计算机，前两年主攻游戏编程，对图形学略有了解；后两年主攻操作系统，接触过 RISC-V 架构。硕士在京城中关村搬砖，方向为近似最近邻检索（K 近邻问题的近似算法研究）和 AI 硬件加速，在随导师做研究和横向的过程中学习了 FPGA 编程的皮毛（SpinalHDL），也写过 CUDA 和 AscendC 算子。</p>
+<p>目前最熟悉的语言是 C++ 和 Python，JavaScript、C# 和 Java 也略有涉猎。</p>
+<h3 id="个人爱好">个人爱好</h3>
+<p>我喜欢玩视觉小说和非恐怖悬疑推理解谜类游戏，偶尔也会尝试其他类型。此外，还喜欢看动漫、打乒乓球、游泳。</p>
+<p>我对 3D 建模渲染（如 Blender）、电子电路、手工制作等抱有比较浓厚的兴趣，不过基本没有入门，希望有时间能够深入尝试。</p>
+<h3 id="关于本博客">关于本博客</h3>
+<p>本博客主要包括技术模块和杂谈模块，技术模块记录我在完成项目或者学习的过程遇到的技术问题。杂谈模块记录我的动漫观后感、游戏玩后感、书籍读后感等内容。博客内容主观性较大，仅供大家看个乐呵。</p>
+<p>我的博客园（内容和本博客的技术模块一致）：https://www.cnblogs.com/YuanZiming</p>
+<p>我的 GitHub：https://github.com/ZimingYuan</p>
+<p>我的 Bangumi：https://bgm.tv/user/856228</p>
+<p>我的邮箱：<span id="email">eXpteXptOTlAb3V0bG9vay5jb20=</span></p>
+<script>
+    window.onload = () => {
+    document.querySelector('input').addEventListener(
+        'keydown',  (event) => {
+        if (event.key == 'Enter') search();
+    });
+    document.querySelector('#email').innerText = window.atob(document.querySelector('#email').innerText);
+    }
+</script>
 <footer>
     <hr>
     <center>
