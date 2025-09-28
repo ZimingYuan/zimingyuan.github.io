@@ -11,8 +11,8 @@ html[data-theme='tufte']{
     --rem: 15px;
     --navpos: absolute;
     --width: 70rem;
-    --font-p: 1.4rem/2 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-    --font-h: 1.4rem/1.5 et-book, Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-p: 1.4rem/2 "LXGW Bright", Georgia, serif;
+    --font-h: 1.4rem/1.5 "LXGW Bright", Georgia, serif;
     --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
     --ornament: "";
     --border: 1px solid var(--cmed);
@@ -36,94 +36,117 @@ html[data-theme='tufte']{
         </script>
         <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
         <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+        <link rel="stylesheet" type="text/css" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkaibright/dist/LXGWBright-Regular/result.css"/>
         <title>VnYzm的博客（第2页）</title>
     </head>
     <body>
         <nav>
             <ul>
                 <li><big>VnYzm的博客</big></li>
-                <li><a href="/index.html"><strong>主页</strong></a></li>
+                <li><a href="/index.html"><strong>技术</strong></a></li>
                 <li><a href="/miscellany.html">杂谈</a></li>
                 <li><a href="/friends.html">友链</a></li>
                 <li><a href="/html/关于.html">关于</a></li>
-                <li class="float-right sticky"><button style="margin: 0" onclick="search()">Go</button></li>
+                <li><a href="https://www.travellings.cn/go.html" target="_blank">开往</a></li>
+                <li class="float-right sticky"><button style="margin: 0" onclick="search()">
+                    <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                </button></li>
                 <li class="float-right sticky"><input type="search" placeholder="搜索标题" style="margin: 0"></li>
             </ul>
         </nav>
-        <header>
-            <h1>主页 - VnYzm的博客（第2页）</h1>
-            <hr>
-        </header>
+        <header></header>
         <div class="row">
             <div class="col">
                 
 <div class="card">
     <h4><a href="/html/Ultra96V2开发板简单使用.html">Ultra96V2开发板简单使用</a></h4><hr>
     <p>概述 最近向老师借了一块Ultra96 V2开发板学习FPGA。之前虽然也有接触过FPGA开发板，但第一次用的是只有一个FPGA核的Artix-7开发板，用的也是最传统的流程，即写好verilog模块，调一下网表文件，然后直接烧录到FPGA中；第二次用的是Zynq系的Pynq z2开发板了，但是也是...</p>
-    <em>2022年1月29日</em>
+    <em>
+    <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 9H21M7 3V5M17 3V5M6 13H8M6 17H8M11 13H13M11 17H13M16 13H18M16 17H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+    2022年1月29日</em>
 </div>
 
 <div class="card">
     <h4><a href="/html/SpinalWorkshop实验笔记（三）.html">SpinalWorkshop实验笔记（三）</a></h4><hr>
     <p>概述 本文涉及Stream、WavePlayer、UDP、Mandelbrot四个实验。实验地址 最后的这四个实验中的三个都和Stream类息息相关。Stream类最关键的是要掌握它的两个特性：需要握手和实时变化。 需要握手指的是Stream的传输数据需要其valid信号和ready信号均为真，而这...</p>
-    <em>2021年12月22日</em>
+    <em>
+    <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 9H21M7 3V5M17 3V5M6 13H8M6 17H8M11 13H13M11 17H13M16 13H18M16 17H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+    2021年12月22日</em>
 </div>
 
 <div class="card">
     <h4><a href="/html/SpinalWorkshop实验笔记（二）.html">SpinalWorkshop实验笔记（二）</a></h4><hr>
     <p>概述 本文涉及Function、Apb3Decoder、Timer、BlackBoxAndClock四个实验。实验地址 内容 Function 本实验的电路分两个阶段： 识别字符串：用从Flow中获得的字符匹配参数字符串 获得数据：匹配成功后，从字符串后面获得一定量的字节构成一个整数输出 难点在于识...</p>
-    <em>2021年12月17日</em>
+    <em>
+    <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 9H21M7 3V5M17 3V5M6 13H8M6 17H8M11 13H13M11 17H13M16 13H18M16 17H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+    2021年12月17日</em>
 </div>
 
 <div class="card">
     <h4><a href="/html/SpinalWorkshop实验笔记（一）.html">SpinalWorkshop实验笔记（一）</a></h4><hr>
     <p>概述 最近在学习SpinalHDL，在github上看到了SpinalHDL实验，于是试着做了做。虽然这些实验的答案在仓库里给出来了，但我是FPGA初学者，虽然会一点verilog却对各种总线一窍不通，也不了解scala，所以即使要理解这些实验也花费了一番功夫。在这里记录一下我做这些实验的感想。本文...</p>
-    <em>2021年12月15日</em>
+    <em>
+    <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 9H21M7 3V5M17 3V5M6 13H8M6 17H8M11 13H13M11 17H13M16 13H18M16 17H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+    2021年12月15日</em>
 </div>
 
 <div class="card">
     <h4><a href="/html/PYNQ开发板上使用USB声卡+OSS兼容层播放音频.html">PYNQ开发板上使用USB声卡+OSS兼容层播放音频</a></h4><hr>
     <p>PYNQ开发板上使用USB声卡+OSS兼容层播放音频需要经过联网装库，编译驱动模块，运行三个步骤。 联网装库 首先需要将PYNQ开发板连上网，才能安装所需的库。方法是在电脑上设置共享网络，但要注意大部分操作系统在共享网络的时候无法自己指定本机IP，所以需要修改PYNQ开发板的IP来适应电脑自动设置的...</p>
-    <em>2021年10月22日</em>
+    <em>
+    <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 9H21M7 3V5M17 3V5M6 13H8M6 17H8M11 13H13M11 17H13M16 13H18M16 17H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+    2021年10月22日</em>
 </div>
 
 <div class="card">
     <h4><a href="/html/TestOS移植K210开发板.html">TestOS移植K210开发板</a></h4><hr>
     <p>概述 本文介绍前六个部分在移植K210开发板遇到的问题，第七章比较麻烦，就放弃了。这里选用K210开发板的原因是rCore教程提供了K210的使用教程，同时RustSBI也提供了相应的适配，使得我能够在几乎不改变内核代码的情况下进行移植，所以还是感谢rCore教程的作者、RustSBI的作者洛佳大佬...</p>
-    <em>2021年6月17日</em>
+    <em>
+    <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 9H21M7 3V5M17 3V5M6 13H8M6 17H8M11 13H13M11 17H13M16 13H18M16 17H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+    2021年6月17日</em>
 </div>
 
 <div class="card">
     <h4><a href="/html/rCore-Tutorial-Book-v3学习笔记（七）.html">rCore-Tutorial-Book-v3学习笔记（七）</a></h4><hr>
     <p>概述 上一节介绍了文件系统格式的解析，主要涵盖文件系统的文件节点层核块缓存层；本节主要介绍块设备的处理，以及附带的命令行参数、重定向等实现。 内容 先介绍上一节跳过的文件描述符层。基本都是调用文件节点层的各类函数，这里仅给出close和创建函数： void fnode_close(File *sel...</p>
-    <em>2021年5月17日</em>
+    <em>
+    <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 9H21M7 3V5M17 3V5M6 13H8M6 17H8M11 13H13M11 17H13M16 13H18M16 17H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+    2021年5月17日</em>
 </div>
 
 <div class="card">
     <h4><a href="/html/rCore-Tutorial-Book-v3学习笔记（♭七）.html">rCore-Tutorial-Book-v3学习笔记（♭七）</a></h4><hr>
     <p>概述 文件系统果然是内核设计中boss级别的存在，花了我大量时间。主要是对文件系统格式的解析非常繁琐，以及之前没有在sbi环境下考虑过设备中断问题，网上也没有资料，走了不少弯路。因此这一块分为两节，本节主要介绍文件系统格式的解析，本身可以独立出来作为外部程序，相当于内核文件系统的预备部分，所以是“降...</p>
-    <em>2021年5月7日</em>
+    <em>
+    <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 9H21M7 3V5M17 3V5M6 13H8M6 17H8M11 13H13M11 17H13M16 13H18M16 17H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+    2021年5月7日</em>
 </div>
 
 <div class="card">
     <h4><a href="/html/rCore-Tutorial-Book-v3学习笔记（六）.html">rCore-Tutorial-Book-v3学习笔记（六）</a></h4><hr>
     <p>概述 第六部分是实现基本的文件数据结构、标准输入输出文件和管道文件。相对来讲比较简单，不过因为每个进程的文件描述符表需要用一个既能动态扩增又能直接索引的数据结构，所以我顺便自己实现了一个简单的vector，并利用相同的思想实现了一个队列，使用非常简单，所以又把queue.h换掉了。 内容 首先是ve...</p>
-    <em>2021年4月10日</em>
+    <em>
+    <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 9H21M7 3V5M17 3V5M6 13H8M6 17H8M11 13H13M11 17H13M16 13H18M16 17H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+    2021年4月10日</em>
 </div>
 
 <div class="card">
     <h4><a href="/html/rCore-Tutorial-Book-v3学习笔记（五）.html">rCore-Tutorial-Book-v3学习笔记（五）</a></h4><hr>
     <p>概述 第五个部分是实现进程相关的函数，相比前面几次任务难度高了不少。同时为了适应前面的内存函数，进程函数的实现基本也得靠自己了。由于用户程序增加了不少，所以我还增改了一下Makefile，并写了一个Python脚本用来生成link_app.S。 内容 首先是Makefile，之前一直是把Makefi...</p>
-    <em>2021年4月3日</em>
+    <em>
+    <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M3 9H21M7 3V5M17 3V5M6 13H8M6 17H8M11 13H13M11 17H13M16 13H18M16 17H18M6.2 21H17.8C18.9201 21 19.4802 21 19.908 20.782C20.2843 20.5903 20.5903 20.2843 20.782 19.908C21 19.4802 21 18.9201 21 17.8V8.2C21 7.07989 21 6.51984 20.782 6.09202C20.5903 5.71569 20.2843 5.40973 19.908 5.21799C19.4802 5 18.9201 5 17.8 5H6.2C5.0799 5 4.51984 5 4.09202 5.21799C3.71569 5.40973 3.40973 5.71569 3.21799 6.09202C3 6.51984 3 7.07989 3 8.2V17.8C3 18.9201 3 19.4802 3.21799 19.908C3.40973 20.2843 3.71569 20.5903 4.09202 20.782C4.51984 21 5.07989 21 6.2 21Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+    2021年4月3日</em>
 </div>
 <div style="padding-top: 2em; text-align: center">
-<a href="/index.html"><button style="padding: 0.2em 0.6em; margin: 0.1em">1</button></a>
-<button disabled style="padding: 0.2em 0.6em; margin: 0.1em">2</button>
-<a href="/index/3.html"><button style="padding: 0.2em 0.6em; margin: 0.1em">3</button></a>
-<a href="/index/4.html"><button style="padding: 0.2em 0.6em; margin: 0.1em">4</button></a>
-<a href="/index/5.html"><button style="padding: 0.2em 0.6em; margin: 0.1em">5</button></a>
-<a href="/index/6.html"><button style="padding: 0.2em 0.6em; margin: 0.1em">6</button></a>
-<a href="/index/7.html"><button style="padding: 0.2em 0.6em; margin: 0.1em">7</button></a>
+<a href="/index.html"><button style="padding: 0.4em 0.8em; margin: 0; border-radius: 50%; border: none">&lt;</button></a>
+<a href="/index.html"><button style="padding: 0.4em 0.8em; margin: 0; border-radius: 50%; border: none">1</button></a>
+<button disabled style="padding: 0.4em 0.8em; margin: 0; border-radius: 50%">2</button>
+<a href="/index/3.html"><button style="padding: 0.4em 0.8em; margin: 0; border-radius: 50%; border: none">3</button></a>
+<a href="/index/4.html"><button style="padding: 0.4em 0.8em; margin: 0; border-radius: 50%; border: none">4</button></a>
+<a href="/index/5.html"><button style="padding: 0.4em 0.8em; margin: 0; border-radius: 50%; border: none">5</button></a>
+<a href="/index/6.html"><button style="padding: 0.4em 0.8em; margin: 0; border-radius: 50%; border: none">6</button></a>
+<a href="/index/7.html"><button style="padding: 0.4em 0.8em; margin: 0; border-radius: 50%; border: none">7</button></a>
+<a href="/index/3.html"><button style="padding: 0.4em 0.8em; margin: 0; border-radius: 50%; border: none">&gt;</button></a>
 </div>
 
             </div>
@@ -132,6 +155,7 @@ html[data-theme='tufte']{
             <hr>
             <center>
                 Powered by <a href="https://github.com/ZimingYuan/Yblogs" target="_blank">Yblogs</a><br>
+                字体：<a href="https://github.com/lxgw/LxgwWenKai" target="_blank">霞鹜文楷</a><br>
                 转载请注明出处<br>
                 © 2025 VnYzm的博客
             </center>
