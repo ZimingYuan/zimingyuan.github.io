@@ -33,6 +33,12 @@ html[data-theme='tufte']{
                     location.href = '/search.html?' + word.value;
                 }
             };
+            window.onload = () => {
+                document.querySelector('input').addEventListener(
+                    'keydown',  (event) => {
+                        if (event.key == 'Enter') search();
+                });
+            }
         </script>
         <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
         <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
