@@ -65,7 +65,7 @@ html[data-theme='tufte']{
             <li><a href="/technique.html">技术</a></li>
             <li><a href="/miscellany.html">杂谈</a></li>
             <li><a href="/friends.html">友链</a></li>
-            <li><a href="/html/关于.html"><strong>关于</strong></a></li>
+            <li><a href="/html/关于.html">关于</a></li>
             <li><a href="https://www.travellings.cn/go.html" target="_blank">开往</a></li>
             <li class="float-right sticky"><button style="margin: 0" onclick="search()">
               <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
@@ -87,18 +87,25 @@ html[data-theme='tufte']{
 <p>我喜欢玩视觉小说和非恐怖悬疑推理解谜类游戏，偶尔也会尝试其他类型。此外，还喜欢看动漫、打乒乓球、游泳。</p>
 <p>我对 3D 建模渲染（如 Blender）、电子电路、手工制作等抱有比较浓厚的兴趣，不过基本没有入门，希望有时间能够深入尝试。</p>
 <h3 id="关于本博客">关于本博客</h3>
-<p>本博客主要包括技术模块和杂谈模块，技术模块记录我在完成项目或者学习的过程遇到的技术问题。杂谈模块记录我的动漫观后感、游戏玩后感、书籍读后感等内容。博客内容主观性较大，仅供大家看个乐呵。</p>
+<p>本博客于 2015 年在博客园（cnblogs）创建，一开始主要记录 OI 题目的题解，退役以后，则用来记录我在完成项目或者学习的过程中遇到的比较有探索性的技术问题。</p>
+<p>2020 年的时候博客园的经营遭遇严重危机，差点暴毙，此后虽然起死回生，但我也萌生了自己创建一个新博客的想法。网上常见的选择是使用 Hexo、Hugo 这类框架，但问题是这些框架需要手动给我写的每篇文章添加元数据，比较麻烦；加上看到别人用此类框架制作的博客，样式花里胡哨，加载却是龟速，所以决定自己写一个简单的博客框架。</p>
+<p>一开始我的技术选型是 Pandoc 转换 Markdown 为 HTML，Bootstrap 定义样式，Makefile 管理项目（Makefile 优势在于自动根据修改时间管理 Markdown，避免 Pandoc 重复生成 HTML）。后面随着需要自定义的内容增多，Makefile 逐渐力不从心，因此我写了一些 Python 脚本进行自动文本匹配替换等操作。后面索性弃用 Makefile 直接用 Python 管理整个项目，这样不用每次更新都启动 WSL 了，代码也变得简洁不少。</p>
+<p>另一个遇到的问题是 Bootstrap 的主题比较土，而且太重了，加载比较慢。后面我刷到了一些轻量级的样式框架，称为 Classless CSS，这些框架的样式比较简单，加载速度也比较快，只要导入一个 CSS 就可以定义整个网页的主题，也非常容易集成到 Pandoc 的 HTML 模板中，最终我选择了 <a href="https://https://classless.de/">Classless.css</a>，在里面挑了一个比较漂亮的主题。</p>
+<p>2023 年，我发现我技术模块的文章更新比较慢，同时又希望能把我平常在日记里写的各类动漫、游戏观后感分享给别人看，所以我新增了一个杂谈模块。同时又给博客增加了文章分类功能（其实就是多一组文章列表页），之后又陆陆续续更新了搜索功能、友链功能等，没有什么大的变动。我没有做留言和评论功能，一是因为懒😂；二是因为管理评论比较费精力，要是有骂人的评论或者不良的评论，没有及时处理的话有碍观瞻；三是感觉也没那么多人会有评论欲望，感觉费大精力做这个功能不太值得，如果有话想说，不如发邮件，当然我目前还未收到任何一条主动找我讨论博客内容的邮件😭。</p>
+<p>目前我的博客框架由模板 HTML、元信息 JSON 和 Python 脚本组成。模板 HTML 包括文章页模板、文章列表页模板（包括主页、技术页和杂谈页）、友链页模板和搜索页模板。元信息 JSON 包括文章的元信息和友链的元信息。Python 脚本先根据 Markdown 修改时间调用 Pandoc 将文章转换成网页，利用的是文章页模板。之后脚本再基于文章元信息和文章列表页模板动态生成文章列表页。最后脚本基于友链元信息生成友链列表页。代码也<a href="https://github.com/ZimingYuan/Yblogs">开源</a>了。</p>
+<p>在内容上，本博客目前主要包括技术模块和杂谈模块，技术模块记录我在完成项目或者学习的过程遇到的技术问题。杂谈模块记录我的动漫观后感、游戏玩后感、书籍读后感（待更新）等内容。博客内容主观性较大，仅供大家看个乐呵。不过，未来技术模块内容可能会比较少更新了😥，一是因为现在 AI 太强了，技术问题一问 AI 可能全解决了，缺少探索性，写起来也是拾 AI 牙慧，没意思；二是因为我现在工作中遇到的技术问题不太方便在外面记录，同时私人时间少了，日常遇到的技术问题也会变少。杂谈模块还是会正常更新，只要我有时间玩游戏、看动漫的话😋。</p>
 <p>我的博客园（内容和本博客的技术模块一致）：https://www.cnblogs.com/YuanZiming</p>
 <p>我的 GitHub：https://github.com/ZimingYuan</p>
 <p>我的 Bangumi：https://bgm.tv/user/856228</p>
 <p>我的邮箱：<span id="email">eXpteXptOTlAb3V0bG9vay5jb20=</span></p>
 <script>
     window.onload = () => {
-    document.querySelector('input').addEventListener(
-        'keydown',  (event) => {
-        if (event.key == 'Enter') search();
-    });
-    document.querySelector('#email').innerText = window.atob(document.querySelector('#email').innerText);
+        document.querySelector('#email').innerText = window.atob(document.querySelector('#email').innerText);
+        document.querySelectorAll('a').forEach(link => {
+            if (link.textContent.trim() === '关于') {
+                link.innerHTML = '<strong>关于</strong>';
+            }
+        });
     }
 </script>
 <footer>
