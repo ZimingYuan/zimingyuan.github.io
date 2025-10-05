@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="description" content="使用OpenCV对图片进行特征点检测和匹配（C++）" />
+  <meta name="description" content="使用OpenCV对图片进行特征点检测和匹配" />
   <meta name="keywords" content="" />
   <style>
     code{white-space: pre-wrap;}
@@ -114,7 +114,7 @@ html[data-theme='tufte']{
   <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
   <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
   <link rel="stylesheet" type="text/css" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkaibright/dist/LXGWBright-Regular/result.css"/>
-  <title>使用OpenCV对图片进行特征点检测和匹配（C++）</title>
+  <title>使用OpenCV对图片进行特征点检测和匹配</title>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
   <![endif]-->
@@ -136,7 +136,7 @@ html[data-theme='tufte']{
         </ul>
     </nav>
 <header id="title-block-header">
-<h1 class="title">使用OpenCV对图片进行特征点检测和匹配（C++）</h1>
+<h1 class="title">使用OpenCV对图片进行特征点检测和匹配</h1>
 <hr>
 </header>
 <h3 id="背景">背景</h3>
@@ -219,7 +219,7 @@ html[data-theme='tufte']{
 <span id="cb1-65"><a href="#cb1-65"></a></span>
 <span id="cb1-66"><a href="#cb1-66"></a>    <span class="cf">return</span> <span class="dv">0</span>;</span>
 <span id="cb1-67"><a href="#cb1-67"></a>}</span></code></pre></div>
-<h3 id="update-2023.5.27">Update 2023.5.27</h3>
+<h3 id="python版本2023年5月更新">Python版本（2023年5月更新）</h3>
 <p>最近学了图像处理课程，想起来这篇文章，所以在这重新回顾一下。关于特征点检测部分，主要挑选的是具有尺度不变性和旋转不变性的特征点检测算法，比如SIFT和ORB，前面也说了，两者得到的特征向量类型不同，因此后面的匹配过程也不一样。</p>
 <p>FLANN库实际上是OpenCV实现的一个最近邻检索库，和Faiss这种库是类似的，里面实现了多种最近邻检索算法，这些算法当然比BF，也就是brute-force暴力算法快。最近邻检索算法一般分为四类：量化、哈希、基于树的和基于图的。其中KD树是基于树的，因为涉及到空间的划分，所以只能支持浮点特征向量。而LSH全称是局部敏感性哈希，其核心是针对特征向量设计距离哈希函数，浮点向量可以用欧氏距离，二进制向量可以用海明距离，所以两种向量类型都可以支持。当然FLANN其实还是蛮弱的，一方面基于图的和量化相关的算法没有，另一方面没有支持GPU。可以使用Faiss库，支持的算法多，而且一部分算法也有GPU优化，也可以直接用PyTorch实现一个GPU上跑的暴力算法，效率都会有很大提升。</p>
 <p>之前因为没搞清楚怎么在Python版的OpenCV里给FlannBasedMatcher传入LshIndexParams，后来在<a href="https://answers.opencv.org/question/44592/flann-index-in-python-training-fails-with-segfault/">这里</a>找到了，遂在这里给出Python代码：</p>
@@ -266,7 +266,7 @@ html[data-theme='tufte']{
 <span id="cb2-41"><a href="#cb2-41"></a><span class="cf">for</span> i <span class="kw">in</span> same:</span>
 <span id="cb2-42"><a href="#cb2-42"></a>    <span class="bu">print</span>(i)</span></code></pre></div>
 <p>直接传入一个字典就可以了，具体取值可以看OpenCV的源码（具体可以查看<a href="https://github.com/opencv/opencv/tree/master/modules/flann/include/opencv2/flann/">FLANN模块</a>下<code>all_indices.h</code>、<code>defines.h</code>这几个文件，LshIndexParams构造函数的三个参数取值都是默认值，这里就没给出了。根据前面的分析，理论上LSH是支持浮点特征向量的，但源码默认是海明距离，所以估计还要传什么参数，我没有仔细研究，还请读者自行思考。</p>
-<p><img src="/img/使用OpenCV对图片进行特征点检测和匹配（C++）.jpg" /></p>
+<p><img src="/img/使用OpenCV对图片进行特征点检测和匹配（C++）_1.jpg" /></p>
 <p>从运行结果可以看到，ORB特征点好像对颜色对比度较大的角点比较感兴趣，所以可能在检测特征点之前把图片的对比度拉高一点效果会更好。</p>
 <p>顺便说一下，SIFT专利已于2020年3月到期，Github上的OpenCV源代码已将SIFT收录至主分支，不知Python版的OpenCV库是否已更新。</p>
 <footer>

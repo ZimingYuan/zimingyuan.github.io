@@ -185,6 +185,23 @@ git checkout 分支名</code></pre>
 <p>后加<code>--recursive</code>表示递归克隆，后加子项目名表示只克隆对应子项目</p>
 <p>删除克隆缓存：</p>
 <div class="sourceCode" id="cb21"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb21-1"><a href="#cb21-1"></a><span class="fu">git</span> rm --cache</span></code></pre></div>
+<hr />
+<h3 id="实际工作中常用的命令2025年10月更新">实际工作中常用的命令（2025年10月更新）</h3>
+<p>以上是学生时代用过的命令，现在介绍工作中比较常用的命令：修改完代码后，首先查看一下修改了那些地方：</p>
+<div class="sourceCode" id="cb22"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb22-1"><a href="#cb22-1"></a><span class="fu">git</span> status</span></code></pre></div>
+<p>会显示发生了什么变更，一般来说，对于修改的文件，会放到“未提交的变更”一栏，对于新增的文件，会放到“未跟踪的文件”一栏。</p>
+<p>然后就是传统的 <code>git add</code>，由于<code>.gitignore</code>里不一定包含了所有需要忽略的文件，所以一般不会用<code>git add .</code>，而是根据<code>git status</code>显示的结果，用<code>git add 文件</code>添加需要的文件。这时候再查看<code>git status</code>，就会发现需要提交的文件已经变成绿色了。</p>
+<p>然后就是 <code>git commit -m "说明"</code>，不再赘述。这个时候，如果想把没用的修改全部取消，可以用</p>
+<div class="sourceCode" id="cb23"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb23-1"><a href="#cb23-1"></a><span class="fu">git</span> checkout .</span></code></pre></div>
+<p>然后一般需要拉取一下服务器代码，防止别人提交了会和你产生冲突的代码，导致提交不上服务器。拉取要么在<code>git commit</code>之后执行，要么在所有修改之前执行，不然会提示变更未保存，无法拉取。拉取的命令是：</p>
+<div class="sourceCode" id="cb24"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb24-1"><a href="#cb24-1"></a><span class="fu">git</span> pull --rebase</span></code></pre></div>
+<p><code>--rebase</code>保证你的变更是放在 commit 记录的最顶上，防止代码评审时发生混乱。拉取的时候如果没发生冲突，那就无所谓，直接<code>git push</code>即可。如果发生冲突，就需要提示出现了冲突。用<code>git status</code>可以查看冲突的文件。打开冲突文件，搜索<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>，就可以看到冲突的地方。一般来说，冲突的地方会有两行<code>=======</code>，上面是本地的修改，下面是服务器的修改。</p>
+<p>把冲突标记全部删掉，将代码改成合并以后的样子，执行</p>
+<div class="sourceCode" id="cb25"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">git</span> pull --continue</span></code></pre></div>
+<p>冲突就解决了，可以直接 <code>git push</code> 提交。</p>
+<p>另外，<code>git commit</code>完如果又作了修改，就先<code>git add</code>然后再</p>
+<div class="sourceCode" id="cb26"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">git</span> commit --amend</span></code></pre></div>
+<p>这样会打开一个文件，提示你修改提交说明，如果不需要修改直接退出即可。</p>
 <footer>
     <hr>
     <center>

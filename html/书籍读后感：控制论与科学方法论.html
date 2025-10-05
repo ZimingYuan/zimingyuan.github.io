@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN" data-theme="tufte">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="description" content="书籍读后感：控制论与科学方法论" />
+  <meta name="keywords" content="控制论与科学方法论, 控制论, 读书" />
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="/extra/classless.css" />
+<style>
+html[data-theme='tufte']{
+    --rem: 15px;
+    --navpos: absolute;
+    --width: 70rem;
+    --font-p: 1.4rem/2 "LXGW Bright", Georgia, serif;
+    --font-h: 1.4rem/1.5 "LXGW Bright", Georgia, serif;
+    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --ornament: "";
+    --border: 1px solid var(--cmed);
+    /* foreground   | background color */
+    --cfg:   #111;    --cbg:    #fbf7ec;
+    --cdark: #111;    --clight: #fbf7ec;
+    --cmed: #b4d5fe;
+    --clink: #111;
+    --cemph: #111;
+}
+</style>
+  <script>
+      let search = () => {
+          let word = document.querySelector('input');
+          if (word.value.length == 0) {
+              word.focus();
+          } else {
+              location.href = '/search.html?' + word.value;
+          }
+      };
+      window.onload = () => {
+          document.querySelector('input').addEventListener(
+              'keydown',  (event) => {
+                  if (event.key == 'Enter') search();
+          });
+      }
+  </script>
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkaibright/dist/LXGWBright-Regular/result.css"/>
+  <title>书籍读后感：控制论与科学方法论</title>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><big>VnYzm的博客</big></li>
+            <li><a href="/index.html">所有文章</a></li>
+            <li><a href="/technique.html">技术</a></li>
+            <li><a href="/miscellany.html">杂谈</a></li>
+            <li><a href="/friends.html">友链</a></li>
+            <li><a href="/html/关于.html">关于</a></li>
+            <li><a href="https://www.travellings.cn/go.html" target="_blank">开往</a></li>
+            <li class="float-right sticky"><button style="margin: 0" onclick="search()">
+              <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+            </button></li>
+            <li class="float-right sticky"><input type="search" placeholder="搜索标题" style="margin: 0"></li>
+        </ul>
+    </nav>
+<header id="title-block-header">
+<h1 class="title">书籍读后感：控制论与科学方法论</h1>
+<hr>
+</header>
+<h3 id="书籍概况">书籍概况</h3>
+<ul>
+<li>作者：金观涛、华国凡</li>
+<li>出版社：新星出版社</li>
+<li>出版时间：2005年5月</li>
+</ul>
+<p><img src="/img/书籍读后感：控制论与科学方法论_1.jpg" /></p>
+<h3 id="背景">背景</h3>
+<p>控制论这门学科的大名如雷贯耳，尤其是在中国，科学家钱学森提出工程控制论，不仅通过优化系统效率让当时工业水平不发达的中国能够生产出质量尚可的工业产品；还让控制论这门学科本身发扬光大，从无人问津到成为工科尤其是自动化学科的理论基础。这本书是知乎推荐的，说是比较通俗易懂。</p>
+<h3 id="内容">内容</h3>
+<p>读完这本书，我体会到控制论并不是一门具体的学科，而更像是一种科学的哲学，是一套针对各科学领域问题的通用世界观和方法论。因为很多基本原理在其他学科中我已经了解了，比如正负反馈、信息论，不过还是有一些启发。首先是关于控制的定义，控制是对可能性空间的缩减，缩减的倍数越大，控制能力越强，这就实现了对“控制”这一概念的量化，像常见的试多少次试出毒剂，称多少次称出次品的问题，就可以利用控制能力和可能性进行求解。控制方法从随机控制开始，引入记忆机制形成有记忆的控制，结合其他对象形成共轭控制，最终引出负反馈控制，能够将控制能力乘起来，从而扩大了控制能力。</p>
+<p>然后，从可能性空间，很容易引出信息论，因为获得信息就是可能性变化的过程。信息的衡量也可以通过可能性空间的缩减来实现，由于缩减是除法，所以用负对数表示比较方便，这就是信息熵。书里也讲了一些信息论和通信理论的知识。这些也是控制论的一大组成方面。之后是演化理论，主要是一些反馈和自组织相关的内容，感觉是偏生物、化学相关。</p>
+<p>接着是突变理论，这部分我觉得比较有意思，因为传统的哲学一般简单地把变化归纳成量变和质变，然后直接给出量变引起质变的结论，然而，对于量变是如何变成质变的，是量变渐渐累积成质变，还是量变到了某个程度飞跃成了质变，这两种情况的条件是什么，这些都没有具体阐述。比如水变水蒸气，有时是渐渐蒸发，有时是沸腾以后一口气蒸发，传统理论无法很好地归纳这些情况。突变理论指出，量变到质变的过程，应该用拓扑模型进行描述。例如水边水蒸气，可以用尖点型曲面进行描述。蒸发是从曲面平滑的一侧慢慢过渡，而沸腾则是从曲面折叠不连续的一侧快速飞跃。曲面的维度则是温度、压强等参量，这就实现了对突变的精确数学建模。飞跃的关节点可以分为多种类型，包括尖点型、蝴蝶形、燕尾型等，这是根据质态的数量来决定的。</p>
+<p><img src="/img/书籍读后感：控制论与科学方法论_2.jpg" /></p>
+<p>最后是认识论，介绍了什么时候要采用不打开黑箱的方法（有点类似于黑盒测试），什么时候要采用打开黑箱的方法（有点类似于白盒测试），了解黑箱，打开黑箱，可控制变量的增加意味着控制能力的提高。借此也可以对“认识的过程”下一个定义，就是毛主席提出的“实践——理论——实践”的过程，也就是通过负反馈逼近真理的过程。要通过实践验证理论，要求理论具有清晰性，也就是这个理论需要能够给出一定的信息量，即具备可证伪性。同时，“认识”，要求验证的速度能够超过事物发展的速度，并且当前人类的观察能力和控制能力需要满足理论的可判定条件。</p>
+<p><img src="/img/书籍读后感：控制论与科学方法论_3.jpg" /></p>
+<p><em>认识的过程</em></p>
+<h3 id="总结">总结</h3>
+<p>这本书用通俗的语言介绍了控制论，控制论并不能对我们的研究和实践产生直接的帮助，但它作为一种科学的哲学，对科学思维和科学直觉的形成是很有帮助的。同时，控制论里如何对一些比较复杂的概念进行量化和建模，这也能够带给我们很多启发。</p>
+<footer>
+    <hr>
+    <center>
+        Powered by <a href="https://github.com/ZimingYuan/Yblogs" target="_blank">Yblogs</a><br>
+        字体：<a href="https://github.com/lxgw/LxgwWenKai" target="_blank">霞鹜文楷</a><br>
+        转载请注明出处<br>
+        © 2025 VnYzm的博客
+    </center>
+</footer>
+</body>
+</html>
