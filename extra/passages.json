@@ -1,5 +1,11 @@
 [
     {
+        "name": "游戏玩后感：SummerPockets",
+        "date": "2022年7月14日（2025.10更新）",
+        "category": "miscellany",
+        "abstract": "注：本文包含原作、加强版《Summer Pockets Reflection Blue》的玩后感以及动漫的观后感，包含Angel Beats、Clannad和Rewrite的剧透。上周看到steam夏促就买了，六十多块。相比于key社的其他游戏，游戏性和系统感觉都精致了很多，说明key社的游戏引擎部门也是一直有在努力的..."
+    },
+    {
         "name": "git基本操作",
         "date": "2018年9月21日（2025.10更新）",
         "category": "technique",
@@ -227,12 +233,6 @@
         "date": "2023年9月2日",
         "category": "technique",
         "abstract": "在探索新的深度学习算法的时候，我们可能会遇到PyTorch提供的算子不能满足需求的情况，这时候就需要自定义PyTorch算子，将我们的算法集成到PyTorch的工作流中。同时，为了提高运算效率..."
-    },
-    {
-        "name": "游戏玩后感：SummerPockets",
-        "date": "2022年7月14日（2023.7更新）",
-        "category": "miscellany",
-        "abstract": "玩完了summer pockets，上周看到steam夏促就买了，六十多块。相比于key社的其他游戏，游戏性和系统感觉都精致了很多，说明key社的游戏引擎部门也是一直有在努力的。玩完感觉整体不如cl和罚抄..."
     },
     {
         "name": "游戏玩后感：9nine",
