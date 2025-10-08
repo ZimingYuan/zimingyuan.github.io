@@ -77,24 +77,6 @@
     code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <link rel="stylesheet" href="/extra/classless.css" />
-<style>
-html[data-theme='tufte']{
-    --rem: 15px;
-    --navpos: absolute;
-    --width: 70rem;
-    --font-p: 1.4rem/2 "LXGW Bright", Georgia, serif;
-    --font-h: 1.4rem/1.5 "LXGW Bright", Georgia, serif;
-    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
-    --ornament: "";
-    --border: 1px solid var(--cmed);
-    /* foreground   | background color */
-    --cfg:   #111;    --cbg:    #fbf7ec;
-    --cdark: #111;    --clight: #fbf7ec;
-    --cmed: #b4d5fe;
-    --clink: #111;
-    --cemph: #111;
-}
-</style>
   <script>
       let search = () => {
           let word = document.querySelector('input');
@@ -124,9 +106,12 @@ html[data-theme='tufte']{
     <nav>
         <ul>
             <li><big>VnYzm的博客</big></li>
-            <li><a href="/index.html">所有文章</a></li>
-            <li><a href="/technique.html">技术</a></li>
-            <li><a href="/miscellany.html">杂谈</a></li>
+            <li><a href="/index.html">所有文章</a> ▾
+                <ul>
+                    <li><a href="/technique.html">技术</a></li>
+                    <li><a href="/miscellany.html">杂谈</a></li>
+                </ul>
+            </li>
             <li><a href="/friends.html">友链</a></li>
             <li><a href="/html/关于.html">关于</a></li>
             <li><a href="https://www.travellings.cn/go.html" target="_blank">开往</a></li>
