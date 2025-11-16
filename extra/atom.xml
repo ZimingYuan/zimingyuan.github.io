@@ -2,7 +2,19 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>VnYzm的博客</title>
   <id>https://vnyzm.top/</id>
-  <updated>2025-10-18T00:00:00+08:00</updated>
+  <updated>2025-11-15T00:00:00+08:00</updated>
+  <entry>
+    <title>番茄简谱脚本转调器</title>
+    <author>
+      <name>VnYzm</name>
+    </author>
+    <link href="/html/%E7%95%AA%E8%8C%84%E7%AE%80%E8%B0%B1%E8%84%9A%E6%9C%AC%E8%BD%AC%E8%B0%83%E5%99%A8.html"/>
+    <id>https://vnyzm.top/html/%E7%95%AA%E8%8C%84%E7%AE%80%E8%B0%B1%E8%84%9A%E6%9C%AC%E8%BD%AC%E8%B0%83%E5%99%A8.html</id>
+    <category term="技术"/>
+    <updated>2025-11-15T00:00:00+08:00</updated>
+    <published>2025-11-15T00:00:00+08:00</published>
+    <summary>本页面为基于 javascript 实现，通过浏览器前端完成转换的在线工具。输入番茄简谱脚本和要调高/调低的半音数，输出调整后的脚本。</summary>
+  </entry>
   <entry>
     <title>游戏玩后感：青空下的约定：Refine</title>
     <author>

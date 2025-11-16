@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN" data-theme="tufte">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="description" content="番茄简谱脚本转调器" />
+  <meta name="keywords" content="番茄简谱, 工具, javascript, 简谱, 口琴" />
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="/extra/classless.css" />
+  <script>
+      let search = () => {
+          let word = document.querySelector('input');
+          if (word.value.length == 0) {
+              word.focus();
+          } else {
+              location.href = '/search.html?' + word.value;
+          }
+      };
+      window.onload = () => {
+          document.querySelector('input').addEventListener(
+              'keydown',  (event) => {
+                  if (event.key == 'Enter') search();
+          });
+      }
+  </script>
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" type="text/css" href="https://chinese-fonts-cdn.deno.dev/packages/lxgwwenkaibright/dist/LXGWBright-Regular/result.css"/>
+  <title>番茄简谱脚本转调器</title>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><big>VnYzm的博客</big></li>
+            <li><a href="/index.html">所有文章</a> ▾
+                <ul>
+                    <li><a href="/technique.html">技术</a></li>
+                    <li><a href="/miscellany.html">杂谈</a></li>
+                </ul>
+            </li>
+            <li><a href="/friends.html">友链</a></li>
+            <li><a href="/html/关于.html">关于</a></li>
+            <li><a href="https://www.travellings.cn/go.html" target="_blank">开往</a></li>
+            <li><a href="/extra/atom.xml">RSS</a></li>
+            <li class="float-right">
+              <div style="position: relative; display: inline-block;">
+                <input type="search" placeholder="搜索标题" style="margin: 0; padding-right: 2em;">
+                <button style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); border: none; background: transparent; margin: 0;" onclick="search()">
+                  <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                </button>
+              </div>
+            </li>
+        </ul>
+    </nav>
+<header id="title-block-header">
+<h1 class="title">番茄简谱脚本转调器</h1>
+<hr>
+</header>
+<h2 id="说明">说明</h2>
+<p>本页面为基于 javascript 实现，通过浏览器前端完成转换的在线工具。输入<a href="http://zhipu.lezhi99.com/Zhipu-index.html">番茄简谱</a>脚本和要调高/调低的半音数，输出调整后的脚本。</p>
+<h2 id="脚本要求">脚本要求</h2>
+<ul>
+<li>脚本中的基本音符必须是 <code>1</code>、<code>1#</code>、<code>2</code>、<code>2#</code>、<code>3</code>、<code>4</code>、<code>4#</code>、<code>5</code>、<code>5#</code>、<code>6</code>、<code>6#</code>、<code>7</code> 中的一个，不能出现降半音的音符，如 <code>2$</code>。</li>
+<li>当音符升高八度或降低八度的时候，高低音符号 <code>'</code> 和 <code>,</code> 必须放在 <code>#</code> （如果存在）的后面，时长相关的符号 <code>/</code>、<code>-</code>、<code>.</code> 必须放在高低音符号（如果存在）的后面。且基本音符和高低音符号之间不能有空格。举例来说，<code>1'/</code>、<code>1#, -</code> 都合法，而 <code>1'#</code>、<code>1# ,/</code> 都不合法。</li>
+<li>包含音符的每一行必须是 <code>Q:</code> 开头。</li>
+</ul>
+<h2 id="输入">输入</h2>
+<textarea id="note_input" placeholder="请输入符合格式的番茄脚本..." style="width: 100%" rows="10"></textarea>
+<p><span style="display: flex;"> 要调节的半音数（正值为升高，负值为降低）： <input type="number" id="offset_input" value="0" step="1" style="width:10%"> </span></p>
+<button onclick="processText()">
+开始处理
+</button>
+<h2 id="输出">输出</h2>
+<textarea id="note_output" readonly placeholder="处理结果..." style="width: 100%" rows="10"></textarea>
+<script>
+    // 基准序列
+    const baseSequence = ['1', '1#', '2', '2#', '3', '4', '4#', '5', '5#', '6', '6#', '7'];
+    const seqLength = baseSequence.length;
+    
+    // 处理文本的函数
+    function processText() {
+        // 获取输入值
+        const inputText = document.getElementById('note_input').value;
+        const offset = parseInt(document.getElementById('offset_input').value) || 0;
+        
+        // 正则模式：匹配数字+井号部分和符号部分
+        const pattern = /([1-7]#?)([' ,]*)/g;
+        
+        // 替换匹配项的函数
+        function replaceMatch(match, numHash, symbols) {
+            // 计算原始高度
+            const quoteCount = (symbols.match(/'/g) || []).length;
+            const commaCount = (symbols.match(/,/g) || []).length;
+            const originalHeight = quoteCount - commaCount;
+            
+            // 查找原始位置
+            const originalIndex = baseSequence.indexOf(numHash);
+            if (originalIndex === -1) return match; // 未找到匹配项则不替换
+            
+            // 计算总偏移（仅使用外部输入偏移）
+            const totalShift = originalIndex + offset;
+            
+            // 计算循环后的位置和循环次数（进位/退位）
+            const newIndex = ((totalShift % seqLength) + seqLength) % seqLength; // 确保非负
+            const cycleCount = Math.floor(totalShift / seqLength);
+            
+            // 调整高度：原始高度 + 循环次数
+            const finalHeight = originalHeight + cycleCount;
+            
+            // 映射最终高度为符号
+            let mappedSymbols = '';
+            if (finalHeight > 0) {
+                mappedSymbols = "'".repeat(finalHeight);
+            } else if (finalHeight < 0) {
+                mappedSymbols = ",".repeat(-finalHeight);
+            }
+            
+            return baseSequence[newIndex] + mappedSymbols;
+        }
+        
+        // 执行替换并输出结果
+        const lines = inputText.split('\n');
+        const processedLines = lines.map(line => {
+            // 检查行是否以字母Q开头
+            return line.startsWith('Q') ? line.replace(pattern, replaceMatch) : line;
+        });
+        const result = processedLines.join('\n');
+        document.getElementById('note_output').value = result;
+    }
+</script>
+<footer>
+    <hr>
+    <center>
+        Powered by <a href="https://github.com/ZimingYuan/Yblogs" target="_blank">Yblogs</a><br>
+        转载请注明出处<br>
+        © 2025 VnYzm的博客<br>
+    </center>
+</footer>
+</body>
+</html>
