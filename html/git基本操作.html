@@ -109,6 +109,7 @@
                 <ul>
                     <li><a href="/technique.html">技术</a></li>
                     <li><a href="/miscellany.html">杂谈</a></li>
+                    <li><a href="/share.html">分享</a></li>
                 </ul>
             </li>
             <li><a href="/friends.html">友链</a></li>
@@ -188,10 +189,30 @@ git checkout 分支名</code></pre>
 <p><code>--rebase</code>保证你的变更是放在 commit 记录的最顶上，防止代码评审时发生混乱。拉取的时候如果没发生冲突，那就无所谓，直接<code>git push</code>即可。如果发生冲突，就需要提示出现了冲突。用<code>git status</code>可以查看冲突的文件。打开冲突文件，搜索<code>&lt;&lt;&lt;&lt;&lt;&lt;&lt;</code>，就可以看到冲突的地方。一般来说，冲突的地方会有两行<code>=======</code>，上面是本地的修改，下面是服务器的修改。</p>
 <p>把冲突标记全部删掉，将代码改成合并以后的样子，执行</p>
 <div class="sourceCode" id="cb25"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb25-1"><a href="#cb25-1"></a><span class="fu">git</span> pull --continue</span></code></pre></div>
-<p>冲突就解决了，可以直接 <code>git push</code> 提交。</p>
+<p>冲突就解决了，然后再<code>git add</code>、<code>git commit</code>，就可以直接 <code>git push</code> 提交。</p>
 <p>另外，<code>git commit</code>完如果又作了修改，就先<code>git add</code>然后再</p>
 <div class="sourceCode" id="cb26"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb26-1"><a href="#cb26-1"></a><span class="fu">git</span> commit --amend</span></code></pre></div>
 <p>这样会打开一个文件，提示你修改提交说明，如果不需要修改直接退出即可。</p>
+<p>补充：<code>git pull</code>除了拉取当前分支的代码，还会拉取其他分支的元信息。假设当前分支是 A 分支，本地仓库还有 B 分支，比远程仓库的 B 分支慢一个 commit：</p>
+<ol type="1">
+<li>一开始本地仓库不知道远程仓库的情况，切换到 B 分支会显示 B 分支为“最新”。</li>
+<li>在 A 分支下执行 <code>git pull</code>后，A 分支的代码会和远程仓库同步，B 分支不会。但在切换到 B 分支的时候会显示 B 分支“落后 1”。</li>
+<li>在 B 分支下执行<code>git pull</code>后，B 分支的代码会和远程仓库同步。</li>
+</ol>
+<div class="sourceCode" id="cb27"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb27-1"><a href="#cb27-1"></a><span class="fu">git</span> reset --hard HEAD~1</span></code></pre></div>
+<p>回退到上一个 commit，并且当前 commit 的全部更改消失。<code>HEAD~1</code>可以换成 commit 号，表示回退到对应 commit。</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb28-1"><a href="#cb28-1"></a><span class="fu">git</span> reset --soft HEAD~1</span></code></pre></div>
+<p>回退到上一个 commit，当前 commit 的全部更改保留在工作区（执行<code>git status</code>的时候显示为绿色）。<code>HEAD~1</code>可以换成 commit 号，表示回退到对应 commit。</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb29-1"><a href="#cb29-1"></a><span class="fu">git</span> cherry-pick commit号</span></code></pre></div>
+<p>将其他分支的 commit 单独挑到当前分支。</p>
+<div class="sourceCode" id="cb30"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb30-1"><a href="#cb30-1"></a><span class="fu">git</span> checkout -b 分支名 远程分支名（例如 origin/master）</span></code></pre></div>
+<p>创建并切换分支，同时设置该分支跟踪某个远程分支。</p>
+<div class="sourceCode" id="cb31"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb31-1"><a href="#cb31-1"></a><span class="fu">git</span> checkout 分支名</span></code></pre></div>
+<p>切换分支。</p>
+<div class="sourceCode" id="cb32"><pre class="sourceCode bash"><code class="sourceCode bash"><span id="cb32-1"><a href="#cb32-1"></a><span class="fu">git</span> branch -u 远程分支名</span></code></pre></div>
+<p>创建分支时忘了指定远程分支名时用这个，设置当前分支跟踪某个远程分支。</p>
+<pre><code>git branch -vv</code></pre>
+<p>查看分支状态。</p>
 <footer>
     <hr>
     <center>
