@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN" data-theme="tufte">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="description" content="《Rust中常见的有关生命周期的误解》学习笔记" />
+  <meta name="keywords" content="rust, 生命周期" />
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="/extra/classless.css" />
+  <script>
+      let search = () => {
+          let word = document.querySelector('input');
+          if (word.value.length == 0) {
+              word.focus();
+          } else {
+              location.href = '/search.html?' + word.value;
+          }
+      };
+      window.onload = () => {
+          document.querySelector('input').addEventListener(
+              'keydown',  (event) => {
+                  if (event.key == 'Enter') search();
+          });
+      }
+  </script>
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/lxgwwenkai-regular/result.css?v=1" />
+  <title>《Rust中常见的有关生命周期的误解》学习笔记</title>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><big>VnYzm的博客</big></li>
+            <li><a href="/index.html">所有文章</a> ▾
+                <ul>
+                    <li><a href="/technique.html">技术</a></li>
+                    <li><a href="/miscellany.html">杂谈</a></li>
+                    <li><a href="/share.html">分享</a></li>
+                </ul>
+            </li>
+            <li><a href="/friends.html">友链</a></li>
+            <li><a href="/html/关于.html">关于</a></li>
+            <li><a href="https://www.travellings.cn/go.html" target="_blank">开往</a></li>
+            <li><a href="/extra/atom.xml">RSS</a></li>
+            <li class="float-right">
+              <div style="position: relative; display: inline-block;">
+                <input type="search" placeholder="搜索标题" style="margin: 0; padding-right: 2em;">
+                <button style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); border: none; background: transparent; margin: 0;" onclick="search()">
+                  <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                </button>
+              </div>
+            </li>
+        </ul>
+    </nav>
+<header id="title-block-header">
+<h1 class="title">《Rust中常见的有关生命周期的误解》学习笔记</h1>
+<hr>
+</header>
+<h2 id="概述">概述</h2>
+<p>众所周知，在 Rust 语法里面，生命周期一直是初学者面临的一道雄关。最近部门里 Rust 预研组长分享了<a href="https://github.com/pretzelhammer/rust-blog/blob/master/posts/translations/zh-hans/common-rust-lifetime-misconceptions.md">《Rust 中常见的有关生命周期的误解》</a>这篇文章，看完刷新了我对包括生命周期在内的一些 Rust 语法的理解。所以这里分享一下学习笔记。</p>
+<h2 id="内容">内容</h2>
+<h3 id="误解-1t-只包含所有权类型">误解 1：T 只包含所有权类型。</h3>
+<p>这个误解主要想讲的是泛型<code>T</code>既可以匹配所有权类型，也可以匹配引用类型。所以在写一揽子实现的时候不能同时为<code>T</code>和<code>&amp;T</code>（或<code>&amp;mut T</code>）实现 trait，不然就重复了。即：</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb1-1"><a href="#cb1-1"></a><span class="kw">trait</span> Trait <span class="op">{}</span></span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="kw">impl</span>&lt;T&gt; Trait <span class="kw">for</span> T <span class="op">{}</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">impl</span>&lt;T&gt; Trait <span class="kw">for</span> &amp;T <span class="op">{}</span> <span class="co">// 编译错误</span></span>
+<span id="cb1-4"><a href="#cb1-4"></a><span class="kw">impl</span>&lt;T&gt; Trait <span class="kw">for</span> &amp;<span class="kw">mut</span> T <span class="op">{}</span> <span class="co">// 编译错误</span></span></code></pre></div>
+<p>但这里我更关注的是“Rust 能够给引用类型实现 trait”这个概念。比如我可以这样写：</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">trait</span> Trait <span class="op">{</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a>    <span class="kw">fn</span> f(&amp;<span class="kw">self</span>);</span>
+<span id="cb2-3"><a href="#cb2-3"></a><span class="op">}</span></span>
+<span id="cb2-4"><a href="#cb2-4"></a><span class="kw">impl</span> Trait <span class="kw">for</span> &amp;<span class="dt">i32</span> <span class="op">{</span></span>
+<span id="cb2-5"><a href="#cb2-5"></a>    <span class="kw">fn</span> f(&amp;<span class="kw">self</span>) <span class="op">{</span></span>
+<span id="cb2-6"><a href="#cb2-6"></a>        <span class="pp">println!</span>(<span class="st">&quot;{}&quot;</span>, <span class="kw">self</span>);</span>
+<span id="cb2-7"><a href="#cb2-7"></a>    <span class="op">}</span></span>
+<span id="cb2-8"><a href="#cb2-8"></a><span class="op">}</span></span>
+<span id="cb2-9"><a href="#cb2-9"></a><span class="kw">let</span> a: <span class="dt">i32</span>;</span>
+<span id="cb2-10"><a href="#cb2-10"></a>(&amp;a).f();</span></code></pre></div>
+<p>我一开始一直想不通，为什么能给引用类型实现方法。后来才发现我被过去学习面向对象语言的经验给误导了，总是把实现 trait 当作是接口继承一类的东西。实际上，面向对象里，讲究的是“A 是 B 的一种”这样的关系。比如，“鸭子”类继承“鸟”类，因为鸭子就是鸟的一种。但 Rust 里，实现 trait 更像是一种“A 能做 B 定义的行为”的关系。比如，“有翅膀”是一个 trait，其中包含了“扇翅膀”、“收起翅膀”等行为，那么，“鸭子”结构体实现了这个 trait，它就有了对应的行为，“蝙蝠”结构体也实现了这个 trait，也有对应的行为，但它不是鸟。</p>
+<p>反映到上面的代码里，我是让 <code>&amp;i32</code> 能做 <code>f()</code> 这个行为，而不是让 <code>&amp;i32</code> 作为 <code>Trait</code> 的一种。这样逻辑就很顺了。</p>
+<h3 id="误解-23如果-t-static-那么-t-直到程序结束为止都一定是有效的a-t-和-t-a-是一回事">误解 2、3：如果 T: ’static 那么 T 直到程序结束为止都一定是有效的；&amp;’a T 和 T: ’a 是一回事。</h3>
+<p>误解 2 和 3 其实是一样的，说的是给泛型参数<code>T</code>而不是<code>&amp;T/&amp;mut T</code>指定生命周期的语义。前面也说了，T 能够匹配所有权类型，也能匹配引用类型，而所有权类型的生命周期并没有什么意义。所以，如果 T 匹配的是所有权类型，那么这个<code>'static</code>或者<code>'a</code>就相当于没用，只有当 T 匹配的是引用类型时，才会要求这个引用类型的参数或者属性需要满足<code>'static</code>或者<code>'a</code>生命周期约束。</p>
+<h3 id="误解-4我的代码里不含泛型也不含生命周期注解">误解 4：我的代码里不含泛型也不含生命周期注解。</h3>
+<p>没啥好说的，有时生命周期注解可以省略，编译器有一套规则决定是否可以省略。</p>
+<h3 id="误解-5如果编译通过了那么我标注的生命周期就是正确的">误解 5：如果编译通过了，那么我标注的生命周期就是正确的。</h3>
+<p>感觉出现这个问题的场景比较极端，只有当结构体里包含引用属性，并且给这个结构体实现方法的时候，参数只有一个<code>&amp;self</code>，且返回这个结构体里的引用属性时才会遇到推断错误的情况。我写了个更简单的例子触发这种场景：</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">struct</span> s&lt;<span class="ot">&#39;a</span>&gt; <span class="op">{</span></span>
+<span id="cb3-2"><a href="#cb3-2"></a>    r: &amp;<span class="ot">&#39;a</span> <span class="dt">i32</span> <span class="co">// 结构体里包含引用属性    </span></span>
+<span id="cb3-3"><a href="#cb3-3"></a><span class="op">}</span></span>
+<span id="cb3-4"><a href="#cb3-4"></a></span>
+<span id="cb3-5"><a href="#cb3-5"></a><span class="kw">impl</span> s&lt;<span class="ot">&#39;_</span>&gt; <span class="op">{</span></span>
+<span id="cb3-6"><a href="#cb3-6"></a>    <span class="kw">fn</span> f(&amp;<span class="kw">self</span>) -&gt; &amp;<span class="dt">i32</span> <span class="op">{</span> <span class="co">// 方法里只有一个 &amp;self 参数</span></span>
+<span id="cb3-7"><a href="#cb3-7"></a>        <span class="kw">self</span>.r <span class="co">// 返回值是这个引用属性</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>    <span class="op">}</span></span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="op">}</span></span>
+<span id="cb3-10"><a href="#cb3-10"></a></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a>    <span class="kw">let</span> a: <span class="dt">i32</span> = <span class="dv">0</span>;</span>
+<span id="cb3-13"><a href="#cb3-13"></a>    <span class="kw">let</span> r = <span class="op">{</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a>        <span class="kw">let</span> ss = s <span class="op">{</span> r: &amp;a <span class="op">}</span>;</span>
+<span id="cb3-15"><a href="#cb3-15"></a>        ss.f() <span class="co">// `ss` does not live long enough</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a>    <span class="op">}</span>;</span>
+<span id="cb3-17"><a href="#cb3-17"></a>    <span class="pp">println!</span>(<span class="st">&quot;{}&quot;</span>, r);</span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="op">}</span></span></code></pre></div>
+<p>返回值本应该关联<code>s.r</code>的生命周期，结果编译器让返回值关联到<code>&amp;s</code>自己的生命周期了，进而导致了此错误，改成这样即可：</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">struct</span> s&lt;<span class="ot">&#39;a</span>&gt; <span class="op">{</span></span>
+<span id="cb4-2"><a href="#cb4-2"></a>    r: &amp;<span class="ot">&#39;a</span> <span class="dt">i32</span>    </span>
+<span id="cb4-3"><a href="#cb4-3"></a><span class="op">}</span></span>
+<span id="cb4-4"><a href="#cb4-4"></a></span>
+<span id="cb4-5"><a href="#cb4-5"></a><span class="kw">impl</span>&lt;<span class="ot">&#39;a</span>, <span class="ot">&#39;b</span>&gt; s&lt;<span class="ot">&#39;a</span>&gt; <span class="op">{</span></span>
+<span id="cb4-6"><a href="#cb4-6"></a>    <span class="kw">fn</span> f(&amp;<span class="ot">&#39;b</span> <span class="kw">self</span>) -&gt; &amp;<span class="ot">&#39;a</span> <span class="dt">i32</span> <span class="op">{</span> <span class="co">// &#39;b 可以不标，让编译器自动推断</span></span>
+<span id="cb4-7"><a href="#cb4-7"></a>        <span class="kw">self</span>.r</span>
+<span id="cb4-8"><a href="#cb4-8"></a>    <span class="op">}</span></span>
+<span id="cb4-9"><a href="#cb4-9"></a><span class="op">}</span></span>
+<span id="cb4-10"><a href="#cb4-10"></a></span>
+<span id="cb4-11"><a href="#cb4-11"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb4-12"><a href="#cb4-12"></a>    <span class="kw">let</span> a: <span class="dt">i32</span> = <span class="dv">0</span>;</span>
+<span id="cb4-13"><a href="#cb4-13"></a>    <span class="kw">let</span> r = <span class="op">{</span></span>
+<span id="cb4-14"><a href="#cb4-14"></a>        <span class="kw">let</span> ss = s <span class="op">{</span> r: &amp;a <span class="op">}</span>;</span>
+<span id="cb4-15"><a href="#cb4-15"></a>        ss.f()</span>
+<span id="cb4-16"><a href="#cb4-16"></a>    <span class="op">}</span>;</span>
+<span id="cb4-17"><a href="#cb4-17"></a>    <span class="pp">println!</span>(<span class="st">&quot;{}&quot;</span>, r);</span>
+<span id="cb4-18"><a href="#cb4-18"></a><span class="op">}</span></span></code></pre></div>
+<p>拓展：如果我把方法<code>f</code>换成一个独立的函数<code>f</code>，如下所示：</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">fn</span> f(ss: &amp;s) -&gt; &amp;<span class="dt">i32</span> <span class="op">{</span></span>
+<span id="cb5-2"><a href="#cb5-2"></a>    ss.r</span>
+<span id="cb5-3"><a href="#cb5-3"></a><span class="op">}</span></span></code></pre></div>
+<p>这个时候，编译器就不会自动推断，而是要求我显式标注生命周期，并给出推荐：</p>
+<pre><code>help: consider introducing a named lifetime parameter
+  |
+5 | fn f&lt;&#39;a&gt;(ss: &amp;&#39;a s&lt;&#39;a&gt;) -&gt; &amp;&#39;a i32 {
+  |     ++++      ++  ++++      ++</code></pre>
+<p>这个推荐是有问题的（提前剧透误解 7 了😂）。可以看到这里一股脑地将<code>ss</code>、<code>ss.r</code>和返回值全部标注为同一生命周期，因此这样写会报和第一个反例一样的错误。解决方法就是按照真实情况，返回值和<code>ss.r</code>标同个生命周期，<code>ss</code>自己标独立生命周期，就对了：</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb7-1"><a href="#cb7-1"></a><span class="kw">fn</span> f&lt;<span class="ot">&#39;a</span>, <span class="ot">&#39;b</span>&gt;(ss: &amp;<span class="ot">&#39;a</span> s&lt;<span class="ot">&#39;b</span>&gt;) -&gt; &amp;<span class="ot">&#39;b</span> <span class="dt">i32</span> <span class="op">{</span></span>
+<span id="cb7-2"><a href="#cb7-2"></a>    ss.r</span>
+<span id="cb7-3"><a href="#cb7-3"></a><span class="op">}</span></span></code></pre></div>
+<p>当然，这些问题都是编译期出现的，不懂的话最多编译不过，不会把问题留到运行时。</p>
+<p>另外，我也让豆包看了下，我写的第一个反例豆包直接就改对了。而原文中的反例，豆包一开始给了些其他方案，我让它只考虑改生命周期标注，它也能准确地指出问题。所以即使不懂，靠 AI 帮忙应该是一个可行的解决方案。</p>
+<h3 id="误解-6已装箱的-trait-对象不含生命周期注解">误解 6：已装箱的 trait 对象不含生命周期注解</h3>
+<p>要理解这个误解，首先要理解<code>dyn Trait + 'static</code>是什么意思。<code>dyn Trait</code>这玩意其实和泛型类型<code>T</code>有点像的，都是既可以指代所有权类型，也可以指代引用类型。所以，<code>dyn Trait + 'static</code>的含义就和<code>T: 'static</code>类似，即要求<code>dyn Trait</code>这个类型的实例，如果是所有权类型，那就没限制；如果是引用类型，那么生命周期就要满足<code>'static</code>限制。像下面这个例子，就会报错：</p>
+<div class="sourceCode" id="cb8"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb8-1"><a href="#cb8-1"></a><span class="kw">trait</span> Trait <span class="op">{}</span></span>
+<span id="cb8-2"><a href="#cb8-2"></a></span>
+<span id="cb8-3"><a href="#cb8-3"></a><span class="kw">impl</span> Trait <span class="kw">for</span> &amp;<span class="dt">i32</span> <span class="op">{}</span></span>
+<span id="cb8-4"><a href="#cb8-4"></a></span>
+<span id="cb8-5"><a href="#cb8-5"></a><span class="kw">fn</span> main() <span class="op">{</span></span>
+<span id="cb8-6"><a href="#cb8-6"></a>    <span class="kw">let</span> v: <span class="dt">i32</span> = <span class="dv">0</span>;</span>
+<span id="cb8-7"><a href="#cb8-7"></a>    <span class="kw">let</span> b: <span class="dt">Box</span>&lt;dyn Trait + <span class="ot">&#39;static</span>&gt; = <span class="dt">Box</span>::new(&amp;v); <span class="co">// `v` does not live long enough</span></span>
+<span id="cb8-8"><a href="#cb8-8"></a><span class="op">}</span></span></code></pre></div>
+<p>而这个误解说的是，直接声明<code>Box&lt;dyn Trait&gt;</code>，编译器就会自动推断为<code>Box&lt;dyn Trait + 'static&gt;</code>。与之对应的，如果声明<code>&amp;dyn Trait</code>，那么编译器就会自动推断<code>dyn Trait</code>的声明周期和这个引用本身的声明周期一致。即</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb9-1"><a href="#cb9-1"></a><span class="co">// 展开前</span></span>
+<span id="cb9-2"><a href="#cb9-2"></a><span class="kw">type</span> T3&lt;<span class="ot">&#39;a</span>&gt; = &amp;<span class="ot">&#39;a</span> dyn Trait;</span>
+<span id="cb9-3"><a href="#cb9-3"></a><span class="co">// 展开后，&amp;&#39;a T 要求 T: &#39;a, 所以推导为 &#39;a</span></span>
+<span id="cb9-4"><a href="#cb9-4"></a><span class="kw">type</span> T4&lt;<span class="ot">&#39;a</span>&gt; = &amp;<span class="ot">&#39;a</span> (dyn Trait + <span class="ot">&#39;a</span>);</span></code></pre></div>
+<p>其实这也很合理，因为编译器推断生命周期，总得有个依据。而<code>Box</code>是拥有所有权的指针，它不是借用，因此是没有生命周期的，所以你让编译器推<code>Box&lt;dyn Trait&gt;</code>的生命周期，它也只能推成默认的<code>'static</code>。如果你指定了 Trait 内部的生命周期，编译器有依据了，就不会推成<code>'static</code>了：</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb10-1"><a href="#cb10-1"></a><span class="co">// 展开前</span></span>
+<span id="cb10-2"><a href="#cb10-2"></a><span class="kw">type</span> T7&lt;<span class="ot">&#39;a</span>&gt; = <span class="dt">Box</span>&lt;dyn GenericTrait&lt;<span class="ot">&#39;a</span>&gt;&gt;;</span>
+<span id="cb10-3"><a href="#cb10-3"></a><span class="co">// 展开后</span></span>
+<span id="cb10-4"><a href="#cb10-4"></a><span class="kw">type</span> T8&lt;<span class="ot">&#39;a</span>&gt; = <span class="dt">Box</span>&lt;dyn GenericTrait&lt;<span class="ot">&#39;a</span>&gt; + <span class="ot">&#39;a</span>&gt;;</span></code></pre></div>
+<h3 id="误解-7编译器的报错信息会告诉我怎样修复我的程序">误解 7：编译器的报错信息会告诉我怎样修复我的程序</h3>
+<p>这个前面也说过了，编译器一般会推荐一股脑地将所有参数、参数内部、返回值全部标注为同一生命周期，这种推荐很多时候不满足用户需求。此外如误解 6 所示，编译器有时会自动推断生命周期，那么它给出的推荐也往往是根据前面自动推断的生命周期来的，如果自动推断的生命周期本来就不满足用户需求，那给出的推荐当然就更不满足用户需求了。</p>
+<h3 id="误解-8生命周期可以在运行时动态变长或变短">误解 8：生命周期可以在运行时动态变长或变短</h3>
+<p>生命周期推断比较粗糙，在编译期直接在所有可能接受的引用中选一个最早被释放的。并且这种推断是在各类编译优化之前。</p>
+<h3 id="误解-9将独占引用降级为共享引用是-safe-的">误解 9：将独占引用降级为共享引用是 safe 的</h3>
+<p><code>b = &amp;*(&amp;mut a)</code>会导致<code>b</code>存活的时候<code>&amp;mut a</code>也一直存活，在此期间不能再获取<code>&amp;mut a</code>。</p>
+<p>另外注意原文中的误解 5 也涉及了这个误解，而且更隐蔽。原文中的<code>next</code>方法：</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">fn</span> next(&amp;<span class="kw">mut</span> <span class="kw">self</span>) -&gt; <span class="dt">Option</span>&lt;&amp;<span class="dt">u8</span>&gt; <span class="op">{</span></span>
+<span id="cb11-2"><a href="#cb11-2"></a>    <span class="kw">if</span> <span class="kw">self</span>.remainder.is_empty() <span class="op">{</span></span>
+<span id="cb11-3"><a href="#cb11-3"></a>        <span class="cn">None</span></span>
+<span id="cb11-4"><a href="#cb11-4"></a>    <span class="op">}</span> <span class="kw">else</span> <span class="op">{</span></span>
+<span id="cb11-5"><a href="#cb11-5"></a>        <span class="kw">let</span> byte = &amp;<span class="kw">self</span>.remainder<span class="op">[</span><span class="dv">0</span><span class="op">]</span>;</span>
+<span id="cb11-6"><a href="#cb11-6"></a>        <span class="kw">self</span>.remainder = &amp;<span class="kw">self</span>.remainder<span class="op">[</span><span class="dv">1</span>..<span class="op">]</span>;</span>
+<span id="cb11-7"><a href="#cb11-7"></a>        <span class="cn">Some</span>(byte)</span>
+<span id="cb11-8"><a href="#cb11-8"></a>    <span class="op">}</span></span>
+<span id="cb11-9"><a href="#cb11-9"></a><span class="op">}</span></span></code></pre></div>
+<p>前面说了编译器会将返回的<code>&amp;u8</code>推断为和<code>&amp;mut self</code>相同的生命周期，那么，当执行<code>let byte = &amp;self.remainder[0];</code>时，根据<code>DeRef</code>隐式转换，实际上执行的是<code>let byte = &amp;(*self.remainder)[0];</code>，又因为生命周期推断，所以在<code>byte</code>（返回的<code>&amp;u8</code>）存活期间，不是<code>self.remainer</code>一直存活，而是<code>&amp;mut self</code>一直存活，而第二次调用<code>next</code>方法时会又获取一次<code>&amp;mut self</code>，导致独占引用重复获取错误。</p>
+<h3 id="误解-10对闭包的生命周期省略规则和函数一样">误解 10：对闭包的生命周期省略规则和函数一样</h3>
+<p>意思就是匿名函数的自动生命周期推断规则和声明方式都和普通函数不一样。总结下来原文给出的合法方案就两种：</p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb12-1"><a href="#cb12-1"></a><span class="co">// 可以不用堆分配而直接创建一个 &#39;static 引用</span></span>
+<span id="cb12-2"><a href="#cb12-2"></a><span class="kw">let</span> identity: &amp;dyn <span class="bu">Fn</span>(&amp;<span class="dt">i32</span>) -&gt; &amp;<span class="dt">i32</span> = &amp;|x: &amp;<span class="dt">i32</span>| x;</span>
+<span id="cb12-3"><a href="#cb12-3"></a></span>
+<span id="cb12-4"><a href="#cb12-4"></a>    <span class="co">// 上一行去掉语法糖 :)</span></span>
+<span id="cb12-5"><a href="#cb12-5"></a><span class="kw">let</span> identity: &amp;<span class="ot">&#39;static</span> (dyn <span class="kw">for</span>&lt;<span class="ot">&#39;a</span>&gt; <span class="bu">Fn</span>(&amp;<span class="ot">&#39;a</span> <span class="dt">i32</span>) -&gt; &amp;<span class="ot">&#39;a</span> <span class="dt">i32</span> + <span class="ot">&#39;static</span>) = &amp;|x: &amp;<span class="dt">i32</span>| -&gt; &amp;<span class="dt">i32</span> <span class="op">{</span> x <span class="op">}</span>;</span></code></pre></div>
+<p>挺麻烦的，可能 Rust 设计初衷就希望我们在用匿名函数的时候引用尽量通过闭包而不是参数来获得。</p>
+<h3 id="误解-11static-引用总能被强制转换为-a-引用">误解 11：’static 引用总能被强制转换为 ’a 引用</h3>
+<p>总结起来，就是<code>'static</code>引用能当<code>'a</code>引用使用，但是返回<code>'static</code>引用的函数不能当返回<code>'a</code>引用的函数使用。</p>
+<h2 id="总结">总结</h2>
+<p>在以上所有误解中，有好几个都是因为 Rust 编译器的生命周期自动推断机制导致的，这其实是一个两难问题：自动推断少，虽然会减少排查编译错误的困难，但会提高编程复杂度，同时也让 Rust 本就不低的学习门槛被进一步抬高；但自动推断多，有些细节被隐藏，导致初学者在学习的时候很难学透，导致一些比较刁钻的编译错误（所幸现在有 AI 能在一定程度上解决这类问题）。要是有一个能自动显示出所有被省略的生命周期的工具就好了，看了下 rust-analyzer 插件没这功能，Cargo/rustc 好像也没这种选项，问豆包也答错了，不知道有没有人能开发一个。</p>
+<p>此外，感觉 Rust 很需要一本“Effect Rust”这样的书，通过各种“条款”让初学者能够深入理解 Rust 里的一些细节。原文章虽然能起到一部分的作用，但它的门槛还是比较高，比基础教程往上一大截，还有很多例子太复杂了，重点不够突出，因此对刚学完基础教程的我来说，学习难度也比较大，需要做很多实验才能理解。</p>
+<p>不过，不管怎么说，这些误解所产生的后果也不过是编译错误，不会像 C/C++ 一样写个 UB 导致各种花样百出的 BUG 来，这点还是比较令人安心的。</p>
+<footer>
+    <hr>
+    <center>
+        Powered by <a href="https://github.com/ZimingYuan/Yblogs" target="_blank">Yblogs</a><br>
+        转载请注明出处<br>
+        © 2026 VnYzm的博客<br>
+    </center>
+</footer>
+</body>
+</html>
