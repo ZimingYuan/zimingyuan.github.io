@@ -235,8 +235,8 @@
 <h3 id="误解-8生命周期可以在运行时动态变长或变短">误解 8：生命周期可以在运行时动态变长或变短</h3>
 <p>生命周期推断比较粗糙，在编译期直接在所有可能接受的引用中选一个最早被释放的。并且这种推断是在各类编译优化之前。</p>
 <h3 id="误解-9将独占引用降级为共享引用是-safe-的">误解 9：将独占引用降级为共享引用是 safe 的</h3>
-<p><code>b = &amp;*(&amp;mut a)</code>会导致<code>b</code>存活的时候<code>&amp;mut a</code>也一直存活，在此期间不能再获取<code>&amp;mut a</code>。</p>
-<p>另外注意原文中的误解 5 也涉及了这个误解，而且更隐蔽。原文中的<code>next</code>方法：</p>
+<p><code>b = &amp;*(&amp;mut a)</code>会导致<code>b</code>存活的时候<code>&amp;mut a</code>也一直存活，在此期间不能再获取<code>&amp;a</code>。同时如果原来的<code>&amp;mut a</code>绑定了变量（如<code>let c = &amp;mut a; let b = &amp;*c;</code>），那<code>b</code>的存活期间<code>c</code>也不能用来给<code>a</code>赋值了（不能执行<code>*c = XXX</code>）。所以原文说这是一个“反模式”，意思就是这个用法没有禁止但百害无一利。</p>
+<p>另外注意原文中的误解 5 也涉及了这个用法，而且更隐蔽。原文中的<code>next</code>方法：</p>
 <div class="sourceCode" id="cb11"><pre class="sourceCode rust"><code class="sourceCode rust"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">fn</span> next(&amp;<span class="kw">mut</span> <span class="kw">self</span>) -&gt; <span class="dt">Option</span>&lt;&amp;<span class="dt">u8</span>&gt; <span class="op">{</span></span>
 <span id="cb11-2"><a href="#cb11-2"></a>    <span class="kw">if</span> <span class="kw">self</span>.remainder.is_empty() <span class="op">{</span></span>
 <span id="cb11-3"><a href="#cb11-3"></a>        <span class="cn">None</span></span>

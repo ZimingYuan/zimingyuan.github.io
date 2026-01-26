@@ -17,7 +17,7 @@ Table of Contents:
     --width: 70rem;
     --font-p: 1.4rem/2 "LXGW WenKai", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
     --font-h: 1.4rem/1.5 "LXGW WenKai", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-    --font-c: .9em/1.4 Consolas,"Liberation Mono","Courier New",monospace;
+    --font-c: .9em/1.4 Consolas, "Liberation Mono", "Courier New", FangSong, monospace;
     --ornament: "";
     --border: 1px solid var(--cmed);
     /* foreground   | background color */
