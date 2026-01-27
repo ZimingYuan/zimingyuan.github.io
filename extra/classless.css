@@ -17,7 +17,7 @@ Table of Contents:
     --width: 70rem;
     --font-p: 1.4rem/2 "LXGW WenKai", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
     --font-h: 1.4rem/1.5 "LXGW WenKai", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
-    --font-c: .9em/1.4 Consolas, "Liberation Mono", "Courier New", FangSong, monospace;
+    --font-c: .9em/1.4 Consolas, "Liberation Mono", "Courier New", "LXGW WenKai", monospace;
     --ornament: "";
     --border: 1px solid var(--cmed);
     /* foreground   | background color */
@@ -26,7 +26,6 @@ Table of Contents:
     --cmed: #b4d5fe;
     --clink: #111;
     --cemph: #111;
-    --fold-width: 55rem;
 }
 
 
@@ -334,7 +333,7 @@ p>select { padding: 0;      margin: 0 .5em; }
 .row .col-4 { flex: 0 0 33.33%; max-width: 33.33%; }
 .row .col-5 { flex: 0 0 41.66%; max-width: 41.66%; }
 .row .col-6 { flex: 0 0 50%; max-width: 50%; }
-@media (max-width: var(--fold-width)) { .row { flex-direction: column; } }
+@media (max-width: var(--width)) { .row { flex-direction: column; } }
 
 /* align */
 .text-left   { text-align: left; }
