@@ -2,7 +2,19 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>VnYzm的博客</title>
   <id>https://vnyzm.top/</id>
-  <updated>2026-01-25T00:00:00+08:00</updated>
+  <updated>2026-01-31T00:00:00+08:00</updated>
+  <entry>
+    <title>游戏玩后感：金辉恋曲四重奏</title>
+    <author>
+      <name>VnYzm</name>
+    </author>
+    <link href="/html/%E6%B8%B8%E6%88%8F%E7%8E%A9%E5%90%8E%E6%84%9F%EF%BC%9A%E9%87%91%E8%BE%89%E6%81%8B%E6%9B%B2%E5%9B%9B%E9%87%8D%E5%A5%8F.html"/>
+    <id>https://vnyzm.top/html/%E6%B8%B8%E6%88%8F%E7%8E%A9%E5%90%8E%E6%84%9F%EF%BC%9A%E9%87%91%E8%BE%89%E6%81%8B%E6%9B%B2%E5%9B%9B%E9%87%8D%E5%A5%8F.html</id>
+    <category term="杂谈"/>
+    <updated>2026-01-31T00:00:00+08:00</updated>
+    <published>2024-12-15T00:00:00+08:00</published>
+    <summary>注：本文也包含后日谈《金辉恋曲四重奏 Golden Time》的玩后感。听说这游戏剧情不错，看了游戏内时间是秋冬季节，刚好这时候玩。这游戏没有那种特别出圈的梗所以我之前不太了解，但玩了以后觉得确实不错。先说共通线，在经过鸟鸟系列的摧残过后...</summary>
+  </entry>
   <entry>
     <title>《Rust中常见的有关生命周期的误解》学习笔记</title>
     <author>
@@ -338,18 +350,6 @@
     <updated>2025-01-23T00:00:00+08:00</updated>
     <published>2025-01-23T00:00:00+08:00</published>
     <summary>和《告别回忆2》一起买的，因为看了背景是冬天所以现在玩，结果开始玩了才发现是剧情时间是早春，没办法，继续玩吧。总体而言，这一部矛盾比《秋之回忆2》要温和一些，是祈先提出分手的，所以男主要是和别的女主在一起了，从道德上来讲没什么问题...</summary>
-  </entry>
-  <entry>
-    <title>游戏玩后感：金辉恋曲四重奏</title>
-    <author>
-      <name>VnYzm</name>
-    </author>
-    <link href="/html/%E6%B8%B8%E6%88%8F%E7%8E%A9%E5%90%8E%E6%84%9F%EF%BC%9A%E9%87%91%E8%BE%89%E6%81%8B%E6%9B%B2%E5%9B%9B%E9%87%8D%E5%A5%8F.html"/>
-    <id>https://vnyzm.top/html/%E6%B8%B8%E6%88%8F%E7%8E%A9%E5%90%8E%E6%84%9F%EF%BC%9A%E9%87%91%E8%BE%89%E6%81%8B%E6%9B%B2%E5%9B%9B%E9%87%8D%E5%A5%8F.html</id>
-    <category term="杂谈"/>
-    <updated>2024-12-15T00:00:00+08:00</updated>
-    <published>2024-12-15T00:00:00+08:00</published>
-    <summary>听说这游戏剧情不错，看了游戏内时间是秋冬季节，刚好这时候玩。这游戏没有那种特别出圈的梗所以我之前不太了解，但玩了以后觉得确实不错。先说共通线，在经过鸟鸟系列的摧残过后，觉得这部游戏的日常太有趣了。之前我一直看不上那些贵族生活背景的游戏...</summary>
   </entry>
   <entry>
     <title>游戏玩后感：五彩斑斓的世界</title>
