@@ -2,7 +2,19 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>VnYzm的博客</title>
   <id>https://vnyzm.top/</id>
-  <updated>2026-02-21T00:00:00+08:00</updated>
+  <updated>2026-03-01T00:00:00+08:00</updated>
+  <entry>
+    <title>游戏玩后感：Kanon</title>
+    <author>
+      <name>VnYzm</name>
+    </author>
+    <link href="/html/%E6%B8%B8%E6%88%8F%E7%8E%A9%E5%90%8E%E6%84%9F%EF%BC%9AKanon.html"/>
+    <id>https://vnyzm.top/html/%E6%B8%B8%E6%88%8F%E7%8E%A9%E5%90%8E%E6%84%9F%EF%BC%9AKanon.html</id>
+    <category term="杂谈"/>
+    <updated>2026-03-01T00:00:00+08:00</updated>
+    <published>2026-03-01T00:00:00+08:00</published>
+    <summary>为什么我要玩这部游戏呢？因为“婆婆，这可是名作！”其实更大的原因是我想把key社出的长篇正作全部玩一遍。我和key社还是比较有缘的，高中去广州比赛的时候看同学推的就是key社的《rewrite》，当时最火的动漫新作之一是key社的《夏洛特》...</summary>
+  </entry>
   <entry>
     <title>简谱：致真实的你</title>
     <author>
