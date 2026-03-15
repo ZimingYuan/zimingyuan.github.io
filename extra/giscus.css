@@ -1,7 +1,7 @@
 main {
     --color-border-default: #b4d5fe;
-    --color-border-primary: #b4d5fe;
-    --color-btn-hover-bg: #e2ded4;
+    --color-box-border-info: #b4d5fe;
+    --color-btn-primary-hover-bg: #e2ded4;
     --color-prettylights-syntax-comment: #60a0b0;
     --color-prettylights-syntax-constant: #880000;
     --color-prettylights-syntax-entity: #7d9029;
