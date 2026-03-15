@@ -1,7 +1,8 @@
 main {
-    --color-border-default: #b4d5fe;
-    --color-box-border-info: #b4d5fe;
-    --color-btn-primary-hover-bg: #e2ded4;
+    --color-canvas-default: #fbf7ec; /*整体背景*/
+    --color-border-default: #b4d5fe; /*评论区边框*/
+    --color-box-border-info: #b4d5fe; /*回复区边框*/
+    --color-btn-primary-hover-bg: #e2ded4; /*按钮悬停背景*/
     --color-prettylights-syntax-comment: #60a0b0;
     --color-prettylights-syntax-constant: #880000;
     --color-prettylights-syntax-entity: #7d9029;
