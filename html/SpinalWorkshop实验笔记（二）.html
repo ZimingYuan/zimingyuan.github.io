@@ -321,6 +321,23 @@
 <span id="cb9-9"><a href="#cb9-9"></a>  <span class="kw">def</span> <span class="fu">fall</span>(): Bool = ! <span class="kw">this</span> &amp;&amp; <span class="fu">RegNext</span>(<span class="kw">this</span>)</span></code></pre></div>
 <p>实现方式是定义一个寄存器作为当前信号的后继，这样当前信号下降的时候后继寄存器还没下降。我一开始没仔细看，选了后面那个没参数的重载。结果那个后继寄存器没初始化！众所周知，没有初始化会导致一些匪夷所思的结果，我就遇到了诸如when (cond) {do A} otherwise {do B}和when (!cond) {do B} otherwise {do A}结果不一样和计数器只能用Reg不能用Counter之类的诡异问题。最后看了波形才明白，原因是后继寄存器一开始为1，所以只要当前信号是低电平都会返回1。我只想吐槽一句，写第二个重载的人是不是SpinalHDL项目组里的内鬼，这不是纯坑爹吗？事实上，我觉得初始值直接默认为假就可以了，根本就没有初始值为真能返回正确结果的情况。</p></li>
 </ul>
+<hr style="margin-top: 2em; margin-bottom: 2em;">
+<script src="https://giscus.app/client.js"
+        data-repo="ZimingYuan/zimingyuan.github.io"
+        data-repo-id="R_kgDOJC7aTg"
+        data-category="Comment"
+        data-category-id="DIC_kwDOJC7aTs4C4alt"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="0"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="https://vnyzm.top/extra/giscus.css"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
 <footer>
     <hr>
     <center>

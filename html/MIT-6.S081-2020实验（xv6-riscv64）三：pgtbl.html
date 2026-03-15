@@ -282,6 +282,23 @@
 <span id="cb12-11"><a href="#cb12-11"></a>  }</span></code></pre></div>
 <hr />
 <p>总结一下，这个实验难度其实是非常高的，我也因此写加调了好几天。我本人一开始的做法是照葫芦画瓢，直接修改uvmalloc和uvmdealloc函数让其同时处理用户页表和内核页表，结果这种设计到最后调不下去了。原因在于内核页表实际上就是对用户页表的一个引用，所以直接用一个浅拷贝函数kvmcopy就可以轻松直接地完成大量操作，再加上一个解除绑定的kvmdealloc，这种设计就非常简洁且容易调试，但是需要思考。这也说明架构和设计极其重要。</p>
+<hr style="margin-top: 2em; margin-bottom: 2em;">
+<script src="https://giscus.app/client.js"
+        data-repo="ZimingYuan/zimingyuan.github.io"
+        data-repo-id="R_kgDOJC7aTg"
+        data-category="Comment"
+        data-category-id="DIC_kwDOJC7aTs4C4alt"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="0"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="https://vnyzm.top/extra/giscus.css"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
 <footer>
     <hr>
     <center>

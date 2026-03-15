@@ -218,6 +218,23 @@
 <span id="cb7-2"><a href="#cb7-2"></a>m_Blend.<span class="fu">Alpha</span>.<span class="fu">value</span> = Alpha; <span class="co">// Alpha -&gt; float</span></span></code></pre></div>
 <h4 id="构建时的注意事项">构建时的注意事项</h4>
 <p>由于我们在代码中引用了Hidden/Custom/Blend这个着色器文件，但是场景中并没有什么物体引用这个shader，所以构建时可能不会打包这个shader文件，导致实际运行时出现错误。我的解决方法是在场景中随意创建一个有渲染器的物体，然后创建一个引用这个shader的材质，再将材质传给这个物体，这样打包时就不会忽略了。当然可能有其他的方案有待我学习。</p>
+<hr style="margin-top: 2em; margin-bottom: 2em;">
+<script src="https://giscus.app/client.js"
+        data-repo="ZimingYuan/zimingyuan.github.io"
+        data-repo-id="R_kgDOJC7aTg"
+        data-category="Comment"
+        data-category-id="DIC_kwDOJC7aTs4C4alt"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="0"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="https://vnyzm.top/extra/giscus.css"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
 <footer>
     <hr>
     <center>

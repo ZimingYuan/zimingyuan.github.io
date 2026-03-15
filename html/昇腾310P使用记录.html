@@ -308,6 +308,23 @@
 <p>另外关于高阶API的<code>ArithProgression</code>函数，虽然可以指定它生成整数序列，但它的内部应该是用浮点数来实现的，因此当整数序列比较大时，会产生精度误差，这点需要注意。比如说我想生成一个一亿到一亿加一万的整数序列，由于浮点数的尾数没有那么多位，到时候可能每个数都和预期的差个几或十几。正确做法是生成零到一万的整数序列，然后再用Add把序列所有数都加上一亿，这样就没有精度问题了。</p>
 <h3 id="总结">总结</h3>
 <p>总体而言，我觉得昇腾的文档写的还可以，大部分内容都有附上示例代码，总体脉络还是挺清晰的。但项目需求千千万，示例代码也无法覆盖所有的情况，这时就会遇到坑了。CUDA为什么用的人多，就是有足够牛的项目验证了它的可行性，同时基于它的无数项目也都把坑都踩光了，遇到什么问题网上大体都搜得到。相比之下，国内以昇腾为代表的各种GPU、计算卡在这方面还存在不少差距。所以我在这里把遇到的问题记录下来，既是方便自己回忆，也是分享给大家，希望能够为我国的科技发展作出贡献🤗。</p>
+<hr style="margin-top: 2em; margin-bottom: 2em;">
+<script src="https://giscus.app/client.js"
+        data-repo="ZimingYuan/zimingyuan.github.io"
+        data-repo-id="R_kgDOJC7aTg"
+        data-category="Comment"
+        data-category-id="DIC_kwDOJC7aTs4C4alt"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="0"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="https://vnyzm.top/extra/giscus.css"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
 <footer>
     <hr>
     <center>

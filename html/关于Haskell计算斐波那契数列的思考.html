@@ -169,6 +169,23 @@
 <p>和上面那个算法差不多，但是使用Sequence代替list，Sequence用的是BST，索引复杂度是O(logn)，虽然还是有点浪费，不过也差不多了。haskell里有一个array，虽然支持O(1)索引，但是没有什么map、fromFunction之流可以用。有一个库Vector据说可以符合这样的要求（惰性求值+map或fromFunction+O(1)索引），不过因为不是标准库所以我没尝试。注意Sequence不支持无限长度，同时fromFunction传给f’的是length-1，故传的值是n+1。</p>
 <h3 id="总结">总结</h3>
 <p>目前看来，haskell计算斐波那契数列的方法中，自底向上法效率最高且容易懂的应该是使用fold的方法，自顶向下法效率最高的应该是利用一个O(1)索引且支持惰性求值的数据结构作为记忆表进行记忆化搜索的方法。显然，使用自底向上更优一些，这在其他范式的语言也是一样，没有递归负担，容易优化（滚动数组省空间、特定问题使用单调队列、斜率优化等），而且部分函数式编程语言不支持惰性求值，则直接关上了记忆化搜索的大门。总的说来，斐波那契数列还是一个极为简单的例子，函数式语言实现动态规划，仍然是值得深入研究的一个问题。</p>
+<hr style="margin-top: 2em; margin-bottom: 2em;">
+<script src="https://giscus.app/client.js"
+        data-repo="ZimingYuan/zimingyuan.github.io"
+        data-repo-id="R_kgDOJC7aTg"
+        data-category="Comment"
+        data-category-id="DIC_kwDOJC7aTs4C4alt"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="0"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="https://vnyzm.top/extra/giscus.css"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
 <footer>
     <hr>
     <center>

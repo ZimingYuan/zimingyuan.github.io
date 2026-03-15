@@ -279,6 +279,23 @@
 <p>注意上面代码中的两个<code>#pragma</code>都非常重要：<code>#pragma HLS ALLOCATION function</code>告诉HLS这个函数只综合一套电路，强调了它的分时复用，也就暗示了双缓冲不会同时被读写；<code>#pragma HLS ARRAY_PARTITION</code>告诉HLS把buffer按第一维切分成完全不相交的BRAM，进一步突出双缓冲彼此独立。有了这两个<code>#pragma</code>，循环就能流水起来了。</p>
 <h3 id="总结">总结</h3>
 <p>之前我觉得HLS很难排除比较复杂的依赖关系，某些并行很难实现。但经过这次我才了解到如果按照某些范式来写程序（比如上面的用函数来解除依赖），还是可以实现比较精细的控制的。毕竟HLS写起来确实是比RTL简单太多，坑再怎么多写的时候确实爽。不过我这次写的程序比较简单，如果是复杂的程序，要查波形（虽然HLS编译器基本能百分之百保证程序功能的正确性，但硬件环境千变万化，接口方面还是有出错的可能，需要根据波形查错）、调时序，HLS似乎还是会力不从心。</p>
+<hr style="margin-top: 2em; margin-bottom: 2em;">
+<script src="https://giscus.app/client.js"
+        data-repo="ZimingYuan/zimingyuan.github.io"
+        data-repo-id="R_kgDOJC7aTg"
+        data-category="Comment"
+        data-category-id="DIC_kwDOJC7aTs4C4alt"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="0"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="https://vnyzm.top/extra/giscus.css"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
 <footer>
     <hr>
     <center>

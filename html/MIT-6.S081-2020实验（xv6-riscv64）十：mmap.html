@@ -272,6 +272,23 @@
 <p>注意到这里proc_freepagetable的参数多了一个，需要在defs.h里修改函数头部，同时调用这个函数的其他地方也需要修改，包括proc.c和exec.c里的几行代码，这里就不说了。另外和Lazy Allocation实验一样，需要把uvmunmap里关于缺页的panic跳掉，这里也从略。</p>
 <hr />
 <p>总结一下，这个实验还是有点麻烦的，但因为只是作为单次实验，实验文档和测试程序的要求也不高，实际上这个实验拓宽来搞，可以做为课设级别的大实验，比如消除mmap和munmap参数是页宽的限制，这样物理内存的分配和释放都需要修改成能处理任意大小空间的形式，那么就得设计链表+淘汰算法或伙伴算法来维护空闲空间；比如地址段超过16个，就得设计内核级的动态分配数组的方式，还是依赖物理内存调度的支持；比如更大量的mmap空间支持，就需要重新考虑如何分配地址空间，可能还需要用到某些数据结构；比如完整的mmap参数支持，代码量就更大了，甚至可以发展成完整的硬盘虚拟内存技术……</p>
+<hr style="margin-top: 2em; margin-bottom: 2em;">
+<script src="https://giscus.app/client.js"
+        data-repo="ZimingYuan/zimingyuan.github.io"
+        data-repo-id="R_kgDOJC7aTg"
+        data-category="Comment"
+        data-category-id="DIC_kwDOJC7aTs4C4alt"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="0"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="https://vnyzm.top/extra/giscus.css"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
 <footer>
     <hr>
     <center>

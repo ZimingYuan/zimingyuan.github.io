@@ -82,6 +82,23 @@
 <p>给程序设定图标步骤如下： 在左边栏新建一个空文件命名为icon.rc，然后在里面添加<code>IDI_ICON1 ICON DISCARDABLE "mouse.ico"</code>mouse.ico是你要的图标文件名，之后在.pro文件里添加一行<code>RC_FILE += icon.rc</code>，然后用release选项编译就能看到了。</p>
 <h3 id="打包程序">6. 打包程序</h3>
 <p>编译出来的程序不能直接运行，需要处理依赖。Qt已经为我们提供了这个工具，只需在开始菜单中启动“Qt 5.12.1 (MSVC 2017 64-bit)”，然后cd到程序所在目录，之后输入命令<code>windeployqt 程序名</code>，它就会将程序的依赖复制到当前文件夹，然后尝试一下哪些是不需要的删除即可。</p>
+<hr style="margin-top: 2em; margin-bottom: 2em;">
+<script src="https://giscus.app/client.js"
+        data-repo="ZimingYuan/zimingyuan.github.io"
+        data-repo-id="R_kgDOJC7aTg"
+        data-category="Comment"
+        data-category-id="DIC_kwDOJC7aTs4C4alt"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="0"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="https://vnyzm.top/extra/giscus.css"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
 <footer>
     <hr>
     <center>

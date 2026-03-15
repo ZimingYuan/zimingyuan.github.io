@@ -178,6 +178,23 @@
 <p>另外一点就是pthread_mutex_lock的调用必须放在前面，如果只在else后面调用的话，可能会出现死锁问题，即如果第一个线程加了nthread以后运行得比较慢，还没有运行cond_wait的时候另一个线程跑得快，把cond_broadcast给运行了，那么第一个线程运行到cond_wait就卡死了，没有线程去唤醒它，所以这整个if语句必须是个原子操作，不能并行。</p>
 <hr />
 <p>总结一下，这次实验基本没怎么涉及操作系统的理论，重点还是并行程序的应用。不过不管是国内还是国外，操作系统课在进程（线程）这一章节教的也基本上都是竞争、同步、死锁这些应用上的问题，可能进程（线程）的独特之处就在这里，虽然是操作系统中的重点部分，但最值得关注的还是应用上的问题。</p>
+<hr style="margin-top: 2em; margin-bottom: 2em;">
+<script src="https://giscus.app/client.js"
+        data-repo="ZimingYuan/zimingyuan.github.io"
+        data-repo-id="R_kgDOJC7aTg"
+        data-category="Comment"
+        data-category-id="DIC_kwDOJC7aTs4C4alt"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="0"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="https://vnyzm.top/extra/giscus.css"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
 <footer>
     <hr>
     <center>

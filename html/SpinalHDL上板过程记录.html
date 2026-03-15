@@ -167,6 +167,23 @@
 <p>关于Axi，需要注意的一点是SpinalHDL默认的是Axi4协议，而部分FPGA的PS核只支持最高Axi3协议，这个可以双击PS核查看。这两个协议差别不是很大，只有两点比较重要：一个是两者支持的最高Burst Size不一样，Axi3的比较小，最高为16，所以如果要在这样的FPGA上运行需要将硬件模块的Burst Size也设置成16；另一个是两者的Burst Cache含义不同，因此如果你不是非常熟悉Burst Cache的话，保险起见，直接将Axi读地址和写地址通道的<code>cache</code>端口置0或者直接在Axi的构造参数配置类<code>Axi4Config</code>里将<code>useCache</code>设置为0。我就被后者坑了很久，<code>cache</code>端口设置错了，结果读数据和写数据返回的<code>resp</code>全部为3（0为正常），我看了网上的资料还以为是no slave，查了半天连线和地址映射，一直没想到是缓存的问题。硬件博大精深，像我这种小白出了错只能盲试然后把希望交给运气😥，所以才希望将经验留给后来者，贯彻人人为我为我人人的雷锋精神😎。</p>
 <h3 id="总结">总结</h3>
 <p>这次感觉SpinalHDL确实是蛮好用的，而且也证明了使用SpinalHDL设计硬件原型并在FPGA上跑通的可行性，至少在体系结构的科研方面确实是一个好用的工具。希望我的这篇文章能帮大家解决一些类似的问题，大家也来使用SpinalHDL吧！</p>
+<hr style="margin-top: 2em; margin-bottom: 2em;">
+<script src="https://giscus.app/client.js"
+        data-repo="ZimingYuan/zimingyuan.github.io"
+        data-repo-id="R_kgDOJC7aTg"
+        data-category="Comment"
+        data-category-id="DIC_kwDOJC7aTs4C4alt"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="0"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="https://vnyzm.top/extra/giscus.css"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
 <footer>
     <hr>
     <center>

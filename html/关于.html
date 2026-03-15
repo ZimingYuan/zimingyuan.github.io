@@ -85,14 +85,14 @@
 <h2 id="关于本博客">关于本博客</h2>
 <h3 id="内容介绍">内容介绍</h3>
 <p>本博客目前主要包括技术模块和杂谈模块，技术模块记录我在完成项目或者学习的过程遇到的技术问题。杂谈模块记录我的动漫观后感、游戏玩后感、书籍读后感等内容。博客内容主观性较大，仅供大家看个乐呵。不过，未来技术模块内容可能会比较少更新了😥，一是因为现在 AI 太强了，技术问题一问 AI 可能全解决了，缺少探索性，写起来也是拾 AI 牙慧，没意思；二是因为我现在工作中遇到的技术问题不太方便在外面记录，同时私人时间少了，日常遇到的技术问题也会变少。杂谈模块还是会正常更新，只要我有时间玩游戏、看动漫的话😋。</p>
-<p>本博客所使用的字体为<a href="https://github.com/lxgw/LxgwWenKai">霞鹜文楷</a>。</p>
+<p>本博客所使用的字体为<a href="https://github.com/lxgw/LxgwWenKai">霞鹜文楷</a>。评论系统使用 <a href="https://giscus.app/zh-CN">Giscus</a>。</p>
 <h3 id="博客历史">博客历史</h3>
 <p>本博客于 2015 年在博客园（cnblogs）创建，一开始主要记录 OI 题目的题解，退役以后，则用来记录我在完成项目或者学习的过程中遇到的比较有探索性的技术问题。</p>
 <p>2020 年的时候博客园的经营遭遇严重危机，差点暴毙，此后虽然起死回生，但我也萌生了自己创建一个新博客的想法。网上常见的选择是使用 Hexo、Hugo 这类框架，但问题是这些框架需要手动给我写的每篇文章添加元数据，比较麻烦；加上看到别人用此类框架制作的博客，样式花里胡哨，加载却是龟速，所以决定自己写一个简单的博客框架。</p>
 <p>一开始我的技术选型是 Pandoc 转换 Markdown 为 HTML，Bootstrap 定义样式，Makefile 管理项目（Makefile 优势在于自动根据修改时间管理 Markdown，避免 Pandoc 重复生成 HTML）。后面随着需要自定义的内容增多，Makefile 逐渐力不从心，因此我写了一些 Python 脚本进行自动文本匹配替换等操作。后面索性弃用 Makefile 直接用 Python 管理整个项目，这样不用每次更新都启动 WSL 了，代码也变得简洁不少。</p>
 <p>另一个遇到的问题是 Bootstrap 的主题比较土，而且太重了，加载比较慢。后面我刷到了一些轻量级的样式框架，称为 Classless CSS，这些框架的样式比较简单，加载速度也比较快，只要导入一个 CSS 就可以定义整个网页的主题，也非常容易集成到 Pandoc 的 HTML 模板中，最终我选择了 <a href="https://https://classless.de/">Classless.css</a> 的 tufte 主题。</p>
-<p>2023 年，我发现我技术模块的文章更新比较慢，同时又希望能把我平常在日记里写的各类动漫、游戏观后感分享给别人看，所以我新增了一个杂谈模块。同时又给博客增加了文章分类功能（其实就是多一组文章列表页），之后又陆陆续续更新了搜索功能、友链功能等，没有什么大的变动。我没有做留言和评论功能，一是因为懒😂；二是因为管理评论比较费精力，要是有骂人的评论或者不良的评论，没有及时处理的话有碍观瞻；三是感觉也没那么多人会有评论欲望，感觉费大精力做这个功能不太值得，如果有话想说，不如发邮件，当然我目前还未收到任何一条主动找我讨论博客内容的邮件😭。</p>
-<p>目前我的博客框架由模板 HTML、元信息 JSON 和 Python 脚本组成。模板 HTML 包括文章页模板、文章列表页模板（包括主页、技术页和杂谈页）、友链页模板和搜索页模板。元信息 JSON 包括文章的元信息和友链的元信息。Python 脚本先根据 Markdown 修改时间调用 Pandoc 将文章转换成网页，利用的是文章页模板。之后脚本再基于文章元信息和文章列表页模板动态生成文章列表页。最后脚本基于友链元信息生成友链列表页。</p>
+<p>2023 年，我发现我技术模块的文章更新比较慢，同时又希望能把我平常在日记里写的各类动漫、游戏观后感分享给别人看，所以我新增了一个杂谈模块。同时又给博客增加了文章分类功能（其实就是多一组文章列表页），之后又陆陆续续更新了搜索功能、友链功能等，没有什么大的变动。</p>
+<p>目前我的博客框架由模板 HTML、元信息 JSON 和 Python 脚本组成。模板 HTML 包括文章页模板、文章列表页模板（包括主页、技术页和杂谈页）、友链页模板和搜索页模板。元信息 JSON 包括文章的元信息和友链的元信息。Python 脚本先根据 Markdown 修改时间调用 Pandoc 将文章转换成网页，利用的是文章页模板。之后脚本再基于文章元信息和文章列表页模板动态生成文章列表页。最后脚本基于友链元信息生成友链列表页，基于文章元信息生成 RSS 页面。文章搜索页完全通过前端实现，解析 RSS 页面的文章标题信息进行匹配。</p>
 <script>
     window.onload = () => {
         document.querySelector('#email').innerText = window.atob(document.querySelector('#email').innerText);
@@ -102,6 +102,23 @@
             }
         });
     }
+</script>
+<hr style="margin-top: 2em; margin-bottom: 2em;">
+<script src="https://giscus.app/client.js"
+        data-repo="ZimingYuan/zimingyuan.github.io"
+        data-repo-id="R_kgDOJC7aTg"
+        data-category="Comment"
+        data-category-id="DIC_kwDOJC7aTs4C4alt"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="0"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="https://vnyzm.top/extra/giscus.css"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
 </script>
 <footer>
     <hr>

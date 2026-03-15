@@ -272,6 +272,23 @@
 <p>运行时间为0.49毫秒，比Cupy微微快一点，原因可能是Cupy调用算子的开销要更大一些，或者是把原本在Python里创建<code>dst</code>的代码移到C++程序里会减少一点Python解释代码的开销。这种方法的好处主要还是代码好管理，如果要写很多算子，或者是需要引用库文件，或者是要用到什么C++高级特性的时候，可能编写完整的CUDA和C++源文件要更方便一些。</p>
 <h3 id="总结">总结</h3>
 <p>作为目前最流行的深度学习库之一，Pytorch一直在推出各种方便用户使用的功能，其他高性能计算库也纷纷增加了对Pytorch的兼容和支持，这让我们自定义CUDA实现PyTorch算子变得非常简单和便捷。不过，CUDA编程博大精深，想要实现高效率的算子，并不是一件简单的事情。因此我们一方面还是应该尽可能使用Pytorch提供的算子，毕竟经过这么长时间的更新和迭代，性能肯定是最优的；另一方面也需要认真学习CUDA编程，了解GPU架构，在迫不得已需要自己实现算子的情况下善用各种优化技术和工具，才能不断榨取“性能之油”。</p>
+<hr style="margin-top: 2em; margin-bottom: 2em;">
+<script src="https://giscus.app/client.js"
+        data-repo="ZimingYuan/zimingyuan.github.io"
+        data-repo-id="R_kgDOJC7aTg"
+        data-category="Comment"
+        data-category-id="DIC_kwDOJC7aTs4C4alt"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="0"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="https://vnyzm.top/extra/giscus.css"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
 <footer>
     <hr>
     <center>

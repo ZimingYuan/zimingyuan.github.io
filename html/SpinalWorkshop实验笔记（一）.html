@@ -273,6 +273,23 @@
 <span id="cb6-4"><a href="#cb6-4"></a>  }</span></code></pre></div>
 <p>这里缩成一行，意思是构造整数区间[0, 1 &lt;&lt; n的位宽)（注意是左闭右开区间），将整数区间里的所有数用apply检查一下（这里的apply是针对scala基础类型的），选出是质数的，这样就构造出了一个质数表。然后将质数表里的每个数和n比较一下，相等的为真，不等的为假，这样就构造出了一个布尔表，注意这个布尔，指的是SpinalHDL的Bool而不是scala的Boolean了，因为是UInt参与比较，用的也是三等于号。最后将布尔表或一下，如果表里有一个真值，即n和一个质数相等，则返回真。</p>
 <p>另外scala的匿名函数写起来真爽，连lambda关键字还是箭头标识符之类的都不用了，够简洁。</p>
+<hr style="margin-top: 2em; margin-bottom: 2em;">
+<script src="https://giscus.app/client.js"
+        data-repo="ZimingYuan/zimingyuan.github.io"
+        data-repo-id="R_kgDOJC7aTg"
+        data-category="Comment"
+        data-category-id="DIC_kwDOJC7aTs4C4alt"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="0"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="https://vnyzm.top/extra/giscus.css"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
 <footer>
     <hr>
     <center>

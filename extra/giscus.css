@@ -1,5 +1,7 @@
 main {
     --color-border-default: #b4d5fe;
+    --color-bg-primary: #b4d5fe;
+    --color-btn-hover-bg: #e2ded4;
     --color-prettylights-syntax-comment: #60a0b0;
     --color-prettylights-syntax-constant: #880000;
     --color-prettylights-syntax-entity: #7d9029;
@@ -9,8 +11,4 @@ main {
     --color-prettylights-syntax-brackethighlighter-unmatched: #ff0000;
     --color-prettylights-syntax-invalid-illegal-text: #ff0000;
     --color-prettylights-syntax-string-regexp: #4070a0;
-}
-
-button:not([disabled]):hover {
-	filter: brightness(92%);
 }

@@ -148,6 +148,23 @@
 <p>首先复制网站题目编辑器给的输入输出模板到GVIM中，因为sml交互命令行程序的标准输入已经被我们的sml文件占了，所以标准读入函数不能用，所以我们需要在程序的首行添加</p>
 <div class="sourceCode" id="cb2"><pre class="sourceCode ocaml"><code class="sourceCode ocaml"><span id="cb2-1"><a href="#cb2-1"></a><span class="kw">val</span> <span class="dt">input</span> = TextIO.openIn(<span class="st">&quot;input.txt&quot;</span>);</span></code></pre></div>
 <p>接着把程序中所有的TextIO.stdIn替换成input，之后在程序的相同目录建立一个input.txt存储样例输入，然后就可以在模板里的begin和end里面写你自己的内容了。交代码时只要把程序里begin和end里面你写的内容贴到网站题目编辑器里面的begin和end之间就行了。</p>
+<hr style="margin-top: 2em; margin-bottom: 2em;">
+<script src="https://giscus.app/client.js"
+        data-repo="ZimingYuan/zimingyuan.github.io"
+        data-repo-id="R_kgDOJC7aTg"
+        data-category="Comment"
+        data-category-id="DIC_kwDOJC7aTs4C4alt"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="0"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="https://vnyzm.top/extra/giscus.css"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
 <footer>
     <hr>
     <center>

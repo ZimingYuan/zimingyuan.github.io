@@ -308,6 +308,23 @@
 <li><p>rCore里shell程序读取命令是通过用户态调用getchar来实现的，因为目前的实现里时钟中断只会在用户态里被触发，所以可能会出现这样的情况：shell调用getchar以后，内核一直阻塞在等待字符的过程，这时输入一个字符之后，会返回用户态，而距离上一次在用户态调用getchar的时刻已经过了很久，会发生时钟中断，控制权让给其他程序，这时其他程序输出了点什么，在用户看来输入的字符回显完全淹没在其他程序的输出中，体验不好。所以我干脆添加了一个gets系统调用，让shell在接收用户输入的时候就一直陷在内核态里，不会被打断，直到用户按下回车键才返回，这样即使返回以后其他程序输出什么，至少用户已经输入了一个完整的命令，不会看起来那么难受。</p></li>
 <li><p>目前内核本身运行其实是串行的，还是因为目前的实现里时钟中断只会在用户态里被触发。这就给了我偷懒的机会，内核中所有地方都没有实现锁机制。rust语言层面支持，借助库可以直接上，所以rCore是有的，而C语言则只能自己实现（当然也可以借鉴xv6）。我打算后面如果把时钟中断扩展到内核态或者让qemu启用多核运行模式时再对这一块进行处理。</p></li>
 </ul>
+<hr style="margin-top: 2em; margin-bottom: 2em;">
+<script src="https://giscus.app/client.js"
+        data-repo="ZimingYuan/zimingyuan.github.io"
+        data-repo-id="R_kgDOJC7aTg"
+        data-category="Comment"
+        data-category-id="DIC_kwDOJC7aTs4C4alt"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="0"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="https://vnyzm.top/extra/giscus.css"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
 <footer>
     <hr>
     <center>
