@@ -1,8 +1,11 @@
+@import url("//cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/lxgwwenkai-regular/result.css?v=1");
+
 main {
     --color-canvas-default: #fbf7ec; /*整体背景*/
     --color-border-default: #b4d5fe; /*评论区边框*/
     --color-box-border-info: #b4d5fe; /*回复区边框*/
     --color-btn-primary-hover-bg: #e2ded4; /*按钮悬停背景*/
+    --color-text-primary: #000; /*文字颜色，深色模式颜色不变*/
     --color-prettylights-syntax-comment: #60a0b0;
     --color-prettylights-syntax-constant: #880000;
     --color-prettylights-syntax-entity: #7d9029;
@@ -12,4 +15,6 @@ main {
     --color-prettylights-syntax-brackethighlighter-unmatched: #ff0000;
     --color-prettylights-syntax-invalid-illegal-text: #ff0000;
     --color-prettylights-syntax-string-regexp: #4070a0;
+    --font-family-sans: "LXGW WenKai", Palatino, "Palatino Linotype", "Palatino LT STD", "Book Antiqua", Georgia, serif;
+    --font-family-monospace: Consolas, "Liberation Mono", "Courier New", "LXGW WenKai", monospace;
 }
