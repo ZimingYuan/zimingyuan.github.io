@@ -152,7 +152,7 @@
 <p>这里我省略test bench的编写和C仿真的过程，直接点C Synthesis综合C代码，综合结束后点Export RTL生成IP核，后面在Vivado中使用。</p>
 <p>打开Vivado，创建项目，硬件的部分选择和HLS IDE里选的一样。创建结束后，在窗口左侧的Flow Navigator里点IP Catalog。在打开的IP Catalog标签里右键Vivado Repository，点Add Repository。这时可以选择刚才在HLS IDE里生成的IP核所在文件夹，一般是<code>HLS项目文件夹/solution1/impl/ip</code>，选择后在Vivado Repository上方就可以看到User Repository了，递归点开下拉箭头可以看到名为Product的IP核。</p>
 <p>接下来开始连接IP，在窗口左侧的Flow Navigator点Create Block Design。在中间的Diagram选项卡里右键空白处，点Add IP。在弹出的选择框里搜zynq，然后创建Zynq Ultra+ MPSoC，按此步骤再添加刚才自己创建的IP核Product（搜hls），这时上面会弹出一个Run Connection Automation的提示，点它再确认对话框，系统就会自动生成相应的连线：</p>
-<p><img src="/img/Ultra96V2开发板简单使用_1.png" /></p>
+<p><img src="/img/Ultra96V2开发板简单使用_1.jpg" /></p>
 <p>接着保存Block Design。点左侧的Generate Block Design生成各IP的组合，再点左侧的PROJECT MANAGER回到项目视图，在中间的Sources窗口右键刚才创建的Block Design文件（扩展名为bd），点Create HDL Wrapper生成IP组合模块的verilog文件。接着点左侧的Generate Bitstream生成比特流，如果提示还没Implementation就按提示先Implementation。</p>
 <p>接下来就是在板子上运行了。刚才编写的硬件程序是在PL端运行的，还需要PS端的软件程序启动和控制硬件程序。正常的开发流程是使用Vitis IDE编写C/C++程序，然后利用串口通信将比特流烧录到PL端，再将软件程序传输到存储卡中。不过UltraV2开发板支持PYNQ框架，这个框架能让用户使用Python方便地编写软件程序，还能直接启动存储卡上的比特流文件，不需要串口通信。所以这里介绍基于PYNQ的方法。</p>
 <p>首先将比特流文件和属性文件传到存储卡中，这一步可以用浏览器打开Jupyter Notebook页面上传，也可以用scp命令。比特流文件的路径一般是<code>Vivado项目文件夹/项目名.runs/impl_1/BlockDesign名_wrapper.bit</code>，属性文件的路径一般是<code>Vivado项目文件夹/项目名.srcs/sources_1/bd/BlockDesign名/hw_handoff/BlockDesign名.hwh</code>，两者需传到存储卡同个路径下，名字（不包括扩展名）也要改成一样，不然PYNQ无法识别。注意这个属性文件在老版本的PYNQ中需要的是tcl文件，新版本（本文使用的PYNQ版本为2.7.0）换成了hwh文件，所以可能比较老的教程和本文不同。</p>
@@ -289,7 +289,7 @@
 <span id="cb8-15"><a href="#cb8-15"></a>}</span></code></pre></div>
 <p>和前面的代码基本一致，但多了两个端口修饰，将a和b同时声明为m_axi类型，表示这两个端口是DRAM端口，寄存器的值是DRAM地址，计算时要从DRAM中取数。depth是取数的位数，数组大小为16，int是32位，16乘32结果为512。</p>
 <p>继续按照前面的步骤生成IP核、创建Block Design，这时会发现product核的右侧多了一个m_axi_gmem的端口，需要经过总线连到DRAM。首先需要给ZYNQ核添加DRAM端口，办法是双击Zynq核对IP进行定制，在对话框左侧选择PS-PL Configuration，右边依次展开PS-PL Interfaces、Slave Interfaces、AXI HP，勾选AXI HPC0 FPD，然后点OK。这时会发现ZYNQ核多了一个S_AXI_HPC0_FPD端口（和一个时钟端口），再点Run Connection Automation，就可以自动连接了：</p>
-<p><img src="/img/Ultra96V2开发板简单使用_2.png" /></p>
+<p><img src="/img/Ultra96V2开发板简单使用_2.jpg" /></p>
 <p>相比前面多了一个AXI SmartConnect将product核和Zynq多出来的总线端口相连。继续按前面的步骤一直到生成比特流并传输文件。用来控制的Python脚本：</p>
 <div class="sourceCode" id="cb9"><pre class="sourceCode python"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1"></a><span class="im">from</span> pynq <span class="im">import</span> Overlay, allocate</span>
 <span id="cb9-2"><a href="#cb9-2"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>

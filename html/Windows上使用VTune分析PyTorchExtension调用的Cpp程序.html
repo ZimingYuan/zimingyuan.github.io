@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="description" content="" />
-  <meta name="keywords" content="" />
+  <meta name="description" content="Windows上使用VTune分析PyTorchExtension调用的Cpp程序" />
+  <meta name="keywords" content="vtune, torchextension, visual studio" />
   <style>
     code{white-space: pre-wrap;}
     span.smallcaps{font-variant: small-caps;}
@@ -126,6 +126,10 @@
             </li>
         </ul>
     </nav>
+<header id="title-block-header">
+<h1 class="title">Windows上使用VTune分析PyTorchExtension调用的Cpp程序</h1>
+<hr>
+</header>
 <h3 id="概述">概述</h3>
 <p>最近在实现一个通过<a href="https://pytorch.org/tutorials/advanced/cpp_extension.html">PyTorch Extension扩展PyTorch算子</a>的C++算法，需要分析代码的运行瓶颈进行针对性优化。Intel VTune就是一个能从汇编级和源码级分析CPU运行瓶颈的工具。由于不明原因我没在服务器上跑通命令行版的VTune，所以把程序搬到Windows下分析了，因此记录一下Windows上使用VTune分析PyTorchExtension调用的Cpp程序的全配置流程。</p>
 <h3 id="跑通python程序">跑通Python程序</h3>
@@ -134,8 +138,8 @@
 <li>下载Visual Studio Installer，和系统适应的版本就行。</li>
 <li>在Visual Studio Installer选择要安装的工具，在“单个组件”里找到MSVC生成工具和Windows SDK，选最新版本的即可。</li>
 </ol>
-<p><img src="/img/Windows上使用VTune分析PyTorchExtension调用的Cpp程序_1.png" /></p>
-<p><img src="/img/Windows上使用VTune分析PyTorchExtension调用的Cpp程序_2.png" /></p>
+<p><img src="/img/Windows上使用VTune分析PyTorchExtension调用的Cpp程序_1.jpg" /></p>
+<p><img src="/img/Windows上使用VTune分析PyTorchExtension调用的Cpp程序_2.jpg" /></p>
 <p>MSVC生成工具包含编译器、链接器等工具，Windows SDK则包含了操作系统相关的库。这也纠正了我之前的观点，我以为C/C++和其他现代语言一样，标准库和操作系统无关，编译工具链装上就自动有标准库了，实际上并不是，对于那些C相关的库，MSVC生成工具里就只有里面啥也没有的<code>cstdio</code>、<code>cstdlib</code>这些头文件，只有装了Windows SDK，它们才能引用到真正包含库函数的<code>stdio.h</code>、<code>stdlib.h</code>这些头文件，就和Linux里单装gcc不行，还得装上glibc才能编译C/C++程序。</p>
 <ol start="3" type="1">
 <li>安装完之后就可以运行了，在此之前如果程序是从Linux里搬过来的，需要改一下编译参数，因为MSVC的编译参数和gcc不太一样，如<code>-std=c++17</code>需要改成<code>/std:c++17</code>、<code>-O2</code>改成<code>/O2</code>。以及关于AVX的使用，gcc需要具体指定使用的AVX指令的类别，而MSVC只有AVX、AVX2、AVX512三个级别依次升高的选项。比方说我要用<code>_mm256_fmadd_ps</code>这个函数，如果是MSVC直接用<code>/arch:AVX2</code>就可以了，而gcc则要用<code>-mfma</code>指定具体用的是AVX里的FMA系列指令，AVX的具体指令类别可参考<a href="https://www.intel.com/content/www/us/en/docs/intrinsics-guide/index.html">Intel的文档</a>，gcc的相关编译参数可参考<a href="https://gcc.gnu.org/onlinedocs/gcc/x86-Options.html">gcc的文档</a>。</li>
@@ -143,7 +147,7 @@
 </ol>
 <h3 id="vtune配置">VTune配置</h3>
 <p>VTune里创建项目然后点Configure Analysis就能配置运行，填上程序（python）、参数（脚本文件名）和工作目录（脚本运行时的当前路径）即可。</p>
-<p><img src="/img/Windows上使用VTune分析PyTorchExtension调用的Cpp程序_3.png" /></p>
+<p><img src="/img/Windows上使用VTune分析PyTorchExtension调用的Cpp程序_3.jpg" /></p>
 <p>不过不能直接运行，因为MSVC的环境变量是通过脚本配置的，前面之所以要进入专门的MSVC命令行环境也是这个原因。所幸VTune提供Wrapper Script功能（在Advace Option里面），可以写一个批处理脚本让它在启动Python之前先运行MSVC的脚本配置环境变量：</p>
 <pre class="bat"><code>call &quot;C:\Program Files\Microsoft Visual Studio\2022\Community\VC\Auxiliary\Build\vcvars64.bat&quot;
 %*</code></pre>
