@@ -7,6 +7,7 @@ main {
     --color-box-border-info: #46abf2; /*回复区边框*/
     --color-btn-primary-hover-bg: light-dark(#eee8d5, #073642); /*按钮悬停背景*/
     --color-text-primary: light-dark(#657b83, #839496); /*文字颜色，深色模式颜色不变*/
+    --color-canvas-inset: light-dark(#eee8d5, #073642); /*评论/回复输入框背景*/
     --color-prettylights-syntax-comment: #60a0b0;
     --color-prettylights-syntax-constant: #880000;
     --color-prettylights-syntax-entity: #7d9029;
