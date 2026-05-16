@@ -22,11 +22,11 @@ Table of Contents:
     --border: 1px solid var(--cmed);
     /* foreground   | background color */
     color-scheme: light dark;
-    --cfg:   light-dark(#002b36, #93a1a1);    --cbg:    light-dark(#fdf6e3, #073642);
-    --cdark: light-dark(#002b36, #93a1a1);    --clight: light-dark(#eee8d5, #002b36);
+    --cfg:   light-dark(#657b83, #839496);    --cbg:    light-dark(#fdf6e3, #002b36);
+    --cdark: light-dark(#586e75, #93a1a1);    --clight: light-dark(#eee8d5, #073642);
     --cmed: #46abf2;
-    --clink: light-dark(#002b36, #93a1a1);
-    --cemph: light-dark(#002b36, #93a1a1);
+    --clink: light-dark(#657b83, #839496);
+    --cemph: light-dark(#657b83, #839496);
 }
 
 
