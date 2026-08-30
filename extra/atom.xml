@@ -2,7 +2,19 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>VnYzm的博客</title>
   <id>https://vnyzm.top/</id>
-  <updated>2026-08-26T00:00:00+08:00</updated>
+  <updated>2026-08-30T00:00:00+08:00</updated>
+  <entry>
+    <title>昆虫记</title>
+    <author>
+      <name>VnYzm</name>
+    </author>
+    <link href="/html/%E6%98%86%E8%99%AB%E8%AE%B0.html"/>
+    <id>https://vnyzm.top/html/%E6%98%86%E8%99%AB%E8%AE%B0.html</id>
+    <category term="分享"/>
+    <updated>2026-08-30T00:00:00+08:00</updated>
+    <published>2026-08-30T00:00:00+08:00</published>
+    <summary>本文包含蟑螂、蜘蛛等生物图片，怕虫者勿入！记录一下闯进我公寓的昆虫（虽然蜘蛛不是昆虫但也一并记录），昆虫名使用微信小程序《晓虫》识别，不一定准确。未来可能会持续记录...</summary>
+  </entry>
   <entry>
     <title>我的周边（谷子）分享</title>
     <author>
