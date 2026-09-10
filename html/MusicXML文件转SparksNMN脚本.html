@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zh-CN" xml:lang="zh-CN" data-theme="tufte">
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <meta name="description" content="MusicXML文件转SparksNMN脚本" />
+  <meta name="keywords" content="MusicXML, SparksNMN, 工具, javascript, 简谱, 口琴" />
+  <style>
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    span.underline{text-decoration: underline;}
+    div.column{display: inline-block; vertical-align: top; width: 50%;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+  </style>
+  <link rel="stylesheet" href="/extra/classless.css" />
+  <script>
+      let search = () => {
+          let word = document.querySelector('input');
+          if (word.value.length == 0) {
+              word.focus();
+          } else {
+              location.href = '/search.html?' + word.value;
+          }
+      };
+      window.onload = () => {
+          document.querySelector('input').addEventListener(
+              'keydown',  (event) => {
+                  if (event.key == 'Enter') search();
+          });
+      }
+  </script>
+  <link rel="icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="shortcut icon" href="/img/favicon.ico" type="image/x-icon" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@callmebill/lxgw-wenkai-web@latest/lxgwwenkai-regular/result.css?v=1" />
+  <title>MusicXML文件转SparksNMN脚本</title>
+  <!--[if lt IE 9]>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+  <![endif]-->
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><big>VnYzm的博客</big></li>
+            <li><a href="/index.html">所有文章</a> ▾
+                <ul>
+                    <li><a href="/technique.html">技术</a></li>
+                    <li><a href="/miscellany.html">杂谈</a></li>
+                    <li><a href="/share.html">分享</a></li>
+                </ul>
+            </li>
+            <li><a href="/friends.html">友链</a></li>
+            <li><a href="/html/关于.html">关于</a></li>
+            <li><a href="https://www.travellings.cn/go.html" target="_blank">开往</a></li>
+            <li><a href="/extra/atom.xml">RSS</a></li>
+            <li class="float-right">
+              <div style="position: relative; display: inline-block;">
+                <input type="search" placeholder="搜索标题" style="margin: 0; padding-right: 2em;">
+                <button style="position: absolute; right: 0; top: 50%; transform: translateY(-50%); border: none; background: transparent; margin: 0;" onclick="search()">
+                  <svg width="1em" height="1em" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z" stroke="var(--cfg)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+                </button>
+              </div>
+            </li>
+        </ul>
+    </nav>
+<header id="title-block-header">
+<h1 class="title">MusicXML文件转SparksNMN脚本</h1>
+<hr>
+</header>
+<h2 id="说明">说明</h2>
+<p>本页面为基于 javascript 实现，通过浏览器前端完成转换的在线工具。上传<a href="https://www.musicxml.com/">MusicXML</a>文本文件，输出<a href="https://notation.sparkslab.art/">SparksNMN</a>脚本。</p>
+<p><img src="/img/MusicXML文件转SparksNMN脚本_1.jpg" /></p>
+<p><em>MuseScore在导出MusicXML时，需选择“不压缩”，输出的才是文本文件，如果选择“压缩”，输出的是二进制文件，本页面无法识别</em></p>
+<h2 id="支持转换的语法">支持转换的语法</h2>
+<ul>
+<li>音阶（<code>1</code>~<code>7</code> 表示音级，升半音在数字前加 <code>#</code>；降音一律按等音升号处理）</li>
+<li>升降八度（升八度加 <code>e</code>，降八度加 <code>d</code>，每个八度加一个，如 <code>1e</code>、<code>2d</code>）</li>
+<li>连音线（起始音符后加 <code>~</code>，如 <code>1~</code>）</li>
+<li>时值（全音符 <code>1---</code>、二分音符 <code>1-</code>、附点二分 <code>1--</code>、附点 <code>.</code>、四分音符不加）</li>
+<li>八分音符、十六分音符（<code>(1 2)</code>、<code>((1 2))</code>，相邻的八分/十六分音符共享括号）</li>
+<li>小节线（<code>|</code>，共享括号不跨小节）</li>
+<li>每行指定小节数（行首省略小节线并加 <code>N:</code>，行与行之间插入 <code>---</code>）</li>
+<li>调号补足（按 C 大调音级编号，未显式写临时号的音符按调号补足升降号，如降 E 大调中的 <code>B</code> 记为 <code>#6</code>）</li>
+<li>连音简化（同一小节内同音高连音组若总时值恰为常见时值，合并为单个音符）</li>
+<li>休止符（输出为 <code>0</code>，带同样的时值记号）</li>
+</ul>
+<p>转换时只取第一个声部；和弦只保留第一个音；强弱、反复、装饰音、无音高音符一律忽略；不支持多连音。不支持乐谱元数据，如标题、作者、调号等的转换。转换完成后请仔细检查对比，防止有转换错误的地方。</p>
+<h2 id="输入">输入</h2>
+<p><label for="file_input">选择 MusicXML 文件：</label> <input type="file" id="file_input" accept=".musicxml,.xml"></p>
+<p><span style="display: flex;"> 每行小节数： <input type="number" id="per_line" value="4" min="1" style="width: 10%"> </span></p>
+<p><span style="display: flex;"> 八度基准： <input type="number" id="base_octave" value="5" min="1" style="width: 10%"> </span></p>
+<button onclick="convertFile()">
+开始转换
+</button>
+<h2 id="输出">输出</h2>
+<textarea id="note_output" readonly placeholder="处理结果..." style="width: 100%" rows="10"></textarea>
+<script>
+// 直接用浏览器 DOMParser 解析 XML，节点为原生 Element，
+// childNodes 取指定标签名的直接子元素，firstText 取其文本。
+
+function childNodes(node, name) {
+  return Array.from(node.children || []).filter((c) => c.tagName === name);
+}
+
+function firstText(node, name) {
+  const c = childNodes(node, name)[0];
+  return c ? c.textContent.trim() : null;
+}
+
+const STEP_TO_PC = { C: 0, D: 2, E: 4, F: 5, G: 7, A: 9, B: 11 };
+
+const PC_TO_NOTE = {
+  0:  { degree: '1', sharp: false },
+  1:  { degree: '1', sharp: true },
+  2:  { degree: '2', sharp: false },
+  3:  { degree: '2', sharp: true },
+  4:  { degree: '3', sharp: false },
+  5:  { degree: '4', sharp: false },
+  6:  { degree: '4', sharp: true },
+  7:  { degree: '5', sharp: false },
+  8:  { degree: '5', sharp: true },
+  9:  { degree: '6', sharp: false },
+  10: { degree: '6', sharp: true },
+  11: { degree: '7', sharp: false },
+};
+
+const TYPE_INFO = {
+  whole:   { level: 0, marker: '---' },
+  breve:   { level: 0, marker: '---' },
+  long:    { level: 0, marker: '---' },
+  maxima:  { level: 0, marker: '---' },
+  half:    { level: 0, marker: '-' },
+  quarter: { level: 0, marker: '' },
+  eighth:  { level: 1, marker: '' },
+  '16th':  { level: 2, marker: '' },
+  '32nd':  { level: 3, marker: '' },
+  '64th':  { level: 4, marker: '' },
+  '128th': { level: 5, marker: '' },
+};
+
+function midiOf(step, alter, octave) {
+  return (octave + 1) * 12 + STEP_TO_PC[step] + alter;
+}
+
+function noteToken(midi, baseOctave) {
+  if (baseOctave === undefined || baseOctave === null) baseOctave = 5;
+  const pc = ((midi % 12) + 12) % 12;
+  const octave = Math.floor(midi / 12) - 1;
+  const info = PC_TO_NOTE[pc];
+  const offset = octave - baseOctave;
+  let s = (info.sharp ? '#' : '') + info.degree;
+  if (offset > 0) s += 'e'.repeat(offset);
+  else if (offset < 0) s += 'd'.repeat(-offset);
+  return s;
+}
+
+function resolveType(type, duration, divisions) {
+  if (type && TYPE_INFO[type]) return TYPE_INFO[type];
+  const beats = divisions > 0 ? duration / divisions : 0;
+  if (beats <= 0) return { level: 0, marker: '' };
+  if (Math.abs(beats - 6) < 1e-6) return { level: 0, marker: '---' };
+  if (Math.abs(beats - 3) < 1e-6) return { level: 0, marker: '-' };
+  if (Math.abs(beats - 1.5) < 1e-6) return { level: 0, marker: '' };
+  if (Math.abs(beats - 0.75) < 1e-6) return { level: 1, marker: '' };
+  if (Math.abs(beats - 0.375) < 1e-6) return { level: 2, marker: '' };
+  const lvl = Math.round(-Math.log2(beats));
+  if (lvl <= -2) return { level: 0, marker: '---' };
+  if (lvl === -1) return { level: 0, marker: '-' };
+  if (lvl === 0) return { level: 0, marker: '' };
+  return { level: lvl, marker: '' };
+}
+
+const TYPE_BEATS = {
+  maxima: 32, long: 16, breve: 8, whole: 4,
+  half: 2, quarter: 1, eighth: 0.5,
+  '16th': 0.25, '32nd': 0.125, '64th': 0.0625, '128th': 0.03125,
+};
+
+function renderDuration(beats) {
+  const TOL = 1e-6;
+  const B = (x) => Math.abs(beats - x) < TOL;
+  if (B(1)) return { level: 0, suffix: '' };
+  if (B(1.5)) return { level: 0, suffix: '.' };
+  if (B(0.5)) return { level: 1, suffix: '' };
+  if (B(0.75)) return { level: 1, suffix: '.' };
+  if (B(0.25)) return { level: 2, suffix: '' };
+  if (B(0.375)) return { level: 2, suffix: '.' };
+  if (B(0.125)) return { level: 3, suffix: '' };
+  if (B(0.1875)) return { level: 3, suffix: '.' };
+  if (B(0.0625)) return { level: 4, suffix: '' };
+  if (B(0.09375)) return { level: 4, suffix: '.' };
+  if (B(0.03125)) return { level: 5, suffix: '' };
+  if (B(2)) return { level: 0, suffix: '-' };
+  if (B(3)) return { level: 0, suffix: '--' };
+  if (B(4)) return { level: 0, suffix: '---' };
+  if (beats >= 4 && Math.abs(beats - Math.round(beats)) < TOL) {
+    return { level: 0, suffix: '---' };
+  }
+  return null;
+}
+
+function durationInfo(type, duration, divisions, dotted) {
+  const beats = type && TYPE_BEATS[type] !== undefined
+    ? TYPE_BEATS[type] * (dotted ? 1.5 : 1)
+    : (divisions > 0 ? duration / divisions : 0);
+  const rd = renderDuration(beats);
+  if (rd) return rd;
+  const info = resolveType(type, duration, divisions);
+  return { level: info.level, suffix: (dotted ? '.' : '') + info.marker };
+}
+
+function emitRun(tokens, level) {
+  let out = '(';
+  let i = 0;
+  while (i < tokens.length) {
+    if (tokens[i].level === level) {
+      out += tokens[i].text;
+      i++;
+    } else {
+      let j = i;
+      while (j < tokens.length && tokens[j].level > level) j++;
+      out += emitRun(tokens.slice(i, j), level + 1);
+      i = j;
+    }
+  }
+  return out + ')';
+}
+
+function emitMeasure(tokens) {
+  let out = '';
+  let i = 0;
+  while (i < tokens.length) {
+    if (tokens[i].level === 0) {
+      out += tokens[i].text;
+      i++;
+    } else {
+      let j = i;
+      while (j < tokens.length && tokens[j].level > 0) j++;
+      out += emitRun(tokens.slice(i, j), 1);
+      i = j;
+    }
+  }
+  return out;
+}
+
+function mergeTies(tokens, baseOctave) {
+  const TOL = 1e-6;
+  const QUALIFY = [0.25, 0.5, 0.75, 1, 1.5, 2, 3, 4];
+  const result = [];
+  let i = 0;
+  const n = tokens.length;
+  while (i < n) {
+    const t = tokens[i];
+    if (!t.tieStart || t.midi === null) { result.push(t); i++; continue; }
+    let j = i + 1;
+    let prev = t;
+    while (j < n) {
+      const cur = tokens[j];
+      if (cur.midi === null) break;
+      if (!prev.tieStart || !cur.tieStop || cur.midi !== prev.midi) break;
+      j++;
+      prev = cur;
+    }
+    if (j - i >= 2) {
+      let total = 0;
+      let hasTuplet = false;
+      for (let k = i; k < j; k++) {
+        total += tokens[k].beats || 0;
+        if (tokens[k].tuplet) hasTuplet = true;
+      }
+      if (!hasTuplet && QUALIFY.some((v) => Math.abs(total - v) < TOL)) {
+        const rd = renderDuration(total);
+        if (rd) {
+          const last = tokens[j - 1];
+          const text = noteToken(t.midi, baseOctave) + (last.tieStart ? '~' : '') + rd.suffix;
+          result.push({ text, level: rd.level, midi: t.midi, beats: total, tieStart: last.tieStart, tieStop: last.tieStop });
+          i = j;
+          continue;
+        }
+      }
+      for (let k = i; k < j; k++) result.push(tokens[k]);
+      i = j;
+      continue;
+    }
+    result.push(t);
+    i++;
+  }
+  return result;
+}
+
+function keySignatureAccidentalsFromFifths(fifths) {
+  const map = {};
+  if (fifths > 0) {
+    const order = ['F', 'C', 'G', 'D', 'A', 'E', 'B'];
+    order.slice(0, Math.min(fifths, 7)).forEach((s) => { map[s] = 1; });
+  } else if (fifths < 0) {
+    const order = ['B', 'E', 'A', 'D', 'G', 'C', 'F'];
+    order.slice(0, Math.min(-fifths, 7)).forEach((s) => { map[s] = -1; });
+  }
+  return map;
+}
+
+function keySignatureAccidentals(keyEl) {
+  const fifthsText = firstText(keyEl, 'fifths');
+  if (fifthsText !== null) {
+    return keySignatureAccidentalsFromFifths(parseInt(fifthsText, 10) || 0);
+  }
+  const map = {};
+  const steps = childNodes(keyEl, 'key-step');
+  const alts = childNodes(keyEl, 'key-alter');
+  steps.forEach((ks, idx) => {
+    const altEl = alts[idx];
+    if (altEl) map[ks.textContent.trim()] = parseInt(altEl.textContent.trim(), 10) || 0;
+  });
+  return map;
+}
+
+function convert(xmlString, measuresPerLine, baseOctave) {
+  xmlString = xmlString.replace(/^\uFEFF/, '');
+  const doc = new DOMParser().parseFromString(xmlString, 'text/xml');
+  if (doc.querySelector('parsererror')) {
+    throw new Error('XML 解析失败：不是合法的 MusicXML 文件');
+  }
+  const score = childNodes(doc, 'score-partwise')[0] || childNodes(doc, 'score-timewise')[0];
+  if (!score) throw new Error('无法识别为 MusicXML：缺少 <score-partwise> 或 <score-timewise> 根元素');
+
+  let measureContents;
+  if (score.tagName === 'score-timewise') {
+    const partList = childNodes(score, 'part-list')[0];
+    const firstPart = partList ? childNodes(partList, 'score-part')[0] : null;
+    const partId = firstPart ? firstPart.getAttribute('id') : null;
+    measureContents = childNodes(score, 'measure').map((m) => {
+      let p = childNodes(m, 'part').find((x) => x.getAttribute('id') === partId);
+      if (!p) p = childNodes(m, 'part')[0];
+      return p ? p.children : [];
+    });
+  } else {
+    const part = childNodes(score, 'part')[0];
+    if (!part) throw new Error('MusicXML 中找不到 <part>');
+    measureContents = childNodes(part, 'measure').map((m) => m.children);
+  }
+
+  let targetVoice = null;
+  for (const mc of measureContents) {
+    for (const el of mc) {
+      if (el.tagName === 'note') {
+        const v = firstText(el, 'voice');
+        if (v) { targetVoice = v; break; }
+      }
+    }
+    if (targetVoice !== null) break;
+  }
+
+  let divisions = 0;
+  let keyAlterByStep = {};
+  let keyFound = false;
+  for (const mc of measureContents) {
+    for (const el of mc) {
+      if (el.tagName !== 'attributes') continue;
+      if (!divisions) {
+        const d = parseInt(firstText(el, 'divisions') || '', 10);
+        if (!isNaN(d)) divisions = d;
+      }
+      if (!keyFound) {
+        const key = childNodes(el, 'key')[0];
+        if (key) {
+          keyAlterByStep = keySignatureAccidentals(key);
+          keyFound = true;
+        }
+      }
+    }
+    if (divisions && keyFound) break;
+  }
+
+  const measureTokens = measureContents.map((mc) => {
+    const tokens = [];
+    for (const el of mc) {
+      if (el.tagName !== 'note') continue;
+      const voice = firstText(el, 'voice');
+      if (targetVoice !== null && voice && voice !== targetVoice) continue;
+      if (childNodes(el, 'grace').length) continue;
+      if (childNodes(el, 'chord').length) continue;
+      if (childNodes(el, 'unpitched').length) continue;
+
+      const isRest = childNodes(el, 'rest').length > 0;
+      let midi = null;
+      if (!isRest) {
+        const pitch = childNodes(el, 'pitch')[0];
+        if (!pitch) continue;
+        const step = firstText(pitch, 'step');
+        const alterText = firstText(pitch, 'alter');
+        const alter = alterText !== null
+          ? (parseInt(alterText, 10) || 0)
+          : (keyAlterByStep[step] || 0);
+        const octave = parseInt(firstText(pitch, 'octave') || '', 10);
+        if (!step || isNaN(octave)) continue;
+        midi = midiOf(step, alter, octave);
+      }
+
+      const duration = parseInt(firstText(el, 'duration') || '0', 10);
+      const type = firstText(el, 'type');
+      const dotted = childNodes(el, 'dot').length > 0;
+
+      let tieStart = false, tieStop = false;
+      for (const t of childNodes(el, 'tie')) {
+        if (t.getAttribute('type') === 'start') tieStart = true;
+        if (t.getAttribute('type') === 'stop') tieStop = true;
+      }
+      for (const n of childNodes(el, 'notations'))
+        for (const t of childNodes(n, 'tied')) {
+          if (t.getAttribute('type') === 'start') tieStart = true;
+          if (t.getAttribute('type') === 'stop') tieStop = true;
+        }
+
+      const dur = durationInfo(type, duration, divisions, dotted);
+      let text = isRest ? '0' : noteToken(midi, baseOctave);
+      if (tieStart) text += '~';
+      text += dur.suffix;
+
+      const tuplet = childNodes(el, 'time-modification').length > 0;
+
+      tokens.push({
+        text,
+        level: dur.level,
+        midi: isRest ? null : midi,
+        beats: divisions > 0 ? duration / divisions : 0,
+        tieStart,
+        tieStop,
+        tuplet,
+      });
+    }
+    return mergeTies(tokens, baseOctave);
+  });
+
+  const measureStrings = measureTokens.map(emitMeasure);
+
+  const perLine = Math.max(1, measuresPerLine | 0);
+  const lines = [];
+  for (let i = 0; i < measureStrings.length; i += perLine) {
+    lines.push('N: ' + measureStrings.slice(i, i + perLine).join('|'));
+  }
+  return lines.join('\n---\n');
+}
+
+function convertFile() {
+  const file = document.getElementById('file_input').files[0];
+  if (!file) {
+    alert('请先选择 MusicXML 文件');
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = function (e) {
+    try {
+      const perLine = parseInt(document.getElementById('per_line').value, 10);
+      const base = parseInt(document.getElementById('base_octave').value, 10);
+      const result = convert(e.target.result, perLine, base);
+      document.getElementById('note_output').value = result;
+    } catch (err) {
+      document.getElementById('note_output').value = '转换失败：' + err.message;
+    }
+  };
+  reader.readAsText(file);
+}
+</script>
+<hr style="margin-top: 2em; margin-bottom: 2em;">
+<script src="https://giscus.app/client.js"
+        data-repo="ZimingYuan/zimingyuan.github.io"
+        data-repo-id="R_kgDOJC7aTg"
+        data-category="Comment"
+        data-category-id="DIC_kwDOJC7aTs4C4alt"
+        data-mapping="title"
+        data-strict="0"
+        data-reactions-enabled="0"
+        data-emit-metadata="0"
+        data-input-position="top"
+        data-theme="https://vnyzm.top/extra/giscus.css"
+        data-lang="zh-CN"
+        data-loading="lazy"
+        crossorigin="anonymous"
+        async>
+</script>
+<footer>
+    <hr>
+    <center>
+        Powered by <a href="https://github.com/ZimingYuan/Yblogs" target="_blank">Yblogs</a><br>
+        转载请注明出处<br>
+        © 2026 VnYzm的博客<br>
+    </center>
+</footer>
+</body>
+</html>
