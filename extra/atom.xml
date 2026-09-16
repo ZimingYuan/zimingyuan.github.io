@@ -2,7 +2,31 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>VnYzm的博客</title>
   <id>https://vnyzm.top/</id>
-  <updated>2026-09-10T00:00:00+08:00</updated>
+  <updated>2026-09-16T00:00:00+08:00</updated>
+  <entry>
+    <title>游戏玩后感：拔作岛</title>
+    <author>
+      <name>VnYzm</name>
+    </author>
+    <link href="/html/%E6%B8%B8%E6%88%8F%E7%8E%A9%E5%90%8E%E6%84%9F%EF%BC%9A%E6%8B%94%E4%BD%9C%E5%B2%9B.html"/>
+    <id>https://vnyzm.top/html/%E6%B8%B8%E6%88%8F%E7%8E%A9%E5%90%8E%E6%84%9F%EF%BC%9A%E6%8B%94%E4%BD%9C%E5%B2%9B.html</id>
+    <category term="杂谈"/>
+    <updated>2026-09-16T00:00:00+08:00</updated>
+    <published>2026-09-16T00:00:00+08:00</published>
+    <summary>当年第一次从一个 galgame 群群文件里看到这部游戏时还以为是什么垃圾拔作，但后面这部游戏的制作公司又做了《拔作岛2》《HENPRI》，一作比一作优秀。很快这几部游戏也在 Steam 上出了中文版...</summary>
+  </entry>
+  <entry>
+    <title>我的周边（谷子）分享</title>
+    <author>
+      <name>VnYzm</name>
+    </author>
+    <link href="/html/%E6%88%91%E7%9A%84%E5%91%A8%E8%BE%B9%EF%BC%88%E8%B0%B7%E5%AD%90%EF%BC%89%E5%88%86%E4%BA%AB.html"/>
+    <id>https://vnyzm.top/html/%E6%88%91%E7%9A%84%E5%91%A8%E8%BE%B9%EF%BC%88%E8%B0%B7%E5%AD%90%EF%BC%89%E5%88%86%E4%BA%AB.html</id>
+    <category term="分享"/>
+    <updated>2026-09-15T00:00:00+08:00</updated>
+    <published>2026-03-08T00:00:00+08:00</published>
+    <summary>分享一下我目前有的周边（大部分都是galgame的），包括挂画、手办等，本文可能会持续更新。 西瓜（爱上火车）挂画 这幅挂画应该算是我的第一个周边，。当时代理商HikariField建了官网商城，相比于淘宝...</summary>
+  </entry>
   <entry>
     <title>MusicXML文件转SparksNMN脚本</title>
     <author>
@@ -38,18 +62,6 @@
     <updated>2026-08-30T00:00:00+08:00</updated>
     <published>2026-08-30T00:00:00+08:00</published>
     <summary>本文包含蟑螂、蜘蛛等生物图片，怕虫者勿入！记录一下闯进我公寓的昆虫（虽然蜘蛛不是昆虫但也一并记录），昆虫名使用微信小程序《晓虫》识别，不一定准确。未来可能会持续记录...</summary>
-  </entry>
-  <entry>
-    <title>我的周边（谷子）分享</title>
-    <author>
-      <name>VnYzm</name>
-    </author>
-    <link href="/html/%E6%88%91%E7%9A%84%E5%91%A8%E8%BE%B9%EF%BC%88%E8%B0%B7%E5%AD%90%EF%BC%89%E5%88%86%E4%BA%AB.html"/>
-    <id>https://vnyzm.top/html/%E6%88%91%E7%9A%84%E5%91%A8%E8%BE%B9%EF%BC%88%E8%B0%B7%E5%AD%90%EF%BC%89%E5%88%86%E4%BA%AB.html</id>
-    <category term="分享"/>
-    <updated>2026-08-26T00:00:00+08:00</updated>
-    <published>2026-03-08T00:00:00+08:00</published>
-    <summary>分享一下我目前有的周边（大部分都是galgame的），包括挂画、手办等，本文可能会持续更新。 西瓜（爱上火车）挂画 这幅挂画应该算是我的第一个周边，。当时代理商HikariField建了官网商城，相比于淘宝...</summary>
   </entry>
   <entry>
     <title>简谱：风华正茂</title>
