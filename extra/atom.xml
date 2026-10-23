@@ -2,7 +2,19 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>VnYzm的博客</title>
   <id>https://vnyzm.top/</id>
-  <updated>2026-09-30T00:00:00+08:00</updated>
+  <updated>2026-10-23T00:00:00+08:00</updated>
+  <entry>
+    <title>游戏玩后感：智以泪聚</title>
+    <author>
+      <name>VnYzm</name>
+    </author>
+    <link href="/html/%E6%B8%B8%E6%88%8F%E7%8E%A9%E5%90%8E%E6%84%9F%EF%BC%9A%E6%99%BA%E4%BB%A5%E6%B3%AA%E8%81%9A.html"/>
+    <id>https://vnyzm.top/html/%E6%B8%B8%E6%88%8F%E7%8E%A9%E5%90%8E%E6%84%9F%EF%BC%9A%E6%99%BA%E4%BB%A5%E6%B3%AA%E8%81%9A.html</id>
+    <category term="杂谈"/>
+    <updated>2026-10-23T00:00:00+08:00</updated>
+    <published>2025-03-09T00:00:00+08:00</published>
+    <summary>注：本文也包含后日谈《智以泪聚FD-吹向明日彼岸的可视之风-》的玩后感。这部游戏虽然是08年的老游戏了，但是前年才出汉化，当时我看到群里有资源就顺手下载了，但一直没玩。这段时间看到游戏内季节比较符合...</summary>
+  </entry>
   <entry>
     <title>游戏玩后感：AI：梦境档案</title>
     <author>
@@ -494,18 +506,6 @@
     <updated>2025-03-30T00:00:00+08:00</updated>
     <published>2025-03-30T00:00:00+08:00</published>
     <summary>自从玩过《白色相簿 2》，我就想玩玩这个编剧写的其他作品，后面得知女仆咖啡世界观的三部曲，刚好这部游戏出了官方中文版。我还以为这部游戏剧情主要发生在春天，所以最近买了，结果玩了才发现主要是秋...</summary>
-  </entry>
-  <entry>
-    <title>游戏玩后感：智以泪聚</title>
-    <author>
-      <name>VnYzm</name>
-    </author>
-    <link href="/html/%E6%B8%B8%E6%88%8F%E7%8E%A9%E5%90%8E%E6%84%9F%EF%BC%9A%E6%99%BA%E4%BB%A5%E6%B3%AA%E8%81%9A.html"/>
-    <id>https://vnyzm.top/html/%E6%B8%B8%E6%88%8F%E7%8E%A9%E5%90%8E%E6%84%9F%EF%BC%9A%E6%99%BA%E4%BB%A5%E6%B3%AA%E8%81%9A.html</id>
-    <category term="杂谈"/>
-    <updated>2025-03-09T00:00:00+08:00</updated>
-    <published>2025-03-09T00:00:00+08:00</published>
-    <summary>这部游戏虽然是08年的老游戏了，但是前年才出汉化，当时我看到群里有资源就顺手下载了，但一直没玩。这段时间看到游戏内季节比较符合（实际上搞错了，现在连春分都还没到），所以就玩了。这部游戏日本人应...</summary>
   </entry>
   <entry>
     <title>游戏玩后感：初雪樱</title>
